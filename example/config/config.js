@@ -1,6 +1,9 @@
 const path = require('path');
 // import UserModel from '~/models/UserModel';
 
+/**
+ * Express Sweet configuration interface.
+ */
 module.exports = {
 // export default {
   /**
@@ -23,10 +26,9 @@ module.exports = {
 
   /**
    * Absolute path to the router directory, defaults to `<application root directory>/routes`.
-   * The default is <application root directory>/routes.
    * @type {string}
    */
-  // router_dir: path.join(process.cwd(), 'routes'),
+  router_dir: path.join(process.cwd(), 'routes'),
 
   /**
    * The endpoint to run when the root URL is requested, defaults to none (undefined).
@@ -38,23 +40,22 @@ module.exports = {
    * Absolute path to the directory where the view files are located, defaults to `<application root directory>/views`.
    * @type {string}
    */
-  // views_dir: path.join(process.cwd(), 'views'),
+  views_dir: path.join(process.cwd(), 'views'),
 
   /**
    * Path to partials templates, one or several directories, defaults to `<application root directory>/views/partials`.
    * @type {string|string[]}
    */
-  // views_partials_dir: path.join(process.cwd(), 'views/partials'),
+  views_partials_dir: path.join(process.cwd(), 'views/partials'),
 
   /**
    * Path to layout templates, defaults to `<application root directory>/views/layout`.
    * @type {string}
    */
-  // views_layouts_dir: path.join(process.cwd(), 'views/layout'),
+  views_layouts_dir: path.join(process.cwd(), 'views/layout'),
 
   /**
    * Absolute path to default layout template. defaults to `<application root directory>/views/layout/default.hbs`.
-   * The default is <application root directory>/views/layout/default.hbs.
    * @type {string}
    */
   views_default_layout: path.join(process.cwd(), 'views/layout/layout.hbs'),
@@ -63,7 +64,7 @@ module.exports = {
    * Extension for templates & partials, defaults to `.hbs`,
    * @type {string}
    */
-  // views_extension: '.hbs',
+  views_extension: '.hbs',
 
   /**
    * Enable user authentication, defaults to disabled (false).
@@ -102,8 +103,14 @@ module.exports = {
   // auth_model: UserModel,
 
   /**
-   * Rewrite baseUrl set in app.locals, defaults to referrer origin (eg https://example.com).
-   * @type {(baseUrl: string): string}
+   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
+   * @type {string}
    */
-  rewrite_base_url: (baseUrl) => baseUrl
+  auth_exclude: ['/test', '/api'],
+
+  /**
+   * .Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
+   * @type {number}
+   */
+  auth_expiration: 24 * 3600000
 }

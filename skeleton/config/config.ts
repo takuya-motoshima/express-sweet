@@ -1,6 +1,9 @@
 import path from 'path';
 import UserModel from '~/models/UserModel';
 
+/**
+ * Express Sweet configuration interface.
+ */
 export default {
   /**
    * Environment variable file (.env) path, defaults to none (undefined).
@@ -24,7 +27,7 @@ export default {
    * Absolute path to the router directory, defaults to `<application root directory>/routes`.
    * @type {string}
    */
-  // router_dir: path.join(process.cwd(), 'routes'),
+  router_dir: path.join(process.cwd(), 'routes'),
 
   /**
    * The endpoint to run when the root URL is requested, defaults to none (undefined).
@@ -36,19 +39,19 @@ export default {
    * Absolute path to the directory where the view files are located, defaults to `<application root directory>/views`.
    * @type {string}
    */
-  // views_dir: path.join(process.cwd(), 'views'),
+  views_dir: path.join(process.cwd(), 'views'),
 
   /**
    * Path to partials templates, one or several directories, defaults to `<application root directory>/views/partials`.
    * @type {string|string[]}
    */
-  // views_partials_dir: path.join(process.cwd(), 'views/partials'),
+  views_partials_dir: path.join(process.cwd(), 'views/partials'),
 
   /**
    * Path to layout templates, defaults to `<application root directory>/views/layout`.
    * @type {string}
    */
-  // views_layouts_dir: path.join(process.cwd(), 'views/layout'),
+  views_layouts_dir: path.join(process.cwd(), 'views/layout'),
 
   /**
    * Absolute path to default layout template. defaults to `<application root directory>/views/layout/default.hbs`.
@@ -99,7 +102,7 @@ export default {
   auth_model: UserModel,
 
   /**
-   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, The default is none.
+   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
    * @type {string}
    */
   auth_exclude: ['/test', '/api'],
@@ -108,12 +111,5 @@ export default {
    * .Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
    * @type {number}
    */
-  // auth_expiration: 24 * 3600000,
-
-  /**
-   * Rewrite baseUrl set in app.locals, defaults to referrer origin (eg https://example.com).
-   * The default for app.locals.baseUrl is referrer origin (eg https://example.com).
-   * @type {(baseUrl: string): string}
-   */
-  rewrite_base_url: (baseUrl: string): string => baseUrl
+  auth_expiration: 24 * 3600000
 }

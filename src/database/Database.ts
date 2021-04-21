@@ -1,4 +1,6 @@
 import sequelize from 'sequelize';
+import Database from '~/interfaces/Database';
+
 
 /**
  * Connect to DB.
@@ -11,7 +13,7 @@ export default new class extends sequelize.Sequelize {
     const env = process.env.NODE_ENV||'development';
     console.log('env=', env);
     // const env = 'development';
-    const config = require(`${global.APP_DIR}/config/database`) as {[key: string]: sequelize.Options};
+    const config = require(`${global.APP_DIR}/config/database`) as Database;
     const options = config[env] as sequelize.Options;
     super(options.database as string, options.username as string, options.password as string||undefined, options);
   }
