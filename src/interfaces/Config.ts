@@ -1,7 +1,7 @@
 import Model from '~/database/Model';
 
 /**
- * Express extended config interface.
+ * Express Sweet configuration interface.
  */
 export default interface {
   /**
@@ -101,20 +101,14 @@ export default interface {
   auth_model: typeof Model,
 
   /**
-   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, The default is none.
+   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
    * @type {string}
    */
   auth_exclude?: string[],
 
   /**
-   * .Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
+   * Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
    * @type {number}
    */
-  auth_expiration?: number,
-
-  /**
-   * Rewrite baseUrl set in app.locals, defaults to referrer origin (eg https://example.com).
-   * @type {(baseUrl: string): string|undefined}
-   */
-  rewrite_base_url: (baseUrl: string): string
+  auth_expiration?: number
 }
