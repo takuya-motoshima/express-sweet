@@ -1,7 +1,6 @@
 import sequelize from 'sequelize';
 import Database from '~/interfaces/Database';
 
-
 /**
  * Connect to DB.
  */
