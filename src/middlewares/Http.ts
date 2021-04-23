@@ -18,9 +18,9 @@ export default class {
     // Get config.
     const config = Object.assign({
       max_body_size: '100kb'
-    }, require(`${global.APP_DIR}/config/config`)) as Config;
+    }, require(`${process.cwd()}/config/config`)) as Config;
 
-    console.log(`Maximum body size: ${config.max_body_size}`);
+    console.log(`Set "${config.max_body_size}" to Maximum body size`);
 
     // Log HTTP request.
     const morgan = require('morgan')
@@ -42,7 +42,7 @@ export default class {
 
     // Static file path.
     const publicDir = path.join(process.cwd(), 'public');
-    console.log(`Public directory: ${publicDir}`);
+    console.log(`Set "${publicDir}" to Public directory`);
     app.use(express.static(publicDir));
   }
 }

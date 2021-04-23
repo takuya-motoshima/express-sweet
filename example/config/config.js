@@ -1,11 +1,10 @@
 const path = require('path');
-// import UserModel from '~/models/UserModel';
+const UserModel = require('../models/UserModel');
 
 /**
  * Express Sweet configuration interface.
  */
 module.exports = {
-// export default {
   /**
    * Environment variable file (.env) path, defaults to none (undefined).
    * @type {string}
@@ -34,7 +33,7 @@ module.exports = {
    * The endpoint to run when the root URL is requested, defaults to none (undefined).
    * @type {string}
    */
-  default_router: '/index',
+  default_router: '/dashboard',
 
   /**
    * Absolute path to the directory where the view files are located, defaults to `<application root directory>/views`.
@@ -58,7 +57,7 @@ module.exports = {
    * Absolute path to default layout template. defaults to `<application root directory>/views/layout/default.hbs`.
    * @type {string}
    */
-  views_default_layout: path.join(process.cwd(), 'views/layout/layout.hbs'),
+  views_default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
 
   /**
    * Extension for templates & partials, defaults to `.hbs`,
@@ -70,7 +69,7 @@ module.exports = {
    * Enable user authentication, defaults to disabled (false).
    * @type {boolean}
    */
-  auth_enabled: false,
+  auth_enabled: true,
 
   /**
    * Authentication user ID field name, defaults to `username`.
@@ -100,7 +99,7 @@ module.exports = {
    * Model class used for authentication, this is a required field.
    * @type {typeof Model}
    */
-  // auth_model: UserModel,
+  auth_model: UserModel,
 
   /**
    * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.

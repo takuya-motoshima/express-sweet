@@ -1,9 +1,9 @@
-const sweet = require('express-sweet');
+const Model = require('express-sweet').database.Model;
 
 /**
  * User model.
  */
-export default (class extends sweet.database.Model {
+module.exports = (class extends Model {
   /**
    * Table name used by the model.
    */

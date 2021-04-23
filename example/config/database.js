@@ -2,7 +2,6 @@
  * DB connection options.
  */
 module.exports = {
-// export default {
   development: {
     username: 'root',
     database: 'sample',

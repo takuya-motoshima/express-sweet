@@ -1,2 +1,3 @@
 import RekognitionClient from './RekognitionClient';
-export { RekognitionClient };
+import Authentication from './Authentication';
+export { RekognitionClient, Authentication };

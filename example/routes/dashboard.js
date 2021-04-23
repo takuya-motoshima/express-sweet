@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * GET users page.
+ * GET dashboard page.
  */
 router.get('/', async (req, res, next) => {
   try {
-    res.render('users');
+    res.render('dashboard');
   } catch(e) {
     next(e);
   }
