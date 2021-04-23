@@ -33,9 +33,6 @@ npm i express-hbs \
       passport-local \
       aws-sdk;
 ```
-
-
-
 ## Usage
 
 ## License

@@ -33,7 +33,7 @@ module.exports = {
    * The endpoint to run when the root URL is requested, defaults to none (undefined).
    * @type {string}
    */
-  default_router: '/dashboard',
+  default_router: '/home',
 
   /**
    * Absolute path to the directory where the view files are located, defaults to `<application root directory>/views`.

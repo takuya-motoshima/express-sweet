@@ -1,7 +1,13 @@
 {{!< default}}
 {{#contentFor 'title'}}Login{{/contentFor}}
-{{#contentFor 'style'}}<link rel="stylesheet" type="text/css" href="{{baseUrl}}/assets/styles/login.css">{{/contentFor}}
-{{#contentFor 'script'}}<script src="{{baseUrl}}/assets/scripts/login.js"></script>{{/contentFor}}
+{{#contentFor 'style'}}
+  <link rel="stylesheet" type="text/css" href="{{cache_busting '/assets/styles/login.css' baseUrl}}">
+  <!-- <link rel="stylesheet" type="text/css" href="{{baseUrl}}/assets/styles/login.css"> -->
+{{/contentFor}}
+{{#contentFor 'script'}}
+  <script src="{{cache_busting '/assets/scripts/login.js' baseUrl}}"></script>
+  <!-- <script src="{{baseUrl}}/assets/scripts/login.js"></script> -->
+{{/contentFor}}
 <form on-login class="w-100 mx-auto my-0 login-form">
   <div class="text-center">
     <img class="mb-4" src="{{baseUrl}}/assets/images/logo.svg" height="100">

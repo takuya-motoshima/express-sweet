@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "env TZ='Asia/Tokyo' pm2 start ecosystem.config.js",
-    "//start": "node ./bin/www",
     "restart": "env TZ='Asia/Tokyo' pm2 restart ecosystem.config.js",
     "stop": "pm2 stop ecosystem.config.js"
   },
@@ -15,6 +14,7 @@
     "express": "~4.16.1",
     "express-hbs": "^2.3.5",
     "express-session": "^1.17.1",
+    "express-validator": "^6.10.0",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",

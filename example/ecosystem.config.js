@@ -1,4 +1,4 @@
-const PORT = 3001;
+const PORT = 3000;
 
 module.exports = {
   apps : [
@@ -25,10 +25,7 @@ module.exports = {
       env_production: {
         NODE_ENV: 'production',
         PORT
-      },
-      error_file: './error.log',
-      out_file: './out.log',
-      merge_logs: true
+      }
     }
   ]
 };

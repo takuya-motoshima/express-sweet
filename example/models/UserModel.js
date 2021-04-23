@@ -28,4 +28,24 @@ module.exports = (class extends Model {
       modified: Model.types.DATE
     };
   }
+
+  /**
+   * Returns page data.
+   */
+  static async paginate(options) {
+    // Initialize options.
+    options = Object.assign({
+      offset: 0,
+      limit: 30,
+      search: undefined,
+      order: undefined,
+      dir: undefined
+    }, options);
+    console.log('options=', options);
+    return {
+      recordsTotal: 0,
+      recordsFiltered: 0,
+      data: []
+    };
+  }
 }).mount();
