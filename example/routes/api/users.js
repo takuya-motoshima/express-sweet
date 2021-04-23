@@ -30,7 +30,7 @@ router.get('/logout', async (req, res, next) => {
 /**
  * Retrieve a User.
  */
-router.get('/:id', async (req, res, next) => {
+router.get('/:id(\\d+)', async (req, res, next) => {
   try {
     res.json([]);
   } catch(e) {
@@ -54,6 +54,7 @@ router.get('/', async (req, res, next) => {
     data.draw = req.query.draw;
     res.json(data);
   } catch(e) {
+    console.log('>>>>>>>>>>>>>>>>>>>Error:', e);
     next(e);
   }
 });

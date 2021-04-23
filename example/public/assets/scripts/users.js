@@ -1,3 +1,7 @@
+/*User list page script*/
+
+// Main processing.
+// Set up data table.
 const dt = $('#table')
   .on('draw.dt', () => {
     $("#table_processing").hide();
@@ -18,16 +22,14 @@ const dt = $('#table')
       {data: 'id', width: 30},
       {data: 'email'},
       {data: 'name'},
-      {data: 'modified', width: 120},
-      {data: 'actions', width: 270}
+      {data: 'modified', width: 200},
+      {data: 'actions', width: 150}
     ],
     columnDefs: [
       {
         targets: -1,
         orderable: false,
-        render: (data, type, row, meta) => 
-          `<a href="/workers/${row.id}" class="btn btn-success btn-pill"><i class="flaticon-edit"></i>編集する</a>
-          <button on-delete type="button" class="btn btn-danger btn-pill"><i class="flaticon2-trash"></i>削除する</button>`
+        render: (data, type, row) => `<a href="/users/${row.id}" class="btn btn-success">Edit</a><button on-delete type="button" class="btn btn-danger mx-2">Delete</button>`
       }
     ],
     dom: `<'row'<'col-12'f>><'row'<'col-12'tr>><'row'<'col-12 dataTables_pager'p>>`,

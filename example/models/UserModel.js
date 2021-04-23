@@ -17,15 +17,15 @@ module.exports = (class extends Model {
   static get attributes() {
     return {
       id: {
-        type: Model.types.INTEGER,
+        type: Model.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
-      email: Model.types.STRING,
-      password: Model.types.STRING,
-      name: Model.types.STRING,
-      created: Model.types.DATE,
-      modified: Model.types.DATE
+      email: Model.DataTypes.STRING,
+      password: Model.DataTypes.STRING,
+      name: Model.DataTypes.STRING,
+      created: Model.DataTypes.DATE,
+      modified: Model.DataTypes.DATE
     };
   }
 
@@ -41,11 +41,40 @@ module.exports = (class extends Model {
       order: undefined,
       dir: undefined
     }, options);
-    console.log('options=', options);
-    return {
-      recordsTotal: 0,
-      recordsFiltered: 0,
-      data: []
-    };
+
+    // Get total unconditional record count.
+    const recordsTotal = await this.count();
+
+    // Filtering options.
+    let where = undefined;
+    if (options.search != null && options.search.length)
+      where = {
+        [Model.Op.or]: [
+          {id: {[Model.Op.like]: `%${options.search}%`}},
+          {email: {[Model.Op.like]: `%${options.search}%`}},
+          {name: {[Model.Op.like]: `%${options.search}%`}},
+          {modified: {[Model.Op.like]: `%${options.search}%`}}
+        ]
+      };
+
+    // Sort options.
+    let order = undefined;
+    if (options.order != null && options.order.length)
+      order = [[options.order, options.dir || 'ASC']];
+
+    // Get page data.
+    let data = await this.findAll({
+      attributes: ['id', 'email', 'name', 'modified'],
+      where,
+      order,
+      offset: parseInt(options.offset, 10),
+      limit: parseInt(options.limit, 10),
+      raw: true
+    });
+
+    // Get the total record count that matches the condition.
+    let recordsFiltered = await this.count({where});
+
+    return {recordsTotal, recordsFiltered, data};
   }
 }).mount();

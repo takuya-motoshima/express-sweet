@@ -1,0 +1,10 @@
+{{!< default}}
+{{#contentFor 'title'}}Dashboard{{/contentFor}}
+{{#contentFor 'style'}}
+  <link rel="stylesheet" type="text/css" href="{{cache_busting '/assets/styles/user.css' baseUrl}}">
+  <!-- <link rel="stylesheet" type="text/css" href="{{baseUrl}}/assets/styles/user.css"> -->
+{{/contentFor}}
+{{#contentFor 'script'}}
+  <script src="{{cache_busting '/assets/scripts/user.js' baseUrl}}"></script>
+  <!-- <script src="{{baseUrl}}/assets/scripts/user.js"></script> -->
+{{/contentFor}}

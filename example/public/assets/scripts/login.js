@@ -1,5 +1,7 @@
+/*Login page script*/
+
 /**
- * Send login request.
+ * Login request.
  */
 async function login(form) {
   const res = await $.ajax({
@@ -9,19 +11,16 @@ async function login(form) {
     contentType: false,
     processData: false
   });
-
-  //Login failed.
-  if (!res) return void alert('The user name or password is incorrect.');
-
+  // Login failed.
+  if (!res)
+    return void alert('The user name or password is incorrect.');
   // Login successful.
   location.href = '/';
 }
 
 // Main processing.
-(async () => {
+$('[on-login]').on('submit', async event => {
   // Click the login button.
-  $('[on-login]').on('submit', async event => {
-    event.preventDefault();
-    await login(event.currentTarget);
-  });
-})();
+  event.preventDefault();
+  await login(event.currentTarget);
+});
