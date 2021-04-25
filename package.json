@@ -25,7 +25,7 @@
     "~": "dist"
   },
   "bin": {
-    "create-project": "bin/create-project.js"
+    "express-sweet": "bin/express-sweet-cli.js"
   },
   "repository": {
     "type": "git",

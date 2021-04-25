@@ -18,7 +18,7 @@ export declare var _moduleAliases: {
     "~": string;
 };
 export declare var bin: {
-    "create-project": string;
+    "express-sweet": string;
 };
 export declare var repository: {
     type: string;

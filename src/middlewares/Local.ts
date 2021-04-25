@@ -17,22 +17,32 @@ export default class {
     // Get Hooks configuration.
     const hooks = Object.assign({
       rewrite_base_url: (baseUrl: string): string => baseUrl,
-    }, require(`${global.APP_DIR}/config/hooks`)) as Hooks;
+    }, require(`${process.cwd()}/config/hooks`)) as Hooks;
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-      // Generate base URL.
-      let baseUrl = req.headers.referer
-        ? new URL(req.headers.referer).origin
-        : 'x-forwarded-proto' in req.headers ? `${req.headers['x-forwarded-proto']}://${req.headers.host}` : `//${req.headers.host}`;
+      if (req.headers.referer) {
+        const url = new URL(req.headers.referer);
+
+        // Set baseUrl to a local variable.
+        app.locals.baseUrl = url.origin;
+
+        // Set the current URL to a local variable.
+        app.locals.currentPath = req.originalUrl;
+
+        // // Debug.
+        // console.log(`app.locals.baseUrl: ${app.locals.baseUrl}`);
+        // console.log(`app.locals.currentPath: ${app.locals.currentPath}`);
+      } else {
+        // Set baseUrl to a local variable.
+        app.locals.baseUrl = 'x-forwarded-proto' in req.headers
+          ? `${req.headers['x-forwarded-proto']}://${req.headers.host}`
+          : `//${req.headers.host}`;
+      }
 
       // Call a callback function that rewrites baseUrl.
       if (hooks.rewrite_base_url)
-        baseUrl = hooks.rewrite_base_url(baseUrl);
-
-      // Set baseUrl to a local variable.
-      app.locals.baseUrl = baseUrl;
-      // console.log(`app.locals.baseUrl: ${app.locals.baseUrl}`);
+        app.locals.baseUrl = hooks.rewrite_base_url(app.locals.baseUrl);
       next();
     });
   }

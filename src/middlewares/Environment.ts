@@ -13,13 +13,12 @@ export default class {
    */
   public static mount() {
     // Get config.
-    const config = require(`${global.APP_DIR}/config/config`) as Config;
-
-    // Debug.
-    console.log(`.env path: ${config.env_path||undefined}`);
+    const config = require(`${process.cwd()}/config/config`) as Config;
 
     // Exit if there is no .env path.
     if (!config.env_path) return;
+
+    console.log(`Load "${config.env_path}"`);
 
     // Set environment variables in process.env.
     const env = dotenv.parse(fs.readFileSync(config.env_path));

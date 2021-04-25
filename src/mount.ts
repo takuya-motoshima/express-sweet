@@ -8,6 +8,7 @@ import Local from '~/middlewares/Local';
 import Authentication from '~/middlewares/Authentication';
 import Router from '~/routing/Router';
 import Config from '~/interfaces/Config';
+import fs from 'fs';
 
 /**
  * Mount extensions on your application.
@@ -19,7 +20,10 @@ export default function(app: express.Express): void {
   Global.mount();
 
   // Get config.
-  const config = require(`${global.APP_DIR}/config/config`) as Config;
+  const configPath = `${process.cwd()}/config/config`;
+  if (!fs.existsSync(`${configPath}.js`)) 
+    throw new Error(`${configPath} not found`);
+  const config = require(configPath) as Config;
 
   // Set environment variables.
   Environment.mount();

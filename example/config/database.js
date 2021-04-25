@@ -2,10 +2,9 @@
  * DB connection options.
  */
 module.exports = {
-// export default {
   development: {
     username: 'root',
-    database: 'sample',
+    database: 'example',
     host: 'localhost',
     dialect: 'mariadb',
     timezone: 'Etc/GMT-9',
@@ -14,7 +13,7 @@ module.exports = {
   },
   test: {
     username: 'root',
-    database: 'sample',
+    database: 'example',
     host: 'localhost',
     dialect: 'mariadb',
     timezone: 'Etc/GMT-9',
@@ -23,7 +22,7 @@ module.exports = {
   },
   production: {
     username: 'root',
-    database: 'sample',
+    database: 'example',
     host: 'localhost',
     dialect: 'mariadb',
     timezone: 'Etc/GMT-9',

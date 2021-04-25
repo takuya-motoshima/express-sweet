@@ -7,7 +7,7 @@ export var types = "types/index.d.ts";
 export var files = ["dist/*.js","types/*.d.ts","package.json","bin/*.js","skeleton/"];
 export var scripts = {"watch":" node --max-old-space-size=4096 node_modules/rollup/dist/bin/rollup -c rollup.config.js --watch","prewatch":"rm -rf dist types && json2module package.json > src/package.ts","build":" node --max-old-space-size=4096 node_modules/rollup/dist/bin/rollup -c rollup.config.js","prebuild":"rm -rf dist types && json2module package.json > src/package.ts","test":"jest","start":"ts-node -r tsconfig-paths/register -P tsconfig.json -O '{\"module\":\"commonjs\"}' -e \"import * as index from '~/index';console.log(index);\"","prestart":"json2module package.json > src/package.ts"};
 export var _moduleAliases = {"~":"dist"};
-export var bin = {"create-project":"bin/create-project.js"};
+export var bin = {"express-sweet":"bin/express-sweet-cli.js"};
 export var repository = {"type":"git","url":"git+https://github.com/takuya-motoshima/express-sweet.git"};
 export var keywords = ["nodejs","express","shared","library","lib","typescript","ts","esm","es6","orm","mysql","mariadb","sqlite","postgresql","postgres","mssql"];
 export var author = "Takuya Motoshima <developer.takuyamotoshima@gmail.com> (https://twitter.com/TakuyaMotoshima)";

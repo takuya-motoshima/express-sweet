@@ -20,20 +20,27 @@ export default class {
       views_layouts_dir: path.join(process.cwd(), 'views/layout'),
       views_default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
       views_extension: '.hbs'
-    }, require(`${global.APP_DIR}/config/config`)) as Config;
+    }, require(`${process.cwd()}/config/config`)) as Config;
 
-    console.log(`View directory: ${config.views_dir}`);
-    console.log(`Partials directory: ${config.views_partials_dir}`);
-    console.log(`Layouts directory: ${config.views_layouts_dir}`);
-    console.log(`Default layout: ${config.views_default_layout}`);
+    console.log(`Set "${config.views_dir}" to View directory`);
+    console.log(`Set "${config.views_partials_dir}" to Partials directory`);
+    console.log(`Set "${config.views_layouts_dir}" to Layouts directory`);
+    console.log(`Set "${config.views_default_layout}" to Default layout`);
 
     // Express handlebars template engine.
     const hbs = require('express-hbs');
 
     // Added helper function.
     hbs.registerHelper('json', helpers.json);
+    console.log('Set json handlebars helper');
     hbs.registerHelper('replace', helpers.replace);
+    console.log('Set replace handlebars helper');
     hbs.registerHelper('cache_busting', helpers.cache_busting);
+    console.log('Set cache_busting handlebars helper');
+    for (let [name, helper] of Object.entries(helpers.conditionals)) {
+      console.log(`Set ${name} handlebars helper`);
+      hbs.registerHelper(name, helper);
+    }
 
     // Apply template engine to your app.
     app.engine('hbs', hbs.express4({

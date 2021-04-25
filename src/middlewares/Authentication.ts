@@ -21,7 +21,7 @@ export default class {
       auth_model: undefined,
       auth_exclude: undefined,
       auth_expiration: 24 * 3600000 // 24hours
-    }, require(`${global.APP_DIR}/config/config`)) as Config;
+    }, require(`${process.cwd()}/config/config`)) as Config;
 
     // Set session save method.
     app.use(session({
@@ -92,28 +92,5 @@ export default class {
           res.redirect(config.auth_failure_redirect);
       }
     });
-  }
-
-  /**
-   * Sign in user.
-   */
-  signin(req: express.Request, res: express.Response, next: express.NextFunction) {
-    return new Promise((resolve, reject) => {
-      passport.authenticate('local', (error, user) => {
-        if (error) return void reject(error);
-        if (!user) return void resolve(false);
-        req.logIn(user, error => {
-          if (error) return void reject(error);
-          resolve(true);
-        });
-      })(req, res, next);
-    });
-  }
-
-  /**
-   * Sign out the user.
-   */
-  signout(req: express.Request, res: express.Response, next: express.NextFunction) {
-    req.logout();
   }
 }
