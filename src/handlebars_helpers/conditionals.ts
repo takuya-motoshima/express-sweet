@@ -59,7 +59,7 @@ export function eqw(value1: any, value2: any): boolean {
  * @param {any} value2
  * @returns {boolean}
  */
-function neq(value1: any, value2: any): boolean {
+export function neq(value1: any, value2: any): boolean {
   return value1 !== value2;
 }
 
@@ -77,7 +77,7 @@ function neq(value1: any, value2: any): boolean {
  * @param {any} value2
  * @returns {boolean}
  */
-function neqw(value1: any, value2: any): boolean {
+export function neqw(value1: any, value2: any): boolean {
   return value1 != value2;
 }
 
@@ -95,7 +95,7 @@ function neqw(value1: any, value2: any): boolean {
  * @param {any} value2
  * @returns {boolean}
  */
-function lt(value1: any, value2: any): boolean {
+export function lt(value1: any, value2: any): boolean {
   return value1 < value2;
 }
 
@@ -113,7 +113,7 @@ function lt(value1: any, value2: any): boolean {
  * @param {any} value2
  * @returns {boolean}
  */
-function lte(value1: any, value2: any): boolean {
+export function lte(value1: any, value2: any): boolean {
   return value1 <= value2;
 }
 
@@ -131,7 +131,7 @@ function lte(value1: any, value2: any): boolean {
  * @param {any} value2
  * @returns {boolean}
  */
-function gt(value1: any, value2: any): boolean {
+export function gt(value1: any, value2: any): boolean {
   return value1 > value2;
 }
 
@@ -149,7 +149,7 @@ function gt(value1: any, value2: any): boolean {
  * @param {any} value2
  * @returns {boolean}
  */
-function gte(value1: any, value2: any): boolean {
+export function gte(value1: any, value2: any): boolean {
   return value1 >= value2;
 }
 /**
@@ -166,7 +166,7 @@ function gte(value1: any, value2: any): boolean {
  * @param {any} expression
  * @returns {boolean}
  */
-function not(expression: any): boolean {
+export function not(expression: any): boolean {
   return !expression;
 }
 
@@ -188,7 +188,7 @@ function not(expression: any): boolean {
  * @param {any} value2    Value to return when the condition is false (Optional).
  * @returns {any}
  */
-function ifx(condition: boolean, value1: any, value2: any): any {
+export function ifx(condition: boolean, value1: any, value2: any): any {
   // Check if user has omitted the last parameter
   // if that's the case, it would be the Handlebars options object
   // which it sends always as the last parameter.
@@ -213,7 +213,7 @@ function ifx(condition: boolean, value1: any, value2: any): any {
  * @param {any[]} items
  * @returns {boolean}
  */
-function empty(items: any[]): boolean {
+export function empty(items: any[]): boolean {
   if (!Array.isArray(items)) return true;
   return items.length === 0;
 }
@@ -228,7 +228,7 @@ function empty(items: any[]): boolean {
  * @param {any[]} items
  * @returns {boolean|number}
  */
-function count(items: any[]): boolean|number {
+export function count(items: any[]): boolean|number {
   if (!Array.isArray(items)) return false;
   return items.length;
 }
@@ -253,7 +253,7 @@ function count(items: any[]): boolean|number {
  * @param {...any} params
  * @returns {boolean}
  */
-function and(...params: any[]): boolean {
+export function and(...params: any[]): boolean {
   // Ignore the object appended by handlebars.
   if (isObject(params[params.length-1]))
     params.pop();
@@ -282,7 +282,7 @@ function and(...params: any[]): boolean {
  * @param {...any} params
  * @returns {boolean}
  */
-function or(...params: any[]): boolean {
+export function or(...params: any[]): boolean {
   // Ignore the object appended by handlebars.
   if (isObject(params[params.length-1]))
     params.pop();
@@ -306,7 +306,7 @@ function or(...params: any[]): boolean {
  * @param {...any} params
  * @returns {any}
  */
-function coalesce(...params: any[]): any {
+export function coalesce(...params: any[]): any {
   // Ignore the object appended by handlebars.
   if (isObject(params[params.length-1]))
     params.pop();
@@ -340,7 +340,7 @@ function coalesce(...params: any[]): any {
  * @param {boolean} strict
  * @returns {boolean}
  */
-function includes(items: any[], value: any, strict: boolean = true): boolean {
+export function includes(items: any[], value: any, strict: boolean = true): boolean {
   if (!Array.isArray(items) || items.length === 0)
     return false;
   for (let item of items)

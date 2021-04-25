@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * GET home page.
+ * Home page.
  */
 router.get('/', async (req, res, next) => {
   try {

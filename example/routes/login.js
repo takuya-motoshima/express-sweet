@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * GET login page.
+ * Login page.
  */
 router.get('/', async (req, res, next) => {
   try {

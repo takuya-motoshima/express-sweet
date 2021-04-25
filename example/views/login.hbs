@@ -5,21 +5,22 @@
   <!-- <link rel="stylesheet" type="text/css" href="{{baseUrl}}/assets/styles/login.css"> -->
 {{/contentFor}}
 {{#contentFor 'script'}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
   <script src="{{cache_busting '/assets/scripts/login.js' baseUrl}}"></script>
   <!-- <script src="{{baseUrl}}/assets/scripts/login.js"></script> -->
 {{/contentFor}}
-<form on-login class="w-100 mx-auto my-0 login-form">
+<form id="form" class="w-100 mx-auto my-0 login-form needs-validation">
   <div class="text-center">
     <img class="mb-4" src="{{baseUrl}}/assets/images/logo.svg" height="100">
   </div>
   <h1 class="h3 mb-3 font-weight-normal text-center">Please login</h1>
-  <div class="form-group">
-    <label>Username</label>
-    <input name="email" type="email" class="form-control" placeholder="Email" required autofocus value="robin@example.com">
+  <div class="mb-3">
+    <label class="form-label">Email address</label>
+    <input type="email" class="form-control" name="email" required autofocus value="robin@example.com" placeholder="name@example.com">
   </div>
-  <div class="form-group mt-3">
-    <label>Password</label>
-    <input name="password" type="password" class="form-control" placeholder="Password" required value="password">
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" name="password" required value="password">
   </div>
-  <button class="btn btn-lg btn-primary d-block mt-3 w-100" type="submit">Login</button>
+  <button class="btn btn-primary d-block w-100" type="submit">Login</button>
 </form>
