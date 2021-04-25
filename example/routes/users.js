@@ -18,7 +18,6 @@ router.get('/:id(\\d+)', async (req, res, next) => {
       return void res.redirect('/users');
 
     // Display user edit page.
-    console.log('user=', user);
     res.render('user', {user, edit: true});
   } catch(e) {
     next(e);

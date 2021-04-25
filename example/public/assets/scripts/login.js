@@ -22,8 +22,8 @@ $('#form').validate({
     });
 
     // If login fails.
-    if (!res)
-      return void alert('The user name or password is incorrect.');
+    if (res.error)
+      return void alert(res.error);
 
     // After logging in successfully, you will be taken to the top page.
     location.href = '/';

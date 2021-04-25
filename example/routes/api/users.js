@@ -9,7 +9,8 @@ const Authentication = require('express-sweet').services.Authentication;
 router.post('/login', async (req, res, next) => {
   try {
     const success = await Authentication.signin(req, res, next);
-    res.json(success);
+    if (success) res.json({result: true});
+    else res.json({error: 'The user name or password is incorrect.'});
   } catch(e) {
     next(e);
   }
@@ -28,18 +29,6 @@ router.get('/logout', async (req, res, next) => {
 });
 
 /**
- * Retrieve a User.
- */
-router.get('/:id(\\d+)', async (req, res, next) => {
-  try {
-    res.json([]);
-  } catch(e) {
-    next(e);
-  }
-});
-
-
-/**
  * List Users.
  */
 router.get('/', async (req, res, next) => {
@@ -54,7 +43,6 @@ router.get('/', async (req, res, next) => {
     data.draw = req.query.draw;
     res.json(data);
   } catch(e) {
-    console.log('>>>>>>>>>>>>>>>>>>>Error:', e);
     next(e);
   }
 });
@@ -64,28 +52,28 @@ router.get('/', async (req, res, next) => {
  */
 router.post('/', async (req, res, next) => {
   try {
+    console.log('req.body=', req.body);
     res.json([]);
   } catch(e) {
     next(e);
   }
 });
 
-/**
- * Delete a User.
- */
-router.delete('/:id', async (req, res, next) => {
-  try {
-    res.json([]);
-  } catch(e) {
-    next(e);
-  }
-});
-
+// /**
+//  * Delete a User.
+//  */
+// router.delete('/:id(\\d+)', async (req, res, next) => {
+//   try {
+//     res.json([]);
+//   } catch(e) {
+//     next(e);
+//   }
+// });
 
 // /**
 //  * Update a User.
 //  */
-// router.put('/:id', async (req, res, next) => {
+// router.put('/:id(\\d+)', async (req, res, next) => {
 //   try {
 //     if (req.body.passwordChange) {
 //       const passwordMatch = await UserModel.count({
