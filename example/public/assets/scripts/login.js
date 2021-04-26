@@ -10,22 +10,26 @@ $('#form').validate({
     $(element).after($(error).addClass('invalid-feedback'));
   },
   submitHandler: async (form, event) => {
-    event.preventDefault();
+    try {
+      event.preventDefault();
 
-    // Send an authentication request.
-    const res = await $.ajax({
-      type: 'POST',
-      url: '/api/users/login',
-      data: new FormData(form),
-      contentType: false,
-      processData: false
-    });
+      // Send an authentication request.
+      const res = await $.ajax({
+        type: 'POST',
+        url: '/api/users/login',
+        data: new FormData(form),
+        contentType: false,
+        processData: false
+      });
 
-    // If login fails.
-    if (!res)
-      return void alert('The user name or password is incorrect.');
+      // If login fails.
+      if (res.error)
+        return void alert(res.error);
 
-    // After logging in successfully, you will be taken to the top page.
-    location.href = '/';
+      // After logging in successfully, you will be taken to the top page.
+      location.href = '/';
+    } catch(e) {
+      alert('An unexpected error has occurred.');
+    }
   }
 });

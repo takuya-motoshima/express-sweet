@@ -9,7 +9,8 @@ const Authentication = require('express-sweet').services.Authentication;
 router.post('/login', async (req, res, next) => {
   try {
     const success = await Authentication.signin(req, res, next);
-    res.json(success);
+    if (success) res.json({result: true});
+    else res.json({error: 'The user name or password is incorrect.'});
   } catch(e) {
     next(e);
   }
@@ -28,18 +29,6 @@ router.get('/logout', async (req, res, next) => {
 });
 
 /**
- * Retrieve a User.
- */
-router.get('/:id(\\d+)', async (req, res, next) => {
-  try {
-    res.json([]);
-  } catch(e) {
-    next(e);
-  }
-});
-
-
-/**
  * List Users.
  */
 router.get('/', async (req, res, next) => {
@@ -54,7 +43,6 @@ router.get('/', async (req, res, next) => {
     data.draw = req.query.draw;
     res.json(data);
   } catch(e) {
-    console.log('>>>>>>>>>>>>>>>>>>>Error:', e);
     next(e);
   }
 });
@@ -64,7 +52,68 @@ router.get('/', async (req, res, next) => {
  */
 router.post('/', async (req, res, next) => {
   try {
-    res.json([]);
+    // Email duplication check.
+    const emailExists = (await UserModel.count({
+      where: {
+        email: req.body.email
+      }
+    })) > 0;
+
+    // Returns an error if the email exists.
+    if (emailExists)
+      return void res.json({error: 'Email is already in use.'});
+
+    // Add new user.
+    const result = await UserModel.create({
+      email: req.body.email,
+      password: req.body.password,
+      name: req.body.name
+    });
+
+    // Returns the ID of the added user.
+    res.json({id: result.id});
+  } catch(e) {
+    next(e);
+  }
+});
+
+/**
+ * Update a User.
+ */
+router.put('/:id(\\d+)', async (req, res, next) => {
+  try {
+    // Email duplication check.
+    const emailExists = (await UserModel.count({
+      where: {
+        id: {[UserModel.Op.ne]: req.params.id},
+        email: req.body.email
+      }
+    })) > 0;
+
+    // Returns an error if the email exists.
+    if (emailExists)
+      return void res.json({error: 'Email is already in use.'});
+
+    // Update data.
+    const set = {
+      email: req.body.email,
+      name: req.body.name
+    };
+
+    // Password with leading and trailing spaces removed.
+    const password = req.body.password.replace(/(^[\s　]+)|([\s　]+$)/g, '');
+
+    // If there is a password entered, set the password in the update data.
+    if (password)
+      set.password = password;
+
+    // Update user data.
+    await UserModel.update(set, {
+      where: {
+        id: req.params.id
+      }
+    });
+    res.json(true);
   } catch(e) {
     next(e);
   }
@@ -73,37 +122,18 @@ router.post('/', async (req, res, next) => {
 /**
  * Delete a User.
  */
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id(\\d+)', async (req, res, next) => {
   try {
-    res.json([]);
+    // Delete user data that matches the ID.
+    await UserModel.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    res.json(true);
   } catch(e) {
     next(e);
   }
 });
-
-
-// /**
-//  * Update a User.
-//  */
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     if (req.body.passwordChange) {
-//       const passwordMatch = await UserModel.count({
-//         where: {
-//           id: req.params.id,
-//           password: req.body.password
-//         }
-//       }) > 0;
-//       if (!passwordMatch) return void res.json({error: 'wrongPassword'});
-//     }
-//     const set = {name: req.body.name};
-//     if (req.body.passwordChange)
-//       set.password = req.body.newPassword;
-//     await UserModel.update(set, {where: {id: req.params.id}});
-//     res.json(true);
-//   } catch(e) {
-//     next(e);
-//   }
-// });
 
 module.exports = router;

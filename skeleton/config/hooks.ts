@@ -7,5 +7,11 @@ export default {
    * The default for app.locals.baseUrl is referrer origin (eg https://example.com).
    * @type {(baseUrl: string): string}
    */
-  rewrite_base_url: (baseUrl: string): string => baseUrl
+  rewrite_base_url: (baseUrl: string): string => baseUrl,
+
+  /**
+   * Called when an error occurs in the Express application.
+   * @type {(err: any): void|Promise<void>}
+   */
+  error_handling: (err: any): void|Promise<void>
 }

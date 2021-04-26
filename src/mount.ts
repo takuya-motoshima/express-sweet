@@ -8,6 +8,7 @@ import Local from '~/middlewares/Local';
 import Authentication from '~/middlewares/Authentication';
 import Router from '~/routing/Router';
 import Config from '~/interfaces/Config';
+import ErrorHandling from '~/middlewares/ErrorHandling';
 import fs from 'fs';
 
 /**
@@ -49,4 +50,7 @@ export default function(app: express.Express): void {
 
   // Set up URL routing.
   Router.mount(app);
+
+  // Error handling.
+  ErrorHandling.mount(app);
 }

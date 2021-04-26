@@ -17,13 +17,10 @@ See [CHANGELOG.md](./CHANGELOG.md).
 
 ## Getting Started
 
-Install Sweet.  
-
+Install Sweet.
 ```sh
 npm i express-sweet;
 ```
-
-Install dependent packages.  
 
 ```sh
 npm i express-hbs \
