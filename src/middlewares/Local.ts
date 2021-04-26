@@ -16,7 +16,7 @@ export default class {
   public static mount(app: express.Express) {
     // Get Hooks configuration.
     const hooks = Object.assign({
-      rewrite_base_url: (baseUrl: string): string => baseUrl,
+      rewrite_base_url: (baseUrl: string): string => baseUrl
     }, require(`${process.cwd()}/config/hooks`)) as Hooks;
 
     // Generate baseUrl for this application based on request header.

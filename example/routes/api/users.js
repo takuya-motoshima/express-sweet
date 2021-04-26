@@ -53,7 +53,24 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     console.log('req.body=', req.body);
-    res.json([]);
+
+    // Email duplication check.
+    const emailExists = (await this.count({where: {email: req.body.email}})) > 0;
+
+    // Returns an error if the email exists.
+    if (emailExists)
+      return void res.json({error: 'Email is already in use.'});
+
+    // Add new user.
+    const result = await UserModel.create({
+      email: req.body.email,
+      password: req.body.password,
+      name: req.body.name
+    });
+    console.log('result=', result);
+
+    // Returns the ID of the added user.
+    res.json({id: result.id});
   } catch(e) {
     next(e);
   }

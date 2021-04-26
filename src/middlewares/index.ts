@@ -4,6 +4,7 @@ import Global from './Global';
 import Http from './Http';
 import Local from './Local';
 import View from './View';
+import ErrorHandling from './ErrorHandling';
 
 export {
   CORS,
@@ -11,5 +12,6 @@ export {
   Global,
   Http,
   Local,
-  View
+  View,
+  ErrorHandling
 }

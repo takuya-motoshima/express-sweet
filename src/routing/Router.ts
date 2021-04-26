@@ -1,5 +1,4 @@
 import express from 'express';
-import createError from 'http-errors';
 import {File} from 'nodejs-shared';
 import path from 'path';
 import Config from '~/interfaces/Config';
@@ -14,7 +13,7 @@ export default class {
   /**
    * Mount on application.
    */
-  static mount(app: express.Express) {
+  public static mount(app: express.Express) {
     // Get config.
     const config = Object.assign({
       router_dir: path.join(process.cwd(), 'routes'),
@@ -42,25 +41,5 @@ export default class {
       console.log(`Set "${url}" to the routing URL`);
       app.use(url === config.default_router ? '/' : url, router);
     }
-
-    // Catch 404 and forward to error handler.
-    app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-      next(createError(404));
-    });
-
-    // Error handler.
-    app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-      // Set locals, only providing error in development.
-      if (req.xhr) {
-        res.status(err.status||500);
-        res.json({error: err.message});
-      } else {
-        res.locals.message = err.message;
-        res.locals.error = req.app.get('env') === 'development' ? err : {};
-        // Render the error page.
-        res.status(err.status||500);
-        res.render('error');
-      }
-    });
   }
 }
