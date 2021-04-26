@@ -4,8 +4,7 @@ module.exports = {
   apps : [
     {
       name: 'example',
-      script: 'bin/www.js',
-      // node_args: '-r esm',
+      script: 'bin/www',
       exec_mode: 'cluster_mode',
       watch: '.',
       watch_delay: 3000,
