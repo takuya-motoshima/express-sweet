@@ -6,7 +6,7 @@
   "module": "dist/build.esm.js",
   "types": "types/index.d.ts",
   "files": [
-    "LICENSE.txt",
+    "LICENSE",
     "README.md",
     "CHANGELOG.md",
     "bin/",
