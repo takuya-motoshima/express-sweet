@@ -29,7 +29,8 @@ const dt = $('#table')
       {
         targets: -1,
         orderable: false,
-        render: (data, type, row) => `<a href="/users/${row.id}" class="btn btn-success">Edit</a><button on-delete type="button" class="btn btn-danger mx-2">Delete</button>`
+        render: (data, type, row) => `<a href="/users/${row.id}" class="btn btn-success">Edit</a>
+                                      <button on-delete data-id="${row.id}" type="button" class="btn btn-danger mx-2">Delete</button>`
       }
     ],
     dom: `<'row'<'col-12'f>><'row'<'col-12'tr>><'row'<'col-12 dataTables_pager'p>>`,
@@ -49,3 +50,34 @@ const dt = $('#table')
       params.search = params.search.value;
     }
   });
+
+// Set user delete action.
+$('#table').on('click', '[on-delete]', async event => {
+  try {
+    // Row element.
+    const tr = $(event.currentTarget).closest('tr');
+
+    // Email of the user to be deleted.
+    const email = tr.find('td:nth-of-type(2)').text();
+
+    // Confirmation of deletion.
+    if (!window.confirm(`Do you want to delete the user of mail ${email}?`))
+      return;
+
+    // Get the ID of the user to delete.
+    const id = $(event.currentTarget).data('id');
+
+    // Send user deletion request.
+    const res = await $.ajax({
+      type: 'DELETE',
+      url: `/api/users/${id}`
+    });
+
+    // Remove row element from table.
+    tr.fadeOut(() => {
+      dt.row(tr).remove().draw();
+    });
+  } catch(e) {
+    alert('An unexpected error has occurred.');
+  }
+});

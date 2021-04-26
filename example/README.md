@@ -9,6 +9,8 @@ This example application contains the following screens.
 - User addition screen
 - User edit screen
 
+<img src="screencaps/all.jpg">
+
 ## Prerequisites
 
 Make sure you have installed all of the following prerequisites on your development machine.

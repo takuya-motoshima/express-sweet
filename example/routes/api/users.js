@@ -124,7 +124,13 @@ router.put('/:id(\\d+)', async (req, res, next) => {
  */
 router.delete('/:id(\\d+)', async (req, res, next) => {
   try {
-    res.json([]);
+    // Delete user data that matches the ID.
+    await UserModel.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    res.json(true);
   } catch(e) {
     next(e);
   }

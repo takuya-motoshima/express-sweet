@@ -16,34 +16,38 @@ $('#form').validate({
     $(element).after($(error).addClass('invalid-feedback'));
   },
   submitHandler: async (form, event) => {
-    event.preventDefault();
+    try {
+      event.preventDefault();
 
-    // Submit a user add or update request.
-    let res;
-    if (edit) {
-      res = await $.ajax({
-        type: 'PUT',
-        url: `/api/users/${id}`,
-        data: new FormData(form),
-        contentType: false,
-        processData: false
-      });
-    } else {
-      res = await $.ajax({
-        type: 'POST',
-        url: '/api/users',
-        data: new FormData(form),
-        contentType: false,
-        processData: false
-      });
+      // Submit a user add or update request.
+      let res;
+      if (edit) {
+        res = await $.ajax({
+          type: 'PUT',
+          url: `/api/users/${id}`,
+          data: new FormData(form),
+          contentType: false,
+          processData: false
+        });
+      } else {
+        res = await $.ajax({
+          type: 'POST',
+          url: '/api/users',
+          data: new FormData(form),
+          contentType: false,
+          processData: false
+        });
+      }
+
+      // In case of error.
+      if (res.error)
+        return void alert(res.error);
+
+      // If the user addition/update is successful, move to the user list page.
+      alert('Saved the user.');
+      location.href =  `${globalThis.baseUrl}/users`;
+    } catch(e) {
+      alert('An unexpected error has occurred.');
     }
-
-    // In case of error.
-    if (res.error)
-      return void alert(res.error);
-
-    // If the user addition/update is successful, move to the user list page.
-    alert('Saved the user.');
-    location.href =  `${globalThis.baseUrl}/users`;
   }
 });
