@@ -66,6 +66,7 @@
               <li><a href="#introduction" class="d-inline-flex align-items-center rounded active" aria-current="page">Introduction</a></li>
               <li><a href="#installation" class="d-inline-flex align-items-center rounded" aria-current="page">Installation</a></li>
               <li><a href="#helloWorldExample" class="d-inline-flex align-items-center rounded" aria-current="page">Hello world example</a></li>
+              <li><a href="#expressSweetAppGenerator" class="d-inline-flex align-items-center rounded" aria-current="page">Express Sweet app generator</a></li>
             </ul>
           </div>
         </li>
@@ -85,13 +86,6 @@
   </aside>
 
   <main class="bd-main order-1" --data-bs-spy="scroll" --data-bs-target="#sideMenuList" --data-bs-offset="0">
-
-
-
-
-
-
-
 
     <!--begin::Getting started-->
     <div class="bd-intro ps-lg-4">
@@ -161,11 +155,11 @@ cd myapp;</code></pre>
       <p>Use the <code>npm init</code> command to create a <code>package.json</code> file for your application.For more information on how <code>package.json</code> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">Specifics of npm’s package.json handling</a>.</p>
       <pre><code class="bash">npm init;</code></pre>
 
-      <p>This command prompts you for a number of things, such as the name and version of your application.For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception:</p>
+      <p>This command prompts you for a number of things, such as the name and version of your application.For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.</p>
       <pre><code class="bash">entry point: (index.js)</code></pre>
 
       <p>Enter <code>app.js</code>, or whatever you want the name of the main file to be. If you want it to be <code>index.js</code>, hit RETURN to accept the suggested default file name.</p> 
-      <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list. For example:</p>
+      <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list. For example.</p>
       <pre><code class="bash">npm i express-sweet \
       express \
       express-hbs \
@@ -206,6 +200,123 @@ app.listen(port, () =&gt; {
       <h3>Running Locally</h3>
 
       <p>First create a directory named <code>myapp</code>, change to it and run <code>npm init</code>. Then install <code>express</code> as a dependency, as per the <a href="#installation">installation guide</a>.</p>
+      <p>In the <code>myapp</code> directory, create a file named <code>app.js</code> and copy in the code from the example above.</p>
+
+      <p>Run the app with the following command.</p>
+      <pre><code class="bash">node app.js;</code></pre>
+      <p>Then, load <code>http://localhost:3000/</code> in a browser to see the output.</p>
+      <!--end::Hello world example-->
+
+      <!--begin::Express Sweet app generator-->
+      <h2 id="expressSweetAppGenerator">Express Sweet app generator</h2>
+      <p>Use the application generator tool, <code>express-sweet-generator</code>, to quickly create an application skeleton.</p>
+      <p>Install the application generator as a global npm package and then launch it.</p>
+      <pre><code class="bash">npm install -g express-sweet-generator;
+express-sweet;</code></pre>
+      
+      <p>Display the command options with the <code>-h</code> option.</p>
+      <pre><code class="bash">express-sweet -h;
+
+  Usage: express-sweet [options] [dir]
+
+  Options:
+
+        --version      output the version number
+    -p, --port &lt;port&gt;  application listening port (default: 3000)
+    -f, --force        force on non-empty directory
+    -h, --help         output usage information</code></pre>
+
+      <p>For example, the following creates an Express app named <em>myapp</em>. The app will be created in a folder named <em>myapp</em> in the current working directory.</p>
+      <pre><code class="bash">express-sweet myapp
+
+   create : myapp/bin/www
+   create : myapp/ecosystem.config.js
+   create : myapp/nginx.sample.conf
+   create : myapp/package.json
+
+   change directory:
+     $ cd myapp
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=myapp:* npm start</code></pre>
+
+      <p>Then install dependencies.</p>
+      <pre><code class="bash">cd myapp;
+npm install;</code></pre>
+
+      <p>On MacOS or Linux, run the app with this command.</p>
+      <pre><code class="bash">DEBUG=myapp:* npm start;</code></pre>
+
+      <p>On Windows Command Prompt, use this command.</p>
+      <pre><code class="bash">set DEBUG=myapp:* &amp; npm start;</code></pre>
+
+      <p>On Windows PowerShell, use this command.</p>
+      <pre><code class="bash">$env:DEBUG=&#039;myapp:*&#039;; npm start;</code></pre>
+
+      <p>Then load <code>http://localhost:3000/</code> in your browser to access the app.</p>
+
+      <p>The generated app has the following directory structure.</p>
+      <pre><code class="bash">.
+├── app.js
+├── bin
+│   └── www
+├── config
+│   ├── config.js
+│   ├── database.js
+│   └── hooks.js
+├── ecosystem.config.js
+├── models
+│   └── UserModel.js
+├── nginx.sample.conf
+├── package.json
+├── public
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── logo-dark.svg
+│   │   │   └── logo.svg
+│   │   ├── scripts
+│   │   │   ├── docs.js
+│   │   │   ├── home.js
+│   │   │   ├── login.js
+│   │   │   ├── user.js
+│   │   │   └── users.js
+│   │   └── styles
+│   │       ├── docs.css
+│   │       ├── home.css
+│   │       ├── login.css
+│   │       ├── user.css
+│   │       └── users.css
+│   └── favicon.ico
+├── routes
+│   ├── api
+│   │   └── users.js
+│   ├── home.js
+│   ├── login.js
+│   └── users.js
+└── views
+    ├── error.hbs
+    ├── home.hbs
+    ├── layout
+    │   └── default.hbs
+    ├── login.hbs
+    ├── partials
+    ├── user.hbs
+    └── users.hbs
+
+13 directories, 32 files</code></pre>
+
+    <!--end::Express Sweet app generator-->
+
+
+
+
+
+
+
+
 
     </div>
     <!--end::Getting started-->

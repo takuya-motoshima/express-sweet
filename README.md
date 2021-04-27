@@ -141,7 +141,7 @@ npm i express-sweet \
       aws-sdk;
 ```
 
-Follow [our installing guide](http://expressjs.com/en/starter/installing.html) for more information.
+Follow [our installing guide](https://takuya-motoshima.github.io/express-sweet/) for more information.
 
 ## License
 
