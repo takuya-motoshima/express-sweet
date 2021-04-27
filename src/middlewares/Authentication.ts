@@ -11,9 +11,9 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  public static mount(app: express.Express, config: Config) {
     // Get config.
-    const config = Object.assign({
+    config = Object.assign({
       auth_username: 'username',
       auth_password: 'password',
       auth_success_redirect: '',
@@ -21,7 +21,7 @@ export default class {
       auth_model: undefined,
       auth_exclude: undefined,
       auth_expiration: 24 * 3600000 // 24hours
-    }, require(`${process.cwd()}/config/config`)) as Config;
+    }, config);
 
     // Set session save method.
     app.use(session({
@@ -41,10 +41,10 @@ export default class {
       passwordField: config.auth_password,
       session: true
     }, async (username: string, password: string, done) => {
-      const user = await config.auth_model.findOne({
+      const user = await config.auth_model!.findOne({
         where: {
-          [config.auth_username]: username,
-          [config.auth_password]: password
+          [config.auth_username!]: username,
+          [config.auth_password!]: password
         },
         raw: true
       });
@@ -58,7 +58,8 @@ export default class {
     passport.deserializeUser(async (id, done) => {
       // @ts-ignore
       const user = await config.auth_model.findOne({where: {id}, raw: true}) as {[key: string]: any};
-      if (user) delete user[config.auth_password];
+      if (user)
+        delete user[config.auth_password!];
       done(null, user);
     });
 
@@ -84,12 +85,12 @@ export default class {
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
-        } else res.redirect(config.auth_success_redirect);
+        } else res.redirect(config.auth_success_redirect!);
       } else {
         if (req.path === config.auth_failure_redirect||isAjax)
           next();
         else
-          res.redirect(config.auth_failure_redirect);
+          res.redirect(config.auth_failure_redirect!);
       }
     });
   }

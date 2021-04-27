@@ -10,20 +10,23 @@ export default new class extends sequelize.Sequelize {
    * Create a sequelize instance.
    */
   constructor() {
+    // Get the execution environment.
     const env = process.env.NODE_ENV||'development';
     console.log(`The environment is "${env}"`);
-    const configPath = `${process.cwd()}/config/database`;
-    console.log(`Load "${configPath}.js"`);
-    if (!fs.existsSync(`${configPath}.js`)) 
-      throw new Error(`${configPath} not found`);
-    const config = require(configPath) as Database;
-    const options = config[env] as sequelize.Options;
-    super(
-      options.database as string,
-      options.username as string,
-      options.password as string||undefined,
-      options
-    );
+
+    // Database connection config path.
+    const path = `${process.cwd()}/config/database`;
+    console.log(`Load "${path}.js"`);
+
+    if (fs.existsSync(`${path}.js`)) {
+      // Instantiate sequelize with name of database, username and password.
+      const options = (require(path) as Database)[env] as sequelize.Options;
+      super(options.database!, options.username!, options.password||undefined, options);
+    } else {
+      console.error(`${path} not found`);
+      // throw new Error(`${path} not found`);
+      super('unkown', 'unkown', undefined, {host: 'localhost', dialect: 'mariadb'});
+    }
   }
 
   /**

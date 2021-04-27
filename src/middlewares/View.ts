@@ -12,15 +12,15 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  public static mount(app: express.Express, config: Config) {
     // Get config.
-    const config = Object.assign({
+    config = Object.assign({
       views_dir: path.join(process.cwd(), 'views'),
       views_partials_dir: path.join(process.cwd(), 'views/partials'),
       views_layouts_dir: path.join(process.cwd(), 'views/layout'),
       views_default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
       views_extension: '.hbs'
-    }, require(`${process.cwd()}/config/config`)) as Config;
+    }, config);
 
     console.log(`Set "${config.views_dir}" to View directory`);
     console.log(`Set "${config.views_partials_dir}" to Partials directory`);
