@@ -13,26 +13,27 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  public static mount(app: express.Express, config: Config) {
     // Get config.
-    const config = Object.assign({
+    config = Object.assign({
       router_dir: path.join(process.cwd(), 'routes'),
       default_router: undefined
-    }, require(`${process.cwd()}/config/config`)) as Config;
+    }, config);
 
     console.log(`Router directory is "${config.router_dir}"`);
     console.log(`Default router is "${config.default_router}"`);
 
     // Set the URL to route based on the path of the file in the routes directory.
-    for (let filepath of File.find(`${config.router_dir}/**/*.js`)) {
+    for (let filePath of File.find(`${config.router_dir}/**/*.js`)) {
       // Import router module.
-      let router = require(filepath);
+      let router = require(filePath);
 
       // If the router module was exporting by default, there is a module in the default property.
-      if (router.default) router = router.default;
+      if (router.default)
+        router = router.default;
 
       // Get the router directory name and file name respectively.
-      const matches = filepath.match(/\/routes(?:(\/..*))?\/(..*)\.js/);
+      const matches = filePath.match(/\/routes(?:(\/..*))?\/(..*)\.js/);
       if (!matches) continue;
       const [_, dir, filename] = matches;
 

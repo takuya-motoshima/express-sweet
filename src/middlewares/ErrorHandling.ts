@@ -10,7 +10,7 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  public static mount(app: express.Express, hooks: Hooks) {
     // Catch 404 and forward to error handler.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       next(createError(404));
@@ -19,9 +19,9 @@ export default class {
     // Error handler.
     app.use(async (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Get Hooks configuration.
-      const hooks = Object.assign({
+      hooks = Object.assign({
         error_handling: (err: any): void|Promise<void> => {}
-      }, require(`${process.cwd()}/config/hooks`)) as Hooks;
+      }, hooks);
 
       // Output error to log.
       console.error(err);

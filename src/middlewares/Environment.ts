@@ -11,12 +11,10 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount() {
-    // Get config.
-    const config = require(`${process.cwd()}/config/config`) as Config;
-
+  public static mount(config: Config) {
     // Exit if there is no .env path.
-    if (!config.env_path) return;
+    if (!config.env_path)
+      return;
 
     console.log(`Load "${config.env_path}"`);
 

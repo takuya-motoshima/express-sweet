@@ -14,23 +14,21 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  public static mount(app: express.Express, config: Config) {
     // Get config.
-    const config = Object.assign({
-      max_body_size: '100kb'
-    }, require(`${process.cwd()}/config/config`)) as Config;
+    const maxBodySize = config.max_body_size || '100kb';
 
-    console.log(`Set "${config.max_body_size}" to Maximum body size`);
+    console.log(`Set "${maxBodySize}" to Maximum body size`);
 
     // Log HTTP request.
     const morgan = require('morgan')
     app.use(morgan('dev'));
 
     // For parsing application/json.
-    app.use(express.json({limit: config.max_body_size}));
+    app.use(express.json({limit: maxBodySize}));
 
     // For parsing application/x-www-form-urlencoded.
-    app.use(express.urlencoded({extended: true, limit: config.max_body_size}));
+    app.use(express.urlencoded({extended: true, limit: maxBodySize}));
 
     // For parsing multipart/form-data.
     const multer = require('multer');

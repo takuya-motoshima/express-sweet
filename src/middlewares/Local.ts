@@ -13,11 +13,11 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  public static mount(app: express.Express, hooks: Hooks) {
     // Get Hooks configuration.
-    const hooks = Object.assign({
+    hooks = Object.assign({
       rewrite_base_url: (baseUrl: string): string => baseUrl
-    }, require(`${process.cwd()}/config/hooks`)) as Hooks;
+    }, hooks);
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {

@@ -7,17 +7,17 @@ export default interface  {
      * Environment variable file (.env) path, defaults to none (undefined).
      * @type {string}
      */
-    env_path: string;
+    env_path?: string;
     /**
      * CORS permission, defaults to invalid (false).
      * @type {{enabled: boolean}}
      */
-    cors_enabled: boolean;
+    cors_enabled?: boolean;
     /**
      * Maximum body size you can request, defaults to `100kb`.
      * @type {string}
      */
-    max_body_size: string;
+    max_body_size?: string;
     /**
      * Absolute path to the router directory, defaults to `<application root directory>/routes`.
      * @type {string}
@@ -57,32 +57,32 @@ export default interface  {
      * Enable user authentication, defaults to disabled (false).
      * @type {boolean}
      */
-    auth_enabled: boolean;
+    auth_enabled?: boolean;
     /**
      * Authentication user ID field name, defaults to `username`.
      * @type {string}
      */
-    auth_username: string;
+    auth_username?: string;
     /**
      * Authentication password field name, defaults to `password`.
      * @type {string}
      */
-    auth_password: string;
+    auth_password?: string;
     /**
      * URL to redirect after successful authentication, defaults to `/`.
      * @type {string}
      */
-    auth_success_redirect: string;
+    auth_success_redirect?: string;
     /**
      * URL to redirect after log off, defaults to `/login`.
      * @type {string}
      */
-    auth_failure_redirect: string;
+    auth_failure_redirect?: string;
     /**
      * Model class used for authentication, this is a required field.
      * @type {typeof Model}
      */
-    auth_model: typeof Model;
+    auth_model?: typeof Model;
     /**
      * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
      * @type {string}
