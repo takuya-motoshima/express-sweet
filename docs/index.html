@@ -53,6 +53,12 @@
           <a class="nav-link" href="#helloWorldExample">Hello world example</a></li>
           <a class="nav-link" href="#expressSweetAppGenerator">Express Sweet app generator</a></li>
         </nav>
+        
+        <a class="nav-link" href="#configuration">Configuration</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#environmentConfiguration">Environment Configuration</a></li>
+          <a class="nav-link" href="#basicConfiguration">Basic configuration</a></li>
+        </nav>
 
       </nav>
     </nav>
@@ -85,14 +91,14 @@
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Model</strong>
-            <span class="text-secondary">The model uses Sequelize v6.<br>Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.</span>
+            <span class="text-secondary">The model uses Sequelize v6.<br>Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>It features solid transaction support, relations, eager and lazy loading, read replication and more.</span>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">View</strong>
-            <span class="text-secondary">The view template engine uses Handlebars v4.<br>Handlebars is a simple templating language.<br>It uses a template and an input object to generate HTML or other text formats. Handlebars templates look like regular text with embedded Handlebars expressions.</span>
+            <span class="text-secondary">The view template engine uses Handlebars v4.<br>Handlebars is a simple templating language.<br>It uses a template and an input object to generate HTML or other text formats.<br>Handlebars templates look like regular text with embedded Handlebars expressions.</span>
           </div>
         </div>
 
@@ -125,14 +131,15 @@
       <pre><code class="bash">mkdir myapp;
 cd myapp;</code></pre>
 
-      <p>Use the <code>npm init</code> command to create a <code>package.json</code> file for your application.For more information on how <code>package.json</code> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">Specifics of npm’s package.json handling</a>.</p>
+      <p>Use the <code>npm init</code> command to create a <code>package.json</code> file for your application.<br>For more information on how <code>package.json</code> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">Specifics of npm’s package.json handling</a>.</p>
       <pre><code class="bash">npm init;</code></pre>
 
-      <p>This command prompts you for a number of things, such as the name and version of your application.For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.</p>
+      <p>This command prompts you for a number of things, such as the name and version of your application.<br>For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.</p>
       <pre><code class="bash">entry point: (index.js)</code></pre>
 
-      <p>Enter <code>app.js</code>, or whatever you want the name of the main file to be. If you want it to be <code>index.js</code>, hit RETURN to accept the suggested default file name.</p> 
-      <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list. For example.</p>
+      <p>Enter <code>app.js</code>, or whatever you want the name of the main file to be.<br>If you want it to be <code>index.js</code>, hit RETURN to accept the suggested default file name.</p> 
+
+      <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list.</p>
       <pre><code class="bash">npm i express-sweet \
       express \
       express-hbs \
@@ -168,11 +175,11 @@ app.listen(port, () =&gt; {
   console.log(`Example app listening at http://localhost:${port}`);
 });</code></pre>
 
-      <p>This app starts a server and listens on port 3000 for connections. The app responds with “Hello World!” for requests to the root URL (<code>/</code>) or <em>route</em>. For every other path, it will respond with a <strong>404 Not Found</strong>.</p>
+      <p>This app starts a server and listens on port 3000 for connections.<br>The app responds with “Hello World!” for requests to the root URL (<code>/</code>) or <em>route</em>.For every other path, it will respond with a <strong>404 Not Found</strong>.</p>
 
       <h3>Running Locally</h3>
 
-      <p>First create a directory named <code>myapp</code>, change to it and run <code>npm init</code>. Then install <code>express</code> as a dependency, as per the <a href="#installation">installation guide</a>.</p>
+      <p>First create a directory named <code>myapp</code>, change to it and run <code>npm init</code>.<br>Then install <code>express</code> as a dependency, as per the <a href="#installation">installation guide</a>.</p>
       <p>In the <code>myapp</code> directory, create a file named <code>app.js</code> and copy in the code from the example above.</p>
 
       <p>Run the app with the following command.</p>
@@ -199,7 +206,10 @@ express-sweet;</code></pre>
     -f, --force        force on non-empty directory
     -h, --help         output usage information</code></pre>
 
-      <p>For example, the following creates an Express app named <em>myapp</em>. The app will be created in a folder named <em>myapp</em> in the current working directory.</p>
+      <p>
+        For example, the following creates an Express app named <em>myapp</em>.<br>
+        The app will be created in a folder named <em>myapp</em> in the current working directory.
+      </p>
       <pre><code class="bash">express-sweet myapp
 
    create : myapp/bin/www
@@ -220,6 +230,63 @@ express-sweet;</code></pre>
       <pre><code class="bash">cd myapp;
 npm install;</code></pre>
 
+      <p>This sample application uses a database.<br>Execute the following SQL to create the database.</p>
+      <pre><code class="sql">CREATE DATABASE IF NOT EXISTS `example` DEFAULT CHARACTER SET utf8mb4;
+
+USE `example`;
+
+CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukAccount1` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `user` (`email`, `password`, `name`) VALUES
+  (&#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;),
+  (&#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;),
+  (&#039;vivian@example.com&#039;, &#039;password&#039;, &#039;Vivian&#039;),
+  (&#039;harry@example.com&#039;, &#039;password&#039;, &#039;Harry&#039;),
+  (&#039;eliza@example.com&#039;, &#039;password&#039;, &#039;Eliza&#039;),
+  (&#039;nancy@example.com&#039;, &#039;password&#039;, &#039;Nancy&#039;),
+  (&#039;melinda@example.com&#039;, &#039;password&#039;, &#039;Melinda&#039;),
+  (&#039;harley@example.com&#039;, &#039;password&#039;, &#039;Harley&#039;);</code></pre>
+
+      <p>Next, you need to set how the database is connected.<br>The database connection method can be set in <code>"config/database.js"</code>, so change it according to your environment.<br>See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">Sequelize configuration</a> for details on configuration items.</p>
+      <pre><code class="js">/**
+ * DB connection options.
+ */
+module.exports = {
+  development: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  }
+}</code></pre>
+
+      <p>The DB to be used can be defined individually for each environment.<br>Specify the environment in the <code>.env</code> file.</p>
+      <pre><code class="ini">NODE_ENV=development</code></pre>
+
       <p>On MacOS or Linux, run the app with this command.</p>
       <pre><code class="bash">DEBUG=myapp:* npm start;</code></pre>
 
@@ -229,7 +296,9 @@ npm install;</code></pre>
       <p>On Windows PowerShell, use this command.</p>
       <pre><code class="bash">$env:DEBUG=&#039;myapp:*&#039;; npm start;</code></pre>
 
-      <p>Then load <code>http://localhost:3000/</code> in your browser to access the app.</p>
+      <p>Then load <code>http://localhost:3000/</code> in your browser to access the app.<br>and you should be greeted by the following page.</p>
+
+      <img class="img-fluid mb-5 mx-auto shadow" srcset="images/login.png" src="/docs/5.0/assets/img/bootstrap-themes.png" alt="Login page" height="500">
 
       <p>The generated app has the following directory structure.</p>
       <pre><code class="bash">.
@@ -285,6 +354,33 @@ npm install;</code></pre>
 
     </div>
     <!--end::Getting started-->
+
+    <!--begin::Configuration-->
+    <div class="bd-intro ps-lg-4">
+      <h1 class="bd-title" id="configuration">Configuration</h1>
+      <p class="bd-lead">All of the configuration files for the Express Sweet are stored "<code>.env</code>" file and files in the config directory.<br>Use these configuration files to configure various configuration values such as database, user authentication, views, and routing.</p>
+    </div>
+
+    <div class="bd-content ps-lg-4">
+
+      <!--begin::Environment Configuration-->
+      <h2 id="environmentConfiguration">Environment Configuration</h2>
+      <!--end::Environment Configuration-->
+
+
+
+
+
+      <!--begin::Basic configuration-->
+      <h2 id="basicConfiguration">Basic configuration</h2>
+      <p>The basic configuration of the application can be set in the <code>config/config.js</code> file.</p>
+      <h3>env_path</h3>
+      <!--end::Basic configuration-->
+
+    </div>
+
+
+    <!--end::Configuration-->
 
   </main>
 </div>
