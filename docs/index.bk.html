@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/dark.min.css">
   <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css"> -->
-  <link href="styles/docs.css" rel="stylesheet">
+  <link href="styles/docs.bk.css" rel="stylesheet">
 </head>
-<body data-bs-spy="scroll" data-bs-target="#bdSidenav">
+<body>
 <header class="navbar navbar-expand-md navbar-dark bd-navbar">
   <nav class="container-xxl justify-content-start" aria-label="Main navigation">
     <a class="navbar-brand p-0 me-2" href="./" aria-label="Bootstrap">
@@ -41,24 +41,27 @@
   </nav>
 </header>
 <div class="container-xxl my-md-4 bd-layout">
-
   <aside class="bd-sidebar" id="bdSidebar">
-    <nav class="bd-links align-items-start navbar navbar-light py-0" id="bdSidenav">
-      <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
-
-        <a class="nav-link" href="#gettingStarted">Getting started</a>
-        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#introduction">Introduction</a></li>
-          <a class="nav-link" href="#installation">Installation</a></li>
-          <a class="nav-link" href="#helloWorldExample">Hello world example</a></li>
-          <a class="nav-link" href="#expressSweetAppGenerator">Express Sweet app generator</a></li>
-        </nav>
-
-      </nav>
+    <nav class="bd-links" aria-label="Docs navigation">
+      <ul class="list-unstyled mb-0 py-3 pt-md-1" id="bdSidenav">
+        <li class="mb-1 active">
+          <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#gettingStartedCollapse" aria-expanded="true" aria-current="true">
+            Getting started
+          </button>
+          <div class="collapse show" id="gettingStartedCollapse">
+            <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="#introduction" class="d-inline-flex align-items-center rounded active" aria-current="page">Introduction</a></li>
+              <li><a href="#installation" class="d-inline-flex align-items-center rounded" aria-current="page">Installation</a></li>
+              <li><a href="#helloWorldExample" class="d-inline-flex align-items-center rounded" aria-current="page">Hello world example</a></li>
+              <li><a href="#expressSweetAppGenerator" class="d-inline-flex align-items-center rounded" aria-current="page">Express Sweet app generator</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </nav>
   </aside>
 
-  <main class="bd-main order-1">
+  <main class="bd-main order-1" --data-bs-spy="scroll" --data-bs-target="#bdSidenav" --data-bs-offset="0">
 
     <!--begin::Getting started-->
     <div class="bd-intro ps-lg-4">

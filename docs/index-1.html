@@ -10,7 +10,7 @@
   <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css"> -->
   <link href="styles/docs.css" rel="stylesheet">
 </head>
-<body data-bs-spy="scroll" data-bs-target="#bdSidenav">
+<body data-bs-spy="scroll" data-bs-target="#bdSidenav" data-bs-offset="0">
 <header class="navbar navbar-expand-md navbar-dark bd-navbar">
   <nav class="container-xxl justify-content-start" aria-label="Main navigation">
     <a class="navbar-brand p-0 me-2" href="./" aria-label="Bootstrap">
@@ -42,18 +42,14 @@
 </header>
 <div class="container-xxl my-md-4 bd-layout">
 
-  <aside class="bd-sidebar" id="bdSidebar">
-    <nav class="bd-links align-items-start navbar navbar-light py-0" id="bdSidenav">
-      <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
-
-        <a class="nav-link" href="#gettingStarted">Getting started</a>
-        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#introduction">Introduction</a></li>
-          <a class="nav-link" href="#installation">Installation</a></li>
-          <a class="nav-link" href="#helloWorldExample">Hello world example</a></li>
-          <a class="nav-link" href="#expressSweetAppGenerator">Express Sweet app generator</a></li>
-        </nav>
-
+  <aside id="bdSidenav" class="bd-sidebar align-items-start navbar navbar-light bg-light">
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link" href="#gettingStarted">Getting started</a>
+      <nav class="nav nav-pills flex-column">
+        <a class="nav-link ms-3 my-1" href="#introduction">Introduction</a></li>
+        <a class="nav-link ms-3 my-1" href="#installation">Installation</a></li>
+        <a class="nav-link ms-3 my-1" href="#helloWorldExample">Hello world example</a></li>
+        <a class="nav-link ms-3 my-1" href="#expressSweetAppGenerator">Express Sweet app generator</a></li>
       </nav>
     </nav>
   </aside>
@@ -283,8 +279,17 @@ npm install;</code></pre>
 
     <!--end::Express Sweet app generator-->
 
+
+
+
+
+
+
+
+
     </div>
     <!--end::Getting started-->
+
 
   </main>
 </div>
@@ -293,5 +298,10 @@ npm install;</code></pre>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
 <script src="scripts/docs.js"></script>
+<script>
+document.querySelectorAll('pre code').forEach((block) => {
+  hljs.highlightBlock(block);
+});
+</script>
 </body>
 </html>
