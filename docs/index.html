@@ -76,14 +76,20 @@
 
       <!--begin::Introduction-->
       <h2 id="introduction">Introduction</h2>
-      <p>The package elements that make up this extension.<br>In addition, some packages have been customized to make them easier for developers to use.</p>
+      <p>
+        The package elements that make up this extension.<br>
+        In addition, some packages have been customized to make them easier for developers to use.
+      </p>
 
       <div class="row g-3">
 
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Framework</strong>
-            <span class="text-secondary">The framework uses Expess v4.<br>Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.</span>
+            <span class="text-secondary">
+              The framework uses Expess v4.<br>
+              Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+            </span>
           </div>
 
         </div>
@@ -91,28 +97,40 @@
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Model</strong>
-            <span class="text-secondary">The model uses Sequelize v6.<br>Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>It features solid transaction support, relations, eager and lazy loading, read replication and more.</span>
+            <span class="text-secondary">
+              The model uses Sequelize v6.<br>
+              Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>
+              It features solid transaction support, relations, eager and lazy loading, read replication and more.
+            </span>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">View</strong>
-            <span class="text-secondary">The view template engine uses Handlebars v4.<br>Handlebars is a simple templating language.<br>It uses a template and an input object to generate HTML or other text formats.<br>Handlebars templates look like regular text with embedded Handlebars expressions.</span>
+            <span class="text-secondary">
+              The view template engine uses Handlebars v4.<br>
+              Handlebars is a simple templating language.<br>
+              It uses a template and an input object to generate HTML or other text formats.<br>
+              Handlebars templates look like regular text with embedded Handlebars expressions.
+            </span>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">User authentication</strong>
-            <span class="text-secondary">User authentication uses Passport v0.4.1.<br>Passport is Express-compatible authentication middleware for Node.js.</span>
+            <span class="text-secondary">
+              User authentication uses Passport v0.4.1.<br>
+              Passport is Express-compatible authentication middleware for Node.js.
+            </span>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Service</strong>
-            <span class="text-secondary">Sweet includes a convenient interface for developing applications using "Amazon Rekognition" and "Google Cloud Vision".</span>
+            <span class="text-secondary">Sweet includes a convenient interface for developing applications using &quot;Amazon Rekognition&quot; and &quot;Google Cloud Vision&quot;.</span>
           </div>
         </div>
 
@@ -131,13 +149,22 @@
       <pre><code class="bash">mkdir myapp;
 cd myapp;</code></pre>
 
-      <p>Use the <code>npm init</code> command to create a <code>package.json</code> file for your application.<br>For more information on how <code>package.json</code> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">Specifics of npm’s package.json handling</a>.</p>
+      <p>
+        Use the &quot;<em class="code">npm init</em>&quot; command to create a &quot;<em class="code">package.json</em>&quot; file for your application.<br>
+        For more information on how &quot;<em class="code">package.json</em>&quot; works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">Specifics of npm’s package.json handling</a>.
+      </p>
       <pre><code class="bash">npm init;</code></pre>
 
-      <p>This command prompts you for a number of things, such as the name and version of your application.<br>For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.</p>
+      <p>
+        This command prompts you for a number of things, such as the name and version of your application.<br>
+        For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.
+      </p>
       <pre><code class="bash">entry point: (index.js)</code></pre>
 
-      <p>Enter <code>app.js</code>, or whatever you want the name of the main file to be.<br>If you want it to be <code>index.js</code>, hit RETURN to accept the suggested default file name.</p> 
+      <p>
+        Enter &quot;<em class="code">app.js</em>&quot;, or whatever you want the name of the main file to be.<br>
+        If you want it to be &quot;<em class="code">index.js</em>&quot;, hit RETURN to accept the suggested default file name.
+      </p>
 
       <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list.</p>
       <pre><code class="bash">npm i express-sweet \
@@ -175,26 +202,33 @@ app.listen(port, () =&gt; {
   console.log(`Example app listening at http://localhost:${port}`);
 });</code></pre>
 
-      <p>This app starts a server and listens on port 3000 for connections.<br>The app responds with “Hello World!” for requests to the root URL (<code>/</code>) or <em>route</em>.For every other path, it will respond with a <strong>404 Not Found</strong>.</p>
+      <p>
+        This app starts a server and listens on port 3000 for connections.<br>
+        The app responds with “Hello World!” for requests to the root URL (<em class="code">/</em>) or <em>route</em>.<br>
+        For every other path, it will respond with a <strong>404 Not Found</strong>.
+      </p>
 
       <h3>Running Locally</h3>
 
-      <p>First create a directory named <code>myapp</code>, change to it and run <code>npm init</code>.<br>Then install <code>express</code> as a dependency, as per the <a href="#installation">installation guide</a>.</p>
-      <p>In the <code>myapp</code> directory, create a file named <code>app.js</code> and copy in the code from the example above.</p>
+      <p>
+        First create a directory named &quot;<em class="code">myapp</em>&quot;, change to it and run &quot;<em class="code">npm init</em>&quot;.<br>
+        Then install &quot;<em class="code">express</em>&quot; as a dependency, as per the <a href="#installation">installation guide</a>.
+      </p>
+      <p>In the &quot;<em class="code">myapp</em>&quot; directory, create a file named &quot;<em class="code">app.js</em>&quot; and copy in the code from the example above.</p>
 
       <p>Run the app with the following command.</p>
       <pre><code class="bash">node app.js;</code></pre>
-      <p>Then, load <code>http://localhost:3000/</code> in a browser to see the output.</p>
+      <p>Then, load &quot;<em class="code">http://localhost:3000/</em>&quot; in a browser to see the output.</p>
       <!--end::Hello world example-->
 
       <!--begin::Express Sweet app generator-->
       <h2 id="expressSweetAppGenerator">Express Sweet app generator</h2>
-      <p>Use the application generator tool, <code>express-sweet-generator</code>, to quickly create an application skeleton.</p>
+      <p>Use the application generator tool, &quot;<em class="code">express-sweet-generator</em>&quot;, to quickly create an application skeleton.</p>
       <p>Install the application generator as a global npm package and then launch it.</p>
       <pre><code class="bash">npm install -g express-sweet-generator;
 express-sweet;</code></pre>
       
-      <p>Display the command options with the <code>-h</code> option.</p>
+      <p>Display the command options with the &quot;<em class="code">-h</em>&quot; option.</p>
       <pre><code class="bash">express-sweet -h;
 
   Usage: express-sweet [options] [dir]
@@ -207,8 +241,8 @@ express-sweet;</code></pre>
     -h, --help         output usage information</code></pre>
 
       <p>
-        For example, the following creates an Express app named <em>myapp</em>.<br>
-        The app will be created in a folder named <em>myapp</em> in the current working directory.
+        For example, the following creates an Express app named &quot;<em class="code">myapp</em>&quot;.<br>
+        The app will be created in a folder named &quot;<em class="code">myapp</em>&quot; in the current working directory.
       </p>
       <pre><code class="bash">express-sweet myapp
 
@@ -230,7 +264,10 @@ express-sweet;</code></pre>
       <pre><code class="bash">cd myapp;
 npm install;</code></pre>
 
-      <p>This sample application uses a database.<br>Execute the following SQL to create the database.</p>
+      <p>
+        This sample application uses a database.<br>
+        Execute the following SQL to create the database.
+      </p>
       <pre><code class="sql">CREATE DATABASE IF NOT EXISTS `example` DEFAULT CHARACTER SET utf8mb4;
 
 USE `example`;
@@ -256,7 +293,11 @@ INSERT INTO `user` (`email`, `password`, `name`) VALUES
   (&#039;melinda@example.com&#039;, &#039;password&#039;, &#039;Melinda&#039;),
   (&#039;harley@example.com&#039;, &#039;password&#039;, &#039;Harley&#039;);</code></pre>
 
-      <p>Next, you need to set how the database is connected.<br>The database connection method can be set in <code>"config/database.js"</code>, so change it according to your environment.<br>See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">Sequelize configuration</a> for details on configuration items.</p>
+      <p>
+        Next, you need to set how the database is connected.<br>
+        The database connection method can be set in &quot;<em class="code">config/database.js</em>&quot;, so change it according to your environment.<br>
+        See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">Sequelize configuration</a> for details on configuration items.
+      </p>
       <pre><code class="js">/**
  * DB connection options.
  */
@@ -284,7 +325,10 @@ module.exports = {
   }
 }</code></pre>
 
-      <p>The DB to be used can be defined individually for each environment.<br>Specify the environment in the <code>.env</code> file.</p>
+      <p>
+        The DB to be used can be defined individually for each environment.<br>
+        Specify the environment in the &quot;<em class="code">.env</em>&quot; file.
+      </p>
       <pre><code class="ini">NODE_ENV=development</code></pre>
 
       <p>On MacOS or Linux, run the app with this command.</p>
@@ -296,7 +340,10 @@ module.exports = {
       <p>On Windows PowerShell, use this command.</p>
       <pre><code class="bash">$env:DEBUG=&#039;myapp:*&#039;; npm start;</code></pre>
 
-      <p>Then load <code>http://localhost:3000/</code> in your browser to access the app.<br>and you should be greeted by the following page.</p>
+      <p>
+        Then load &quot;<em class="code">http://localhost:3000/</em>&quot; in your browser to access the app.<br>
+        and you should be greeted by the following page.
+      </p>
 
       <img class="img-fluid mb-5 mx-auto shadow" srcset="images/login.png" src="/docs/5.0/assets/img/bootstrap-themes.png" alt="Login page" height="500">
 
@@ -358,23 +405,75 @@ module.exports = {
     <!--begin::Configuration-->
     <div class="bd-intro ps-lg-4">
       <h1 class="bd-title" id="configuration">Configuration</h1>
-      <p class="bd-lead">All of the configuration files for the Express Sweet are stored "<code>.env</code>" file and files in the config directory.<br>Use these configuration files to configure various configuration values such as database, user authentication, views, and routing.</p>
     </div>
 
     <div class="bd-content ps-lg-4">
 
       <!--begin::Environment Configuration-->
       <h2 id="environmentConfiguration">Environment Configuration</h2>
+      <p>
+        It is often helpful to have different configuration values based on the environment where the application is running.<br>
+        For example, you may want to use a different database than the one used on the production server.<br>
+        To make this a cinch, Express Sweet utilizes the <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> library.<br>
+        Express Sweet automatically loads the &quot;<em class="code">.env</em>&quot; file located in the root directory when the application starts and saves the loaded value in &quot;<em class="code">process.env</em>&quot;.
+      </p>
+
+      <h3>NODE_ENV</h3>
+      <p>
+        <em class="code">NODE_ENV</em> is an environment variable made popular by the express web server framework.<br>
+        When a node application is run, it can check the value of the environment variable and do different things based on the value.<br>
+        <em class="code">NODE_ENV</em> specifically is used (by convention) to state whether a particular environment is a production or a development environment.<br>
+        A common use-case is running additional debugging or logging code if running in a development environment.
+      </p>
+
+      <p>You can access the environment variables yourself and perform your own checks and logic, as in the following example.</p>
+      <pre><code class="js">const environment = process.env.NODE_ENV;
+const isDevelopment = environment === &#039;development&#039;
+if (isDevelopment) {
+  // For development environment.
+}</code></pre>
+
+      <!-- <h3 class="code">
+        AMAZON_REKOGNITION_REGION<br>
+        AMAZON_REKOGNITION_ACCESS_KEY_ID<br>
+        AMAZON_REKOGNITION_SECRET_ACCESS_KEY
+      </h3> -->
       <!--end::Environment Configuration-->
-
-
-
-
 
       <!--begin::Basic configuration-->
       <h2 id="basicConfiguration">Basic configuration</h2>
-      <p>The basic configuration of the application can be set in the <code>config/config.js</code> file.</p>
+      <p>
+        All of the configuration files for the Express Sweet are stored in the config directory.<br>
+        Use these configuration files to configure various configuration values such as database, user authentication, views, and routing.<br>
+        The configuration file contains the following configuration values.
+      </p>
+
       <h3>env_path</h3>
+      <code>string</code>
+      <p>
+        The path to the environment configuration file (.env).<br>
+        When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in &quot;<em class="code">process.env</em>&quot;.<br>
+        If the file does not exist or is not specified (undefined), the environment configuration file will not be read.<br>
+        The default is &quot;<em class="code">.env</em>&quot;.
+      </p>
+
+      <h3>cors_enabled</h3>
+      <code>boolean</code>
+      <p>
+        Set to true to allow requests from another domain to the application.<br>
+        The default is <em class="code">false</em>.
+      </p>
+
+      <h3>max_body_size</h3>
+      <code>string</code>
+      <p>
+        Controls the maximum request body size.<br>
+        If this is a number, then the value specifies the number of bytes.<br>
+        if it is a string, the value is passed to the <a href="https://www.npmjs.com/package/bytes" target="_blank">bytes library</a> for parsing.<br>
+        The default is &quot;<em class="code">100kb</em>&quot;.
+      </p>
+
+
       <!--end::Basic configuration-->
 
     </div>

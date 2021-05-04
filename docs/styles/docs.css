@@ -1298,3 +1298,19 @@
   color: #fff;
   background-color: #0d6efd
 }
+
+.code {
+  /* font-size: 0.875em; */
+  color: #d63384;
+  word-wrap: break-word;
+  font-style: normal;
+  /* quotes: '\201c' '\201d'; */
+}
+  
+/*   .code::before {
+    content: open-quote;
+  }
+
+  .code::after {
+    content: close-quote;
+  } */

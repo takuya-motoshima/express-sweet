@@ -18,9 +18,9 @@ export default class {
    */
   constructor() {
     this.client = new AWS.Rekognition({
-      region: process.env.AWS_REKOGNITION_REGION,
-      accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY,
-      secretAccessKey: process.env.AWS_REKOGNITION_SECRET_KEY
+      region: process.env.AMAZON_REKOGNITION_REGION,
+      accessKeyId: process.env.AMAZON_REKOGNITION_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AMAZON_REKOGNITION_SECRET_ACCESS_KEY
     });
   }
 

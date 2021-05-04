@@ -18,9 +18,9 @@ export default interface {
 
   /**
    * Maximum body size you can request, defaults to `100kb`.
-   * @type {string}
+   * @type {string|number}
    */
-  max_body_size?: string,
+  max_body_size?: string|number,
 
   /**
    * Absolute path to the router directory, defaults to `<application root directory>/routes`.
