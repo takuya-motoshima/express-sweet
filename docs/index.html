@@ -204,7 +204,7 @@ app.listen(port, () =&gt; {
 
       <p>
         This app starts a server and listens on port 3000 for connections.<br>
-        The app responds with “Hello World!” for requests to the root URL (<em class="code">/</em>) or <em>route</em>.<br>
+        The app responds with &quot;Hello World!&quot; for requests to the root URL (<em class="code">/</em>) or <em>route</em>.<br>
         For every other path, it will respond with a <strong>404 Not Found</strong>.
       </p>
 
@@ -473,6 +473,65 @@ if (isDevelopment) {
         The default is &quot;<em class="code">100kb</em>&quot;.
       </p>
 
+      <h3>router_dir</h3>
+      <code>string</code>
+      <p>
+        The directory path where the routes module is located.<br>
+        The default is the &quot;<em class="code">routes</em>&quot; directory directly under the application root.
+      </p>
+
+      <h3>default_router</h3>
+      <code>string</code>
+      <p>
+        Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<em class="code">/</em>) is requested.<br>
+        For example, to specify a default route, set &quot;<em class="code">default_router</em>&quot; as follows.
+      </p>
+      <pre><code class="js">default_router: &#039;/blog&#039;</code></pre>
+      <p>
+        Where blog is the name of the router module you want used.<br>
+        Next, create the &quot;<em class="code">routes/blog.js</em>&quot; module.
+      </p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
+});
+
+module.exports = router;</code></pre>
+      <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
+
+      <h3>views_dir</h3>
+      <p>
+        The directory path where the view will be placed.<br>
+        The default is the &quot;<em class="code">views</em>&quot; directory directly under the application root.
+      </p>
+
+      <h3>views_partials_dir</h3>
+      <p>
+        The directory path where the reusable templates are located.<br>
+        The default is the &quot;<em class="code">views/partials</em>&quot; directory directly under the application root.<br>
+        Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
+      </p>
+
+      <h3>views_layouts_dir</h3>
+      <p>
+        The directory path where the reusable base template is located.<br>
+        The default is the &quot;<em class="code">views/layout</em>&quot; directory directly under the application root.
+      </p>
+
+      <h3>views_default_layout</h3>
+      <p>
+        The path to the layout file used by default.<br>
+        The default is the &quot;<em class="code">views/layout/default.*</em>&quot; File directly under the application root.<br>
+        The extension of the default layout file is replaced with the extension specified by &quot;<em class="code">views_extension</em>&quot;.
+      </p>
+ 
+      <h3>views_extension</h3>
+      <p>
+        Extension for templates and partials files.<br>
+        The default is &quot;<em class="code">.hbs</em>&quot;.
+      </p>
 
       <!--end::Basic configuration-->
 
