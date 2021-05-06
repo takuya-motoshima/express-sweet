@@ -22,7 +22,7 @@ export default class {
       success_redirect: '/',
       failure_redirect: '/login',
       model: undefined,
-      exclude: [],
+      allow_unauthenticated: [],
       expiration: 24 * 3600000 // 24hours
     }, fs.existsSync(`${process.cwd()}/config/authentication.js`) ? require(`${process.cwd()}/config/authentication`) : {});
 
@@ -86,10 +86,9 @@ export default class {
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Check if the request URL does not require authentication
-      if (config.exclude && config.exclude.length) {
-        const exclude = config.exclude;
+      if (config.allow_unauthenticated && config.allow_unauthenticated.length) {
         const requestUrl = req.path.replace(/\/$/, '');
-        if (exclude.indexOf(requestUrl) !== -1)
+        if (config.allow_unauthenticated.indexOf(requestUrl) !== -1)
           return void next();
       }
 

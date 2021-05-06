@@ -10,7 +10,7 @@
   <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css"> -->
   <link href="styles/docs.css" rel="stylesheet">
 </head>
-<body data-bs-spy="scroll" data-bs-target="#bdSidenav">
+<body data-bs-spy="scroll" data-bs-target="#sidenav" data-bs-offset="0">
 <header class="navbar navbar-expand-md navbar-dark bd-navbar">
   <nav class="container-xxl justify-content-start" aria-label="Main navigation">
     <a class="navbar-brand p-0 me-2" href="./" aria-label="Bootstrap">
@@ -33,7 +33,7 @@
         </a>
       </li>
     </ul>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-expanded="false" aria-label="Toggle docs navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle docs navigation">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="currentColor" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
       </svg>
@@ -42,8 +42,8 @@
 </header>
 <div class="container-xxl my-md-4 bd-layout">
 
-  <aside class="bd-sidebar" id="bdSidebar">
-    <nav class="bd-links align-items-start navbar navbar-light py-0" id="bdSidenav">
+  <aside class="bd-sidebar" id="sidebar">
+    <nav class="bd-links align-items-start navbar navbar-light py-0" id="sidenav">
       <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
 
         <a class="nav-link" href="#gettingStarted">Getting started</a>
@@ -58,6 +58,9 @@
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#environmentConfiguration">Environment Configuration</a></li>
           <a class="nav-link" href="#basicConfiguration">Basic configuration</a></li>
+          <a class="nav-link" href="#viewsConfiguration">View's configuration</a></li>
+          <a class="nav-link" href="#authenticationConfiguration">Authentication configuration</a></li>
+          <a class="nav-link" href="#databaseConfiguration">Database configuration</a></li>
         </nav>
 
       </nav>
@@ -130,15 +133,14 @@
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Service</strong>
-            <span class="text-secondary">Sweet includes a convenient interface for developing applications using &quot;<a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">Amazon Rekognition</a>&quot;.</span>
-            <!-- <span class="text-secondary">Sweet includes a convenient interface for developing applications using &quot;<a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">Amazon Rekognition</a>&quot; and &quot;Google Cloud Vision&quot;.</span> -->
+            <span class="text-secondary">Express Sweet includes convenient classes for developing applications using &quot;<a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">Amazon Rekognition</a>&quot; and classes for easy user authentication.</span>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Utils</strong>
-            <span class="text-secondary">With Sweet, you can quickly use a variety of generic utility classes.</span>
+            <span class="text-secondary">With Express Sweet, you can quickly use a variety of generic utility classes.</span>
           </div>
         </div>
       </div>
@@ -354,9 +356,11 @@ module.exports = {
 ├── bin
 │   └── www
 ├── config
+│   ├── authentication.js
 │   ├── config.js
 │   ├── database.js
-│   └── hooks.js
+│   ├── hooks.js
+│   └── view.js
 ├── ecosystem.config.js
 ├── models
 │   └── UserModel.js
@@ -394,9 +398,7 @@ module.exports = {
     ├── login.hbs
     ├── partials
     ├── user.hbs
-    └── users.hbs
-
-13 directories, 32 files</code></pre>
+    └── users.hbs</code></pre>
 
     <!--end::Express Sweet app generator-->
 
@@ -444,9 +446,8 @@ if (isDevelopment) {
       <!--begin::Basic configuration-->
       <h2 id="basicConfiguration">Basic configuration</h2>
       <p>
-        All of the configuration files for the Express Sweet are stored in the config directory.<br>
-        Use these configuration files to configure various configuration values such as database, user authentication, views, and routing.<br>
-        The configuration file contains the following configuration values.
+        The basic configuration of Express Sweet is defined in the &quot;<em class="code">config/config.js</em>&quot; file.<br>
+        The basic configuration file contains the following configuration values.
       </p>
 
       <h3>env_path</h3>
@@ -502,6 +503,12 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 module.exports = router;</code></pre>
       <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
 
+      <h2 id="viewsConfiguration">View's configuration</h2>
+      <p>
+        The view (template engine) configuration is defined in the &quot;<em class="code">config/view.js</em>&quot; file.<br>
+        The view's configuration file contains the following configuration values.
+      </p>
+
       <h3>views_dir</h3>
       <code>string</code>
       <p>
@@ -509,7 +516,7 @@ module.exports = router;</code></pre>
         The default is the &quot;<em class="code">views</em>&quot; directory directly under the application root.
       </p>
 
-      <h3>views_partials_dir</h3>
+      <h3>partials_dir</h3>
       <code>string</code>
       <p>
         The directory path where the reusable templates are located.<br>
@@ -517,57 +524,63 @@ module.exports = router;</code></pre>
         Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
       </p>
 
-      <h3>views_layouts_dir</h3>
+      <h3>layouts_dir</h3>
       <code>string</code>
       <p>
         The directory path where the reusable base template is located.<br>
         The default is the &quot;<em class="code">views/layout</em>&quot; directory directly under the application root.
       </p>
 
-      <h3>views_default_layout</h3>
+      <h3>default_layout</h3>
       <code>string</code>
       <p>
         The path to the layout file used by default.<br>
         The default is the &quot;<em class="code">views/layout/default.*</em>&quot; File directly under the application root.<br>
-        The extension of the default layout file is replaced with the extension specified by &quot;<em class="code">views_extension</em>&quot;.
+        The extension of the default layout file is replaced with the extension specified by &quot;<em class="code">extension</em>&quot;.
       </p>
  
-      <h3>views_extension</h3>
+      <h3>extension</h3>
       <code>string</code>
       <p>
         Extension for templates and partials files.<br>
         The default is &quot;<em class="code">.hbs</em>&quot;.
       </p>
 
-      <h3>auth_enabled</h3>
+      <h2 id="authenticationConfiguration">Authentication configuration</h2>
+      <p>
+        The user authentication configuration is defined in the &quot;<em class="code">config/authentication.js</em>&quot; file.<br>
+        The user authentication configuration file contains the following configuration values:
+      </p>
+
+      <h3>enabled</h3>
       <code>boolean</code>
       <p>
         Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
-        By default, user authentication is disabled (<em class="code">false</em>).
+        User authentication is enabled (<em class="code">true</em>) by default.
       </p>
 
-      <h3>auth_username</h3>
+      <h3>username</h3>
       <code>string</code>
       <p>
-        The login username field name used for authentication..<br>
+        The login username field name used for authentication.<br>
         This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
       </p>
 
-      <h3>auth_password</h3>
+      <h3>password</h3>
       <code>string</code>
       <p>
         The login password field name used for authentication.<br>
         This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
       </p>
 
-      <h3>auth_success_redirect</h3>
+      <h3>success_redirect</h3>
       <code>string</code>
       <p>
         The URL to redirect to after successful authentication.<br>
         The default is the root URL (<em class="code">/</em>).
       </p>
 
-      <h3>auth_failure_redirect</h3>
+      <h3>failure_redirect</h3>
       <code>string</code>
       <p>
         Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
@@ -575,14 +588,82 @@ module.exports = router;</code></pre>
         The default is &quot;<em class="code">/login</em>&quot;.
       </p>
 
-      <h3>auth_model</h3>
-      <p></p>
+      <h3>model</h3>
+      <code>express-sweet.database.Model</code>
+      <p>
+        A model class for the table that stores the users to authenticate.<br>
+        This should be a subclass that inherits from Express Sweet's &quot;<em class="code">database.Model</em>&quot; class.
+      </p>
+      <p>For example, when there is user information to authenticate in the &quot;<em class="code">user</em>&quot; table, create &quot;<em class="code">models/UserModel.js</em>&quot;.</p>
+      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
-      <h3>auth_exclude</h3>
-      <p></p>
+/**
+ * User model.
+ */
+module.exports = (class extends Model {
+  /**
+   * Table name used by the model.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
 
-      <h3>auth_expiration</h3>
-      <p></p>
+  /**
+   * Table column list.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: Model.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: Model.DataTypes.STRING,
+      password: Model.DataTypes.STRING,
+      name: Model.DataTypes.STRING,
+      created: Model.DataTypes.DATE,
+      modified: Model.DataTypes.DATE
+    };
+  }
+}).mount();</code></pre>
+
+      <p>Next, set the created <em class="code">UserModel</em> class in the &quot;<em class="code">model</em>&quot; item of &quot;<em class="code">config/authentication.js</em>&quot;.</p>
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+/**
+ * User authentication configuration interface.
+ */
+module.exports = {
+  /**
+   * Model class used for authentication, this is a required field.
+   * @type {typeof Model}
+   */
+  model: UserModel
+}</code></pre>
+
+      <p>Now, Express Sweet automatically accesses the &quot;<em class="code">user</em>&quot; table at the time of authentication and performs the authentication process.</p>
+
+      <h3>allow_unauthenticated</h3>
+      <code>string[]</code>
+      <p>
+        By default, it requires an authenticated user for all requests.<br>
+        You can use the &quot;<em class="code">allow_unauthenticated</em>&quot; option to disable this behavior on certain requests.
+      </p>
+
+      <p>For example, if you don't want to authenticate all requests that contain &quot;api&quot; in the URL, set &quot;<em class="code">allow_unauthenticated</em>&quot; as follows.</p>
+      <pre><code class="js">allow_unauthenticated: [
+  &#039;/api&#039;
+]</code></pre>
+
+      <h3>expiration</h3>
+      <code>number</code>
+      <p>
+        Specifies the time, in milliseconds, before the session expires.<br>
+        The default is 24 hours (<em class="code">86400000</em> milliseconds).
+      </p>
+
+      <h2 id="databaseConfiguration">Database configuration</h2>
+
 
       <!--end::Basic configuration-->
 
