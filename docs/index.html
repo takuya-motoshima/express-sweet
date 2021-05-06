@@ -87,7 +87,7 @@
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Framework</strong>
             <span class="text-secondary">
-              The framework uses Expess v4.<br>
+              The framework uses <a href="https://expressjs.com/" target="_blank">Expess v4</a>.<br>
               Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
             </span>
           </div>
@@ -98,7 +98,7 @@
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Model</strong>
             <span class="text-secondary">
-              The model uses Sequelize v6.<br>
+              The model uses <a href="https://sequelize.org/master/" target="_blank">Sequelize v6</a>.<br>
               Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>
               It features solid transaction support, relations, eager and lazy loading, read replication and more.
             </span>
@@ -109,7 +109,7 @@
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">View</strong>
             <span class="text-secondary">
-              The view template engine uses Handlebars v4.<br>
+              The view template engine uses <a href="https://handlebarsjs.com/" target="_blank">Handlebars v4</a>.<br>
               Handlebars is a simple templating language.<br>
               It uses a template and an input object to generate HTML or other text formats.<br>
               Handlebars templates look like regular text with embedded Handlebars expressions.
@@ -121,7 +121,7 @@
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">User authentication</strong>
             <span class="text-secondary">
-              User authentication uses Passport v0.4.1.<br>
+              User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
               Passport is Express-compatible authentication middleware for Node.js.
             </span>
           </div>
@@ -130,7 +130,8 @@
         <div class="col-md-6">
           <div class="d-block text-decoration-none">
             <strong class="d-block h5 mb-0 text-primary">Service</strong>
-            <span class="text-secondary">Sweet includes a convenient interface for developing applications using &quot;Amazon Rekognition&quot; and &quot;Google Cloud Vision&quot;.</span>
+            <span class="text-secondary">Sweet includes a convenient interface for developing applications using &quot;<a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">Amazon Rekognition</a>&quot;.</span>
+            <!-- <span class="text-secondary">Sweet includes a convenient interface for developing applications using &quot;<a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">Amazon Rekognition</a>&quot; and &quot;Google Cloud Vision&quot;.</span> -->
           </div>
         </div>
 
@@ -502,12 +503,14 @@ module.exports = router;</code></pre>
       <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
 
       <h3>views_dir</h3>
+      <code>string</code>
       <p>
         The directory path where the view will be placed.<br>
         The default is the &quot;<em class="code">views</em>&quot; directory directly under the application root.
       </p>
 
       <h3>views_partials_dir</h3>
+      <code>string</code>
       <p>
         The directory path where the reusable templates are located.<br>
         The default is the &quot;<em class="code">views/partials</em>&quot; directory directly under the application root.<br>
@@ -515,12 +518,14 @@ module.exports = router;</code></pre>
       </p>
 
       <h3>views_layouts_dir</h3>
+      <code>string</code>
       <p>
         The directory path where the reusable base template is located.<br>
         The default is the &quot;<em class="code">views/layout</em>&quot; directory directly under the application root.
       </p>
 
       <h3>views_default_layout</h3>
+      <code>string</code>
       <p>
         The path to the layout file used by default.<br>
         The default is the &quot;<em class="code">views/layout/default.*</em>&quot; File directly under the application root.<br>
@@ -528,10 +533,56 @@ module.exports = router;</code></pre>
       </p>
  
       <h3>views_extension</h3>
+      <code>string</code>
       <p>
         Extension for templates and partials files.<br>
         The default is &quot;<em class="code">.hbs</em>&quot;.
       </p>
+
+      <h3>auth_enabled</h3>
+      <code>boolean</code>
+      <p>
+        Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
+        By default, user authentication is disabled (<em class="code">false</em>).
+      </p>
+
+      <h3>auth_username</h3>
+      <code>string</code>
+      <p>
+        The login username field name used for authentication..<br>
+        This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
+      </p>
+
+      <h3>auth_password</h3>
+      <code>string</code>
+      <p>
+        The login password field name used for authentication.<br>
+        This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
+      </p>
+
+      <h3>auth_success_redirect</h3>
+      <code>string</code>
+      <p>
+        The URL to redirect to after successful authentication.<br>
+        The default is the root URL (<em class="code">/</em>).
+      </p>
+
+      <h3>auth_failure_redirect</h3>
+      <code>string</code>
+      <p>
+        Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
+        This usually specifies the URL of the login page.<br>
+        The default is &quot;<em class="code">/login</em>&quot;.
+      </p>
+
+      <h3>auth_model</h3>
+      <p></p>
+
+      <h3>auth_exclude</h3>
+      <p></p>
+
+      <h3>auth_expiration</h3>
+      <p></p>
 
       <!--end::Basic configuration-->
 

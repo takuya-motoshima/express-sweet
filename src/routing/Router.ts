@@ -2,6 +2,7 @@ import express from 'express';
 import {File} from 'nodejs-shared';
 import path from 'path';
 import Config from '~/interfaces/Config';
+import fs from 'fs';
 
 /**
  * Set up URL routing.
@@ -13,12 +14,12 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express, config: Config) {
-    // Get config.
-    config = Object.assign({
+  public static mount(app: express.Express) {
+    // Load the config.
+    const config = Object.assign({
       router_dir: path.join(process.cwd(), 'routes'),
       default_router: undefined
-    }, config);
+    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) as Config : <Config>{});
 
     console.log(`Router directory is "${config.router_dir}"`);
     console.log(`Default router is "${config.default_router}"`);

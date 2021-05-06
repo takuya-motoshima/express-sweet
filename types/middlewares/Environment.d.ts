@@ -1,4 +1,3 @@
-import Config from '~/interfaces/Config';
 /**
  * Set environment variables.
  *
@@ -8,5 +7,5 @@ export default class {
     /**
      * Mount on application.
      */
-    static mount(config: Config): void;
+    static mount(): void;
 }

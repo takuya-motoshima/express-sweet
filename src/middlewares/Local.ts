@@ -1,6 +1,7 @@
 import express from 'express';
 import Config from '~/interfaces/Config';
 import Hooks from '~/interfaces/Hooks';
+import fs from 'fs';
 
 /**
  * Set local variables.
@@ -13,11 +14,11 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express, hooks: Hooks) {
-    // Get Hooks configuration.
-    hooks = Object.assign({
+  public static mount(app: express.Express) {
+    // Load the hook function.
+    const hooks = <Hooks>Object.assign({
       rewrite_base_url: (baseUrl: string): string => baseUrl
-    }, hooks);
+    }, fs.existsSync(`${process.cwd()}/config/hooks.js`) ? require(`${process.cwd()}/config/hooks`) : {});
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {

@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import Config from '~/interfaces/Config';
+import fs from 'fs';
 // TODO: Importing multer results in a run-time error.I couldn't find a solution, so I decided to load multer with require.
 // import multer from 'multer';
 // TODO: If you import morgan here, "GMT morgan deprecated" will occur, so morgan is used by require.
@@ -14,21 +15,22 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express, config: Config) {
-    // Get config.
-    const maxBodySize = config.max_body_size || '100kb';
-
-    console.log(`Set "${maxBodySize}" to Maximum body size`);
+  public static mount(app: express.Express) {
+    // Load the config.
+    const config = <Config>Object.assign({
+      max_body_size: '100kb'
+    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) : {});
+    console.log(`Set "${config.max_body_size}" to Maximum body size`);
 
     // Log HTTP request.
     const morgan = require('morgan')
     app.use(morgan('dev'));
 
     // For parsing application/json.
-    app.use(express.json({limit: maxBodySize}));
+    app.use(express.json({limit: config.max_body_size}));
 
     // For parsing application/x-www-form-urlencoded.
-    app.use(express.urlencoded({extended: true, limit: maxBodySize}));
+    app.use(express.urlencoded({extended: true, limit: config.max_body_size}));
 
     // For parsing multipart/form-data.
     const multer = require('multer');
