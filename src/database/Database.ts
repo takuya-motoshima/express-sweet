@@ -21,11 +21,16 @@ export default new class extends sequelize.Sequelize {
     if (fs.existsSync(`${path}.js`)) {
       // Instantiate sequelize with name of database, username and password.
       const options = (require(path) as Database)[env] as sequelize.Options;
-      super(options.database!, options.username!, options.password||undefined, options);
+      super(
+        options.database!,
+        options.username!,
+        options.password||null,
+        options
+      );
     } else {
       console.error(`${path} not found`);
       // throw new Error(`${path} not found`);
-      super('unkown', 'unkown', undefined, {host: 'localhost', dialect: 'mariadb'});
+      super('unkown', 'unkown', null, {host: 'localhost', dialect: 'mariadb'});
     }
   }
 

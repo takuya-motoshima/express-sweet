@@ -63,6 +63,8 @@
           <a class="nav-link" href="#databaseConfiguration">Database configuration</a></li>
         </nav>
 
+        <a class="nav-link" href="#routing">Routing</a>
+
       </nav>
     </nav>
   </aside>
@@ -502,7 +504,9 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 
 module.exports = router;</code></pre>
       <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
+      <!--end::Basic configuration-->
 
+      <!--begin::View's configuration-->
       <h2 id="viewsConfiguration">View's configuration</h2>
       <p>
         The view (template engine) configuration is defined in the &quot;<em class="code">config/view.js</em>&quot; file.<br>
@@ -545,11 +549,13 @@ module.exports = router;</code></pre>
         Extension for templates and partials files.<br>
         The default is &quot;<em class="code">.hbs</em>&quot;.
       </p>
+      <!--end::View's configuration-->
 
+      <!--begin::Authentication configuration-->
       <h2 id="authenticationConfiguration">Authentication configuration</h2>
       <p>
         The user authentication configuration is defined in the &quot;<em class="code">config/authentication.js</em>&quot; file.<br>
-        The user authentication configuration file contains the following configuration values:
+        The user authentication configuration file contains the following configuration values.
       </p>
 
       <h3>enabled</h3>
@@ -661,16 +667,72 @@ module.exports = {
         Specifies the time, in milliseconds, before the session expires.<br>
         The default is 24 hours (<em class="code">86400000</em> milliseconds).
       </p>
+      <!--end::Authentication configuration-->
 
+      <!--begin::Database configuration-->
       <h2 id="databaseConfiguration">Database configuration</h2>
+      <p>
+        The database configuration is defined in the &quot;<em class="code">config/database.js</em>&quot; file.<br>
+        The database configuration file is separated by environment and contains the following configuration values.<br>
+        There are many other database configuration values.<br>
+        For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">Sequelize's API reference</a>.
+      </p>
 
+      <h3>username</h3>
+      <code>string</code>
+      <p>The username which is used to authenticate against the database.</p>
 
+      <h3>password</h3>
+      <code>string|null</code>
+      <p>
+        The password which is used to authenticate against the database.<br>
+        The default is no password (<em class="code">null</em>).
+      </p>
+
+      <h3>database</h3>
+      <code>string</code>
+      <p>The name of the database.</p>
+
+      <h3>host</h3>
+      <code>string</code>
+      <p>The host of the relational database.</p>
+
+      <h3>port</h3>
+      <code>string</code>
+      <p>
+        The port of the relational database.<br>
+        The default is automatic selection (<em class="code">null</em>).
+      </p>
+
+      <h3>dialect</h3>
+      <code>string</code>
+      <p>
+        The dialect of the database you are connecting to.<br>
+        One of &quot;<em class="code">mariadb</em>&quot;, &quot;<em class="code">mysql</em>&quot;, &quot;<em class="code">postgres</em>&quot;, &quot;<em class="code">sqlite</em>&quot; and &quot;<em class="code">mssql</em>&quot;.
+      </p>
+
+      <h3>logging</h3>
+      <code>boolean</code>
+      <p>
+        Set true to output the executed query etc. to the log.<br>
+        The default is no log output (<em class="code">false</em>).
+      </p>
+      <!--end::Database configuration-->
       <!--end::Basic configuration-->
 
     </div>
-
-
     <!--end::Configuration-->
+
+    <!--begin::Routing-->
+    <div class="bd-intro ps-lg-4">
+      <h1 class="bd-title" id="routing">Routing</h1>
+      <p class="bd-lead"></p>
+    </div>
+
+    <div class="bd-content ps-lg-4">
+    </div>
+
+    <!--end::Routing-->
 
   </main>
 </div>
