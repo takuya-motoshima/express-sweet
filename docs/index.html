@@ -64,6 +64,11 @@
         </nav>
 
         <a class="nav-link" href="#routing">Routing</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#basicRouting">Basic Routing</a></li>
+          <a class="nav-link" href="#nestedRoutes">Nested routes</a></li>
+          <a class="nav-link" href="#routingMethods">Routing methods</a></li>
+        </nav>
 
       </nav>
     </nav>
@@ -673,10 +678,12 @@ module.exports = {
       <h2 id="databaseConfiguration">Database configuration</h2>
       <p>
         The database configuration is defined in the &quot;<em class="code">config/database.js</em>&quot; file.<br>
-        The database configuration file is separated by environment and contains the following configuration values.<br>
+        The database configuration file is separated by environment and contains the following configuration values.
+      </p>
+      <div class="bd-callout bd-callout-info">
         There are many other database configuration values.<br>
         For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">Sequelize's API reference</a>.
-      </p>
+      </div>
 
       <h3>username</h3>
       <code>string</code>
@@ -726,10 +733,151 @@ module.exports = {
     <!--begin::Routing-->
     <div class="bd-intro ps-lg-4">
       <h1 class="bd-title" id="routing">Routing</h1>
-      <p class="bd-lead"></p>
+      <p class="bd-lead">
+        Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).<br>
+        Each route can have one or more handler functions, which are executed when the route is matched.<br>
+        Route definition takes the following structure.
+      </p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const app = express();
+
+app.METHOD(PATH, HANDLER)
+</code></pre>
+      <ul>
+        <li>app is an instance of express.</li>
+        <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
+        <li>PATH is a path on the server.</li>
+        <li>HANDLER is the function executed when the route is matched.</li>
+      </ul>
+      <div class="bd-callout bd-callout-info">
+        This tutorial assumes that an instance of &quot;<em class="code">express</em>&quot; named &quot;<em class="code">app</em>&quot; is created and the server is running.
+        If you are not familiar with creating an app and starting it, see the <a href="#helloWorldExample">Hello world example</a>.
+      </div>
     </div>
 
     <div class="bd-content ps-lg-4">
+      <!--begin::Basic Routing-->
+      <h2 id="basicRouting">Basic Routing</h2>
+      <p>
+        All routes are defined in your route files, which are located in the &quot;<em class="code">routes</em>&quot; directory.<br>
+        These files are automatically mapped by &quot;Express Sweet&quot; to the route files specified in the URI and the route handlers defined in the route files.
+      </p>
+
+      <p>The following examples illustrate defining simple routes.</p>
+      <p>&quot;<em class="code">routes/user.js</em>&quot; responds to &quot;<em class="code">GET /user</em>&quot; requests.</p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /user&#039;);
+});
+
+module.exports = router;</code></pre>
+
+      <p>&quot;<em class="code">routes/user.js</em>&quot; responds to &quot;<em class="code">POST /user/login</em>&quot; requests.</p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.post(&#039;/login&#039;, (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /user/login&#039;);
+});
+
+module.exports = router;</code></pre>
+      <!--end::Basic Routing-->
+
+      <!--begin::Nested routes-->
+      <h2 id="nestedRoutes">Nested routes</h2>
+      <p>
+        The router supports nested files.<br>
+        If you create a nested folder structure files will be automatically routed in the same way still.
+      </p>
+
+      <p>&quot;<em class="code">routes/api/users.js</em>&quot; responds to &quot;<em class="code">GET /api/users</em>&quot; requests.</p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /api/users&#039;);
+});
+
+module.exports = router;</code></pre>
+
+      <p>&quot;<em class="code">routes/api/users.js</em>&quot; responds to &quot;<em class="code">POST /api/users</em>&quot; requests.</p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.post(&#039;/&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a POST request at /api/users&#039;);
+});
+
+module.exports = router;</code></pre>
+
+      <p>&quot;<em class="code">routes/api/users.js</em>&quot; responds to &quot;<em class="code">PUT /api/users/:userId</em>&quot; requests.</p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.put(&#039;/:userId&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a PUT request at /api/users/:userId&#039;);
+});
+
+module.exports = router;</code></pre>
+
+      <p>&quot;<em class="code">routes/api/users.js</em>&quot; responds to &quot;<em class="code">DELETE /api/users/:userId</em>&quot; requests.</p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a DELETE request at /api/users/:userId&#039;);
+});
+
+module.exports = router;</code></pre>
+      <!--end::Nested routes-->
+
+      <!--begin::Routing methods-->
+      <h2 id="routingMethods">Routing methods</h2>
+      <p>Express supports the following routing methods corresponding to the HTTP methods of the same names.</p>
+
+      <div class="row">
+        <div class="col-6 col-md-4">
+          <ul class="list-unstyled">
+            <li class="mb-2"><code>checkout</code></li>
+            <li class="mb-2"><code>copy</code></li>
+            <li class="mb-2"><code>delete</code></li>
+            <li class="mb-2"><code>get</code></li>
+            <li class="mb-2"><code>head</code></li>
+            <li class="mb-2"><code>lock</code></li>
+            <li class="mb-2"><code>merge</code></li>
+            <li class="mb-2"><code>mkactivity</code></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <ul class="list-unstyled">
+            <li class="mb-2"><code>mkcol</code></li>
+            <li class="mb-2"><code>move</code></li>
+            <li class="mb-2"><code>m-search</code></li>
+            <li class="mb-2"><code>notify</code></li>
+            <li class="mb-2"><code>options</code></li>
+            <li class="mb-2"><code>patch</code></li>
+            <li class="mb-2"><code>post</code></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <ul class="list-unstyled">
+            <li class="mb-2"><code>purge</code></li>
+            <li class="mb-2"><code>put</code></li>
+            <li class="mb-2"><code>report</code></li>
+            <li class="mb-2"><code>search</code></li>
+            <li class="mb-2"><code>subscribe</code></li>
+            <li class="mb-2"><code>trace</code></li>
+            <li class="mb-2"><code>unlock</code></li>
+            <li class="mb-2"><code>unsubscribe</code></li>
+          </ul>
+        </div>
+      </div>
+      <!--end::Routing methods-->
+
+      <div class="bd-callout bd-callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees' Routing Guide</a>.</div>
+      
     </div>
 
     <!--end::Routing-->
