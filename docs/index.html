@@ -67,6 +67,7 @@
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#basicRouting">Basic Routing</a></li>
           <a class="nav-link" href="#nestedRoutes">Nested routes</a></li>
+          <a class="nav-link" href="#defaultRoute">Default Route</a></li>
           <a class="nav-link" href="#routingMethods">Routing methods</a></li>
         </nav>
 
@@ -832,6 +833,28 @@ router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
 
 module.exports = router;</code></pre>
       <!--end::Nested routes-->
+
+      <!--begin::Default Route-->
+      <h2 id="defaultRoute">Default Route</h2>
+      <p>
+        Express Sweet can be told to load a default router when a URI is not present, as will be the case when only your site root URL (<em class="code">/</em>) is requested.<br>
+        To specify a default router, open your &quot;<em class="code">config/config.js</em>&quot; file and set this variable:
+      </p>
+      <pre><code class="js">default_router: &#039;/blog&#039;</code></pre>
+      <p>
+        Where blog is the name of the router module you want used.<br>
+        Next, create the &quot;<em class="code">routes/blog.js</em>&quot; module.
+      </p>
+      <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
+});
+
+module.exports = router;</code></pre>
+      <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
+      <!--end::Default Route-->
 
       <!--begin::Routing methods-->
       <h2 id="routingMethods">Routing methods</h2>
