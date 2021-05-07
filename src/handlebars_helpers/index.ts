@@ -1,11 +1,11 @@
-import cache_busting from './cache_busting';
-import json from './json';
-import replace from './replace';
-import * as conditionals from './conditionals';
+import * as html from './html';
+import * as object from './object';
+import * as string from './string';
+import * as comparison from './comparison';
 
 export {
-  cache_busting,
-  json,
-  replace,
-  conditionals
+  html,
+  object,
+  string,
+  comparison
 }

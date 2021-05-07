@@ -124,15 +124,16 @@
 }
 
 .bd-lead {
-  font-size: calc(1.275rem + .3vw);
+  font-size: 1.5rem;
+  /* font-size: calc(1.275rem + .3vw); */
   font-weight: 300
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .bd-lead {
     font-size:1.5rem
   }
-}
+} */
 
 .bd-text-purple-bright {
   color: #7952b3

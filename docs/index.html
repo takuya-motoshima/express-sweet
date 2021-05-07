@@ -46,29 +46,36 @@
     <nav class="bd-links align-items-start navbar navbar-light py-0" id="sidenav">
       <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
 
-        <a class="nav-link" href="#gettingStarted">Getting started</a>
+        <a class="nav-link" href="#getting-started">Getting started</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#introduction">Introduction</a></li>
           <a class="nav-link" href="#installation">Installation</a></li>
-          <a class="nav-link" href="#helloWorldExample">Hello world example</a></li>
-          <a class="nav-link" href="#expressSweetAppGenerator">Express Sweet app generator</a></li>
+          <a class="nav-link" href="#hello-world-example">Hello world example</a></li>
+          <a class="nav-link" href="#express-sweet-app-generator">Express Sweet app generator</a></li>
         </nav>
         
         <a class="nav-link" href="#configuration">Configuration</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#environmentConfiguration">Environment Configuration</a></li>
-          <a class="nav-link" href="#basicConfiguration">Basic configuration</a></li>
-          <a class="nav-link" href="#viewsConfiguration">View's configuration</a></li>
-          <a class="nav-link" href="#authenticationConfiguration">Authentication configuration</a></li>
-          <a class="nav-link" href="#databaseConfiguration">Database configuration</a></li>
+          <a class="nav-link" href="#environment-configuration">Environment Configuration</a></li>
+          <a class="nav-link" href="#basic-configuration">Basic configuration</a></li>
+          <a class="nav-link" href="#views-configuration">View's configuration</a></li>
+          <a class="nav-link" href="#authentication-configuration">Authentication configuration</a></li>
+          <a class="nav-link" href="#database-configuration">Database configuration</a></li>
         </nav>
 
         <a class="nav-link" href="#routing">Routing</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#basicRouting">Basic Routing</a></li>
-          <a class="nav-link" href="#nestedRoutes">Nested routes</a></li>
-          <a class="nav-link" href="#defaultRoute">Default Route</a></li>
-          <a class="nav-link" href="#routingMethods">Routing methods</a></li>
+          <a class="nav-link" href="#basic-routing">Basic Routing</a></li>
+          <a class="nav-link" href="#nested-routes">Nested routes</a></li>
+          <a class="nav-link" href="#default-route">Default Route</a></li>
+          <a class="nav-link" href="#routing-methods">Routing methods</a></li>
+        </nav>
+
+        <a class="nav-link" href="#views">Views</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#view-syntax">Syntax</a></li>
+          <a class="nav-link" href="#view-layout">Layouts</a></li>
+          <a class="nav-link" href="#view-helper">Helpers</a></li>
         </nav>
 
       </nav>
@@ -79,7 +86,7 @@
 
     <!--begin::Getting started-->
     <div class="bd-intro ps-lg-4">
-      <h1 class="bd-title" id="gettingStarted">Getting started</h1>
+      <h1 class="bd-title" id="getting-started">Getting started</h1>
       <p class="bd-lead">Extend Express functionality with Express Sweet and start developing fast, minimal web applications.</p>
     </div>
 
@@ -189,7 +196,7 @@ cd myapp;</code></pre>
       <!--end::Installation-->
 
       <!--begin::Hello world example-->
-      <h2 id="helloWorldExample">Hello world example</h2>
+      <h2 id="hello-world-example">Hello world example</h2>
       <pre><code class="js">const express = require('express');
 const sweet = require('express-sweet');
 const port = 3000;
@@ -233,7 +240,7 @@ app.listen(port, () =&gt; {
       <!--end::Hello world example-->
 
       <!--begin::Express Sweet app generator-->
-      <h2 id="expressSweetAppGenerator">Express Sweet app generator</h2>
+      <h2 id="express-sweet-app-generator">Express Sweet app generator</h2>
       <p>Use the application generator tool, &quot;<em class="code">express-sweet-generator</em>&quot;, to quickly create an application skeleton.</p>
       <p>Install the application generator as a global npm package and then launch it.</p>
       <pre><code class="bash">npm install -g express-sweet-generator;
@@ -421,7 +428,7 @@ module.exports = {
     <div class="bd-content ps-lg-4">
 
       <!--begin::Environment Configuration-->
-      <h2 id="environmentConfiguration">Environment Configuration</h2>
+      <h2 id="environment-configuration">Environment Configuration</h2>
       <p>
         It is often helpful to have different configuration values based on the environment where the application is running.<br>
         For example, you may want to use a different database than the one used on the production server.<br>
@@ -452,7 +459,7 @@ if (isDevelopment) {
       <!--end::Environment Configuration-->
 
       <!--begin::Basic configuration-->
-      <h2 id="basicConfiguration">Basic configuration</h2>
+      <h2 id="basic-configuration">Basic configuration</h2>
       <p>
         The basic configuration of Express Sweet is defined in the &quot;<em class="code">config/config.js</em>&quot; file.<br>
         The basic configuration file contains the following configuration values.
@@ -513,7 +520,7 @@ module.exports = router;</code></pre>
       <!--end::Basic configuration-->
 
       <!--begin::View's configuration-->
-      <h2 id="viewsConfiguration">View's configuration</h2>
+      <h2 id="views-configuration">View's configuration</h2>
       <p>
         The view (template engine) configuration is defined in the &quot;<em class="code">config/view.js</em>&quot; file.<br>
         The view's configuration file contains the following configuration values.
@@ -558,7 +565,7 @@ module.exports = router;</code></pre>
       <!--end::View's configuration-->
 
       <!--begin::Authentication configuration-->
-      <h2 id="authenticationConfiguration">Authentication configuration</h2>
+      <h2 id="authentication-configuration">Authentication configuration</h2>
       <p>
         The user authentication configuration is defined in the &quot;<em class="code">config/authentication.js</em>&quot; file.<br>
         The user authentication configuration file contains the following configuration values.
@@ -676,7 +683,7 @@ module.exports = {
       <!--end::Authentication configuration-->
 
       <!--begin::Database configuration-->
-      <h2 id="databaseConfiguration">Database configuration</h2>
+      <h2 id="database-configuration">Database configuration</h2>
       <p>
         The database configuration is defined in the &quot;<em class="code">config/database.js</em>&quot; file.<br>
         The database configuration file is separated by environment and contains the following configuration values.
@@ -752,13 +759,13 @@ app.METHOD(PATH, HANDLER)
       </ul>
       <div class="bd-callout bd-callout-info">
         This tutorial assumes that an instance of &quot;<em class="code">express</em>&quot; named &quot;<em class="code">app</em>&quot; is created and the server is running.
-        If you are not familiar with creating an app and starting it, see the <a href="#helloWorldExample">Hello world example</a>.
+        If you are not familiar with creating an app and starting it, see the <a href="#hello-world-example">Hello world example</a>.
       </div>
     </div>
 
     <div class="bd-content ps-lg-4">
       <!--begin::Basic Routing-->
-      <h2 id="basicRouting">Basic Routing</h2>
+      <h2 id="basic-routing">Basic Routing</h2>
       <p>
         All routes are defined in your route files, which are located in the &quot;<em class="code">routes</em>&quot; directory.<br>
         These files are automatically mapped by &quot;Express Sweet&quot; to the route files specified in the URI and the route handlers defined in the route files.
@@ -787,7 +794,7 @@ module.exports = router;</code></pre>
       <!--end::Basic Routing-->
 
       <!--begin::Nested routes-->
-      <h2 id="nestedRoutes">Nested routes</h2>
+      <h2 id="nested-routes">Nested routes</h2>
       <p>
         The router supports nested files.<br>
         If you create a nested folder structure files will be automatically routed in the same way still.
@@ -835,7 +842,7 @@ module.exports = router;</code></pre>
       <!--end::Nested routes-->
 
       <!--begin::Default Route-->
-      <h2 id="defaultRoute">Default Route</h2>
+      <h2 id="default-route">Default Route</h2>
       <p>
         Express Sweet can be told to load a default router when a URI is not present, as will be the case when only your site root URL (<em class="code">/</em>) is requested.<br>
         To specify a default router, open your &quot;<em class="code">config/config.js</em>&quot; file and set this variable:
@@ -857,7 +864,7 @@ module.exports = router;</code></pre>
       <!--end::Default Route-->
 
       <!--begin::Routing methods-->
-      <h2 id="routingMethods">Routing methods</h2>
+      <h2 id="routing-methods">Routing methods</h2>
       <p>Express supports the following routing methods corresponding to the HTTP methods of the same names.</p>
 
       <div class="row">
@@ -902,8 +909,100 @@ module.exports = router;</code></pre>
       <div class="bd-callout bd-callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees' Routing Guide</a>.</div>
       
     </div>
-
     <!--end::Routing-->
+
+    <!--begin::Views-->
+    <div class="bd-intro ps-lg-4">
+      <h1 class="bd-title" id="views">Views</h1>
+      <p class="bd-lead">
+        Express Sweet uses Handlebars as its view template engine.<br>
+        This section describes the basic usage of the view on Express Sweet.
+      </p>
+      <div class="bd-callout bd-callout-info">
+        See the <a href="https://handlebarsjs.com/guide/" target="_blank">Handlebars reference</a> for more information on how to use Handlebars.
+      </div>
+    </div>
+
+    <div class="bd-content ps-lg-4">
+
+      <!--begin::View syntax-->
+      <h2 id="view-syntax">Syntax</h2>
+      <p>To mark where layout should insert page.</p>
+      <pre><code class="html">{{{body}}}</code></pre>
+
+      <p>To declare a block placeholder in layout.</p>
+      <pre><code class="html">{{{block &quot;pageScripts&quot;}}}</code></pre>
+
+      <p>To define block content in a page.</p>
+      <pre><code class="html">{{#contentFor &quot;pageScripts&quot;}}
+  CONTENT HERE
+{{/contentFor}}</code></pre>
+      <!--end::View syntax-->
+
+      <!--begin::View layout-->
+      <h2 id="view-layout">Layouts</h2>
+      <p>There are three ways to use a layout, listed in precedence order.</p>
+
+      <ol>
+        <li>
+          <p>Declarative within a page. Use handlebars comment.</p>
+          <pre><code class="html">{{!&lt; LAYOUT}}</code></pre>
+
+          <p>Layout file resolution.</p>
+          <pre><code class="html">If path starts with &#039;.&#039;
+    LAYOUT is relative to template
+Else If `layoutsDir` is set
+    LAYOUT is relative to `layoutsDir`
+Else
+    LAYOUT from path.resolve(dirname(template), LAYOUT)</code></pre>
+        </li>
+        <li>
+          <p>As an option to render.</p>
+          <div class="bd-callout bd-callout-warning">This creates a potential security vulnerability.</div>
+          <p>
+            Do not use this option in conjunction with passing user submitted data to res.<br>
+            render e.g. res.render(&#039;index&#039;, req.query).<br>
+            This allows users to read arbitrary files from your filesystem.
+          </p>
+          <pre><code class="html">res.render(&#039;veggies&#039;, {
+  title: &#039;My favorite veggies&#039;,
+  veggies: veggies,
+  layout: &#039;layout/veggie&#039;
+});</code></pre>
+
+          <p>This option also allows for layout suppression (both the default layout and when specified declaratively in a page) by passing in a falsey Javascript value as the value of the layout property.</p>
+          <pre><code class="html">res.render(&#039;veggies&#039;, {
+  title: &#039;My favorite veggies&#039;,
+  veggies: veggies,
+  layout: null // render without using a layout template
+});</code></pre>
+          
+          <p>Layout file resolution.</p>
+          <pre><code class="html">If path starts with &#039;.&#039;
+    layout is relative to template
+Else If `layoutsDir` is set
+    layout is relative to `layoutsDir`
+Else
+    layout from path.resolve(viewsDir, layout)</code></pre>
+        </li>
+        <li>
+          <p>Lastly, use defaultLayout if specified in hbs configuration options.</p>
+          <p>
+            Layouts can be nested: just include a declarative layout tag within any layout template to have its content included in the declared &quot;parent&quot; layout.<br>
+            Be aware that too much nesting can impact performances, and stay away from infinite loops.
+          </p>
+        </li>
+      </ol>
+      <!--end::View layout-->
+
+      <!--begin::View helper-->
+      <h2 id="view-helper">Helpers</h2>
+      <p>The following Handlebars helpers are available by default in Express Sweet.</p>
+      <!--end::View helper-->
+
+
+    </div>
+    <!--end::Views-->
 
   </main>
 </div>

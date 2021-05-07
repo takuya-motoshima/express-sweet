@@ -20,7 +20,7 @@ export default class {
     // Exit if there is no .env path.
     if (!config.env_path)
       return;
-    console.log(`Load "${config.env_path}"`);
+    console.log(`.env file path: ${config.env_path}`);
 
     // Set environment variables in process.env.
     const env = dotenv.parse(fs.readFileSync(config.env_path!));

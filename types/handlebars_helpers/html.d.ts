@@ -5,4 +5,4 @@
  * {{cache_busting '/assets/style.css' '//example.com'}}
  * //example.com/assets/style.css?
  */
-export default function (assetsPath: string, baseUrl: string): string;
+export declare function cache_busting(filePath: string, baseUrl: string): string;

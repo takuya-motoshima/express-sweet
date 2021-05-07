@@ -21,8 +21,8 @@ export default class {
       default_router: undefined
     }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) as Config : <Config>{});
 
-    console.log(`Router directory is "${config.router_dir}"`);
-    console.log(`Default router is "${config.default_router}"`);
+    console.log(`Router directory: ${config.router_dir}`);
+    console.log(`Default router: ${config.default_router}`);
 
     // Set the URL to route based on the path of the file in the routes directory.
     for (let filePath of File.find(`${config.router_dir}/**/*.js`)) {
@@ -40,7 +40,7 @@ export default class {
 
       // Generate a URL from the directory and filename and map the module to the URL.
       const url = dir ? `${dir}/${filename.toLowerCase()}` : `/${filename.toLowerCase()}`;
-      console.log(`Set "${url}" to the routing URL`);
+      console.log(`URL mapping ${url}`);
       app.use(url === config.default_router ? '/' : url, router);
     }
   }
