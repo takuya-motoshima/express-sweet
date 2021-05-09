@@ -8,9 +8,9 @@
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}     value1 First value to be compared with second.
+ * @param   {any}     value2 Second value to be compared with first.
+ * @returns {boolean}        Returns true if the values are the same, false if they are different.
  */
 export declare function eq(value1: any, value2: any): boolean;
 /**
@@ -23,9 +23,9 @@ export declare function eq(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}       value1 First value to be compared with second.
+ * @param   {any}       value2 Second value to be compared with first.
+ * @returns {boolean}          Returns true if the value and type are the same, false if they are different.
  */
 export declare function eqw(value1: any, value2: any): boolean;
 /**
@@ -38,9 +38,9 @@ export declare function eqw(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}       value1 First value to be compared with second.
+ * @param   {any}       value2 Second value to be compared with first.
+ * @returns {boolean}          Returns true if the values are different, false if they are the same.
  */
 export declare function neq(value1: any, value2: any): boolean;
 /**
@@ -53,9 +53,9 @@ export declare function neq(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}       value1 First value to be compared with second.
+ * @param   {any}       value2 Second value to be compared with first.
+ * @returns {boolean}          Returns true if the value and type are different, false if they are the same.
  */
 export declare function neqw(value1: any, value2: any): boolean;
 /**
@@ -68,9 +68,9 @@ export declare function neqw(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}       value1 First value to be compared with second.
+ * @param   {any}       value2 Second value to be compared with first.
+ * @returns {boolean}          Returns true if the first value is less than the second value, false otherwise.
  */
 export declare function lt(value1: any, value2: any): boolean;
 /**
@@ -83,9 +83,9 @@ export declare function lt(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}       value1 First value to be compared with second.
+ * @param   {any}       value2 Second value to be compared with first.
+ * @returns {boolean}          Returns true if the first value is less than or equal to the second value, false otherwise.
  */
 export declare function lte(value1: any, value2: any): boolean;
 /**
@@ -98,9 +98,9 @@ export declare function lte(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}       value1 First value to be compared with second.
+ * @param   {any}       value2 Second value to be compared with first.
+ * @returns {boolean}          Returns true if the first value exceeds the second value, false otherwise.
  */
 export declare function gt(value1: any, value2: any): boolean;
 /**
@@ -113,9 +113,9 @@ export declare function gt(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} value1
- * @param {any} value2
- * @returns {boolean}
+ * @param   {any}       value1 First value to be compared with second.
+ * @param   {any}       value2 Second value to be compared with first.
+ * @returns {boolean}          Returns true if the first value is greater than or equal to the second value, false otherwise.
  */
 export declare function gte(value1: any, value2: any): boolean;
 /**
@@ -129,8 +129,8 @@ export declare function gte(value1: any, value2: any): boolean;
  *   Hello
  * {{/if}}
  *
- * @param {any} expression
- * @returns {boolean}
+ * @param   {any}     expression Any expression.
+ * @returns {boolean}            Returns the logical negation of the value.
  */
 export declare function not(expression: any): boolean;
 /**
@@ -146,10 +146,10 @@ export declare function not(expression: any): boolean;
  * {{ifx true 'active'}}  => 'active'
  * {{ifx false 'active'}}  => ''
  *
- * @param {boolean} condition
- * @param {any} value1    Value to return when the condition holds true.
- * @param {any} value2    Value to return when the condition is false (Optional).
- * @returns {any}
+ * @param   {boolean} condition Satisfying condition for getting first value. Either true of false.
+ * @param   {any}     value1    First value to be displayed as result..
+ * @param   {any}     value2    Second value to be displayed as result. Defaults to an empty string.
+ * @returns {any}               Returns the result of the ternary operator.
  */
 export declare function ifx(condition: boolean, value1: any, value2: any): any;
 /**
@@ -163,8 +163,8 @@ export declare function ifx(condition: boolean, value1: any, value2: any): any;
  *   Hello
  * {{/if}}
  *
- * @param {any[]} items
- * @returns {boolean}
+ * @param   {any[]}   items Array/object to be checked.
+ * @returns {boolean}       Returns true if the array is empty, false otherwise.
  */
 export declare function empty(items: any[]): boolean;
 /**
@@ -174,10 +174,10 @@ export declare function empty(items: any[]): boolean;
  * let items = [5, 6];
  * {{count items}} =>  2
  *
- * @param {any[]} items
- * @returns {boolean|number}
+ * @param   {any[]}        items Array whose elements to be counted.
+ * @returns {number|false}       Returns the length of the array if the value is an array, false if the value is not an array.
  */
-export declare function count(items: any[]): boolean | number;
+export declare function count(items: any[]): number | false;
 /**
  * Returns the boolean AND of two or more parameters passed i.e
  * it is true iff all the parameters are true.
@@ -195,8 +195,8 @@ export declare function count(items: any[]): boolean | number;
  *   // do something else
  * {{/if}}
  *
- * @param {...any} params
- * @returns {boolean}
+ * @param   {...any}    params Any number of boolean parameters.
+ * @returns {boolean}          Returns the result of the logical product.
  */
 export declare function and(...params: any[]): boolean;
 /**
@@ -216,8 +216,8 @@ export declare function and(...params: any[]): boolean;
  *   // do something else
  * {{/if}}
  *
- * @param {...any} params
- * @returns {boolean}
+ * @param   {...any}  params Any number of boolean parameters.
+ * @returns {boolean}        Returns the result of the OR.
  */
 export declare function or(...params: any[]): boolean;
 /**
@@ -232,8 +232,8 @@ export declare function or(...params: any[]): boolean;
  * let fullName = '', nickName = 'foob';
  * {{coalesce fullName nickName 'Unknown'}}    => 'foob'
  *
- * @param {...any} params
- * @returns {any}
+ * @param   {...any} params Any number of parameters.
+ * @returns {any}           Returns the first non-false element of the parameter.
  */
 export declare function coalesce(...params: any[]): any;
 /**
@@ -256,9 +256,9 @@ export declare function coalesce(...params: any[]): any;
  *
  * {{ifx (includes items value) 'Yes' 'No'}}
  *
- * @param {any[]} items
- * @param {any} value
- * @param {boolean} strict
- * @returns {boolean}
+ * @param   {any[]}   items  The array.
+ * @param   {any}     value  The value to be checked for existence in the array.
+ * @param   {boolean} strict FALSE for non-strict checking. TRUE by default.
+ * @returns {boolean}        Returns true if the array contains the specified value, false otherwise.
  */
 export declare function includes(items: any[], value: any, strict?: boolean): boolean;

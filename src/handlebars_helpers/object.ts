@@ -1,5 +1,5 @@
 /**
- * Returns the object as a JSON character.
+ * Stringify an object using JSON.stringify.
  *
  * @example
  * {{json_stringify value}}
@@ -13,7 +13,7 @@ export function json_stringify(value: any, indent: number|string = 0): string|un
 }
 
 /**
- * Returns a JSON string as an object.
+ * Parses the given string using JSON.parse.
  *
  * @example
  * {{json_parse value}}

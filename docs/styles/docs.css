@@ -90,7 +90,7 @@
   font-size: .875rem
 }
 
-@media (max-width: 991.98px) {
+/* @media (max-width: 991.98px) {
   .bd-content>.table {
     display:block;
     overflow-x: auto
@@ -100,14 +100,14 @@
     border: 0
   }
 }
-
-.bd-content>.table th:first-child,.bd-content>.table td:first-child {
+ */
+/* .bd-content>.table th:first-child,.bd-content>.table td:first-child {
   padding-left: 0
 }
 
 .bd-content>.table th:not(:last-child),.bd-content>.table td:not(:last-child) {
   padding-right: 1.5rem
-}
+} */
 
 .bd-content>.table td:first-child>code {
   white-space: nowrap

@@ -998,9 +998,479 @@ Else
       <!--begin::View helper-->
       <h2 id="view-helper">Helpers</h2>
       <p>The following Handlebars helpers are available by default in Express Sweet.</p>
+
+      <h3>Categories</h3>
+      <p>Currently 20 helpers in 4 categories.</p>
+      <ul>
+        <li><a href="#comparison-helpers">Comparison helpers</a></li>
+        <li><a href="#html-helpers">HTML helpers</a></li>
+        <li><a href="#object-helpers">Object helpers</a></li>
+        <li><a href="#string-helpers">String helpers</a></li>
+      </ul>
+
+      <!--begin::Comparison helpers-->
+      <h3 id="comparison-helpers">Comparison helpers</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Helper</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#view-helper-eq">eq</a></td>
+            <td>Strict equality <code>===</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-eqw">eqw</a></td>
+            <td>Equality <code>==</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-neq">neq</a></td>
+            <td>Strict inequality <code>!==</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-neqw">neqw</a></td>
+            <td>Inequality <code>!=</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-lt">lt</a></td>
+            <td>Less than <code>&lt;</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-lte">lte</a></td>
+            <td>Less than or equal <code>&lt;=</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-gt">gt</a></td>
+            <td>Greater than <code>&gt;</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-gte">gte</a></td>
+            <td>Greater than or equal <code>&gt;=</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-not">not</a></td>
+            <td>Not <code>!</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-ifx">ifx</a></td>
+            <td>Imitates conditional operator <code>?:</code></td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-empty">empty</a></td>
+            <td>Check if an array is empty</td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-count">count</a></td>
+            <td>Length of an array</td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-and">and</a></td>
+            <td>Logical AND operation</td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-or">or</a></td>
+            <td>Logical OR operation</td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-coalesce">coalesce</a></td>
+            <td>Returns first non-falsy value from list of parameters</td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-includes">includes</a></td>
+            <td>Check for a value inside an array</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 id="view-helper-eq">eq</h4>
+      <p>Determine whether or not two values are equal (===).</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the value and type are the same, false if they are different.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{eq &#039;3&#039; 3}} =&gt; false
+
+{{#if (eqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-eqw">eqw</h4>
+      <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the values are the same, false if they are different.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{eqw &#039;3&#039; 3}} =&gt; true
+
+{{#if (eqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-neq">neq</h4>
+      <p>Determine whether or not two values are not equal (!==).</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the value and type are different, false if they are the same.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{neq 4 3}} =&gt; true
+
+{{#if (neq foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-neqw">neqw</h4>
+      <p>Determine whether or not two values are not equal (!=) weak checking.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the values are different, false if they are the same.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{neqw &#039;3&#039; 3}} =&gt; false
+
+{{#if (neqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-lt">lt</h4>
+      <p>Check for less than condition (a < b).</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the first value is less than the second value, false otherwise.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{lt 2 3}} =&gt; true
+
+{{#if (lt 2 5)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-lte">lte</h4>
+      <p>Check for less than or equals condition (a <= b).</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the first value is less than or equal to the second value, false otherwise.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{lte 2 3}} =&gt; true
+
+{{#if (lte 2 5)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-gt">gt</h4>
+      <p>Check for greater than condition (a > b).</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the first value exceeds the second value, false otherwise.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{gt 2 3}} =&gt; false
+
+{{#if (gt 5 6)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-gte">gte</h4>
+      <p>Check for greater than or equals condition (a >= b).</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value1 First value to be compared with second.</li>
+        <li>{any} value2 Second value to be compared with first.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{gte 3 3}} =&gt; true
+
+{{#if (gte 10 2)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-not">not</h4>
+      <p>Logical NOT of any expression.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} expression Any expression.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns the logical negation of the value.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{not true}} =&gt; false
+{{not false}} =&gt; true
+
+{{#if (not (eq foo &#039;bar&#039;))}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-ifx">ifx</h4>
+      <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{boolean} condition Satisfying condition for getting first value. Either true of false.</li>
+        <li>{any} value1    First value to be displayed as result..</li>
+        <li>{any} value2    Second value to be displayed as result. Defaults to an empty string.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{any} Returns the result of the ternary operator.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{ifx true &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
+{{ifx false &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
+{{ifx (eq value 1) 5 6}} =&gt; 6    // return (value === 1) ? 5 : 6
+{{ifx (not (eq value 1)) 5 6}} =&gt; 6    // return (value !== 1) ? 5 : 6
+
+&lt;!-- The third parameter is optional, and by default it will be blank string (&#039;&#039;) --&gt;
+{{ifx true &#039;active&#039;}} =&gt; &#039;active&#039;
+{{ifx false &#039;active&#039;}} =&gt; &#039;&#039;</code></pre>
+
+      <h4 id="view-helper-empty">empty</h4>
+      <p>Check if an array is empty.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any[]} items Array/object to be checked.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the array is empty, false otherwise.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">let items = [5, 6];
+{{empty items}} =&gt; false
+
+{{#if (empty items)}}
+  Hello
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-count">count</h4>
+      <p>Determine the length of an array.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any[]} items Array whose elements to be counted.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{number|false} Returns the length of the array if the value is an array, false if the value is not an array.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">let items = [5, 6];
+{{count items}} =&gt;  2</code></pre>
+
+      <h4 id="view-helper-and">and</h4>
+      <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{...any} params Any number of boolean parameters.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns the result of the logical product.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">let value1 = value2 = true;
+{{and value1 value2}} =&gt; true
+
+let value1 = false, value2 = true;
+{{and value1 value2}} =&gt; false
+
+{{#if (and value1 value2)}}
+  // do something
+{{else}}
+  // do something else
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-or">or</h4>
+      <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{...any} params Any number of boolean parameters.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns the result of the OR.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">let value1 = true, value2 = false;
+{{or value1 value2}} =&gt; true
+
+let value = value2 = false;
+{{or value1 value2}} =&gt; false
+
+{{#if (or value1 value2)}}
+  // do something
+{{else}}
+  // do something else
+{{/if}}</code></pre>
+
+      <h4 id="view-helper-coalesce">coalesce</h4>
+      <p>
+        Returns the first non-falsy value from the parameter list.<br>
+        Works quite similar to the SQL&#039;s &quot;COALESCE()&quot; function, but unlike this checks for the first non-false parameter.
+      </p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{...any} params Any number of parameters.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{any} Returns the first non-false element of the parameter.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">let fullName = &#039;Foo Bar&#039;, nickName = &#039;foob&#039;;
+{{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;Foo Bar&#039;
+
+let fullName = &#039;&#039;, nickName = &#039;foob&#039;;
+{{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;foob&#039;</code></pre>
+
+      <h4 id="view-helper-includes">includes</h4>
+      <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any[]} items  The array.</li>
+        <li>{any} value  The value to be checked for existence in the array.</li>
+        <li>{boolean} strict FALSE for non-strict checking. TRUE by default.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{boolean} Returns true if the array contains the specified value, false otherwise.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">let items = [1, 2, 3];
+let value = 2;
+
+{{includes items value}} =&gt; true
+
+let value = &#039;2&#039;
+{{includes items value}} =&gt; false
+{{includes items value true}} =&gt; false
+{{includes items value false}} =&gt; true
+
+{{#if (includes items value)}}
+   &lt;!-- Do something --&gt;
+{{/if}}
+
+{{ifx (includes items value) &#039;Yes&#039; &#039;No&#039;}}</code></pre>
+      <!--end::Comparison helpers-->
+
+      <!--begin::HTML helpers-->
+      <h3 id="html-helpers">HTML helpers</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Helper</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#view-helper-cache-busting">cache_busting</a></td>
+            <td>Load automatically updated Assets</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 id="view-helper-cache-busting">cache_busting</h4>
+      <p>Returns the Assets path containing the file update time parameter.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{string} filePath Paths of Assets files such as CSS and JS in public directories.</li>
+        <li>{string} baseUrl  Application Origin URL.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>Returns the Assets file path with the update date and time parameters.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{cache_busting &#039;/assets/style.css&#039; &#039;//example.com&#039;}} =&gt; example.com/assets/style.css?1620526340463</code></pre>
+      <!--end::HTML helpers-->
+
+      <!--begin::Object helpers-->
+      <h3 id="object-helpers">Object helpers</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Helper</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#view-helper-json-stringify">json_stringify</a></td>
+            <td>Stringify an object using JSON.stringify</td>
+          </tr>
+          <tr>
+            <td><a href="#view-helper-json-parse">json_parse</a></td>
+            <td>Parses the given string using JSON.parse</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 id="view-helper-json-stringify">json_stringify</h4>
+      <p>Stringify an object using JSON.stringify.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value  The value to convert to a JSON string.</li>
+        <li>{number} indent The number of space characters to use as whitespace.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>{string} A JSON string representing the given value, or undefined.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{json_stringify value}}</code></pre>
+
+      <h4 id="view-helper-json-parse">json_parse</h4>
+      <p>Parses the given string using JSON.parse.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{any} value Object to stringify.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>JavaScript value or object described by a string.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{json_parse value}}</code></pre>
+      <!--end::Object helpers-->
+
+      <!--begin::String helpers-->
+      <h3 id="string-helpers">String helpers</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Helper</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#view-helper-replace">replace</a></td>
+            <td>Replace string</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 id="view-helper-replace">replace</h4>
+      <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{string} value String.</li>
+        <li>{string} find The string to be replaced.</li>
+        <li>{string} replace The string to replace.</li>
+      </ul>
+      <p><strong>Returns:</strong></p>
+      <p>Character string after replacement.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">{{replace &#039;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#039; &#039;dog&#039; &#039;monkey&#039;}}</code></pre>
+      <!--end::String helpers-->
       <!--end::View helper-->
-
-
     </div>
     <!--end::Views-->
 
