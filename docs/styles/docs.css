@@ -5,6 +5,13 @@
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
+
+
+:root {
+  --top-spacing: 74px;
+  scroll-padding-top: var(--top-spacing);
+}
+
 .bd-navbar {
   padding: .75rem 0;
   background-color: #6b00b1;
@@ -26,6 +33,7 @@
   color: #fff
 }
 */
+
 .bd-navbar .navbar-nav .nav-link.active {
   font-weight: 600;
   /*color: #fff*/
@@ -201,6 +209,10 @@
   background-color: transparent;
 }
 
+.navbar.fixed-top+.bd-layout {
+  padding-top: var(--top-spacing);
+}
+
 @media (min-width: 768px) {
   .bd-layout {
     display:grid;
@@ -230,7 +242,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1013;
+    z-index: 1032;
     width: 268px;
     background: #fff;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
@@ -256,7 +268,7 @@
       bottom: 0;
       right: 0;
       overflow: hidden;
-      z-index: 1012;
+      z-index: 1031;
       background: rgba(0,0,0,.5);
       animation: animation-offcanvas-fade-in .6s ease 1
     }
