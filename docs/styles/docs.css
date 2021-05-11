@@ -247,6 +247,29 @@
     transform: translateZ(0) !important;
   }
 
+    [data-offcanvas-sidebar="on"] .sidebar-overlay {
+      display: block;
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+      z-index: 1012;
+      background: rgba(0,0,0,.5);
+      animation: animation-offcanvas-fade-in .6s ease 1
+    }
+
+    @keyframes animation-offcanvas-fade-in {
+      from {
+        opacity: 0
+      }
+      to {
+        opacity: 1
+      }
+    }
+
     .bd-sidebar > nav:first-child {
       height: 100vh;
       max-height: 100vh!important;
