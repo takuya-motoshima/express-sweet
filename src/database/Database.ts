@@ -29,6 +29,14 @@ export default new class extends sequelize.Sequelize {
 
   /**
    * Returns true if the DB can be connected.
+   *
+   * @example
+   * const database = require('express-sweet').database.Database;
+   * 
+   * // Check database connection.
+   * const isConnected = await database.isConnect();
+   *
+   * @return {Promise<boolean>} Returns true if it can connect to the database, false if it cannot.
    */
   public async isConnect(): Promise<boolean> {
     try {
