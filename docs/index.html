@@ -11,7 +11,7 @@
   <link href="styles/docs.css" rel="stylesheet">
 </head>
 <body data-bs-spy="scroll" data-bs-target="#sidenav" data-bs-offset="74">
-<header class="navbar navbar-expand-md navbar-dark bd-navbar fixed-top">
+<header class="navbar navbar-expand-md navbar-dark topnav fixed-top">
   <nav class="container-xxl justify-content-start" aria-label="Main navigation">
     <a class="navbar-brand p-0 me-2" href="./" aria-label="Bootstrap">
       <img src="images/logo-dark.svg" height="50">
@@ -40,10 +40,10 @@
     </button>
   </nav>
 </header>
-<div class="container-xxl my-md-4 bd-layout">
+<div class="container-xxl my-md-4 layout">
 
-  <aside class="bd-sidebar" id="sidebar">
-    <nav class="bd-links align-items-start navbar navbar-light py-0" id="sidenav">
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidenav align-items-start navbar navbar-light py-0" id="sidenav">
       <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
 
         <a class="nav-link" href="#getting-started">Getting started</a>
@@ -97,15 +97,15 @@
   </aside>
   <div class="sidebar-overlay"></div>
 
-  <main class="bd-main order-1">
+  <main class="main order-1">
 
     <!--begin::Getting started-->
-    <div class="bd-intro ps-lg-4">
-      <h1 class="bd-title" id="getting-started">Getting started</h1>
-      <p class="bd-lead">Extend Express functionality with Express Sweet and start developing fast, minimal web applications.</p>
+    <div class="intro ps-lg-4">
+      <h1 class="title" id="getting-started">Getting started</h1>
+      <p class="lead">Extend Express functionality with Express Sweet and start developing fast, minimal web applications.</p>
     </div>
 
-    <div class="bd-content ps-lg-4">
+    <div class="content ps-lg-4">
 
       <!--begin::Introduction-->
       <h2 id="introduction">Introduction</h2>
@@ -436,8 +436,8 @@ module.exports = {
     <!--end::Getting started-->
 
     <!--begin::Configuration-->
-    <div class="bd-intro ps-lg-4">
-      <h1 class="bd-title" id="configuration">Configuration</h1>
+    <div class="intro ps-lg-4">
+      <h1 class="title" id="configuration">Configuration</h1>
     </div>
 
     <div class="bd-content ps-lg-4">
@@ -451,7 +451,7 @@ module.exports = {
         Express Sweet automatically loads the <em class="code">&quot;.env&quot;</em> file located in the root directory when the application starts and saves the loaded value in <em class="code">&quot;process.env&quot;</em>.
       </p>
 
-      <h3>NODE_ENV</h3>
+      <h3 class="config">NODE_ENV</h3>
       <p>
         <em class="code">NODE_ENV</em> is an environment variable made popular by the express web server framework.<br>
         When a node application is run, it can check the value of the environment variable and do different things based on the value.<br>
@@ -466,13 +466,6 @@ if (isDevelopment) {
   // For development environment.
 }</code></pre>
 
-      <!-- <h3 class="code">
-        AMAZON_REKOGNITION_REGION<br>
-        AMAZON_REKOGNITION_ACCESS_KEY_ID<br>
-        AMAZON_REKOGNITION_SECRET_ACCESS_KEY
-      </h3> -->
-      <!--end::Environment Configuration-->
-
       <!--begin::Basic configuration-->
       <h2 id="basic-configuration">Basic configuration</h2>
       <p>
@@ -480,7 +473,7 @@ if (isDevelopment) {
         The basic configuration file contains the following configuration values.
       </p>
 
-      <h3>env_path</h3>
+      <h3 class="config">env_path</h3>
       <code>string</code>
       <p>
         The path to the environment configuration file (.env).<br>
@@ -489,14 +482,14 @@ if (isDevelopment) {
         The default is <em class="code">&quot;.env&quot;</em>.
       </p>
 
-      <h3>cors_enabled</h3>
+      <h3 class="config">cors_enabled</h3>
       <code>boolean</code>
       <p>
         Set to true to allow requests from another domain to the application.<br>
         The default is <em class="code">false</em>.
       </p>
 
-      <h3>max_body_size</h3>
+      <h3 class="config">max_body_size</h3>
       <code>string</code>
       <p>
         Controls the maximum request body size.<br>
@@ -505,14 +498,14 @@ if (isDevelopment) {
         The default is <em class="code">&quot;100kb&quot;</em>.
       </p>
 
-      <h3>router_dir</h3>
+      <h3 class="config">router_dir</h3>
       <code>string</code>
       <p>
         The directory path where the routes module is located.<br>
         The default is the <em class="code">&quot;routes&quot;</em> directory directly under the application root.
       </p>
 
-      <h3>default_router</h3>
+      <h3 class="config">default_router</h3>
       <code>string</code>
       <p>
         Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<em class="code">/</em>) is requested.<br>
@@ -541,14 +534,14 @@ module.exports = router;</code></pre>
         The view’s configuration file contains the following configuration values.
       </p>
 
-      <h3>views_dir</h3>
+      <h3 class="config">views_dir</h3>
       <code>string</code>
       <p>
         The directory path where the view will be placed.<br>
         The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
       </p>
 
-      <h3>partials_dir</h3>
+      <h3 class="config">partials_dir</h3>
       <code>string</code>
       <p>
         The directory path where the reusable templates are located.<br>
@@ -556,14 +549,14 @@ module.exports = router;</code></pre>
         Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
       </p>
 
-      <h3>layouts_dir</h3>
+      <h3 class="config">layouts_dir</h3>
       <code>string</code>
       <p>
         The directory path where the reusable base template is located.<br>
         The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
       </p>
 
-      <h3>default_layout</h3>
+      <h3 class="config">default_layout</h3>
       <code>string</code>
       <p>
         The path to the layout file used by default.<br>
@@ -571,7 +564,7 @@ module.exports = router;</code></pre>
         The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
       </p>
  
-      <h3>extension</h3>
+      <h3 class="config">extension</h3>
       <code>string</code>
       <p>
         Extension for templates and partials files.<br>
@@ -586,35 +579,35 @@ module.exports = router;</code></pre>
         The user authentication configuration file contains the following configuration values.
       </p>
 
-      <h3>enabled</h3>
+      <h3 class="config">enabled</h3>
       <code>boolean</code>
       <p>
         Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
         User authentication is enabled (<em class="code">true</em>) by default.
       </p>
 
-      <h3>username</h3>
+      <h3 class="config">username</h3>
       <code>string</code>
       <p>
         The login username field name used for authentication.<br>
         This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
       </p>
 
-      <h3>password</h3>
+      <h3 class="config">password</h3>
       <code>string</code>
       <p>
         The login password field name used for authentication.<br>
         This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
       </p>
 
-      <h3>success_redirect</h3>
+      <h3 class="config">success_redirect</h3>
       <code>string</code>
       <p>
         The URL to redirect to after successful authentication.<br>
         The default is the root URL (<em class="code">/</em>).
       </p>
 
-      <h3>failure_redirect</h3>
+      <h3 class="config">failure_redirect</h3>
       <code>string</code>
       <p>
         Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
@@ -622,7 +615,7 @@ module.exports = router;</code></pre>
         The default is <em class="code">&quot;/login&quot;</em>.
       </p>
 
-      <h3>model</h3>
+      <h3 class="config">model</h3>
       <code>express-sweet.database.Model</code>
       <p>
         A model class for the table that stores the users to authenticate.<br>
@@ -677,7 +670,7 @@ module.exports = {
 
       <p>Now, Express Sweet automatically accesses the <em class="code">&quot;user&quot;</em> table at the time of authentication and performs the authentication process.</p>
 
-      <h3>allow_unauthenticated</h3>
+      <h3 class="config">allow_unauthenticated</h3>
       <code>string[]</code>
       <p>
         By default, it requires an authenticated user for all requests.<br>
@@ -689,7 +682,7 @@ module.exports = {
   &#039;/api&#039;
 ]</code></pre>
 
-      <h3>expiration</h3>
+      <h3 class="config">expiration</h3>
       <code>number</code>
       <p>
         Specifies the time, in milliseconds, before the session expires.<br>
@@ -703,45 +696,45 @@ module.exports = {
         The database configuration is defined in the <em class="code">&quot;config/database.js&quot;</em> file.<br>
         The database configuration file is separated by environment and contains the following configuration values.
       </p>
-      <div class="bd-callout bd-callout-info">
+      <div class="callout callout-info">
         There are many other database configuration values.<br>
         For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s API reference&quot;</a>.
       </div>
 
-      <h3>username</h3>
+      <h3 class="config">username</h3>
       <code>string</code>
       <p>The username which is used to authenticate against the database.</p>
 
-      <h3>password</h3>
+      <h3 class="config">password</h3>
       <code>string|null</code>
       <p>
         The password which is used to authenticate against the database.<br>
         The default is no password (<em class="code">null</em>).
       </p>
 
-      <h3>database</h3>
+      <h3 class="config">database</h3>
       <code>string</code>
       <p>The name of the database.</p>
 
-      <h3>host</h3>
+      <h3 class="config">host</h3>
       <code>string</code>
       <p>The host of the relational database.</p>
 
-      <h3>port</h3>
+      <h3 class="config">port</h3>
       <code>string</code>
       <p>
         The port of the relational database.<br>
         The default is automatic selection (<em class="code">null</em>).
       </p>
 
-      <h3>dialect</h3>
+      <h3 class="config">dialect</h3>
       <code>string</code>
       <p>
         The dialect of the database you are connecting to.<br>
         One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
       </p>
 
-      <h3>logging</h3>
+      <h3 class="config">logging</h3>
       <code>boolean</code>
       <p>
         Set true to output the executed query etc. to the log.<br>
@@ -754,9 +747,9 @@ module.exports = {
     <!--end::Configuration-->
 
     <!--begin::Routing-->
-    <div class="bd-intro ps-lg-4">
-      <h1 class="bd-title" id="routing">Routing</h1>
-      <p class="bd-lead">
+    <div class="intro ps-lg-4">
+      <h1 class="title" id="routing">Routing</h1>
+      <p class="lead">
         Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).<br>
         Each route can have one or more handler functions, which are executed when the route is matched.<br>
         Route definition takes the following structure.
@@ -772,7 +765,7 @@ app.METHOD(PATH, HANDLER)
         <li>PATH is a path on the server.</li>
         <li>HANDLER is the function executed when the route is matched.</li>
       </ul>
-      <div class="bd-callout bd-callout-info">
+      <div class="callout callout-info">
         This tutorial assumes that an instance of <em class="code">&quot;express&quot;</em> named <em class="code">&quot;app&quot;</em> is created and the server is running.
         If you are not familiar with creating an app and starting it, see the <a href="#hello-world-example">Hello world example</a>.
       </div>
@@ -921,19 +914,19 @@ module.exports = router;</code></pre>
       </div>
       <!--end::Routing methods-->
 
-      <div class="bd-callout bd-callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees’s Routing Guide</a>.</div>
+      <div class="callout callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees’s Routing Guide</a>.</div>
       
     </div>
     <!--end::Routing-->
 
     <!--begin::Views-->
-    <div class="bd-intro ps-lg-4">
-      <h1 class="bd-title" id="views">Views</h1>
-      <p class="bd-lead">
+    <div class="intro ps-lg-4">
+      <h1 class="title" id="views">Views</h1>
+      <p class="lead">
         Express Sweet uses Handlebars as its view template engine.<br>
         This section describes the basic usage of the view on Express Sweet.
       </p>
-      <div class="bd-callout bd-callout-info">
+      <div class="callout callout-info">
         See the <a href="https://handlebarsjs.com/guide/" target="_blank">Handlebars reference</a> for more information on how to use Handlebars.
       </div>
     </div>
@@ -973,7 +966,7 @@ Else
         </li>
         <li>
           <p>As an option to render.</p>
-          <div class="bd-callout bd-callout-warning">This creates a potential security vulnerability.</div>
+          <div class="callout callout-warning">This creates a potential security vulnerability.</div>
           <p>
             Do not use this option in conjunction with passing user submitted data to res.<br>
             render e.g. res.render(&#039;index&#039;, req.query).<br>
@@ -1490,9 +1483,9 @@ let value = &#039;2&#039;
     <!--end::Views-->
 
     <!--begin::Model-->
-    <div class="bd-intro ps-lg-4">
-      <h1 class="bd-title" id="model">Model</h1>
-      <p class="bd-lead">
+    <div class="intro ps-lg-4">
+      <h1 class="title" id="model">Model</h1>
+      <p class="lead">
         Models provide a way to interact with a specific table in your database.<br>
         They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
       </p>
@@ -1599,7 +1592,7 @@ module.exports = (class extends Model {
       <h2 id="database-class-reference">Database class reference</h2>
       <p>class Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></p>
 
-      <div class="bd-callout bd-callout-warning">
+      <div class="callout callout-warning">
         This class returns an instance when loaded, so you don’t have to instantiate it yourself.<br>
         See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s Reference&quot;</a> for more information on the methods and properties available in your model.<br>
         This section describes newly added methods and members, as well as frequently used members and methods.
@@ -1665,7 +1658,7 @@ const isConnected = await database.isConnect();</code></pre>
       <h2 id="model-class-reference">Model class reference</h2>
       <p>class Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></p>
 
-      <div class="bd-callout bd-callout-warning">
+      <div class="callout callout-warning">
         See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">&quot;Sequelize’s Model Reference&quot;</a> for more information on the methods and properties available in your model.<br>
         This section describes newly added methods and members, as well as frequently used members and methods.
       </div>
@@ -1938,6 +1931,103 @@ UserModel.destroy({
   }
 });
 </code></pre>
+
+      <h3>Methods</h3>
+
+      <h4 id="model-method-mount"><code class="method">public static mount(): Model</code></h4>
+      <p>
+        Initialize the model that represents the table in the DB with attributes and options.<br>
+        Also, after initializing the model, call the <em class="code">association()</em> method defined in the subclass to create associations such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
+        Be sure to export the result of calling this method when defining a subclass.
+      </p>
+
+      <p><strong>Return:</strong></p>
+      <p>{typeof Model} Returns this model class itself.</p>
+
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = (class extends Model {
+  /**
+   * The name of the table that the model accesses.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
+
+  /**
+   * List of columns in the table accessed by this model.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      name: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}).mount();</code></pre>
+
+
+
+
+      <h4 id="model-method-association"><code class="method">protected static association(): void</code></h4>
+      <p>
+        This method defines the handling of <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>, etc. associations with other models that will be executed when the subclass is loaded.<br>
+        See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
+      </p>
+
+      <h4 id="model-method-begin"><code class="method">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code></h4>
+      <p>
+        Starts a transaction and returns a transaction object to identify the running transaction.<br>
+        This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
+        See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
+      </p>
+
+      <h4 id="model-method-create"><code class="method">public static async create(values: object, options: object): Promise&lt;Model&gt;</code></h4>
+      <p>Builds a new model instance and calls <em class="code">save</em> on it.</p>
+
+      <h4 id="model-method-save"><code class="method">public static async save(options: object): Promise&lt;Model&gt;</code></h4>
+      <p>Validates this instance, and if the validation passes, persists it to the database.</p>
+
+      <h4 id="model-method-find-one"><code class="method">public static async findOne(options: object): Promise&lt;Model|null&gt;</code></h4>
+      <p>Search for a single instance.</p>
+
+      <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></h4>
+      <p>Search for multiple instances.</p>
+
+      <h4 id="model-method-count"><code class="method">public static async count(options: object): Promise&lt;number&gt;</code></h4>
+      <p>Count the number of records matching the provided where clause.</p>
+
+      <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></h4>
+      <p>Update multiple instances that match the where options.</p>
+
+      <h4 id="model-method-upsert"><code class="method">public static async upsert(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code></h4>
+      <p>Insert or update a single row.</p>
+
+      <h4 id="model-method-destroy"><code class="method">public static async destroy(options: object): Promise&lt;number&gt;</code></h4>
+      <p>Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.</p>
+
+      <h4 id="model-method-belongs-to"><code class="method">public static belongsTo(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code></h4>
+      <p>Creates an association between this (the source) and the provided target.</p>
+
+      <h4 id="model-method-belongs-to-many"><code class="method">public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code></h4>
+      <p>Create an N:M association with a join table.</p>
+
+      <h4 id="model-method-has-one"><code class="method">public static hasOne(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code></h4>
+      <p>Creates an association between this (the source) and the provided target.</p>
+
+      <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
+      <p>Creates a 1:m association between this (the source) and the provided target.</p>
 
       <!--end::Model class reference-->
     </div>
