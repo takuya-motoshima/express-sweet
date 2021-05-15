@@ -1902,7 +1902,9 @@ static get attributes() {
         See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">"Sequelize’s operator symbols reference"</a> for details on "sequelize.DataTypes".
       </p>
       <p><strong>Example:</strong></p>
-      <pre><code class="js">// SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
 UserModel.findOne({
   where: {
     [this.Op.and]: [
@@ -1940,10 +1942,8 @@ UserModel.destroy({
         Also, after initializing the model, call the <em class="code">association()</em> method defined in the subclass to create associations such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
         Be sure to export the result of calling this method when defining a subclass.
       </p>
-
       <p><strong>Return:</strong></p>
       <p>{typeof Model} Returns this model class itself.</p>
-
       <p><strong>Example:</strong></p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
@@ -1977,9 +1977,6 @@ module.exports = (class extends Model {
   }
 }).mount();</code></pre>
 
-
-
-
       <h4 id="model-method-association"><code class="method">protected static association(): void</code></h4>
       <p>
         This method defines the handling of <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>, etc. associations with other models that will be executed when the subclass is loaded.<br>
@@ -1992,6 +1989,30 @@ module.exports = (class extends Model {
         This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
         See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
       </p>
+      <p><strong>Return:</strong></p>
+      <p>{Promise&lt;sequelize.Transaction&gt;} Returns a transaction object to identify the transaction being executed.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+let transaction;
+try {
+  // START TRANSACTION;
+  transaction = await UserModel.begin();
+
+  // SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`id` = 1;
+  const user = await UserModel.findOne({where: {id: 1}}, {transaction});
+  user.name = &#039;Jane&#039;;
+
+  // UPDATE `user` SET `name`=? WHERE `id` = ?
+  await user.save({transaction});
+
+  // COMMIT;
+  await transaction.commit();
+} catch(e) {
+  // ROLLBACK;
+  await transaction.rollback();
+}
+</code></pre>
 
       <h4 id="model-method-create"><code class="method">public static async create(values: object, options: object): Promise&lt;Model&gt;</code></h4>
       <p>Builds a new model instance and calls <em class="code">save</em> on it.</p>

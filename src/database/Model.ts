@@ -129,6 +129,8 @@ export default class Model extends sequelize.Model {
    *   await t.rollback();
    * }
    * @see https://sequelize.org/master/manual/transactions.html
+   *
+   * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
    */
   public static async begin(): Promise<sequelize.Transaction> {
     return database.transaction();
