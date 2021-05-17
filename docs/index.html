@@ -305,6 +305,7 @@ npm install;</code></pre>
 
 USE `example`;
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
@@ -316,15 +317,37 @@ CREATE TABLE `user` (
   UNIQUE KEY `ukAccount1` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `user` (`email`, `password`, `name`) VALUES
-  (&#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;),
-  (&#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;),
-  (&#039;vivian@example.com&#039;, &#039;password&#039;, &#039;Vivian&#039;),
-  (&#039;harry@example.com&#039;, &#039;password&#039;, &#039;Harry&#039;),
-  (&#039;eliza@example.com&#039;, &#039;password&#039;, &#039;Eliza&#039;),
-  (&#039;nancy@example.com&#039;, &#039;password&#039;, &#039;Nancy&#039;),
-  (&#039;melinda@example.com&#039;, &#039;password&#039;, &#039;Melinda&#039;),
-  (&#039;harley@example.com&#039;, &#039;password&#039;, &#039;Harley&#039;);</code></pre>
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE `profile` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `tel` varchar(14) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fkUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `user` (`id`, `email`, `password`, `name`) VALUES
+  (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;),
+  (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;),
+  (3, &#039;vivian@example.com&#039;, &#039;password&#039;, &#039;Vivian&#039;),
+  (4, &#039;harry@example.com&#039;, &#039;password&#039;, &#039;Harry&#039;),
+  (5, &#039;eliza@example.com&#039;, &#039;password&#039;, &#039;Eliza&#039;),
+  (6, &#039;nancy@example.com&#039;, &#039;password&#039;, &#039;Nancy&#039;),
+  (7, &#039;melinda@example.com&#039;, &#039;password&#039;, &#039;Melinda&#039;),
+  (8, &#039;harley@example.com&#039;, &#039;password&#039;, &#039;Harley&#039;);
+
+INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
+  (1, &#039;777 Brockton Avenue, Abington MA 2351&#039;, &#039;202-555-0105&#039;),
+  (2, &#039;30 Memorial Drive, Avon MA 2322&#039;, &#039;&#039;),
+  (3, &#039;250 Hartford Avenue, Bellingham MA 2019&#039;, &#039;202-555-0175&#039;),
+  (4, &#039;700 Oak Street, Brockton MA 2301&#039;, &#039;202-555-0167&#039;),
+  (5, &#039;66-4 Parkhurst Rd, Chelmsford MA 1824&#039;, &#039;202-555-0154&#039;),
+  (6, &#039;591 Memorial Dr, Chicopee MA 1020&#039;, &#039;202-555-0141&#039;),
+  (7, &#039;55 Brooksby Village Way, Danvers MA 1923&#039;, &#039;202-555-0196&#039;),
+  (8, &#039;137 Teaticket Hwy, East Falmouth MA 2536&#039;, &#039;202-555-0167&#039;);</code></pre>
 
       <p>
         Next, you need to set how the database is connected.<br>
@@ -652,7 +675,7 @@ module.exports = (class extends Model {
       modified: this.DataTypes.DATE
     };
   }
-}).mount();</code></pre>
+}).factory();</code></pre>
 
       <p>Next, set the created <em class="code">UserModel</em> class in the <em class="code">&quot;model&quot;</em> item of <em class="code">&quot;config/authentication.js&quot;</em>.</p>
       <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
@@ -1571,7 +1594,7 @@ module.exports = (class extends Model {
       modified: this.DataTypes.DATE
     };
   }
-}).mount();</code></pre>
+}).factory();</code></pre>
 
       <p>
         This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
@@ -1729,8 +1752,9 @@ const isConnected = await database.isConnect();</code></pre>
           <tr>
             <td>public static</td>
             <td>
-              <code><a href="#model-method-mount">mount</a>(): Model</code>
+              <code><a href="#model-method-factory">factory</a>(): Model</code>
               <p class="description">
+                Returns the initialized model class.<br>
                 Initialize the model that represents the table in the DB with attributes and options.<br>
                 Also, after initializing the model, call the <em class="code">association()</em> method defined in the subclass to create associations such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
                 Be sure to export the result of calling this method when defining a subclass.
@@ -1936,8 +1960,9 @@ UserModel.destroy({
 
       <h3>Methods</h3>
 
-      <h4 id="model-method-mount"><code class="method">public static mount(): Model</code></h4>
+      <h4 id="model-method-factory"><code class="method">public static factory(): Model</code></h4>
       <p>
+        Returns the initialized model class.<br>
         Initialize the model that represents the table in the DB with attributes and options.<br>
         Also, after initializing the model, call the <em class="code">association()</em> method defined in the subclass to create associations such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
         Be sure to export the result of calling this method when defining a subclass.
@@ -1975,13 +2000,15 @@ module.exports = (class extends Model {
       modified: this.DataTypes.DATE
     };
   }
-}).mount();</code></pre>
+}).factory();</code></pre>
 
       <h4 id="model-method-association"><code class="method">protected static association(): void</code></h4>
       <p>
         This method defines the handling of <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>, etc. associations with other models that will be executed when the subclass is loaded.<br>
         See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
       </p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js"></code></pre>
 
       <h4 id="model-method-begin"><code class="method">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code></h4>
       <p>

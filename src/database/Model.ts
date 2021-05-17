@@ -82,14 +82,15 @@ export default class Model extends sequelize.Model {
   public static readonly Op: {[key: string]: any} = sequelize.Op;
 
   /**
-   * Mount on application.
+   * Returns the initialized model class.
+   * 
    * Initialize the model that represents the table in the DB with attributes and options.
    * Also, after initializing the model, call the association() method defined in the subclass to create associations such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
    * Be sure to export the result of calling this method when defining a subclass.
    *
    * @return {typeof Model} Returns this model class itself.
    */
-  public static mount(): (typeof Model) {
+  public static factory(): (typeof Model) {
     this.init(this.attributes, {
       modelName: this.table,
       sequelize: database,

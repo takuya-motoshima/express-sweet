@@ -79,14 +79,15 @@ export default class Model extends sequelize.Model {
         [key: string]: any;
     };
     /**
-     * Mount on application.
+     * Returns the initialized model class.
+     *
      * Initialize the model that represents the table in the DB with attributes and options.
      * Also, after initializing the model, call the association() method defined in the subclass to create associations such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
      * Be sure to export the result of calling this method when defining a subclass.
      *
      * @return {typeof Model} Returns this model class itself.
      */
-    static mount(): (typeof Model);
+    static factory(): (typeof Model);
     /**
      * This method defines the handling of hasOne, hasMany, belongsTo, belongsToMany, etc. associations with other models that will be executed when the subclass is loaded.
      *
@@ -113,6 +114,8 @@ export default class Model extends sequelize.Model {
      *   await t.rollback();
      * }
      * @see https://sequelize.org/master/manual/transactions.html
+     *
+     * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
      */
     static begin(): Promise<sequelize.Transaction>;
     /**
