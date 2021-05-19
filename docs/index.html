@@ -1879,11 +1879,18 @@ const isConnected = await database.isConnect();</code></pre>
         <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
       </p>
       <p><strong>Example:</strong></p>
-      <pre><code class="js">/**
- * The name of the table that the model accesses.
+      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
  */
-static get table() {
-  return 'user';
+module.exports = class extends Model {
+  /**
+   * The name of the table that the model accesses.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
 }</code></pre>
 
       <h4 id="model-member-attributes"><code class="member">protected static attributes: sequelize.ModelAttributes</code></h4>
@@ -1892,22 +1899,29 @@ static get table() {
         <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
       </p>
       <p><strong>Example:</strong></p>
-      <pre><code class="js">/**
- * List of columns in the table accessed by this model.
+      <pre><code class="js">const Model = require('express-sweet').database.Model;
+
+/**
+ * User model.
  */
-static get attributes() {
-  return {
-    id: {
-      type: this.DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    email: this.DataTypes.STRING,
-    password: this.DataTypes.STRING,
-    name: this.DataTypes.STRING,
-    created: this.DataTypes.DATE,
-    modified: this.DataTypes.DATE
-  };
+module.exports = class extends Model {
+  /**
+   * List of columns in the table accessed by this model.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      name: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
 }</code></pre>
 
       <h4 id="model-member-data-types"><code class="member">public static readonly DataTypes: {[key: string]: any}</code></h4>
@@ -2004,7 +2018,7 @@ module.exports = (class extends Model {
   }
 }).factory();</code></pre> -->
 
-      <h4 id="model-method-association"><code class="method">protected static association(): void</code></h4>
+      <h4 id="model-method-association"><code class="method">public static association(): void</code></h4>
       <p>
         Associate the model.<br>
         Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
@@ -2012,7 +2026,28 @@ module.exports = (class extends Model {
         See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
       </p>
       <p><strong>Example:</strong></p>
-      <pre><code class="js"></code></pre>
+      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // User has one profile.
+    const ProfileModel = require(&#039;./ProfileModel&#039;);
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;       // user.id
+    });
+  }
+}</code></pre>
 
       <h4 id="model-method-begin"><code class="method">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code></h4>
       <p>

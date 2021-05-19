@@ -358,3 +358,8 @@ code {
   font-size: 1.1rem;
   font-family: Monaco, Consolas, Courier, monospace;
 }
+
+.hljs {
+  border-radius: .5em;
+  background: #2e2e42;
+}
