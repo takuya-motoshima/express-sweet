@@ -650,7 +650,7 @@ module.exports = router;</code></pre>
 /**
  * User model.
  */
-module.exports = (class extends Model {
+module.exports = class extends Model {
   /**
    * Table name used by the model.
    */
@@ -675,7 +675,7 @@ module.exports = (class extends Model {
       modified: this.DataTypes.DATE
     };
   }
-}).factory();</code></pre>
+}</code></pre>
 
       <p>Next, set the created <em class="code">UserModel</em> class in the <em class="code">&quot;model&quot;</em> item of <em class="code">&quot;config/authentication.js&quot;</em>.</p>
       <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
@@ -1569,7 +1569,7 @@ await UserModel.destroy({
 /**
  * User model.
  */
-module.exports = (class extends Model {
+module.exports = class extends Model {
   /**
    * Table name used by the model.
    */
@@ -1594,7 +1594,7 @@ module.exports = (class extends Model {
       modified: this.DataTypes.DATE
     };
   }
-}).factory();</code></pre>
+}</code></pre>
 
       <p>
         This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
@@ -1749,7 +1749,7 @@ const isConnected = await database.isConnect();</code></pre>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <td>public static</td>
             <td>
               <code><a href="#model-method-factory">factory</a>(): Model</code>
@@ -1760,13 +1760,15 @@ const isConnected = await database.isConnect();</code></pre>
                 Be sure to export the result of calling this method when defining a subclass.
               </p>
             </td>
-          </tr>
+          </tr> -->
           <tr>
-            <td>protected static</td>
+            <td>public static</td>
             <td>
               <code><a href="#model-method-association">association</a>(): void</code>
               <p class="description">
-                This method defines the handling of <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>, etc. associations with other models that will be executed when the subclass is loaded.<br>
+                Associate the model.<br>
+                Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
+                This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
                 See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
               </p>
             </td>
@@ -1960,7 +1962,7 @@ UserModel.destroy({
 
       <h3>Methods</h3>
 
-      <h4 id="model-method-factory"><code class="method">public static factory(): Model</code></h4>
+      <!-- <h4 id="model-method-factory"><code class="method">public static factory(): Model</code></h4>
       <p>
         Returns the initialized model class.<br>
         Initialize the model that represents the table in the DB with attributes and options.<br>
@@ -2000,11 +2002,13 @@ module.exports = (class extends Model {
       modified: this.DataTypes.DATE
     };
   }
-}).factory();</code></pre>
+}).factory();</code></pre> -->
 
       <h4 id="model-method-association"><code class="method">protected static association(): void</code></h4>
       <p>
-        This method defines the handling of <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>, etc. associations with other models that will be executed when the subclass is loaded.<br>
+        Associate the model.<br>
+        Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
+        This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
         See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
       </p>
       <p><strong>Example:</strong></p>
