@@ -82,32 +82,32 @@ export default class Model extends sequelize.Model {
   public static readonly Op: {[key: string]: any} = sequelize.Op;
 
   /**
-   * Returns the initialized model class.
-   * 
    * Initialize the model that represents the table in the DB with attributes and options.
-   * Also, after initializing the model, call the association() method defined in the subclass to create associations such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
-   * Be sure to export the result of calling this method when defining a subclass.
+   * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
    *
    * @return {typeof Model} Returns this model class itself.
    */
-  public static factory(): (typeof Model) {
+  public static initialize(): (typeof Model) {
+    console.log(`Initialize ${this.table} model`);
     this.init(this.attributes, {
       modelName: this.table,
       sequelize: database,
       freezeTableName: true,
       timestamps: false
     });
-    this.association();
+    // this.association();
     return this;
   }
 
   /**
-   * This method defines the handling of hasOne, hasMany, belongsTo, belongsToMany, etc. associations with other models that will be executed when the subclass is loaded.
+   * Associate the model.
+   * Define associations with other models such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
+   * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
    * 
    * @see https://sequelize.org/master/manual/assocs.html
    */
-  protected static association(): void {
-    // Define association in subclass
+  public static association(): void {
+    // Define association in subclass.
   }
 
   /**

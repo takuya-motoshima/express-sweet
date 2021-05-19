@@ -21,12 +21,11 @@ export default class {
       default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
       extension: '.hbs'     
     }, fs.existsSync(`${process.cwd()}/config/view.js`) ? require(`${process.cwd()}/config/view`) : {});
-
-    console.log(`View directory: ${config.views_dir}`);
-    console.log(`Partials directory: ${config.partials_dir}`);
-    console.log(`Layouts directory: ${config.layouts_dir}`);
-    console.log(`Default layout: ${config.default_layout}`);
-    console.log(`View extension: ${config.extension}`);
+    console.log(`Set view directory to ${config.views_dir}`);
+    console.log(`Set partials directory to ${config.partials_dir}`);
+    console.log(`Set layouts directory to ${config.layouts_dir}`);
+    console.log(`The default layout is ${config.default_layout}`);
+    console.log(`The extension of the view file is ${config.extension}`);
 
     // Express handlebars template engine.
     const hbs = require('express-hbs');
@@ -34,7 +33,7 @@ export default class {
     // Added helper function.
     for (let [_, helper] of Object.entries(helpers)) {
       for (let [name, handler] of Object.entries(helper)) {
-        console.log(`Set ${name} helper`);
+        console.log(`Add ${name} to handlebars helper`);
         hbs.registerHelper(name, handler);
       }
     }

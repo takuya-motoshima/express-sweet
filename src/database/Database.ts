@@ -12,7 +12,6 @@ export default new class extends sequelize.Sequelize {
   constructor() {
     // Get the execution environment.
     const env = process.env.NODE_ENV||'development';
-    console.log(`Environment: "${env}"`);
 
     // Database connection config path.
     const path = `${process.cwd()}/config/database`;

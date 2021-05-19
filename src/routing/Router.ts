@@ -21,8 +21,8 @@ export default class {
       default_router: undefined
     }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) as Config : <Config>{});
 
-    console.log(`Router directory: ${config.router_dir}`);
-    console.log(`Default router: ${config.default_router}`);
+    console.log(`Router directory is ${config.router_dir}`);
+    console.log(`Default router is ${config.default_router||'nothing'}`);
 
     // Set the URL to route based on the path of the file in the routes directory.
     for (let filePath of File.find(`${config.router_dir}/**/*.js`)) {

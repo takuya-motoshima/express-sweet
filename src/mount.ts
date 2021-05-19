@@ -7,6 +7,7 @@ import CORS from '~/middlewares/CORS';
 import Local from '~/middlewares/Local';
 import Authentication from '~/middlewares/Authentication';
 import Router from '~/routing/Router';
+import loadModels from '~/database/loadModels';
 // import ErrorHandling from '~/middlewares/ErrorHandling';
 
 /**
@@ -15,6 +16,9 @@ import Router from '~/routing/Router';
  * @param {express.Express}  app                Express application instance
  */
 export default function(app: express.Express): void {
+  // Model initialization and association.
+  loadModels();
+
   // Set global variables.
   Global.mount();
 
