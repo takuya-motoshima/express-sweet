@@ -1265,7 +1265,7 @@ Else
       <p><strong>Parameters:</strong></p>
       <ul>
         <li>{boolean} condition Satisfying condition for getting first value. Either true of false.</li>
-        <li>{any} value1 First value to be displayed as result..</li>
+        <li>{any} value1 First value to be displayed as result.</li>
         <li>{any} value2 Second value to be displayed as result. Defaults to an empty string.</li>
       </ul>
       <p><strong>Return:</strong></p>
@@ -1811,7 +1811,7 @@ const isConnected = await database.isConnect();</code></pre>
           <tr>
             <td>public static</td>
             <td>
-              <code>async <a href="#model-method-find-all">findAll</a>(options: object): Promise&lt;Array&lt;Model&gt;</code>
+              <code>async <a href="#model-method-find-all">findAll</a>(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code>
               <p class="description">Search for multiple instances.</p>
             </td>
           </tr>
@@ -1825,7 +1825,7 @@ const isConnected = await database.isConnect();</code></pre>
           <tr>
             <td>public static</td>
             <td>
-              <code>async <a href="#model-method-update">update</a>(values: object, options: object): Promise&lt;Array&lt;number, number&gt;</code>
+              <code>async <a href="#model-method-update">update</a>(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code>
               <p class="description">Update multiple instances that match the where options.</p>
             </td>
           </tr>
@@ -2158,7 +2158,7 @@ await user.save();</code></pre>
 // SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` LIMIT 1;
 await UserModel.findOne();</code></pre>
 
-      <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;</code></h4>
+      <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></h4>
       <p>
         Search for multiple instances.<br>
         See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank">reference</a> for details.
@@ -2168,7 +2168,7 @@ await UserModel.findOne();</code></pre>
         <li>{object} options A hash of options to describe the scope of the search.</li>
       </ul>
       <p><strong>Return:</strong></p>
-      <p>{Promise&lt;Array&lt;Model&gt;} Returns a model containing the data found in the database.</p>
+      <p>{Promise&lt;Array&lt;Model&gt;&gt;} Returns a model containing the data found in the database.</p>
       <p><strong>Example:</strong></p>
       <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
@@ -2194,19 +2194,81 @@ const users = await UserModel.findAll({
       <p><strong>Return:</strong></p>
       <p>{Promise&lt;number&gt;} Returns the count of records that match the condition.</p>
       <p><strong>Example:</strong></p>
-      <pre><code class="js">// Get all user record counts.
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Get all user record counts.
 // SQL: SELECT count(*) AS `count` FROM `user` AS `user`;
 await UserModel.count();</code></pre>
 
+      <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></h4>
+      <p>
+        Update multiple instances that match the where options.<br>
+        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" target="_blank">reference</a> for details.
+      </p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{object} values hash of values to update.</li>
+        <li>{object} options update options.</li>
+      </ul>
+      <p><strong>Return:</strong></p>
+      <p>{Promise&lt;Array&lt;number, number&gt;&gt;} The first element is always the number of affected rows, while the second element is the actual affected rows (only supported in postgres with <em class="code">options.returning</em> true).</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
-      <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;</code></h4>
-      <p>Update multiple instances that match the where options.</p>
+// Update the name of the user whose ID is 1.
+// SQL: UPDATE `user` SET `name`=&#039;Jane&#039; WHERE `id` = 1;
+await UserModel.update(
+  {
+    name: &#039;Jane&#039;
+  },
+  {
+    where: {
+      id: 1
+    }
+  }
+);</code></pre>
 
       <h4 id="model-method-upsert"><code class="method">public static async upsert(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code></h4>
-      <p>Insert or update a single row.</p>
+      <p>
+        Insert or update a single row.<br>
+        An update will be executed if a row which matches the supplied values on either the primary key or a unique key is found.<br>
+        Note that the unique index must be defined in your sequelize model and not just in the table.<br>
+        Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
+        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" target="_blank">reference</a> for details.
+      </p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{object} values hash of values to upsert.</li>
+        <li>{object} options upsert options.</li>
+      </ul>
+      <p><strong>Return:</strong></p>
+      <p>{Promise&lt;Model, boolean|null&gt;} returns record and whether row was created or updated as boolean. For Postgres/SQLite dialects boolean value is always null.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// If there is no user corresponding to the primary key or unique key, add it, and if there is a corresponding user, update it.
+// SQL: INSERT INTO `user` (`email`,`password`,`name`) VALUES (?,?,?)
+//      ON DUPLICATE KEY UPDATE `email`=VALUES(`email`),`password`=VALUES(`password`),`name`=VALUES(`name`);
+await UserModel.upsert({
+  email: &#039;robin@example.com&#039;,
+  password: &#039;password&#039;,
+  name: &#039;Robin&#039;
+});</code></pre>
 
       <h4 id="model-method-destroy"><code class="method">public static async destroy(options: object): Promise&lt;number&gt;</code></h4>
-      <p>Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.</p>
+      <p>
+        Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
+        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" target="_blank">reference</a> for details.
+      </p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{object} options destroy options.</li>
+      </ul>
+      <p><strong>Return:</strong></p>
+      <p>{Promise&lt;number&gt;} The number of destroyed rows.</p>
+      <pre><code class="js">// Delete the user whose id is 1.
+// SQL: DELETE FROM `user` WHERE `id` = 1;
+await UserModel.destroy({where: {id :1}});</code></pre>
 
       <h4 id="model-method-belongs-to"><code class="method">public static belongsTo(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code></h4>
       <p>Creates an association between this (the source) and the provided target.</p>
