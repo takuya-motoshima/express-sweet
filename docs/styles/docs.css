@@ -363,3 +363,7 @@ code {
   border-radius: .5em;
   background: #2e2e42;
 }
+
+.hljs-comment {
+  color: #9e8f9e;
+}
