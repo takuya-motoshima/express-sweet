@@ -2286,10 +2286,10 @@ await UserModel.destroy({where: {id :1}});</code></pre>
       <p><strong>Parameters:</strong></p>
       <ul>
         <li>{Model} target The target model.</li>
-        <li>{object} options belongsTo association options.</li>
+        <li>{object} options hasOne association options.</li>
       </ul>
       <p><strong>Return:</strong></p>
-      <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a>} One-to-one association.</p>
+      <p>{<a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a>} One-to-one association.</p>
       <p><strong>Example:</strong></p>
       <p>
         For one-to-one association we will use two tables as an example they are User and Profile table.<br>
@@ -2367,16 +2367,33 @@ await UserModel.findAll({
         The foreign key is added on the source.<br>
         See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" target="_blank">reference</a> for details.
       </p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{Model} target The target model.</li>
+        <li>{object} options belongsTo association options.</li>
+      </ul>
+      <p><strong>Return:</strong></p>
+      <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a>} One-to-one association.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code class="js"></code></pre>
+
+
+
+
+
+
+
 
       <h4 id="model-method-belongs-to-many"><code class="method">public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code></h4>
       <p>
         Create an N:M association with a join table.<br>
-
       </p>
 
 
       <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
-      <p>Creates a 1:m association between this (the source) and the provided target.</p>
+      <p>
+        Creates a 1:m association between this (the source) and the provided target.
+      </p>
 
       <!--end::Model class reference-->
     </div>
