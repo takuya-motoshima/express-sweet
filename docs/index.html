@@ -2474,7 +2474,72 @@ await ProfileModel.findAll({
         Here's the relation diagram for it.
       </p>
       <img class="mb-3" src="images/has-many.png" alt="has many relationship" width="361">
+      <p>
+        The HasMany put the association key in the target model.<br>
+        Here user and comments share a one to many relationship.<br>
+        Each user can make multiple comments while each comment is associated with only a single user.
+      </p>
+      <p>This is a user model has many comments.</p>
+      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+     // User has many comments.
+    const CommentModel = require(&#039;./CommentModel&#039;);
+    this.hasMany(CommentModel, {
+      foreignKey: &#039;userId&#039;,  // comment.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;comments&#039;
+    });
+  }
+}</code></pre>
+      <p>This is an example of a search that joins users and comments.</p>
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `comments`.`id` AS `comments.id`,
+//        `comments`.`userId` AS `comments.userId`,
+//        `comments`.`text` AS `comments.text`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `comment` AS `comments` ON `user`.`id` = `comments`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;comments&quot;: [
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;text&quot;: &quot;First comment from Robin&quot;
+//               },
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;text&quot;: &quot;Second comment from Robin&quot;
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;comments&#039;,
+    attributes: [&#039;userId&#039;, &#039;text&#039;]
+  }
+});</code></pre>
 
 
 
