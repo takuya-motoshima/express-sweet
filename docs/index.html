@@ -2300,10 +2300,10 @@ await UserModel.destroy({where: {id :1}});</code></pre>
       <p>
         HasOne put the association key in the target model.<br>
         Here User can exist without a Profile, but the vice versa is not possible.<br>
-        This means, we will insert userId field to Profile model’s table:
+        This means, we will insert userId field to Profile model’s table.
       </p>
 
-      <p>User model with one profile.</p>
+      <p>This is a user model with one profile.</p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
@@ -2327,8 +2327,8 @@ module.exports = class extends Model {
   }
 }</code></pre>
 
-        <p>Try to search the data by combining user and profile.</p>
-        <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+      <p>This is an example of a search that joins user and profile.</p>
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SQL: SELECT
 //        `user`.`id`,
@@ -2375,11 +2375,76 @@ await UserModel.findAll({
       <p><strong>Return:</strong></p>
       <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a>} One-to-one association.</p>
       <p><strong>Example:</strong></p>
-      <pre><code class="js"></code></pre>
 
+      <p>
+        For one-to-one association we will use two tables as an example they are User and Profile table.<br>
+        User table has one Profile table and Profile table belongs to the User table.<br>
+        Here's the relation diagram for it.
+      </p>
+      <img class="mb-3" src="images/belongs-to.png" alt="belongs to relationship" width="361">
+      <p>
+        BelongsTo put the associations key in the source model.<br>
+        Here User can exist without a Profile, but the vice versa is not possible.<br>
+        This means, we will insert userId field to Profile model’s table.
+      </p>
 
+      <p>This is a profile model that belongs to the user.</p>
+      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
+/**
+ * Profile model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // Profile belongs to one user.
+    const UserModel = require(&#039;./UserModel&#039;);
+    this.belongsTo(UserModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId,
+      targetKey: &#039;id&#039;       // user.id
+    });
+  }
+}</code></pre>
 
+      <p>This is an example of a search that joins profile and user.</p>
+      <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
+
+// SQL: SELECT
+//        `profile`.`id`,
+//        `profile`.`userId`,
+//        `profile`.`address`,
+//        `profile`.`tel`,
+//        `user`.`id` AS `user.id`,
+//        `user`.`name` AS `user.name`
+//      FROM
+//        `profile` AS `profile`
+//        INNER JOIN `user` AS `user` ON `profile`.`userId` = `user`.`id`;
+// 
+// Output: [
+//           {
+//             &quot;userId&quot;: 1,
+//             &quot;address&quot;: &quot;777 Brockton Avenue, Abington MA 2351&quot;,
+//             &quot;tel&quot;: &quot;202-555-0105&quot;,
+//             &quot;user&quot;: {
+//               &quot;id&quot;: 1,
+//               &quot;name&quot;: &quot;Robin&quot;
+//             }
+//           }
+//         ]
+await ProfileModel.findAll({
+  attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;],
+  include: {
+    association: &#039;user&#039;,
+    required: true,
+    attributes: [&#039;id&#039;, &#039;name&#039;]
+  }
+});</code></pre>
 
 
 
