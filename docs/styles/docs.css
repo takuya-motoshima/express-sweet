@@ -273,6 +273,7 @@ ol li {
 
 .main {
   grid-area: main;
+  overflow-x: hidden;
 }
 
 /*@media (min-width: 768px) {
@@ -348,9 +349,7 @@ code {
   font-style: normal;
 }
 
-.method,
-.member,
-.config {
+.method, .member, .config {
   padding: 6px 10px;
   width: fit-content;
   background: #E8F4FF;
@@ -364,6 +363,6 @@ code {
   background: #2e2e42;
 }
 
-.hljs-comment {
-  color: #9e8f9e;
-}
+  .hljs-comment {
+    color: #9e8f9e;
+  }
