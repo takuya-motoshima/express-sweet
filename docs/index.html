@@ -1769,7 +1769,8 @@ const isConnected = await database.isConnect();</code></pre>
                 Associate the model.<br>
                 Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
                 This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
-                See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
+                See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.<br>
+                <i class="bi bi-exclamation-triangle-fill"></i>If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
               </p>
             </td>
           </tr>
@@ -1866,15 +1867,18 @@ const isConnected = await database.isConnect();</code></pre>
           <tr>
             <td>public static</td>
             <td>
-              <code><a href="#model-method-belongs-to-many">belongsToMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code>
-              <p class="description">Create an N:M association with a join table.</p>
+              <code><a href="#model-method-has-many">hasMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code>
+              <p class="description">
+                Creates a 1:m association between this (the source) and the provided target.<br>
+                The foreign key is added on the target.
+              </p>
             </td>
           </tr>
           <tr>
             <td>public static</td>
             <td>
-              <code><a href="#model-method-has-many">hasMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code>
-              <p class="description">Creates a 1:m association between this (the source) and the provided target.</p>
+              <code><a href="#model-method-belongs-to-many">belongsToMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code>
+              <p class="description">Create an N:M association with a join table.</p>
             </td>
           </tr>
         </tbody>
@@ -2034,6 +2038,9 @@ module.exports = (class extends Model {
         This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
         See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
       </p>
+
+      <div class="callout callout-warning">If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.</div>
+
       <p><strong>Example:</strong></p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
@@ -2044,6 +2051,7 @@ module.exports = class extends Model {
   /**
    * Associate the model.
    * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
    * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
    * 
    * @see https://sequelize.org/master/manual/assocs.html
@@ -2053,7 +2061,8 @@ module.exports = class extends Model {
     const ProfileModel = require(&#039;./ProfileModel&#039;);
     this.hasOne(ProfileModel, {
       foreignKey: &#039;userId&#039;, // profile.userId
-      sourceKey: &#039;id&#039;       // user.id
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
     });
   }
 }</code></pre>
@@ -2302,7 +2311,6 @@ await UserModel.destroy({where: {id :1}});</code></pre>
         Here User can exist without a Profile, but the vice versa is not possible.<br>
         This means, we will insert userId field to Profile model’s table.
       </p>
-
       <p>This is a user model with one profile.</p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
@@ -2313,6 +2321,7 @@ module.exports = class extends Model {
   /**
    * Associate the model.
    * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
    * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
    * 
    * @see https://sequelize.org/master/manual/assocs.html
@@ -2321,12 +2330,12 @@ module.exports = class extends Model {
     // User has one profile.
     const ProfileModel = require(&#039;./ProfileModel&#039;);
     this.hasOne(ProfileModel, {
-      foreignKey: &#039;userId&#039;,  // profile.userId
-      sourceKey: &#039;id&#039;        // user.id
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
     });
   }
 }</code></pre>
-
       <p>This is an example of a search that joins user and profile.</p>
       <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
@@ -2375,7 +2384,6 @@ await UserModel.findAll({
       <p><strong>Return:</strong></p>
       <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a>} One-to-one association.</p>
       <p><strong>Example:</strong></p>
-
       <p>
         For one-to-one association we will use two tables as an example they are User and Profile table.<br>
         User table has one Profile table and Profile table belongs to the User table.<br>
@@ -2387,7 +2395,6 @@ await UserModel.findAll({
         Here User can exist without a Profile, but the vice versa is not possible.<br>
         This means, we will insert userId field to Profile model’s table.
       </p>
-
       <p>This is a profile model that belongs to the user.</p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
@@ -2398,6 +2405,7 @@ module.exports = class extends Model {
   /**
    * Associate the model.
    * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
    * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
    * 
    * @see https://sequelize.org/master/manual/assocs.html
@@ -2406,12 +2414,12 @@ module.exports = class extends Model {
     // Profile belongs to one user.
     const UserModel = require(&#039;./UserModel&#039;);
     this.belongsTo(UserModel, {
-      foreignKey: &#039;userId&#039;, // profile.userId,
-      targetKey: &#039;id&#039;       // user.id
+      foreignKey: &#039;userId&#039;,  // profile.userId,
+      targetKey: &#039;id&#039;,  // user.id
+      as: &#039;user&#039;
     });
   }
 }</code></pre>
-
       <p>This is an example of a search that joins profile and user.</p>
       <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
 
@@ -2446,6 +2454,28 @@ await ProfileModel.findAll({
   }
 });</code></pre>
 
+      <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
+      <p>
+        Creates a 1:m association between this (the source) and the provided target.<br>
+        The foreign key is added on the target.<br>
+        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" target="_blank">reference</a> for details.
+      </p>
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{Model} target The target model.</li>
+        <li>{object} options hasMany association options.</li>
+      </ul>
+      <p><strong>Return:</strong></p>
+      <p>{<a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a>} One-to-many association.</p>
+      <p><strong>Example:</strong></p>
+      <p>
+        For one-to-many association we will use two tables as an example they are User and Comment table.<br>
+        User table has many Comment table and Comment table belongs to the User table.<br>
+        Here's the relation diagram for it.
+      </p>
+      <img class="mb-3" src="images/has-many.png" alt="has many relationship" width="361">
+
+
 
 
 
@@ -2455,10 +2485,6 @@ await ProfileModel.findAll({
       </p>
 
 
-      <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
-      <p>
-        Creates a 1:m association between this (the source) and the provided target.
-      </p>
 
       <!--end::Model class reference-->
     </div>
