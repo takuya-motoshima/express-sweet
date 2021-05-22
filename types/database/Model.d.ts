@@ -88,6 +88,7 @@ export default class Model extends sequelize.Model {
     /**
      * Associate the model.
      * Define associations with other models such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
+     * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
      * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
      *
      * @see https://sequelize.org/master/manual/assocs.html
