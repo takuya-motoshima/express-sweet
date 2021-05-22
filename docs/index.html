@@ -45,7 +45,6 @@
   <aside class="sidebar" id="sidebar">
     <nav class="sidenav align-items-start navbar navbar-light py-0" id="sidenav">
       <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
-
         <a class="nav-link" href="#getting-started">Getting started</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#introduction">Introduction</a></li>
@@ -53,7 +52,6 @@
           <a class="nav-link" href="#hello-world-example">Hello world example</a></li>
           <a class="nav-link" href="#express-sweet-app-generator">Express Sweet app generator</a></li>
         </nav>
-        
         <a class="nav-link" href="#configuration">Configuration</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#environment-configuration">Environment Configuration</a></li>
@@ -62,7 +60,6 @@
           <a class="nav-link" href="#authentication-configuration">Authentication configuration</a></li>
           <a class="nav-link" href="#database-configuration">Database configuration</a></li>
         </nav>
-
         <a class="nav-link" href="#routing">Routing</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#basic-routing">Basic Routing</a></li>
@@ -70,14 +67,12 @@
           <a class="nav-link" href="#default-route">Default Route</a></li>
           <a class="nav-link" href="#routing-methods">Routing methods</a></li>
         </nav>
-
         <a class="nav-link" href="#views">Views</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#view-syntax">Syntax</a></li>
           <a class="nav-link" href="#view-layout">Layouts</a></li>
           <a class="nav-link" href="#view-helper">Helpers</a></li>
         </nav>
-
         <a class="nav-link" href="#model">Model</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#model-introduction">Introduction</a></li>
@@ -87,11 +82,13 @@
           <a class="nav-link" href="#database-class-reference">Database class reference</a></li>
           <a class="nav-link" href="#model-class-reference">Model class reference</a></li>
         </nav>
-
-        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#user-authentication">User authentication</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#user-authentication-introduction">Introduction</a></li>
+          <a class="nav-link" href="#user-authentication-configuration">Configuration</a></li>
+          <a class="nav-link" href="#user-authentication-authenticating-users">Authenticating Users</a></li>
+          <a class="nav-link" href="#user-authentication-logging-out">Logging Out</a></li>
         </nav>
-
       </nav>
     </nav>
   </aside>
@@ -2654,6 +2651,33 @@ await UserModel.findAll({
     </div>
     <!--end::Model-->
 
+    <!--begin::User authentication-->
+    <div class="intro ps-lg-4">
+      <h1 class="title" id="model">User authentication</h1>
+      <p class="lead">
+        Models provide a way to interact with a specific table in your database.<br>
+        They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
+      </p>
+    </div>
+
+    <div class="bd-content ps-lg-4">
+      <!--begin::Introduction-->
+      <h2 id="user-authentication-introduction">Introduction</h2>
+      <!--end::Introduction-->
+
+      <!--begin::Configuration-->
+      <h2 id="user-authentication-configuration">Configuration</h2>
+      <!--end::Configuration-->
+
+      <!--begin::Authenticating Users-->
+      <h2 id="user-authentication-authenticating-users">Authenticating Users</h2>
+      <!--end::Authenticating Users-->
+
+      <!--begin::Logging Out-->
+      <h2 id="user-authentication-logging-out">Logging Out</h2>
+      <!--end::Logging Out-->
+    </div>
+    <!--end::User authentication-->
   </main>
 </div>
 
