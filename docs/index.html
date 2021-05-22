@@ -314,9 +314,10 @@ CREATE TABLE `user` (
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ukAccount1` (`email`)
+  UNIQUE KEY `ukUserEmail` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- User has one profile
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -326,9 +327,36 @@ CREATE TABLE `profile` (
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
-  CONSTRAINT `fkUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+  UNIQUE KEY `ukProfileUserId` (`userId`),
+  CONSTRAINT `fkProfileUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- User has many comments
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `text` text NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fkCommentUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Users and books have a many-to-many relationship
+DROP TABLE IF EXISTS `book`;
+CREATE TABLE `book` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `title` text NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukBookTitle` (`userId`, `title`(255)),
+  CONSTRAINT `fkBookUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Add sample user record
 INSERT INTO `user` (`id`, `email`, `password`, `name`) VALUES
   (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;),
   (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;),
@@ -339,6 +367,7 @@ INSERT INTO `user` (`id`, `email`, `password`, `name`) VALUES
   (7, &#039;melinda@example.com&#039;, &#039;password&#039;, &#039;Melinda&#039;),
   (8, &#039;harley@example.com&#039;, &#039;password&#039;, &#039;Harley&#039;);
 
+-- Add sample profile record
 INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
   (1, &#039;777 Brockton Avenue, Abington MA 2351&#039;, &#039;202-555-0105&#039;),
   (2, &#039;30 Memorial Drive, Avon MA 2322&#039;, &#039;&#039;),
@@ -347,7 +376,21 @@ INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
   (5, &#039;66-4 Parkhurst Rd, Chelmsford MA 1824&#039;, &#039;202-555-0154&#039;),
   (6, &#039;591 Memorial Dr, Chicopee MA 1020&#039;, &#039;202-555-0141&#039;),
   (7, &#039;55 Brooksby Village Way, Danvers MA 1923&#039;, &#039;202-555-0196&#039;),
-  (8, &#039;137 Teaticket Hwy, East Falmouth MA 2536&#039;, &#039;202-555-0167&#039;);</code></pre>
+  (8, &#039;137 Teaticket Hwy, East Falmouth MA 2536&#039;, &#039;202-555-0167&#039;);
+
+-- Add a sample user comment record
+INSERT INTO `comment` (`userId`, `text`) VALUES
+  (1, &#039;First comment from Robin&#039;),
+  (1, &#039;Second comment from Robin&#039;),
+  (2, &#039;First comment from Taylor&#039;);
+
+-- Add sample book record
+INSERT INTO `book` (`userId`, `title`) VALUES
+  (1, &#039;The Stars Tonight&#039;),
+  (1, &#039;A Guide to Courteous Thievery&#039;),
+  (1, &#039;The Sound of Light&#039;),
+  (2, &#039;The Stars Tonight&#039;),
+  (2, &#039;Why She Said Yes&#039;);</code></pre>
 
       <p>
         Next, you need to set how the database is connected.<br>
@@ -1878,7 +1921,10 @@ const isConnected = await database.isConnect();</code></pre>
             <td>public static</td>
             <td>
               <code><a href="#model-method-belongs-to-many">belongsToMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code>
-              <p class="description">Create an N:M association with a join table.</p>
+              <p class="description">
+                Create an N:M association with a join table.<br>
+                Defining through is required.
+              </p>
             </td>
           </tr>
         </tbody>
@@ -2541,15 +2587,20 @@ await UserModel.findAll({
   }
 });</code></pre>
 
-
-
-
       <h4 id="model-method-belongs-to-many"><code class="method">public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code></h4>
       <p>
         Create an N:M association with a join table.<br>
+        Defining through is required.<br>
+        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" target="_blank">reference</a> for details.
       </p>
-
-
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li>{Model} target The target model.</li>
+        <li>{object} options belongsToMany association options.</li>
+      </ul>
+      <p><strong>Return:</strong></p>
+      <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a>} Many-to-many association with a join table.</p>
+      <p><strong>Example:</strong></p>
 
       <!--end::Model class reference-->
     </div>
