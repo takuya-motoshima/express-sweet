@@ -539,8 +539,7 @@ if (isDevelopment) {
         The basic configuration file contains the following configuration values.
       </p>
 
-      <h3 class="config">env_path</h3>
-      <code>string</code>
+      <h3 class="config">env_path: string</h3>
       <p>
         The path to the environment configuration file (.env).<br>
         When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in <em class="code">&quot;process.env&quot;</em>.<br>
@@ -548,15 +547,13 @@ if (isDevelopment) {
         The default is <em class="code">&quot;.env&quot;</em>.
       </p>
 
-      <h3 class="config">cors_enabled</h3>
-      <code>boolean</code>
+      <h3 class="config">cors_enabled: boolean</h3>
       <p>
         Set to true to allow requests from another domain to the application.<br>
         The default is <em class="code">false</em>.
       </p>
 
-      <h3 class="config">max_body_size</h3>
-      <code>string</code>
+      <h3 class="config">max_body_size: string</h3>
       <p>
         Controls the maximum request body size.<br>
         If this is a number, then the value specifies the number of bytes.<br>
@@ -564,15 +561,13 @@ if (isDevelopment) {
         The default is <em class="code">&quot;100kb&quot;</em>.
       </p>
 
-      <h3 class="config">router_dir</h3>
-      <code>string</code>
+      <h3 class="config">router_dir: string</h3>
       <p>
         The directory path where the routes module is located.<br>
         The default is the <em class="code">&quot;routes&quot;</em> directory directly under the application root.
       </p>
 
-      <h3 class="config">default_router</h3>
-      <code>string</code>
+      <h3 class="config">default_router: string</h3>
       <p>
         Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<em class="code">/</em>) is requested.<br>
         For example, to specify a default route, set <em class="code">&quot;default_router&quot;</em> as follows.
@@ -600,38 +595,33 @@ module.exports = router;</code></pre>
         The view’s configuration file contains the following configuration values.
       </p>
 
-      <h3 class="config">views_dir</h3>
-      <code>string</code>
+      <h3 class="config">views_dir: string</h3>
       <p>
         The directory path where the view will be placed.<br>
         The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
       </p>
 
-      <h3 class="config">partials_dir</h3>
-      <code>string</code>
+      <h3 class="config">partials_dir: string</h3>
       <p>
         The directory path where the reusable templates are located.<br>
         The default is the <em class="code">&quot;views/partials&quot;</em> directory directly under the application root.<br>
         Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
       </p>
 
-      <h3 class="config">layouts_dir</h3>
-      <code>string</code>
+      <h3 class="config">layouts_dir: string</h3>
       <p>
         The directory path where the reusable base template is located.<br>
         The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
       </p>
 
-      <h3 class="config">default_layout</h3>
-      <code>string</code>
+      <h3 class="config">default_layout: string</h3>
       <p>
         The path to the layout file used by default.<br>
         The default is the <em class="code">&quot;views/layout/default.*&quot;</em> File directly under the application root.<br>
         The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
       </p>
  
-      <h3 class="config">extension</h3>
-      <code>string</code>
+      <h3 class="config">extension: string</h3>
       <p>
         Extension for templates and partials files.<br>
         The default is <em class="code">&quot;.hbs&quot;</em>.
@@ -645,44 +635,38 @@ module.exports = router;</code></pre>
         The user authentication configuration file contains the following configuration values.
       </p>
 
-      <h3 class="config">enabled</h3>
-      <code>boolean</code>
+      <h3 class="config">enabled: boolean</h3>
       <p>
         Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
         User authentication is enabled (<em class="code">true</em>) by default.
       </p>
 
-      <h3 class="config">username</h3>
-      <code>string</code>
+      <h3 class="config">username: string</h3>
       <p>
         The login username field name used for authentication.<br>
         This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
       </p>
 
-      <h3 class="config">password</h3>
-      <code>string</code>
+      <h3 class="config">password: string</h3>
       <p>
         The login password field name used for authentication.<br>
         This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
       </p>
 
-      <h3 class="config">success_redirect</h3>
-      <code>string</code>
+      <h3 class="config">success_redirect: string</h3>
       <p>
         The URL to redirect to after successful authentication.<br>
         The default is the root URL (<em class="code">/</em>).
       </p>
 
-      <h3 class="config">failure_redirect</h3>
-      <code>string</code>
+      <h3 class="config">failure_redirect: string</h3>
       <p>
         Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
         This usually specifies the URL of the login page.<br>
         The default is <em class="code">&quot;/login&quot;</em>.
       </p>
 
-      <h3 class="config">model</h3>
-      <code>express-sweet.database.Model</code>
+      <h3 class="config">model: express-sweet.database.Model</h3>
       <p>
         A model class for the table that stores the users to authenticate.<br>
         This should be a subclass that inherits from Express Sweet’s <em class="code">&quot;database.Model&quot;</em> class.
@@ -736,8 +720,7 @@ module.exports = {
 
       <p>Now, Express Sweet automatically accesses the <em class="code">&quot;user&quot;</em> table at the time of authentication and performs the authentication process.</p>
 
-      <h3 class="config">allow_unauthenticated</h3>
-      <code>string[]</code>
+      <h3 class="config">allow_unauthenticated: string[]</h3>
       <p>
         By default, it requires an authenticated user for all requests.<br>
         You can use the <em class="code">&quot;allow_unauthenticated&quot;</em> option to disable this behavior on certain requests.
@@ -748,8 +731,7 @@ module.exports = {
   &#039;/api&#039;
 ]</code></pre>
 
-      <h3 class="config">expiration</h3>
-      <code>number</code>
+      <h3 class="config">expiration: number</h3>
       <p>
         Specifies the time, in milliseconds, before the session expires.<br>
         The default is 24 hours (<em class="code">86400000</em> milliseconds).
@@ -767,41 +749,34 @@ module.exports = {
         For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s API reference&quot;</a>.
       </div>
 
-      <h3 class="config">username</h3>
-      <code>string</code>
+      <h3 class="config">username: string</h3>
       <p>The username which is used to authenticate against the database.</p>
 
-      <h3 class="config">password</h3>
-      <code>string|null</code>
+      <h3 class="config">password: string|null</h3>
       <p>
         The password which is used to authenticate against the database.<br>
         The default is no password (<em class="code">null</em>).
       </p>
 
-      <h3 class="config">database</h3>
-      <code>string</code>
+      <h3 class="config">database: string</h3>
       <p>The name of the database.</p>
 
-      <h3 class="config">host</h3>
-      <code>string</code>
+      <h3 class="config">host: string</h3>
       <p>The host of the relational database.</p>
 
-      <h3 class="config">port</h3>
-      <code>string</code>
+      <h3 class="config">port: string</h3>
       <p>
         The port of the relational database.<br>
         The default is automatic selection (<em class="code">null</em>).
       </p>
 
-      <h3 class="config">dialect</h3>
-      <code>string</code>
+      <h3 class="config">dialect: string</h3>
       <p>
         The dialect of the database you are connecting to.<br>
         One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
       </p>
 
-      <h3 class="config">logging</h3>
-      <code>boolean</code>
+      <h3 class="config">logging: boolean</h3>
       <p>
         Set true to output the executed query etc. to the log.<br>
         The default is no log output (<em class="code">false</em>).
