@@ -2357,7 +2357,7 @@ await UserModel.destroy({where: {id :1}});</code></pre>
         Here User can exist without a Profile, but the vice versa is not possible.<br>
         This means, we will insert userId field to Profile model’s table.
       </p>
-      <p>This is a user model with one profile.</p>
+      <p>This is a user model that defines an association in which the user has one profile.</p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
@@ -2382,7 +2382,7 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
-      <p>This is an example of a search that joins user and profile.</p>
+      <p>This is an example of record search.</p>
       <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SQL: SELECT
@@ -2441,7 +2441,7 @@ await UserModel.findAll({
         Here User can exist without a Profile, but the vice versa is not possible.<br>
         This means, we will insert userId field to Profile model’s table.
       </p>
-      <p>This is a profile model that belongs to the user.</p>
+      <p>This is a profile model that defines an association whose profile belongs to one user.</p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
@@ -2466,7 +2466,7 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
-      <p>This is an example of a search that joins profile and user.</p>
+      <p>This is an example of record search.</p>
       <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
 
 // SQL: SELECT
@@ -2525,7 +2525,7 @@ await ProfileModel.findAll({
         Here user and comments share a one to many relationship.<br>
         Each user can make multiple comments while each comment is associated with only a single user.
       </p>
-      <p>This is a user model has many comments.</p>
+      <p>This is a user model that defines an association in which the user has many comments.</p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
@@ -2550,7 +2550,7 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
-      <p>This is an example of a search that joins users and comments.</p>
+      <p>This is an example of record search.</p>
       <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SQL: SELECT
@@ -2601,6 +2601,79 @@ await UserModel.findAll({
       <p><strong>Return:</strong></p>
       <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a>} Many-to-many association with a join table.</p>
       <p><strong>Example:</strong></p>
+      <p>
+        For many-to-many association we will use two tables as an example they are User and Book table.<br>
+        User is marking down Books that he has read. Each user can mark as many books as they want, creating a many to many association between User and Books.<br>
+        Books can belong to many users.<br>
+        Here's the relation diagram for it.
+      </p>
+      <img class="mb-3" src="images/belongs-to-many.png" alt="belongs to many relationship" width="361">
+      <p>
+        The BlongsToMany put the association key in the target model.<br>
+        Here user and book share a many to many relationship.<br>
+        Each user can make multiple books, and each book can be associated with multiple users.
+      </p>
+      <p>This is a user model that defines an association where users and books have a many-to-many relationship.</p>
+      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+     // Users have many books, and books belong to many users.
+    const BookModel = require(&#039;./BookModel&#039;);
+    this.hasMany(BookModel, {
+      foreignKey: &#039;userId&#039;,  // book.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;books&#039;
+    });
+  }
+}</code></pre>
+      <p>This is an example of record search.</p>
+      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `books`.`id` AS `books.id`,
+//        `books`.`userId` AS `books.userId`,
+//        `books`.`title` AS `books.title`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `book` AS `books` ON `user`.`id` = `books`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;books&quot;: [
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;title&quot;: &quot;The Stars Tonight&quot;
+//               },
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;title&quot;: &quot;A Guide to Courteous Thievery&quot;
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;books&#039;,
+    attributes: [&#039;userId&#039;, &#039;title&#039;]
+  }
+});</code></pre>
 
       <!--end::Model class reference-->
     </div>
