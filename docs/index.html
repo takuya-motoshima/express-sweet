@@ -96,110 +96,106 @@
   </aside>
   <div class="sidebar-overlay"></div>
 
-  <main class="main order-1">
+  <main class="main order-1 ps-lg-4">
 
     <!--begin::Getting started-->
-    <div class="intro ps-lg-4">
-      <h1 class="title" id="getting-started">Getting started</h1>
-      <!-- <p class="lead"></p> -->
-    </div>
+    <h1 class="title" id="getting-started">Getting started</h1>
 
-    <div class="content ps-lg-4">
-      <!--begin::Introduction-->
-      <h2 id="started-introduction">Introduction</h2>
-      <p>
-        Extend Express functionality with Express Sweet and start developing fast, minimal web applications.
-        The package elements that make up this extension.<br>
-        In addition, some packages have been customized to make them easier for developers to use.
-      </p>
+    <!--begin::Introduction-->
+    <h2 id="started-introduction">Introduction</h2>
+    <p>
+      Extend Express functionality with Express Sweet and start developing fast, minimal web applications.
+      The package elements that make up this extension.<br>
+      In addition, some packages have been customized to make them easier for developers to use.
+    </p>
 
-      <div class="row g-3">
+    <div class="row g-3">
 
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Framework</strong>
-            <span class="text-secondary">
-              The framework uses <a href="https://expressjs.com/" target="_blank">Expess v4</a>.<br>
-              Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
-            </span>
-          </div>
-
-        </div>
-        
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Model</strong>
-            <span class="text-secondary">
-              The model uses <a href="https://sequelize.org/master/" target="_blank">Sequelize v6</a>.<br>
-              Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>
-              It features solid transaction support, relations, eager and lazy loading, read replication and more.
-            </span>
-          </div>
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Framework</strong>
+          <span class="text-secondary">
+            The framework uses <a href="https://expressjs.com/" target="_blank">Expess v4</a>.<br>
+            Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+          </span>
         </div>
 
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">View</strong>
-            <span class="text-secondary">
-              The view template engine uses <a href="https://handlebarsjs.com/" target="_blank">Handlebars v4</a>.<br>
-              Handlebars is a simple templating language.<br>
-              It uses a template and an input object to generate HTML or other text formats.<br>
-              Handlebars templates look like regular text with embedded Handlebars expressions.
-            </span>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">User authentication</strong>
-            <span class="text-secondary">
-              User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
-              Passport is Express-compatible authentication middleware for Node.js.
-            </span>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Service</strong>
-            <span class="text-secondary">Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.</span>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Utils</strong>
-            <span class="text-secondary">With Express Sweet, you can quickly use a variety of generic utility classes.</span>
-          </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Model</strong>
+          <span class="text-secondary">
+            The model uses <a href="https://sequelize.org/master/" target="_blank">Sequelize v6</a>.<br>
+            Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>
+            It features solid transaction support, relations, eager and lazy loading, read replication and more.
+          </span>
         </div>
       </div>
-      <!--end::Introduction-->
 
-      <!--begin::Installation-->
-      <h2 id="started-installation">Installation</h2>
-      <p>Assuming you’ve already installed <a href="https://nodejs.org/" target="_blank">Node.js</a>, create a directory to hold your application, and make that your working directory.</p>
-      <pre><code class="bash">mkdir myapp;
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">View</strong>
+          <span class="text-secondary">
+            The view template engine uses <a href="https://handlebarsjs.com/" target="_blank">Handlebars v4</a>.<br>
+            Handlebars is a simple templating language.<br>
+            It uses a template and an input object to generate HTML or other text formats.<br>
+            Handlebars templates look like regular text with embedded Handlebars expressions.
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">User authentication</strong>
+          <span class="text-secondary">
+            User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
+            Passport is Express-compatible authentication middleware for Node.js.
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Service</strong>
+          <span class="text-secondary">Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Utils</strong>
+          <span class="text-secondary">With Express Sweet, you can quickly use a variety of generic utility classes.</span>
+        </div>
+      </div>
+    </div>
+    <!--end::Introduction-->
+
+    <!--begin::Installation-->
+    <h2 id="started-installation">Installation</h2>
+    <p>Assuming you’ve already installed <a href="https://nodejs.org/" target="_blank">Node.js</a>, create a directory to hold your application, and make that your working directory.</p>
+    <pre><code class="bash">mkdir myapp;
 cd myapp;</code></pre>
 
-      <p>
-        Use the <em class="code">&quot;npm init&quot;</em> command to create a <em class="code">&quot;package.json&quot;</em> file for your application.<br>
-        For more information on how <em class="code">&quot;package.json&quot;</em> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">&quot;Specifics of npm’s package.json handling&quot;</a>.
-      </p>
-      <pre><code class="bash">npm init;</code></pre>
+    <p>
+      Use the <em class="code">&quot;npm init&quot;</em> command to create a <em class="code">&quot;package.json&quot;</em> file for your application.<br>
+      For more information on how <em class="code">&quot;package.json&quot;</em> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">&quot;Specifics of npm’s package.json handling&quot;</a>.
+    </p>
+    <pre><code class="bash">npm init;</code></pre>
 
-      <p>
-        This command prompts you for a number of things, such as the name and version of your application.<br>
-        For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.
-      </p>
-      <pre><code class="bash">entry point: (index.js)</code></pre>
+    <p>
+      This command prompts you for a number of things, such as the name and version of your application.<br>
+      For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.
+    </p>
+    <pre><code class="bash">entry point: (index.js)</code></pre>
 
-      <p>
-        Enter <em class="code">&quot;app.js&quot;</em>, or whatever you want the name of the main file to be.<br>
-        If you want it to be <em class="code">&quot;index.js&quot;</em>, hit RETURN to accept the suggested default file name.
-      </p>
+    <p>
+      Enter <em class="code">&quot;app.js&quot;</em>, or whatever you want the name of the main file to be.<br>
+      If you want it to be <em class="code">&quot;index.js&quot;</em>, hit RETURN to accept the suggested default file name.
+    </p>
 
-      <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list.</p>
-      <pre><code class="bash">npm i express-sweet \
+    <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list.</p>
+    <pre><code class="bash">npm i express-sweet \
       express \
       express-hbs \
       express-session \
@@ -207,11 +203,11 @@ cd myapp;</code></pre>
       passport \
       passport-local \
       aws-sdk;</code></pre>
-      <!--end::Installation-->
+    <!--end::Installation-->
 
-      <!--begin::Hello world example-->
-      <h2 id="started-example">Hello world example</h2>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <!--begin::Hello world example-->
+    <h2 id="started-example">Hello world example</h2>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const sweet = require(&#039;express-sweet&#039;);
 const port = 3000;
 
@@ -234,34 +230,34 @@ app.listen(port, () =&gt; {
   console.log(`Example app listening at http://localhost:${port}`);
 });</code></pre>
 
-      <p>
-        This app starts a server and listens on port 3000 for connections.<br>
-        The app responds with &quot;Hello World!&quot; for requests to the root URL (<em class="code">/</em>) or <em>route</em>.<br>
-        For every other path, it will respond with a <strong>404 Not Found</strong>.
-      </p>
+    <p>
+      This app starts a server and listens on port 3000 for connections.<br>
+      The app responds with &quot;Hello World!&quot; for requests to the root URL (<em class="code">/</em>) or <em>route</em>.<br>
+      For every other path, it will respond with a <strong>404 Not Found</strong>.
+    </p>
 
-      <h3>Running Locally</h3>
+    <h3>Running Locally</h3>
 
-      <p>
-        First create a directory named <em class="code">&quot;myapp&quot;</em>, change to it and run <em class="code">&quot;npm init&quot;</em>.<br>
-        Then install <em class="code">&quot;express&quot;</em> as a dependency, as per the <a href="#started-installation">installation guide</a>.
-      </p>
-      <p>In the <em class="code">&quot;myapp&quot;</em> directory, create a file named <em class="code">&quot;app.js&quot;</em> and copy in the code from the example above.</p>
+    <p>
+      First create a directory named <em class="code">&quot;myapp&quot;</em>, change to it and run <em class="code">&quot;npm init&quot;</em>.<br>
+      Then install <em class="code">&quot;express&quot;</em> as a dependency, as per the <a href="#started-installation">installation guide</a>.
+    </p>
+    <p>In the <em class="code">&quot;myapp&quot;</em> directory, create a file named <em class="code">&quot;app.js&quot;</em> and copy in the code from the example above.</p>
 
-      <p>Run the app with the following command.</p>
-      <pre><code class="bash">node app.js;</code></pre>
-      <p>Then, load <em class="code">&quot;http://localhost:3000/&quot;</em> in a browser to see the output.</p>
-      <!--end::Hello world example-->
+    <p>Run the app with the following command.</p>
+    <pre><code class="bash">node app.js;</code></pre>
+    <p>Then, load <em class="code">&quot;http://localhost:3000/&quot;</em> in a browser to see the output.</p>
+    <!--end::Hello world example-->
 
-      <!--begin::Express Sweet app generator-->
-      <h2 id="started-generator">Express Sweet app generator</h2>
-      <p>Use the application generator tool, <em class="code">&quot;express-sweet-generator&quot;</em>, to quickly create an application skeleton.</p>
-      <p>Install the application generator as a global npm package and then launch it.</p>
-      <pre><code class="bash">npm install -g express-sweet-generator;
+    <!--begin::Express Sweet app generator-->
+    <h2 id="started-generator">Express Sweet app generator</h2>
+    <p>Use the application generator tool, <em class="code">&quot;express-sweet-generator&quot;</em>, to quickly create an application skeleton.</p>
+    <p>Install the application generator as a global npm package and then launch it.</p>
+    <pre><code class="bash">npm install -g express-sweet-generator;
 express-sweet;</code></pre>
       
-      <p>Display the command options with the <em class="code">&quot;-h&quot;</em> option.</p>
-      <pre><code class="bash">express-sweet -h;
+    <p>Display the command options with the <em class="code">&quot;-h&quot;</em> option.</p>
+    <pre><code class="bash">express-sweet -h;
 
   Usage: express-sweet [options] [dir]
 
@@ -272,11 +268,11 @@ express-sweet;</code></pre>
     -f, --force        force on non-empty directory
     -h, --help         output usage information</code></pre>
 
-      <p>
-        For example, the following creates an Express app named <em class="code">&quot;myapp&quot;</em>.<br>
-        The app will be created in a folder named <em class="code">&quot;myapp&quot;</em> in the current working directory.
-      </p>
-      <pre><code class="bash">express-sweet myapp
+    <p>
+      For example, the following creates an Express app named <em class="code">&quot;myapp&quot;</em>.<br>
+      The app will be created in a folder named <em class="code">&quot;myapp&quot;</em> in the current working directory.
+    </p>
+    <pre><code class="bash">express-sweet myapp
 
    create : myapp/bin/www
    create : myapp/ecosystem.config.js
@@ -292,15 +288,15 @@ express-sweet;</code></pre>
    run the app:
      $ DEBUG=myapp:* npm start</code></pre>
 
-      <p>Then install dependencies.</p>
-      <pre><code class="bash">cd myapp;
+    <p>Then install dependencies.</p>
+    <pre><code class="bash">cd myapp;
 npm install;</code></pre>
 
-      <p>
-        This sample application uses a database.<br>
-        Execute the following SQL to create the database.
-      </p>
-      <pre><code class="sql">CREATE DATABASE IF NOT EXISTS `example` DEFAULT CHARACTER SET utf8mb4;
+    <p>
+      This sample application uses a database.<br>
+      Execute the following SQL to create the database.
+    </p>
+    <pre><code class="sql">CREATE DATABASE IF NOT EXISTS `example` DEFAULT CHARACTER SET utf8mb4;
 
 USE `example`;
 
@@ -391,13 +387,13 @@ INSERT INTO `book` (`userId`, `title`) VALUES
   (2, &#039;The Stars Tonight&#039;),
   (2, &#039;Why She Said Yes&#039;);</code></pre>
 
-      <p>
-        Next, you need to set how the database is connected.<br>
-        The database connection method can be set in <em class="code">&quot;config/database.js&quot;</em>, so change it according to your environment.<br>
-        See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">&quot;Sequelize’s configuration&quot;</a> for details on configuration items.
-      </p>
-      <pre><code class="js">/**
- * DB connection options.
+    <p>
+      Next, you need to set how the database is connected.<br>
+      The database connection method can be set in <em class="code">&quot;config/database.js&quot;</em>, so change it according to your environment.<br>
+      See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">&quot;Sequelize’s configuration&quot;</a> for details on configuration items.
+    </p>
+    <pre><code class="js">/**
+ * Database configuration.
  */
 module.exports = {
   development: {
@@ -423,30 +419,30 @@ module.exports = {
   }
 }</code></pre>
 
-      <p>
-        The DB to be used can be defined individually for each environment.<br>
-        Specify the environment in the <em class="code">&quot;.env&quot;</em> file.
-      </p>
-      <pre><code class="ini">NODE_ENV=development</code></pre>
+    <p>
+      The DB to be used can be defined individually for each environment.<br>
+      Specify the environment in the <em class="code">&quot;.env&quot;</em> file.
+    </p>
+    <pre><code class="ini">NODE_ENV=development</code></pre>
 
-      <p>On MacOS or Linux, run the app with this command.</p>
-      <pre><code class="bash">DEBUG=myapp:* npm start;</code></pre>
+    <p>On MacOS or Linux, run the app with this command.</p>
+    <pre><code class="bash">DEBUG=myapp:* npm start;</code></pre>
 
-      <p>On Windows Command Prompt, use this command.</p>
-      <pre><code class="bash">set DEBUG=myapp:* &amp; npm start;</code></pre>
+    <p>On Windows Command Prompt, use this command.</p>
+    <pre><code class="bash">set DEBUG=myapp:* &amp; npm start;</code></pre>
 
-      <p>On Windows PowerShell, use this command.</p>
-      <pre><code class="bash">$env:DEBUG=&#039;myapp:*&#039;; npm start;</code></pre>
+    <p>On Windows PowerShell, use this command.</p>
+    <pre><code class="bash">$env:DEBUG=&#039;myapp:*&#039;; npm start;</code></pre>
 
-      <p>
-        Then load <em class="code">&quot;http://localhost:3000/&quot;</em> in your browser to access the app.<br>
-        and you should be greeted by the following page.
-      </p>
+    <p>
+      Then load <em class="code">&quot;http://localhost:3000/&quot;</em> in your browser to access the app.<br>
+      and you should be greeted by the following page.
+    </p>
 
-      <img class="img-fluid mb-5 mx-auto shadow" src="images/login.png" alt="Login page" height="500">
+    <img class="img-fluid mb-5 mx-auto shadow" src="images/login.png" alt="Login page" height="500">
 
-      <p>The generated app has the following directory structure.</p>
-      <pre><code class="bash">.
+    <p>The generated app has the following directory structure.</p>
+    <pre><code class="bash">.
 ├── app.js
 ├── bin
 │   └── www
@@ -494,89 +490,106 @@ module.exports = {
     ├── partials
     ├── user.hbs
     └── users.hbs</code></pre>
-
     <!--end::Express Sweet app generator-->
-
-    </div>
     <!--end::Getting started-->
 
     <!--begin::Configuration-->
-    <div class="intro ps-lg-4">
-      <h1 class="title" id="configuration">Configuration</h1>
-    </div>
+    <h1 class="title" id="configuration">Configuration</h1>
 
-    <div class="bd-content ps-lg-4">
+    <!--begin::Environment Configuration-->
+    <h2 id="configuration-environment">Environment Configuration</h2>
+    <p>
+      It is often helpful to have different configuration values based on the environment where the application is running.<br>
+      For example, you may want to use a different database than the one used on the production server.<br>
+      To make this a cinch, Express Sweet utilizes the <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> library.<br>
+      Express Sweet automatically loads the <em class="code">&quot;.env&quot;</em> file located in the root directory when the application starts and saves the loaded value in <em class="code">&quot;process.env&quot;</em>.
+    </p>
 
-      <!--begin::Environment Configuration-->
-      <h2 id="configuration-environment">Environment Configuration</h2>
-      <p>
-        It is often helpful to have different configuration values based on the environment where the application is running.<br>
-        For example, you may want to use a different database than the one used on the production server.<br>
-        To make this a cinch, Express Sweet utilizes the <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> library.<br>
-        Express Sweet automatically loads the <em class="code">&quot;.env&quot;</em> file located in the root directory when the application starts and saves the loaded value in <em class="code">&quot;process.env&quot;</em>.
-      </p>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">NODE_ENV</td>
+          <td class="w-100">
+            <em class="code">NODE_ENV</em> is an environment variable made popular by the express web server framework.<br>
+            When a node application is run, it can check the value of the environment variable and do different things based on the value.<br>
+            <em class="code">NODE_ENV</em> specifically is used (by convention) to state whether a particular environment is a production or a development environment.<br>
+            A common use-case is running additional debugging or logging code if running in a development environment.
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3 class="config">NODE_ENV</h3>
-      <p>
-        <em class="code">NODE_ENV</em> is an environment variable made popular by the express web server framework.<br>
-        When a node application is run, it can check the value of the environment variable and do different things based on the value.<br>
-        <em class="code">NODE_ENV</em> specifically is used (by convention) to state whether a particular environment is a production or a development environment.<br>
-        A common use-case is running additional debugging or logging code if running in a development environment.
-      </p>
-
-      <p>You can access the environment variables yourself and perform your own checks and logic, as in the following example.</p>
-      <pre><code class="js">const environment = process.env.NODE_ENV;
+    <h3>Example</h3>
+    <p>You can access the environment variables yourself and perform your own checks and logic, as in the following example.</p>
+    <pre><code class="js">const environment = process.env.NODE_ENV;
 const isDevelopment = environment === &#039;development&#039;
 if (isDevelopment) {
   // For development environment.
 }</code></pre>
 
-      <!--begin::Basic configuration-->
-      <h2 id="configuration-basic">Basic configuration</h2>
-      <p>
-        The basic configuration of Express Sweet is defined in the <em class="code">&quot;config/config.js&quot;</em> file.<br>
-        The basic configuration file contains the following configuration values.
-      </p>
+    <!--begin::Basic configuration-->
+    <h2 id="configuration-basic">Basic configuration</h2>
+    <p>
+      The basic configuration of Express Sweet is defined in the <em class="code">&quot;config/config.js&quot;</em> file.<br>
+      The basic configuration file contains the following configuration values.
+    </p>
 
-      <h3 class="config">env_path: string</h3>
-      <p>
-        The path to the environment configuration file (.env).<br>
-        When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in <em class="code">&quot;process.env&quot;</em>.<br>
-        If the file does not exist or is not specified (undefined), the environment configuration file will not be read.<br>
-        The default is <em class="code">&quot;.env&quot;</em>.
-      </p>
-
-      <h3 class="config">cors_enabled: boolean</h3>
-      <p>
-        Set to true to allow requests from another domain to the application.<br>
-        The default is <em class="code">false</em>.
-      </p>
-
-      <h3 class="config">max_body_size: string</h3>
-      <p>
-        Controls the maximum request body size.<br>
-        If this is a number, then the value specifies the number of bytes.<br>
-        if it is a string, the value is passed to the <a href="https://www.npmjs.com/package/bytes" target="_blank">bytes library</a> for parsing.<br>
-        The default is <em class="code">&quot;100kb&quot;</em>.
-      </p>
-
-      <h3 class="config">router_dir: string</h3>
-      <p>
-        The directory path where the routes module is located.<br>
-        The default is the <em class="code">&quot;routes&quot;</em> directory directly under the application root.
-      </p>
-
-      <h3 class="config">default_router: string</h3>
-      <p>
-        Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<em class="code">/</em>) is requested.<br>
-        For example, to specify a default route, set <em class="code">&quot;default_router&quot;</em> as follows.
-      </p>
-      <pre><code class="js">default_router: &#039;/blog&#039;</code></pre>
-      <p>
-        Where blog is the name of the router module you want used.<br>
-        Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
-      </p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">env_path: string</td>
+          <td class="w-100">
+            The path to the environment configuration file (.env).<br>
+            When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in <em class="code">&quot;process.env&quot;</em>.<br>
+            If the file does not exist or is not specified (undefined), the environment configuration file will not be read.<br>
+            The default is <em class="code">&quot;.env&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">cors_enabled: boolean</td>
+          <td class="w-100">
+            Set to true to allow requests from another domain to the application.<br>
+            The default is <em class="code">false</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">max_body_size: string</td>
+          <td class="w-100">
+            Controls the maximum request body size.<br>
+            If this is a number, then the value specifies the number of bytes.<br>
+            if it is a string, the value is passed to the <a href="https://www.npmjs.com/package/bytes" target="_blank">bytes library</a> for parsing.<br>
+            The default is <em class="code">&quot;100kb&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">router_dir: string</td>
+          <td class="w-100">
+            The directory path where the routes module is located.<br>
+            The default is the <em class="code">&quot;routes&quot;</em> directory directly under the application root.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">default_router: string</td>
+          <td class="w-100">
+            Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<em class="code">/</em>) is requested.<br>
+            For example, to specify a default route, set <em class="code">&quot;default_router&quot;</em> as follows.<br>
+            Where blog is the name of the router module you want used.<br>
+            Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
+            <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, (req, res) =&gt; {
@@ -584,94 +597,207 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
-      <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
-      <!--end::Basic configuration-->
+            Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <!--begin::View’s configuration-->
-      <h2 id="configuration-views">View’s configuration</h2>
-      <p>
-        The view (template engine) configuration is defined in the <em class="code">&quot;config/view.js&quot;</em> file.<br>
-        The view’s configuration file contains the following configuration values.
-      </p>
+    <h3>Example</h3>
+    <p>config/config.js:</p>
+    <pre><code class="js">const path = require(&#039;path&#039;);
 
-      <h3 class="config">views_dir: string</h3>
-      <p>
-        The directory path where the view will be placed.<br>
-        The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
-      </p>
+/**
+ * Express Sweet basic configuration interface.
+ */
+module.exports = {
+  /**
+   * Environment variable file (.env) path, defaults to none (undefined).
+   * @type {string}
+   */
+  env_path: &#039;.env&#039;,
 
-      <h3 class="config">partials_dir: string</h3>
-      <p>
-        The directory path where the reusable templates are located.<br>
-        The default is the <em class="code">&quot;views/partials&quot;</em> directory directly under the application root.<br>
-        Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
-      </p>
+  /**
+   * CORS permission, defaults to invalid (false).
+   * @type {{enabled: boolean}}
+   */
+  cors_enabled: true,
 
-      <h3 class="config">layouts_dir: string</h3>
-      <p>
-        The directory path where the reusable base template is located.<br>
-        The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
-      </p>
+  /**
+   * Maximum body size you can request, defaults to `100kb`.
+   * @type {string|number}
+   */
+  max_body_size: &#039;100kb&#039;,
 
-      <h3 class="config">default_layout: string</h3>
-      <p>
-        The path to the layout file used by default.<br>
-        The default is the <em class="code">&quot;views/layout/default.*&quot;</em> File directly under the application root.<br>
-        The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
-      </p>
- 
-      <h3 class="config">extension: string</h3>
-      <p>
-        Extension for templates and partials files.<br>
-        The default is <em class="code">&quot;.hbs&quot;</em>.
-      </p>
-      <!--end::View’s configuration-->
+  /**
+   * Absolute path to the router directory, defaults to `&lt;application root directory&gt;/routes`.
+   * @type {string}
+   */
+  router_dir: path.join(process.cwd(), &#039;routes&#039;),
 
-      <!--begin::Authentication configuration-->
-      <h2 id="configuration-authentication">Authentication configuration</h2>
-      <p>
-        The user authentication configuration is defined in the <em class="code">&quot;config/authentication.js&quot;</em> file.<br>
-        The user authentication configuration file contains the following configuration values.
-      </p>
+  /**
+   * The endpoint to run when the root URL is requested, defaults to none (undefined).
+   * @type {string}
+   */
+  default_router: &#039;/blog&#039;
+}</code></pre>
+    <!--end::Basic configuration-->
 
-      <h3 class="config">enabled: boolean</h3>
-      <p>
-        Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
-        User authentication is enabled (<em class="code">true</em>) by default.
-      </p>
+    <!--begin::View’s configuration-->
+    <h2 id="configuration-views">View’s configuration</h2>
+    <p>
+      The view (template engine) configuration is defined in the <em class="code">&quot;config/view.js&quot;</em> file.<br>
+      The view’s configuration file contains the following configuration values.
+    </p>
 
-      <h3 class="config">username: string</h3>
-      <p>
-        The login username field name used for authentication.<br>
-        This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
-      </p>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">views_dir: string</td>
+          <td class="w-100">
+            The directory path where the view will be placed.<br>
+            The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">partials_dir: string</td>
+          <td class="w-100">
+            The directory path where the reusable templates are located.<br>
+            The default is the <em class="code">&quot;views/partials&quot;</em> directory directly under the application root.<br>
+            Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">layouts_dir: string</td>
+          <td class="w-100">
+            The directory path where the reusable base template is located.<br>
+            The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">default_layout: string</td>
+          <td class="w-100">
+            The path to the layout file used by default.<br>
+            The default is the <em class="code">&quot;views/layout/default.*&quot;</em> File directly under the application root.<br>
+            The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">extension: string</td>
+          <td class="w-100">
+            Extension for templates and partials files.<br>
+            The default is <em class="code">&quot;.hbs&quot;</em>.
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3 class="config">password: string</h3>
-      <p>
-        The login password field name used for authentication.<br>
-        This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
-      </p>
+    <h3>Example</h3>
+    <p>config/view.js:</p>
+    <pre><code class="js">const path = require(&#039;path&#039;);
 
-      <h3 class="config">success_redirect: string</h3>
-      <p>
-        The URL to redirect to after successful authentication.<br>
-        The default is the root URL (<em class="code">/</em>).
-      </p>
+/**
+ * View&#039;s configuration interface.
+ */
+module.exports = {
+  /**
+   * Absolute path to the directory where the view files are located, defaults to `&lt;application root directory&gt;/views`.
+   * @type {string}
+   */
+  views_dir: path.join(process.cwd(), &#039;views&#039;),
 
-      <h3 class="config">failure_redirect: string</h3>
-      <p>
-        Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
-        This usually specifies the URL of the login page.<br>
-        The default is <em class="code">&quot;/login&quot;</em>.
-      </p>
+  /**
+   * Path to partials templates, one or several directories, defaults to `&lt;application root directory&gt;/views/partials`.
+   * @type {string|string[]}
+   */
+  partials_dir: path.join(process.cwd(), &#039;views/partials&#039;),
 
-      <h3 class="config">model: express-sweet.database.Model</h3>
-      <p>
-        A model class for the table that stores the users to authenticate.<br>
-        This should be a subclass that inherits from Express Sweet’s <em class="code">&quot;database.Model&quot;</em> class.
-      </p>
-      <p>For example, when there is user information to authenticate in the <em class="code">&quot;user&quot;</em> table, create <em class="code">&quot;models/UserModel.js&quot;</em>.</p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+  /**
+   * Path to layout templates, defaults to `&lt;application root directory&gt;/views/layout`.
+   * @type {string}
+   */
+  layouts_dir: path.join(process.cwd(), &#039;views/layout&#039;),
+
+  /**
+   * Absolute path to default layout template. defaults to `&lt;application root directory&gt;/views/layout/default.hbs`.
+   * @type {string}
+   */
+  default_layout: path.join(process.cwd(), &#039;views/layout/default.hbs&#039;),
+
+  /**
+   * Extension for templates &amp; partials, defaults to `.hbs`,
+   * @type {string}
+   */
+  extension: &#039;.hbs&#039;
+}</code></pre>
+    <!--end::View’s configuration-->
+
+    <!--begin::Authentication configuration-->
+    <h2 id="configuration-authentication">Authentication configuration</h2>
+    <p>
+      The user authentication configuration is defined in the <em class="code">&quot;config/authentication.js&quot;</em> file.<br>
+      The user authentication configuration file contains the following configuration values.
+    </p>
+
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">enabled: boolean</td>
+          <td class="w-100">
+            Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
+            User authentication is enabled (<em class="code">true</em>) by default.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">username: string</td>
+          <td class="w-100">
+            The login username field name used for authentication.<br>
+            This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">password: string</td>
+          <td class="w-100">
+            The login password field name used for authentication.<br>
+            This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">success_redirect: string</td>
+          <td class="w-100">
+            The URL to redirect to after successful authentication.<br>
+            The default is the root URL (<em class="code">/</em>).
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">failure_redirect: string</td>
+          <td class="w-100">
+            Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
+            This usually specifies the URL of the login page.<br>
+            The default is <em class="code">&quot;/login&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">model: express-sweet.database.Model</td>
+          <td class="w-100">
+            A model class for the table that stores the users to authenticate.<br>
+            This should be a subclass that inherits from Express Sweet’s <em class="code">&quot;database.Model&quot;</em> class.<br>
+            For example, when there is user information to authenticate in the <em class="code">&quot;user&quot;</em> table, create <em class="code">&quot;models/UserModel.js&quot;</em>.
+            <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -702,9 +828,8 @@ module.exports = class extends Model {
     };
   }
 }</code></pre>
-
-      <p>Next, set the created <em class="code">UserModel</em> class in the <em class="code">&quot;model&quot;</em> item of <em class="code">&quot;config/authentication.js&quot;</em>.</p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+            Next, set the created <em class="code">UserModel</em> class in the <em class="code">&quot;model&quot;</em> item of <em class="code">&quot;config/authentication.js&quot;</em>.
+            <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 /**
  * User authentication configuration interface.
@@ -716,117 +841,234 @@ module.exports = {
    */
   model: UserModel
 }</code></pre>
-
-      <p>Now, Express Sweet automatically accesses the <em class="code">&quot;user&quot;</em> table at the time of authentication and performs the authentication process.</p>
-
-      <h3 class="config">allow_unauthenticated: string[]</h3>
-      <p>
-        By default, it requires an authenticated user for all requests.<br>
-        You can use the <em class="code">&quot;allow_unauthenticated&quot;</em> option to disable this behavior on certain requests.
-      </p>
-
-      <p>For example, if you don’t want to authenticate all requests that contain &quot;api&quot; in the URL, set <em class="code">&quot;allow_unauthenticated&quot;</em> as follows.</p>
-      <pre><code class="js">allow_unauthenticated: [
+            Now, Express Sweet automatically accesses the <em class="code">&quot;user&quot;</em> table at the time of authentication and performs the authentication process.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">allow_unauthenticated: string[]</td>
+          <td class="w-100">
+            By default, it requires an authenticated user for all requests.<br>
+            You can use the <em class="code">&quot;allow_unauthenticated&quot;</em> option to disable this behavior on certain requests.<br>
+            For example, if you don’t want to authenticate all requests that contain &quot;api&quot; in the URL, set <em class="code">&quot;allow_unauthenticated&quot;</em> as follows.
+            <pre><code class="js">allow_unauthenticated: [
   &#039;/api&#039;
 ]</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">expiration: number</td>
+          <td class="w-100">
+            Specifies the time, in milliseconds, before the session expires.<br>
+            The default is 24 hours (<em class="code">86400000</em> milliseconds).
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3 class="config">expiration: number</h3>
-      <p>
-        Specifies the time, in milliseconds, before the session expires.<br>
-        The default is 24 hours (<em class="code">86400000</em> milliseconds).
-      </p>
-      <!--end::Authentication configuration-->
+    <h3>Example</h3>
+    <p>config/authentication.js:</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
-      <!--begin::Database configuration-->
-      <h2 id="configuration-database">Database configuration</h2>
-      <p>
-        The database configuration is defined in the <em class="code">&quot;config/database.js&quot;</em> file.<br>
-        The database configuration file is separated by environment and contains the following configuration values.
-      </p>
-      <div class="callout callout-info">
-        There are many other database configuration values.<br>
-        For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s API reference&quot;</a>.
-      </div>
+/**
+ * User authentication configuration interface.
+ */
+module.exports = {
+  /**
+   * Enable user authentication, defaults to disabled (false).
+   * @type {boolean}
+   */
+  enabled: true,
 
-      <h3 class="config">username: string</h3>
-      <p>The username which is used to authenticate against the database.</p>
+  /**
+   * Authentication user ID field name, defaults to `username`.
+   * @type {string}
+   */
+  username: &#039;email&#039;,
 
-      <h3 class="config">password: string|null</h3>
-      <p>
-        The password which is used to authenticate against the database.<br>
-        The default is no password (<em class="code">null</em>).
-      </p>
+  /**
+   * Authentication password field name, defaults to `password`.
+   * @type {string}
+   */
+  password: &#039;password&#039;,
 
-      <h3 class="config">database: string</h3>
-      <p>The name of the database.</p>
+  /**
+   * URL to redirect after successful authentication, defaults to `/`.
+   * @type {string}
+   */
+  success_redirect: &#039;/&#039;,
 
-      <h3 class="config">host: string</h3>
-      <p>The host of the relational database.</p>
+  /**
+   * URL to redirect after log off, defaults to `/login`.
+   * @type {string}
+   */
+  failure_redirect: &#039;/login&#039;,
 
-      <h3 class="config">port: string</h3>
-      <p>
-        The port of the relational database.<br>
-        The default is automatic selection (<em class="code">null</em>).
-      </p>
+  /**
+   * Model class used for authentication, this is a required field.
+   * @type {typeof Model}
+   */
+  model: UserModel,
 
-      <h3 class="config">dialect: string</h3>
-      <p>
-        The dialect of the database you are connecting to.<br>
-        One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
-      </p>
+  /**
+   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
+   * @type {string}
+   */
+  allow_unauthenticated: [&#039;/api&#039;],
 
-      <h3 class="config">logging: boolean</h3>
-      <p>
-        Set true to output the executed query etc. to the log.<br>
-        The default is no log output (<em class="code">false</em>).
-      </p>
-      <!--end::Database configuration-->
-      <!--end::Basic configuration-->
+  /**
+   * .Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
+   * @type {number}
+   */
+  expiration: 24 * 3600000
+}</code></pre>
+    <!--end::Authentication configuration-->
 
+    <!--begin::Database configuration-->
+    <h2 id="configuration-database">Database configuration</h2>
+    <p>
+      The database configuration is defined in the <em class="code">&quot;config/database.js&quot;</em> file.<br>
+      The database configuration file is separated by environment and contains the following configuration values.
+    </p>
+    <div class="callout callout-info">
+      There are many other database configuration values.<br>
+      For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s API reference&quot;</a>.
     </div>
+
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">username: string</td>
+          <td class="w-100">The username which is used to authenticate against the database.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">password: string|null</td>
+          <td class="w-100">
+            The password which is used to authenticate against the database.<br>
+            The default is no password (<em class="code">null</em>).
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">database: string</td>
+          <td class="w-100">The name of the database.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">host: string</td>
+          <td class="w-100">The host of the relational database.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">port: string</td>
+          <td class="w-100">
+            The port of the relational database.<br>
+            The default is automatic selection (<em class="code">null</em>).
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">dialect: string</td>
+          <td class="w-100">
+            The dialect of the database you are connecting to.<br>
+            One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">logging: boolean</td>
+          <td class="w-100">
+            Set true to output the executed query etc. to the log.<br>
+            The default is no log output (<em class="code">false</em>).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <p>config/database.js:</p>
+    <pre><code class="js">/**
+ * Database configuration.
+ */
+module.exports = {
+  development: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  }
+}</code></pre>
+    <!--end::Database configuration-->
     <!--end::Configuration-->
 
     <!--begin::Routing-->
-    <div class="intro ps-lg-4">
-      <h1 class="title" id="routing">Routing</h1>
-      <!-- <p class="lead"></p> -->
-    </div>
+    <h1 class="title" id="routing">Routing</h1>
 
-    <div class="bd-content ps-lg-4">
-      <!--begin::Introduction-->
-      <h2 id="routing-introduction">Introduction</h2>
-      <p>
-        Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).<br>
-        Each route can have one or more handler functions, which are executed when the route is matched.<br>
-        Route definition takes the following structure.
-      </p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <!--begin::Introduction-->
+    <h2 id="routing-introduction">Introduction</h2>
+    <p>
+      Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).<br>
+      Each route can have one or more handler functions, which are executed when the route is matched.<br>
+      Route definition takes the following structure.
+    </p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const app = express();
 
 app.METHOD(PATH, HANDLER)
 </code></pre>
-      <ul>
-        <li>app is an instance of express.</li>
-        <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
-        <li>PATH is a path on the server.</li>
-        <li>HANDLER is the function executed when the route is matched.</li>
-      </ul>
-      <div class="callout callout-info">
-        This tutorial assumes that an instance of <em class="code">&quot;express&quot;</em> named <em class="code">&quot;app&quot;</em> is created and the server is running.
-        If you are not familiar with creating an app and starting it, see the <a href="#started-example">Hello world example</a>.
-      </div>
-      <!--end::Introduction-->
+    <ul>
+      <li>app is an instance of express.</li>
+      <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
+      <li>PATH is a path on the server.</li>
+      <li>HANDLER is the function executed when the route is matched.</li>
+    </ul>
+    <div class="callout callout-info">
+      This tutorial assumes that an instance of <em class="code">&quot;express&quot;</em> named <em class="code">&quot;app&quot;</em> is created and the server is running.
+      If you are not familiar with creating an app and starting it, see the <a href="#started-example">Hello world example</a>.
+    </div>
+    <!--end::Introduction-->
 
-      <!--begin::Basic Routing-->
-      <h2 id="routing-basic">Basic Routing</h2>
-      <p>
-        All routes are defined in your route files, which are located in the <em class="code">&quot;routes&quot;</em> directory.<br>
-        These files are automatically mapped by &quot;Express Sweet&quot; to the route files specified in the URI and the route handlers defined in the route files.
-      </p>
+    <!--begin::Basic Routing-->
+    <h2 id="routing-basic">Basic Routing</h2>
+    <p>
+      All routes are defined in your route files, which are located in the <em class="code">&quot;routes&quot;</em> directory.<br>
+      These files are automatically mapped by &quot;Express Sweet&quot; to the route files specified in the URI and the route handlers defined in the route files.
+    </p>
 
-      <p>The following examples illustrate defining simple routes.</p>
-      <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;GET /user&quot;</em> requests.</p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <p>The following examples illustrate defining simple routes.</p>
+    <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;GET /user&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, (req, res) =&gt; {
@@ -835,8 +1077,8 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 
 module.exports = router;</code></pre>
 
-      <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;POST /user/login&quot;</em> requests.</p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;POST /user/login&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.post(&#039;/login&#039;, (req, res) =&gt; {
@@ -844,17 +1086,17 @@ router.post(&#039;/login&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
-      <!--end::Basic Routing-->
+    <!--end::Basic Routing-->
 
-      <!--begin::Nested routes-->
-      <h2 id="routing-nested">Nested routes</h2>
-      <p>
-        The router supports nested files.<br>
-        If you create a nested folder structure files will be automatically routed in the same way still.
-      </p>
+    <!--begin::Nested routes-->
+    <h2 id="routing-nested">Nested routes</h2>
+    <p>
+      The router supports nested files.<br>
+      If you create a nested folder structure files will be automatically routed in the same way still.
+    </p>
 
-      <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;GET /api/users&quot;</em> requests.</p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;GET /api/users&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, async (req, res) =&gt; {
@@ -863,8 +1105,8 @@ router.get(&#039;/&#039;, async (req, res) =&gt; {
 
 module.exports = router;</code></pre>
 
-      <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;POST /api/users&quot;</em> requests.</p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;POST /api/users&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.post(&#039;/&#039;, async (req, res) =&gt; {
@@ -873,8 +1115,8 @@ router.post(&#039;/&#039;, async (req, res) =&gt; {
 
 module.exports = router;</code></pre>
 
-      <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;PUT /api/users/:userId&quot;</em> requests.</p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;PUT /api/users/:userId&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.put(&#039;/:userId&#039;, async (req, res) =&gt; {
@@ -883,8 +1125,8 @@ router.put(&#039;/:userId&#039;, async (req, res) =&gt; {
 
 module.exports = router;</code></pre>
 
-      <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;DELETE /api/users/:userId&quot;</em> requests.</p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;DELETE /api/users/:userId&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
@@ -892,20 +1134,20 @@ router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
-      <!--end::Nested routes-->
+    <!--end::Nested routes-->
 
-      <!--begin::Default Route-->
-      <h2 id="routing-default">Default Route</h2>
-      <p>
-        Express Sweet can be told to load a default router when a URI is not present, as will be the case when only your site root URL (<em class="code">/</em>) is requested.<br>
-        To specify a default router, open your <em class="code">&quot;config/config.js&quot;</em> file and set this variable:
-      </p>
-      <pre><code class="js">default_router: &#039;/blog&#039;</code></pre>
-      <p>
-        Where blog is the name of the router module you want used.<br>
-        Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
-      </p>
-      <pre><code class="js">const express = require(&#039;express&#039;);
+    <!--begin::Default Route-->
+    <h2 id="routing-default">Default Route</h2>
+    <p>
+      Express Sweet can be told to load a default router when a URI is not present, as will be the case when only your site root URL (<em class="code">/</em>) is requested.<br>
+      To specify a default router, open your <em class="code">&quot;config/config.js&quot;</em> file and set this variable:
+    </p>
+    <pre><code class="js">default_router: &#039;/blog&#039;</code></pre>
+    <p>
+      Where blog is the name of the router module you want used.<br>
+      Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
+    </p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, (req, res) =&gt; {
@@ -913,391 +1155,385 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
-      <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
-      <!--end::Default Route-->
+    <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
+    <!--end::Default Route-->
 
-      <!--begin::Routing methods-->
-      <h2 id="routing-methods">Routing methods</h2>
-      <p>Express supports the following routing methods corresponding to the HTTP methods of the same names.</p>
+    <!--begin::Routing methods-->
+    <h2 id="routing-methods">Routing methods</h2>
+    <p>Express supports the following routing methods corresponding to the HTTP methods of the same names.</p>
 
-      <div class="row">
-        <div class="col-6 col-md-4">
-          <ul class="list-unstyled">
-            <li class="mb-2"><code>checkout</code></li>
-            <li class="mb-2"><code>copy</code></li>
-            <li class="mb-2"><code>delete</code></li>
-            <li class="mb-2"><code>get</code></li>
-            <li class="mb-2"><code>head</code></li>
-            <li class="mb-2"><code>lock</code></li>
-            <li class="mb-2"><code>merge</code></li>
-            <li class="mb-2"><code>mkactivity</code></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-4">
-          <ul class="list-unstyled">
-            <li class="mb-2"><code>mkcol</code></li>
-            <li class="mb-2"><code>move</code></li>
-            <li class="mb-2"><code>m-search</code></li>
-            <li class="mb-2"><code>notify</code></li>
-            <li class="mb-2"><code>options</code></li>
-            <li class="mb-2"><code>patch</code></li>
-            <li class="mb-2"><code>post</code></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-4">
-          <ul class="list-unstyled">
-            <li class="mb-2"><code>purge</code></li>
-            <li class="mb-2"><code>put</code></li>
-            <li class="mb-2"><code>report</code></li>
-            <li class="mb-2"><code>search</code></li>
-            <li class="mb-2"><code>subscribe</code></li>
-            <li class="mb-2"><code>trace</code></li>
-            <li class="mb-2"><code>unlock</code></li>
-            <li class="mb-2"><code>unsubscribe</code></li>
-          </ul>
-        </div>
+    <div class="row">
+      <div class="col-6 col-md-4">
+        <ul class="list-unstyled">
+          <li class="mb-2"><code>checkout</code></li>
+          <li class="mb-2"><code>copy</code></li>
+          <li class="mb-2"><code>delete</code></li>
+          <li class="mb-2"><code>get</code></li>
+          <li class="mb-2"><code>head</code></li>
+          <li class="mb-2"><code>lock</code></li>
+          <li class="mb-2"><code>merge</code></li>
+          <li class="mb-2"><code>mkactivity</code></li>
+        </ul>
       </div>
-      <!--end::Routing methods-->
-
-      <div class="callout callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees’s Routing Guide</a>.</div>
-      
+      <div class="col-6 col-md-4">
+        <ul class="list-unstyled">
+          <li class="mb-2"><code>mkcol</code></li>
+          <li class="mb-2"><code>move</code></li>
+          <li class="mb-2"><code>m-search</code></li>
+          <li class="mb-2"><code>notify</code></li>
+          <li class="mb-2"><code>options</code></li>
+          <li class="mb-2"><code>patch</code></li>
+          <li class="mb-2"><code>post</code></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-4">
+        <ul class="list-unstyled">
+          <li class="mb-2"><code>purge</code></li>
+          <li class="mb-2"><code>put</code></li>
+          <li class="mb-2"><code>report</code></li>
+          <li class="mb-2"><code>search</code></li>
+          <li class="mb-2"><code>subscribe</code></li>
+          <li class="mb-2"><code>trace</code></li>
+          <li class="mb-2"><code>unlock</code></li>
+          <li class="mb-2"><code>unsubscribe</code></li>
+        </ul>
+      </div>
     </div>
+
+    <div class="callout callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees’s Routing Guide</a>.</div>
+    <!--end::Routing methods-->
     <!--end::Routing-->
 
     <!--begin::Views-->
-    <div class="intro ps-lg-4">
-      <h1 class="title" id="views">Views</h1>
-      <!-- <p class="lead"></p> -->
+    <h1 class="title" id="views">Views</h1>
+
+    <!--begin::Introduction-->
+    <h2 id="views-introduction">Introduction</h2>
+    <p>
+      Express Sweet uses Handlebars as its view template engine.<br>
+      This section describes the basic usage of the view on Express Sweet.
+    </p>
+    <div class="callout callout-info">
+      See the <a href="https://handlebarsjs.com/guide/" target="_blank">Handlebars reference</a> for more information on how to use Handlebars.
     </div>
+    <!--end::Introduction-->
 
-    <div class="bd-content ps-lg-4">
-      <!--begin::Introduction-->
-      <h2 id="views-introduction">Introduction</h2>
-      <p>
-        Express Sweet uses Handlebars as its view template engine.<br>
-        This section describes the basic usage of the view on Express Sweet.
-      </p>
-      <div class="callout callout-info">
-        See the <a href="https://handlebarsjs.com/guide/" target="_blank">Handlebars reference</a> for more information on how to use Handlebars.
-      </div>
-      <!--end::Introduction-->
+    <!--begin::View syntax-->
+    <h2 id="views-syntax">Syntax</h2>
+    <p>To mark where layout should insert page.</p>
+    <pre><code class="html">{{{body}}}</code></pre>
 
-      <!--begin::View syntax-->
-      <h2 id="views-syntax">Syntax</h2>
-      <p>To mark where layout should insert page.</p>
-      <pre><code class="html">{{{body}}}</code></pre>
+    <p>To declare a block placeholder in layout.</p>
+    <pre><code class="html">{{{block &quot;pageScripts&quot;}}}</code></pre>
 
-      <p>To declare a block placeholder in layout.</p>
-      <pre><code class="html">{{{block &quot;pageScripts&quot;}}}</code></pre>
-
-      <p>To define block content in a page.</p>
-      <pre><code class="html">{{#contentFor &quot;pageScripts&quot;}}
+    <p>To define block content in a page.</p>
+    <pre><code class="html">{{#contentFor &quot;pageScripts&quot;}}
   CONTENT HERE
 {{/contentFor}}</code></pre>
-      <!--end::View syntax-->
+    <!--end::View syntax-->
 
-      <!--begin::View layout-->
-      <h2 id="views-layout">Layouts</h2>
-      <p>There are three ways to use a layout, listed in precedence order.</p>
+    <!--begin::View layout-->
+    <h2 id="views-layout">Layouts</h2>
+    <p>There are three ways to use a layout, listed in precedence order.</p>
 
-      <ol>
-        <li>
-          <p>Declarative within a page. Use handlebars comment.</p>
-          <pre><code class="html">{{!&lt; LAYOUT}}</code></pre>
+    <ol>
+      <li>
+        <p>Declarative within a page. Use handlebars comment.</p>
+        <pre><code class="html">{{!&lt; LAYOUT}}</code></pre>
 
-          <p>Layout file resolution.</p>
-          <pre><code class="html">If path starts with &#039;.&#039;
+        <p>Layout file resolution.</p>
+        <pre><code class="html">If path starts with &#039;.&#039;
     LAYOUT is relative to template
 Else If `layoutsDir` is set
     LAYOUT is relative to `layoutsDir`
 Else
     LAYOUT from path.resolve(dirname(template), LAYOUT)</code></pre>
-        </li>
-        <li>
-          <p>As an option to render.</p>
-          <div class="callout callout-warning">This creates a potential security vulnerability.</div>
-          <p>
-            Do not use this option in conjunction with passing user submitted data to res.<br>
-            render e.g. res.render(&#039;index&#039;, req.query).<br>
-            This allows users to read arbitrary files from your filesystem.
-          </p>
-          <pre><code class="html">res.render(&#039;veggies&#039;, {
+      </li>
+      <li>
+        <p>As an option to render.</p>
+        <div class="callout callout-warning">This creates a potential security vulnerability.</div>
+        <p>
+          Do not use this option in conjunction with passing user submitted data to res.<br>
+          render e.g. res.render(&#039;index&#039;, req.query).<br>
+          This allows users to read arbitrary files from your filesystem.
+        </p>
+        <pre><code class="html">res.render(&#039;veggies&#039;, {
   title: &#039;My favorite veggies&#039;,
   veggies: veggies,
   layout: &#039;layout/veggie&#039;
 });</code></pre>
 
-          <p>This option also allows for layout suppression (both the default layout and when specified declaratively in a page) by passing in a falsey Javascript value as the value of the layout property.</p>
-          <pre><code class="html">res.render(&#039;veggies&#039;, {
+        <p>This option also allows for layout suppression (both the default layout and when specified declaratively in a page) by passing in a falsey Javascript value as the value of the layout property.</p>
+        <pre><code class="html">res.render(&#039;veggies&#039;, {
   title: &#039;My favorite veggies&#039;,
   veggies: veggies,
   layout: null // render without using a layout template
 });</code></pre>
           
-          <p>Layout file resolution.</p>
-          <pre><code class="html">If path starts with &#039;.&#039;
+        <p>Layout file resolution.</p>
+        <pre><code class="html">If path starts with &#039;.&#039;
     layout is relative to template
 Else If `layoutsDir` is set
     layout is relative to `layoutsDir`
 Else
     layout from path.resolve(viewsDir, layout)</code></pre>
-        </li>
-        <li>
-          <p>Lastly, use defaultLayout if specified in hbs configuration options.</p>
-          <p>
-            Layouts can be nested: just include a declarative layout tag within any layout template to have its content included in the declared &quot;parent&quot; layout.<br>
-            Be aware that too much nesting can impact performances, and stay away from infinite loops.
-          </p>
-        </li>
-      </ol>
-      <!--end::View layout-->
+      </li>
+      <li>
+        <p>Lastly, use defaultLayout if specified in hbs configuration options.</p>
+        <p>
+          Layouts can be nested: just include a declarative layout tag within any layout template to have its content included in the declared &quot;parent&quot; layout.<br>
+          Be aware that too much nesting can impact performances, and stay away from infinite loops.
+        </p>
+      </li>
+    </ol>
+    <!--end::View layout-->
 
-      <!--begin::View helper-->
-      <h2 id="views-helper">Helpers</h2>
-      <p>The following Handlebars helpers are available by default in Express Sweet.</p>
+    <!--begin::View helper-->
+    <h2 id="views-helper">Helpers</h2>
+    <p>The following Handlebars helpers are available by default in Express Sweet.</p>
 
-      <h3>Categories</h3>
-      <p>Currently 20 helpers in 4 categories.</p>
-      <ul>
-        <li><a href="#comparison-helpers">Comparison helpers</a></li>
-        <li><a href="#html-helpers">HTML helpers</a></li>
-        <li><a href="#object-helpers">Object helpers</a></li>
-        <li><a href="#string-helpers">String helpers</a></li>
-      </ul>
+    <h3>Categories</h3>
+    <p>Currently 20 helpers in 4 categories.</p>
+    <ul>
+      <li><a href="#comparison-helpers">Comparison helpers</a></li>
+      <li><a href="#html-helpers">HTML helpers</a></li>
+      <li><a href="#object-helpers">Object helpers</a></li>
+      <li><a href="#string-helpers">String helpers</a></li>
+    </ul>
 
-      <!--begin::Comparison helpers-->
-      <h3 id="comparison-helpers">Comparison helpers</h3>
-      <table class="table table-bordered">
-        <thead class="table-light">
-          <tr>
-            <th>Helper</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#views-helper-eq">eq</a></td>
-            <td>Strict equality <code>===</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-eqw">eqw</a></td>
-            <td>Equality <code>==</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-neq">neq</a></td>
-            <td>Strict inequality <code>!==</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-neqw">neqw</a></td>
-            <td>Inequality <code>!=</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-lt">lt</a></td>
-            <td>Less than <code>&lt;</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-lte">lte</a></td>
-            <td>Less than or equal <code>&lt;=</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-gt">gt</a></td>
-            <td>Greater than <code>&gt;</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-gte">gte</a></td>
-            <td>Greater than or equal <code>&gt;=</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-not">not</a></td>
-            <td>Not <code>!</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-ifx">ifx</a></td>
-            <td>Imitates conditional operator <code>?:</code></td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-empty">empty</a></td>
-            <td>Check if an array is empty</td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-count">count</a></td>
-            <td>Length of an array</td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-and">and</a></td>
-            <td>Logical AND operation</td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-or">or</a></td>
-            <td>Logical OR operation</td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-coalesce">coalesce</a></td>
-            <td>Returns first non-falsy value from list of parameters</td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-includes">includes</a></td>
-            <td>Check for a value inside an array</td>
-          </tr>
-        </tbody>
-      </table>
+    <!--begin::Comparison helpers-->
+    <h3 id="comparison-helpers">Comparison helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#views-helper-eq">eq</a></td>
+          <td>Strict equality <code>===</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-eqw">eqw</a></td>
+          <td>Equality <code>==</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-neq">neq</a></td>
+          <td>Strict inequality <code>!==</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-neqw">neqw</a></td>
+          <td>Inequality <code>!=</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-lt">lt</a></td>
+          <td>Less than <code>&lt;</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-lte">lte</a></td>
+          <td>Less than or equal <code>&lt;=</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-gt">gt</a></td>
+          <td>Greater than <code>&gt;</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-gte">gte</a></td>
+          <td>Greater than or equal <code>&gt;=</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-not">not</a></td>
+          <td>Not <code>!</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-ifx">ifx</a></td>
+          <td>Imitates conditional operator <code>?:</code></td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-empty">empty</a></td>
+          <td>Check if an array is empty</td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-count">count</a></td>
+          <td>Length of an array</td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-and">and</a></td>
+          <td>Logical AND operation</td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-or">or</a></td>
+          <td>Logical OR operation</td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-coalesce">coalesce</a></td>
+          <td>Returns first non-falsy value from list of parameters</td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-includes">includes</a></td>
+          <td>Check for a value inside an array</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h4 id="views-helper-eq"><code class="method">eq</code></h4>
-      <p>Determine whether or not two values are equal (===).</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the value and type are the same, false if they are different.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{eq &#039;3&#039; 3}} =&gt; false
-
-{{#if (eqw foo &#039;bar&#039;)}}
-  Hello
-{{/if}}</code></pre>
-
-      <h4 id="views-helper-eqw"><code class="method">eqw</code></h4>
-      <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the values are the same, false if they are different.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{eqw &#039;3&#039; 3}} =&gt; true
+    <h4 id="views-helper-eq"><code class="method">eq</code></h4>
+    <p>Determine whether or not two values are equal (===).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the value and type are the same, false if they are different.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{eq &#039;3&#039; 3}} =&gt; false
 
 {{#if (eqw foo &#039;bar&#039;)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-neq"><code class="method">neq</code></h4>
-      <p>Determine whether or not two values are not equal (!==).</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the value and type are different, false if they are the same.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{neq 4 3}} =&gt; true
+    <h4 id="views-helper-eqw"><code class="method">eqw</code></h4>
+    <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the values are the same, false if they are different.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{eqw &#039;3&#039; 3}} =&gt; true
+
+{{#if (eqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="views-helper-neq"><code class="method">neq</code></h4>
+    <p>Determine whether or not two values are not equal (!==).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the value and type are different, false if they are the same.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{neq 4 3}} =&gt; true
 
 {{#if (neq foo &#039;bar&#039;)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-neqw"><code class="method">neqw</code></h4>
-      <p>Determine whether or not two values are not equal (!=) weak checking.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the values are different, false if they are the same.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{neqw &#039;3&#039; 3}} =&gt; false
+    <h4 id="views-helper-neqw"><code class="method">neqw</code></h4>
+    <p>Determine whether or not two values are not equal (!=) weak checking.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the values are different, false if they are the same.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{neqw &#039;3&#039; 3}} =&gt; false
 
 {{#if (neqw foo &#039;bar&#039;)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-lt"><code class="method">lt</code></h4>
-      <p>Check for less than condition (a < b).</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the first value is less than the second value, false otherwise.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{lt 2 3}} =&gt; true
+    <h4 id="views-helper-lt"><code class="method">lt</code></h4>
+    <p>Check for less than condition (a < b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value is less than the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{lt 2 3}} =&gt; true
 
 {{#if (lt 2 5)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-lte"><code class="method">lte</code></h4>
-      <p>Check for less than or equals condition (a <= b).</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the first value is less than or equal to the second value, false otherwise.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{lte 2 3}} =&gt; true
+    <h4 id="views-helper-lte"><code class="method">lte</code></h4>
+    <p>Check for less than or equals condition (a <= b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value is less than or equal to the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{lte 2 3}} =&gt; true
 
 {{#if (lte 2 5)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-gt"><code class="method">gt</code></h4>
-      <p>Check for greater than condition (a > b).</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the first value exceeds the second value, false otherwise.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{gt 2 3}} =&gt; false
+    <h4 id="views-helper-gt"><code class="method">gt</code></h4>
+    <p>Check for greater than condition (a > b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value exceeds the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{gt 2 3}} =&gt; false
 
 {{#if (gt 5 6)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-gte"><code class="method">gte</code></h4>
-      <p>Check for greater than or equals condition (a >= b).</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value1 First value to be compared with second.</li>
-        <li>{any} value2 Second value to be compared with first.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{gte 3 3}} =&gt; true
+    <h4 id="views-helper-gte"><code class="method">gte</code></h4>
+    <p>Check for greater than or equals condition (a >= b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{gte 3 3}} =&gt; true
 
 {{#if (gte 10 2)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-not"><code class="method">not</code></h4>
-      <p>Logical NOT of any expression.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} expression Any expression.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns the logical negation of the value.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{not true}} =&gt; false
+    <h4 id="views-helper-not"><code class="method">not</code></h4>
+    <p>Logical NOT of any expression.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} expression Any expression.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns the logical negation of the value.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{not true}} =&gt; false
 {{not false}} =&gt; true
 
 {{#if (not (eq foo &#039;bar&#039;))}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-ifx"><code class="method">ifx</code></h4>
-      <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{boolean} condition Satisfying condition for getting first value. Either true of false.</li>
-        <li>{any} value1 First value to be displayed as result.</li>
-        <li>{any} value2 Second value to be displayed as result. Defaults to an empty string.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{any} Returns the result of the ternary operator.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{ifx true &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
+    <h4 id="views-helper-ifx"><code class="method">ifx</code></h4>
+    <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{boolean} condition Satisfying condition for getting first value. Either true of false.</li>
+      <li>{any} value1 First value to be displayed as result.</li>
+      <li>{any} value2 Second value to be displayed as result. Defaults to an empty string.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{any} Returns the result of the ternary operator.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{ifx true &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
 {{ifx false &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
 {{ifx (eq value 1) 5 6}} =&gt; 6    // return (value === 1) ? 5 : 6
 {{ifx (not (eq value 1)) 5 6}} =&gt; 6    // return (value !== 1) ? 5 : 6
@@ -1306,44 +1542,44 @@ Else
 {{ifx true &#039;active&#039;}} =&gt; &#039;active&#039;
 {{ifx false &#039;active&#039;}} =&gt; &#039;&#039;</code></pre>
 
-      <h4 id="views-helper-empty"><code class="method">empty</code></h4>
-      <p>Check if an array is empty.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any[]} items Array/object to be checked.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the array is empty, false otherwise.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">let items = [5, 6];
+    <h4 id="views-helper-empty"><code class="method">empty</code></h4>
+    <p>Check if an array is empty.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any[]} items Array/object to be checked.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the array is empty, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let items = [5, 6];
 {{empty items}} =&gt; false
 
 {{#if (empty items)}}
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-count"><code class="method">count</code></h4>
-      <p>Determine the length of an array.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any[]} items Array whose elements to be counted.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{number|false} Returns the length of the array if the value is an array, false if the value is not an array.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">let items = [5, 6];
+    <h4 id="views-helper-count"><code class="method">count</code></h4>
+    <p>Determine the length of an array.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any[]} items Array whose elements to be counted.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{number|false} Returns the length of the array if the value is an array, false if the value is not an array.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let items = [5, 6];
 {{count items}} =&gt;  2</code></pre>
 
-      <h4 id="views-helper-and"><code class="method">and</code></h4>
-      <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{...any} params Any number of boolean parameters.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns the result of the logical product.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">let value1 = value2 = true;
+    <h4 id="views-helper-and"><code class="method">and</code></h4>
+    <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{...any} params Any number of boolean parameters.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns the result of the logical product.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let value1 = value2 = true;
 {{and value1 value2}} =&gt; true
 
 let value1 = false, value2 = true;
@@ -1355,16 +1591,16 @@ let value1 = false, value2 = true;
   // do something else
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-or"><code class="method">or</code></h4>
-      <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{...any} params Any number of boolean parameters.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns the result of the OR.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">let value1 = true, value2 = false;
+    <h4 id="views-helper-or"><code class="method">or</code></h4>
+    <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{...any} params Any number of boolean parameters.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns the result of the OR.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let value1 = true, value2 = false;
 {{or value1 value2}} =&gt; true
 
 let value = value2 = false;
@@ -1376,36 +1612,36 @@ let value = value2 = false;
   // do something else
 {{/if}}</code></pre>
 
-      <h4 id="views-helper-coalesce"><code class="method">coalesce</code></h4>
-      <p>
-        Returns the first non-falsy value from the parameter list.<br>
-        Works quite similar to the SQL&#039;s &quot;COALESCE()&quot; function, but unlike this checks for the first non-false parameter.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{...any} params Any number of parameters.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{any} Returns the first non-false element of the parameter.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">let fullName = &#039;Foo Bar&#039;, nickName = &#039;foob&#039;;
+    <h4 id="views-helper-coalesce"><code class="method">coalesce</code></h4>
+    <p>
+      Returns the first non-falsy value from the parameter list.<br>
+      Works quite similar to the SQL&#039;s &quot;COALESCE()&quot; function, but unlike this checks for the first non-false parameter.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{...any} params Any number of parameters.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{any} Returns the first non-false element of the parameter.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let fullName = &#039;Foo Bar&#039;, nickName = &#039;foob&#039;;
 {{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;Foo Bar&#039;
 
 let fullName = &#039;&#039;, nickName = &#039;foob&#039;;
 {{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;foob&#039;</code></pre>
 
-      <h4 id="views-helper-includes"><code class="method">includes</code></h4>
-      <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any[]} items The array.</li>
-        <li>{any} value The value to be checked for existence in the array.</li>
-        <li>{boolean} strict FALSE for non-strict checking. TRUE by default.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{boolean} Returns true if the array contains the specified value, false otherwise.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">let items = [1, 2, 3];
+    <h4 id="views-helper-includes"><code class="method">includes</code></h4>
+    <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any[]} items The array.</li>
+      <li>{any} value The value to be checked for existence in the array.</li>
+      <li>{boolean} strict FALSE for non-strict checking. TRUE by default.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the array contains the specified value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let items = [1, 2, 3];
 let value = 2;
 
 {{includes items value}} =&gt; true
@@ -1420,149 +1656,143 @@ let value = &#039;2&#039;
 {{/if}}
 
 {{ifx (includes items value) &#039;Yes&#039; &#039;No&#039;}}</code></pre>
-      <!--end::Comparison helpers-->
+    <!--end::Comparison helpers-->
 
-      <!--begin::HTML helpers-->
-      <h3 id="html-helpers">HTML helpers</h3>
-      <table class="table table-bordered">
-        <thead class="table-light">
-          <tr>
-            <th>Helper</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#views-helper-cache-busting">cache_busting</a></td>
-            <td>Load automatically updated Assets</td>
-          </tr>
-        </tbody>
-      </table>
+    <!--begin::HTML helpers-->
+    <h3 id="html-helpers">HTML helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#views-helper-cache-busting">cache_busting</a></td>
+          <td>Load automatically updated Assets</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h4 id="views-helper-cache-busting"><code class="method">cache_busting</code></h4>
-      <p>Returns the Assets path containing the file update time parameter.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{string} filePath Paths of Assets files such as CSS and JS in public directories.</li>
-        <li>{string} baseUrl Application Origin URL.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{string} Returns the Assets file path with the update date and time parameters.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{cache_busting &#039;/assets/style.css&#039; &#039;//example.com&#039;}} =&gt; example.com/assets/style.css?1620526340463</code></pre>
-      <!--end::HTML helpers-->
+    <h4 id="views-helper-cache-busting"><code class="method">cache_busting</code></h4>
+    <p>Returns the Assets path containing the file update time parameter.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} filePath Paths of Assets files such as CSS and JS in public directories.</li>
+      <li>{string} baseUrl Application Origin URL.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{string} Returns the Assets file path with the update date and time parameters.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{cache_busting &#039;/assets/style.css&#039; &#039;//example.com&#039;}} =&gt; example.com/assets/style.css?1620526340463</code></pre>
+    <!--end::HTML helpers-->
 
-      <!--begin::Object helpers-->
-      <h3 id="object-helpers">Object helpers</h3>
-      <table class="table table-bordered">
-        <thead class="table-light">
-          <tr>
-            <th>Helper</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#views-helper-json-stringify">json_stringify</a></td>
-            <td>Stringify an object using JSON.stringify</td>
-          </tr>
-          <tr>
-            <td><a href="#views-helper-json-parse">json_parse</a></td>
-            <td>Parses the given string using JSON.parse</td>
-          </tr>
-        </tbody>
-      </table>
+    <!--begin::Object helpers-->
+    <h3 id="object-helpers">Object helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#views-helper-json-stringify">json_stringify</a></td>
+          <td>Stringify an object using JSON.stringify</td>
+        </tr>
+        <tr>
+          <td><a href="#views-helper-json-parse">json_parse</a></td>
+          <td>Parses the given string using JSON.parse</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h4 id="views-helper-json-stringify"><code class="method">json_stringify</code></h4>
-      <p>Stringify an object using JSON.stringify.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value The value to convert to a JSON string.</li>
-        <li>{number} indent The number of space characters to use as whitespace.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{string} A JSON string representing the given value, or undefined.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{json_stringify value}}</code></pre>
+    <h4 id="views-helper-json-stringify"><code class="method">json_stringify</code></h4>
+    <p>Stringify an object using JSON.stringify.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value The value to convert to a JSON string.</li>
+      <li>{number} indent The number of space characters to use as whitespace.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{string} A JSON string representing the given value, or undefined.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{json_stringify value}}</code></pre>
 
-      <h4 id="views-helper-json-parse"><code class="method">json_parse</code></h4>
-      <p>Parses the given string using JSON.parse.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{any} value Object to stringify.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{any} JavaScript value or object described by a string.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{json_parse value}}</code></pre>
-      <!--end::Object helpers-->
+    <h4 id="views-helper-json-parse"><code class="method">json_parse</code></h4>
+    <p>Parses the given string using JSON.parse.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value Object to stringify.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{any} JavaScript value or object described by a string.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{json_parse value}}</code></pre>
+    <!--end::Object helpers-->
 
-      <!--begin::String helpers-->
-      <h3 id="string-helpers">String helpers</h3>
-      <table class="table table-bordered">
-        <thead class="table-light">
-          <tr>
-            <th>Helper</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#views-helper-replace">replace</a></td>
-            <td>Replace string</td>
-          </tr>
-        </tbody>
-      </table>
+    <!--begin::String helpers-->
+    <h3 id="string-helpers">String helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#views-helper-replace">replace</a></td>
+          <td>Replace string</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h4 id="views-helper-replace"><code class="method">replace</code></h4>
-      <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{string} value String.</li>
-        <li>{string} find The string to be replaced.</li>
-        <li>{string} replace The string to replace.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{string} Character string after replacement.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{{replace &#039;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#039; &#039;dog&#039; &#039;monkey&#039;}}</code></pre>
-      <!--end::String helpers-->
-      <!--end::View helper-->
-    </div>
+    <h4 id="views-helper-replace"><code class="method">replace</code></h4>
+    <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} value String.</li>
+      <li>{string} find The string to be replaced.</li>
+      <li>{string} replace The string to replace.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{string} Character string after replacement.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{replace &#039;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#039; &#039;dog&#039; &#039;monkey&#039;}}</code></pre>
+    <!--end::String helpers-->
+    <!--end::View helper-->
     <!--end::Views-->
 
     <!--begin::Model-->
-    <div class="intro ps-lg-4">
-      <h1 class="title" id="model">Model</h1>
-      <!-- <p class="lead"></p> -->
-    </div>
+    <h1 class="title" id="model">Model</h1>
 
-    <div class="bd-content ps-lg-4">
+    <!--begin::Introduction-->
+    <h2 id="model-introduction">Introduction</h2>
+    <p>
+      Models provide a way to interact with a specific table in your database.<br>
+      They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
+    </p>
+    <p>Express Sweet provides a <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">Sequelize</a> based model class that offers some great features, including.</p>
+    <ul>
+      <li>automatic database connection</li>
+      <li>basic CRUD methods</li>
+      <li>and more</li>
+    </ul>
 
-      <!--begin::Introduction-->
-      <h2 id="model-introduction">Introduction</h2>
-      <p>
-        Models provide a way to interact with a specific table in your database.<br>
-        They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
-      </p>
-      <p>Express Sweet provides a <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">Sequelize</a> based model class that offers some great features, including.</p>
-      <ul>
-        <li>automatic database connection</li>
-        <li>basic CRUD methods</li>
-        <li>and more</li>
-      </ul>
+    <p>This class provides a solid base from which to build your own models, allowing you to rapidly build out your application’s model layer.</p>
+    <!--end::Introduction-->
 
-      <p>This class provides a solid base from which to build your own models, allowing you to rapidly build out your application’s model layer.</p>
-      <!--end::Introduction-->
-
-      <!--begin::Accessing Models-->
-      <h2 id="model-accessing">Accessing Models</h2>
-      <p>
-        Model classes are stored in the &quot;models&quot; directory in the root directory.<br>
-        Loading the model gives you instant access to the model’s functions for working with the database.<br>
-        In the following example, &quot;routes/users.js&quot; loads &quot;models/UserModel.js&quot; and tries CRUD to the user table.
-      </p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <!--begin::Accessing Models-->
+    <h2 id="model-accessing">Accessing Models</h2>
+    <p>
+      Model classes are stored in the &quot;models&quot; directory in the root directory.<br>
+      Loading the model gives you instant access to the model’s functions for working with the database.<br>
+      In the following example, &quot;routes/users.js&quot; loads &quot;models/UserModel.js&quot; and tries CRUD to the user table.
+    </p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Inserting Data.Produces: INSERT INTO user (email, name) VALUES (&#039;robin@example.com&#039;, &#039;Robin&#039;)
 await UserModel.create({
@@ -1586,12 +1816,12 @@ await UserModel.destroy({
     id: 1
   }
 });</code></pre>
-      <!--end::Accessing Models-->
+    <!--end::Accessing Models-->
 
-      <!--begin::Creating Your Model-->
-      <h2 id="model-creating">Creating Your Model</h2>
-      <p>To take advantage of Express Sweet’s model, you would simply create a new model class that extends &quot;express-sweet/database/Model&quot;.</p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <!--begin::Creating Your Model-->
+    <h2 id="model-creating">Creating Your Model</h2>
+    <p>To take advantage of Express Sweet’s model, you would simply create a new model class that extends &quot;express-sweet/database/Model&quot;.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -1623,306 +1853,294 @@ module.exports = class extends Model {
   }
 }</code></pre>
 
-      <p>
-        This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
-        For more information, see <a href="#model-class">&quot;Model Class Reference&quot;</a>.
-      </p>
-      <!--end::Creating Your Model-->
+    <p>
+      This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
+      For more information, see <a href="#model-class">&quot;Model Class Reference&quot;</a>.
+    </p>
+    <!--end::Creating Your Model-->
 
-      <!--begin::Connecting to the Database-->
-      <h2 id="model-connecting-to-the-database">Connecting to the Database</h2>
-      <p>
-        The database connection is automatic when the model is loaded.<br>
-        The configuration related to the database connection is defined in the &quot;config/database.js&quot; file.<br>
-        For more information on database configuration, see <a href="#configuration-database">&quot;Database configuration&quot;</a>.
-      </p>
-      <!--end::Connecting to the Database-->
+    <!--begin::Connecting to the Database-->
+    <h2 id="model-connecting-to-the-database">Connecting to the Database</h2>
+    <p>
+      The database connection is automatic when the model is loaded.<br>
+      The configuration related to the database connection is defined in the &quot;config/database.js&quot; file.<br>
+      For more information on database configuration, see <a href="#configuration-database">&quot;Database configuration&quot;</a>.
+    </p>
+    <!--end::Connecting to the Database-->
 
-      <!--begin::Database class reference-->
-      <h2 id="model-database-class">Database class reference</h2>
-      <p>class Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></p>
+    <!--begin::Database class reference-->
+    <h2 id="model-database-class">Database class reference</h2>
+    <p>class Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></p>
 
-      <div class="callout callout-warning">
-        This class returns an instance when loaded, so you don’t have to instantiate it yourself.<br>
-        See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s Reference&quot;</a> for more information on the methods and properties available in your model.<br>
-        This section describes newly added methods and members, as well as frequently used members and methods.
-      </div>
+    <div class="callout callout-warning">
+      This class returns an instance when loaded, so you don’t have to instantiate it yourself.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s Reference&quot;</a> for more information on the methods and properties available in your model.<br>
+      This section describes newly added methods and members, as well as frequently used members and methods.
+    </div>
 
-      <h3>Method Summary</h3>
-      <table class="table table-bordered summary">
-        <thead class="table-light">
-          <tr>
-            <th>Scope</th>
-            <th>Syntax</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>public</td>
-            <td>
-              <code>async <a href="#database-method-is-connect">isConnect</a>(): Promise&lt;boolean&gt;</code>
-              <p class="description">Test the connection by trying to authenticate.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <h3>Method Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#database-method-is-connect">isConnect</a>(): Promise&lt;boolean&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Test the connection by trying to authenticate.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3>Constructor Summary</h3>
-      <table class="table table-bordered summary">
-        <thead class="table-light">
-          <tr>
-            <th>Scope</th>
-            <th>Syntax</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>public</td>
-            <td>
-              <code><a href="#database-constructor">constructor</a>()</code>
-              <p class="description">Instantiate &quot;sequelize&quot; with name of database, username and password.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <h3>Constructor Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#database-constructor">constructor</a>()</code>
+            <p class="mb-0 ms-3 mt-1">Instantiate &quot;sequelize&quot; with name of database, username and password.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3>Methods</h3>
-      <h4 id="database-method-is-connect"><code class="method">public async isConnect(): Promise&lt;boolean&gt;</code></h4>
-      <p>Test the connection by trying to authenticate. It runs <em class="code">&quot;SELECT 1+1 AS result&quot;</em> query.</p>
+    <h3>Methods</h3>
+    <h4 id="database-method-is-connect"><code class="method">public async isConnect(): Promise&lt;boolean&gt;</code></h4>
+    <p>Test the connection by trying to authenticate. It runs <em class="code">&quot;SELECT 1+1 AS result&quot;</em> query.</p>
 
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;boolean&gt;} Returns <em class="code">true</em> if it can connect to the database, <em class="code">false</em> if it cannot.</p>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;boolean&gt;} Returns <em class="code">true</em> if it can connect to the database, <em class="code">false</em> if it cannot.</p>
 
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const database = require(&#039;express-sweet&#039;).database.Database;
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const database = require(&#039;express-sweet&#039;).database.Database;
 
 // Check database connection.
 const isConnected = await database.isConnect();</code></pre>
 
-      <h3>Constructors</h3>
-      <h4 id="database-constructor"><code class="method">public constructor()</code></h4>
-      <p>Instantiate sequelize with name of database, username and password.</p>
-      <!--end::Database class reference-->
+    <h3>Constructors</h3>
+    <h4 id="database-constructor"><code class="method">public constructor()</code></h4>
+    <p>Instantiate sequelize with name of database, username and password.</p>
+    <!--end::Database class reference-->
 
-      <!--begin::Model class reference-->
-      <h2 id="model-class">Model class reference</h2>
-      <p>class Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></p>
+    <!--begin::Model class reference-->
+    <h2 id="model-class">Model class reference</h2>
+    <p>class Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></p>
 
-      <div class="callout callout-warning">
-        See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">&quot;Sequelize’s Model Reference&quot;</a> for more information on the methods and properties available in your model.<br>
-        This section describes newly added methods and members, as well as frequently used members and methods.
-      </div>
+    <div class="callout callout-warning">
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">&quot;Sequelize’s Model Reference&quot;</a> for more information on the methods and properties available in your model.<br>
+      This section describes newly added methods and members, as well as frequently used members and methods.
+    </div>
 
-      <h3>Member Summary</h3>
-      <table class="table table-bordered summary">
-        <thead class="table-light">
-          <tr>
-            <th>Scope</th>
-            <th>Syntax</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>protected static</td>
-            <td>
-              <code><a href="#model-member-table">table</a>: string</code>
-              <p class="description">
-                The name of the table that the model accesses.<br>
-                <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>protected static</td>
-            <td>
-              <code><a href="#model-member-attributes">attributes</a>: sequelize.ModelAttributes</code>
-              <p class="description">
-                List of columns in the table accessed by this model.<br>
-                <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static readonly</td>
-            <td>
-              <code><a href="#model-member-data-types">DataTypes</a>: {[key: string]: any}</code>
-              <p class="description">
-                A convenience class holding commonly used data types.<br>
-                This is an alias for &quot;sequelize.DataTypes&quot;.<br>
-                See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">&quot;Sequelize’s data types reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static readonly</td>
-            <td>
-              <code><a href="#model-member-op">Op</a>: {[key: string]: any}</code>
-              <p class="description">
-                Operator symbols to be used when querying data.<br>
-                This is an alias for &quot;sequelize.Op&quot;.<br>
-                See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">&quot;Sequelize’s operator symbols reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <h3>Member Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">protected static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-table">table</a>: string</code>
+            <p class="mb-0 ms-3 mt-1">
+              The name of the table that the model accesses.<br>
+              <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">protected static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-attributes">attributes</a>: sequelize.ModelAttributes</code>
+            <p class="mb-0 ms-3 mt-1">
+              List of columns in the table accessed by this model.<br>
+              <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static readonly</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-data-types">DataTypes</a>: {[key: string]: any}</code>
+            <p class="mb-0 ms-3 mt-1">
+              A convenience class holding commonly used data types.<br>
+              This is an alias for &quot;sequelize.DataTypes&quot;.<br>
+              See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">&quot;Sequelize’s data types reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static readonly</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-op">Op</a>: {[key: string]: any}</code>
+            <p class="mb-0 ms-3 mt-1">
+              Operator symbols to be used when querying data.<br>
+              This is an alias for &quot;sequelize.Op&quot;.<br>
+              See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">&quot;Sequelize’s operator symbols reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3>Method Summary</h3>
-      <table class="table table-bordered summary">
-        <thead class="table-light">
-          <tr>
-            <th>Scope</th>
-            <th>Syntax</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- <tr>
-            <td>public static</td>
-            <td>
-              <code><a href="#model-method-factory">factory</a>(): Model</code>
-              <p class="description">
-                Returns the initialized model class.<br>
-                Initialize the model that represents the table in the DB with attributes and options.<br>
-                Also, after initializing the model, call the <em class="code">association()</em> method defined in the subclass to create associations such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
-                Be sure to export the result of calling this method when defining a subclass.
-              </p>
-            </td>
-          </tr> -->
-          <tr>
-            <td>public static</td>
-            <td>
-              <code><a href="#model-method-association">association</a>(): void</code>
-              <p class="description">
-                Associate the model.<br>
-                Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
-                This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
-                See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.<br>
-                <i class="bi bi-exclamation-triangle-fill"></i>If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-begin">begin</a>(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code>
-              <p class="description">
-                Starts a transaction and returns a transaction object to identify the running transaction.<br>
-                This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
-                See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-create">create</a>(values: object, options: object): Promise&lt;Model&gt;</code>
-              <p class="description">Builds a new model instance and calls <em class="code">save</em> on it.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-save">save</a>(options: object): Promise&lt;Model&gt;</code>
-              <p class="description">Validates this instance, and if the validation passes, persists it to the database.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-find-one">findOne</a>(options: object): Promise&lt;Model|null&gt;</code>
-              <p class="description">
-                Search for a single instance.<br>
-                Returns the first instance found, or null if none can be found.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-find-all">findAll</a>(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code>
-              <p class="description">Search for multiple instances.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-count">count</a>(options: object): Promise&lt;number&gt;</code>
-              <p class="description">Count the number of records matching the provided where clause.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-update">update</a>(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code>
-              <p class="description">Update multiple instances that match the where options.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-upsert">upsert</a>(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code>
-              <p class="description">Insert or update a single row.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code>async <a href="#model-method-destroy">destroy</a>(options: object): Promise&lt;number&gt;</code>
-              <p class="description">Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code><a href="#model-method-has-one">hasOne</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code>
-              <p class="description">
-                Creates an association between this (the source) and the provided target.<br>
-                The foreign key is added on the target.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code><a href="#model-method-belongs-to">belongsTo</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code>
-              <p class="description">
-                Creates an association between this (the source) and the provided target.<br>
-                The foreign key is added on the source.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code><a href="#model-method-has-many">hasMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code>
-              <p class="description">
-                Creates a 1:m association between this (the source) and the provided target.<br>
-                The foreign key is added on the target.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>public static</td>
-            <td>
-              <code><a href="#model-method-belongs-to-many">belongsToMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code>
-              <p class="description">
-                Create an N:M association with a join table.<br>
-                Defining through is required.
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <h3>Method Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-association">association</a>(): void</code>
+            <p class="mb-0 ms-3 mt-1">
+              Associate the model.<br>
+              Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
+              This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
+              See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.<br>
+              <i class="bi bi-exclamation-triangle-fill"></i>If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-begin">begin</a>(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Starts a transaction and returns a transaction object to identify the running transaction.<br>
+              This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
+              See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-create">create</a>(values: object, options: object): Promise&lt;Model&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Builds a new model instance and calls <em class="code">save</em> on it.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-save">save</a>(options: object): Promise&lt;Model&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Validates this instance, and if the validation passes, persists it to the database.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-find-one">findOne</a>(options: object): Promise&lt;Model|null&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Search for a single instance.<br>
+              Returns the first instance found, or null if none can be found.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-find-all">findAll</a>(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Search for multiple instances.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-count">count</a>(options: object): Promise&lt;number&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Count the number of records matching the provided where clause.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-update">update</a>(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Update multiple instances that match the where options.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-upsert">upsert</a>(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Insert or update a single row.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-destroy">destroy</a>(options: object): Promise&lt;number&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-has-one">hasOne</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates an association between this (the source) and the provided target.<br>
+              The foreign key is added on the target.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-belongs-to">belongsTo</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates an association between this (the source) and the provided target.<br>
+              The foreign key is added on the source.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-has-many">hasMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates a 1:m association between this (the source) and the provided target.<br>
+              The foreign key is added on the target.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-belongs-to-many">belongsToMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Create an N:M association with a join table.<br>
+              Defining through is required.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3>Members</h3>
+    <h3>Members</h3>
 
-      <h4 id="model-member-table"><code class="member">protected static table: string</code></h4>
-      <p>
-        The name of the table that the model accesses.<br>
-        <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
-      </p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <h4 id="model-member-table"><code class="member">protected static table: string</code></h4>
+    <p>
+      The name of the table that the model accesses.<br>
+      <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -1936,13 +2154,13 @@ module.exports = class extends Model {
   }
 }</code></pre>
 
-      <h4 id="model-member-attributes"><code class="member">protected static attributes: sequelize.ModelAttributes</code></h4>
-      <p>
-        List of columns in the table accessed by this model.<br>
-        <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
-      </p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const Model = require('express-sweet').database.Model;
+    <h4 id="model-member-attributes"><code class="member">protected static attributes: sequelize.ModelAttributes</code></h4>
+    <p>
+      List of columns in the table accessed by this model.<br>
+      <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const Model = require('express-sweet').database.Model;
 
 /**
  * User model.
@@ -1967,25 +2185,25 @@ module.exports = class extends Model {
   }
 }</code></pre>
 
-      <h4 id="model-member-data-types"><code class="member">public static readonly DataTypes: {[key: string]: any}</code></h4>
-      <p>
-        A convenience class holding commonly used data types.<br>
-        This is an alias for "sequelize.DataTypes".<br>
-        See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">"Sequelize’s data types reference"</a> for details on "sequelize.DataTypes".
-      </p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">{
+    <h4 id="model-member-data-types"><code class="member">public static readonly DataTypes: {[key: string]: any}</code></h4>
+    <p>
+      A convenience class holding commonly used data types.<br>
+      This is an alias for "sequelize.DataTypes".<br>
+      See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">"Sequelize’s data types reference"</a> for details on "sequelize.DataTypes".
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{
   id: this.DataTypes.INTEGER
 }</code></pre>
 
-      <h4 id="model-member-op"><code class="member">public static readonly Op: {[key: string]: any}</code></h4>
-      <p class="description">
-        Operator symbols to be used when querying data.<br>
-        This is an alias for "sequelize.Op".<br>
-        See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">"Sequelize’s operator symbols reference"</a> for details on "sequelize.DataTypes".
-      </p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-member-op"><code class="member">public static readonly Op: {[key: string]: any}</code></h4>
+    <p>
+      Operator symbols to be used when querying data.<br>
+      This is an alias for "sequelize.Op".<br>
+      See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">"Sequelize’s operator symbols reference"</a> for details on "sequelize.DataTypes".
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
 UserModel.findOne({
@@ -2017,62 +2235,20 @@ UserModel.destroy({
 });
 </code></pre>
 
-      <h3>Methods</h3>
+    <h3>Methods</h3>
 
-      <!-- <h4 id="model-method-factory"><code class="method">public static factory(): Model</code></h4>
-      <p>
-        Returns the initialized model class.<br>
-        Initialize the model that represents the table in the DB with attributes and options.<br>
-        Also, after initializing the model, call the <em class="code">association()</em> method defined in the subclass to create associations such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
-        Be sure to export the result of calling this method when defining a subclass.
-      </p>
-      <p><strong>Return:</strong></p>
-      <p>{typeof Model} Returns this model class itself.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <h4 id="model-method-association"><code class="method">public static association(): void</code></h4>
+    <p>
+      Associate the model.<br>
+      Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
+      This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
+      See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
+    </p>
 
-/**
- * User model.
- */
-module.exports = (class extends Model {
-  /**
-   * The name of the table that the model accesses.
-   */
-  static get table() {
-    return &#039;user&#039;;
-  }
+    <div class="callout callout-warning">If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.</div>
 
-  /**
-   * List of columns in the table accessed by this model.
-   */
-  static get attributes() {
-    return {
-      id: {
-        type: this.DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      email: this.DataTypes.STRING,
-      password: this.DataTypes.STRING,
-      name: this.DataTypes.STRING,
-      created: this.DataTypes.DATE,
-      modified: this.DataTypes.DATE
-    };
-  }
-}).factory();</code></pre> -->
-
-      <h4 id="model-method-association"><code class="method">public static association(): void</code></h4>
-      <p>
-        Associate the model.<br>
-        Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
-        This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
-        See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
-      </p>
-
-      <div class="callout callout-warning">If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.</div>
-
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2097,16 +2273,16 @@ module.exports = class extends Model {
   }
 }</code></pre>
 
-      <h4 id="model-method-begin"><code class="method">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code></h4>
-      <p>
-        Starts a transaction and returns a transaction object to identify the running transaction.<br>
-        This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
-        See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
-      </p>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;sequelize.Transaction&gt;} Returns a transaction object to identify the transaction being executed.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-begin"><code class="method">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code></h4>
+    <p>
+      Starts a transaction and returns a transaction object to identify the running transaction.<br>
+      This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
+    </p>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;sequelize.Transaction&gt;} Returns a transaction object to identify the transaction being executed.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 let transaction;
 try {
@@ -2133,20 +2309,20 @@ try {
 }
 </code></pre>
 
-      <h4 id="model-method-create"><code class="method">public static async create(values: object, options: object): Promise&lt;Model&gt;</code></h4>
-      <p>
-        Builds a new model instance and calls <em class="code">save</em> on it.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-create" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} values Hash of data values to create new record with.</li>
-        <li>{object} options Build and query options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;Model&gt;} Returns a model that contains the data for the added record.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-create"><code class="method">public static async create(values: object, options: object): Promise&lt;Model&gt;</code></h4>
+    <p>
+      Builds a new model instance and calls <em class="code">save</em> on it.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-create" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} values Hash of data values to create new record with.</li>
+      <li>{object} options Build and query options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model&gt;} Returns a model that contains the data for the added record.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Add new user to database.
 // SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;ellen@example.com&#039;,&#039;password&#039;,&#039;Ellen&#039;);
@@ -2156,19 +2332,19 @@ await UserModel.create({
   name: &#039;Ellen&#039;
 });</code></pre>
 
-      <h4 id="model-method-save"><code class="method">public static async save(options: object): Promise&lt;Model&gt;</code></h4>
-      <p>
-        Validates this instance, and if the validation passes, persists it to the database.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-save" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} options save options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;Model&gt;} Returns a model that contains data for manipulated records such as add and update.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-save"><code class="method">public static async save(options: object): Promise&lt;Model&gt;</code></h4>
+    <p>
+      Validates this instance, and if the validation passes, persists it to the database.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-save" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options save options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model&gt;} Returns a model that contains data for manipulated records such as add and update.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Create a new user instance with the build method and register the record in the database.
 // SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,'jane@example.com','password','Jane');
@@ -2184,38 +2360,38 @@ await user.save();
 user.name = 'Ada';
 await user.save();</code></pre>
 
-      <h4 id="model-method-find-one"><code class="method">public static async findOne(options: object): Promise&lt;Model|null&gt;</code></h4>
-      <p>
-        Search for a single instance.<br>
-        Returns the first instance found, or null if none can be found.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOne" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} options A hash of options to describe the scope of the search.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;Model|null&gt;} Returns a Model containing the first data found in the database.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-find-one"><code class="method">public static async findOne(options: object): Promise&lt;Model|null&gt;</code></h4>
+    <p>
+      Search for a single instance.<br>
+      Returns the first instance found, or null if none can be found.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOne" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options A hash of options to describe the scope of the search.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model|null&gt;} Returns a Model containing the first data found in the database.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Find one user.
 // SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` LIMIT 1;
 await UserModel.findOne();</code></pre>
 
-      <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></h4>
-      <p>
-        Search for multiple instances.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} options A hash of options to describe the scope of the search.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;Array&lt;Model&gt;&gt;} Returns a model containing the data found in the database.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></h4>
+    <p>
+      Search for multiple instances.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options A hash of options to describe the scope of the search.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Array&lt;Model&gt;&gt;} Returns a model containing the data found in the database.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Find users whose names start with &quot;Robin&quot;.
 // SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`name` LIKE &#039;Robin%&#039;;
@@ -2227,38 +2403,38 @@ const users = await UserModel.findAll({
   }
 });</code></pre>
 
-      <h4 id="model-method-count"><code class="method">public static async count(options: object): Promise&lt;number&gt;</code></h4>
-      <p>
-        Count the number of records matching the provided where clause.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-count" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} options A hash of options to describe the scope of the search.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;number&gt;} Returns the count of records that match the condition.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-count"><code class="method">public static async count(options: object): Promise&lt;number&gt;</code></h4>
+    <p>
+      Count the number of records matching the provided where clause.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-count" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options A hash of options to describe the scope of the search.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;number&gt;} Returns the count of records that match the condition.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Get all user record counts.
 // SQL: SELECT count(*) AS `count` FROM `user` AS `user`;
 await UserModel.count();</code></pre>
 
-      <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></h4>
-      <p>
-        Update multiple instances that match the where options.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} values hash of values to update.</li>
-        <li>{object} options update options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;Array&lt;number, number&gt;&gt;} The first element is always the number of affected rows, while the second element is the actual affected rows (only supported in postgres with <em class="code">options.returning</em> true).</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></h4>
+    <p>
+      Update multiple instances that match the where options.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} values hash of values to update.</li>
+      <li>{object} options update options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Array&lt;number, number&gt;&gt;} The first element is always the number of affected rows, while the second element is the actual affected rows (only supported in postgres with <em class="code">options.returning</em> true).</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Update the name of the user whose ID is 1.
 // SQL: UPDATE `user` SET `name`=&#039;Jane&#039; WHERE `id` = 1;
@@ -2273,23 +2449,23 @@ await UserModel.update(
   }
 );</code></pre>
 
-      <h4 id="model-method-upsert"><code class="method">public static async upsert(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code></h4>
-      <p>
-        Insert or update a single row.<br>
-        An update will be executed if a row which matches the supplied values on either the primary key or a unique key is found.<br>
-        Note that the unique index must be defined in your sequelize model and not just in the table.<br>
-        Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} values hash of values to upsert.</li>
-        <li>{object} options upsert options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;Model, boolean|null&gt;} returns record and whether row was created or updated as boolean. For Postgres/SQLite dialects boolean value is always null.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <h4 id="model-method-upsert"><code class="method">public static async upsert(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code></h4>
+    <p>
+      Insert or update a single row.<br>
+      An update will be executed if a row which matches the supplied values on either the primary key or a unique key is found.<br>
+      Note that the unique index must be defined in your sequelize model and not just in the table.<br>
+      Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} values hash of values to upsert.</li>
+      <li>{object} options upsert options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model, boolean|null&gt;} returns record and whether row was created or updated as boolean. For Postgres/SQLite dialects boolean value is always null.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // If there is no user corresponding to the primary key or unique key, add it, and if there is a corresponding user, update it.
 // SQL: INSERT INTO `user` (`email`,`password`,`name`) VALUES (?,?,?)
@@ -2300,49 +2476,49 @@ await UserModel.upsert({
   name: &#039;Robin&#039;
 });</code></pre>
 
-      <h4 id="model-method-destroy"><code class="method">public static async destroy(options: object): Promise&lt;number&gt;</code></h4>
-      <p>
-        Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{object} options destroy options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{Promise&lt;number&gt;} The number of destroyed rows.</p>
-      <p><strong>Example:</strong></p>
-      <pre><code class="js">// Delete the user whose id is 1.
+    <h4 id="model-method-destroy"><code class="method">public static async destroy(options: object): Promise&lt;number&gt;</code></h4>
+    <p>
+      Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options destroy options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;number&gt;} The number of destroyed rows.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">// Delete the user whose id is 1.
 // SQL: DELETE FROM `user` WHERE `id` = 1;
 await UserModel.destroy({where: {id :1}});</code></pre>
 
-      <h4 id="model-method-has-one"><code class="method">public static hasOne(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code></h4>
-      <p>
-        Creates an association between this (the source) and the provided target.<br>
-        The foreign key is added on the target.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasOne" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{Model} target The target model.</li>
-        <li>{object} options hasOne association options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{<a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a>} One-to-one association.</p>
-      <p><strong>Example:</strong></p>
-      <p>
-        For one-to-one association we will use two tables as an example they are User and Profile table.<br>
-        User table has one Profile table and Profile table belongs to the User table.<br>
-        Here's the relation diagram for it.
-      </p>
-      <img class="mb-3" src="images/has-one.png" alt="has one relationship" width="361">
-      <p>
-        HasOne put the association key in the target model.<br>
-        Here User can exist without a Profile, but the vice versa is not possible.<br>
-        This means, we will insert userId field to Profile model’s table.
-      </p>
-      <p>This is a user model that defines an association in which the user has one profile.</p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <h4 id="model-method-has-one"><code class="method">public static hasOne(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code></h4>
+    <p>
+      Creates an association between this (the source) and the provided target.<br>
+      The foreign key is added on the target.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasOne" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options hasOne association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a>} One-to-one association.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For one-to-one association we will use two tables as an example they are User and Profile table.<br>
+      User table has one Profile table and Profile table belongs to the User table.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/has-one.png" alt="has one relationship" width="361">
+    <p>
+      HasOne put the association key in the target model.<br>
+      Here User can exist without a Profile, but the vice versa is not possible.<br>
+      This means, we will insert userId field to Profile model’s table.
+    </p>
+    <p>This is a user model that defines an association in which the user has one profile.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2366,8 +2542,8 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
-      <p>This is an example of record search.</p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SQL: SELECT
 //        `user`.`id`,
@@ -2400,33 +2576,33 @@ await UserModel.findAll({
   }]
 });</code></pre>
 
-      <h4 id="model-method-belongs-to"><code class="method">public static belongsTo(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code></h4>
-      <p>
-        Creates an association between this (the source) and the provided target.<br>
-        The foreign key is added on the source.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{Model} target The target model.</li>
-        <li>{object} options belongsTo association options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a>} One-to-one association.</p>
-      <p><strong>Example:</strong></p>
-      <p>
-        For one-to-one association we will use two tables as an example they are User and Profile table.<br>
-        User table has one Profile table and Profile table belongs to the User table.<br>
-        Here's the relation diagram for it.
-      </p>
-      <img class="mb-3" src="images/belongs-to.png" alt="belongs to relationship" width="361">
-      <p>
-        BelongsTo put the associations key in the source model.<br>
-        Here User can exist without a Profile, but the vice versa is not possible.<br>
-        This means, we will insert userId field to Profile model’s table.
-      </p>
-      <p>This is a profile model that defines an association whose profile belongs to one user.</p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <h4 id="model-method-belongs-to"><code class="method">public static belongsTo(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code></h4>
+    <p>
+      Creates an association between this (the source) and the provided target.<br>
+      The foreign key is added on the source.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options belongsTo association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a>} One-to-one association.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For one-to-one association we will use two tables as an example they are User and Profile table.<br>
+      User table has one Profile table and Profile table belongs to the User table.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/belongs-to.png" alt="belongs to relationship" width="361">
+    <p>
+      BelongsTo put the associations key in the source model.<br>
+      Here User can exist without a Profile, but the vice versa is not possible.<br>
+      This means, we will insert userId field to Profile model’s table.
+    </p>
+    <p>This is a profile model that defines an association whose profile belongs to one user.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * Profile model.
@@ -2450,8 +2626,8 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
-      <p>This is an example of record search.</p>
-      <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
 
 // SQL: SELECT
 //        `profile`.`id`,
@@ -2484,33 +2660,33 @@ await ProfileModel.findAll({
   }
 });</code></pre>
 
-      <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
-      <p>
-        Creates a 1:m association between this (the source) and the provided target.<br>
-        The foreign key is added on the target.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{Model} target The target model.</li>
-        <li>{object} options hasMany association options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{<a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a>} One-to-many association.</p>
-      <p><strong>Example:</strong></p>
-      <p>
-        For one-to-many association we will use two tables as an example they are User and Comment table.<br>
-        User table has many Comment table and Comment table belongs to the User table.<br>
-        Here's the relation diagram for it.
-      </p>
-      <img class="mb-3" src="images/has-many.png" alt="has many relationship" width="361">
-      <p>
-        The HasMany put the association key in the target model.<br>
-        Here user and comments share a one to many relationship.<br>
-        Each user can make multiple comments while each comment is associated with only a single user.
-      </p>
-      <p>This is a user model that defines an association in which the user has many comments.</p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
+    <p>
+      Creates a 1:m association between this (the source) and the provided target.<br>
+      The foreign key is added on the target.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options hasMany association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a>} One-to-many association.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For one-to-many association we will use two tables as an example they are User and Comment table.<br>
+      User table has many Comment table and Comment table belongs to the User table.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/has-many.png" alt="has many relationship" width="361">
+    <p>
+      The HasMany put the association key in the target model.<br>
+      Here user and comments share a one to many relationship.<br>
+      Each user can make multiple comments while each comment is associated with only a single user.
+    </p>
+    <p>This is a user model that defines an association in which the user has many comments.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2534,8 +2710,8 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
-      <p>This is an example of record search.</p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SQL: SELECT
 //        `user`.`id`,
@@ -2571,34 +2747,34 @@ await UserModel.findAll({
   }
 });</code></pre>
 
-      <h4 id="model-method-belongs-to-many"><code class="method">public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code></h4>
-      <p>
-        Create an N:M association with a join table.<br>
-        Defining through is required.<br>
-        See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" target="_blank">reference</a> for details.
-      </p>
-      <p><strong>Parameters:</strong></p>
-      <ul>
-        <li>{Model} target The target model.</li>
-        <li>{object} options belongsToMany association options.</li>
-      </ul>
-      <p><strong>Return:</strong></p>
-      <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a>} Many-to-many association with a join table.</p>
-      <p><strong>Example:</strong></p>
-      <p>
-        For many-to-many association we will use two tables as an example they are User and Book table.<br>
-        User is marking down Books that he has read. Each user can mark as many books as they want, creating a many to many association between User and Books.<br>
-        Books can belong to many users.<br>
-        Here's the relation diagram for it.
-      </p>
-      <img class="mb-3" src="images/belongs-to-many.png" alt="belongs to many relationship" width="361">
-      <p>
-        The BlongsToMany put the association key in the target model.<br>
-        Here user and book share a many to many relationship.<br>
-        Each user can make multiple books, and each book can be associated with multiple users.
-      </p>
-      <p>This is a user model that defines an association where users and books have a many-to-many relationship.</p>
-      <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <h4 id="model-method-belongs-to-many"><code class="method">public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code></h4>
+    <p>
+      Create an N:M association with a join table.<br>
+      Defining through is required.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options belongsToMany association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a>} Many-to-many association with a join table.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For many-to-many association we will use two tables as an example they are User and Book table.<br>
+      User is marking down Books that he has read. Each user can mark as many books as they want, creating a many to many association between User and Books.<br>
+      Books can belong to many users.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/belongs-to-many.png" alt="belongs to many relationship" width="361">
+    <p>
+      The BlongsToMany put the association key in the target model.<br>
+      Here user and book share a many to many relationship.<br>
+      Each user can make multiple books, and each book can be associated with multiple users.
+    </p>
+    <p>This is a user model that defines an association where users and books have a many-to-many relationship.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2622,8 +2798,8 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
-      <p>This is an example of record search.</p>
-      <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SQL: SELECT
 //        `user`.`id`,
@@ -2659,41 +2835,32 @@ await UserModel.findAll({
   }
 });</code></pre>
 
-      <!--end::Model class reference-->
-    </div>
+    <!--end::Model class reference-->
     <!--end::Model-->
 
     <!--begin::User authentication-->
-    <div class="intro ps-lg-4">
-      <h1 class="title" id="user-authentication">User authentication</h1>
-      <p class="lead">
-        User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
-        Passport is Express-compatible authentication middleware for Node.js.
-      </p>
-    </div>
+    <h1 class="title" id="user-authentication">User authentication</h1>
 
-    <div class="bd-content ps-lg-4">
-      <!--begin::Introduction-->
-      <h2 id="user-authentication-introduction">Introduction</h2>
-      <p>
-        Express Sweet has built-in passport authentication middleware for user authentication by username and password.<br>
-        You can immediately start user authentication in your application using the authentication configuration file and the authentication service module.<br>
-        If you want to know more about passport, please see this <a href="http://www.passportjs.org/" target="_blank">reference</a>.
-      </p>
-      <!--end::Introduction-->
+    <!--begin::Introduction-->
+    <h2 id="user-authentication-introduction">Introduction</h2>
+    <p>
+      Express Sweet has built-in passport authentication middleware for user authentication by username and password.<br>
+      You can immediately start user authentication in your application using the authentication configuration file and the authentication service module.<br>
+      If you want to know more about passport, please see this <a href="https://www.passportjs.org/" target="_blank">reference</a>.
+    </p>
+    <!--end::Introduction-->
 
-      <!--begin::Configuration-->
-      <h2 id="user-authentication-configuration">Configuration</h2>
-      <!--end::Configuration-->
+    <!--begin::Configuration-->
+    <h2 id="user-authentication-configuration">Configuration</h2>
+    <!--end::Configuration-->
 
-      <!--begin::Authenticating Users-->
-      <h2 id="user-authentication-authenticating-users">Authenticating Users</h2>
-      <!--end::Authenticating Users-->
+    <!--begin::Authenticating Users-->
+    <h2 id="user-authentication-authenticating-users">Authenticating Users</h2>
+    <!--end::Authenticating Users-->
 
-      <!--begin::Logging Out-->
-      <h2 id="user-authentication-logging-out">Logging Out</h2>
-      <!--end::Logging Out-->
-    </div>
+    <!--begin::Logging Out-->
+    <h2 id="user-authentication-logging-out">Logging Out</h2>
+    <!--end::Logging Out-->
     <!--end::User authentication-->
   </main>
 </div>
