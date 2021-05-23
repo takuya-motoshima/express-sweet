@@ -4,7 +4,6 @@
 }
 
 body {
-  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
   font-size: 13px;
 }
 
@@ -36,7 +35,8 @@ body {
   color: #6c757d
 }
 
-.sidebar-toggle:hover,.sidebar-toggle:focus {
+.sidebar-toggle:hover,
+.sidebar-toggle:focus {
   color: #7952b3
 }
 
@@ -119,16 +119,15 @@ ol li {
 }
 
 .lead {
-  font-size: 1.5rem;
-  /* font-size: calc(1.275rem + .3vw); */
+  font-size: calc(1.275rem + .3vw);
   font-weight: 300
 }
 
-/* @media (min-width: 1200px) {
+@media (min-width: 1200px) {
   .lead {
-    font-size:1.5rem
+    font-size: 1.5rem
   }
-} */
+}
 
 @media (max-width: 767.98px) {
   .sidebar {
@@ -177,7 +176,8 @@ ol li {
   text-decoration: none
 }
 
-.sidenav a:hover,.sidenav a:focus {
+.sidenav a:hover,
+.sidenav a:focus {
   color: rgba(0,0,0,0.85);
   background-color: rgba(121,82,179,0.1)
 }
@@ -349,7 +349,9 @@ code {
   font-style: normal;
 }
 
-.method, .member, .config {
+.method,
+.member,
+.config {
   padding: 6px 10px;
   width: fit-content;
   background: #E8F4FF;

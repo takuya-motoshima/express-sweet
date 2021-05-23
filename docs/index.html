@@ -47,40 +47,42 @@
       <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
         <a class="nav-link" href="#getting-started">Getting started</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#introduction">Introduction</a></li>
-          <a class="nav-link" href="#installation">Installation</a></li>
-          <a class="nav-link" href="#hello-world-example">Hello world example</a></li>
-          <a class="nav-link" href="#express-sweet-app-generator">Express Sweet app generator</a></li>
+          <a class="nav-link" href="#started-introduction">Introduction</a></li>
+          <a class="nav-link" href="#started-installation">Installation</a></li>
+          <a class="nav-link" href="#started-example">Hello world example</a></li>
+          <a class="nav-link" href="#started-generator">Express Sweet app generator</a></li>
         </nav>
         <a class="nav-link" href="#configuration">Configuration</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#environment-configuration">Environment Configuration</a></li>
-          <a class="nav-link" href="#basic-configuration">Basic configuration</a></li>
-          <a class="nav-link" href="#views-configuration">View’s configuration</a></li>
-          <a class="nav-link" href="#authentication-configuration">Authentication configuration</a></li>
-          <a class="nav-link" href="#database-configuration">Database configuration</a></li>
+          <a class="nav-link" href="#configuration-environment">Environment Configuration</a></li>
+          <a class="nav-link" href="#configuration-basic">Basic configuration</a></li>
+          <a class="nav-link" href="#configuration-views">View’s configuration</a></li>
+          <a class="nav-link" href="#configuration-authentication">Authentication configuration</a></li>
+          <a class="nav-link" href="#configuration-database">Database configuration</a></li>
         </nav>
         <a class="nav-link" href="#routing">Routing</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#basic-routing">Basic Routing</a></li>
-          <a class="nav-link" href="#nested-routes">Nested routes</a></li>
-          <a class="nav-link" href="#default-route">Default Route</a></li>
+          <a class="nav-link" href="#routing-introduction">Introduction</a></li>
+          <a class="nav-link" href="#routing-basic">Basic Routing</a></li>
+          <a class="nav-link" href="#routing-nested">Nested routes</a></li>
+          <a class="nav-link" href="#routing-default">Default Route</a></li>
           <a class="nav-link" href="#routing-methods">Routing methods</a></li>
         </nav>
         <a class="nav-link" href="#views">Views</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#view-syntax">Syntax</a></li>
-          <a class="nav-link" href="#view-layout">Layouts</a></li>
-          <a class="nav-link" href="#view-helper">Helpers</a></li>
+          <a class="nav-link" href="#views-introduction">Introduction</a></li>
+          <a class="nav-link" href="#views-syntax">Syntax</a></li>
+          <a class="nav-link" href="#views-layout">Layouts</a></li>
+          <a class="nav-link" href="#views-helper">Helpers</a></li>
         </nav>
         <a class="nav-link" href="#model">Model</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#model-introduction">Introduction</a></li>
-          <a class="nav-link" href="#accessing-models">Accessing Models</a></li>
-          <a class="nav-link" href="#creating-your-model">Creating Your Model</a></li>
-          <a class="nav-link" href="#connecting-to-the-database">Connecting to the Database</a></li>
-          <a class="nav-link" href="#database-class-reference">Database class reference</a></li>
-          <a class="nav-link" href="#model-class-reference">Model class reference</a></li>
+          <a class="nav-link" href="#model-accessing">Accessing Models</a></li>
+          <a class="nav-link" href="#model-creating">Creating Your Model</a></li>
+          <a class="nav-link" href="#model-connecting-to-the-database">Connecting to the Database</a></li>
+          <a class="nav-link" href="#model-database-class">Database class reference</a></li>
+          <a class="nav-link" href="#model-class">Model class reference</a></li>
         </nav>
         <a class="nav-link" href="#user-authentication">User authentication</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
@@ -99,14 +101,14 @@
     <!--begin::Getting started-->
     <div class="intro ps-lg-4">
       <h1 class="title" id="getting-started">Getting started</h1>
-      <p class="lead">Extend Express functionality with Express Sweet and start developing fast, minimal web applications.</p>
+      <!-- <p class="lead"></p> -->
     </div>
 
     <div class="content ps-lg-4">
-
       <!--begin::Introduction-->
-      <h2 id="introduction">Introduction</h2>
+      <h2 id="started-introduction">Introduction</h2>
       <p>
+        Extend Express functionality with Express Sweet and start developing fast, minimal web applications.
         The package elements that make up this extension.<br>
         In addition, some packages have been customized to make them easier for developers to use.
       </p>
@@ -174,7 +176,7 @@
       <!--end::Introduction-->
 
       <!--begin::Installation-->
-      <h2 id="installation">Installation</h2>
+      <h2 id="started-installation">Installation</h2>
       <p>Assuming you’ve already installed <a href="https://nodejs.org/" target="_blank">Node.js</a>, create a directory to hold your application, and make that your working directory.</p>
       <pre><code class="bash">mkdir myapp;
 cd myapp;</code></pre>
@@ -208,7 +210,7 @@ cd myapp;</code></pre>
       <!--end::Installation-->
 
       <!--begin::Hello world example-->
-      <h2 id="hello-world-example">Hello world example</h2>
+      <h2 id="started-example">Hello world example</h2>
       <pre><code class="js">const express = require(&#039;express&#039;);
 const sweet = require(&#039;express-sweet&#039;);
 const port = 3000;
@@ -242,7 +244,7 @@ app.listen(port, () =&gt; {
 
       <p>
         First create a directory named <em class="code">&quot;myapp&quot;</em>, change to it and run <em class="code">&quot;npm init&quot;</em>.<br>
-        Then install <em class="code">&quot;express&quot;</em> as a dependency, as per the <a href="#installation">installation guide</a>.
+        Then install <em class="code">&quot;express&quot;</em> as a dependency, as per the <a href="#started-installation">installation guide</a>.
       </p>
       <p>In the <em class="code">&quot;myapp&quot;</em> directory, create a file named <em class="code">&quot;app.js&quot;</em> and copy in the code from the example above.</p>
 
@@ -252,7 +254,7 @@ app.listen(port, () =&gt; {
       <!--end::Hello world example-->
 
       <!--begin::Express Sweet app generator-->
-      <h2 id="express-sweet-app-generator">Express Sweet app generator</h2>
+      <h2 id="started-generator">Express Sweet app generator</h2>
       <p>Use the application generator tool, <em class="code">&quot;express-sweet-generator&quot;</em>, to quickly create an application skeleton.</p>
       <p>Install the application generator as a global npm package and then launch it.</p>
       <pre><code class="bash">npm install -g express-sweet-generator;
@@ -506,7 +508,7 @@ module.exports = {
     <div class="bd-content ps-lg-4">
 
       <!--begin::Environment Configuration-->
-      <h2 id="environment-configuration">Environment Configuration</h2>
+      <h2 id="configuration-environment">Environment Configuration</h2>
       <p>
         It is often helpful to have different configuration values based on the environment where the application is running.<br>
         For example, you may want to use a different database than the one used on the production server.<br>
@@ -530,7 +532,7 @@ if (isDevelopment) {
 }</code></pre>
 
       <!--begin::Basic configuration-->
-      <h2 id="basic-configuration">Basic configuration</h2>
+      <h2 id="configuration-basic">Basic configuration</h2>
       <p>
         The basic configuration of Express Sweet is defined in the <em class="code">&quot;config/config.js&quot;</em> file.<br>
         The basic configuration file contains the following configuration values.
@@ -586,7 +588,7 @@ module.exports = router;</code></pre>
       <!--end::Basic configuration-->
 
       <!--begin::View’s configuration-->
-      <h2 id="views-configuration">View’s configuration</h2>
+      <h2 id="configuration-views">View’s configuration</h2>
       <p>
         The view (template engine) configuration is defined in the <em class="code">&quot;config/view.js&quot;</em> file.<br>
         The view’s configuration file contains the following configuration values.
@@ -626,7 +628,7 @@ module.exports = router;</code></pre>
       <!--end::View’s configuration-->
 
       <!--begin::Authentication configuration-->
-      <h2 id="authentication-configuration">Authentication configuration</h2>
+      <h2 id="configuration-authentication">Authentication configuration</h2>
       <p>
         The user authentication configuration is defined in the <em class="code">&quot;config/authentication.js&quot;</em> file.<br>
         The user authentication configuration file contains the following configuration values.
@@ -736,7 +738,7 @@ module.exports = {
       <!--end::Authentication configuration-->
 
       <!--begin::Database configuration-->
-      <h2 id="database-configuration">Database configuration</h2>
+      <h2 id="configuration-database">Database configuration</h2>
       <p>
         The database configuration is defined in the <em class="code">&quot;config/database.js&quot;</em> file.<br>
         The database configuration file is separated by environment and contains the following configuration values.
@@ -787,7 +789,13 @@ module.exports = {
     <!--begin::Routing-->
     <div class="intro ps-lg-4">
       <h1 class="title" id="routing">Routing</h1>
-      <p class="lead">
+      <!-- <p class="lead"></p> -->
+    </div>
+
+    <div class="bd-content ps-lg-4">
+      <!--begin::Introduction-->
+      <h2 id="routing-introduction">Introduction</h2>
+      <p>
         Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).<br>
         Each route can have one or more handler functions, which are executed when the route is matched.<br>
         Route definition takes the following structure.
@@ -805,13 +813,12 @@ app.METHOD(PATH, HANDLER)
       </ul>
       <div class="callout callout-info">
         This tutorial assumes that an instance of <em class="code">&quot;express&quot;</em> named <em class="code">&quot;app&quot;</em> is created and the server is running.
-        If you are not familiar with creating an app and starting it, see the <a href="#hello-world-example">Hello world example</a>.
+        If you are not familiar with creating an app and starting it, see the <a href="#started-example">Hello world example</a>.
       </div>
-    </div>
+      <!--end::Introduction-->
 
-    <div class="bd-content ps-lg-4">
       <!--begin::Basic Routing-->
-      <h2 id="basic-routing">Basic Routing</h2>
+      <h2 id="routing-basic">Basic Routing</h2>
       <p>
         All routes are defined in your route files, which are located in the <em class="code">&quot;routes&quot;</em> directory.<br>
         These files are automatically mapped by &quot;Express Sweet&quot; to the route files specified in the URI and the route handlers defined in the route files.
@@ -840,7 +847,7 @@ module.exports = router;</code></pre>
       <!--end::Basic Routing-->
 
       <!--begin::Nested routes-->
-      <h2 id="nested-routes">Nested routes</h2>
+      <h2 id="routing-nested">Nested routes</h2>
       <p>
         The router supports nested files.<br>
         If you create a nested folder structure files will be automatically routed in the same way still.
@@ -888,7 +895,7 @@ module.exports = router;</code></pre>
       <!--end::Nested routes-->
 
       <!--begin::Default Route-->
-      <h2 id="default-route">Default Route</h2>
+      <h2 id="routing-default">Default Route</h2>
       <p>
         Express Sweet can be told to load a default router when a URI is not present, as will be the case when only your site root URL (<em class="code">/</em>) is requested.<br>
         To specify a default router, open your <em class="code">&quot;config/config.js&quot;</em> file and set this variable:
@@ -960,19 +967,23 @@ module.exports = router;</code></pre>
     <!--begin::Views-->
     <div class="intro ps-lg-4">
       <h1 class="title" id="views">Views</h1>
-      <p class="lead">
+      <!-- <p class="lead"></p> -->
+    </div>
+
+    <div class="bd-content ps-lg-4">
+      <!--begin::Introduction-->
+      <h2 id="views-introduction">Introduction</h2>
+      <p>
         Express Sweet uses Handlebars as its view template engine.<br>
         This section describes the basic usage of the view on Express Sweet.
       </p>
       <div class="callout callout-info">
         See the <a href="https://handlebarsjs.com/guide/" target="_blank">Handlebars reference</a> for more information on how to use Handlebars.
       </div>
-    </div>
-
-    <div class="bd-content ps-lg-4">
+      <!--end::Introduction-->
 
       <!--begin::View syntax-->
-      <h2 id="view-syntax">Syntax</h2>
+      <h2 id="views-syntax">Syntax</h2>
       <p>To mark where layout should insert page.</p>
       <pre><code class="html">{{{body}}}</code></pre>
 
@@ -986,7 +997,7 @@ module.exports = router;</code></pre>
       <!--end::View syntax-->
 
       <!--begin::View layout-->
-      <h2 id="view-layout">Layouts</h2>
+      <h2 id="views-layout">Layouts</h2>
       <p>There are three ways to use a layout, listed in precedence order.</p>
 
       <ol>
@@ -1042,7 +1053,7 @@ Else
       <!--end::View layout-->
 
       <!--begin::View helper-->
-      <h2 id="view-helper">Helpers</h2>
+      <h2 id="views-helper">Helpers</h2>
       <p>The following Handlebars helpers are available by default in Express Sweet.</p>
 
       <h3>Categories</h3>
@@ -1065,73 +1076,73 @@ Else
         </thead>
         <tbody>
           <tr>
-            <td><a href="#view-helper-eq">eq</a></td>
+            <td><a href="#views-helper-eq">eq</a></td>
             <td>Strict equality <code>===</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-eqw">eqw</a></td>
+            <td><a href="#views-helper-eqw">eqw</a></td>
             <td>Equality <code>==</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-neq">neq</a></td>
+            <td><a href="#views-helper-neq">neq</a></td>
             <td>Strict inequality <code>!==</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-neqw">neqw</a></td>
+            <td><a href="#views-helper-neqw">neqw</a></td>
             <td>Inequality <code>!=</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-lt">lt</a></td>
+            <td><a href="#views-helper-lt">lt</a></td>
             <td>Less than <code>&lt;</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-lte">lte</a></td>
+            <td><a href="#views-helper-lte">lte</a></td>
             <td>Less than or equal <code>&lt;=</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-gt">gt</a></td>
+            <td><a href="#views-helper-gt">gt</a></td>
             <td>Greater than <code>&gt;</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-gte">gte</a></td>
+            <td><a href="#views-helper-gte">gte</a></td>
             <td>Greater than or equal <code>&gt;=</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-not">not</a></td>
+            <td><a href="#views-helper-not">not</a></td>
             <td>Not <code>!</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-ifx">ifx</a></td>
+            <td><a href="#views-helper-ifx">ifx</a></td>
             <td>Imitates conditional operator <code>?:</code></td>
           </tr>
           <tr>
-            <td><a href="#view-helper-empty">empty</a></td>
+            <td><a href="#views-helper-empty">empty</a></td>
             <td>Check if an array is empty</td>
           </tr>
           <tr>
-            <td><a href="#view-helper-count">count</a></td>
+            <td><a href="#views-helper-count">count</a></td>
             <td>Length of an array</td>
           </tr>
           <tr>
-            <td><a href="#view-helper-and">and</a></td>
+            <td><a href="#views-helper-and">and</a></td>
             <td>Logical AND operation</td>
           </tr>
           <tr>
-            <td><a href="#view-helper-or">or</a></td>
+            <td><a href="#views-helper-or">or</a></td>
             <td>Logical OR operation</td>
           </tr>
           <tr>
-            <td><a href="#view-helper-coalesce">coalesce</a></td>
+            <td><a href="#views-helper-coalesce">coalesce</a></td>
             <td>Returns first non-falsy value from list of parameters</td>
           </tr>
           <tr>
-            <td><a href="#view-helper-includes">includes</a></td>
+            <td><a href="#views-helper-includes">includes</a></td>
             <td>Check for a value inside an array</td>
           </tr>
         </tbody>
       </table>
 
-      <h4 id="view-helper-eq"><code class="method">eq</code></h4>
+      <h4 id="views-helper-eq"><code class="method">eq</code></h4>
       <p>Determine whether or not two values are equal (===).</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1147,7 +1158,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-eqw"><code class="method">eqw</code></h4>
+      <h4 id="views-helper-eqw"><code class="method">eqw</code></h4>
       <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1163,7 +1174,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-neq"><code class="method">neq</code></h4>
+      <h4 id="views-helper-neq"><code class="method">neq</code></h4>
       <p>Determine whether or not two values are not equal (!==).</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1179,7 +1190,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-neqw"><code class="method">neqw</code></h4>
+      <h4 id="views-helper-neqw"><code class="method">neqw</code></h4>
       <p>Determine whether or not two values are not equal (!=) weak checking.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1195,7 +1206,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-lt"><code class="method">lt</code></h4>
+      <h4 id="views-helper-lt"><code class="method">lt</code></h4>
       <p>Check for less than condition (a < b).</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1211,7 +1222,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-lte"><code class="method">lte</code></h4>
+      <h4 id="views-helper-lte"><code class="method">lte</code></h4>
       <p>Check for less than or equals condition (a <= b).</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1227,7 +1238,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-gt"><code class="method">gt</code></h4>
+      <h4 id="views-helper-gt"><code class="method">gt</code></h4>
       <p>Check for greater than condition (a > b).</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1243,7 +1254,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-gte"><code class="method">gte</code></h4>
+      <h4 id="views-helper-gte"><code class="method">gte</code></h4>
       <p>Check for greater than or equals condition (a >= b).</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1259,7 +1270,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-not"><code class="method">not</code></h4>
+      <h4 id="views-helper-not"><code class="method">not</code></h4>
       <p>Logical NOT of any expression.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1275,7 +1286,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-ifx"><code class="method">ifx</code></h4>
+      <h4 id="views-helper-ifx"><code class="method">ifx</code></h4>
       <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1295,7 +1306,7 @@ Else
 {{ifx true &#039;active&#039;}} =&gt; &#039;active&#039;
 {{ifx false &#039;active&#039;}} =&gt; &#039;&#039;</code></pre>
 
-      <h4 id="view-helper-empty"><code class="method">empty</code></h4>
+      <h4 id="views-helper-empty"><code class="method">empty</code></h4>
       <p>Check if an array is empty.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1311,7 +1322,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-count"><code class="method">count</code></h4>
+      <h4 id="views-helper-count"><code class="method">count</code></h4>
       <p>Determine the length of an array.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1323,7 +1334,7 @@ Else
       <pre><code class="js">let items = [5, 6];
 {{count items}} =&gt;  2</code></pre>
 
-      <h4 id="view-helper-and"><code class="method">and</code></h4>
+      <h4 id="views-helper-and"><code class="method">and</code></h4>
       <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1344,7 +1355,7 @@ let value1 = false, value2 = true;
   // do something else
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-or"><code class="method">or</code></h4>
+      <h4 id="views-helper-or"><code class="method">or</code></h4>
       <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1365,7 +1376,7 @@ let value = value2 = false;
   // do something else
 {{/if}}</code></pre>
 
-      <h4 id="view-helper-coalesce"><code class="method">coalesce</code></h4>
+      <h4 id="views-helper-coalesce"><code class="method">coalesce</code></h4>
       <p>
         Returns the first non-falsy value from the parameter list.<br>
         Works quite similar to the SQL&#039;s &quot;COALESCE()&quot; function, but unlike this checks for the first non-false parameter.
@@ -1383,7 +1394,7 @@ let value = value2 = false;
 let fullName = &#039;&#039;, nickName = &#039;foob&#039;;
 {{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;foob&#039;</code></pre>
 
-      <h4 id="view-helper-includes"><code class="method">includes</code></h4>
+      <h4 id="views-helper-includes"><code class="method">includes</code></h4>
       <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1422,13 +1433,13 @@ let value = &#039;2&#039;
         </thead>
         <tbody>
           <tr>
-            <td><a href="#view-helper-cache-busting">cache_busting</a></td>
+            <td><a href="#views-helper-cache-busting">cache_busting</a></td>
             <td>Load automatically updated Assets</td>
           </tr>
         </tbody>
       </table>
 
-      <h4 id="view-helper-cache-busting"><code class="method">cache_busting</code></h4>
+      <h4 id="views-helper-cache-busting"><code class="method">cache_busting</code></h4>
       <p>Returns the Assets path containing the file update time parameter.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1452,17 +1463,17 @@ let value = &#039;2&#039;
         </thead>
         <tbody>
           <tr>
-            <td><a href="#view-helper-json-stringify">json_stringify</a></td>
+            <td><a href="#views-helper-json-stringify">json_stringify</a></td>
             <td>Stringify an object using JSON.stringify</td>
           </tr>
           <tr>
-            <td><a href="#view-helper-json-parse">json_parse</a></td>
+            <td><a href="#views-helper-json-parse">json_parse</a></td>
             <td>Parses the given string using JSON.parse</td>
           </tr>
         </tbody>
       </table>
 
-      <h4 id="view-helper-json-stringify"><code class="method">json_stringify</code></h4>
+      <h4 id="views-helper-json-stringify"><code class="method">json_stringify</code></h4>
       <p>Stringify an object using JSON.stringify.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1474,7 +1485,7 @@ let value = &#039;2&#039;
       <p><strong>Example:</strong></p>
       <pre><code class="js">{{json_stringify value}}</code></pre>
 
-      <h4 id="view-helper-json-parse"><code class="method">json_parse</code></h4>
+      <h4 id="views-helper-json-parse"><code class="method">json_parse</code></h4>
       <p>Parses the given string using JSON.parse.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1497,13 +1508,13 @@ let value = &#039;2&#039;
         </thead>
         <tbody>
           <tr>
-            <td><a href="#view-helper-replace">replace</a></td>
+            <td><a href="#views-helper-replace">replace</a></td>
             <td>Replace string</td>
           </tr>
         </tbody>
       </table>
 
-      <h4 id="view-helper-replace"><code class="method">replace</code></h4>
+      <h4 id="views-helper-replace"><code class="method">replace</code></h4>
       <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
       <p><strong>Parameters:</strong></p>
       <ul>
@@ -1523,16 +1534,17 @@ let value = &#039;2&#039;
     <!--begin::Model-->
     <div class="intro ps-lg-4">
       <h1 class="title" id="model">Model</h1>
-      <p class="lead">
-        Models provide a way to interact with a specific table in your database.<br>
-        They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
-      </p>
+      <!-- <p class="lead"></p> -->
     </div>
 
     <div class="bd-content ps-lg-4">
 
       <!--begin::Introduction-->
       <h2 id="model-introduction">Introduction</h2>
+      <p>
+        Models provide a way to interact with a specific table in your database.<br>
+        They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
+      </p>
       <p>Express Sweet provides a <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">Sequelize</a> based model class that offers some great features, including.</p>
       <ul>
         <li>automatic database connection</li>
@@ -1544,7 +1556,7 @@ let value = &#039;2&#039;
       <!--end::Introduction-->
 
       <!--begin::Accessing Models-->
-      <h2 id="accessing-models">Accessing Models</h2>
+      <h2 id="model-accessing">Accessing Models</h2>
       <p>
         Model classes are stored in the &quot;models&quot; directory in the root directory.<br>
         Loading the model gives you instant access to the model’s functions for working with the database.<br>
@@ -1577,7 +1589,7 @@ await UserModel.destroy({
       <!--end::Accessing Models-->
 
       <!--begin::Creating Your Model-->
-      <h2 id="creating-your-model">Creating Your Model</h2>
+      <h2 id="model-creating">Creating Your Model</h2>
       <p>To take advantage of Express Sweet’s model, you would simply create a new model class that extends &quot;express-sweet/database/Model&quot;.</p>
       <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
@@ -1613,21 +1625,21 @@ module.exports = class extends Model {
 
       <p>
         This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
-        For more information, see <a href="#model-class-reference">&quot;Model Class Reference&quot;</a>.
+        For more information, see <a href="#model-class">&quot;Model Class Reference&quot;</a>.
       </p>
       <!--end::Creating Your Model-->
 
       <!--begin::Connecting to the Database-->
-      <h2 id="connecting-to-the-database">Connecting to the Database</h2>
+      <h2 id="model-connecting-to-the-database">Connecting to the Database</h2>
       <p>
         The database connection is automatic when the model is loaded.<br>
         The configuration related to the database connection is defined in the &quot;config/database.js&quot; file.<br>
-        For more information on database configuration, see <a href="#database-configuration">&quot;Database configuration&quot;</a>.
+        For more information on database configuration, see <a href="#configuration-database">&quot;Database configuration&quot;</a>.
       </p>
       <!--end::Connecting to the Database-->
 
       <!--begin::Database class reference-->
-      <h2 id="database-class-reference">Database class reference</h2>
+      <h2 id="model-database-class">Database class reference</h2>
       <p>class Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></p>
 
       <div class="callout callout-warning">
@@ -1693,7 +1705,7 @@ const isConnected = await database.isConnect();</code></pre>
       <!--end::Database class reference-->
 
       <!--begin::Model class reference-->
-      <h2 id="model-class-reference">Model class reference</h2>
+      <h2 id="model-class">Model class reference</h2>
       <p>class Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></p>
 
       <div class="callout callout-warning">
@@ -2653,16 +2665,21 @@ await UserModel.findAll({
 
     <!--begin::User authentication-->
     <div class="intro ps-lg-4">
-      <h1 class="title" id="model">User authentication</h1>
+      <h1 class="title" id="user-authentication">User authentication</h1>
       <p class="lead">
-        Models provide a way to interact with a specific table in your database.<br>
-        They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
+        User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
+        Passport is Express-compatible authentication middleware for Node.js.
       </p>
     </div>
 
     <div class="bd-content ps-lg-4">
       <!--begin::Introduction-->
       <h2 id="user-authentication-introduction">Introduction</h2>
+      <p>
+        Express Sweet has built-in passport authentication middleware for user authentication by username and password.<br>
+        You can immediately start user authentication in your application using the authentication configuration file and the authentication service module.<br>
+        If you want to know more about passport, please see this <a href="http://www.passportjs.org/" target="_blank">reference</a>.
+      </p>
       <!--end::Introduction-->
 
       <!--begin::Configuration-->
