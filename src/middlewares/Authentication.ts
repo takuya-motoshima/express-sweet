@@ -87,9 +87,11 @@ export default class {
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Check if the request URL does not require authentication
       if (config.allow_unauthenticated && config.allow_unauthenticated.length) {
-        const requestUrl = req.path.replace(/\/$/, '');
-        if (config.allow_unauthenticated.indexOf(requestUrl) !== -1)
-          return void next();
+        const url = req.path.replace(/\/$/, '');
+        for (let allowedString of config.allow_unauthenticated)
+          if (url.indexOf(allowedString) !== -1) {
+            return void next();
+          }
       }
 
       // Asynchronous request flag.
@@ -99,11 +101,11 @@ export default class {
       if (req.isAuthenticated()) {
         // For authenticated users.
         if (req.path !== config.failure_redirect||isAjax) {
-          // 
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
-        } else res.redirect(config.success_redirect!);
+        }
+          else res.redirect(config.success_redirect!);
       } else {
         // For unauthenticated users.
         if (req.path === config.failure_redirect||isAjax)

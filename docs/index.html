@@ -742,185 +742,8 @@ module.exports = {
     <!--begin::Authentication configuration-->
     <h2 id="configuration-authentication">Authentication configuration</h2>
     <p>
-      The user authentication configuration is defined in the <em class="code">&quot;config/authentication.js&quot;</em> file.<br>
-      The user authentication configuration file contains the following configuration values.
+      See <a href="#user-authentication-configuration">&quot;User Authentication Configuration Reference&quot;</a> for configuring user authentication.
     </p>
-
-    <h3>Configuration members</h3>
-    <table class="table table-bordered summary">
-      <thead class="table-light">
-        <tr>
-          <th>Configuration value</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="text-nowrap">enabled: boolean</td>
-          <td class="w-100">
-            Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
-            User authentication is enabled (<em class="code">true</em>) by default.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">username: string</td>
-          <td class="w-100">
-            The login username field name used for authentication.<br>
-            This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">password: string</td>
-          <td class="w-100">
-            The login password field name used for authentication.<br>
-            This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">success_redirect: string</td>
-          <td class="w-100">
-            The URL to redirect to after successful authentication.<br>
-            The default is the root URL (<em class="code">/</em>).
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">failure_redirect: string</td>
-          <td class="w-100">
-            Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
-            This usually specifies the URL of the login page.<br>
-            The default is <em class="code">&quot;/login&quot;</em>.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">model: express-sweet.database.Model</td>
-          <td class="w-100">
-            A model class for the table that stores the users to authenticate.<br>
-            This should be a subclass that inherits from Express Sweet’s <em class="code">&quot;database.Model&quot;</em> class.<br>
-            For example, when there is user information to authenticate in the <em class="code">&quot;user&quot;</em> table, create <em class="code">&quot;models/UserModel.js&quot;</em>.
-            <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
-
-/**
- * User model.
- */
-module.exports = class extends Model {
-  /**
-   * Table name used by the model.
-   */
-  static get table() {
-    return &#039;user&#039;;
-  }
-
-  /**
-   * Table column list.
-   */
-  static get attributes() {
-    return {
-      id: {
-        type: this.DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      email: this.DataTypes.STRING,
-      password: this.DataTypes.STRING,
-      name: this.DataTypes.STRING,
-      created: this.DataTypes.DATE,
-      modified: this.DataTypes.DATE
-    };
-  }
-}</code></pre>
-            Next, set the created <em class="code">UserModel</em> class in the <em class="code">&quot;model&quot;</em> item of <em class="code">&quot;config/authentication.js&quot;</em>.
-            <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
-
-/**
- * User authentication configuration interface.
- */
-module.exports = {
-  /**
-   * Model class used for authentication, this is a required field.
-   * @type {typeof Model}
-   */
-  model: UserModel
-}</code></pre>
-            Now, Express Sweet automatically accesses the <em class="code">&quot;user&quot;</em> table at the time of authentication and performs the authentication process.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">allow_unauthenticated: string[]</td>
-          <td class="w-100">
-            By default, it requires an authenticated user for all requests.<br>
-            You can use the <em class="code">&quot;allow_unauthenticated&quot;</em> option to disable this behavior on certain requests.<br>
-            For example, if you don’t want to authenticate all requests that contain &quot;api&quot; in the URL, set <em class="code">&quot;allow_unauthenticated&quot;</em> as follows.
-            <pre><code class="js">allow_unauthenticated: [
-  &#039;/api&#039;
-]</code></pre>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">expiration: number</td>
-          <td class="w-100">
-            Specifies the time, in milliseconds, before the session expires.<br>
-            The default is 24 hours (<em class="code">86400000</em> milliseconds).
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Example</h3>
-    <p>config/authentication.js:</p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
-
-/**
- * User authentication configuration interface.
- */
-module.exports = {
-  /**
-   * Enable user authentication, defaults to disabled (false).
-   * @type {boolean}
-   */
-  enabled: true,
-
-  /**
-   * Authentication user ID field name, defaults to `username`.
-   * @type {string}
-   */
-  username: &#039;email&#039;,
-
-  /**
-   * Authentication password field name, defaults to `password`.
-   * @type {string}
-   */
-  password: &#039;password&#039;,
-
-  /**
-   * URL to redirect after successful authentication, defaults to `/`.
-   * @type {string}
-   */
-  success_redirect: &#039;/&#039;,
-
-  /**
-   * URL to redirect after log off, defaults to `/login`.
-   * @type {string}
-   */
-  failure_redirect: &#039;/login&#039;,
-
-  /**
-   * Model class used for authentication, this is a required field.
-   * @type {typeof Model}
-   */
-  model: UserModel,
-
-  /**
-   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
-   * @type {string}
-   */
-  allow_unauthenticated: [&#039;/api&#039;],
-
-  /**
-   * .Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
-   * @type {number}
-   */
-  expiration: 24 * 3600000
-}</code></pre>
     <!--end::Authentication configuration-->
 
     <!--begin::Database configuration-->
@@ -2852,10 +2675,191 @@ await UserModel.findAll({
 
     <!--begin::Configuration-->
     <h2 id="user-authentication-configuration">Configuration</h2>
+    <p>
+      The user authentication configuration is defined in the <em class="code">&quot;config/authentication.js&quot;</em> file.<br>
+      This file contains the following configuration values.
+    </p>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">enabled: boolean</td>
+          <td class="w-100">
+            Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
+            User authentication is enabled (<em class="code">true</em>) by default.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">username: string</td>
+          <td class="w-100">
+            The login username field name used for authentication.<br>
+            This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">password: string</td>
+          <td class="w-100">
+            The login password field name used for authentication.<br>
+            This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">success_redirect: string</td>
+          <td class="w-100">
+            The URL to redirect to after successful authentication.<br>
+            The default is the root URL (<em class="code">/</em>).
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">failure_redirect: string</td>
+          <td class="w-100">
+            Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
+            This usually specifies the URL of the login page.<br>
+            The default is <em class="code">&quot;/login&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">model: express-sweet.database.Model</td>
+          <td class="w-100">
+            A model class for the table that stores the users to authenticate.<br>
+            This should be a subclass that inherits from Express Sweet’s <em class="code">&quot;database.Model&quot;</em> class.<br>
+            For example, when there is user information to authenticate in the <em class="code">&quot;user&quot;</em> table, create <em class="code">&quot;models/UserModel.js&quot;</em>.
+            <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Table name used by the model.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
+
+  /**
+   * Table column list.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      name: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+            Next, set the created <em class="code">UserModel</em> class in the <em class="code">&quot;model&quot;</em> item of <em class="code">&quot;config/authentication.js&quot;</em>.
+            <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+/**
+ * User authentication configuration interface.
+ */
+module.exports = {
+  /**
+   * Model class used for authentication, this is a required field.
+   * @type {typeof Model}
+   */
+  model: UserModel
+}</code></pre>
+            Now, Express Sweet automatically accesses the <em class="code">&quot;user&quot;</em> table at the time of authentication and performs the authentication process.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">allow_unauthenticated: string[]</td>
+          <td class="w-100">
+            By default, it requires an authenticated user for all requests.<br>
+            You can use the <em class="code">&quot;allow_unauthenticated&quot;</em> option to disable this behavior on certain requests.<br>
+            For example, if you don’t want to authenticate all requests that contain &quot;api&quot; in the URL, set <em class="code">&quot;allow_unauthenticated&quot;</em> as follows.
+            <pre><code class="js">allow_unauthenticated: [
+  &#039;/api&#039;
+]</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">expiration: number</td>
+          <td class="w-100">
+            Specifies the time, in milliseconds, before the session expires.<br>
+            The default is 24 hours (<em class="code">86400000</em> milliseconds).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <p>config/authentication.js:</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+/**
+ * User authentication configuration interface.
+ */
+module.exports = {
+  /**
+   * Enable user authentication, defaults to disabled (false).
+   * @type {boolean}
+   */
+  enabled: true,
+
+  /**
+   * Authentication user ID field name, defaults to `username`.
+   * @type {string}
+   */
+  username: &#039;email&#039;,
+
+  /**
+   * Authentication password field name, defaults to `password`.
+   * @type {string}
+   */
+  password: &#039;password&#039;,
+
+  /**
+   * URL to redirect after successful authentication, defaults to `/`.
+   * @type {string}
+   */
+  success_redirect: &#039;/&#039;,
+
+  /**
+   * URL to redirect after log off, defaults to `/login`.
+   * @type {string}
+   */
+  failure_redirect: &#039;/login&#039;,
+
+  /**
+   * Model class used for authentication, this is a required field.
+   * @type {typeof Model}
+   */
+  model: UserModel,
+
+  /**
+   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
+   * @type {string}
+   */
+  allow_unauthenticated: [&#039;/api&#039;],
+
+  /**
+   * .Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
+   * @type {number}
+   */
+  expiration: 24 * 3600000
+}</code></pre>
     <!--end::Configuration-->
 
     <!--begin::Authenticating Users-->
     <h2 id="user-authentication-authenticating-users">Authenticating Users</h2>
+      To authenticate the request, call <em class="code">&quot;express-sweet.services.Authentication.authenticate()&quot; method</em>.
+    </p>
     <!--end::Authenticating Users-->
 
     <!--begin::Logging Out-->
