@@ -32,15 +32,26 @@ export default class {
   }
 
   /**
-   * Detect face.
+   * Detects faces within an image that is provided as input.
    * 
    * @example
    * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
    * const fs = require('fs');
    * 
-   * const client = new AWSRekognitionClient();
+   * // Instantiate Rekognition client.
+   * const client = new AWSRekognitionClient({
+   *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+   *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+   *   region: process.env.AWS_REKOGNITION_REGION
+   * });
+   * 
+   * // Detect face from image path.
    * await client.detectFaces('/upload/image.png');
+   *
+   * // Detect faces from base64 format images.
    * await client.detectFaces('data:image/png;base64,/9j/4AAQ...');
+   *
+   * // Detect faces from image binaries.
    * await client.detectFaces(fs.readFileSync('/upload/image.png'));
    * 
    * @param  {string} img Image file path, base 64 character string, or BLOB
@@ -48,18 +59,25 @@ export default class {
    * @return {Promise<AWS.Rekognition.BoundingBox[]>}
    */
   public async detectFaces(img: string, threshold: number = 90): Promise<AWS.Rekognition.BoundingBox[]> {
+    // Load image.
     if (/^data:image\//.test(img))
       img = this.base64ToBlob(img);
     else if (File.isFile(img))
       img = fs.readFileSync(img).toString();
+
+    // Detect faces.
     const data = await new Promise((resolve, reject) => 
       this.client.detectFaces({
         Image: {Bytes: img},
         Attributes: ['ALL']
       }, (error: AWS.AWSError, data: AWS.Rekognition.Types.DetectFacesResponse) => error ? reject(error) : resolve(data))
     ) as AWS.Rekognition.Types.DetectFacesResponse;
+
+    // If no face is found in the image, it returns an empty array.
     if (!data.FaceDetails)
       return [];
+
+    // If a face is found in the image, the position information of each face on the image is returned.
     const boundingBoxes: AWS.Rekognition.BoundingBox[] = [];
     for (let faceDetail of data.FaceDetails)
       if (faceDetail.BoundingBox && faceDetail.Confidence && faceDetail.Confidence >= threshold)
@@ -74,7 +92,13 @@ export default class {
    * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
    * const fs = require('fs');
    * 
-   * const client = new AWSRekognitionClient();
+   * // Instantiate Rekognition client.
+   * const client = new AWSRekognitionClient({
+   *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+   *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+   *   region: process.env.AWS_REKOGNITION_REGION
+   * });
+   * 
    * await client.compareFaces('/upload/image1.png', '/upload/image2.png');
    * await client.compareFaces('data:image/png;base64,/9j/4AAQ...'. 'data:image/png;base64,/9j/4AAQ...');
    * await client.compareFaces(fs.readFileSync('/upload/image1.png'), fs.readFileSync('/upload/image1.png'));

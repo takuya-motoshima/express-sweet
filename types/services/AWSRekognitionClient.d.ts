@@ -14,15 +14,26 @@ export default class {
      */
     constructor(options: AWSRekognitionOptions);
     /**
-     * Detect face.
+     * Detects faces within an image that is provided as input.
      *
      * @example
      * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
      * const fs = require('fs');
      *
-     * const client = new AWSRekognitionClient();
+     * // Instantiate Rekognition client.
+     * const client = new AWSRekognitionClient({
+     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+     *   region: process.env.AWS_REKOGNITION_REGION
+     * });
+     *
+     * // Detect face from image path.
      * await client.detectFaces('/upload/image.png');
+     *
+     * // Detect faces from base64 format images.
      * await client.detectFaces('data:image/png;base64,/9j/4AAQ...');
+     *
+     * // Detect faces from image binaries.
      * await client.detectFaces(fs.readFileSync('/upload/image.png'));
      *
      * @param  {string} img Image file path, base 64 character string, or BLOB
@@ -37,7 +48,13 @@ export default class {
      * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
      * const fs = require('fs');
      *
-     * const client = new AWSRekognitionClient();
+     * // Instantiate Rekognition client.
+     * const client = new AWSRekognitionClient({
+     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+     *   region: process.env.AWS_REKOGNITION_REGION
+     * });
+     *
      * await client.compareFaces('/upload/image1.png', '/upload/image2.png');
      * await client.compareFaces('data:image/png;base64,/9j/4AAQ...'. 'data:image/png;base64,/9j/4AAQ...');
      * await client.compareFaces(fs.readFileSync('/upload/image1.png'), fs.readFileSync('/upload/image1.png'));

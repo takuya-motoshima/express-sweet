@@ -91,6 +91,11 @@
           <a class="nav-link" href="#user-authentication-authenticating-users">Authenticating Users</a></li>
           <a class="nav-link" href="#user-authentication-logging-out">Logging Out</a></li>
         </nav>
+        <a class="nav-link" href="#amazon-rekognition">Amazon Rekognition</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#amazon-rekognition-introduction">Introduction</a></li>
+          <a class="nav-link" href="#amazon-rekognition-client-class">Rekognition client reference</a></li>
+        </nav>
       </nav>
     </nav>
   </aside>
@@ -99,7 +104,7 @@
   <main class="main order-1 ps-lg-4">
 
     <!--begin::Getting started-->
-    <h1 class="title" id="getting-started">Getting started</h1>
+    <h1 id="getting-started">Getting started</h1>
 
     <!--begin::Introduction-->
     <h2 id="started-introduction">Introduction</h2>
@@ -158,7 +163,7 @@
       <div class="col-md-6">
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">Service</strong>
-          <span class="text-secondary">Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/API_Reference.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.</span>
+          <span class="text-secondary">Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.</span>
         </div>
       </div>
 
@@ -439,7 +444,7 @@ module.exports = {
       and you should be greeted by the following page.
     </p>
 
-    <img class="img-fluid mb-5 mx-auto shadow" src="images/login.png" alt="Login page" height="500">
+    <img class="img-fluid mb-5 mx-auto shadow" src="images/all.jpg" alt="Login page" height="500">
 
     <p>The generated app has the following directory structure.</p>
     <pre><code class="bash">.
@@ -494,7 +499,7 @@ module.exports = {
     <!--end::Getting started-->
 
     <!--begin::Configuration-->
-    <h1 class="title" id="configuration">Configuration</h1>
+    <h1 id="configuration">Configuration</h1>
 
     <!--begin::Environment Configuration-->
     <h2 id="configuration-environment">Environment Configuration</h2>
@@ -856,7 +861,7 @@ module.exports = {
     <!--end::Configuration-->
 
     <!--begin::Routing-->
-    <h1 class="title" id="routing">Routing</h1>
+    <h1 id="routing">Routing</h1>
 
     <!--begin::Introduction-->
     <h2 id="routing-introduction">Introduction</h2>
@@ -1028,7 +1033,7 @@ module.exports = router;</code></pre>
     <!--end::Routing-->
 
     <!--begin::Views-->
-    <h1 class="title" id="views">Views</h1>
+    <h1 id="views">Views</h1>
 
     <!--begin::Introduction-->
     <h2 id="views-introduction">Introduction</h2>
@@ -1590,7 +1595,7 @@ let value = &#039;2&#039;
     <!--end::Views-->
 
     <!--begin::Model-->
-    <h1 class="title" id="model">Model</h1>
+    <h1 id="model">Model</h1>
 
     <!--begin::Introduction-->
     <h2 id="model-introduction">Introduction</h2>
@@ -2662,7 +2667,7 @@ await UserModel.findAll({
     <!--end::Model-->
 
     <!--begin::User authentication-->
-    <h1 class="title" id="user-authentication">User authentication</h1>
+    <h1 id="user-authentication">User authentication</h1>
 
     <!--begin::Introduction-->
     <h2 id="user-authentication-introduction">Introduction</h2>
@@ -3013,6 +3018,66 @@ module.exports = router;</code></pre>
     <pre><code class="html">&lt;a href=&quot;{{baseUrl}}/api/users/logout&quot;&gt;Logout&lt;/a&gt;</code></pre>
     <!--end::Logging Out-->
     <!--end::User authentication-->
+
+    <!--begin::Amazon Rekognition-->
+    <h1 id="amazon-rekognition">Amazon Rekognition</h1>
+
+    <!--begin::Introduction-->
+    <h2 id="amazon-rekognition-introduction">Introduction</h2>
+    <p>
+      Express Sweet includes an extension of &quot;Amazon Rekognition&quot; for face recognition, face detection, and face comparison.<br>
+      This section describes how to use the modules that do them.<br>
+      If you want to know more about &quot;Amazon Rekognition&quot;, please see <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">&quot;Amazon Rekognition Reference&quot;</a>.
+    </p>
+    <!--end::Introduction-->
+
+    <!--begin::Introduction-->
+    <h2 id="amazon-rekognition-client-class">Rekognition client reference</h2>
+    <p>class AWSRekognitionClient</p>
+
+    <h3>Method Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#database-method-is-connect">detectFaces</a>(): Promise&lt;boolean&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Test the connection by trying to authenticate.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Constructor Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#database-constructor">constructor</a>()</code>
+            <p class="mb-0 ms-3 mt-1">Instantiate &quot;sequelize&quot; with name of database, username and password.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <!--end::Introduction-->
+
+    <!--end::Amazon Rekognition-->
   </main>
 </div>
 

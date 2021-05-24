@@ -3,11 +3,6 @@
  */
 export default interface  {
     /**
-     * The region to send service requests to.
-     * @type {string}
-     */
-    region: string;
-    /**
      * Your AWS access key ID.
      * @type {string}
      */
@@ -17,6 +12,11 @@ export default interface  {
      * @type {string}
      */
     secretAccessKey: string;
+    /**
+     * The region to send service requests to.
+     * @type {string}
+     */
+    region: string;
     /**
      * Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds.
      * The default is 5000 milliseconds.
