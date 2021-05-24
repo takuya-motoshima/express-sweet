@@ -2849,7 +2849,7 @@ module.exports = {
   allow_unauthenticated: [&#039;/api&#039;],
 
   /**
-   * .Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
+   * Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
    * @type {number}
    */
   expiration: 24 * 3600000
@@ -2858,12 +2858,163 @@ module.exports = {
 
     <!--begin::Authenticating Users-->
     <h2 id="user-authentication-authenticating-users">Authenticating Users</h2>
-      To authenticate the request, call <em class="code">&quot;express-sweet.services.Authentication.authenticate()&quot; method</em>.
+      To authenticate the request, call <em class="code">&quot;express-sweet.services.Authentication.authenticate()&quot;</em> method.<br>
+      This method returns <em class="code">true</em> if the authentication succeeds and <em class="code">false</em> if it fails.<br>
+      If authentication succeeds, the next handler will be invoked and the <em class="code">req.user</em> property will be set to the authenticated user.
     </p>
+
+    <h3>Example</h3>
+    <p>The post-authentication logic depends on whether the login request is received asynchronously or synchronously, so an example of both logics is shown here.</p>
+
+    <p>This example uses the following authentication user table.</p>
+    <pre><code class="sql">CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukUserEmail` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
+
+    <p>Also, set the email column and password column of the example user table in the <em class="code">username</em> and <em class="code">password</em> configuration values of <em class="code">&quot;config/authentication.js&quot;</em>.</p>
+    <pre><code class="js">/**
+ * Authentication user ID field name, defaults to `username`.
+ * @type {string}
+ */
+username: &#039;email&#039;,
+
+/**
+ * Authentication password field name, defaults to `password`.
+ * @type {string}
+ */
+password: &#039;password&#039;</code></pre>
+
+    <h4>For sync request.</h4>
+    <p>
+      If the authentication is successful, redirect to the page with the URL specified by <em class="code">success_redirect</em> in <em class="code">&quot;config/authentication.js&quot;</em>.<br>
+      If it fails, redirect to the page with the URL specified by <em class="code">failure_redirect</em> in <em class="code">&quot;config/authentication.js&quot;</em>.
+    </p>
+    <p>routes/api/user.js:</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+
+/**
+ * Login.
+ */
+router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
+  // Authenticate with username and password.
+  const isAuthenticated = await Authentication.authenticate(req, res, next);
+
+  // For sync request.If the authentication is successful, you will be redirected to the authentication success page, and if it is unsuccessful, you will be redirected to the login page.
+  if (isAuthenticated) 
+    Authentication.successRedirect(res);
+  else
+    Authentication.failureRedirect(res);
+});
+
+module.exports = router;</code></pre>
+
+    <p>HTML and JS:</p>
+    <pre><code class="html">&lt;form method=&quot;post&quot; action=&quot;/api/users/login&quot;&gt;
+  &lt;label&gt;Email address&lt;/label&gt;
+  &lt;input type=&quot;email&quot; name=&quot;email&quot; required autofocus&gt;
+
+  &lt;label class=&quot;form-label&quot;&gt;Password&lt;/label&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot; required&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+    <h4>For asynchronous requests.</h4>
+    <p>Returns the authentication result and executes subsequent processing on the front end.</p>
+
+    <p>routes/api/user.js:</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+
+/**
+ * Login.
+ */
+router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
+  // Authenticate with username and password.
+  const isAuthenticated = await Authentication.authenticate(req, res, next);
+
+  // For asynchronous requests.Returns the authentication result and executes subsequent processing on the front end.
+  res.json(isAuthenticated);
+});
+
+module.exports = router;</code></pre>
+
+    <p>HTML and JS:</p>
+    <pre><code class="html">&lt;form id=&quot;form&quot;&gt;
+  &lt;label&gt;Email address&lt;/label&gt;
+  &lt;input type=&quot;email&quot; name=&quot;email&quot; required autofocus&gt;
+
+  &lt;label class=&quot;form-label&quot;&gt;Password&lt;/label&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot; required&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+const form = document.querySelector(&#039;#form&#039;);
+form.addEventListener(&#039;submit&#039;, async event =&gt; {
+  event.preventDefault();
+
+  // Send an authentication request.
+  const res = await fetch(&#039;/api/users/login&#039;, {method: &#039;POST&#039;, body: new FormData(form)});
+
+  // Authentication result.
+  const isAuthenticated = await res.json();
+
+  // If login fails.
+  if (!isAuthenticated)
+    return void alert(&#039;The user name or password is incorrect.&#039;);
+
+  // After logging in successfully, you will be taken to the top page.
+  location.href = &#039;/&#039;;
+});
+&lt;/script&gt;</code></pre>
+
+    <p>
+      When the form submits, it sends a login request (/api/users/login), and the <em class="code">&quot;routes/api/user.js&quot;</em> router receives the request, authenticates it based on the username and password, and returns the result.<br>
+      After that, the front end checks the authentication result returned from the router and redirects to  &quot;/&quot; if the authentication result is successful (<em class="code">true</em>).<br>
+      If you redirect to "/", the page will automatically switch to the URL specified in <em class="code">success_redirect</em> of <em class="code">&quot;config/authentication.js&quot;</em>.
+    </p>
+
+
     <!--end::Authenticating Users-->
 
     <!--begin::Logging Out-->
     <h2 id="user-authentication-logging-out">Logging Out</h2>
+    <p>
+      If you want to log out the user, call the <em class="code">&quot;express-sweet.services.Authentication.logout()&quot;</em> method.<br>
+      Invoking <em class="code">&quot;logout()&quot;</em> will remove the <em class="code">req.user</em> property and clear the login session (if any).
+    </p>
+
+    <h3>Example</h3>
+    <p>routes/api/user.js:</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+
+/**
+ * Logout.
+ */
+router.get(&#039;/logout&#039;, (req, res) =&gt; {
+  Authentication.logout(req);
+  res.redirect(&#039;/&#039;);
+});
+
+module.exports = router;</code></pre>
+
+    <p>HTML:</p>
+    <pre><code class="html">&lt;a href=&quot;{{baseUrl}}/api/users/logout&quot;&gt;Logout&lt;/a&gt;</code></pre>
+
+
     <!--end::Logging Out-->
     <!--end::User authentication-->
   </main>
