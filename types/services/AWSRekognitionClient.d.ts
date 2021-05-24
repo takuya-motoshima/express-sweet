@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+import AWSRekognitionOptions from '~/interfaces/AWSRekognitionOptions';
 /**
  * AWS Rekognition Client.
  */
@@ -11,15 +12,15 @@ export default class {
     /**
      * Create a Rekognition client instance.
      */
-    constructor();
+    constructor(options: AWSRekognitionOptions);
     /**
      * Detect face.
      *
      * @example
-     * import RekognitionClient from '~/shared/RekognitionClient';
-     * import fs from 'fs';
+     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+     * const fs = require('fs');
      *
-     * const client = new RekognitionClient();
+     * const client = new AWSRekognitionClient();
      * await client.detectFaces('/upload/image.png');
      * await client.detectFaces('data:image/png;base64,/9j/4AAQ...');
      * await client.detectFaces(fs.readFileSync('/upload/image.png'));
@@ -33,10 +34,10 @@ export default class {
      * Compare faces.
      *
      * @example
-     * import RekognitionClient from '~/shared/RekognitionClient';
-     * import fs from 'fs';
+     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+     * const fs = require('fs');
      *
-     * const client = new RekognitionClient();
+     * const client = new AWSRekognitionClient();
      * await client.compareFaces('/upload/image1.png', '/upload/image2.png');
      * await client.compareFaces('data:image/png;base64,/9j/4AAQ...'. 'data:image/png;base64,/9j/4AAQ...');
      * await client.compareFaces(fs.readFileSync('/upload/image1.png'), fs.readFileSync('/upload/image1.png'));

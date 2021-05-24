@@ -1,12 +1,12 @@
 import fs from 'fs';
 import AWS from 'aws-sdk';
 import {File, Media} from 'nodejs-shared';
+import AWSRekognitionOptions from '~/interfaces/AWSRekognitionOptions';
 
 /**
  * AWS Rekognition Client.
  */
 export default class {
-
   /**
    * Rekognition client instance.
    * @type {AWS.Rekognition}
@@ -16,11 +16,18 @@ export default class {
   /**
    * Create a Rekognition client instance.
    */
-  constructor() {
+  constructor(options: AWSRekognitionOptions) {
+    // Initialize options.
+    options = Object.assign({
+      timeout: 5000
+    }, options);
+
+    // Generate AWS Rekognition client instance.
     this.client = new AWS.Rekognition({
-      region: process.env.AMAZON_REKOGNITION_REGION,
-      accessKeyId: process.env.AMAZON_REKOGNITION_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AMAZON_REKOGNITION_SECRET_ACCESS_KEY
+      ...options,
+      httpOptions: {
+        connectTimeout: options.timeout
+      }
     });
   }
 
@@ -28,10 +35,10 @@ export default class {
    * Detect face.
    * 
    * @example
-   * import RekognitionClient from '~/shared/RekognitionClient';
-   * import fs from 'fs';
+   * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+   * const fs = require('fs');
    * 
-   * const client = new RekognitionClient();
+   * const client = new AWSRekognitionClient();
    * await client.detectFaces('/upload/image.png');
    * await client.detectFaces('data:image/png;base64,/9j/4AAQ...');
    * await client.detectFaces(fs.readFileSync('/upload/image.png'));
@@ -41,15 +48,18 @@ export default class {
    * @return {Promise<AWS.Rekognition.BoundingBox[]>}
    */
   public async detectFaces(img: string, threshold: number = 90): Promise<AWS.Rekognition.BoundingBox[]> {
-    if (/^data:image\//.test(img)) img = this.base64ToBlob(img);
-    else if (File.isFile(img)) img = fs.readFileSync(img).toString();
+    if (/^data:image\//.test(img))
+      img = this.base64ToBlob(img);
+    else if (File.isFile(img))
+      img = fs.readFileSync(img).toString();
     const data = await new Promise((resolve, reject) => 
       this.client.detectFaces({
         Image: {Bytes: img},
         Attributes: ['ALL']
       }, (error: AWS.AWSError, data: AWS.Rekognition.Types.DetectFacesResponse) => error ? reject(error) : resolve(data))
     ) as AWS.Rekognition.Types.DetectFacesResponse;
-    if (!data.FaceDetails) return [];
+    if (!data.FaceDetails)
+      return [];
     const boundingBoxes: AWS.Rekognition.BoundingBox[] = [];
     for (let faceDetail of data.FaceDetails)
       if (faceDetail.BoundingBox && faceDetail.Confidence && faceDetail.Confidence >= threshold)
@@ -61,10 +71,10 @@ export default class {
    * Compare faces.
    * 
    * @example
-   * import RekognitionClient from '~/shared/RekognitionClient';
-   * import fs from 'fs';
+   * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+   * const fs = require('fs');
    * 
-   * const client = new RekognitionClient();
+   * const client = new AWSRekognitionClient();
    * await client.compareFaces('/upload/image1.png', '/upload/image2.png');
    * await client.compareFaces('data:image/png;base64,/9j/4AAQ...'. 'data:image/png;base64,/9j/4AAQ...');
    * await client.compareFaces(fs.readFileSync('/upload/image1.png'), fs.readFileSync('/upload/image1.png'));
@@ -74,10 +84,14 @@ export default class {
    * @return {Promise<number>}
    */
   public async compareFaces(img1: string, img2: string): Promise<number> {
-    if (/^data:image\//.test(img1)) img1 = this.base64ToBlob(img1);
-    else if (File.isFile(img1)) img1 = fs.readFileSync(img1).toString();
-    if (/^data:image\//.test(img2)) img2 = this.base64ToBlob(img2);
-    else if (File.isFile(img2)) img2 = fs.readFileSync(img2).toString();
+    if (/^data:image\//.test(img1))
+      img1 = this.base64ToBlob(img1);
+    else if (File.isFile(img1))
+      img1 = fs.readFileSync(img1).toString();
+    if (/^data:image\//.test(img2))
+      img2 = this.base64ToBlob(img2);
+    else if (File.isFile(img2))
+      img2 = fs.readFileSync(img2).toString();
     const data = await new Promise((resolve, reject) => 
       this.client.compareFaces({
         SourceImage: {Bytes: img1},
@@ -110,7 +124,8 @@ export default class {
     const data = await new Promise((resolve, reject) => 
       this.client.listCollections({}, (error: AWS.AWSError, data: AWS.Rekognition.Types.ListCollectionsResponse) => error ? reject(error) : resolve(data))
     ) as AWS.Rekognition.Types.ListCollectionsResponse;
-    if (!data.CollectionIds||!data.CollectionIds.length) return [];
+    if (!data.CollectionIds || !data.CollectionIds.length)
+      return [];
     return data.CollectionIds;
   }
 

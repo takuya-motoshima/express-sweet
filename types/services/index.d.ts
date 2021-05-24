@@ -1,3 +1,3 @@
-import RekognitionClient from './RekognitionClient';
+import AWSRekognitionClient from './AWSRekognitionClient';
 import Authentication from './Authentication';
-export { RekognitionClient, Authentication };
+export { AWSRekognitionClient, Authentication };

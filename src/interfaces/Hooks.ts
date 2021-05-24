@@ -1,5 +1,5 @@
 /**
- * Express Sweet’s Hooks feature provides a means to tap into and modify the inner workings of the framework without hacking the core files.
+ * Express Sweet's Hooks feature provides a means to tap into and modify the inner workings of the framework without hacking the core files.
  */
 export default interface {
   /**
