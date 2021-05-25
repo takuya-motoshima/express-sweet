@@ -1,4 +1,3 @@
-import AWS from 'aws-sdk';
 import AWSRekognitionOptions from '~/interfaces/AWSRekognitionOptions';
 /**
  * AWS Rekognition Client.
@@ -38,9 +37,14 @@ export default class {
      *
      * @param  {string} img Image file path, base 64 character string, or BLOB
      * @param  {number} threshold
-     * @return {Promise<AWS.Rekognition.BoundingBox[]>}
+     * @return {Promise<{width: number, height: number, left: number, top: number}[]>}
      */
-    detectFaces(img: string, threshold?: number): Promise<AWS.Rekognition.BoundingBox[]>;
+    detectFaces(img: string, threshold?: number): Promise<{
+        width: number;
+        height: number;
+        left: number;
+        top: number;
+    }[]>;
     /**
      * Compare faces.
      *
@@ -77,7 +81,9 @@ export default class {
      */
     deleteCollection(collectionId: string): Promise<void>;
     /**
-     * Converts a base64 string to a Blob string and returns it.
+     * Returns a buffer of images..
+     * @param  {string|Buffer} img Image path or Data Url or image buffer.
+     * @return {Buffer}            Image buffer.
      */
-    base64ToBlob(base64: string): string;
+    private getImageBuffer;
 }

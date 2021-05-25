@@ -1,6 +1,6 @@
 import fs from 'fs';
 import AWS from 'aws-sdk';
-import {File, Media} from 'nodejs-shared';
+import {File} from 'nodejs-shared';
 import AWSRekognitionOptions from '~/interfaces/AWSRekognitionOptions';
 
 /**
@@ -54,23 +54,20 @@ export default class {
    * // Detect faces from image binaries.
    * await client.detectFaces(fs.readFileSync('/upload/image.png'));
    * 
-   * @param  {string} img Image file path, base 64 character string, or BLOB
-   * @param  {number} threshold
-   * @return {Promise<AWS.Rekognition.BoundingBox[]>}
+   * @param  {string} img            Image path or Data Url or image buffer.
+   * @param  {number} minConfidence  The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.
+   * @return {Promise<{width: number, height: number, left: number, top: number}[]>}
    */
-  public async detectFaces(img: string, threshold: number = 90): Promise<AWS.Rekognition.BoundingBox[]> {
-    // Load image.
-    if (/^data:image\//.test(img))
-      img = this.base64ToBlob(img);
-    else if (File.isFile(img))
-      img = fs.readFileSync(img).toString();
-
+  public async detectFaces(img: string, minConfidence: number = 90): Promise<{width: number, height: number, left: number, top: number}[]> {
+  // public async detectFaces(img: string, minConfidence: number = 90): Promise<AWS.Rekognition.BoundingBox[]> {
     // Detect faces.
     const data = await new Promise((resolve, reject) => 
       this.client.detectFaces({
-        Image: {Bytes: img},
+        Image: {
+          Bytes: this.getImageBuffer(img)
+        },
         Attributes: ['ALL']
-      }, (error: AWS.AWSError, data: AWS.Rekognition.Types.DetectFacesResponse) => error ? reject(error) : resolve(data))
+      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.DetectFacesResponse) => err ? reject(err) : resolve(data))
     ) as AWS.Rekognition.Types.DetectFacesResponse;
 
     // If no face is found in the image, it returns an empty array.
@@ -78,10 +75,19 @@ export default class {
       return [];
 
     // If a face is found in the image, the position information of each face on the image is returned.
-    const boundingBoxes: AWS.Rekognition.BoundingBox[] = [];
-    for (let faceDetail of data.FaceDetails)
-      if (faceDetail.BoundingBox && faceDetail.Confidence && faceDetail.Confidence >= threshold)
-        boundingBoxes.push(faceDetail.BoundingBox);
+    const boundingBoxes: {width: number, height: number, left: number, top: number}[] = [];
+    // const boundingBoxes: AWS.Rekognition.BoundingBox[] = [];
+    for (let detail of data.FaceDetails) {
+      if (!detail.BoundingBox || !detail.Confidence || detail.Confidence < minConfidence)
+        continue;
+      const boundingBox = detail.BoundingBox as AWS.Rekognition.BoundingBox;
+      boundingBoxes.push({
+        width: boundingBox.Width as number,
+        height: boundingBox.Height as number,
+        left: boundingBox.Left as number,
+        top: boundingBox.Top as number
+      });
+    }
     return boundingBoxes;
   }
 
@@ -103,25 +109,21 @@ export default class {
    * await client.compareFaces('data:image/png;base64,/9j/4AAQ...'. 'data:image/png;base64,/9j/4AAQ...');
    * await client.compareFaces(fs.readFileSync('/upload/image1.png'), fs.readFileSync('/upload/image1.png'));
    * 
-   * @param  {string} img1 Image file path, base 64 character string, or BLOB
-   * @param  {string} img2 Image file path, base 64 character string, or BLOB
+   * @param  {string} img1 Image path or Data Url or image buffer.
+   * @param  {string} img2 Image path or Data Url or image buffer.
    * @return {Promise<number>}
    */
   public async compareFaces(img1: string, img2: string): Promise<number> {
-    if (/^data:image\//.test(img1))
-      img1 = this.base64ToBlob(img1);
-    else if (File.isFile(img1))
-      img1 = fs.readFileSync(img1).toString();
-    if (/^data:image\//.test(img2))
-      img2 = this.base64ToBlob(img2);
-    else if (File.isFile(img2))
-      img2 = fs.readFileSync(img2).toString();
     const data = await new Promise((resolve, reject) => 
       this.client.compareFaces({
-        SourceImage: {Bytes: img1},
-        TargetImage: {Bytes: img2},
+        SourceImage: {
+          Bytes: this.getImageBuffer(img1)
+        },
+        TargetImage: {
+          Bytes: this.getImageBuffer(img2)
+        },
         SimilarityThreshold: 0
-      }, (error: AWS.AWSError, data: AWS.Rekognition.Types.CompareFacesResponse) => error ? reject(error) : resolve(data))
+      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.CompareFacesResponse) => err ? reject(err) : resolve(data))
     ) as AWS.Rekognition.Types.CompareFacesResponse;
     let similarity = .0;
     if (data.FaceMatches && data.FaceMatches.length > 0 && data.FaceMatches[0].Similarity)
@@ -134,7 +136,7 @@ export default class {
    */
   public async addCollection(collectionId: string): Promise<string> {
     const data = await new Promise((resolve, reject) => 
-      this.client.createCollection({CollectionId: collectionId}, (error: AWS.AWSError, data: AWS.Rekognition.Types.CreateCollectionResponse) => error ? reject(error) : resolve(data))
+      this.client.createCollection({CollectionId: collectionId}, (err: AWS.AWSError, data: AWS.Rekognition.Types.CreateCollectionResponse) => err ? reject(err) : resolve(data))
     ) as AWS.Rekognition.Types.CreateCollectionResponse;
     if (data.StatusCode !== 200)
       throw new Error('Collection could not be created');
@@ -146,7 +148,7 @@ export default class {
    */
   public async getCollections(): Promise<string[]> {
     const data = await new Promise((resolve, reject) => 
-      this.client.listCollections({}, (error: AWS.AWSError, data: AWS.Rekognition.Types.ListCollectionsResponse) => error ? reject(error) : resolve(data))
+      this.client.listCollections({}, (err: AWS.AWSError, data: AWS.Rekognition.Types.ListCollectionsResponse) => err ? reject(err) : resolve(data))
     ) as AWS.Rekognition.Types.ListCollectionsResponse;
     if (!data.CollectionIds || !data.CollectionIds.length)
       return [];
@@ -158,18 +160,33 @@ export default class {
    */
   public async deleteCollection(collectionId: string): Promise<void> {
     const data = await new Promise((resolve, reject) => 
-      this.client.deleteCollection({CollectionId: collectionId}, (error: AWS.AWSError, data: AWS.Rekognition.Types.DeleteCollectionResponse) => error ? reject(error) : resolve(data))
+      this.client.deleteCollection({CollectionId: collectionId}, (err: AWS.AWSError, data: AWS.Rekognition.Types.DeleteCollectionResponse) => err ? reject(err) : resolve(data))
     ) as AWS.Rekognition.Types.DeleteCollectionResponse;
     if (data.StatusCode !== 200)
       throw new Error('Collection could not be delete');
   }
 
   /**
-   * Converts a base64 string to a Blob string and returns it.
+   * Returns a buffer of images..
+   * @param  {string|Buffer} img Image path or Data Url or image buffer.
+   * @return {Buffer}            Image buffer.
    */
-  public base64ToBlob(base64: string): string {
-    const tmpPath = File.getTmpPath('.png');
-    Media.writeBase64Image(tmpPath, base64);
-    return fs.readFileSync(tmpPath).toString();
+  private getImageBuffer(img: string|Buffer): Buffer {
+    if (typeof img === 'string' && /^data:image\//.test(img)) {
+      // Convert Data URL to image buffer.
+      const base64 = img.replace(/^data:image\/[A-Za-z]+;base64,/, '');
+      return Buffer.from(base64, 'base64');
+    } else if (File.isFile(img)) {
+      // Pull buffer from image path.
+      const base64 = fs.readFileSync(img, 'base64');
+      return Buffer.from(base64, 'base64');
+      // return new Buffer(base64, 'base64') as string;
+    } else if (Buffer.isBuffer(img)) {
+      // If the image is a buffer, return it as it is.
+      return img;
+    } else {
+      // Returns an error if the parameters are not an image path, DataUrl, or image buffer.
+      throw new Error('The parameter image is invalid');
+    }
   }
 }
