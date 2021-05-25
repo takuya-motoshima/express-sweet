@@ -9,7 +9,7 @@ export default class {
      */
     private client;
     /**
-     * Create a Rekognition client instance.
+     * Constructs a rekognition client object.
      */
     constructor(options: AWSRekognitionOptions);
     /**
@@ -26,27 +26,30 @@ export default class {
      *   region: process.env.AWS_REKOGNITION_REGION
      * });
      *
-     * // Detect face from image path.
-     * await client.detectFaces('/upload/image.png');
+     * // Face reliability threshold.
+     * const minConfidence = 99;
      *
-     * // Detect faces from base64 format images.
-     * await client.detectFaces('data:image/png;base64,/9j/4AAQ...');
+     * // Detect faces from path.
+     * await client.detectFaces('img.png', minConfidence);
      *
-     * // Detect faces from image binaries.
-     * await client.detectFaces(fs.readFileSync('/upload/image.png'));
+     * // Detect faces from data URL.
+     * await client.detectFaces('data:image/png;base64,/9j/4AAQ...', minConfidence);
      *
-     * @param  {string} img Image file path, base 64 character string, or BLOB
-     * @param  {number} threshold
+     * // Detect faces from buffer.
+     * await client.detectFaces(fs.readFileSync('img.png'), minConfidence);
+     *
+     * @param  {string} img            Image path or Data Url or image buffer.
+     * @param  {number} minConfidence  The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.
      * @return {Promise<{width: number, height: number, left: number, top: number}[]>}
      */
-    detectFaces(img: string, threshold?: number): Promise<{
+    detectFaces(img: string, minConfidence?: number): Promise<{
         width: number;
         height: number;
         left: number;
         top: number;
     }[]>;
     /**
-     * Compare faces.
+     * Compare the similarity of two faces.
      *
      * @example
      * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
@@ -59,12 +62,17 @@ export default class {
      *   region: process.env.AWS_REKOGNITION_REGION
      * });
      *
-     * await client.compareFaces('/upload/image1.png', '/upload/image2.png');
-     * await client.compareFaces('data:image/png;base64,/9j/4AAQ...'. 'data:image/png;base64,/9j/4AAQ...');
-     * await client.compareFaces(fs.readFileSync('/upload/image1.png'), fs.readFileSync('/upload/image1.png'));
+     * // Compare faces from path.
+     * await client.compareFaces('img1.png', 'img2.png');
      *
-     * @param  {string} img1 Image file path, base 64 character string, or BLOB
-     * @param  {string} img2 Image file path, base 64 character string, or BLOB
+     * // Compare faces from data URL.
+     * await client.compareFaces('data:image/png;base64,/9j/4AAQ...'. 'data:image/png;base64,/9j/4AAQ...');
+     *
+     * // Compare faces from buffer.
+     * await client.compareFaces(fs.readFileSync('img1.png'), fs.readFileSync('img1.png'));
+     *
+     * @param  {string} img1 Image path or Data Url or image buffer.
+     * @param  {string} img2 Image path or Data Url or image buffer.
      * @return {Promise<number>}
      */
     compareFaces(img1: string, img2: string): Promise<number>;
