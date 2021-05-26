@@ -2,6 +2,7 @@ import fs from 'fs';
 import AWS from 'aws-sdk';
 import {File} from 'nodejs-shared';
 import AWSRekognitionOptions from '~/interfaces/AWSRekognitionOptions';
+import ApiError from '~/exceptions/ApiError';
 
 /**
  * AWS Rekognition Client.
@@ -151,9 +152,38 @@ export default class {
   }
 
   /**
-   * Add a collection.
+   * Add faces to the collection using the IndexFaces operation.
+   * For example, you might create collections, one for each of your application users.
+   * A user can then index faces using the IndexFaces operation and persist results in a specific collection.
+   * Then, a user can search the collection for faces in the user-specific container.
+   * Note that Collection names are case-sensitive.
+   *
+   * @example
+   * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+   * const fs = require('fs');
+   * 
+   * // Instantiate Rekognition client.
+   * const client = new AWSRekognitionClient({
+   *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+   *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+   *   region: process.env.AWS_REKOGNITION_REGION
+   * });
+   *
+   * try {
+   *   // Creates a collection.
+   *   await client.createCollection('MyCollection');
+   * } catch (e) {
+   *   // You can get the resulting HTTP status code from the exception.
+   *   console.log(`name: ${e.name}`);
+   *   console.log(`statusCode: ${e.statusCode}`);
+   *   console.log(`message: ${e.message}`);
+   * }
+   * 
+   * @param {string} collectionId ID for the collection that you are creating.
+   *                              The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-]+".
    */
-  public async addCollection(collectionId: string): Promise<string> {
+  public async createCollection(collectionId: string): Promise<void> {
+    // Creates a collection.
     const data: AWS.Rekognition.Types.CreateCollectionResponse = await new Promise((resolve, reject) => {
       this.client.createCollection({
         CollectionId: collectionId
@@ -161,29 +191,76 @@ export default class {
         err ? reject(err) : resolve(data);
       });
     });
+
+    // Debug the HTTP status code of the response.
+    console.log(`The HTTP status code for the collection creation request is ${data.StatusCode}`);
+
+    // Returns an error if the HTTP status code is other than 200.
     if (data.StatusCode !== 200)
-      throw new Error('Collection could not be created');
-    return collectionId;
+      throw new ApiError('CollectionCreationUnknownError', data.StatusCode||500, 'Collection creation unknown error');
   }
 
   /**
-   * Returns a list of collections.
+   * Returns list of collection IDs.
+   *
+   * @example
+   * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+   * const fs = require('fs');
+   * 
+   * // Instantiate Rekognition client.
+   * const client = new AWSRekognitionClient({
+   *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+   *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+   *   region: process.env.AWS_REKOGNITION_REGION
+   * });
+   *
+   * // Find the collection IDs.
+   * // Output: [
+   * //           'MyCollection',
+   * //           'AnotherCollection'
+   * //         ]
+   * await client.listCollections();
+   * 
+   * @return {Promise<string[]>} An array of collection IDs.
    */
-  public async getCollections(): Promise<string[]> {
+  public async listCollections(): Promise<string[]> {
+    // Request collection IDs.
     const data: AWS.Rekognition.Types.ListCollectionsResponse = await new Promise((resolve, reject) => {
       this.client.listCollections({}, (err: AWS.AWSError, data: AWS.Rekognition.Types.ListCollectionsResponse) => {
         err ? reject(err) : resolve(data);
       })
     });
+
+    // If the collection ID is not found, an empty array is returned.
     if (!data.CollectionIds || !data.CollectionIds.length)
       return [];
+
+    // Returns the found collection IDs.
     return data.CollectionIds;
   }
 
   /**
-   * Delete collection.
+   * Deletes the specified collection.
+   * Note that this operation removes all faces in the collection.
+   *
+   * @example
+   * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+   * const fs = require('fs');
+   * 
+   * // Instantiate Rekognition client.
+   * const client = new AWSRekognitionClient({
+   *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+   *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+   *   region: process.env.AWS_REKOGNITION_REGION
+   * });
+   * 
+   * // Delete collection.
+   * await client.deleteCollection('MyCollection');
+   * 
+   * @param {string} collectionId ID of the collection to delete.
    */
   public async deleteCollection(collectionId: string): Promise<void> {
+    // Delete collection.
     const data: AWS.Rekognition.Types.DeleteCollectionResponse = await new Promise((resolve, reject) => {
       this.client.deleteCollection({
         CollectionId: collectionId
@@ -191,8 +268,13 @@ export default class {
         err ? reject(err) : resolve(data);
       });
     });
+
+    // Debug the HTTP status code of the response.
+    console.log(`The HTTP status code for the collection delete request is ${data.StatusCode}`);
+
+    // Returns an error if the HTTP status code is other than 200.
     if (data.StatusCode !== 200)
-      throw new Error('Collection could not be delete');
+      throw new ApiError('CollectionDeleteUnknownError', data.StatusCode||500, 'Collection delete unknown error');
   }
 
   /**
