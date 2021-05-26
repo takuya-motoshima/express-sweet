@@ -63,35 +63,45 @@ export default class {
    * @return {Promise<{width: number, height: number, left: number, top: number}[]>}
    */
   public async detectFaces(img: string, minConfidence: number = 90): Promise<{width: number, height: number, left: number, top: number}[]> {
-    // Detect faces.
-    const data: AWS.Rekognition.Types.DetectFacesResponse = await new Promise((resolve, reject) => {
-      this.client.detectFaces({
-        Image: {
-          Bytes: this.getImageBuffer(img)
-        },
-        Attributes: ['ALL']
-      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.DetectFacesResponse) => {
-        err ? reject(err) : resolve(data);
+    // Face detection result.
+    const boundingBoxes: {
+      width: number,
+      height: number,
+      left: number,
+      top: number
+    }[] = [];
+    try {
+      // Detect faces.
+      const data: AWS.Rekognition.Types.DetectFacesResponse = await new Promise((resolve, reject) => {
+        this.client.detectFaces({
+          Image: {Bytes: this.getImageBuffer(img)},
+          Attributes: ['DEFAULT']
+        }, (err: AWS.AWSError, data: AWS.Rekognition.Types.DetectFacesResponse) => {
+          err ? reject(err) : resolve(data);
+        });
       });
-    });
 
-    // If no face is found in the image, it returns an empty array.
-    if (!data.FaceDetails)
-      return [];
+      // If no face is found in the image, it returns an empty array.
+      if (!data.FaceDetails)
+        return [];
 
-    // If a face is found in the image, the position information of each face on the image is returned.
-    const boundingBoxes: {width: number, height: number, left: number, top: number}[] = [];
-    for (let detail of data.FaceDetails) {
-      if (!detail.BoundingBox || !detail.Confidence || detail.Confidence < minConfidence)
-        continue;
-      const boundingBox = detail.BoundingBox as AWS.Rekognition.BoundingBox;
-      boundingBoxes.push({
-        width: boundingBox.Width as number,
-        height: boundingBox.Height as number,
-        left: boundingBox.Left as number,
-        top: boundingBox.Top as number
-      });
+      // If a face is found in the image, the position information of each face on the image is returned.
+      for (let detail of data.FaceDetails) {
+        if (!detail.BoundingBox || !detail.Confidence || detail.Confidence < minConfidence)
+          continue;
+        const boundingBox = detail.BoundingBox as AWS.Rekognition.BoundingBox;
+        boundingBoxes.push({
+          width: boundingBox.Width as number,
+          height: boundingBox.Height as number,
+          left: boundingBox.Left as number,
+          top: boundingBox.Top as number
+        });
+      }
+    } catch(e) {
+      console.error(e.message);
     }
+
+    // Returns the face detection result.
     return boundingBoxes;
   }
 
@@ -132,12 +142,8 @@ export default class {
     // Compare faces in two images.
     const data: AWS.Rekognition.Types.CompareFacesResponse = await new Promise((resolve, reject) => {
       this.client.compareFaces({
-        SourceImage: {
-          Bytes: this.getImageBuffer(img1)
-        },
-        TargetImage: {
-          Bytes: this.getImageBuffer(img2)
-        },
+        SourceImage: {Bytes: this.getImageBuffer(img1)},
+        TargetImage: {Bytes: this.getImageBuffer(img2)},
         SimilarityThreshold: 0
       }, (err: AWS.AWSError, data: AWS.Rekognition.Types.CompareFacesResponse) => {
         err ? reject(err) : resolve(data);
@@ -197,7 +203,7 @@ export default class {
 
     // Returns an error if the HTTP status code is other than 200.
     if (data.StatusCode !== 200)
-      throw new ApiError('CollectionCreationUnknownError', data.StatusCode||500, 'Collection creation unknown error');
+      throw new ApiError('CreateCollectionUnknownError', data.StatusCode||500, 'An unknown error occurred while creating the collection');
   }
 
   /**
@@ -240,6 +246,107 @@ export default class {
   }
 
   /**
+   * Detects faces in the input image and adds them to the specified collection.
+   * This  method doesn't save the actual faces that are detected.
+   * Instead, the underlying detection algorithm first detects the faces in the input image.
+   * For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database.
+   * 
+   * @example
+   * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+   * const fs = require('fs');
+   * 
+   * // Instantiate Rekognition client.
+   * const client = new AWSRekognitionClient({
+   *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+   *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+   *   region: process.env.AWS_REKOGNITION_REGION
+   * });
+   * 
+   * // Add face to collection from path.
+   * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+   * const faceId = await client.addFaceToCollection('MyCollection', 'img.png', 'bailey.jpg');
+   * console.log(faceId);
+   * 
+   * // Add face to collection from data URL.
+   * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+   * const faceId = await client.addFaceToCollection('MyCollection', 'data:image/png;base64,/9j/4AAQ...', 'bailey.jpg');
+   * console.log(faceId);
+   * 
+   * // Add face to collection from buffer.
+   * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+   * const faceId = await client.addFaceToCollection('MyCollection', fs.readFileSync('img.png'), 'bailey.jpg');
+   * console.log(faceId);
+   * 
+   * // If the face is not found in the image, throw an error.
+   * // Output: name: AddFaceToCollectionFaceNotFound
+   * //         statusCode: 400
+   * //         message: Not found a face to add
+   * try {
+   *   await client.addFaceToCollection('MyCollection', 'img.png');
+   * } catch (e) {
+   *   // You can get the resulting HTTP status code from the exception.
+   *   console.log(`name: ${e.name}`);
+   *   console.log(`statusCode: ${e.statusCode}`);
+   *   console.log(`message: ${e.message}`);
+   * }
+   * 
+   * // If multiple faces are found in the image, throw an error.
+   * // Output: name: AddFaceToCollectionMultipleFacesFound
+   * //         statusCode: 400
+   * //         message: Multiple additional faces were found
+   * try {
+   *   await client.addFaceToCollection('MyCollection', 'img.png');
+   * } catch (e) {
+   *   // You can get the resulting HTTP status code from the exception.
+   *   console.log(`name: ${e.name}`);
+   *   console.log(`statusCode: ${e.statusCode}`);
+   *   console.log(`message: ${e.message}`);
+   * }
+   * 
+   * @param  {string}          collectionId    The ID of an existing collection to which you want to add the faces that are detected in the input images.
+   * @param  {string}          img             Image path or Data Url or image buffer.
+   * @param  {string}          externalImageId The ID you want to assign to the faces detected in the image.
+   *                                           When you call the "listFaces" operation, the response returns the external ID.
+   *                                           You can use this external image ID to create a client-side index to associate the faces with each image.
+   *                                           You can then use the index to find all faces in an image.
+   *                                           The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
+   * @return {Promise<string>}                 A unique identifier assigned to the face.
+   */
+  public async addFaceToCollection(collectionId: string, img: string, externalImageId?: string): Promise<string> {
+    // Get the count of faces in the image.
+    const facesCount = (await this.detectFaces(img)).length;
+    console.log(`In the face addition process, ${facesCount} faces were found in the image`);
+    
+    // If no face is found or multiple faces are found, an error is returned.
+    if (facesCount === 0)
+      throw new ApiError('AddFaceToCollectionFaceNotFound', 400, 'Not found a face to add');
+    else if (facesCount > 1)
+      throw new ApiError('AddFaceToCollectionMultipleFacesFound', 400, 'Multiple additional faces were found');
+      
+    // Add a face to the collection.
+    const data: AWS.Rekognition.Types.IndexFacesResponse = await new Promise((resolve, reject) => {
+      this.client.indexFaces({
+        CollectionId: collectionId,
+        Image: {Bytes: this.getImageBuffer(img)},
+        DetectionAttributes: ['ALL'],
+        ExternalImageId: externalImageId,
+        MaxFaces: 1,
+        QualityFilter: 'HIGH'
+      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.IndexFacesResponse) => {
+        err ? reject(err) : resolve(data);
+      })
+    });
+
+    // Returns an error if the result of the added face is not found.
+    if (data == null || !data.FaceRecords || !data.FaceRecords.length)
+      throw new ApiError('AddFaceToCollectionNoResultsFound', 500, 'Face addition result not found');
+
+    // Returns a unique identifier assigned to the face.
+    // @ts-ignore
+    return data.FaceRecords[0].Face.FaceId as string;
+  }
+
+  /**
    * Deletes the specified collection.
    * Note that this operation removes all faces in the collection.
    *
@@ -274,7 +381,7 @@ export default class {
 
     // Returns an error if the HTTP status code is other than 200.
     if (data.StatusCode !== 200)
-      throw new ApiError('CollectionDeleteUnknownError', data.StatusCode||500, 'Collection delete unknown error');
+      throw new ApiError('DeleteCollectionUnknownError', data.StatusCode||500, 'An unknown error occurred while deleting the collection');
   }
 
   /**

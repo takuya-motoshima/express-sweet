@@ -139,6 +139,22 @@ export default class {
      */
     listCollections(): Promise<string[]>;
     /**
+     * Detects faces in the input image and adds them to the specified collection.
+     * This  method doesn't save the actual faces that are detected.
+     * Instead, the underlying detection algorithm first detects the faces in the input image.
+     * For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database.
+     *
+     * @param  {string}          collectionId    The ID of an existing collection to which you want to add the faces that are detected in the input images.
+     * @param  {string}          img             Image path or Data Url or image buffer.
+     * @param  {string}          externalImageId The ID you want to assign to the faces detected in the image.
+     *                                           When you call the "listFaces" operation, the response returns the external ID.
+     *                                           You can use this external image ID to create a client-side index to associate the faces with each image.
+     *                                           You can then use the index to find all faces in an image.
+     *                                           The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
+     * @return {Promise<string>}                 A unique identifier assigned to the face.
+     */
+    addFaceToCollection(collectionId: string, img: string, externalImageId?: string): Promise<string>;
+    /**
      * Deletes the specified collection.
      * Note that this operation removes all faces in the collection.
      *
