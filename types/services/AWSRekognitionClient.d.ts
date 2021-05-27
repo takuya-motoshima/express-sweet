@@ -276,11 +276,20 @@ export default class {
         maxFaces?: number;
     }): Promise<FaceMatch[] | FaceMatch | null>;
     /**
+     * Returns metadata for faces in the specified collection.
+     * This metadata includes information such as the bounding box coordinates, and face ID.
+     *
+     * @param  {string}               collectionId ID of the collection from which to list the faces.
+     * @param  {number}               maxResults   Maximum number of faces to return.
+     * @return {Promise<FaceMatch[]>}              Returns all face metadata in the collection.
+     */
+    listFaces(collectionId: string, maxResults?: number): Promise<FaceMatch[]>;
+    /**
      * Deletes faces from a collection.
      * You specify a collection ID and an array of face IDs to remove from the collection.
      *
-     * @param {string}   collectionId [description]
-     * @param {string[]} faceIds      [description]
+     * @param {string}   collectionId Collection from which to remove the specific faces.
+     * @param {string[]} faceIds      An array of face IDs to delete.
      */
     deleteFaces(collectionId: string, faceIds: string[]): Promise<void>;
     /**

@@ -455,14 +455,64 @@ export default class {
   }
 
   /**
+   * Returns metadata for faces in the specified collection.
+   * This metadata includes information such as the bounding box coordinates, and face ID.
+   * 
+   * @param  {string}               collectionId ID of the collection from which to list the faces.
+   * @param  {number}               maxResults   Maximum number of faces to return.
+   * @return {Promise<FaceMatch[]>}              Returns all face metadata in the collection.
+   */
+  public async listFaces(collectionId: string, maxResults: number = 1000): Promise<FaceMatch[]> {
+    // Get metadata for all faces in the collection.
+    const data: AWS.Rekognition.Types.ListFacesResponse = await new Promise((resolve, reject) => {
+      this.client.listFaces({
+        CollectionId: collectionId,
+        MaxResults: maxResults
+      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.ListFacesResponse) => {
+        err ? reject(err) : resolve(data);
+      })
+    });
+
+    // Put face metadata into an array.
+    const results: FaceMatch[] = [];
+    const faces = data.Faces as AWS.Rekognition.Types.FaceList;
+    for (let face of faces) {
+      const bbox = face.BoundingBox as AWS.Rekognition.Types.BoundingBox;
+      const result = {
+        faceId: face.FaceId,
+        boundingBox: {
+          width: bbox.Width,
+          height: bbox.Height,
+          left: bbox.Left,
+          top: bbox.Top
+        }
+      } as FaceMatch;
+      if (face.ExternalImageId != null)
+        result.externalImageId = face.ExternalImageId;
+      results.push(result);
+    }
+
+    // Returns a list of face metadata.
+    return results;
+  }
+
+  /**
    * Deletes faces from a collection.
    * You specify a collection ID and an array of face IDs to remove from the collection.
    *
-   * @param {string}   collectionId [description]
-   * @param {string[]} faceIds      [description]
+   * @param {string}   collectionId Collection from which to remove the specific faces.
+   * @param {string[]} faceIds      An array of face IDs to delete.
    */
   public async deleteFaces(collectionId: string, faceIds: string[]): Promise<void> {
-
+    // Delete collection faces.
+    return new Promise((resolve, reject) => {
+      this.client.deleteFaces({
+        CollectionId: collectionId,
+        FaceIds: faceIds
+      }, (err: AWS.AWSError) => {
+        err ? reject(err) : resolve();
+      })
+    });
   }
 
   /**
