@@ -1,7 +1,8 @@
 import fs from 'fs';
 import AWS from 'aws-sdk';
 import {File} from 'nodejs-shared';
-import AWSRekognitionOptions from '~/interfaces/AWSRekognitionOptions';
+import RekognitionOptions from '~/interfaces/RekognitionOptions';
+import FaceMatch from '~/interfaces/FaceMatch';
 import ApiError from '~/exceptions/ApiError';
 
 /**
@@ -17,11 +18,9 @@ export default class {
   /**
    * Constructs a rekognition client object.
    */
-  constructor(options: AWSRekognitionOptions) {
+  constructor(options: RekognitionOptions) {
     // Initialize options.
-    options = Object.assign({
-      timeout: 5000
-    }, options);
+    options = Object.assign({timeout: 5000}, options);
 
     // Generate AWS Rekognition client instance.
     this.client = new AWS.Rekognition({
@@ -247,7 +246,7 @@ export default class {
 
   /**
    * Detects faces in the input image and adds them to the specified collection.
-   * This  method doesn't save the actual faces that are detected.
+   * This method doesn't save the actual faces that are detected.
    * Instead, the underlying detection algorithm first detects the faces in the input image.
    * For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database.
    * 
@@ -264,25 +263,25 @@ export default class {
    * 
    * // Add face to collection from path.
    * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-   * const faceId = await client.addFaceToCollection('MyCollection', 'img.png', 'bailey.jpg');
+   * const faceId = await client.indexFace('MyCollection', 'img.png', 'bailey.jpg');
    * console.log(faceId);
    * 
    * // Add face to collection from data URL.
    * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-   * const faceId = await client.addFaceToCollection('MyCollection', 'data:image/png;base64,/9j/4AAQ...', 'bailey.jpg');
+   * const faceId = await client.indexFace('MyCollection', 'data:image/png;base64,/9j/4AAQ...', 'bailey.jpg');
    * console.log(faceId);
    * 
    * // Add face to collection from buffer.
    * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-   * const faceId = await client.addFaceToCollection('MyCollection', fs.readFileSync('img.png'), 'bailey.jpg');
+   * const faceId = await client.indexFace('MyCollection', fs.readFileSync('img.png'), 'bailey.jpg');
    * console.log(faceId);
    * 
    * // If the face is not found in the image, throw an error.
-   * // Output: name: AddFaceToCollectionFaceNotFound
+   * // Output: name: IndexFaceFaceNotFound
    * //         statusCode: 400
-   * //         message: Not found a face to add
+   * //         message: No face was found in the image
    * try {
-   *   await client.addFaceToCollection('MyCollection', 'img.png');
+   *   await client.indexFace('MyCollection', 'img.png');
    * } catch (e) {
    *   // You can get the resulting HTTP status code from the exception.
    *   console.log(`name: ${e.name}`);
@@ -291,11 +290,11 @@ export default class {
    * }
    * 
    * // If multiple faces are found in the image, throw an error.
-   * // Output: name: AddFaceToCollectionMultipleFacesFound
+   * // Output: name: IndexFaceMultipleFacesFound
    * //         statusCode: 400
-   * //         message: Multiple additional faces were found
+   * //         message: Multiple faces found in the image
    * try {
-   *   await client.addFaceToCollection('MyCollection', 'img.png');
+   *   await client.indexFace('MyCollection', 'img.png');
    * } catch (e) {
    *   // You can get the resulting HTTP status code from the exception.
    *   console.log(`name: ${e.name}`);
@@ -312,16 +311,16 @@ export default class {
    *                                           The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
    * @return {Promise<string>}                 A unique identifier assigned to the face.
    */
-  public async addFaceToCollection(collectionId: string, img: string, externalImageId?: string): Promise<string> {
+  public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise<string> {
     // Get the count of faces in the image.
     const facesCount = (await this.detectFaces(img)).length;
-    console.log(`In the face addition process, ${facesCount} faces were found in the image`);
+    console.log(`Face indexing process found ${facesCount} faces in the image`);
     
     // If no face is found or multiple faces are found, an error is returned.
     if (facesCount === 0)
-      throw new ApiError('AddFaceToCollectionFaceNotFound', 400, 'Not found a face to add');
+      throw new ApiError('IndexFaceFaceNotFound', 400, 'No face was found in the image');
     else if (facesCount > 1)
-      throw new ApiError('AddFaceToCollectionMultipleFacesFound', 400, 'Multiple additional faces were found');
+      throw new ApiError('IndexFaceMultipleFacesFound', 400, 'Multiple faces found in the image');
       
     // Add a face to the collection.
     const data: AWS.Rekognition.Types.IndexFacesResponse = await new Promise((resolve, reject) => {
@@ -339,11 +338,73 @@ export default class {
 
     // Returns an error if the result of the added face is not found.
     if (data == null || !data.FaceRecords || !data.FaceRecords.length)
-      throw new ApiError('AddFaceToCollectionNoResultsFound', 500, 'Face addition result not found');
+      throw new ApiError('IndexFaceNoResultsFound', 500, 'Face addition result not found');
 
     // Returns a unique identifier assigned to the face.
     // @ts-ignore
     return data.FaceRecords[0].Face.FaceId as string;
+  }
+
+  /**
+   * For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.
+   * The operation compares the features of the input face with faces in the specified collection.
+   * 
+   * @param  {string}                              collectionId          ID of the collection to search.
+   * @param  {string}                              img                   Image path or Data Url or image buffer.
+   * @param  {object}                              options               option.
+   * @param  {object}                              options.minConfidence Specifies the minimum confidence in the face match to return.
+   *                                                                     For example, don't return any matches where confidence in matches is less than 70%.
+   *                                                                     The default value is 80%.
+   * @param  {object}                              options.maxFaces      Maximum number of faces to return.
+   *                                                                     The operation returns the maximum number of faces with the highest confidence in the match.
+   *                                                                     The default value is 5.
+   * @return {Promise<FaceMatch[]|FaceMatch|null>}                       If "options.maxFaces" is 1, the face information found is returned.
+   *                                                                     If "options.maxFaces" is 2 or more, the list of face information found is returned.
+   *                                                                     Returns null if no face is found.
+   */
+  public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
+    // Initialize options.
+    options = Object.assign({minConfidence: 80, maxFaces: 5}, options);
+
+    // Search for collection faces.
+    const data: AWS.Rekognition.Types.SearchFacesByImageResponse = await new Promise((resolve, reject) => {
+      this.client.searchFacesByImage({
+        CollectionId: collectionId,
+        Image: {Bytes: this.getImageBuffer(img)},
+        FaceMatchThreshold: options!.minConfidence,
+        MaxFaces: options!.maxFaces!,
+        QualityFilter: 'AUTO'
+      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.SearchFacesByImageResponse) => {
+        err ? reject(err) : resolve(data);
+      })
+    });
+
+    // Returns an empty array if the collection does not have a face that matches the target face.
+    const matches = <AWS.Rekognition.Types.FaceMatchList>data.FaceMatches || [];
+    if (!matches.length)
+      return null;
+
+    // Put the search results of the faces of the collection in the array.
+    const results: FaceMatch[] = [];
+    for (let match of matches) {
+      const face = match.Face as AWS.Rekognition.Types.Face;
+      const bbox = face.BoundingBox as AWS.Rekognition.Types.BoundingBox;
+      const result = {
+        faceId: face.FaceId,
+        boundingBox: {
+          width: bbox.Width,
+          height: bbox.Height,
+          left: bbox.Left,
+          top: bbox.Top
+        }
+      } as FaceMatch;
+      if (face.ExternalImageId != null)
+        result.externalImageId = face.ExternalImageId;
+      results.push(result);
+    }
+
+    // If options.maxFaces is 1, one search result element is returned, and if options.maxFaces is 2 or more, a search result list is returned.
+    return options.maxFaces === 1 ? results[0] : results;
   }
 
   /**

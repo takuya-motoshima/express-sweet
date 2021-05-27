@@ -91,10 +91,10 @@
           <a class="nav-link" href="#user-authentication-authenticating-users">Authenticating Users</a></li>
           <a class="nav-link" href="#user-authentication-logging-out">Logging Out</a></li>
         </nav>
-        <a class="nav-link" href="#amazon-rekognition">Amazon Rekognition</a>
+        <a class="nav-link" href="#rekognition">Rekognition</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#amazon-rekognition-introduction">Introduction</a></li>
-          <a class="nav-link" href="#amazon-rekognition-class">Rekognition client reference</a></li>
+          <a class="nav-link" href="#rekognition-introduction">Introduction</a></li>
+          <a class="nav-link" href="#rekognition-class">Rekognition client reference</a></li>
         </nav>
       </nav>
     </nav>
@@ -3019,11 +3019,11 @@ module.exports = router;</code></pre>
     <!--end::Logging Out-->
     <!--end::User authentication-->
 
-    <!--begin::Amazon Rekognition-->
-    <h1 id="amazon-rekognition">Amazon Rekognition</h1>
+    <!--begin::Rekognition-->
+    <h1 id="rekognition">Rekognition</h1>
 
     <!--begin::Introduction-->
-    <h2 id="amazon-rekognition-introduction">Introduction</h2>
+    <h2 id="rekognition-introduction">Introduction</h2>
     <p>
       Express Sweet includes an extension of &quot;Amazon Rekognition&quot; for face recognition, face detection, and face comparison.<br>
       This section describes how to use the modules that do them.<br>
@@ -3031,8 +3031,8 @@ module.exports = router;</code></pre>
     </p>
     <!--end::Introduction-->
 
-    <!--begin::Introduction-->
-    <h2 id="amazon-rekognition-class">Rekognition client reference</h2>
+    <!--begin::Rekognition client reference-->
+    <h2 id="rekognition-class">Rekognition client reference</h2>
     <p>class AWSRekognitionClient</p>
 
     <h3>Method Summary</h3>
@@ -3047,21 +3047,21 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#amazon-rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;{width: number, height: number, left: number, top: number}[]&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;{width: number, height: number, left: number, top: number}[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">Detects faces within an image that is provided as input.</p>
           </td>
         </tr>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#amazon-rekognition-method-compare-faces">compareFaces</a>(img1: string, img2: string): Promise&lt;number&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-compare-faces">compareFaces</a>(img1: string, img2: string): Promise&lt;number&gt;</code>
             <p class="mb-0 ms-3 mt-1">Compare the similarity of two faces.</p>
           </td>
         </tr>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#amazon-rekognition-method-create-collection">createCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-create-collection">createCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               Add faces to the collection using the IndexFaces operation.<br>
               For example, you might create collections, one for each of your application users.<br>
@@ -3073,15 +3073,37 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#amazon-rekognition-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">Returns list of collection IDs.</p>
           </td>
         </tr>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#amazon-rekognition-method-delete-collection">deleteCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
-            <p class="mb-0 ms-3 mt-1">Deletes the specified collection.</p>
+            <code class="text-body">async <a href="#rekognition-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Returns list of collection IDs.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-index-face">indexFace</a>(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Detects faces in the input image and adds them to the specified collection.<br>
+              This method doesn't save the actual faces that are detected.<br>
+              Instead, the underlying detection algorithm first detects the faces in the input image.<br>
+              For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-index-face">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;FaceMatch[]|FaceMatch|null&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
+              The operation compares the features of the input face with faces in the specified collection.
+            </p>
           </td>
         </tr>
       </tbody>
@@ -3109,9 +3131,8 @@ module.exports = router;</code></pre>
 
 
 
-    <!--end::Introduction-->
-
-    <!--end::Amazon Rekognition-->
+    <!--end::Rekognition client reference-->
+    <!--end::Rekognition-->
   </main>
 </div>
 

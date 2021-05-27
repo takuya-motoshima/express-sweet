@@ -1,4 +1,5 @@
-import AWSRekognitionOptions from '~/interfaces/AWSRekognitionOptions';
+import RekognitionOptions from '~/interfaces/RekognitionOptions';
+import FaceMatch from '~/interfaces/FaceMatch';
 /**
  * AWS Rekognition Client.
  */
@@ -11,7 +12,7 @@ export default class {
     /**
      * Constructs a rekognition client object.
      */
-    constructor(options: AWSRekognitionOptions);
+    constructor(options: RekognitionOptions);
     /**
      * Detects faces within an image that is provided as input.
      *
@@ -140,9 +141,61 @@ export default class {
     listCollections(): Promise<string[]>;
     /**
      * Detects faces in the input image and adds them to the specified collection.
-     * This  method doesn't save the actual faces that are detected.
+     * This method doesn't save the actual faces that are detected.
      * Instead, the underlying detection algorithm first detects the faces in the input image.
      * For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database.
+     *
+     * @example
+     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
+     * const fs = require('fs');
+     *
+     * // Instantiate Rekognition client.
+     * const client = new AWSRekognitionClient({
+     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+     *   region: process.env.AWS_REKOGNITION_REGION
+     * });
+     *
+     * // Add face to collection from path.
+     * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+     * const faceId = await client.indexFace('MyCollection', 'img.png', 'bailey.jpg');
+     * console.log(faceId);
+     *
+     * // Add face to collection from data URL.
+     * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+     * const faceId = await client.indexFace('MyCollection', 'data:image/png;base64,/9j/4AAQ...', 'bailey.jpg');
+     * console.log(faceId);
+     *
+     * // Add face to collection from buffer.
+     * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+     * const faceId = await client.indexFace('MyCollection', fs.readFileSync('img.png'), 'bailey.jpg');
+     * console.log(faceId);
+     *
+     * // If the face is not found in the image, throw an error.
+     * // Output: name: IndexFaceFaceNotFound
+     * //         statusCode: 400
+     * //         message: No face was found in the image
+     * try {
+     *   await client.indexFace('MyCollection', 'img.png');
+     * } catch (e) {
+     *   // You can get the resulting HTTP status code from the exception.
+     *   console.log(`name: ${e.name}`);
+     *   console.log(`statusCode: ${e.statusCode}`);
+     *   console.log(`message: ${e.message}`);
+     * }
+     *
+     * // If multiple faces are found in the image, throw an error.
+     * // Output: name: IndexFaceMultipleFacesFound
+     * //         statusCode: 400
+     * //         message: Multiple faces found in the image
+     * try {
+     *   await client.indexFace('MyCollection', 'img.png');
+     * } catch (e) {
+     *   // You can get the resulting HTTP status code from the exception.
+     *   console.log(`name: ${e.name}`);
+     *   console.log(`statusCode: ${e.statusCode}`);
+     *   console.log(`message: ${e.message}`);
+     * }
      *
      * @param  {string}          collectionId    The ID of an existing collection to which you want to add the faces that are detected in the input images.
      * @param  {string}          img             Image path or Data Url or image buffer.
@@ -153,7 +206,28 @@ export default class {
      *                                           The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
      * @return {Promise<string>}                 A unique identifier assigned to the face.
      */
-    addFaceToCollection(collectionId: string, img: string, externalImageId?: string): Promise<string>;
+    indexFace(collectionId: string, img: string, externalImageId?: string): Promise<string>;
+    /**
+     * For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.
+     * The operation compares the features of the input face with faces in the specified collection.
+     *
+     * @param  {string}                                          collectionId          ID of the collection to search.
+     * @param  {string}                                          img                   Image path or Data Url or image buffer.
+     * @param  {object}                                          options               option.
+     * @param  {object}                                          options.minConfidence Specifies the minimum confidence in the face match to return.
+     *                                                                                 For example, don't return any matches where confidence in matches is less than 70%.
+     *                                                                                 The default value is 80%.
+     * @param  {object}                                          options.maxFaces      Maximum number of faces to return.
+     *                                                                                 The operation returns the maximum number of faces with the highest confidence in the match.
+     *                                                                                 The default value is 5.
+     * @return {Promise<FaceMatch[]|FaceMatch|null>}                       If "options.maxFaces" is 1, the face information found is returned.
+     *                                                                                 If "options.maxFaces" is 2 or more, the list of face information found is returned.
+     *                                                                                 Returns null if no face is found.
+     */
+    searchFaces(collectionId: string, img: string, options?: {
+        minConfidence?: number;
+        maxFaces?: number;
+    }): Promise<FaceMatch[] | FaceMatch | null>;
     /**
      * Deletes the specified collection.
      * Note that this operation removes all faces in the collection.
