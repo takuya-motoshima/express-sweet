@@ -3089,10 +3089,10 @@ module.exports = router;</code></pre>
           <td class="w-100">
             <code class="text-body">async <a href="#rekognition-method-index-face">indexFace</a>(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code>
             <p class="mb-0 ms-3 mt-1">
-              Detects faces in the input image and adds them to the specified collection.<br>
+              Detects one face in the input image and adds it to the specified collection.<br>
               This method doesn't save the actual faces that are detected.<br>
               Instead, the underlying detection algorithm first detects the faces in the input image.<br>
-              For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database.
+              The algorithm extracts facial features into a feature vector, and stores it in the backend database.
             </p>
           </td>
         </tr>
