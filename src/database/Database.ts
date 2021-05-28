@@ -1,5 +1,5 @@
 import sequelize from 'sequelize';
-import Database from '~/interfaces/Database';
+import DatabaseOptions from '~/interfaces/DatabaseOptions';
 import fs from 'fs';
 
 /**
@@ -17,7 +17,7 @@ export default new class extends sequelize.Sequelize {
     const path = `${process.cwd()}/config/database`;
     if (fs.existsSync(`${path}.js`)) {
       // Instantiate sequelize with name of database, username and password.
-      const options = (require(path) as Database)[env] as sequelize.Options;
+      const options = (require(path) as DatabaseOptions)[env] as sequelize.Options;
       super(options.database!, options.username!, options.password||undefined, options);
     } else {
       console.error(`${path} not found`);

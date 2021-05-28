@@ -5,6 +5,7 @@ import * as services from './services';
 import * as utils from './utils';
 import * as middlewares from './middlewares';
 import * as exceptions from './exceptions';
+import * as interfaces from './interfaces';
 
 export {
   version,
@@ -13,5 +14,6 @@ export {
   services,
   utils,
   middlewares,
-  exceptions
+  exceptions,
+  interfaces
 }

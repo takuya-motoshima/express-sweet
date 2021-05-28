@@ -5,4 +5,5 @@ import * as services from './services';
 import * as utils from './utils';
 import * as middlewares from './middlewares';
 import * as exceptions from './exceptions';
-export { version, mount, database, services, utils, middlewares, exceptions };
+import * as interfaces from './interfaces';
+export { version, mount, database, services, utils, middlewares, exceptions, interfaces };

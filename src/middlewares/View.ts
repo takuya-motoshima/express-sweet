@@ -2,7 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import * as helpers from '~/handlebars_helpers';
-import Config from '~/interfaces/View';
+import ViewOptions from '~/interfaces/ViewOptions';
 // import Handlebars from 'handlebars';
 
 /**
@@ -14,7 +14,7 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load the config.
-    const config = <Config>Object.assign({
+    const config = <ViewOptions>Object.assign({
       views_dir: path.join(process.cwd(), 'views'),
       partials_dir: path.join(process.cwd(), 'views/partials'),
       layouts_dir: path.join(process.cwd(), 'views/layout'),

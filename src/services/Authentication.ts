@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import Config from '~/interfaces/Authentication';
+import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import fs from 'fs';
 
 /**
@@ -44,7 +44,7 @@ export default class {
    */
   public static successRedirect(res: express.Response): void {
     // Load the config.
-    const config = <Config>Object.assign({
+    const config = <AuthenticationOptions>Object.assign({
       success_redirect: '/',
     }, fs.existsSync(`${process.cwd()}/config/authentication.js`) ? require(`${process.cwd()}/config/authentication`) : {});
     res.redirect(config.success_redirect as string);
@@ -57,7 +57,7 @@ export default class {
    */
   public static failureRedirect(res: express.Response): void {
     // Load the config.
-    const config = <Config>Object.assign({
+    const config = <AuthenticationOptions>Object.assign({
       failure_redirect: '/login',
     }, fs.existsSync(`${process.cwd()}/config/authentication.js`) ? require(`${process.cwd()}/config/authentication`) : {});
     res.redirect(config.failure_redirect as string);

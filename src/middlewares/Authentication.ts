@@ -2,7 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import session from 'express-session';
-import Config from '~/interfaces/Authentication';
+import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import fs from 'fs';
 import Model from '~/database/Model';
 
@@ -15,7 +15,7 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load the config.
-    const config = <Config>Object.assign({
+    const config = <AuthenticationOptions>Object.assign({
       enabled: false,
       username: 'username',
       password: 'password',

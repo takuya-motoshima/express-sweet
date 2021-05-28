@@ -81,8 +81,8 @@
           <a class="nav-link" href="#model-accessing">Accessing Models</a></li>
           <a class="nav-link" href="#model-creating">Creating Your Model</a></li>
           <a class="nav-link" href="#model-connecting-to-the-database">Connecting to the Database</a></li>
-          <a class="nav-link" href="#model-database-class">Database class reference</a></li>
-          <a class="nav-link" href="#model-class">Model class reference</a></li>
+          <a class="nav-link" href="#model-database-class">Class Database</a></li>
+          <a class="nav-link" href="#model-class">Class Model</a></li>
         </nav>
         <a class="nav-link" href="#user-authentication">User authentication</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
@@ -94,7 +94,8 @@
         <a class="nav-link" href="#rekognition">Rekognition</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#rekognition-introduction">Introduction</a></li>
-          <a class="nav-link" href="#rekognition-class">Rekognition client reference</a></li>
+          <a class="nav-link" href="#rekognition-class">Class Rekognition</a></li>
+          <a class="nav-link" href="#rekognition-interface-face-match">Interface FaceMatch</a></li>
         </nav>
       </nav>
     </nav>
@@ -202,8 +203,6 @@ cd myapp;</code></pre>
     <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list.</p>
     <pre><code class="bash">npm i express-sweet \
       express \
-      express-hbs \
-      express-session \
       sequelize \
       passport \
       passport-local \
@@ -1696,9 +1695,9 @@ module.exports = class extends Model {
     </p>
     <!--end::Connecting to the Database-->
 
-    <!--begin::Database class reference-->
-    <h2 id="model-database-class">Database class reference</h2>
-    <p>class Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></p>
+    <!--begin::Class Database-->
+    <h2 id="model-database-class">Class Database</h2>
+    <code class="d-block mb-3">express-sweet.database.Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></code>
 
     <div class="callout callout-warning">
       This class returns an instance when loaded, so you don’t have to instantiate it yourself.<br>
@@ -1760,11 +1759,11 @@ const isConnected = await database.isConnect();</code></pre>
     <h3>Constructors</h3>
     <h4 id="database-constructor"><code class="method">public constructor()</code></h4>
     <p>Instantiate sequelize with name of database, username and password.</p>
-    <!--end::Database class reference-->
+    <!--end::Class Database-->
 
-    <!--begin::Model class reference-->
-    <h2 id="model-class">Model class reference</h2>
-    <p>class Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></p>
+    <!--begin::Class Model-->
+    <h2 id="model-class">Class Model</h2>
+    <code class="d-block mb-3">express-sweet.database.Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></code>
 
     <div class="callout callout-warning">
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">&quot;Sequelize’s Model Reference&quot;</a> for more information on the methods and properties available in your model.<br>
@@ -2662,8 +2661,7 @@ await UserModel.findAll({
     attributes: [&#039;userId&#039;, &#039;title&#039;]
   }
 });</code></pre>
-
-    <!--end::Model class reference-->
+    <!--end::Class Model-->
     <!--end::Model-->
 
     <!--begin::User authentication-->
@@ -3031,9 +3029,9 @@ module.exports = router;</code></pre>
     </p>
     <!--end::Introduction-->
 
-    <!--begin::Rekognition client reference-->
-    <h2 id="rekognition-class">Rekognition client reference</h2>
-    <p>class AWSRekognitionClient</p>
+    <!--begin::Class Rekognition-->
+    <h2 id="rekognition-class">Class Rekognition</h2>
+    <code class="d-block mb-3">express-sweet.services.AWSRekognitionClient</code>
 
     <h3>Method Summary</h3>
     <table class="table table-bordered summary">
@@ -3093,16 +3091,41 @@ module.exports = router;</code></pre>
               This method doesn't save the actual faces that are detected.<br>
               Instead, the underlying detection algorithm first detects the faces in the input image.<br>
               The algorithm extracts facial features into a feature vector, and stores it in the backend database.
+
+              <div class="callout callout-warning">
+                Note that this method is used to index one face.<br>
+                Throws an exception if no face is found in the input image or multiple faces are found.
+              </div>
             </p>
           </td>
         </tr>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-index-face">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;FaceMatch[]|FaceMatch|null&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-search-faces">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;FaceMatch[]|FaceMatch|null&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
               The operation compares the features of the input face with faces in the specified collection.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-list-faces">listFaces</a>(collectionId: string, maxResults: number = 1000): Promise&lt;FaceMatch[]&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Returns metadata for faces in the specified collection.<br>
+              This metadata includes information such as the bounding box coordinates, and face ID.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-delete-faces">deleteFaces</a>(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Deletes faces from a collection.<br>
+              You specify a collection ID and an array of face IDs to remove from the collection.
             </p>
           </td>
         </tr>
@@ -3127,11 +3150,13 @@ module.exports = router;</code></pre>
         </tr>
       </tbody>
     </table>
+    <!--end::Class Rekognition-->
 
+    <!--end::Interface FaceMatch-->
+    <h2 id="rekognition-interface-face-match">Interface FaceMatch</h2>
+    <code class="d-block mb-3">express-sweet.interfaces.FaceMatch</code>
+    <!--end::Interface FaceMatch-->
 
-
-
-    <!--end::Rekognition client reference-->
     <!--end::Rekognition-->
   </main>
 </div>
