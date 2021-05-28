@@ -1699,6 +1699,8 @@ module.exports = class extends Model {
     <h2 id="model-database-class">Class Database</h2>
     <code class="d-block mb-3">express-sweet.database.Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></code>
 
+    <p>This is the class that makes the database connection.</p>
+
     <div class="callout callout-warning">
       This class returns an instance when loaded, so you don’t have to instantiate it yourself.<br>
       See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s Reference&quot;</a> for more information on the methods and properties available in your model.<br>
@@ -1764,6 +1766,8 @@ const isConnected = await database.isConnect();</code></pre>
     <!--begin::Class Model-->
     <h2 id="model-class">Class Model</h2>
     <code class="d-block mb-3">express-sweet.database.Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></code>
+
+    <p>This is a class that abstracts the tables in the database.</p>
 
     <div class="callout callout-warning">
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">&quot;Sequelize’s Model Reference&quot;</a> for more information on the methods and properties available in your model.<br>
@@ -3033,6 +3037,8 @@ module.exports = router;</code></pre>
     <h2 id="rekognition-class">Class Rekognition</h2>
     <code class="d-block mb-3">express-sweet.services.AWSRekognitionClient</code>
 
+    <p>This is a class that uses machine learning to analyze images and videos.</p>
+
     <h3>Method Summary</h3>
     <table class="table table-bordered summary">
       <thead class="table-light">
@@ -3155,6 +3161,28 @@ module.exports = router;</code></pre>
     <!--end::Interface FaceMatch-->
     <h2 id="rekognition-interface-face-match">Interface FaceMatch</h2>
     <code class="d-block mb-3">express-sweet.interfaces.FaceMatch</code>
+
+    <h3>Member Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">protected static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-table">table</a>: string</code>
+            <p class="mb-0 ms-3 mt-1">
+              The name of the table that the model accesses.<br>
+              <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <!--end::Interface FaceMatch-->
 
     <!--end::Rekognition-->
