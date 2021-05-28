@@ -1,5 +1,5 @@
 /**
- * Collection face search results interface.
+ * This is the metadata structure of the bounding box coordinates, reliability (the bounding box contains a face), face ID, etc. returned by the searchFaces(), listFaces() methods, etc.
  */
 export default interface {
   /**

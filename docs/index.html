@@ -3051,7 +3051,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;{width: number, height: number, left: number, top: number}[]&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;{<br>&nbsp;&nbsp;width: number,<br>&nbsp;&nbsp;height: number,<br>&nbsp;&nbsp;left: number,<br>&nbsp;&nbsp;top: number<br>}[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">Detects faces within an image that is provided as input.</p>
           </td>
         </tr>
@@ -3108,7 +3108,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-search-faces">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;FaceMatch[]|FaceMatch|null&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-search-faces">searchFaces</a>(<br>&nbsp;&nbsp;collectionId: string,<br>&nbsp;&nbsp;img: string,<br>&nbsp;&nbsp;options?: {<br>&nbsp;&nbsp;&nbsp;&nbsp;minConfidence? : number,<br>&nbsp;&nbsp;&nbsp;&nbsp;maxFaces?: number<br>}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
               The operation compares the features of the input face with faces in the specified collection.
@@ -3118,7 +3118,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-list-faces">listFaces</a>(collectionId: string, maxResults: number = 1000): Promise&lt;FaceMatch[]&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-list-faces">listFaces</a>(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               Returns metadata for faces in the specified collection.<br>
               This metadata includes information such as the bounding box coordinates, and face ID.
@@ -3162,24 +3162,36 @@ module.exports = router;</code></pre>
     <h2 id="rekognition-interface-face-match">Interface FaceMatch</h2>
     <code class="d-block mb-3">express-sweet.interfaces.FaceMatch</code>
 
+    <p>This is the metadata structure of the bounding box coordinates, reliability (the bounding box contains a face), face ID, etc. returned by the <em class="code">searchFaces()</em>, <em class="code">listFaces()</em> methods, etc.</p>
+
     <h3>Member Summary</h3>
     <table class="table table-bordered summary">
       <thead class="table-light">
         <tr>
-          <th>Scope</th>
-          <th>Syntax</th>
+          <th>Member name</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">protected static</td>
+          <td class="text-nowrap">faceId: string</td>
+          <td class="w-100">A unique identifier assigned to the face.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">boundingBox: {<br>&nbsp;&nbsp;width: number,<br>&nbsp;&nbsp;height: number,<br>&nbsp;&nbsp;left: number,<br>&nbsp;&nbsp;top: number<br>}</td>
           <td class="w-100">
-            <code class="text-body"><a href="#model-member-table">table</a>: string</code>
-            <p class="mb-0 ms-3 mt-1">
-              The name of the table that the model accesses.<br>
-              <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
-            </p>
+            Bounding box of the face.<br>
+            <ul class="mb-0">
+              <li>width: Width of the bounding box as a ratio of the overall image width.</li>
+              <li>height: Height of the bounding box as a ratio of the overall image height.</li>
+              <li>left: Left coordinate of the bounding box as a ratio of overall image width.</li>
+              <li>top: Top coordinate of the bounding box as a ratio of overall image height.</li>
+            </ul>
           </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">externalImageId?: string</td>
+          <td class="w-100">Identifier that you assign to all the faces in the input image.</td>
         </tr>
       </tbody>
     </table>
