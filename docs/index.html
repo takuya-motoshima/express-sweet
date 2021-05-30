@@ -70,10 +70,11 @@
         </nav>
         <a class="nav-link" href="#views">Views</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#views-introduction">Introduction</a></li>
-          <a class="nav-link" href="#views-syntax">Syntax</a></li>
-          <a class="nav-link" href="#views-layout">Layouts</a></li>
-          <a class="nav-link" href="#views-helper">Helpers</a></li>
+          <a class="nav-link" href="#view-introduction">Introduction</a></li>
+          <a class="nav-link" href="#view-configuration">Configuration</a></li>
+          <a class="nav-link" href="#view-syntax">Syntax</a></li>
+          <a class="nav-link" href="#view-layout">Layouts</a></li>
+          <a class="nav-link" href="#view-helper">Helpers</a></li>
         </nav>
         <a class="nav-link" href="#model">Model</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
@@ -651,98 +652,7 @@ module.exports = {
 
     <!--begin::View’s configuration-->
     <h2 id="configuration-views">View’s configuration</h2>
-    <p>
-      The view (template engine) configuration is defined in the <em class="code">&quot;config/view.js&quot;</em> file.<br>
-      The view’s configuration file contains the following configuration values.
-    </p>
-
-    <h3>Configuration members</h3>
-    <table class="table table-bordered summary">
-      <thead class="table-light">
-        <tr>
-          <th>Configuration value</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="text-nowrap">views_dir: string</td>
-          <td class="w-100">
-            The directory path where the view will be placed.<br>
-            The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">partials_dir: string</td>
-          <td class="w-100">
-            The directory path where the reusable templates are located.<br>
-            The default is the <em class="code">&quot;views/partials&quot;</em> directory directly under the application root.<br>
-            Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">layouts_dir: string</td>
-          <td class="w-100">
-            The directory path where the reusable base template is located.<br>
-            The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">default_layout: string</td>
-          <td class="w-100">
-            The path to the layout file used by default.<br>
-            The default is the <em class="code">&quot;views/layout/default.*&quot;</em> File directly under the application root.<br>
-            The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">extension: string</td>
-          <td class="w-100">
-            Extension for templates and partials files.<br>
-            The default is <em class="code">&quot;.hbs&quot;</em>.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Example</h3>
-    <p>config/view.js:</p>
-    <pre><code class="js">const path = require(&#039;path&#039;);
-
-/**
- * View&#039;s configuration interface.
- */
-module.exports = {
-  /**
-   * Absolute path to the directory where the view files are located, defaults to `&lt;application root directory&gt;/views`.
-   * @type {string}
-   */
-  views_dir: path.join(process.cwd(), &#039;views&#039;),
-
-  /**
-   * Path to partials templates, one or several directories, defaults to `&lt;application root directory&gt;/views/partials`.
-   * @type {string|string[]}
-   */
-  partials_dir: path.join(process.cwd(), &#039;views/partials&#039;),
-
-  /**
-   * Path to layout templates, defaults to `&lt;application root directory&gt;/views/layout`.
-   * @type {string}
-   */
-  layouts_dir: path.join(process.cwd(), &#039;views/layout&#039;),
-
-  /**
-   * Absolute path to default layout template. defaults to `&lt;application root directory&gt;/views/layout/default.hbs`.
-   * @type {string}
-   */
-  default_layout: path.join(process.cwd(), &#039;views/layout/default.hbs&#039;),
-
-  /**
-   * Extension for templates &amp; partials, defaults to `.hbs`,
-   * @type {string}
-   */
-  extension: &#039;.hbs&#039;
-}</code></pre>
+    <p>See <a href="#view-configuration">&quot;View’s Configuration Reference&quot;</a> for configuring view.</p>
     <!--end::View’s configuration-->
 
     <!--begin::Authentication configuration-->
@@ -932,7 +842,7 @@ module.exports = router;</code></pre>
     <h1 id="views">Views</h1>
 
     <!--begin::Introduction-->
-    <h2 id="views-introduction">Introduction</h2>
+    <h2 id="view-introduction">Introduction</h2>
     <p>
       Express Sweet uses Handlebars as its view template engine.<br>
       This section describes the basic usage of the view on Express Sweet.
@@ -942,8 +852,103 @@ module.exports = router;</code></pre>
     </div>
     <!--end::Introduction-->
 
+    <!--begin::Configuration-->
+    <h2 id="view-configuration">Configuration</h2>
+    <p>
+      The view (template engine) configuration is defined in the <em class="code">&quot;config/view.js&quot;</em> file.<br>
+      The view’s configuration file contains the following configuration values.
+    </p>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">views_dir: string</td>
+          <td class="w-100">
+            The directory path where the view will be placed.<br>
+            The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">partials_dir: string</td>
+          <td class="w-100">
+            The directory path where the reusable templates are located.<br>
+            The default is the <em class="code">&quot;views/partials&quot;</em> directory directly under the application root.<br>
+            Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">layouts_dir: string</td>
+          <td class="w-100">
+            The directory path where the reusable base template is located.<br>
+            The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">default_layout: string</td>
+          <td class="w-100">
+            The path to the layout file used by default.<br>
+            The default is the <em class="code">&quot;views/layout/default.*&quot;</em> File directly under the application root.<br>
+            The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">extension: string</td>
+          <td class="w-100">
+            Extension for templates and partials files.<br>
+            The default is <em class="code">&quot;.hbs&quot;</em>.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <p>config/view.js:</p>
+    <pre><code class="js">const path = require(&#039;path&#039;);
+
+/**
+ * View&#039;s configuration interface.
+ */
+module.exports = {
+  /**
+   * Absolute path to the directory where the view files are located, defaults to `&lt;application root directory&gt;/views`.
+   * @type {string}
+   */
+  views_dir: path.join(process.cwd(), &#039;views&#039;),
+
+  /**
+   * Path to partials templates, one or several directories, defaults to `&lt;application root directory&gt;/views/partials`.
+   * @type {string|string[]}
+   */
+  partials_dir: path.join(process.cwd(), &#039;views/partials&#039;),
+
+  /**
+   * Path to layout templates, defaults to `&lt;application root directory&gt;/views/layout`.
+   * @type {string}
+   */
+  layouts_dir: path.join(process.cwd(), &#039;views/layout&#039;),
+
+  /**
+   * Absolute path to default layout template. defaults to `&lt;application root directory&gt;/views/layout/default.hbs`.
+   * @type {string}
+   */
+  default_layout: path.join(process.cwd(), &#039;views/layout/default.hbs&#039;),
+
+  /**
+   * Extension for templates &amp; partials, defaults to `.hbs`,
+   * @type {string}
+   */
+  extension: &#039;.hbs&#039;
+}</code></pre>
+    <!--end::Configuration-->
+
     <!--begin::View syntax-->
-    <h2 id="views-syntax">Syntax</h2>
+    <h2 id="view-syntax">Syntax</h2>
     <p>To mark where layout should insert page.</p>
     <pre><code class="html">{{{body}}}</code></pre>
 
@@ -957,7 +962,7 @@ module.exports = router;</code></pre>
     <!--end::View syntax-->
 
     <!--begin::View layout-->
-    <h2 id="views-layout">Layouts</h2>
+    <h2 id="view-layout">Layouts</h2>
     <p>There are three ways to use a layout, listed in precedence order.</p>
 
     <ol>
@@ -1013,7 +1018,7 @@ Else
     <!--end::View layout-->
 
     <!--begin::View helper-->
-    <h2 id="views-helper">Helpers</h2>
+    <h2 id="view-helper">Helpers</h2>
     <p>The following Handlebars helpers are available by default in Express Sweet.</p>
 
     <h3>Categories</h3>
@@ -1036,73 +1041,73 @@ Else
       </thead>
       <tbody>
         <tr>
-          <td><a href="#views-helper-eq">eq</a></td>
+          <td><a href="#view-helper-eq">eq</a></td>
           <td>Strict equality <code>===</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-eqw">eqw</a></td>
+          <td><a href="#view-helper-eqw">eqw</a></td>
           <td>Equality <code>==</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-neq">neq</a></td>
+          <td><a href="#view-helper-neq">neq</a></td>
           <td>Strict inequality <code>!==</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-neqw">neqw</a></td>
+          <td><a href="#view-helper-neqw">neqw</a></td>
           <td>Inequality <code>!=</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-lt">lt</a></td>
+          <td><a href="#view-helper-lt">lt</a></td>
           <td>Less than <code>&lt;</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-lte">lte</a></td>
+          <td><a href="#view-helper-lte">lte</a></td>
           <td>Less than or equal <code>&lt;=</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-gt">gt</a></td>
+          <td><a href="#view-helper-gt">gt</a></td>
           <td>Greater than <code>&gt;</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-gte">gte</a></td>
+          <td><a href="#view-helper-gte">gte</a></td>
           <td>Greater than or equal <code>&gt;=</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-not">not</a></td>
+          <td><a href="#view-helper-not">not</a></td>
           <td>Not <code>!</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-ifx">ifx</a></td>
+          <td><a href="#view-helper-ifx">ifx</a></td>
           <td>Imitates conditional operator <code>?:</code></td>
         </tr>
         <tr>
-          <td><a href="#views-helper-empty">empty</a></td>
+          <td><a href="#view-helper-empty">empty</a></td>
           <td>Check if an array is empty</td>
         </tr>
         <tr>
-          <td><a href="#views-helper-count">count</a></td>
+          <td><a href="#view-helper-count">count</a></td>
           <td>Length of an array</td>
         </tr>
         <tr>
-          <td><a href="#views-helper-and">and</a></td>
+          <td><a href="#view-helper-and">and</a></td>
           <td>Logical AND operation</td>
         </tr>
         <tr>
-          <td><a href="#views-helper-or">or</a></td>
+          <td><a href="#view-helper-or">or</a></td>
           <td>Logical OR operation</td>
         </tr>
         <tr>
-          <td><a href="#views-helper-coalesce">coalesce</a></td>
+          <td><a href="#view-helper-coalesce">coalesce</a></td>
           <td>Returns first non-falsy value from list of parameters</td>
         </tr>
         <tr>
-          <td><a href="#views-helper-includes">includes</a></td>
+          <td><a href="#view-helper-includes">includes</a></td>
           <td>Check for a value inside an array</td>
         </tr>
       </tbody>
     </table>
 
-    <h4 id="views-helper-eq"><code class="method">eq</code></h4>
+    <h4 id="view-helper-eq"><code class="method">eq</code></h4>
     <p>Determine whether or not two values are equal (===).</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1118,7 +1123,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-eqw"><code class="method">eqw</code></h4>
+    <h4 id="view-helper-eqw"><code class="method">eqw</code></h4>
     <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1134,7 +1139,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-neq"><code class="method">neq</code></h4>
+    <h4 id="view-helper-neq"><code class="method">neq</code></h4>
     <p>Determine whether or not two values are not equal (!==).</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1150,7 +1155,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-neqw"><code class="method">neqw</code></h4>
+    <h4 id="view-helper-neqw"><code class="method">neqw</code></h4>
     <p>Determine whether or not two values are not equal (!=) weak checking.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1166,7 +1171,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-lt"><code class="method">lt</code></h4>
+    <h4 id="view-helper-lt"><code class="method">lt</code></h4>
     <p>Check for less than condition (a < b).</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1182,7 +1187,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-lte"><code class="method">lte</code></h4>
+    <h4 id="view-helper-lte"><code class="method">lte</code></h4>
     <p>Check for less than or equals condition (a <= b).</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1198,7 +1203,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-gt"><code class="method">gt</code></h4>
+    <h4 id="view-helper-gt"><code class="method">gt</code></h4>
     <p>Check for greater than condition (a > b).</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1214,7 +1219,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-gte"><code class="method">gte</code></h4>
+    <h4 id="view-helper-gte"><code class="method">gte</code></h4>
     <p>Check for greater than or equals condition (a >= b).</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1230,7 +1235,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-not"><code class="method">not</code></h4>
+    <h4 id="view-helper-not"><code class="method">not</code></h4>
     <p>Logical NOT of any expression.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1246,7 +1251,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-ifx"><code class="method">ifx</code></h4>
+    <h4 id="view-helper-ifx"><code class="method">ifx</code></h4>
     <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1266,7 +1271,7 @@ Else
 {{ifx true &#039;active&#039;}} =&gt; &#039;active&#039;
 {{ifx false &#039;active&#039;}} =&gt; &#039;&#039;</code></pre>
 
-    <h4 id="views-helper-empty"><code class="method">empty</code></h4>
+    <h4 id="view-helper-empty"><code class="method">empty</code></h4>
     <p>Check if an array is empty.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1282,7 +1287,7 @@ Else
   Hello
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-count"><code class="method">count</code></h4>
+    <h4 id="view-helper-count"><code class="method">count</code></h4>
     <p>Determine the length of an array.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1294,7 +1299,7 @@ Else
     <pre><code class="js">let items = [5, 6];
 {{count items}} =&gt;  2</code></pre>
 
-    <h4 id="views-helper-and"><code class="method">and</code></h4>
+    <h4 id="view-helper-and"><code class="method">and</code></h4>
     <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1315,7 +1320,7 @@ let value1 = false, value2 = true;
   // do something else
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-or"><code class="method">or</code></h4>
+    <h4 id="view-helper-or"><code class="method">or</code></h4>
     <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1336,7 +1341,7 @@ let value = value2 = false;
   // do something else
 {{/if}}</code></pre>
 
-    <h4 id="views-helper-coalesce"><code class="method">coalesce</code></h4>
+    <h4 id="view-helper-coalesce"><code class="method">coalesce</code></h4>
     <p>
       Returns the first non-falsy value from the parameter list.<br>
       Works quite similar to the SQL&#039;s &quot;COALESCE()&quot; function, but unlike this checks for the first non-false parameter.
@@ -1354,7 +1359,7 @@ let value = value2 = false;
 let fullName = &#039;&#039;, nickName = &#039;foob&#039;;
 {{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;foob&#039;</code></pre>
 
-    <h4 id="views-helper-includes"><code class="method">includes</code></h4>
+    <h4 id="view-helper-includes"><code class="method">includes</code></h4>
     <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1393,13 +1398,13 @@ let value = &#039;2&#039;
       </thead>
       <tbody>
         <tr>
-          <td><a href="#views-helper-cache-busting">cache_busting</a></td>
+          <td><a href="#view-helper-cache-busting">cache_busting</a></td>
           <td>Load automatically updated Assets</td>
         </tr>
       </tbody>
     </table>
 
-    <h4 id="views-helper-cache-busting"><code class="method">cache_busting</code></h4>
+    <h4 id="view-helper-cache-busting"><code class="method">cache_busting</code></h4>
     <p>Returns the Assets path containing the file update time parameter.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1423,17 +1428,17 @@ let value = &#039;2&#039;
       </thead>
       <tbody>
         <tr>
-          <td><a href="#views-helper-json-stringify">json_stringify</a></td>
+          <td><a href="#view-helper-json-stringify">json_stringify</a></td>
           <td>Stringify an object using JSON.stringify</td>
         </tr>
         <tr>
-          <td><a href="#views-helper-json-parse">json_parse</a></td>
+          <td><a href="#view-helper-json-parse">json_parse</a></td>
           <td>Parses the given string using JSON.parse</td>
         </tr>
       </tbody>
     </table>
 
-    <h4 id="views-helper-json-stringify"><code class="method">json_stringify</code></h4>
+    <h4 id="view-helper-json-stringify"><code class="method">json_stringify</code></h4>
     <p>Stringify an object using JSON.stringify.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1445,7 +1450,7 @@ let value = &#039;2&#039;
     <p><strong>Example:</strong></p>
     <pre><code class="js">{{json_stringify value}}</code></pre>
 
-    <h4 id="views-helper-json-parse"><code class="method">json_parse</code></h4>
+    <h4 id="view-helper-json-parse"><code class="method">json_parse</code></h4>
     <p>Parses the given string using JSON.parse.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -1468,13 +1473,13 @@ let value = &#039;2&#039;
       </thead>
       <tbody>
         <tr>
-          <td><a href="#views-helper-replace">replace</a></td>
+          <td><a href="#view-helper-replace">replace</a></td>
           <td>Replace string</td>
         </tr>
       </tbody>
     </table>
 
-    <h4 id="views-helper-replace"><code class="method">replace</code></h4>
+    <h4 id="view-helper-replace"><code class="method">replace</code></h4>
     <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
