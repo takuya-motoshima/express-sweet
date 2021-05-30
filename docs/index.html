@@ -78,6 +78,7 @@
         <a class="nav-link" href="#model">Model</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#model-introduction">Introduction</a></li>
+          <a class="nav-link" href="#model-configuration">Configuration</a></li>
           <a class="nav-link" href="#model-accessing">Accessing Models</a></li>
           <a class="nav-link" href="#model-creating">Creating Your Model</a></li>
           <a class="nav-link" href="#model-connecting-to-the-database">Connecting to the Database</a></li>
@@ -746,117 +747,12 @@ module.exports = {
 
     <!--begin::Authentication configuration-->
     <h2 id="configuration-authentication">Authentication configuration</h2>
-    <p>
-      See <a href="#user-authentication-configuration">&quot;User Authentication Configuration Reference&quot;</a> for configuring user authentication.
-    </p>
+    <p>See <a href="#user-authentication-configuration">&quot;User Authentication Configuration Reference&quot;</a> for configuring user authentication.</p>
     <!--end::Authentication configuration-->
 
     <!--begin::Database configuration-->
     <h2 id="configuration-database">Database configuration</h2>
-    <p>
-      The database configuration is defined in the <em class="code">&quot;config/database.js&quot;</em> file.<br>
-      The database configuration file is separated by environment and contains the following configuration values.
-    </p>
-    <div class="callout callout-info">
-      There are many other database configuration values.<br>
-      For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s API reference&quot;</a>.
-    </div>
-
-    <h3>Configuration members</h3>
-    <table class="table table-bordered summary">
-      <thead class="table-light">
-        <tr>
-          <th>Configuration value</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="text-nowrap">username: string</td>
-          <td class="w-100">The username which is used to authenticate against the database.</td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">password: string|null</td>
-          <td class="w-100">
-            The password which is used to authenticate against the database.<br>
-            The default is no password (<em class="code">null</em>).
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">database: string</td>
-          <td class="w-100">The name of the database.</td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">host: string</td>
-          <td class="w-100">The host of the relational database.</td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">port: string</td>
-          <td class="w-100">
-            The port of the relational database.<br>
-            The default is automatic selection (<em class="code">null</em>).
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">dialect: string</td>
-          <td class="w-100">
-            The dialect of the database you are connecting to.<br>
-            One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
-          </td>
-        </tr>
-        <tr>
-          <td class="text-nowrap">logging: boolean</td>
-          <td class="w-100">
-            Set true to output the executed query etc. to the log.<br>
-            The default is no log output (<em class="code">false</em>).
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Example</h3>
-    <p>config/database.js:</p>
-    <pre><code class="js">/**
- * Database configuration.
- */
-module.exports = {
-  development: {
-    username: &#039;root&#039;,
-    password: null,
-    database: &#039;example&#039;,
-    host: &#039;localhost&#039;,
-    port: undefined,
-    dialect: &#039;mariadb&#039;,
-    timezone: &#039;+09:00&#039;,
-    logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
-  },
-  test: {
-    username: &#039;root&#039;,
-    password: null,
-    database: &#039;example&#039;,
-    host: &#039;localhost&#039;,
-    port: undefined,
-    dialect: &#039;mariadb&#039;,
-    timezone: &#039;+09:00&#039;,
-    logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
-  },
-  production: {
-    username: &#039;root&#039;,
-    password: null,
-    database: &#039;example&#039;,
-    host: &#039;localhost&#039;,
-    port: undefined,
-    dialect: &#039;mariadb&#039;,
-    timezone: &#039;+09:00&#039;,
-    logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
-  }
-}</code></pre>
+    <p>See <a href="#model-configuration">&quot;Database Configuration Reference&quot;</a> for configuring database.</p>
     <!--end::Database configuration-->
     <!--end::Configuration-->
 
@@ -1609,9 +1505,114 @@ let value = &#039;2&#039;
       <li>basic CRUD methods</li>
       <li>and more</li>
     </ul>
-
     <p>This class provides a solid base from which to build your own models, allowing you to rapidly build out your application’s model layer.</p>
     <!--end::Introduction-->
+
+    <!--begin::Configuration-->
+    <h2 id="model-configuration">Configuration</h2>
+    <p>
+      The database configuration is defined in the <em class="code">&quot;config/database.js&quot;</em> file.<br>
+      The database configuration file is separated by environment and contains the following configuration values.
+    </p>
+    <div class="callout callout-info">
+      There are many other database configuration values.<br>
+      For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s API reference&quot;</a>.
+    </div>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">username: string</td>
+          <td class="w-100">The username which is used to authenticate against the database.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">password: string|null</td>
+          <td class="w-100">
+            The password which is used to authenticate against the database.<br>
+            The default is no password (<em class="code">null</em>).
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">database: string</td>
+          <td class="w-100">The name of the database.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">host: string</td>
+          <td class="w-100">The host of the relational database.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">port: string</td>
+          <td class="w-100">
+            The port of the relational database.<br>
+            The default is automatic selection (<em class="code">null</em>).
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">dialect: string</td>
+          <td class="w-100">
+            The dialect of the database you are connecting to.<br>
+            One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">logging: boolean</td>
+          <td class="w-100">
+            Set true to output the executed query etc. to the log.<br>
+            The default is no log output (<em class="code">false</em>).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Example</h3>
+    <p>config/database.js:</p>
+    <pre><code class="js">/**
+ * Database configuration.
+ */
+module.exports = {
+  development: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  }
+}</code></pre>
+    <!--end::Configuration-->
 
     <!--begin::Accessing Models-->
     <h2 id="model-accessing">Accessing Models</h2>
