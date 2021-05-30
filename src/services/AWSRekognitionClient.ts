@@ -3,6 +3,7 @@ import AWS from 'aws-sdk';
 import {File} from 'nodejs-shared';
 import RekognitionOptions from '~/interfaces/RekognitionOptions';
 import FaceMatch from '~/interfaces/FaceMatch';
+import BoundingBox from '~/interfaces/BoundingBox';
 import ApiError from '~/exceptions/ApiError';
 
 /**
@@ -33,6 +34,7 @@ export default class {
 
   /**
    * Detects faces within an image that is provided as input.
+   * For each face detected, the operation returns a bounding box of the face.
    * 
    * @example
    * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
@@ -45,30 +47,31 @@ export default class {
    *   region: process.env.AWS_REKOGNITION_REGION
    * });
    * 
-   * // Face reliability threshold.
-   * const minConfidence = 99;
-   * 
    * // Detect faces from path.
-   * await client.detectFaces('img.jpg', minConfidence);
+   * // Output: [
+   * //           {
+   * //             width: 0.5004957914352417,
+   * //             height: 0.6926820874214172,
+   * //             left: 0.2928674817085266,
+   * //             top: 0.09095800668001175
+   * //           }
+   * //         ]
+   * await client.detectFaces('img.jpg');
    *
    * // Detect faces from data URL.
-   * await client.detectFaces('data:image/png;base64,/9j/4...', minConfidence);
+   * await client.detectFaces('data:image/png;base64,/9j/4...');
    *
    * // Detect faces from buffer.
-   * await client.detectFaces(fs.readFileSync('img.jpg'), minConfidence);
+   * await client.detectFaces(fs.readFileSync('img.jpg'));
    * 
-   * @param  {string} img            Image path or Data Url or image buffer.
-   * @param  {number} minConfidence  The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.
-   * @return {Promise<{width: number, height: number, left: number, top: number}[]>}
+   * @param  {string}                 img           Image path or Data Url or image buffer.
+   * @param  {number}                 minConfidence The minimum confidence of the detected face.
+   *                                                Faces with a confidence lower than this value will not be returned as a result.
+   * @return {Promise<BoundingBox[]>}               Returns the bounding box of the detected face.
    */
-  public async detectFaces(img: string, minConfidence: number = 90): Promise<{width: number, height: number, left: number, top: number}[]> {
+  public async detectFaces(img: string, minConfidence: number = 90): Promise<BoundingBox[]> {
     // Face detection result.
-    const boundingBoxes: {
-      width: number,
-      height: number,
-      left: number,
-      top: number
-    }[] = [];
+    const boundingBoxes: BoundingBox[] = [];
     try {
       // Detect faces.
       const data: AWS.Rekognition.Types.DetectFacesResponse = await new Promise((resolve, reject) => {
@@ -119,19 +122,13 @@ export default class {
    * });
    * 
    * // Compare faces from path.
-   * await client.compareFaces(
-   *   'img1.jpg',
-   *   'img2.jpg');
+   * await client.compareFaces('img1.jpg', 'img2.jpg');
    *
    * // Compare faces from data URL.
-   * await client.compareFaces(
-   *   'data:image/png;base64,/9j/4...',
-   *   'data:image/png;base64,/9j/4...');
+   * await client.compareFaces('data:image/png;base64,/9j/4...', 'data:image/png;base64,/9j/4...');
    *
    * // Compare faces from buffer.
-   * await client.compareFaces(
-   *   fs.readFileSync('img1.jpg'),
-   *   fs.readFileSync('img1.jpg'));
+   * await client.compareFaces(fs.readFileSync('img1.jpg'), fs.readFileSync('img1.jpg'));
    * 
    * @param  {string}          img1 Image path or Data Url or image buffer.
    * @param  {string}          img2 Image path or Data Url or image buffer.
@@ -165,7 +162,6 @@ export default class {
    *
    * @example
    * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-   * const fs = require('fs');
    * 
    * // Instantiate Rekognition client.
    * const client = new AWSRekognitionClient({
@@ -210,7 +206,6 @@ export default class {
    *
    * @example
    * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-   * const fs = require('fs');
    * 
    * // Instantiate Rekognition client.
    * const client = new AWSRekognitionClient({
@@ -402,14 +397,13 @@ export default class {
    * @param  {string}                              collectionId          ID of the collection to search.
    * @param  {string}                              img                   Image path or Data Url or image buffer.
    * @param  {object}                              options               option.
-   * @param  {object}                              options.minConfidence Specifies the minimum confidence in the face match to return.
-   *                                                                     For example, don't return any matches where confidence in matches is less than 70%.
+   * @param  {number}                              options.minConfidence Specifies the minimum confidence in the face match to return.
    *                                                                     The default value is 80%.
-   * @param  {object}                              options.maxFaces      Maximum number of faces to return.
+   * @param  {number}                              options.maxFaces      Maximum number of faces to return.
    *                                                                     The operation returns the maximum number of faces with the highest confidence in the match.
    *                                                                     The default value is 5.
-   * @return {Promise<FaceMatch[]|FaceMatch|null>}                       If "options.maxFaces" is 1, the face information found is returned.
-   *                                                                     If "options.maxFaces" is 2 or more, the list of face information found is returned.
+   * @return {Promise<FaceMatch[]|FaceMatch|null>}                       If options.maxFaces is 1, the face information found is returned.
+   *                                                                     If options.maxFaces is 2 or more, the list of face information found is returned.
    *                                                                     Returns null if no face is found.
    */
   public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
@@ -533,7 +527,6 @@ export default class {
    *
    * @example
    * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-   * const fs = require('fs');
    * 
    * // Instantiate Rekognition client.
    * const client = new AWSRekognitionClient({
@@ -569,7 +562,6 @@ export default class {
    *
    * @example
    * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-   * const fs = require('fs');
    * 
    * // Instantiate Rekognition client.
    * const client = new AWSRekognitionClient({

@@ -96,6 +96,7 @@
           <a class="nav-link" href="#rekognition-introduction">Introduction</a></li>
           <a class="nav-link" href="#rekognition-class">Class Rekognition</a></li>
           <a class="nav-link" href="#rekognition-interface-face-match">Interface FaceMatch</a></li>
+          <a class="nav-link" href="#rekognition-interface-bounding-box">Interface BoundingBox</a></li>
         </nav>
       </nav>
     </nav>
@@ -1748,10 +1749,8 @@ module.exports = class extends Model {
     <h3>Methods</h3>
     <h4 id="database-method-is-connect"><code class="method">public async isConnect(): Promise&lt;boolean&gt;</code></h4>
     <p>Test the connection by trying to authenticate. It runs <em class="code">&quot;SELECT 1+1 AS result&quot;</em> query.</p>
-
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;boolean&gt;} Returns <em class="code">true</em> if it can connect to the database, <em class="code">false</em> if it cannot.</p>
-
     <p><strong>Example:</strong></p>
     <pre><code class="js">const database = require(&#039;express-sweet&#039;).database.Database;
 
@@ -2067,7 +2066,6 @@ UserModel.destroy({
 </code></pre>
 
     <h3>Methods</h3>
-
     <h4 id="model-method-association"><code class="method">public static association(): void</code></h4>
     <p>
       Associate the model.<br>
@@ -2075,9 +2073,7 @@ UserModel.destroy({
       This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
       See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
     </p>
-
     <div class="callout callout-warning">If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.</div>
-
     <p><strong>Example:</strong></p>
     <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
@@ -3051,7 +3047,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;{<br>&nbsp;&nbsp;width: number,<br>&nbsp;&nbsp;height: number,<br>&nbsp;&nbsp;left: number,<br>&nbsp;&nbsp;top: number<br>}[]&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">Detects faces within an image that is provided as input.</p>
           </td>
         </tr>
@@ -3084,8 +3080,11 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
-            <p class="mb-0 ms-3 mt-1">Returns list of collection IDs.</p>
+            <code class="text-body">async <a href="#rekognition-method-delete-collection">deleteCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Deletes the specified collection.<br>
+              Note that this operation removes all faces in the collection.
+            </p>
           </td>
         </tr>
         <tr>
@@ -3097,7 +3096,6 @@ module.exports = router;</code></pre>
               This method doesn't save the actual faces that are detected.<br>
               Instead, the underlying detection algorithm first detects the faces in the input image.<br>
               The algorithm extracts facial features into a feature vector, and stores it in the backend database.
-
               <div class="callout callout-warning">
                 Note that this method is used to index one face.<br>
                 Throws an exception if no face is found in the input image or multiple faces are found.
@@ -3108,7 +3106,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-search-faces">searchFaces</a>(<br>&nbsp;&nbsp;collectionId: string,<br>&nbsp;&nbsp;img: string,<br>&nbsp;&nbsp;options?: {<br>&nbsp;&nbsp;&nbsp;&nbsp;minConfidence? : number,<br>&nbsp;&nbsp;&nbsp;&nbsp;maxFaces?: number<br>}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code>
+            <code class="text-body">async <a href="#rekognition-method-search-faces">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
               The operation compares the features of the input face with faces in the specified collection.
@@ -3150,15 +3148,414 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body"><a href="#amazon-rekognition-method-constructor">constructor</a>(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code>
+            <code class="text-body"><a href="#rekognition-constructor">constructor</a>(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code>
             <p class="mb-0 ms-3 mt-1">Constructs a rekognition client object.</p>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <h3>Methods</h3>
+    <h4 id="rekognition-method-detect-faces"><code class="method">public async detectFaces(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;</code></h4>
+    <p>
+      Detects faces within an image that is provided as input.<br>
+      For each face detected, the operation returns a bounding box of the face.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} img Image path or Data Url or image buffer.</li>
+      <li class="d-flex">
+        <span>{number} minConfidence</span>
+        <span class="ms-2">
+          The minimum confidence of the detected face.<br>
+          Faces with a confidence lower than this value will not be returned as a result.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;} Returns the bounding box of the detected face.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Detect faces from path.
+// Output: [
+//           {
+//             width: 0.5004957914352417,
+//             height: 0.6926820874214172,
+//             left: 0.2928674817085266,
+//             top: 0.09095800668001175
+//           }
+//         ]
+await client.detectFaces(&#039;img.jpg&#039;);
+
+// Detect faces from data URL.
+await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
+
+// Detect faces from buffer.
+await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+
+    <h4 id="rekognition-method-compare-faces"><code class="method">public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</code></h4>
+    <p>Compare the similarity of two faces.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} img1 Image path or Data Url or image buffer.</li>
+      <li>{string} img2 Image path or Data Url or image buffer.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;number&gt;} Level of confidence that the faces match.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Compare faces from path.
+await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
+
+// Compare faces from data URL.
+await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+
+// Compare faces from buffer.
+await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+
+    <h4 id="rekognition-method-create-collection"><code class="method">public async createCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
+    <p>
+      Add faces to the collection using the IndexFaces operation.<br>
+      For example, you might create collections, one for each of your application users.<br>
+      A user can then index faces using the IndexFaces operation and persist results in a specific collection.<br>
+      Then, a user can search the collection for faces in the user-specific container.
+      <div class="callout callout-warning">Note that Collection names are case-sensitive.</div>
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li class="d-flex">
+        <span>{string} collectionId</span>
+        <span class="ms-2">
+          ID for the collection that you are creating.<br>
+          The maximum length is 255, and the characters that can be used are <em class="code">&quot;[a-zA-Z0-9_.\-]+&quot;</em>.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+try {
+  // Creates a collection.
+  await client.createCollection(&#039;MyCollection&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+
+    <h4 id="rekognition-method-list-collections"><code class="method">public async listCollections(): Promise&lt;string[]&gt;</code></h4>
+    <p>Returns list of collection IDs.</p>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;string[]&gt;} An array of collection IDs.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find the collection IDs.
+// Output: [
+//           &#039;MyCollection&#039;,
+//           &#039;AnotherCollection&#039;
+//         ]
+await client.listCollections();</code></pre>
+
+    <h4 id="rekognition-method-delete-collection"><code class="method">public async deleteCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
+    <p>
+      Deletes the specified collection.<br>
+      Note that this operation removes all faces in the collection.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId ID of the collection to delete.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete collection.
+await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+
+    <h4 id="rekognition-method-index-face"><code class="method">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code></h4>
+    <p>
+      Detects one face in the input image and adds it to the specified collection.<br>
+      This method doesn't save the actual faces that are detected.<br>
+      Instead, the underlying detection algorithm first detects the faces in the input image.<br>
+      The algorithm extracts facial features into a feature vector, and stores it in the backend database.
+      <div class="callout callout-warning">
+        Note that this method is used to index one face.<br>
+        Throws an exception if no face is found in the input image or multiple faces are found.
+      </div>
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId The ID of an existing collection to which you want to add the faces that are detected in the input images.</li>
+      <li>{string} img Image path or Data Url or image buffer.</li>
+      <li class="d-flex">
+        <span>{string} externalImageId</span>
+        <span class="ms-2">
+          The ID you want to assign to the faces detected in the image.<br>
+          When you call the <em class="code">&quot;listFaces&quot;</em> operation, the response returns the external ID.<br>
+          You can use this external image ID to create a client-side index to associate the faces with each image.<br>
+          You can then use the index to find all faces in an image.<br>
+          The maximum length is 255, and the characters that can be used are <em class="code">&quot;[a-zA-Z0-9_.\-:]+&quot;</em>.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;string&gt;} A unique identifier assigned to the face.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Add face to collection from path.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
+console.log(faceId);
+
+// Add face to collection from data URL.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
+console.log(faceId);
+
+// Add face to collection from buffer.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
+console.log(faceId);
+
+// If the face is not found in the image, throw an error.
+// Output: name: IndexFaceFaceNotFound
+//         statusCode: 400
+//         message: No face was found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}
+
+// If multiple faces are found in the image, throw an error.
+// Output: name: IndexFaceMultipleFacesFound
+//         statusCode: 400
+//         message: Multiple faces found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+
+    <h4 id="rekognition-method-search-faces"><code class="method">public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code></h4>
+    <p>
+      For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
+      The operation compares the features of the input face with faces in the specified collection.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId ID of the collection to search.</li>
+      <li>{string} img Image path or Data Url or image buffer.</li>
+      <li class="d-flex">
+        <span>{number} options.minConfidence</span>
+        <span class="ms-2">
+          Specifies the minimum confidence in the face match to return.<br>
+          The default value is 80%.
+        </span>
+      </li>
+      <li class="d-flex">
+        <span>{number} options.maxFaces</span>
+        <span class="ms-2">
+          Maximum number of faces to return.<br>
+          The operation returns the maximum number of faces with the highest confidence in the match.<br>
+          The default value is 5.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p class="d-flex">
+      <span>{Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;}</span>
+      <span class="ms-2">
+        If <em class="code">options.maxFaces</em> is 1, the face information found is returned.<br>
+        If <em class="code">options.maxFaces</em> is 2 or more, the list of face information found is returned.<br>
+        Returns <em class="code">null</em> if no face is found.
+      </span>
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// If you want to search for one face, specify 1 for the maxFaces option.
+// In that case, the search result will return the face data for one person.
+// Output: {
+//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//           boundingBox: {
+//             width: 0.500495970249176,
+//             height: 0.6926820278167725,
+//             left: 0.2928670048713684,
+//             top: 0.09095799922943115
+//           },
+//           externalImageId: &#039;img.jpg&#039;
+//         }
+const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
+console.log(match);
+
+// If you want to search for multiple faces, specify 2 or more for the maxFaces option.
+// In that case, the search results will return a list of the face data of multiple people found.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
+console.log(matches);
+
+// The input image can specify a buffer or DataURL in addition to the image path.
+await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+
+    <h4 id="rekognition-method-list-faces"><code class="method">public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;</code></h4>
+    <p>
+      Returns metadata for faces in the specified collection.<br>
+      This metadata includes information such as the bounding box coordinates, and face ID.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId ID of the collection from which to list the faces.</li>
+      <li>{number} maxResults Maximum number of faces to return.The default value is 1000.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;} Returns all face metadata in the collection.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find all face metadata in the collection.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const result = await client.listFaces(&#039;MyCollection&#039;);
+console.log(result);</code></pre>
+
+    <h4 id="rekognition-method-delete-faces"><code class="method">public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code></h4>
+    <p>
+      Deletes faces from a collection.<br>
+      You specify a collection ID and an array of face IDs to remove from the collection.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId Collection from which to remove the specific faces.</li>
+      <li>{string[]} faceIds An array of face IDs to delete.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete a face from the collection.
+await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
+
+    <h3>Constructors</h3>
+    <h4 id="rekognition-constructor"><code class="method">public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code></h4>
+    <p>Constructs a rekognition client object.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} options.accessKeyId Your AWS access key ID.</li>
+      <li>{string} options.secretAccessKey Your AWS secret access key.</li>
+      <li>{string} options.region The region to send service requests to.</li>
+      <li>{number} options.timeout Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds.The default is 5000 milliseconds.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});</code></pre>
     <!--end::Class Rekognition-->
 
-    <!--end::Interface FaceMatch-->
+    <!--begin::Interface FaceMatch-->
     <h2 id="rekognition-interface-face-match">Interface FaceMatch</h2>
     <code class="d-block mb-3">express-sweet.interfaces.FaceMatch</code>
 
@@ -3178,7 +3575,7 @@ module.exports = router;</code></pre>
           <td class="w-100">A unique identifier assigned to the face.</td>
         </tr>
         <tr>
-          <td class="text-nowrap">boundingBox: {<br>&nbsp;&nbsp;width: number,<br>&nbsp;&nbsp;height: number,<br>&nbsp;&nbsp;left: number,<br>&nbsp;&nbsp;top: number<br>}</td>
+          <td class="text-nowrap">boundingBox: <a href="#rekognition-interface-bounding-box">BoundingBox</a></td>
           <td class="w-100">
             Bounding box of the face.<br>
             <ul class="mb-0">
@@ -3196,6 +3593,39 @@ module.exports = router;</code></pre>
       </tbody>
     </table>
     <!--end::Interface FaceMatch-->
+
+    <!--begin::Interface BoundingBox-->
+    <h2 id="rekognition-interface-bounding-box">Interface BoundingBox</h2>
+    <code class="d-block mb-3">express-sweet.interfaces.BoundingBox</code>
+    <p>Bounding box interface for faces, labels, borders, etc.</p>
+    <h3>Member Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Member name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">width: number</td>
+          <td class="w-100">The width of the bounding box.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">height: number</td>
+          <td class="w-100">The height of the bounding box.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">left: number</td>
+          <td class="w-100">The x coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">top: number</td>
+          <td class="w-100">The y coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--end::Interface BoundingBox-->
 
     <!--end::Rekognition-->
   </main>

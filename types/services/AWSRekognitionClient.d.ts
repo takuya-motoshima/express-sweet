@@ -1,5 +1,6 @@
 import RekognitionOptions from '~/interfaces/RekognitionOptions';
 import FaceMatch from '~/interfaces/FaceMatch';
+import BoundingBox from '~/interfaces/BoundingBox';
 /**
  * AWS Rekognition Client.
  */
@@ -15,6 +16,7 @@ export default class {
     constructor(options: RekognitionOptions);
     /**
      * Detects faces within an image that is provided as input.
+     * For each face detected, the operation returns a bounding box of the face.
      *
      * @example
      * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
@@ -39,16 +41,11 @@ export default class {
      * // Detect faces from buffer.
      * await client.detectFaces(fs.readFileSync('img.jpg'), minConfidence);
      *
-     * @param  {string} img            Image path or Data Url or image buffer.
-     * @param  {number} minConfidence  The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.
-     * @return {Promise<{width: number, height: number, left: number, top: number}[]>}
+     * @param  {string}                 img           Image path or Data Url or image buffer.
+     * @param  {number}                 minConfidence The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.
+     * @return {Promise<BoundingBox[]>}               Returns the bounding box of the detected face.
      */
-    detectFaces(img: string, minConfidence?: number): Promise<{
-        width: number;
-        height: number;
-        left: number;
-        top: number;
-    }[]>;
+    detectFaces(img: string, minConfidence?: number): Promise<BoundingBox[]>;
     /**
      * Compare the similarity of two faces.
      *

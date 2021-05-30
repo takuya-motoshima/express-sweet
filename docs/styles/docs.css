@@ -1,6 +1,7 @@
 :root {
   --top-spacing: 74px;
   scroll-padding-top: var(--top-spacing);
+  line-height: 1.0;
 }
 
 body {
@@ -53,21 +54,25 @@ ol li {
   min-width: 150px;
 }
 
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5, h6 {
+  line-height: unset;
+}
+
 h1 {
-  line-height: 1.125em;
+  /* line-height: 1.125em; */
   font-size: 2.5em;
 }
 
 h2 {
   font-size: 1.75em;
   font-weight: 400;
-  line-height: 1.125em;
+  /* line-height: 1.125em; */
 }
 
 h3 {
   font-size: 1.25em;
   font-weight: 500;
-  line-height: 1.25em;
+  /* line-height: 1.25em; */
 }
 
 h4 {
