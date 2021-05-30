@@ -5,6 +5,7 @@ import session from 'express-session';
 import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import fs from 'fs';
 import Model from '~/database/Model';
+import Types from '~/utils/Types';
 
 /**
  * Incorporate user authentication into your application.
@@ -14,20 +15,22 @@ export default class {
    * Mount on application.
    */
   public static mount(app: express.Express) {
-    // Load the config.
-    const config = <AuthenticationOptions>Object.assign({
+    // Initialize options.
+    const options = <AuthenticationOptions>Object.assign({
       enabled: false,
       username: 'username',
       password: 'password',
       success_redirect: '/',
       failure_redirect: '/login',
-      model: undefined,
+      authentication_hook: (username: string, password: string) => null,
+      subscribe_hook: (id: number) => {},
+      // model: undefined,
       allow_unauthenticated: [],
       expiration: 24 * 3600000 // 24hours
     }, fs.existsSync(`${process.cwd()}/config/authentication.js`) ? require(`${process.cwd()}/config/authentication`) : {});
 
     // Exit if authentication is disabled.
-    if (!config.enabled)
+    if (!options.enabled)
       return;
 
     // Set session save method.
@@ -38,24 +41,24 @@ export default class {
       cookie: {
         secure: false,
         httpOnly: true,
-        maxAge: config.expiration
+        maxAge: options.expiration
       }
     }));
 
     // Use passport-local to set up local authentication with username and password.
     passport.use(new LocalStrategy({
-      usernameField: config.username,
-      passwordField: config.password,
+      usernameField: options.username,
+      passwordField: options.password,
       session: true
     }, async (username: string, password: string, done) => {
-      // @ts-ignore
-      const user = await config.model.findOne({
-        where: {
-          [config.username!]: username,
-          [config.password!]: password
-        },
-        raw: true
-      }) as {[key: string]: any};
+      const user = <{[key: string]: any}|null> await options.authentication_hook(username, password);
+      // const user = <{[key: string]: any}> await (options.model as typeof Model).findOne({
+      //   where: {
+      //     [options.username]: username,
+      //     [options.password]: password
+      //   },
+      //   raw: true
+      // });
       done(null, user||false);
     }));
 
@@ -64,15 +67,10 @@ export default class {
 
     // When the request is received, the user data corresponding to the ID is acquired and stored in req.user.
     passport.deserializeUser(async (id, done) => {
-      // @ts-ignore
-      const user = await config.model.findOne({
-        where: {id},
-        raw: true
-      }) as {[key: string]: any};
-
-      // For security, delete the password value.
-      if (user)
-        delete user[config.password!];
+      const user = <{[key: string]: any}> await options.subscribe_hook(id as number);
+      // const user = <{[key: string]: any}> await options.model.findOne({where: {id}, raw: true});
+      // // For security, delete the password value.
+      // if (user) delete user[options.password];
       done(null, user);
     });
 
@@ -86,12 +84,12 @@ export default class {
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Check if the request URL does not require authentication
-      if (config.allow_unauthenticated && config.allow_unauthenticated.length) {
+      if (options.allow_unauthenticated && options.allow_unauthenticated.length) {
         const url = req.path.replace(/\/$/, '');
-        for (let allowedString of config.allow_unauthenticated)
-          if (url.indexOf(allowedString) !== -1) {
+        for (let allowedString of options.allow_unauthenticated) {
+          if (url.indexOf(allowedString) !== -1)
             return void next();
-          }
+        }
       }
 
       // Asynchronous request flag.
@@ -100,18 +98,19 @@ export default class {
       // Check if you are logged in.
       if (req.isAuthenticated()) {
         // For authenticated users.
-        if (req.path !== config.failure_redirect||isAjax) {
+        if (req.path !== options.failure_redirect||isAjax) {
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
+        } else {
+          res.redirect(options.success_redirect);
         }
-          else res.redirect(config.success_redirect!);
       } else {
         // For unauthenticated users.
-        if (req.path === config.failure_redirect||isAjax)
+        if (req.path === options.failure_redirect||isAjax)
           next();
         else
-          res.redirect(config.failure_redirect!);
+          res.redirect(options.failure_redirect);
       }
     });
   }
