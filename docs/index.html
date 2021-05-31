@@ -215,7 +215,42 @@ cd myapp;</code></pre>
 
     <!--begin::Hello world example-->
     <h2 id="started-example">Hello world example</h2>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="hello-world-esm-tab" data-bs-toggle="tab" href="#hello-world-esm" role="tab" aria-controls="hello-world-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="hello-world-cjs-tab" data-bs-toggle="tab" href="#hello-world-cjs" role="tab" aria-controls="hello-world-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="hello-world-esm" role="tabpanel" aria-labelledby="hello-world-esm-tab">
+          <pre><code class="js">import express from &#039;express&#039;;
+import sweet from(&#039;express-sweet&#039;);
+const port = 3000;
+
+// Creates and configures an ExpressJS web server.
+const app = express();
+
+// Mount the extension.
+sweet.mount(app);
+
+// Respond with &quot;hello world&quot; when a GET request is made to the homepage.
+app.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
+});
+
+// Error handling.
+sweet.middlewares.ErrorHandling.mount(app);
+
+// Listen for requests on the specified port.
+app.listen(port, () =&gt; {
+  console.log(`Example app listening at http://localhost:${port}`);
+});</code></pre>
+        </div>
+        <div class="tab-pane fade" id="hello-world-cjs" role="tabpanel" aria-labelledby="hello-world-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const sweet = require(&#039;express-sweet&#039;);
 const port = 3000;
 
@@ -237,7 +272,9 @@ sweet.middlewares.ErrorHandling.mount(app);
 app.listen(port, () =&gt; {
   console.log(`Example app listening at http://localhost:${port}`);
 });</code></pre>
-
+        </div>
+      </div>
+    </div>
     <p>
       This app starts a server and listens on port 3000 for connections.<br>
       The app responds with &quot;Hello World!&quot; for requests to the root URL (<em class="code">/</em>) or <em>route</em>.<br>
@@ -400,7 +437,46 @@ INSERT INTO `book` (`userId`, `title`) VALUES
       The database connection method can be set in <em class="code">&quot;config/database.js&quot;</em>, so change it according to your environment.<br>
       See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">&quot;Sequelize’s configuration&quot;</a> for details on configuration items.
     </p>
-    <pre><code class="js">/**
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="database-configuration-esm-tab" data-bs-toggle="tab" href="#database-configuration-esm" role="tab" aria-controls="database-configuration-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="database-configuration-cjs-tab" data-bs-toggle="tab" href="#database-configuration-cjs" role="tab" aria-controls="database-configuration-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="database-configuration-esm" role="tabpanel" aria-labelledby="database-configuration-esm-tab">
+          <pre><code class="js">/**
+ * Database configuration.
+ */
+export default {
+  development: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="database-configuration-cjs" role="tabpanel" aria-labelledby="database-configuration-cjs-tab">
+          <pre><code class="js">/**
  * Database configuration.
  */
 module.exports = {
@@ -426,7 +502,9 @@ module.exports = {
     dialect: &#039;mariadb&#039;
   }
 }</code></pre>
-
+        </div>
+      </div>
+    </div>
     <p>
       The DB to be used can be defined individually for each environment.<br>
       Specify the environment in the <em class="code">&quot;.env&quot;</em> file.
@@ -604,7 +682,28 @@ if (isDevelopment) {
             For example, to specify a default route, set <em class="code">&quot;default_router&quot;</em> as follows.<br>
             Where blog is the name of the router module you want used.<br>
             Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
-            <pre><code class="js">const express = require(&#039;express&#039;);
+            <div class="example">
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="default-router-esm-tab" data-bs-toggle="tab" href="#default-router-esm" role="tab" aria-controls="default-router-esm" aria-selected="true">ESM</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="default-router-cjs-tab" data-bs-toggle="tab" href="#default-router-cjs" role="tab" aria-controls="default-router-cjs" aria-selected="false">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="default-router-esm" role="tabpanel" aria-labelledby="default-router-esm-tab">
+                  <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
+});
+
+export default router;</code></pre>
+                </div>
+                <div class="tab-pane fade" id="default-router-cjs" role="tabpanel" aria-labelledby="default-router-cjs-tab">
+                  <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, (req, res) =&gt; {
@@ -612,6 +711,9 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+                </div>
+              </div>
+            </div>
             Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.
           </td>
           <td>string</td>
@@ -656,7 +758,56 @@ module.exports = router;</code></pre>
 
     <h3>Example</h3>
     <p>config/config.js:</p>
-    <pre><code class="js">const path = require(&#039;path&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="basic-configuration-esm-tab" data-bs-toggle="tab" href="#basic-configuration-esm" role="tab" aria-controls="basic-configuration-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="basic-configuration-cjs-tab" data-bs-toggle="tab" href="#basic-configuration-cjs" role="tab" aria-controls="basic-configuration-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="basic-configuration-esm" role="tabpanel" aria-labelledby="basic-configuration-esm-tab">
+          <pre><code class="js">import path from &#039;path&#039;;
+
+/**
+ * Express Sweet basic configuration interface.
+ */
+export default {
+  /**
+   * Environment variable file (.env) path, defaults to none (undefined).
+   * @type {string}
+   */
+  env_path: &#039;.env&#039;,
+
+  /**
+   * CORS permission, defaults to invalid (false).
+   * @type {{enabled: boolean}}
+   */
+  cors_enabled: true,
+
+  /**
+   * Maximum body size you can request, defaults to `100kb`.
+   * @type {string|number}
+   */
+  max_body_size: &#039;100kb&#039;,
+
+  /**
+   * Absolute path to the router directory, defaults to `&lt;application root directory&gt;/routes`.
+   * @type {string}
+   */
+  router_dir: path.join(process.cwd(), &#039;routes&#039;),
+
+  /**
+   * The endpoint to run when the root URL is requested, defaults to none (undefined).
+   * @type {string}
+   */
+  default_router: &#039;/blog&#039;
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="basic-configuration-cjs" role="tabpanel" aria-labelledby="basic-configuration-cjs-tab">
+          <pre><code class="js">const path = require(&#039;path&#039;);
 
 /**
  * Express Sweet basic configuration interface.
@@ -692,6 +843,9 @@ module.exports = {
    */
   default_router: &#039;/blog&#039;
 }</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Basic configuration-->
 
     <!--begin::View’s configuration-->
@@ -720,11 +874,31 @@ module.exports = {
       Each route can have one or more handler functions, which are executed when the route is matched.<br>
       Route definition takes the following structure.
     </p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="routing-esm-tab" data-bs-toggle="tab" href="#routing-esm" role="tab" aria-controls="routing-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="routing-cjs-tab" data-bs-toggle="tab" href="#routing-cjs" role="tab" aria-controls="routing-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="routing-esm" role="tabpanel" aria-labelledby="routing-esm-tab">
+          <pre><code class="js">import express from &#039;express&#039;;
+
+const app = express();
+app.METHOD(PATH, HANDLER)</code></pre>
+        </div>
+        <div class="tab-pane fade" id="routing-cjs" role="tabpanel" aria-labelledby="routing-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const app = express();
 
 app.METHOD(PATH, HANDLER)
 </code></pre>
+        </div>
+      </div>
+    </div>
     <ul>
       <li>app is an instance of express.</li>
       <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
@@ -743,10 +917,30 @@ app.METHOD(PATH, HANDLER)
       All routes are defined in your route files, which are located in the <em class="code">&quot;routes&quot;</em> directory.<br>
       These files are automatically mapped by &quot;Express Sweet&quot; to the route files specified in the URI and the route handlers defined in the route files.
     </p>
-
     <p>The following examples illustrate defining simple routes.</p>
     <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;GET /user&quot;</em> requests.</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="basic-routing-esm-tab" data-bs-toggle="tab" href="#basic-routing-esm" role="tab" aria-controls="basic-routing-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="basic-routing-cjs-tab" data-bs-toggle="tab" href="#basic-routing-cjs" role="tab" aria-controls="basic-routing-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="basic-routing-esm" role="tabpanel" aria-labelledby="basic-routing-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /user&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="basic-routing-cjs" role="tabpanel" aria-labelledby="basic-routing-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, (req, res) =&gt; {
@@ -754,9 +948,33 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;POST /user/login&quot;</em> requests.</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="user-login-router-esm-tab" data-bs-toggle="tab" href="#user-login-router-esm" role="tab" aria-controls="user-login-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="user-login-router-cjs-tab" data-bs-toggle="tab" href="#user-login-router-cjs" role="tab" aria-controls="user-login-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="user-login-router-esm" role="tabpanel" aria-labelledby="user-login-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.post(&#039;/login&#039;, (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /user/login&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="user-login-router-cjs" role="tabpanel" aria-labelledby="user-login-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.post(&#039;/login&#039;, (req, res) =&gt; {
@@ -764,6 +982,9 @@ router.post(&#039;/login&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Basic Routing-->
 
     <!--begin::Nested routes-->
@@ -774,7 +995,28 @@ module.exports = router;</code></pre>
     </p>
 
     <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;GET /api/users&quot;</em> requests.</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="get-users-router-esm-tab" data-bs-toggle="tab" href="#get-users-router-esm" role="tab" aria-controls="get-users-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="get-users-router-cjs-tab" data-bs-toggle="tab" href="#get-users-router-cjs" role="tab" aria-controls="get-users-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="get-users-router-esm" role="tabpanel" aria-labelledby="get-users-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.get(&#039;/&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /api/users&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="get-users-router-cjs" role="tabpanel" aria-labelledby="get-users-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, async (req, res) =&gt; {
@@ -782,9 +1024,33 @@ router.get(&#039;/&#039;, async (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;POST /api/users&quot;</em> requests.</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="post-users-router-esm-tab" data-bs-toggle="tab" href="#post-users-router-esm" role="tab" aria-controls="post-users-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="post-users-router-cjs-tab" data-bs-toggle="tab" href="#post-users-router-cjs" role="tab" aria-controls="post-users-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="post-users-router-esm" role="tabpanel" aria-labelledby="post-users-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.post(&#039;/&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a POST request at /api/users&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="post-users-router-cjs" role="tabpanel" aria-labelledby="post-users-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.post(&#039;/&#039;, async (req, res) =&gt; {
@@ -792,9 +1058,33 @@ router.post(&#039;/&#039;, async (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;PUT /api/users/:userId&quot;</em> requests.</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="put-users-router-esm-tab" data-bs-toggle="tab" href="#put-users-router-esm" role="tab" aria-controls="put-users-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="put-users-router-cjs-tab" data-bs-toggle="tab" href="#put-users-router-cjs" role="tab" aria-controls="put-users-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="put-users-router-esm" role="tabpanel" aria-labelledby="put-users-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.put(&#039;/:userId&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a PUT request at /api/users/:userId&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="put-users-router-cjs" role="tabpanel" aria-labelledby="put-users-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.put(&#039;/:userId&#039;, async (req, res) =&gt; {
@@ -802,9 +1092,33 @@ router.put(&#039;/:userId&#039;, async (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;DELETE /api/users/:userId&quot;</em> requests.</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="delete-users-router-esm-tab" data-bs-toggle="tab" href="#delete-users-router-esm" role="tab" aria-controls="delete-users-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="delete-users-router-cjs-tab" data-bs-toggle="tab" href="#delete-users-router-cjs" role="tab" aria-controls="delete-users-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="delete-users-router-esm" role="tabpanel" aria-labelledby="delete-users-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a DELETE request at /api/users/:userId&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="delete-users-router-cjs" role="tabpanel" aria-labelledby="delete-users-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
@@ -812,6 +1126,9 @@ router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Nested routes-->
 
     <!--begin::Default Route-->
@@ -825,7 +1142,28 @@ module.exports = router;</code></pre>
       Where blog is the name of the router module you want used.<br>
       Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
     </p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="default-blog-router-esm-tab" data-bs-toggle="tab" href="#default-blog-router-esm" role="tab" aria-controls="default-blog-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="default-blog-router-cjs-tab" data-bs-toggle="tab" href="#default-blog-router-cjs" role="tab" aria-controls="default-blog-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="default-blog-router-esm" role="tabpanel" aria-labelledby="default-blog-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+const router = Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="default-blog-router-cjs" role="tabpanel" aria-labelledby="default-blog-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
 router.get(&#039;/&#039;, (req, res) =&gt; {
@@ -833,6 +1171,9 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
     <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
     <!--end::Default Route-->
 
@@ -959,7 +1300,56 @@ module.exports = router;</code></pre>
 
     <h3>Example</h3>
     <p>config/view.js:</p>
-    <pre><code class="js">const path = require(&#039;path&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="view-config-esm-tab" data-bs-toggle="tab" href="#view-config-esm" role="tab" aria-controls="view-config-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="view-config-cjs-tab" data-bs-toggle="tab" href="#view-config-cjs" role="tab" aria-controls="view-config-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="view-config-esm" role="tabpanel" aria-labelledby="view-config-esm-tab">
+          <pre><code class="js">import path from &#039;path&#039;;
+
+/**
+ * View&#039;s configuration interface.
+ */
+export default {
+  /**
+   * Absolute path to the directory where the view files are located, defaults to `&lt;application root directory&gt;/views`.
+   * @type {string}
+   */
+  views_dir: path.join(process.cwd(), &#039;views&#039;),
+
+  /**
+   * Path to partials templates, one or several directories, defaults to `&lt;application root directory&gt;/views/partials`.
+   * @type {string|string[]}
+   */
+  partials_dir: path.join(process.cwd(), &#039;views/partials&#039;),
+
+  /**
+   * Path to layout templates, defaults to `&lt;application root directory&gt;/views/layout`.
+   * @type {string}
+   */
+  layouts_dir: path.join(process.cwd(), &#039;views/layout&#039;),
+
+  /**
+   * Absolute path to default layout template. defaults to `&lt;application root directory&gt;/views/layout/default.hbs`.
+   * @type {string}
+   */
+  default_layout: path.join(process.cwd(), &#039;views/layout/default.hbs&#039;),
+
+  /**
+   * Extension for templates &amp; partials, defaults to `.hbs`,
+   * @type {string}
+   */
+  extension: &#039;.hbs&#039;
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="view-config-cjs" role="tabpanel" aria-labelledby="view-config-cjs-tab">
+          <pre><code class="js">const path = require(&#039;path&#039;);
 
 /**
  * View&#039;s configuration interface.
@@ -995,6 +1385,9 @@ module.exports = {
    */
   extension: &#039;.hbs&#039;
 }</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Configuration-->
 
     <!--begin::View syntax-->
@@ -1634,7 +2027,61 @@ let value = &#039;2&#039;
     </table>
     <h3>Example</h3>
     <p>config/database.js:</p>
-    <pre><code class="js">/**
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-config-esm-tab" data-bs-toggle="tab" href="#model-config-esm" role="tab" aria-controls="model-config-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-config-cjs-tab" data-bs-toggle="tab" href="#model-config-cjs" role="tab" aria-controls="model-config-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-config-esm" role="tabpanel" aria-labelledby="model-config-esm-tab">
+          <pre><code class="js">/**
+ * Database configuration.
+ */
+export default {
+  development: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-config-cjs" role="tabpanel" aria-labelledby="model-config-cjs-tab">
+          <pre><code class="js">/**
  * Database configuration.
  */
 module.exports = {
@@ -1675,6 +2122,9 @@ module.exports = {
     //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Configuration-->
 
     <!--begin::Accessing Models-->
@@ -1684,7 +2134,18 @@ module.exports = {
       Loading the model gives you instant access to the model’s functions for working with the database.<br>
       In the following example, &quot;routes/users.js&quot; loads &quot;models/UserModel.js&quot; and tries CRUD to the user table.
     </p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-accessing-esm-tab" data-bs-toggle="tab" href="#model-accessing-esm" role="tab" aria-controls="model-accessing-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-accessing-cjs-tab" data-bs-toggle="tab" href="#model-accessing-cjs" role="tab" aria-controls="model-accessing-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-accessing-esm" role="tabpanel" aria-labelledby="model-accessing-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // Inserting Data.Produces: INSERT INTO user (email, name) VALUES (&#039;robin@example.com&#039;, &#039;Robin&#039;)
 await UserModel.create({
@@ -1708,12 +2169,85 @@ await UserModel.destroy({
     id: 1
   }
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-accessing-cjs" role="tabpanel" aria-labelledby="model-accessing-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Inserting Data.Produces: INSERT INTO user (email, name) VALUES (&#039;robin@example.com&#039;, &#039;Robin&#039;)
+await UserModel.create({
+  email: &#039;robin@example.com&#039;,
+  name: &#039;Robin&#039;
+});
+
+// Selecting Data.Produces: SELECT * FROM user
+await UserModel.findAll();
+
+// Updating Data.Produces: UPDATE user SET name = &#039;Taylor&#039; WHERE id= 1
+await UserModel.update({name: &#039;Taylor&#039;}, {
+  where: {
+    id: 1
+  }
+});
+
+// Deleting Data.Produces: DELETE FROM user WHERE id= 1
+await UserModel.destroy({
+  where: {
+    id: 1
+  }
+});</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Accessing Models-->
 
     <!--begin::Creating Your Model-->
     <h2 id="model-creating">Creating Your Model</h2>
     <p>To take advantage of Express Sweet’s model, you would simply create a new model class that extends &quot;express-sweet/database/Model&quot;.</p>
-    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="creating-your-model-esm-tab" data-bs-toggle="tab" href="#creating-your-model-esm" role="tab" aria-controls="creating-your-model-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="creating-your-model-cjs-tab" data-bs-toggle="tab" href="#creating-your-model-cjs" role="tab" aria-controls="creating-your-model-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="creating-your-model-esm" role="tabpanel" aria-labelledby="creating-your-model-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+/**
+ * User model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * Table name used by the model.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
+
+  /**
+   * Table column list.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      name: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="creating-your-model-cjs" role="tabpanel" aria-labelledby="creating-your-model-cjs-tab">
+          <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -1744,7 +2278,9 @@ module.exports = class extends Model {
     };
   }
 }</code></pre>
-
+        </div>
+      </div>
+    </div>
     <p>
       This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
       For more information, see <a href="#model-class">&quot;Model Class Reference&quot;</a>.
@@ -1816,10 +2352,30 @@ module.exports = class extends Model {
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;boolean&gt;} Returns <em class="code">true</em> if it can connect to the database, <em class="code">false</em> if it cannot.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const database = require(&#039;express-sweet&#039;).database.Database;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="database-is-connect-esm-tab" data-bs-toggle="tab" href="#database-is-connect-esm" role="tab" aria-controls="database-is-connect-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="database-is-connect-cjs-tab" data-bs-toggle="tab" href="#database-is-connect-cjs" role="tab" aria-controls="database-is-connect-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="database-is-connect-esm" role="tabpanel" aria-labelledby="database-is-connect-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+// Check database connection.
+const isConnected = await sweet.database.Database.isConnect();</code></pre>
+        </div>
+        <div class="tab-pane fade" id="database-is-connect-cjs" role="tabpanel" aria-labelledby="database-is-connect-cjs-tab">
+          <pre><code class="js">const database = require(&#039;express-sweet&#039;).database.Database;
 
 // Check database connection.
 const isConnected = await database.isConnect();</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h3>Constructors</h3>
     <h4 id="database-constructor"><code class="method">public constructor()</code></h4>
@@ -2034,7 +2590,33 @@ const isConnected = await database.isConnect();</code></pre>
       <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
     </p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-table-esm-tab" data-bs-toggle="tab" href="#model-table-esm" role="tab" aria-controls="model-table-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-table-cjs-tab" data-bs-toggle="tab" href="#model-table-cjs" role="tab" aria-controls="model-table-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-table-esm" role="tabpanel" aria-labelledby="model-table-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+/**
+ * User model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * The name of the table that the model accesses.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-table-cjs" role="tabpanel" aria-labelledby="model-table-cjs-tab">
+          <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2047,6 +2629,9 @@ module.exports = class extends Model {
     return &#039;user&#039;;
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-member-attributes"><code class="member">protected static attributes: sequelize.ModelAttributes</code></h4>
     <p>
@@ -2054,7 +2639,44 @@ module.exports = class extends Model {
       <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
     </p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const Model = require('express-sweet').database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-attributes-esm-tab" data-bs-toggle="tab" href="#model-attributes-esm" role="tab" aria-controls="model-attributes-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-attributes-cjs-tab" data-bs-toggle="tab" href="#model-attributes-cjs" role="tab" aria-controls="model-attributes-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-attributes-esm" role="tabpanel" aria-labelledby="model-attributes-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+/**
+ * User model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * List of columns in the table accessed by this model.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      name: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-attributes-cjs" role="tabpanel" aria-labelledby="model-attributes-cjs-tab">
+          <pre><code class="js">const Model = require('express-sweet').database.Model;
 
 /**
  * User model.
@@ -2078,6 +2700,9 @@ module.exports = class extends Model {
     };
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-member-data-types"><code class="member">public static readonly DataTypes: {[key: string]: any}</code></h4>
     <p>
@@ -2097,7 +2722,50 @@ module.exports = class extends Model {
       See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">"Sequelize’s operator symbols reference"</a> for details on "sequelize.DataTypes".
     </p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-op-esm-tab" data-bs-toggle="tab" href="#model-op-esm" role="tab" aria-controls="model-op-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-op-cjs-tab" data-bs-toggle="tab" href="#model-op-cjs" role="tab" aria-controls="model-op-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-op-esm" role="tabpanel" aria-labelledby="model-op-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+
+// SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
+UserModel.findOne({
+  where: {
+    [this.Op.and]: [
+      {email: &#039;robin@example.com&#039;},
+      {password: &#039;password&#039;}
+    ]
+  }
+});
+
+// SELECT * FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+UserModel.findAll({
+  where: {
+    [this.Op.or]: [
+      {name: &#039;Robin&#039;},
+      {name: &#039;Taylor&#039;}
+    ]
+  }
+});
+
+// DELETE FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+UserModel.destroy({
+  where: {
+    name: {
+      [this.Op.or]: [&#039;Robin&#039;, &#039;Taylor&#039;]
+    }
+  }
+});</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-op-cjs" role="tabpanel" aria-labelledby="model-op-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
 UserModel.findOne({
@@ -2128,6 +2796,9 @@ UserModel.destroy({
   }
 });
 </code></pre>
+        </div>
+      </div>
+    </div>
 
     <h3>Methods</h3>
     <h4 id="model-method-association"><code class="method">public static association(): void</code></h4>
@@ -2139,7 +2810,44 @@ UserModel.destroy({
     </p>
     <div class="callout callout-warning">If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.</div>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-association-esm-tab" data-bs-toggle="tab" href="#model-association-esm" role="tab" aria-controls="model-association-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-association-cjs-tab" data-bs-toggle="tab" href="#model-association-cjs" role="tab" aria-controls="model-association-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-association-esm" role="tabpanel" aria-labelledby="model-association-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+/**
+ * User model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // User has one profile.
+    const ProfileModel = require(&#039;./ProfileModel&#039;);
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-association-cjs" role="tabpanel" aria-labelledby="model-association-cjs-tab">
+          <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2163,6 +2871,9 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-begin"><code class="method">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code></h4>
     <p>
@@ -2173,7 +2884,45 @@ module.exports = class extends Model {
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;sequelize.Transaction&gt;} Returns a transaction object to identify the transaction being executed.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-begin-esm-tab" data-bs-toggle="tab" href="#model-begin-esm" role="tab" aria-controls="model-begin-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-begin-cjs-tab" data-bs-toggle="tab" href="#model-begin-cjs" role="tab" aria-controls="model-begin-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-begin-esm" role="tabpanel" aria-labelledby="model-begin-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+
+let transaction;
+try {
+  // Start a transaction.
+  // SQL: START TRANSACTION;
+  transaction = await UserModel.begin();
+
+  // Find one user.
+  // SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`id` = 1;
+  const user = await UserModel.findOne({where: {id: 1}}, {transaction});
+  user.name = &#039;Jane&#039;;
+
+  // Update username.
+  // SQL: UPDATE `user` SET `name`=? WHERE `id` = ?
+  await user.save({transaction});
+
+  // commit.
+  // SQL: COMMIT;
+  await transaction.commit();
+} catch(e) {
+  // roll back.
+  // SQL: ROLLBACK;
+  await transaction.rollback();
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-begin-cjs" role="tabpanel" aria-labelledby="model-begin-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 let transaction;
 try {
@@ -2199,6 +2948,9 @@ try {
   await transaction.rollback();
 }
 </code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-create"><code class="method">public static async create(values: object, options: object): Promise&lt;Model&gt;</code></h4>
     <p>
@@ -2213,7 +2965,18 @@ try {
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;Model&gt;} Returns a model that contains the data for the added record.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-create-esm-tab" data-bs-toggle="tab" href="#model-create-esm" role="tab" aria-controls="model-create-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-create-cjs-tab" data-bs-toggle="tab" href="#model-create-cjs" role="tab" aria-controls="model-create-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-create-esm" role="tabpanel" aria-labelledby="model-create-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // Add new user to database.
 // SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;ellen@example.com&#039;,&#039;password&#039;,&#039;Ellen&#039;);
@@ -2222,6 +2985,20 @@ await UserModel.create({
   password: &#039;password&#039;,
   name: &#039;Ellen&#039;
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-create-cjs" role="tabpanel" aria-labelledby="model-create-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Add new user to database.
+// SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;ellen@example.com&#039;,&#039;password&#039;,&#039;Ellen&#039;);
+await UserModel.create({
+  email: &#039;ellen@example.com&#039;,
+  password: &#039;password&#039;,
+  name: &#039;Ellen&#039;
+});</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-save"><code class="method">public static async save(options: object): Promise&lt;Model&gt;</code></h4>
     <p>
@@ -2235,7 +3012,35 @@ await UserModel.create({
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;Model&gt;} Returns a model that contains data for manipulated records such as add and update.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-save-esm-tab" data-bs-toggle="tab" href="#model-save-esm" role="tab" aria-controls="model-save-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-save-cjs-tab" data-bs-toggle="tab" href="#model-save-cjs" role="tab" aria-controls="model-save-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-save-esm" role="tabpanel" aria-labelledby="model-save-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+
+// Create a new user instance with the build method and register the record in the database.
+// SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;jane@example.com&#039;,&#039;password&#039;,&#039;Jane&#039;);
+const user = UserModel.build({
+  email: &#039;jane@example.com&#039;,
+  password: &#039;password&#039;,
+  name: &#039;Jane&#039;
+});
+await user.save();
+
+// If you change the value of some field of an instance, calling save again will update it accordingly.
+// SQL: UPDATE `user` SET `name`=&#039;Ada&#039; WHERE `id` = 1;
+user.name = &#039;Ada&#039;;
+await user.save();</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-save-cjs" role="tabpanel" aria-labelledby="model-save-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 // Create a new user instance with the build method and register the record in the database.
 // SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,'jane@example.com','password','Jane');
@@ -2250,6 +3055,9 @@ await user.save();
 // SQL: UPDATE `user` SET `name`='Ada' WHERE `id` = 1;
 user.name = 'Ada';
 await user.save();</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-find-one"><code class="method">public static async findOne(options: object): Promise&lt;Model|null&gt;</code></h4>
     <p>
@@ -2264,11 +3072,32 @@ await user.save();</code></pre>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;Model|null&gt;} Returns a Model containing the first data found in the database.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-find-one-esm-tab" data-bs-toggle="tab" href="#model-find-one-esm" role="tab" aria-controls="model-find-one-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-find-one-cjs-tab" data-bs-toggle="tab" href="#model-find-one-cjs" role="tab" aria-controls="model-find-one-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-find-one-esm" role="tabpanel" aria-labelledby="model-find-one-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // Find one user.
 // SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` LIMIT 1;
 await UserModel.findOne();</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-find-one-cjs" role="tabpanel" aria-labelledby="model-find-one-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Find one user.
+// SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` LIMIT 1;
+await UserModel.findOne();</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></h4>
     <p>
@@ -2282,7 +3111,18 @@ await UserModel.findOne();</code></pre>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;Array&lt;Model&gt;&gt;} Returns a model containing the data found in the database.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-find-all-esm-tab" data-bs-toggle="tab" href="#model-find-all-esm" role="tab" aria-controls="model-find-all-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-find-all-cjs-tab" data-bs-toggle="tab" href="#model-find-all-cjs" role="tab" aria-controls="model-find-all-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-find-all-esm" role="tabpanel" aria-labelledby="model-find-all-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // Find users whose names start with &quot;Robin&quot;.
 // SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`name` LIKE &#039;Robin%&#039;;
@@ -2293,6 +3133,22 @@ const users = await UserModel.findAll({
     }
   }
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-find-all-cjs" role="tabpanel" aria-labelledby="model-find-all-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Find users whose names start with &quot;Robin&quot;.
+// SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`name` LIKE &#039;Robin%&#039;;
+const users = await UserModel.findAll({
+  where: {
+    name: {
+      [UserModel.Op.like]: &#039;Robin%&#039;
+    }
+  }
+});</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-count"><code class="method">public static async count(options: object): Promise&lt;number&gt;</code></h4>
     <p>
@@ -2306,11 +3162,32 @@ const users = await UserModel.findAll({
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;number&gt;} Returns the count of records that match the condition.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-count-esm-tab" data-bs-toggle="tab" href="#model-count-esm" role="tab" aria-controls="model-count-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-count-cjs-tab" data-bs-toggle="tab" href="#model-count-cjs" role="tab" aria-controls="model-count-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-count-esm" role="tabpanel" aria-labelledby="model-count-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // Get all user record counts.
 // SQL: SELECT count(*) AS `count` FROM `user` AS `user`;
 await UserModel.count();</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-count-cjs" role="tabpanel" aria-labelledby="model-count-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Get all user record counts.
+// SQL: SELECT count(*) AS `count` FROM `user` AS `user`;
+await UserModel.count();</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></h4>
     <p>
@@ -2325,7 +3202,18 @@ await UserModel.count();</code></pre>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;Array&lt;number, number&gt;&gt;} The first element is always the number of affected rows, while the second element is the actual affected rows (only supported in postgres with <em class="code">options.returning</em> true).</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-update-esm-tab" data-bs-toggle="tab" href="#model-update-esm" role="tab" aria-controls="model-update-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-update-cjs-tab" data-bs-toggle="tab" href="#model-update-cjs" role="tab" aria-controls="model-update-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-update-esm" role="tabpanel" aria-labelledby="model-update-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // Update the name of the user whose ID is 1.
 // SQL: UPDATE `user` SET `name`=&#039;Jane&#039; WHERE `id` = 1;
@@ -2339,6 +3227,25 @@ await UserModel.update(
     }
   }
 );</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-update-cjs" role="tabpanel" aria-labelledby="model-update-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Update the name of the user whose ID is 1.
+// SQL: UPDATE `user` SET `name`=&#039;Jane&#039; WHERE `id` = 1;
+await UserModel.update(
+  {
+    name: &#039;Jane&#039;
+  },
+  {
+    where: {
+      id: 1
+    }
+  }
+);</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-upsert"><code class="method">public static async upsert(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code></h4>
     <p>
@@ -2356,7 +3263,18 @@ await UserModel.update(
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;Model, boolean|null&gt;} returns record and whether row was created or updated as boolean. For Postgres/SQLite dialects boolean value is always null.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-upsert-esm-tab" data-bs-toggle="tab" href="#model-upsert-esm" role="tab" aria-controls="model-upsert-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-upsert-cjs-tab" data-bs-toggle="tab" href="#model-upsert-cjs" role="tab" aria-controls="model-upsert-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-upsert-esm" role="tabpanel" aria-labelledby="model-upsert-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // If there is no user corresponding to the primary key or unique key, add it, and if there is a corresponding user, update it.
 // SQL: INSERT INTO `user` (`email`,`password`,`name`) VALUES (?,?,?)
@@ -2366,6 +3284,21 @@ await UserModel.upsert({
   password: &#039;password&#039;,
   name: &#039;Robin&#039;
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-upsert-cjs" role="tabpanel" aria-labelledby="model-upsert-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// If there is no user corresponding to the primary key or unique key, add it, and if there is a corresponding user, update it.
+// SQL: INSERT INTO `user` (`email`,`password`,`name`) VALUES (?,?,?)
+//      ON DUPLICATE KEY UPDATE `email`=VALUES(`email`),`password`=VALUES(`password`),`name`=VALUES(`name`);
+await UserModel.upsert({
+  email: &#039;robin@example.com&#039;,
+  password: &#039;password&#039;,
+  name: &#039;Robin&#039;
+});</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-destroy"><code class="method">public static async destroy(options: object): Promise&lt;number&gt;</code></h4>
     <p>
@@ -2379,9 +3312,32 @@ await UserModel.upsert({
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;number&gt;} The number of destroyed rows.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">// Delete the user whose id is 1.
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-destroy-esm-tab" data-bs-toggle="tab" href="#model-destroy-esm" role="tab" aria-controls="model-destroy-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-destroy-cjs-tab" data-bs-toggle="tab" href="#model-destroy-cjs" role="tab" aria-controls="model-destroy-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-destroy-esm" role="tabpanel" aria-labelledby="model-destroy-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+
+// Delete the user whose id is 1.
 // SQL: DELETE FROM `user` WHERE `id` = 1;
 await UserModel.destroy({where: {id :1}});</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-destroy-cjs" role="tabpanel" aria-labelledby="model-destroy-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Delete the user whose id is 1.
+// SQL: DELETE FROM `user` WHERE `id` = 1;
+await UserModel.destroy({where: {id :1}});</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-has-one"><code class="method">public static hasOne(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code></h4>
     <p>
@@ -2409,7 +3365,44 @@ await UserModel.destroy({where: {id :1}});</code></pre>
       This means, we will insert userId field to Profile model’s table.
     </p>
     <p>This is a user model that defines an association in which the user has one profile.</p>
-    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-has-one-association-esm-tab" data-bs-toggle="tab" href="#model-has-one-association-esm" role="tab" aria-controls="model-has-one-association-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-has-one-association-cjs-tab" data-bs-toggle="tab" href="#model-has-one-association-cjs" role="tab" aria-controls="model-has-one-association-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-has-one-association-esm" role="tabpanel" aria-labelledby="model-has-one-association-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import ProfileModel from  &#039;./ProfileModel&#039;;
+
+/**
+ * User model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // User has one profile.
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-has-one-association-cjs" role="tabpanel" aria-labelledby="model-has-one-association-cjs-tab">
+          <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2433,8 +3426,23 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
+
     <p>This is an example of record search.</p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-has-one-find-esm-tab" data-bs-toggle="tab" href="#model-has-one-find-esm" role="tab" aria-controls="model-has-one-find-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-has-one-find-cjs-tab" data-bs-toggle="tab" href="#model-has-one-find-cjs" role="tab" aria-controls="model-has-one-find-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-has-one-find-esm" role="tabpanel" aria-labelledby="model-has-one-find-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
 
 // SQL: SELECT
 //        `user`.`id`,
@@ -2466,6 +3474,43 @@ await UserModel.findAll({
     attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;]
   }]
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-has-one-find-cjs" role="tabpanel" aria-labelledby="model-has-one-find-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `profile`.`id` AS `profile.id`,
+//        `profile`.`userId` AS `profile.userId`,
+//        `profile`.`address` AS `profile.address`,
+//        `profile`.`tel` AS `profile.tel`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `profile` AS `profile` ON `user`.`id` = `profile`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;profile&quot;: {
+//               &quot;userId&quot;: 1,
+//               &quot;address&quot;: &quot;777 Brockton Avenue, Abington MA 2351&quot;,
+//               &quot;tel&quot;: &quot;202-555-0105&quot;
+//             }
+//           }
+//         ]
+// 
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: [{
+    association: &#039;profile&#039;,
+    attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;]
+  }]
+});</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-belongs-to"><code class="method">public static belongsTo(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code></h4>
     <p>
@@ -2493,7 +3538,44 @@ await UserModel.findAll({
       This means, we will insert userId field to Profile model’s table.
     </p>
     <p>This is a profile model that defines an association whose profile belongs to one user.</p>
-    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-belongs-to-association-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-association-esm" role="tab" aria-controls="model-belongs-to-association-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-belongs-to-association-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-association-cjs" role="tab" aria-controls="model-belongs-to-association-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-belongs-to-association-esm" role="tabpanel" aria-labelledby="model-belongs-to-association-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import UserModel from &#039;./UserModel&#039;;
+
+/**
+ * Profile model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // Profile belongs to one user.
+    this.belongsTo(UserModel, {
+      foreignKey: &#039;userId&#039;,  // profile.userId,
+      targetKey: &#039;id&#039;,  // user.id
+      as: &#039;user&#039;
+    });
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-belongs-to-association-cjs" role="tabpanel" aria-labelledby="model-belongs-to-association-cjs-tab">
+          <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * Profile model.
@@ -2517,8 +3599,23 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
+
     <p>This is an example of record search.</p>
-    <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-belongs-to-find-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-find-esm" role="tab" aria-controls="model-belongs-to-find-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-belongs-to-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-find-cjs" role="tab" aria-controls="model-belongs-to-find-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-belongs-to-find-esm" role="tabpanel" aria-labelledby="model-belongs-to-find-esm-tab">
+          <pre><code class="js">import ProfileModel from  &#039;../models/ProfileModel&#039;;
 
 // SQL: SELECT
 //        `profile`.`id`,
@@ -2550,6 +3647,43 @@ await ProfileModel.findAll({
     attributes: [&#039;id&#039;, &#039;name&#039;]
   }
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-belongs-to-find-cjs" role="tabpanel" aria-labelledby="model-belongs-to-find-cjs-tab">
+          <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
+
+// SQL: SELECT
+//        `profile`.`id`,
+//        `profile`.`userId`,
+//        `profile`.`address`,
+//        `profile`.`tel`,
+//        `user`.`id` AS `user.id`,
+//        `user`.`name` AS `user.name`
+//      FROM
+//        `profile` AS `profile`
+//        INNER JOIN `user` AS `user` ON `profile`.`userId` = `user`.`id`;
+// 
+// Output: [
+//           {
+//             &quot;userId&quot;: 1,
+//             &quot;address&quot;: &quot;777 Brockton Avenue, Abington MA 2351&quot;,
+//             &quot;tel&quot;: &quot;202-555-0105&quot;,
+//             &quot;user&quot;: {
+//               &quot;id&quot;: 1,
+//               &quot;name&quot;: &quot;Robin&quot;
+//             }
+//           }
+//         ]
+await ProfileModel.findAll({
+  attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;],
+  include: {
+    association: &#039;user&#039;,
+    required: true,
+    attributes: [&#039;id&#039;, &#039;name&#039;]
+  }
+});</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
     <p>
@@ -2577,7 +3711,44 @@ await ProfileModel.findAll({
       Each user can make multiple comments while each comment is associated with only a single user.
     </p>
     <p>This is a user model that defines an association in which the user has many comments.</p>
-    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="mode-has-many-association-esm-tab" data-bs-toggle="tab" href="#mode-has-many-association-esm" role="tab" aria-controls="mode-has-many-association-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="mode-has-many-association-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-association-cjs" role="tab" aria-controls="mode-has-many-association-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="mode-has-many-association-esm" role="tabpanel" aria-labelledby="mode-has-many-association-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import CommentModel from &#039;./CommentModel&#039;;
+
+/**
+ * User model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+     // User has many comments.
+    this.hasMany(CommentModel, {
+      foreignKey: &#039;userId&#039;,  // comment.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;comments&#039;
+    });
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="mode-has-many-association-cjs" role="tabpanel" aria-labelledby="mode-has-many-association-cjs-tab">
+          <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2601,8 +3772,22 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
     <p>This is an example of record search.</p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="mode-has-many-find-esm-tab" data-bs-toggle="tab" href="#mode-has-many-find-esm" role="tab" aria-controls="mode-has-many-find-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="mode-has-many-find-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-find-cjs" role="tab" aria-controls="mode-has-many-find-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="mode-has-many-find-esm" role="tabpanel" aria-labelledby="mode-has-many-find-esm-tab">
+          <pre><code class="js">import ProfileModel from  &#039;../models/UserModel&#039;;
 
 // SQL: SELECT
 //        `user`.`id`,
@@ -2637,6 +3822,46 @@ await UserModel.findAll({
     attributes: [&#039;userId&#039;, &#039;text&#039;]
   }
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="mode-has-many-find-cjs" role="tabpanel" aria-labelledby="mode-has-many-find-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `comments`.`id` AS `comments.id`,
+//        `comments`.`userId` AS `comments.userId`,
+//        `comments`.`text` AS `comments.text`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `comment` AS `comments` ON `user`.`id` = `comments`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;comments&quot;: [
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;text&quot;: &quot;First comment from Robin&quot;
+//               },
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;text&quot;: &quot;Second comment from Robin&quot;
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;comments&#039;,
+    attributes: [&#039;userId&#039;, &#039;text&#039;]
+  }
+});</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="model-method-belongs-to-many"><code class="method">public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code></h4>
     <p>
@@ -2665,7 +3890,44 @@ await UserModel.findAll({
       Each user can make multiple books, and each book can be associated with multiple users.
     </p>
     <p>This is a user model that defines an association where users and books have a many-to-many relationship.</p>
-    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-belongs-to-many-association-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-many-association-esm" role="tab" aria-controls="model-belongs-to-many-association-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-belongs-to-many-association-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-association-cjs" role="tab" aria-controls="model-belongs-to-many-association-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-belongs-to-many-association-esm" role="tabpanel" aria-labelledby="model-belongs-to-many-association-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import BookModel from &#039;./BookModel&#039;;
+
+/**
+ * User model.
+ */
+export default class extends sweet.database.Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+     // Users have many books, and books belong to many users.
+    this.hasMany(BookModel, {
+      foreignKey: &#039;userId&#039;,  // book.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;books&#039;
+    });
+  }
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-belongs-to-many-association-cjs" role="tabpanel" aria-labelledby="model-belongs-to-many-association-cjs-tab">
+          <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
 
 /**
  * User model.
@@ -2689,8 +3951,23 @@ module.exports = class extends Model {
     });
   }
 }</code></pre>
+        </div>
+      </div>
+    </div>
+
     <p>This is an example of record search.</p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-belongs-to-many-find-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-many-find-esm" role="tab" aria-controls="model-belongs-to-many-find-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-belongs-to-many-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-find-cjs" role="tab" aria-controls="model-belongs-to-many-find-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-belongs-to-many-find-esm" role="tabpanel" aria-labelledby="model-belongs-to-many-find-esm-tab">
+          <pre><code class="js">import UserModel from  &#039;../models/UserModel&#039;;
 
 // SQL: SELECT
 //        `user`.`id`,
@@ -2725,6 +4002,46 @@ await UserModel.findAll({
     attributes: [&#039;userId&#039;, &#039;title&#039;]
   }
 });</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-belongs-to-many-find-cjs" role="tabpanel" aria-labelledby="model-belongs-to-many-find-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `books`.`id` AS `books.id`,
+//        `books`.`userId` AS `books.userId`,
+//        `books`.`title` AS `books.title`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `book` AS `books` ON `user`.`id` = `books`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;books&quot;: [
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;title&quot;: &quot;The Stars Tonight&quot;
+//               },
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;title&quot;: &quot;A Guide to Courteous Thievery&quot;
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;books&#039;,
+    attributes: [&#039;userId&#039;, &#039;title&#039;]
+  }
+});</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Class Model-->
     <!--end::Model-->
 
@@ -2860,7 +4177,101 @@ await UserModel.findAll({
 
     <h3>Example</h3>
     <p>config/authentication.js:</p>
-    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="authentication-config-esm-tab" data-bs-toggle="tab" href="#authentication-config-esm" role="tab" aria-controls="authentication-config-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="authentication-config-cjs-tab" data-bs-toggle="tab" href="#authentication-config-cjs" role="tab" aria-controls="authentication-config-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="authentication-config-esm" role="tabpanel" aria-labelledby="authentication-config-esm-tab">
+          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+
+/**
+ * User authentication configuration interface.
+ */
+export default {
+  /**
+   * Enable user authentication, defaults to disabled (false).
+   * @type {boolean}
+   */
+  enabled: true,
+
+  /**
+   * Authentication user ID field name, defaults to `username`.
+   * @type {string}
+   */
+  username: &#039;email&#039;,
+
+  /**
+   * Authentication password field name, defaults to `password`.
+   * @type {string}
+   */
+  password: &#039;password&#039;,
+
+  /**
+   * URL to redirect after successful authentication, defaults to `/`.
+   * @type {string}
+   */
+  success_redirect: &#039;/&#039;,
+
+  /**
+   * URL to redirect after log off, defaults to `/login`.
+   * @type {string}
+   */
+  failure_redirect: &#039;/login&#039;,
+
+  /**
+   * This hook is called when authenticating a user.
+   * Please find the user information that owns the credentials based on the user name and password you received and return it.
+   * If the user who owns the credentials cannot be found, return null.
+   *
+   * Note that the user information must include an ID value that can identify the user.
+   * 
+   * @type {(username: string, password: string) =&gt; Promise&lt;{[key: string]: any}|null&gt;}
+   */
+  authenticate_user: async (username, password) =&gt; {
+    return UserModel.findOne({
+      where: {
+        email: username,
+        password: password
+      },
+      raw: true
+    });
+  },
+
+  /**
+   * This hook is called when user authentication is successful.
+   * Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.
+   * The returned data will be set in the req.user property and the view&#039;s session variable.
+   * 
+   * @type {(id: number|string) =&gt; Promise&lt;{[key: string]: any}&gt;}
+   */
+  subscribe_user: async (id) =&gt; {
+    return UserModel.findOne({
+      where: {id},
+      raw: true
+    });
+  },
+
+  /**
+   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
+   * @type {string}
+   */
+  allow_unauthenticated: [&#039;/api&#039;],
+
+  /**
+   * Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
+   * @type {number}
+   */
+  expiration: 24 * 3600000
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="authentication-config-cjs" role="tabpanel" aria-labelledby="authentication-config-cjs-tab">
+          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
 
 /**
  * User authentication configuration interface.
@@ -2941,6 +4352,9 @@ module.exports = {
    */
   expiration: 24 * 3600000
 }</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Configuration-->
 
     <!--begin::Authenticating Users-->
@@ -2983,7 +4397,40 @@ password: &#039;password&#039;</code></pre>
       If it fails, redirect to the page with the URL specified by <em class="code">failure_redirect</em> in <em class="code">&quot;config/authentication.js&quot;</em>.
     </p>
     <p>routes/api/user.js:</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="authentication-router-esm-tab" data-bs-toggle="tab" href="#authentication-router-esm" role="tab" aria-controls="authentication-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="authentication-router-cjs-tab" data-bs-toggle="tab" href="#authentication-router-cjs" role="tab" aria-controls="authentication-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="authentication-router-esm" role="tabpanel" aria-labelledby="authentication-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+import sweet from &#039;express-sweet&#039;;
+const router = Router();
+const Authentication = sweet.services.Authentication;
+
+/**
+ * Login.
+ */
+router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
+  // Authenticate with username and password.
+  const isAuthenticated = await Authentication.authenticate(req, res, next);
+
+  // For sync request.If the authentication is successful, you will be redirected to the authentication success page, and if it is unsuccessful, you will be redirected to the login page.
+  if (isAuthenticated) 
+    Authentication.successRedirect(res);
+  else
+    Authentication.failureRedirect(res);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="authentication-router-cjs" role="tabpanel" aria-labelledby="authentication-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
 
@@ -3002,6 +4449,9 @@ router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p>HTML and JS:</p>
     <pre><code class="html">&lt;form method=&quot;post&quot; action=&quot;/api/users/login&quot;&gt;
@@ -3018,7 +4468,37 @@ module.exports = router;</code></pre>
     <p>Returns the authentication result and executes subsequent processing on the front end.</p>
 
     <p>routes/api/user.js:</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="async-authentication-router-esm-tab" data-bs-toggle="tab" href="#async-authentication-router-esm" role="tab" aria-controls="async-authentication-router-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="async-authentication-router-cjs-tab" data-bs-toggle="tab" href="#async-authentication-router-cjs" role="tab" aria-controls="async-authentication-router-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="async-authentication-router-esm" role="tabpanel" aria-labelledby="async-authentication-router-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+import sweet from &#039;express-sweet&#039;;
+const router = Router();
+const Authentication = sweet.services.Authentication;
+
+/**
+ * Login.
+ */
+router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
+  // Authenticate with username and password.
+  const isAuthenticated = await Authentication.authenticate(req, res, next);
+
+  // For asynchronous requests.Returns the authentication result and executes subsequent processing on the front end.
+  res.json(isAuthenticated);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="async-authentication-router-cjs" role="tabpanel" aria-labelledby="async-authentication-router-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
 
@@ -3034,6 +4514,9 @@ router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p>HTML and JS:</p>
     <pre><code class="html">&lt;form id=&quot;form&quot;&gt;
@@ -3082,7 +4565,34 @@ form.addEventListener(&#039;submit&#039;, async event =&gt; {
 
     <h3>Example</h3>
     <p>routes/api/user.js:</p>
-    <pre><code class="js">const express = require(&#039;express&#039;);
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="authentication-logging-out-esm-tab" data-bs-toggle="tab" href="#authentication-logging-out-esm" role="tab" aria-controls="authentication-logging-out-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="authentication-logging-out-cjs-tab" data-bs-toggle="tab" href="#authentication-logging-out-cjs" role="tab" aria-controls="authentication-logging-out-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="authentication-logging-out-esm" role="tabpanel" aria-labelledby="authentication-logging-out-esm-tab">
+          <pre><code class="js">import {Router} from &#039;express&#039;;
+import sweet from &#039;express-sweet&#039;;
+const router = Router();
+const Authentication = sweet.services.Authentication;
+
+/**
+ * Logout.
+ */
+router.get(&#039;/logout&#039;, (req, res) =&gt; {
+  Authentication.logout(req);
+  res.redirect(&#039;/&#039;);
+});
+
+export default router;</code></pre>
+        </div>
+        <div class="tab-pane fade" id="authentication-logging-out-cjs" role="tabpanel" aria-labelledby="authentication-logging-out-cjs-tab">
+          <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
 
@@ -3095,6 +4605,9 @@ router.get(&#039;/logout&#039;, (req, res) =&gt; {
 });
 
 module.exports = router;</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p>HTML:</p>
     <pre><code class="html">&lt;a href=&quot;{{baseUrl}}/api/users/logout&quot;&gt;Logout&lt;/a&gt;</code></pre>
@@ -3259,7 +4772,46 @@ module.exports = router;</code></pre>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;} Returns the bounding box of the detected face.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-detect-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-detect-faces-esm" role="tab" aria-controls="rekognition-method-detect-faces-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-detect-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-detect-faces-cjs" role="tab" aria-controls="rekognition-method-detect-faces-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-detect-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-detect-faces-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Detect faces from path.
+// Output: [
+//           {
+//             width: 0.5004957914352417,
+//             height: 0.6926820874214172,
+//             left: 0.2928674817085266,
+//             top: 0.09095800668001175
+//           }
+//         ]
+await client.detectFaces(&#039;img.jpg&#039;);
+
+// Detect faces from data URL.
+await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
+
+// Detect faces from buffer.
+await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-detect-faces-cjs" role="tabpanel" aria-labelledby="rekognition-method-detect-faces-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
 // Instantiate Rekognition client.
@@ -3285,6 +4837,9 @@ await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
 
 // Detect faces from buffer.
 await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-compare-faces"><code class="method">public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</code></h4>
     <p>Compare the similarity of two faces.</p>
@@ -3296,7 +4851,38 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;number&gt;} Level of confidence that the faces match.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-compare-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-compare-faces-esm" role="tab" aria-controls="rekognition-method-compare-faces-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-compare-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-compare-faces-cjs" role="tab" aria-controls="rekognition-method-compare-faces-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-compare-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-compare-faces-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Compare faces from path.
+await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
+
+// Compare faces from data URL.
+await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+
+// Compare faces from buffer.
+await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-compare-faces-cjs" role="tabpanel" aria-labelledby="rekognition-method-compare-faces-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
 // Instantiate Rekognition client.
@@ -3314,6 +4900,9 @@ await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data
 
 // Compare faces from buffer.
 await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-create-collection"><code class="method">public async createCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
     <p>
@@ -3334,7 +4923,38 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
       </li>
     </ul>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-create-collection-esm-tab" data-bs-toggle="tab" href="#rekognition-method-create-collection-esm" role="tab" aria-controls="rekognition-method-create-collection-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-create-collection-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-create-collection-cjs" role="tab" aria-controls="rekognition-method-create-collection-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-create-collection-esm" role="tabpanel" aria-labelledby="rekognition-method-create-collection-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+try {
+  // Creates a collection.
+  await client.createCollection(&#039;MyCollection&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-create-collection-cjs" role="tabpanel" aria-labelledby="rekognition-method-create-collection-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
 const client = new AWSRekognitionClient({
@@ -3352,13 +4972,44 @@ try {
   console.log(`statusCode: ${e.statusCode}`);
   console.log(`message: ${e.message}`);
 }</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-list-collections"><code class="method">public async listCollections(): Promise&lt;string[]&gt;</code></h4>
     <p>Returns list of collection IDs.</p>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;string[]&gt;} An array of collection IDs.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-list-collections-esm-tab" data-bs-toggle="tab" href="#rekognition-method-list-collections-esm" role="tab" aria-controls="rekognition-method-list-collections-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-list-collections-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-list-collections-cjs" role="tab" aria-controls="rekognition-method-list-collections-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-list-collections-esm" role="tabpanel" aria-labelledby="rekognition-method-list-collections-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find the collection IDs.
+// Output: [
+//           &#039;MyCollection&#039;,
+//           &#039;AnotherCollection&#039;
+//         ]
+await client.listCollections();</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-list-collections-cjs" role="tabpanel" aria-labelledby="rekognition-method-list-collections-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
 const client = new AWSRekognitionClient({
@@ -3373,6 +5024,9 @@ const client = new AWSRekognitionClient({
 //           &#039;AnotherCollection&#039;
 //         ]
 await client.listCollections();</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-delete-collection"><code class="method">public async deleteCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
     <p>
@@ -3384,7 +5038,31 @@ await client.listCollections();</code></pre>
       <li>{string} collectionId ID of the collection to delete.</li>
     </ul>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-delete-collection-esm-tab" data-bs-toggle="tab" href="#rekognition-method-delete-collection-esm" role="tab" aria-controls="rekognition-method-delete-collection-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-delete-collection-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-delete-collection-cjs" role="tab" aria-controls="rekognition-method-delete-collection-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-delete-collection-esm" role="tabpanel" aria-labelledby="rekognition-method-delete-collection-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete collection.
+await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-delete-collection-cjs" role="tabpanel" aria-labelledby="rekognition-method-delete-collection-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
 const client = new AWSRekognitionClient({
@@ -3395,6 +5073,9 @@ const client = new AWSRekognitionClient({
 
 // Delete collection.
 await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-index-face"><code class="method">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code></h4>
     <p>
@@ -3425,7 +5106,70 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;string&gt;} A unique identifier assigned to the face.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-index-face-esm-tab" data-bs-toggle="tab" href="#rekognition-method-index-face-esm" role="tab" aria-controls="rekognition-method-index-face-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-index-face-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-index-face-cjs" role="tab" aria-controls="rekognition-method-index-face-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-index-face-esm" role="tabpanel" aria-labelledby="rekognition-method-index-face-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Add face to collection from path.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
+console.log(faceId);
+
+// Add face to collection from data URL.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
+console.log(faceId);
+
+// Add face to collection from buffer.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
+console.log(faceId);
+
+// If the face is not found in the image, throw an error.
+// Output: name: IndexFaceFaceNotFound
+//         statusCode: 400
+//         message: No face was found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}
+
+// If multiple faces are found in the image, throw an error.
+// Output: name: IndexFaceMultipleFacesFound
+//         statusCode: 400
+//         message: Multiple faces found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-index-face-cjs" role="tabpanel" aria-labelledby="rekognition-method-index-face-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
 // Instantiate Rekognition client.
@@ -3475,6 +5219,9 @@ try {
   console.log(`statusCode: ${e.statusCode}`);
   console.log(`message: ${e.message}`);
 }</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-search-faces"><code class="method">public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code></h4>
     <p>
@@ -3511,7 +5258,65 @@ try {
       </span>
     </p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-search-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-search-faces-esm" role="tab" aria-controls="rekognition-method-search-faces-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-search-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-search-faces-cjs" role="tab" aria-controls="rekognition-method-search-faces-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-search-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-search-faces-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// If you want to search for one face, specify 1 for the maxFaces option.
+// In that case, the search result will return the face data for one person.
+// Output: {
+//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//           boundingBox: {
+//             width: 0.500495970249176,
+//             height: 0.6926820278167725,
+//             left: 0.2928670048713684,
+//             top: 0.09095799922943115
+//           },
+//           externalImageId: &#039;img.jpg&#039;
+//         }
+const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
+console.log(match);
+
+// If you want to search for multiple faces, specify 2 or more for the maxFaces option.
+// In that case, the search results will return a list of the face data of multiple people found.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
+console.log(matches);
+
+// The input image can specify a buffer or DataURL in addition to the image path.
+await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-search-faces-cjs" role="tabpanel" aria-labelledby="rekognition-method-search-faces-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
 // Instantiate Rekognition client.
@@ -3556,6 +5361,9 @@ console.log(matches);
 // The input image can specify a buffer or DataURL in addition to the image path.
 await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
 await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-list-faces"><code class="method">public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;</code></h4>
     <p>
@@ -3570,7 +5378,44 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;} Returns all face metadata in the collection.</p>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-list-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-list-faces-esm" role="tab" aria-controls="rekognition-method-list-faces-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-list-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-list-faces-cjs" role="tab" aria-controls="rekognition-method-list-faces-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-list-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-list-faces-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find all face metadata in the collection.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const result = await client.listFaces(&#039;MyCollection&#039;);
+console.log(result);</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-list-faces-cjs" role="tabpanel" aria-labelledby="rekognition-method-list-faces-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
 const client = new AWSRekognitionClient({
@@ -3594,6 +5439,9 @@ const client = new AWSRekognitionClient({
 //         ]
 const result = await client.listFaces(&#039;MyCollection&#039;);
 console.log(result);</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h4 id="rekognition-method-delete-faces"><code class="method">public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code></h4>
     <p>
@@ -3606,7 +5454,31 @@ console.log(result);</code></pre>
       <li>{string[]} faceIds An array of face IDs to delete.</li>
     </ul>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-method-delete-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-delete-faces-esm" role="tab" aria-controls="rekognition-method-delete-faces-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-method-delete-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-delete-faces-cjs" role="tab" aria-controls="rekognition-method-delete-faces-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-method-delete-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-delete-faces-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete a face from the collection.
+await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-method-delete-faces-cjs" role="tabpanel" aria-labelledby="rekognition-method-delete-faces-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
 const client = new AWSRekognitionClient({
@@ -3617,6 +5489,9 @@ const client = new AWSRekognitionClient({
 
 // Delete a face from the collection.
 await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
+        </div>
+      </div>
+    </div>
 
     <h3>Constructors</h3>
     <h4 id="rekognition-constructor"><code class="method">public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code></h4>
@@ -3629,7 +5504,28 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
       <li>{number} options.timeout Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds.The default is 5000 milliseconds.</li>
     </ul>
     <p><strong>Example:</strong></p>
-    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rekognition-constructor-esm-tab" data-bs-toggle="tab" href="#rekognition-constructor-esm" role="tab" aria-controls="rekognition-constructor-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="rekognition-constructor-cjs-tab" data-bs-toggle="tab" href="#rekognition-constructor-cjs" role="tab" aria-controls="rekognition-constructor-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="rekognition-constructor-esm" role="tabpanel" aria-labelledby="rekognition-constructor-esm-tab">
+          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+
+// Instantiate Rekognition client.
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});</code></pre>
+        </div>
+        <div class="tab-pane fade" id="rekognition-constructor-cjs" role="tabpanel" aria-labelledby="rekognition-constructor-cjs-tab">
+          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
 const client = new AWSRekognitionClient({
@@ -3637,6 +5533,9 @@ const client = new AWSRekognitionClient({
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
   region: process.env.AWS_REKOGNITION_REGION
 });</code></pre>
+        </div>
+      </div>
+    </div>
     <!--end::Class Rekognition-->
 
     <!--begin::Interface FaceMatch-->

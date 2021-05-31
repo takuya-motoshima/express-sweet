@@ -78,13 +78,13 @@ h2 {
 }
 
 h3 {
-  font-size: 1.25em;
+  font-size: 1.5em;
   font-weight: 500;
   /* line-height: 1.25em; */
 }
 
 h4 {
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: 500;
 }
 
@@ -306,3 +306,24 @@ code:not(.hljs),
 .text-primary {
   color: #b66dff !important;
 }
+
+.example {
+  margin-bottom: 1rem;
+}
+
+  .example .nav-item {
+    margin-bottom: 0;
+  }
+
+  .example .tab-content {
+    padding: 1.5rem;
+    border-width: 0 1px 1px 1px;
+    border-color: #dee2e6;
+    border-style: solid;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+  }
+
+    .example pre {
+      margin-bottom: 0;
+    }
