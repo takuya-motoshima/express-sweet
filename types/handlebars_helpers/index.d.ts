@@ -1,5 +1,5 @@
-import cache_busting from './cache_busting';
-import json from './json';
-import replace from './replace';
-import * as conditionals from './conditionals';
-export { cache_busting, json, replace, conditionals };
+import * as html from './html';
+import * as object from './object';
+import * as string from './string';
+import * as comparison from './comparison';
+export { html, object, string, comparison };

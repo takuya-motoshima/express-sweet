@@ -1,7 +1,8 @@
 import express from 'express';
 import createError from 'http-errors';
-import Hooks from '~/interfaces/Hooks';
+import Config from '~/interfaces/Config';
 import Types from '~/utils/Types';
+import fs from 'fs';
 
 /**
  * Error handling.
@@ -10,7 +11,12 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express, hooks: Hooks) {
+  public static mount(app: express.Express) {
+    // Load the config.
+    const config = <Config>Object.assign({
+      error_handler: (err: any): void|Promise<void> => {}
+    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) : {});
+
     // Catch 404 and forward to error handler.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       next(createError(404));
@@ -18,20 +24,15 @@ export default class {
 
     // Error handler.
     app.use(async (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-      // Get Hooks configuration.
-      hooks = Object.assign({
-        error_handling: (err: any): void|Promise<void> => {}
-      }, hooks);
-
       // Output error to log.
       console.error(err);
 
       // Call error handling Hook.
-      if (hooks.error_handling) {
-        if (Types.isAsyncFunction(hooks.error_handling))
-          await hooks.error_handling(err);
+      if (config.error_handler) {
+        if (Types.isAsyncFunction(config.error_handler))
+          await config.error_handler(err);
         else
-          hooks.error_handling(err);
+          config.error_handler(err);
       }
 
       // Set locals, only providing error in development.

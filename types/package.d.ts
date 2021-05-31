@@ -17,9 +17,6 @@ export declare var scripts: {
 export declare var _moduleAliases: {
     "~": string;
 };
-export declare var bin: {
-    "express-sweet": string;
-};
 export declare var repository: {
     type: string;
     url: string;

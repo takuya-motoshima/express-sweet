@@ -1,3 +1,4 @@
 import Database from './Database';
 import Model from './Model';
-export { Database, Model };
+import loadModels from './loadModels';
+export { Database, Model, loadModels };

@@ -1,5 +1,5 @@
 import sequelize from 'sequelize';
-import Database from '~/interfaces/Database';
+import DatabaseOptions from '~/interfaces/DatabaseOptions';
 import fs from 'fs';
 
 /**
@@ -12,15 +12,12 @@ export default new class extends sequelize.Sequelize {
   constructor() {
     // Get the execution environment.
     const env = process.env.NODE_ENV||'development';
-    console.log(`The environment is "${env}"`);
 
     // Database connection config path.
     const path = `${process.cwd()}/config/database`;
-    console.log(`Load "${path}.js"`);
-
     if (fs.existsSync(`${path}.js`)) {
       // Instantiate sequelize with name of database, username and password.
-      const options = (require(path) as Database)[env] as sequelize.Options;
+      const options = (require(path) as DatabaseOptions)[env] as sequelize.Options;
       super(options.database!, options.username!, options.password||undefined, options);
     } else {
       console.error(`${path} not found`);
@@ -31,6 +28,14 @@ export default new class extends sequelize.Sequelize {
 
   /**
    * Returns true if the DB can be connected.
+   *
+   * @example
+   * const database = require('express-sweet').database.Database;
+   * 
+   * // Check database connection.
+   * const isConnected = await database.isConnect();
+   *
+   * @return {Promise<boolean>} Returns true if it can connect to the database, false if it cannot.
    */
   public async isConnect(): Promise<boolean> {
     try {

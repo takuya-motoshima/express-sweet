@@ -9,7 +9,6 @@
     "LICENSE",
     "README.md",
     "CHANGELOG.md",
-    "bin/",
     "dist/",
     "docs/",
     "example/",
@@ -27,9 +26,6 @@
   },
   "_moduleAliases": {
     "~": "dist"
-  },
-  "bin": {
-    "express-sweet": "bin/express-sweet-cli.js"
   },
   "repository": {
     "type": "git",

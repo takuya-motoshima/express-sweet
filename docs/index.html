@@ -6,18 +6,17 @@
   <title>Reference | Express Sweet</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/dark.min.css">
-  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link href="styles/docs.css" rel="stylesheet">
 </head>
-<body>
-<header class="navbar navbar-expand-md navbar-dark bd-navbar">
-<!-- <header class="navbar navbar-expand-md navbar-light bg-light bd-navbar"> -->
+<body data-bs-spy="scroll" data-bs-target="#sidenav" data-bs-offset="74">
+<header class="navbar navbar-expand-md navbar-dark topnav fixed-top">
   <nav class="container-xxl justify-content-start" aria-label="Main navigation">
     <a class="navbar-brand p-0 me-2" href="./" aria-label="Bootstrap">
       <img src="images/logo-dark.svg" height="50">
     </a>
-    <ul class="navbar-nav flex-row" style="margin-left: auto;">
+    <ul class="navbar-nav flex-row ms-auto">
       <li class="nav-item col-auto">
         <a class="nav-link p-2" href="https://github.com/takuya-motoshima" target="_blank" rel="noopener">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 512 499.36" role="img"><title>GitHub</title><path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z"></path></svg>
@@ -33,153 +32,190 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 167.657 167.657" role="img"><title>Facebook</title><path fill="currentColor" d="M83.829,0.349C37.532,0.349,0,37.881,0,84.178c0,41.523,30.222,75.911,69.848,82.57v-65.081H49.626 v-23.42h20.222V60.978c0-20.037,12.238-30.956,30.115-30.956c8.562,0,15.92,0.638,18.056,0.919v20.944l-12.399,0.006 c-9.72,0-11.594,4.618-11.594,11.397v14.947h23.193l-3.025,23.42H94.026v65.653c41.476-5.048,73.631-40.312,73.631-83.154 C167.657,37.881,130.125,0.349,83.829,0.349z"/></svg>
         </a>
       </li>
-      <!-- <li class="nav-item col-auto">
-        <a class="nav-link p-2" href="#!" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 512 512" role="img"><title>Slack</title><path fill="currentColor" d="M210.787 234.832l68.31-22.883 22.1 65.977-68.309 22.882z"></path><path fill="currentColor" d="M490.54 185.6C437.7 9.59 361.6-31.34 185.6 21.46S-31.3 150.4 21.46 326.4 150.4 543.3 326.4 490.54 543.34 361.6 490.54 185.6zM401.7 299.8l-33.15 11.05 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.38-68.36 22.92 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.43-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.5-13.92 2.87-29.06 16.78-33.56l33.12-11.03-22.1-65.9-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.48-13.93 2.89-29.07 16.81-33.58l33.15-11.05-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.46 34.38 68.36-22.92-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.47 34.42 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.87 29.06-16.78 33.56L329.7 194.6l22.1 65.9 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.88 29.07-16.81 33.57z"></path></svg>
-          <small class="d-md-none ms-2">Slack</small>
-        </a>
-      </li> -->
-      <!-- <li class="nav-item col-auto">
-        <a class="nav-link p-2" href="#!" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" fill-rule="evenodd" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 40 41" role="img"><title>Open Collective</title><path fill-opacity=".4" d="M32.8 21c0 2.4-.8 4.9-2 6.9l5.1 5.1c2.5-3.4 4.1-7.6 4.1-12 0-4.6-1.6-8.8-4-12.2L30.7 14c1.2 2 2 4.3 2 7z"></path><path d="M20 33.7a12.8 12.8 0 0 1 0-25.6c2.6 0 5 .7 7 2.1L32 5a20 20 0 1 0 .1 31.9l-5-5.2a13 13 0 0 1-7 2z"></path></svg>
-          <small class="d-md-none ms-2">Open Collective</small>
-        </a>
-      </li> -->
     </ul>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-expanded="false" aria-label="Toggle docs navigation">
+    <button id="sidebarToggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle docs navigation">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="currentColor" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
       </svg>
     </button>
   </nav>
 </header>
-<div class="container-xxl my-md-4 bd-layout">
-  <aside class="bd-sidebar" id="bdSidebar">
-    <nav class="bd-links" aria-label="Docs navigation">
-      <ul class="list-unstyled mb-0 py-3 pt-md-1" --id="sideMenuList">
-        <li class="mb-1 active">
-          <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#gettingStartedCollapse" aria-expanded="true" aria-current="true">
-            Getting started
-          </button>
-          <div class="collapse show" id="gettingStartedCollapse">
-            <ul class="list-unstyled fw-normal pb-1 small">
-              <li><a href="#introduction" class="d-inline-flex align-items-center rounded active" aria-current="page">Introduction</a></li>
-              <li><a href="#installation" class="d-inline-flex align-items-center rounded" aria-current="page">Installation</a></li>
-              <li><a href="#helloWorldExample" class="d-inline-flex align-items-center rounded" aria-current="page">Hello world example</a></li>
-            </ul>
-          </div>
-        </li>
-<!--         <li class="mb-1">
-          <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#customizeCollapse" aria-expanded="false">
-            Customize
-          </button>
-          <div class="collapse" id="customizeCollapse">
-            <ul class="list-unstyled fw-normal pb-1 small">
-              <li><a href="/docs/5.0/customize/overview/" class="d-inline-flex align-items-center rounded">Overview</a></li>
-              <li><a href="/docs/5.0/customize/sass/" class="d-inline-flex align-items-center rounded">Sass</a></li>
-            </ul>
-          </div>
-        </li>
- -->      </ul>
+<div class="container-xxl my-md-4 layout">
+
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidenav align-items-start navbar navbar-light py-0" id="sidenav">
+      <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
+        <a class="nav-link" href="#getting-started">Getting started</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#started-introduction">Introduction</a></li>
+          <a class="nav-link" href="#started-installation">Installation</a></li>
+          <a class="nav-link" href="#started-example">Hello world example</a></li>
+          <a class="nav-link" href="#started-generator">Express Sweet app generator</a></li>
+        </nav>
+        <a class="nav-link" href="#configuration">Configuration</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#configuration-environment">Environment Configuration</a></li>
+          <a class="nav-link" href="#configuration-basic">Basic configuration</a></li>
+          <a class="nav-link" href="#configuration-views">View’s configuration</a></li>
+          <a class="nav-link" href="#configuration-authentication">Authentication configuration</a></li>
+          <a class="nav-link" href="#configuration-database">Database configuration</a></li>
+        </nav>
+        <a class="nav-link" href="#routing">Routing</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#routing-introduction">Introduction</a></li>
+          <a class="nav-link" href="#routing-basic">Basic Routing</a></li>
+          <a class="nav-link" href="#routing-nested">Nested routes</a></li>
+          <a class="nav-link" href="#routing-default">Default Route</a></li>
+          <a class="nav-link" href="#routing-methods">Routing methods</a></li>
+        </nav>
+        <a class="nav-link" href="#views">Views</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#view-introduction">Introduction</a></li>
+          <a class="nav-link" href="#view-configuration">Configuration</a></li>
+          <a class="nav-link" href="#view-syntax">Syntax</a></li>
+          <a class="nav-link" href="#view-layout">Layouts</a></li>
+          <a class="nav-link" href="#view-helper">Helpers</a></li>
+        </nav>
+        <a class="nav-link" href="#model">Model</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#model-introduction">Introduction</a></li>
+          <a class="nav-link" href="#model-configuration">Configuration</a></li>
+          <a class="nav-link" href="#model-accessing">Accessing Models</a></li>
+          <a class="nav-link" href="#model-creating">Creating Your Model</a></li>
+          <a class="nav-link" href="#model-connecting-to-the-database">Connecting to the Database</a></li>
+          <a class="nav-link" href="#model-database-class">Class Database</a></li>
+          <a class="nav-link" href="#model-class">Class Model</a></li>
+        </nav>
+        <a class="nav-link" href="#user-authentication">User authentication</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#user-authentication-introduction">Introduction</a></li>
+          <a class="nav-link" href="#user-authentication-configuration">Configuration</a></li>
+          <a class="nav-link" href="#user-authentication-authenticating-users">Authenticating Users</a></li>
+          <a class="nav-link" href="#user-authentication-logging-out">Logging Out</a></li>
+        </nav>
+        <a class="nav-link" href="#rekognition">Rekognition</a>
+        <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
+          <a class="nav-link" href="#rekognition-introduction">Introduction</a></li>
+          <a class="nav-link" href="#rekognition-class">Class Rekognition</a></li>
+          <a class="nav-link" href="#rekognition-interface-face-match">Interface FaceMatch</a></li>
+          <a class="nav-link" href="#rekognition-interface-bounding-box">Interface BoundingBox</a></li>
+        </nav>
+      </nav>
     </nav>
   </aside>
+  <div class="sidebar-overlay"></div>
 
-  <main class="bd-main order-1" --data-bs-spy="scroll" --data-bs-target="#sideMenuList" --data-bs-offset="0">
-
-
-
-
-
-
-
+  <main class="main order-1 ps-lg-4">
 
     <!--begin::Getting started-->
-    <div class="bd-intro ps-lg-4">
-      <h1 class="bd-title" id="gettingStarted">Getting started</h1>
-      <p class="bd-lead">Extend Express functionality with Express Sweet and start developing fast, minimal web applications.</p>
-    </div>
+    <h1 id="getting-started">Getting started</h1>
 
-    <div class="bd-content ps-lg-4">
+    <!--begin::Introduction-->
+    <h2 id="started-introduction">Introduction</h2>
+    <p>
+      Extend Express functionality with Express Sweet and start developing fast, minimal web applications.
+      The package elements that make up this extension.<br>
+      In addition, some packages have been customized to make them easier for developers to use.
+    </p>
 
-      <!--begin::Introduction-->
-      <h2 id="introduction">Introduction</h2>
-      <p>The package elements that make up this extension.<br>In addition, some packages have been customized to make them easier for developers to use.</p>
+    <div class="row g-3">
 
-      <div class="row g-3">
-
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Framework</strong>
-            <span class="text-secondary">The framework uses Expess v4.<br>Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.</span>
-          </div>
-
-        </div>
-        
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Model</strong>
-            <span class="text-secondary">The model uses Sequelize v6.<br>Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.</span>
-          </div>
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Framework</strong>
+          <span class="text-secondary">
+            The framework uses <a href="https://expressjs.com/" target="_blank">Expess v4</a>.<br>
+            Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+          </span>
         </div>
 
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">View</strong>
-            <span class="text-secondary">The view template engine uses Handlebars v4.<br>Handlebars is a simple templating language.<br>It uses a template and an input object to generate HTML or other text formats. Handlebars templates look like regular text with embedded Handlebars expressions.</span>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">User authentication</strong>
-            <span class="text-secondary">User authentication uses Passport v0.4.1.<br>Passport is Express-compatible authentication middleware for Node.js.</span>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Service</strong>
-            <span class="text-secondary">Sweet includes a convenient interface for developing applications using "Amazon Rekognition" and "Google Cloud Vision".</span>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="d-block text-decoration-none">
-            <strong class="d-block h5 mb-0 text-primary">Utils</strong>
-            <span class="text-secondary">With Sweet, you can quickly use a variety of generic utility classes.</span>
-          </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Model</strong>
+          <span class="text-secondary">
+            The model uses <a href="https://sequelize.org/master/" target="_blank">Sequelize v6</a>.<br>
+            Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>
+            It features solid transaction support, relations, eager and lazy loading, read replication and more.
+          </span>
         </div>
       </div>
-      <!--end::Introduction-->
 
-      <!--begin::Installation-->
-      <h2 id="installation">Installation</h2>
-      <p>Assuming you’ve already installed <a href="https://nodejs.org/" target="_blank">Node.js</a>, create a directory to hold your application, and make that your working directory.</p>
-      <pre><code class="bash">mkdir myapp;
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">View</strong>
+          <span class="text-secondary">
+            The view template engine uses <a href="https://handlebarsjs.com/" target="_blank">Handlebars v4</a>.<br>
+            Handlebars is a simple templating language.<br>
+            It uses a template and an input object to generate HTML or other text formats.<br>
+            Handlebars templates look like regular text with embedded Handlebars expressions.
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">User authentication</strong>
+          <span class="text-secondary">
+            User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
+            Passport is Express-compatible authentication middleware for Node.js.
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Service</strong>
+          <span class="text-secondary">Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Utils</strong>
+          <span class="text-secondary">With Express Sweet, you can quickly use a variety of generic utility classes.</span>
+        </div>
+      </div>
+    </div>
+    <!--end::Introduction-->
+
+    <!--begin::Installation-->
+    <h2 id="started-installation">Installation</h2>
+    <p>Assuming you’ve already installed <a href="https://nodejs.org/" target="_blank">Node.js</a>, create a directory to hold your application, and make that your working directory.</p>
+    <pre><code class="bash">mkdir myapp;
 cd myapp;</code></pre>
 
-      <p>Use the <code>npm init</code> command to create a <code>package.json</code> file for your application.For more information on how <code>package.json</code> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">Specifics of npm’s package.json handling</a>.</p>
-      <pre><code class="bash">npm init;</code></pre>
+    <p>
+      Use the <em class="code">&quot;npm init&quot;</em> command to create a <em class="code">&quot;package.json&quot;</em> file for your application.<br>
+      For more information on how <em class="code">&quot;package.json&quot;</em> works, see <a href="https://docs.npmjs.com/files/package.json" target="_blank">&quot;Specifics of npm’s package.json handling&quot;</a>.
+    </p>
+    <pre><code class="bash">npm init;</code></pre>
 
-      <p>This command prompts you for a number of things, such as the name and version of your application.For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception:</p>
-      <pre><code class="bash">entry point: (index.js)</code></pre>
+    <p>
+      This command prompts you for a number of things, such as the name and version of your application.<br>
+      For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception.
+    </p>
+    <pre><code class="bash">entry point: (index.js)</code></pre>
 
-      <p>Enter <code>app.js</code>, or whatever you want the name of the main file to be. If you want it to be <code>index.js</code>, hit RETURN to accept the suggested default file name.</p> 
-      <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list. For example:</p>
-      <pre><code class="bash">npm i express-sweet \
+    <p>
+      Enter <em class="code">&quot;app.js&quot;</em>, or whatever you want the name of the main file to be.<br>
+      If you want it to be <em class="code">&quot;index.js&quot;</em>, hit RETURN to accept the suggested default file name.
+    </p>
+
+    <p>Now install Express Sweet and the dependent packages in the myapp directory and save them in the dependency list.</p>
+    <pre><code class="bash">npm i express-sweet \
       express \
-      express-hbs \
-      express-session \
       sequelize \
       passport \
       passport-local \
       aws-sdk;</code></pre>
-      <!--end::Installation-->
+    <!--end::Installation-->
 
-      <!--begin::Hello world example-->
-      <h2 id="helloWorldExample">Hello world example</h2>
-      <pre><code class="js">const express = require('express');
-const sweet = require('express-sweet');
+    <!--begin::Hello world example-->
+    <h2 id="started-example">Hello world example</h2>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const sweet = require(&#039;express-sweet&#039;);
 const port = 3000;
 
 // Creates and configures an ExpressJS web server.
@@ -189,8 +225,8 @@ const app = express();
 sweet.mount(app);
 
 // Respond with &quot;hello world&quot; when a GET request is made to the homepage.
-app.get('/', (req, res) =&gt; {
-  res.send('Hello World!');
+app.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
 });
 
 // Error handling.
@@ -201,16 +237,3480 @@ app.listen(port, () =&gt; {
   console.log(`Example app listening at http://localhost:${port}`);
 });</code></pre>
 
-      <p>This app starts a server and listens on port 3000 for connections. The app responds with “Hello World!” for requests to the root URL (<code>/</code>) or <em>route</em>. For every other path, it will respond with a <strong>404 Not Found</strong>.</p>
+    <p>
+      This app starts a server and listens on port 3000 for connections.<br>
+      The app responds with &quot;Hello World!&quot; for requests to the root URL (<em class="code">/</em>) or <em>route</em>.<br>
+      For every other path, it will respond with a <strong>404 Not Found</strong>.
+    </p>
 
-      <h3>Running Locally</h3>
+    <h3>Running Locally</h3>
 
-      <p>First create a directory named <code>myapp</code>, change to it and run <code>npm init</code>. Then install <code>express</code> as a dependency, as per the <a href="#installation">installation guide</a>.</p>
+    <p>
+      First create a directory named <em class="code">&quot;myapp&quot;</em>, change to it and run <em class="code">&quot;npm init&quot;</em>.<br>
+      Then install <em class="code">&quot;express&quot;</em> as a dependency, as per the <a href="#started-installation">installation guide</a>.
+    </p>
+    <p>In the <em class="code">&quot;myapp&quot;</em> directory, create a file named <em class="code">&quot;app.js&quot;</em> and copy in the code from the example above.</p>
 
-    </div>
+    <p>Run the app with the following command.</p>
+    <pre><code class="bash">node app.js;</code></pre>
+    <p>Then, load <em class="code">&quot;http://localhost:3000/&quot;</em> in a browser to see the output.</p>
+    <!--end::Hello world example-->
+
+    <!--begin::Express Sweet app generator-->
+    <h2 id="started-generator">Express Sweet app generator</h2>
+    <p>Use the application generator tool, <em class="code">&quot;express-sweet-generator&quot;</em>, to quickly create an application skeleton.</p>
+    <p>Install the application generator as a global npm package and then launch it.</p>
+    <pre><code class="bash">npm install -g express-sweet-generator;
+express-sweet;</code></pre>
+      
+    <p>Display the command options with the <em class="code">&quot;-h&quot;</em> option.</p>
+    <pre><code class="bash">express-sweet -h;
+
+  Usage: express-sweet [options] [dir]
+
+  Options:
+
+        --version      output the version number
+    -p, --port &lt;port&gt;  application listening port (default: 3000)
+    -f, --force        force on non-empty directory
+    -h, --help         output usage information</code></pre>
+
+    <p>
+      For example, the following creates an Express app named <em class="code">&quot;myapp&quot;</em>.<br>
+      The app will be created in a folder named <em class="code">&quot;myapp&quot;</em> in the current working directory.
+    </p>
+    <pre><code class="bash">express-sweet myapp
+
+   create : myapp/bin/www
+   create : myapp/ecosystem.config.js
+   create : myapp/nginx.sample.conf
+   create : myapp/package.json
+
+   change directory:
+     $ cd myapp
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=myapp:* npm start</code></pre>
+
+    <p>Then install dependencies.</p>
+    <pre><code class="bash">cd myapp;
+npm install;</code></pre>
+
+    <p>
+      This sample application uses a database.<br>
+      Execute the following SQL to create the database.
+    </p>
+    <pre><code class="sql">CREATE DATABASE IF NOT EXISTS `example` DEFAULT CHARACTER SET utf8mb4;
+
+USE `example`;
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukUserEmail` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- User has one profile
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE `profile` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `tel` varchar(14) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukProfileUserId` (`userId`),
+  CONSTRAINT `fkProfileUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- User has many comments
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `text` text NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fkCommentUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Users and books have a many-to-many relationship
+DROP TABLE IF EXISTS `book`;
+CREATE TABLE `book` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `title` text NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukBookTitle` (`userId`, `title`(255)),
+  CONSTRAINT `fkBookUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Add sample user record
+INSERT INTO `user` (`id`, `email`, `password`, `name`) VALUES
+  (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;),
+  (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;),
+  (3, &#039;vivian@example.com&#039;, &#039;password&#039;, &#039;Vivian&#039;),
+  (4, &#039;harry@example.com&#039;, &#039;password&#039;, &#039;Harry&#039;),
+  (5, &#039;eliza@example.com&#039;, &#039;password&#039;, &#039;Eliza&#039;),
+  (6, &#039;nancy@example.com&#039;, &#039;password&#039;, &#039;Nancy&#039;),
+  (7, &#039;melinda@example.com&#039;, &#039;password&#039;, &#039;Melinda&#039;),
+  (8, &#039;harley@example.com&#039;, &#039;password&#039;, &#039;Harley&#039;);
+
+-- Add sample profile record
+INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
+  (1, &#039;777 Brockton Avenue, Abington MA 2351&#039;, &#039;202-555-0105&#039;),
+  (2, &#039;30 Memorial Drive, Avon MA 2322&#039;, &#039;&#039;),
+  (3, &#039;250 Hartford Avenue, Bellingham MA 2019&#039;, &#039;202-555-0175&#039;),
+  (4, &#039;700 Oak Street, Brockton MA 2301&#039;, &#039;202-555-0167&#039;),
+  (5, &#039;66-4 Parkhurst Rd, Chelmsford MA 1824&#039;, &#039;202-555-0154&#039;),
+  (6, &#039;591 Memorial Dr, Chicopee MA 1020&#039;, &#039;202-555-0141&#039;),
+  (7, &#039;55 Brooksby Village Way, Danvers MA 1923&#039;, &#039;202-555-0196&#039;),
+  (8, &#039;137 Teaticket Hwy, East Falmouth MA 2536&#039;, &#039;202-555-0167&#039;);
+
+-- Add a sample user comment record
+INSERT INTO `comment` (`userId`, `text`) VALUES
+  (1, &#039;First comment from Robin&#039;),
+  (1, &#039;Second comment from Robin&#039;),
+  (2, &#039;First comment from Taylor&#039;);
+
+-- Add sample book record
+INSERT INTO `book` (`userId`, `title`) VALUES
+  (1, &#039;The Stars Tonight&#039;),
+  (1, &#039;A Guide to Courteous Thievery&#039;),
+  (1, &#039;The Sound of Light&#039;),
+  (2, &#039;The Stars Tonight&#039;),
+  (2, &#039;Why She Said Yes&#039;);</code></pre>
+
+    <p>
+      Next, you need to set how the database is connected.<br>
+      The database connection method can be set in <em class="code">&quot;config/database.js&quot;</em>, so change it according to your environment.<br>
+      See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">&quot;Sequelize’s configuration&quot;</a> for details on configuration items.
+    </p>
+    <pre><code class="js">/**
+ * Database configuration.
+ */
+module.exports = {
+  development: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  }
+}</code></pre>
+
+    <p>
+      The DB to be used can be defined individually for each environment.<br>
+      Specify the environment in the <em class="code">&quot;.env&quot;</em> file.
+    </p>
+    <pre><code class="ini">NODE_ENV=development</code></pre>
+
+    <p>On MacOS or Linux, run the app with this command.</p>
+    <pre><code class="bash">DEBUG=myapp:* npm start;</code></pre>
+
+    <p>On Windows Command Prompt, use this command.</p>
+    <pre><code class="bash">set DEBUG=myapp:* &amp; npm start;</code></pre>
+
+    <p>On Windows PowerShell, use this command.</p>
+    <pre><code class="bash">$env:DEBUG=&#039;myapp:*&#039;; npm start;</code></pre>
+
+    <p>
+      Then load <em class="code">&quot;http://localhost:3000/&quot;</em> in your browser to access the app.<br>
+      and you should be greeted by the following page.
+    </p>
+
+    <img class="img-fluid mb-5 mx-auto shadow" src="images/all.jpg" alt="Login page" height="500">
+
+    <p>The generated app has the following directory structure.</p>
+    <pre><code class="bash">.
+├── app.js
+├── bin
+│   └── www
+├── config
+│   ├── authentication.js
+│   ├── config.js
+│   ├── database.js
+│   ├── hooks.js
+│   └── view.js
+├── ecosystem.config.js
+├── models
+│   └── UserModel.js
+├── nginx.sample.conf
+├── package.json
+├── public
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── logo-dark.svg
+│   │   │   └── logo.svg
+│   │   ├── scripts
+│   │   │   ├── docs.js
+│   │   │   ├── home.js
+│   │   │   ├── login.js
+│   │   │   ├── user.js
+│   │   │   └── users.js
+│   │   └── styles
+│   │       ├── docs.css
+│   │       ├── home.css
+│   │       ├── login.css
+│   │       ├── user.css
+│   │       └── users.css
+│   └── favicon.ico
+├── routes
+│   ├── api
+│   │   └── users.js
+│   ├── home.js
+│   ├── login.js
+│   └── users.js
+└── views
+    ├── error.hbs
+    ├── home.hbs
+    ├── layout
+    │   └── default.hbs
+    ├── login.hbs
+    ├── partials
+    ├── user.hbs
+    └── users.hbs</code></pre>
+    <!--end::Express Sweet app generator-->
     <!--end::Getting started-->
 
+    <!--begin::Configuration-->
+    <h1 id="configuration">Configuration</h1>
 
+    <!--begin::Environment Configuration-->
+    <h2 id="configuration-environment">Environment Configuration</h2>
+    <p>
+      It is often helpful to have different configuration values based on the environment where the application is running.<br>
+      For example, you may want to use a different database than the one used on the production server.<br>
+      To make this a cinch, Express Sweet utilizes the <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> library.<br>
+      Express Sweet automatically loads the <em class="code">&quot;.env&quot;</em> file located in the root directory when the application starts and saves the loaded value in <em class="code">&quot;process.env&quot;</em>.
+    </p>
+
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration</th>
+          <th>Description</th>
+          <th>Input Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>NODE_ENV</code></td>
+          <td class="w-100">
+            <em class="code">NODE_ENV</em> is an environment variable made popular by the express web server framework.<br>
+            When a node application is run, it can check the value of the environment variable and do different things based on the value.<br>
+            <em class="code">NODE_ENV</em> specifically is used (by convention) to state whether a particular environment is a production or a development environment.<br>
+            A common use-case is running additional debugging or logging code if running in a development environment.
+          </td>
+          <td>string</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <p>You can access the environment variables yourself and perform your own checks and logic, as in the following example.</p>
+    <pre><code class="js">const environment = process.env.NODE_ENV;
+const isDevelopment = environment === &#039;development&#039;
+if (isDevelopment) {
+  // For development environment.
+}</code></pre>
+
+    <!--begin::Basic configuration-->
+    <h2 id="configuration-basic">Basic configuration</h2>
+    <p>
+      The basic configuration of Express Sweet is defined in the <em class="code">&quot;config/config.js&quot;</em> file.<br>
+      The basic configuration file contains the following configuration values.
+    </p>
+
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration</th>
+          <th>Description</th>
+          <th>Input Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>env_path</code></td>
+          <td class="w-100">
+            The path to the environment configuration file (.env).<br>
+            When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in <em class="code">&quot;process.env&quot;</em>.<br>
+            If the file does not exist or is not specified (undefined), the environment configuration file will not be read.<br>
+            The default is <em class="code">&quot;.env&quot;</em>.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>cors_enabled</code></td>
+          <td class="w-100">
+            Set to true to allow requests from another domain to the application.<br>
+            The default is <em class="code">false</em>.
+          </td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td><code>max_body_size</code></td>
+          <td class="w-100">
+            Controls the maximum request body size.<br>
+            If this is a number, then the value specifies the number of bytes.<br>
+            if it is a string, the value is passed to the <a href="https://www.npmjs.com/package/bytes" target="_blank">bytes library</a> for parsing.<br>
+            The default is <em class="code">&quot;100kb&quot;</em>.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>router_dir</code></td>
+          <td class="w-100">
+            The directory path where the routes module is located.<br>
+            The default is the <em class="code">&quot;routes&quot;</em> directory directly under the application root.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>default_router</code></td>
+          <td class="w-100">
+            Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<em class="code">/</em>) is requested.<br>
+            For example, to specify a default route, set <em class="code">&quot;default_router&quot;</em> as follows.<br>
+            Where blog is the name of the router module you want used.<br>
+            Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
+            <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
+});
+
+module.exports = router;</code></pre>
+            Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>rewrite_base_url</code></td>
+          <td class="w-100">
+            This is a hook that rewrites the base URL.<br>
+            If you want to rewrite the app.locals.baseUrl property and the view&#039;s baseUrl variable, use this hook to return a new base URL.<br>
+            The default value is the referrer&#039;s origin (eg https://example.com).<br>
+            In this example, <em class="code">https://example.com/admin</em> is used as the base URL.
+            <pre><code class="js">rewrite_base_url: baseUrl =&gt; {
+  return `${baseUrl}/admin`;
+}</code></pre>
+          </td>
+          <td>(baseUrl: string) =&gt; string</td>
+        </tr>
+        <tr>
+          <td><code>error_handler</code></td>
+          <td class="w-100">
+            This is a hook for error handling.<br>
+            For example, you can use it when you want to send an external notification of the error received by this hook.
+            <pre><code class="js">error_handler: async err =&gt; {
+  // Notify system administrator of error.
+  return new Promise((resolve, reject) =&gt; {
+    const sendmail = require(&#039;sendmail&#039;)();
+    sendmail({
+      from: &#039;no-reply@example.com&#039;,
+      to: &#039;administrator@example.com&#039;,
+      subject: &#039;Error occurred&#039;,
+      text: err.message
+    }, err =&gt; {
+      err ? reject(err) : resolve();
+    });
+  });
+}</code></pre>
+          </td>
+          <td>(err: any) =&gt; void|Promise&lt;void&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <p>config/config.js:</p>
+    <pre><code class="js">const path = require(&#039;path&#039;);
+
+/**
+ * Express Sweet basic configuration interface.
+ */
+module.exports = {
+  /**
+   * Environment variable file (.env) path, defaults to none (undefined).
+   * @type {string}
+   */
+  env_path: &#039;.env&#039;,
+
+  /**
+   * CORS permission, defaults to invalid (false).
+   * @type {{enabled: boolean}}
+   */
+  cors_enabled: true,
+
+  /**
+   * Maximum body size you can request, defaults to `100kb`.
+   * @type {string|number}
+   */
+  max_body_size: &#039;100kb&#039;,
+
+  /**
+   * Absolute path to the router directory, defaults to `&lt;application root directory&gt;/routes`.
+   * @type {string}
+   */
+  router_dir: path.join(process.cwd(), &#039;routes&#039;),
+
+  /**
+   * The endpoint to run when the root URL is requested, defaults to none (undefined).
+   * @type {string}
+   */
+  default_router: &#039;/blog&#039;
+}</code></pre>
+    <!--end::Basic configuration-->
+
+    <!--begin::View’s configuration-->
+    <h2 id="configuration-views">View’s configuration</h2>
+    <p>See <a href="#view-configuration">&quot;View’s Configuration Reference&quot;</a> for configuring view.</p>
+    <!--end::View’s configuration-->
+
+    <!--begin::Authentication configuration-->
+    <h2 id="configuration-authentication">Authentication configuration</h2>
+    <p>See <a href="#user-authentication-configuration">&quot;User Authentication Configuration Reference&quot;</a> for configuring user authentication.</p>
+    <!--end::Authentication configuration-->
+
+    <!--begin::Database configuration-->
+    <h2 id="configuration-database">Database configuration</h2>
+    <p>See <a href="#model-configuration">&quot;Database Configuration Reference&quot;</a> for configuring database.</p>
+    <!--end::Database configuration-->
+    <!--end::Configuration-->
+
+    <!--begin::Routing-->
+    <h1 id="routing">Routing</h1>
+
+    <!--begin::Introduction-->
+    <h2 id="routing-introduction">Introduction</h2>
+    <p>
+      Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).<br>
+      Each route can have one or more handler functions, which are executed when the route is matched.<br>
+      Route definition takes the following structure.
+    </p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const app = express();
+
+app.METHOD(PATH, HANDLER)
+</code></pre>
+    <ul>
+      <li>app is an instance of express.</li>
+      <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
+      <li>PATH is a path on the server.</li>
+      <li>HANDLER is the function executed when the route is matched.</li>
+    </ul>
+    <div class="callout callout-info">
+      This tutorial assumes that an instance of <em class="code">&quot;express&quot;</em> named <em class="code">&quot;app&quot;</em> is created and the server is running.
+      If you are not familiar with creating an app and starting it, see the <a href="#started-example">Hello world example</a>.
+    </div>
+    <!--end::Introduction-->
+
+    <!--begin::Basic Routing-->
+    <h2 id="routing-basic">Basic Routing</h2>
+    <p>
+      All routes are defined in your route files, which are located in the <em class="code">&quot;routes&quot;</em> directory.<br>
+      These files are automatically mapped by &quot;Express Sweet&quot; to the route files specified in the URI and the route handlers defined in the route files.
+    </p>
+
+    <p>The following examples illustrate defining simple routes.</p>
+    <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;GET /user&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /user&#039;);
+});
+
+module.exports = router;</code></pre>
+
+    <p><em class="code">&quot;routes/user.js&quot;</em> responds to <em class="code">&quot;POST /user/login&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.post(&#039;/login&#039;, (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /user/login&#039;);
+});
+
+module.exports = router;</code></pre>
+    <!--end::Basic Routing-->
+
+    <!--begin::Nested routes-->
+    <h2 id="routing-nested">Nested routes</h2>
+    <p>
+      The router supports nested files.<br>
+      If you create a nested folder structure files will be automatically routed in the same way still.
+    </p>
+
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;GET /api/users&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a GET request at /api/users&#039;);
+});
+
+module.exports = router;</code></pre>
+
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;POST /api/users&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.post(&#039;/&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a POST request at /api/users&#039;);
+});
+
+module.exports = router;</code></pre>
+
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;PUT /api/users/:userId&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.put(&#039;/:userId&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a PUT request at /api/users/:userId&#039;);
+});
+
+module.exports = router;</code></pre>
+
+    <p><em class="code">&quot;routes/api/users.js&quot;</em> responds to <em class="code">&quot;DELETE /api/users/:userId&quot;</em> requests.</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.delete(&#039;/:userId&#039;, async (req, res) =&gt; {
+  res.send(&#039;Got a DELETE request at /api/users/:userId&#039;);
+});
+
+module.exports = router;</code></pre>
+    <!--end::Nested routes-->
+
+    <!--begin::Default Route-->
+    <h2 id="routing-default">Default Route</h2>
+    <p>
+      Express Sweet can be told to load a default router when a URI is not present, as will be the case when only your site root URL (<em class="code">/</em>) is requested.<br>
+      To specify a default router, open your <em class="code">&quot;config/config.js&quot;</em> file and set this variable:
+    </p>
+    <pre><code class="js">default_router: &#039;/blog&#039;</code></pre>
+    <p>
+      Where blog is the name of the router module you want used.<br>
+      Next, create the <em class="code">&quot;routes/blog.js&quot;</em> module.
+    </p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+
+router.get(&#039;/&#039;, (req, res) =&gt; {
+  res.send(&#039;Hello World!&#039;);
+});
+
+module.exports = router;</code></pre>
+    <p>Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.</p>
+    <!--end::Default Route-->
+
+    <!--begin::Routing methods-->
+    <h2 id="routing-methods">Routing methods</h2>
+    <p>Express supports the following routing methods corresponding to the HTTP methods of the same names.</p>
+
+    <div class="row">
+      <div class="col-6 col-md-4">
+        <ul class="list-unstyled">
+          <li class="mb-2"><code>checkout</code></li>
+          <li class="mb-2"><code>copy</code></li>
+          <li class="mb-2"><code>delete</code></li>
+          <li class="mb-2"><code>get</code></li>
+          <li class="mb-2"><code>head</code></li>
+          <li class="mb-2"><code>lock</code></li>
+          <li class="mb-2"><code>merge</code></li>
+          <li class="mb-2"><code>mkactivity</code></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-4">
+        <ul class="list-unstyled">
+          <li class="mb-2"><code>mkcol</code></li>
+          <li class="mb-2"><code>move</code></li>
+          <li class="mb-2"><code>m-search</code></li>
+          <li class="mb-2"><code>notify</code></li>
+          <li class="mb-2"><code>options</code></li>
+          <li class="mb-2"><code>patch</code></li>
+          <li class="mb-2"><code>post</code></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-4">
+        <ul class="list-unstyled">
+          <li class="mb-2"><code>purge</code></li>
+          <li class="mb-2"><code>put</code></li>
+          <li class="mb-2"><code>report</code></li>
+          <li class="mb-2"><code>search</code></li>
+          <li class="mb-2"><code>subscribe</code></li>
+          <li class="mb-2"><code>trace</code></li>
+          <li class="mb-2"><code>unlock</code></li>
+          <li class="mb-2"><code>unsubscribe</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees’s Routing Guide</a>.</div>
+    <!--end::Routing methods-->
+    <!--end::Routing-->
+
+    <!--begin::Views-->
+    <h1 id="views">Views</h1>
+
+    <!--begin::Introduction-->
+    <h2 id="view-introduction">Introduction</h2>
+    <p>
+      Express Sweet uses Handlebars as its view template engine.<br>
+      This section describes the basic usage of the view on Express Sweet.
+    </p>
+    <div class="callout callout-info">
+      See the <a href="https://handlebarsjs.com/guide/" target="_blank">Handlebars reference</a> for more information on how to use Handlebars.
+    </div>
+    <!--end::Introduction-->
+
+    <!--begin::Configuration-->
+    <h2 id="view-configuration">Configuration</h2>
+    <p>
+      The view (template engine) configuration is defined in the <em class="code">&quot;config/view.js&quot;</em> file.<br>
+      The view’s configuration file contains the following configuration values.
+    </p>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration</th>
+          <th>Description</th>
+          <th>Input Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>views_dir</code></td>
+          <td class="w-100">
+            The directory path where the view will be placed.<br>
+            The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>partials_dir</code></td>
+          <td class="w-100">
+            The directory path where the reusable templates are located.<br>
+            The default is the <em class="code">&quot;views/partials&quot;</em> directory directly under the application root.<br>
+            Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>layouts_dir</code></td>
+          <td class="w-100">
+            The directory path where the reusable base template is located.<br>
+            The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>default_layout</code></td>
+          <td class="w-100">
+            The path to the layout file used by default.<br>
+            The default is the <em class="code">&quot;views/layout/default.*&quot;</em> File directly under the application root.<br>
+            The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>extension</code></td>
+          <td class="w-100">
+            Extension for templates and partials files.<br>
+            The default is <em class="code">&quot;.hbs&quot;</em>.
+          </td>
+          <td>string</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <p>config/view.js:</p>
+    <pre><code class="js">const path = require(&#039;path&#039;);
+
+/**
+ * View&#039;s configuration interface.
+ */
+module.exports = {
+  /**
+   * Absolute path to the directory where the view files are located, defaults to `&lt;application root directory&gt;/views`.
+   * @type {string}
+   */
+  views_dir: path.join(process.cwd(), &#039;views&#039;),
+
+  /**
+   * Path to partials templates, one or several directories, defaults to `&lt;application root directory&gt;/views/partials`.
+   * @type {string|string[]}
+   */
+  partials_dir: path.join(process.cwd(), &#039;views/partials&#039;),
+
+  /**
+   * Path to layout templates, defaults to `&lt;application root directory&gt;/views/layout`.
+   * @type {string}
+   */
+  layouts_dir: path.join(process.cwd(), &#039;views/layout&#039;),
+
+  /**
+   * Absolute path to default layout template. defaults to `&lt;application root directory&gt;/views/layout/default.hbs`.
+   * @type {string}
+   */
+  default_layout: path.join(process.cwd(), &#039;views/layout/default.hbs&#039;),
+
+  /**
+   * Extension for templates &amp; partials, defaults to `.hbs`,
+   * @type {string}
+   */
+  extension: &#039;.hbs&#039;
+}</code></pre>
+    <!--end::Configuration-->
+
+    <!--begin::View syntax-->
+    <h2 id="view-syntax">Syntax</h2>
+    <p>To mark where layout should insert page.</p>
+    <pre><code class="html">{{{body}}}</code></pre>
+
+    <p>To declare a block placeholder in layout.</p>
+    <pre><code class="html">{{{block &quot;pageScripts&quot;}}}</code></pre>
+
+    <p>To define block content in a page.</p>
+    <pre><code class="html">{{#contentFor &quot;pageScripts&quot;}}
+  CONTENT HERE
+{{/contentFor}}</code></pre>
+    <!--end::View syntax-->
+
+    <!--begin::View layout-->
+    <h2 id="view-layout">Layouts</h2>
+    <p>There are three ways to use a layout, listed in precedence order.</p>
+
+    <ol>
+      <li>
+        <p>Declarative within a page. Use handlebars comment.</p>
+        <pre><code class="html">{{!&lt; LAYOUT}}</code></pre>
+
+        <p>Layout file resolution.</p>
+        <pre><code class="html">If path starts with &#039;.&#039;
+    LAYOUT is relative to template
+Else If `layoutsDir` is set
+    LAYOUT is relative to `layoutsDir`
+Else
+    LAYOUT from path.resolve(dirname(template), LAYOUT)</code></pre>
+      </li>
+      <li>
+        <p>As an option to render.</p>
+        <div class="callout callout-warning">This creates a potential security vulnerability.</div>
+        <p>
+          Do not use this option in conjunction with passing user submitted data to res.<br>
+          render e.g. res.render(&#039;index&#039;, req.query).<br>
+          This allows users to read arbitrary files from your filesystem.
+        </p>
+        <pre><code class="html">res.render(&#039;veggies&#039;, {
+  title: &#039;My favorite veggies&#039;,
+  veggies: veggies,
+  layout: &#039;layout/veggie&#039;
+});</code></pre>
+
+        <p>This option also allows for layout suppression (both the default layout and when specified declaratively in a page) by passing in a falsey Javascript value as the value of the layout property.</p>
+        <pre><code class="html">res.render(&#039;veggies&#039;, {
+  title: &#039;My favorite veggies&#039;,
+  veggies: veggies,
+  layout: null // render without using a layout template
+});</code></pre>
+          
+        <p>Layout file resolution.</p>
+        <pre><code class="html">If path starts with &#039;.&#039;
+    layout is relative to template
+Else If `layoutsDir` is set
+    layout is relative to `layoutsDir`
+Else
+    layout from path.resolve(viewsDir, layout)</code></pre>
+      </li>
+      <li>
+        <p>Lastly, use defaultLayout if specified in hbs configuration options.</p>
+        <p>
+          Layouts can be nested: just include a declarative layout tag within any layout template to have its content included in the declared &quot;parent&quot; layout.<br>
+          Be aware that too much nesting can impact performances, and stay away from infinite loops.
+        </p>
+      </li>
+    </ol>
+    <!--end::View layout-->
+
+    <!--begin::View helper-->
+    <h2 id="view-helper">Helpers</h2>
+    <p>The following Handlebars helpers are available by default in Express Sweet.</p>
+
+    <h3>Categories</h3>
+    <p>Currently 20 helpers in 4 categories.</p>
+    <ul>
+      <li><a href="#comparison-helpers">Comparison helpers</a></li>
+      <li><a href="#html-helpers">HTML helpers</a></li>
+      <li><a href="#object-helpers">Object helpers</a></li>
+      <li><a href="#string-helpers">String helpers</a></li>
+    </ul>
+
+    <!--begin::Comparison helpers-->
+    <h3 id="comparison-helpers">Comparison helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#view-helper-eq">eq</a></td>
+          <td>Strict equality <code>===</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-eqw">eqw</a></td>
+          <td>Equality <code>==</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-neq">neq</a></td>
+          <td>Strict inequality <code>!==</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-neqw">neqw</a></td>
+          <td>Inequality <code>!=</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-lt">lt</a></td>
+          <td>Less than <code>&lt;</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-lte">lte</a></td>
+          <td>Less than or equal <code>&lt;=</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-gt">gt</a></td>
+          <td>Greater than <code>&gt;</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-gte">gte</a></td>
+          <td>Greater than or equal <code>&gt;=</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-not">not</a></td>
+          <td>Not <code>!</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-ifx">ifx</a></td>
+          <td>Imitates conditional operator <code>?:</code></td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-empty">empty</a></td>
+          <td>Check if an array is empty</td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-count">count</a></td>
+          <td>Length of an array</td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-and">and</a></td>
+          <td>Logical AND operation</td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-or">or</a></td>
+          <td>Logical OR operation</td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-coalesce">coalesce</a></td>
+          <td>Returns first non-falsy value from list of parameters</td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-includes">includes</a></td>
+          <td>Check for a value inside an array</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="view-helper-eq"><code class="method">eq</code></h4>
+    <p>Determine whether or not two values are equal (===).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the value and type are the same, false if they are different.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{eq &#039;3&#039; 3}} =&gt; false
+
+{{#if (eqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-eqw"><code class="method">eqw</code></h4>
+    <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the values are the same, false if they are different.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{eqw &#039;3&#039; 3}} =&gt; true
+
+{{#if (eqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-neq"><code class="method">neq</code></h4>
+    <p>Determine whether or not two values are not equal (!==).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the value and type are different, false if they are the same.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{neq 4 3}} =&gt; true
+
+{{#if (neq foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-neqw"><code class="method">neqw</code></h4>
+    <p>Determine whether or not two values are not equal (!=) weak checking.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the values are different, false if they are the same.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{neqw &#039;3&#039; 3}} =&gt; false
+
+{{#if (neqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-lt"><code class="method">lt</code></h4>
+    <p>Check for less than condition (a < b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value is less than the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{lt 2 3}} =&gt; true
+
+{{#if (lt 2 5)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-lte"><code class="method">lte</code></h4>
+    <p>Check for less than or equals condition (a <= b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value is less than or equal to the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{lte 2 3}} =&gt; true
+
+{{#if (lte 2 5)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-gt"><code class="method">gt</code></h4>
+    <p>Check for greater than condition (a > b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value exceeds the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{gt 2 3}} =&gt; false
+
+{{#if (gt 5 6)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-gte"><code class="method">gte</code></h4>
+    <p>Check for greater than or equals condition (a >= b).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value1 First value to be compared with second.</li>
+      <li>{any} value2 Second value to be compared with first.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{gte 3 3}} =&gt; true
+
+{{#if (gte 10 2)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-not"><code class="method">not</code></h4>
+    <p>Logical NOT of any expression.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} expression Any expression.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns the logical negation of the value.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{not true}} =&gt; false
+{{not false}} =&gt; true
+
+{{#if (not (eq foo &#039;bar&#039;))}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-ifx"><code class="method">ifx</code></h4>
+    <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{boolean} condition Satisfying condition for getting first value. Either true of false.</li>
+      <li>{any} value1 First value to be displayed as result.</li>
+      <li>{any} value2 Second value to be displayed as result. Defaults to an empty string.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{any} Returns the result of the ternary operator.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{ifx true &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
+{{ifx false &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
+{{ifx (eq value 1) 5 6}} =&gt; 6    // return (value === 1) ? 5 : 6
+{{ifx (not (eq value 1)) 5 6}} =&gt; 6    // return (value !== 1) ? 5 : 6
+
+&lt;!-- The third parameter is optional, and by default it will be blank string (&#039;&#039;) --&gt;
+{{ifx true &#039;active&#039;}} =&gt; &#039;active&#039;
+{{ifx false &#039;active&#039;}} =&gt; &#039;&#039;</code></pre>
+
+    <h4 id="view-helper-empty"><code class="method">empty</code></h4>
+    <p>Check if an array is empty.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any[]} items Array/object to be checked.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the array is empty, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let items = [5, 6];
+{{empty items}} =&gt; false
+
+{{#if (empty items)}}
+  Hello
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-count"><code class="method">count</code></h4>
+    <p>Determine the length of an array.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any[]} items Array whose elements to be counted.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{number|false} Returns the length of the array if the value is an array, false if the value is not an array.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let items = [5, 6];
+{{count items}} =&gt;  2</code></pre>
+
+    <h4 id="view-helper-and"><code class="method">and</code></h4>
+    <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{...any} params Any number of boolean parameters.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns the result of the logical product.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let value1 = value2 = true;
+{{and value1 value2}} =&gt; true
+
+let value1 = false, value2 = true;
+{{and value1 value2}} =&gt; false
+
+{{#if (and value1 value2)}}
+  // do something
+{{else}}
+  // do something else
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-or"><code class="method">or</code></h4>
+    <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{...any} params Any number of boolean parameters.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns the result of the OR.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let value1 = true, value2 = false;
+{{or value1 value2}} =&gt; true
+
+let value = value2 = false;
+{{or value1 value2}} =&gt; false
+
+{{#if (or value1 value2)}}
+  // do something
+{{else}}
+  // do something else
+{{/if}}</code></pre>
+
+    <h4 id="view-helper-coalesce"><code class="method">coalesce</code></h4>
+    <p>
+      Returns the first non-falsy value from the parameter list.<br>
+      Works quite similar to the SQL&#039;s &quot;COALESCE()&quot; function, but unlike this checks for the first non-false parameter.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{...any} params Any number of parameters.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{any} Returns the first non-false element of the parameter.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let fullName = &#039;Foo Bar&#039;, nickName = &#039;foob&#039;;
+{{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;Foo Bar&#039;
+
+let fullName = &#039;&#039;, nickName = &#039;foob&#039;;
+{{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;foob&#039;</code></pre>
+
+    <h4 id="view-helper-includes"><code class="method">includes</code></h4>
+    <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any[]} items The array.</li>
+      <li>{any} value The value to be checked for existence in the array.</li>
+      <li>{boolean} strict FALSE for non-strict checking. TRUE by default.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{boolean} Returns true if the array contains the specified value, false otherwise.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">let items = [1, 2, 3];
+let value = 2;
+
+{{includes items value}} =&gt; true
+
+let value = &#039;2&#039;
+{{includes items value}} =&gt; false
+{{includes items value true}} =&gt; false
+{{includes items value false}} =&gt; true
+
+{{#if (includes items value)}}
+   &lt;!-- Do something --&gt;
+{{/if}}
+
+{{ifx (includes items value) &#039;Yes&#039; &#039;No&#039;}}</code></pre>
+    <!--end::Comparison helpers-->
+
+    <!--begin::HTML helpers-->
+    <h3 id="html-helpers">HTML helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#view-helper-cache-busting">cache_busting</a></td>
+          <td>Load automatically updated Assets</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="view-helper-cache-busting"><code class="method">cache_busting</code></h4>
+    <p>Returns the Assets path containing the file update time parameter.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} filePath Paths of Assets files such as CSS and JS in public directories.</li>
+      <li>{string} baseUrl Application Origin URL.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{string} Returns the Assets file path with the update date and time parameters.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{cache_busting &#039;/assets/style.css&#039; &#039;//example.com&#039;}} =&gt; example.com/assets/style.css?1620526340463</code></pre>
+    <!--end::HTML helpers-->
+
+    <!--begin::Object helpers-->
+    <h3 id="object-helpers">Object helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#view-helper-json-stringify">json_stringify</a></td>
+          <td>Stringify an object using JSON.stringify</td>
+        </tr>
+        <tr>
+          <td><a href="#view-helper-json-parse">json_parse</a></td>
+          <td>Parses the given string using JSON.parse</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="view-helper-json-stringify"><code class="method">json_stringify</code></h4>
+    <p>Stringify an object using JSON.stringify.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value The value to convert to a JSON string.</li>
+      <li>{number} indent The number of space characters to use as whitespace.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{string} A JSON string representing the given value, or undefined.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{json_stringify value}}</code></pre>
+
+    <h4 id="view-helper-json-parse"><code class="method">json_parse</code></h4>
+    <p>Parses the given string using JSON.parse.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{any} value Object to stringify.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{any} JavaScript value or object described by a string.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{json_parse value}}</code></pre>
+    <!--end::Object helpers-->
+
+    <!--begin::String helpers-->
+    <h3 id="string-helpers">String helpers</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Helper</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#view-helper-replace">replace</a></td>
+          <td>Replace string</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="view-helper-replace"><code class="method">replace</code></h4>
+    <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} value String.</li>
+      <li>{string} find The string to be replaced.</li>
+      <li>{string} replace The string to replace.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{string} Character string after replacement.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{{replace &#039;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#039; &#039;dog&#039; &#039;monkey&#039;}}</code></pre>
+    <!--end::String helpers-->
+    <!--end::View helper-->
+    <!--end::Views-->
+
+    <!--begin::Model-->
+    <h1 id="model">Model</h1>
+
+    <!--begin::Introduction-->
+    <h2 id="model-introduction">Introduction</h2>
+    <p>
+      Models provide a way to interact with a specific table in your database.<br>
+      They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
+    </p>
+    <p>Express Sweet provides a <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">Sequelize</a> based model class that offers some great features, including.</p>
+    <ul>
+      <li>automatic database connection</li>
+      <li>basic CRUD methods</li>
+      <li>and more</li>
+    </ul>
+    <p>This class provides a solid base from which to build your own models, allowing you to rapidly build out your application’s model layer.</p>
+    <!--end::Introduction-->
+
+    <!--begin::Configuration-->
+    <h2 id="model-configuration">Configuration</h2>
+    <p>
+      The database configuration is defined in the <em class="code">&quot;config/database.js&quot;</em> file.<br>
+      The database configuration file is separated by environment and contains the following configuration values.
+    </p>
+    <div class="callout callout-info">
+      There are many other database configuration values.<br>
+      For more detailed options, see the &quot;Public Constructors&quot; section of <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s API reference&quot;</a>.
+    </div>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration</th>
+          <th>Description</th>
+          <th>Input Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>username</code></td>
+          <td class="w-100">The username which is used to authenticate against the database.</td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>password</code></td>
+          <td class="w-100">
+            The password which is used to authenticate against the database.<br>
+            The default is no password (<em class="code">null</em>).
+          </td>
+          <td>string|null</td>
+        </tr>
+        <tr>
+          <td><code>database</code></td>
+          <td class="w-100">The name of the database.</td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>host</code></td>
+          <td class="w-100">The host of the relational database.</td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>port</code></td>
+          <td class="w-100">
+            The port of the relational database.<br>
+            The default is automatic selection (<em class="code">null</em>).
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>dialect</code></td>
+          <td class="w-100">
+            The dialect of the database you are connecting to.<br>
+            One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>logging</code></td>
+          <td class="w-100">
+            Set true to output the executed query etc. to the log.<br>
+            The default is no log output (<em class="code">false</em>).
+          </td>
+          <td>boolean</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Example</h3>
+    <p>config/database.js:</p>
+    <pre><code class="js">/**
+ * Database configuration.
+ */
+module.exports = {
+  development: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: null,
+    database: &#039;example&#039;,
+    host: &#039;localhost&#039;,
+    port: undefined,
+    dialect: &#039;mariadb&#039;,
+    timezone: &#039;+09:00&#039;,
+    logging: false
+    //,timezone: &#039;Etc/GMT-9&#039;
+    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
+  }
+}</code></pre>
+    <!--end::Configuration-->
+
+    <!--begin::Accessing Models-->
+    <h2 id="model-accessing">Accessing Models</h2>
+    <p>
+      Model classes are stored in the &quot;models&quot; directory in the root directory.<br>
+      Loading the model gives you instant access to the model’s functions for working with the database.<br>
+      In the following example, &quot;routes/users.js&quot; loads &quot;models/UserModel.js&quot; and tries CRUD to the user table.
+    </p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Inserting Data.Produces: INSERT INTO user (email, name) VALUES (&#039;robin@example.com&#039;, &#039;Robin&#039;)
+await UserModel.create({
+  email: &#039;robin@example.com&#039;,
+  name: &#039;Robin&#039;
+});
+
+// Selecting Data.Produces: SELECT * FROM user
+await UserModel.findAll();
+
+// Updating Data.Produces: UPDATE user SET name = &#039;Taylor&#039; WHERE id= 1
+await UserModel.update({name: &#039;Taylor&#039;}, {
+  where: {
+    id: 1
+  }
+});
+
+// Deleting Data.Produces: DELETE FROM user WHERE id= 1
+await UserModel.destroy({
+  where: {
+    id: 1
+  }
+});</code></pre>
+    <!--end::Accessing Models-->
+
+    <!--begin::Creating Your Model-->
+    <h2 id="model-creating">Creating Your Model</h2>
+    <p>To take advantage of Express Sweet’s model, you would simply create a new model class that extends &quot;express-sweet/database/Model&quot;.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Table name used by the model.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
+
+  /**
+   * Table column list.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      name: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+
+    <p>
+      This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
+      For more information, see <a href="#model-class">&quot;Model Class Reference&quot;</a>.
+    </p>
+    <!--end::Creating Your Model-->
+
+    <!--begin::Connecting to the Database-->
+    <h2 id="model-connecting-to-the-database">Connecting to the Database</h2>
+    <p>
+      The database connection is automatic when the model is loaded.<br>
+      The configuration related to the database connection is defined in the &quot;config/database.js&quot; file.<br>
+      For more information on database configuration, see <a href="#configuration-database">&quot;Database configuration&quot;</a>.
+    </p>
+    <!--end::Connecting to the Database-->
+
+    <!--begin::Class Database-->
+    <h2 id="model-database-class">Class Database</h2>
+    <code class="d-block mb-3">express-sweet.database.Database extends <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">sequelize.Sequelize</a></code>
+
+    <p>This is the class that makes the database connection.</p>
+
+    <div class="callout callout-warning">
+      This class returns an instance when loaded, so you don’t have to instantiate it yourself.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s Reference&quot;</a> for more information on the methods and properties available in your model.<br>
+      This section describes newly added methods and members, as well as frequently used members and methods.
+    </div>
+
+    <h3>Method Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#database-method-is-connect">isConnect</a>(): Promise&lt;boolean&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Test the connection by trying to authenticate.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Constructor Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#database-constructor">constructor</a>()</code>
+            <p class="mb-0 ms-3 mt-1">Instantiate &quot;sequelize&quot; with name of database, username and password.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Methods</h3>
+    <h4 id="database-method-is-connect"><code class="method">public async isConnect(): Promise&lt;boolean&gt;</code></h4>
+    <p>Test the connection by trying to authenticate. It runs <em class="code">&quot;SELECT 1+1 AS result&quot;</em> query.</p>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;boolean&gt;} Returns <em class="code">true</em> if it can connect to the database, <em class="code">false</em> if it cannot.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const database = require(&#039;express-sweet&#039;).database.Database;
+
+// Check database connection.
+const isConnected = await database.isConnect();</code></pre>
+
+    <h3>Constructors</h3>
+    <h4 id="database-constructor"><code class="method">public constructor()</code></h4>
+    <p>Instantiate sequelize with name of database, username and password.</p>
+    <!--end::Class Database-->
+
+    <!--begin::Class Model-->
+    <h2 id="model-class">Class Model</h2>
+    <code class="d-block mb-3">express-sweet.database.Model extends <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">sequelize.Model</a></code>
+
+    <p>This is a class that abstracts the tables in the database.</p>
+
+    <div class="callout callout-warning">
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">&quot;Sequelize’s Model Reference&quot;</a> for more information on the methods and properties available in your model.<br>
+      This section describes newly added methods and members, as well as frequently used members and methods.
+    </div>
+
+    <h3>Member Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">protected static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-table">table</a>: string</code>
+            <p class="mb-0 ms-3 mt-1">
+              The name of the table that the model accesses.<br>
+              <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">protected static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-attributes">attributes</a>: sequelize.ModelAttributes</code>
+            <p class="mb-0 ms-3 mt-1">
+              List of columns in the table accessed by this model.<br>
+              <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static readonly</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-data-types">DataTypes</a>: {[key: string]: any}</code>
+            <p class="mb-0 ms-3 mt-1">
+              A convenience class holding commonly used data types.<br>
+              This is an alias for &quot;sequelize.DataTypes&quot;.<br>
+              See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">&quot;Sequelize’s data types reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static readonly</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-op">Op</a>: {[key: string]: any}</code>
+            <p class="mb-0 ms-3 mt-1">
+              Operator symbols to be used when querying data.<br>
+              This is an alias for &quot;sequelize.Op&quot;.<br>
+              See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">&quot;Sequelize’s operator symbols reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Method Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-association">association</a>(): void</code>
+            <p class="mb-0 ms-3 mt-1">
+              Associate the model.<br>
+              Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
+              This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
+              See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.<br>
+              <i class="bi bi-exclamation-triangle-fill"></i>If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-begin">begin</a>(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Starts a transaction and returns a transaction object to identify the running transaction.<br>
+              This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
+              See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-create">create</a>(values: object, options: object): Promise&lt;Model&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Builds a new model instance and calls <em class="code">save</em> on it.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-save">save</a>(options: object): Promise&lt;Model&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Validates this instance, and if the validation passes, persists it to the database.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-find-one">findOne</a>(options: object): Promise&lt;Model|null&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Search for a single instance.<br>
+              Returns the first instance found, or null if none can be found.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-find-all">findAll</a>(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Search for multiple instances.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-count">count</a>(options: object): Promise&lt;number&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Count the number of records matching the provided where clause.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-update">update</a>(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Update multiple instances that match the where options.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-upsert">upsert</a>(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Insert or update a single row.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#model-method-destroy">destroy</a>(options: object): Promise&lt;number&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-has-one">hasOne</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates an association between this (the source) and the provided target.<br>
+              The foreign key is added on the target.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-belongs-to">belongsTo</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates an association between this (the source) and the provided target.<br>
+              The foreign key is added on the source.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-has-many">hasMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates a 1:m association between this (the source) and the provided target.<br>
+              The foreign key is added on the target.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-method-belongs-to-many">belongsToMany</a>(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code>
+            <p class="mb-0 ms-3 mt-1">
+              Create an N:M association with a join table.<br>
+              Defining through is required.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Members</h3>
+
+    <h4 id="model-member-table"><code class="member">protected static table: string</code></h4>
+    <p>
+      The name of the table that the model accesses.<br>
+      <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * The name of the table that the model accesses.
+   */
+  static get table() {
+    return &#039;user&#039;;
+  }
+}</code></pre>
+
+    <h4 id="model-member-attributes"><code class="member">protected static attributes: sequelize.ModelAttributes</code></h4>
+    <p>
+      List of columns in the table accessed by this model.<br>
+      <i class="bi bi-exclamation-triangle-fill"></i>This member must be defined in a subclass.
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const Model = require('express-sweet').database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * List of columns in the table accessed by this model.
+   */
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      name: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+
+    <h4 id="model-member-data-types"><code class="member">public static readonly DataTypes: {[key: string]: any}</code></h4>
+    <p>
+      A convenience class holding commonly used data types.<br>
+      This is an alias for "sequelize.DataTypes".<br>
+      See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">"Sequelize’s data types reference"</a> for details on "sequelize.DataTypes".
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">{
+  id: this.DataTypes.INTEGER
+}</code></pre>
+
+    <h4 id="model-member-op"><code class="member">public static readonly Op: {[key: string]: any}</code></h4>
+    <p>
+      Operator symbols to be used when querying data.<br>
+      This is an alias for "sequelize.Op".<br>
+      See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">"Sequelize’s operator symbols reference"</a> for details on "sequelize.DataTypes".
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
+UserModel.findOne({
+  where: {
+    [this.Op.and]: [
+      {email: &#039;robin@example.com&#039;},
+      {password: &#039;password&#039;}
+    ]
+  }
+});
+
+// SELECT * FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+UserModel.findAll({
+  where: {
+    [this.Op.or]: [
+      {name: &#039;Robin&#039;},
+      {name: &#039;Taylor&#039;}
+    ]
+  }
+});
+
+// DELETE FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+UserModel.destroy({
+  where: {
+    name: {
+      [this.Op.or]: [&#039;Robin&#039;, &#039;Taylor&#039;]
+    }
+  }
+});
+</code></pre>
+
+    <h3>Methods</h3>
+    <h4 id="model-method-association"><code class="method">public static association(): void</code></h4>
+    <p>
+      Associate the model.<br>
+      Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
+      This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
+      See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
+    </p>
+    <div class="callout callout-warning">If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.</div>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // User has one profile.
+    const ProfileModel = require(&#039;./ProfileModel&#039;);
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+
+    <h4 id="model-method-begin"><code class="method">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</code></h4>
+    <p>
+      Starts a transaction and returns a transaction object to identify the running transaction.<br>
+      This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
+    </p>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;sequelize.Transaction&gt;} Returns a transaction object to identify the transaction being executed.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+let transaction;
+try {
+  // Start a transaction.
+  // SQL: START TRANSACTION;
+  transaction = await UserModel.begin();
+
+  // Find one user.
+  // SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`id` = 1;
+  const user = await UserModel.findOne({where: {id: 1}}, {transaction});
+  user.name = &#039;Jane&#039;;
+
+  // Update username.
+  // SQL: UPDATE `user` SET `name`=? WHERE `id` = ?
+  await user.save({transaction});
+
+  // commit.
+  // SQL: COMMIT;
+  await transaction.commit();
+} catch(e) {
+  // roll back.
+  // SQL: ROLLBACK;
+  await transaction.rollback();
+}
+</code></pre>
+
+    <h4 id="model-method-create"><code class="method">public static async create(values: object, options: object): Promise&lt;Model&gt;</code></h4>
+    <p>
+      Builds a new model instance and calls <em class="code">save</em> on it.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-create" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} values Hash of data values to create new record with.</li>
+      <li>{object} options Build and query options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model&gt;} Returns a model that contains the data for the added record.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Add new user to database.
+// SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;ellen@example.com&#039;,&#039;password&#039;,&#039;Ellen&#039;);
+await UserModel.create({
+  email: &#039;ellen@example.com&#039;,
+  password: &#039;password&#039;,
+  name: &#039;Ellen&#039;
+});</code></pre>
+
+    <h4 id="model-method-save"><code class="method">public static async save(options: object): Promise&lt;Model&gt;</code></h4>
+    <p>
+      Validates this instance, and if the validation passes, persists it to the database.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-save" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options save options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model&gt;} Returns a model that contains data for manipulated records such as add and update.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Create a new user instance with the build method and register the record in the database.
+// SQL: INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,'jane@example.com','password','Jane');
+const user = UserModel.build({
+  email: 'jane@example.com',
+  password: 'password',
+  name: 'Jane'
+});
+await user.save();
+
+// If you change the value of some field of an instance, calling save again will update it accordingly.
+// SQL: UPDATE `user` SET `name`='Ada' WHERE `id` = 1;
+user.name = 'Ada';
+await user.save();</code></pre>
+
+    <h4 id="model-method-find-one"><code class="method">public static async findOne(options: object): Promise&lt;Model|null&gt;</code></h4>
+    <p>
+      Search for a single instance.<br>
+      Returns the first instance found, or null if none can be found.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOne" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options A hash of options to describe the scope of the search.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model|null&gt;} Returns a Model containing the first data found in the database.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Find one user.
+// SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` LIMIT 1;
+await UserModel.findOne();</code></pre>
+
+    <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></h4>
+    <p>
+      Search for multiple instances.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options A hash of options to describe the scope of the search.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Array&lt;Model&gt;&gt;} Returns a model containing the data found in the database.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Find users whose names start with &quot;Robin&quot;.
+// SQL: SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`name` LIKE &#039;Robin%&#039;;
+const users = await UserModel.findAll({
+  where: {
+    name: {
+      [UserModel.Op.like]: &#039;Robin%&#039;
+    }
+  }
+});</code></pre>
+
+    <h4 id="model-method-count"><code class="method">public static async count(options: object): Promise&lt;number&gt;</code></h4>
+    <p>
+      Count the number of records matching the provided where clause.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-count" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options A hash of options to describe the scope of the search.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;number&gt;} Returns the count of records that match the condition.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Get all user record counts.
+// SQL: SELECT count(*) AS `count` FROM `user` AS `user`;
+await UserModel.count();</code></pre>
+
+    <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></h4>
+    <p>
+      Update multiple instances that match the where options.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} values hash of values to update.</li>
+      <li>{object} options update options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Array&lt;number, number&gt;&gt;} The first element is always the number of affected rows, while the second element is the actual affected rows (only supported in postgres with <em class="code">options.returning</em> true).</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// Update the name of the user whose ID is 1.
+// SQL: UPDATE `user` SET `name`=&#039;Jane&#039; WHERE `id` = 1;
+await UserModel.update(
+  {
+    name: &#039;Jane&#039;
+  },
+  {
+    where: {
+      id: 1
+    }
+  }
+);</code></pre>
+
+    <h4 id="model-method-upsert"><code class="method">public static async upsert(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code></h4>
+    <p>
+      Insert or update a single row.<br>
+      An update will be executed if a row which matches the supplied values on either the primary key or a unique key is found.<br>
+      Note that the unique index must be defined in your sequelize model and not just in the table.<br>
+      Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} values hash of values to upsert.</li>
+      <li>{object} options upsert options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;Model, boolean|null&gt;} returns record and whether row was created or updated as boolean. For Postgres/SQLite dialects boolean value is always null.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// If there is no user corresponding to the primary key or unique key, add it, and if there is a corresponding user, update it.
+// SQL: INSERT INTO `user` (`email`,`password`,`name`) VALUES (?,?,?)
+//      ON DUPLICATE KEY UPDATE `email`=VALUES(`email`),`password`=VALUES(`password`),`name`=VALUES(`name`);
+await UserModel.upsert({
+  email: &#039;robin@example.com&#039;,
+  password: &#039;password&#039;,
+  name: &#039;Robin&#039;
+});</code></pre>
+
+    <h4 id="model-method-destroy"><code class="method">public static async destroy(options: object): Promise&lt;number&gt;</code></h4>
+    <p>
+      Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{object} options destroy options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;number&gt;} The number of destroyed rows.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">// Delete the user whose id is 1.
+// SQL: DELETE FROM `user` WHERE `id` = 1;
+await UserModel.destroy({where: {id :1}});</code></pre>
+
+    <h4 id="model-method-has-one"><code class="method">public static hasOne(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a></code></h4>
+    <p>
+      Creates an association between this (the source) and the provided target.<br>
+      The foreign key is added on the target.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasOne" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options hasOne association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" target="_blank">sequelize.HasOne</a>} One-to-one association.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For one-to-one association we will use two tables as an example they are User and Profile table.<br>
+      User table has one Profile table and Profile table belongs to the User table.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/has-one.png" alt="has one relationship" width="361">
+    <p>
+      HasOne put the association key in the target model.<br>
+      Here User can exist without a Profile, but the vice versa is not possible.<br>
+      This means, we will insert userId field to Profile model’s table.
+    </p>
+    <p>This is a user model that defines an association in which the user has one profile.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // User has one profile.
+    const ProfileModel = require(&#039;./ProfileModel&#039;);
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `profile`.`id` AS `profile.id`,
+//        `profile`.`userId` AS `profile.userId`,
+//        `profile`.`address` AS `profile.address`,
+//        `profile`.`tel` AS `profile.tel`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `profile` AS `profile` ON `user`.`id` = `profile`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;profile&quot;: {
+//               &quot;userId&quot;: 1,
+//               &quot;address&quot;: &quot;777 Brockton Avenue, Abington MA 2351&quot;,
+//               &quot;tel&quot;: &quot;202-555-0105&quot;
+//             }
+//           }
+//         ]
+// 
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: [{
+    association: &#039;profile&#039;,
+    attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;]
+  }]
+});</code></pre>
+
+    <h4 id="model-method-belongs-to"><code class="method">public static belongsTo(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a></code></h4>
+    <p>
+      Creates an association between this (the source) and the provided target.<br>
+      The foreign key is added on the source.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options belongsTo association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" target="_blank">sequelize.BelongsTo</a>} One-to-one association.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For one-to-one association we will use two tables as an example they are User and Profile table.<br>
+      User table has one Profile table and Profile table belongs to the User table.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/belongs-to.png" alt="belongs to relationship" width="361">
+    <p>
+      BelongsTo put the associations key in the source model.<br>
+      Here User can exist without a Profile, but the vice versa is not possible.<br>
+      This means, we will insert userId field to Profile model’s table.
+    </p>
+    <p>This is a profile model that defines an association whose profile belongs to one user.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * Profile model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+    // Profile belongs to one user.
+    const UserModel = require(&#039;./UserModel&#039;);
+    this.belongsTo(UserModel, {
+      foreignKey: &#039;userId&#039;,  // profile.userId,
+      targetKey: &#039;id&#039;,  // user.id
+      as: &#039;user&#039;
+    });
+  }
+}</code></pre>
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
+
+// SQL: SELECT
+//        `profile`.`id`,
+//        `profile`.`userId`,
+//        `profile`.`address`,
+//        `profile`.`tel`,
+//        `user`.`id` AS `user.id`,
+//        `user`.`name` AS `user.name`
+//      FROM
+//        `profile` AS `profile`
+//        INNER JOIN `user` AS `user` ON `profile`.`userId` = `user`.`id`;
+// 
+// Output: [
+//           {
+//             &quot;userId&quot;: 1,
+//             &quot;address&quot;: &quot;777 Brockton Avenue, Abington MA 2351&quot;,
+//             &quot;tel&quot;: &quot;202-555-0105&quot;,
+//             &quot;user&quot;: {
+//               &quot;id&quot;: 1,
+//               &quot;name&quot;: &quot;Robin&quot;
+//             }
+//           }
+//         ]
+await ProfileModel.findAll({
+  attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;],
+  include: {
+    association: &#039;user&#039;,
+    required: true,
+    attributes: [&#039;id&#039;, &#039;name&#039;]
+  }
+});</code></pre>
+
+    <h4 id="model-method-has-many"><code class="method">public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a></code></h4>
+    <p>
+      Creates a 1:m association between this (the source) and the provided target.<br>
+      The foreign key is added on the target.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options hasMany association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" target="_blank">sequelize.HasMany</a>} One-to-many association.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For one-to-many association we will use two tables as an example they are User and Comment table.<br>
+      User table has many Comment table and Comment table belongs to the User table.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/has-many.png" alt="has many relationship" width="361">
+    <p>
+      The HasMany put the association key in the target model.<br>
+      Here user and comments share a one to many relationship.<br>
+      Each user can make multiple comments while each comment is associated with only a single user.
+    </p>
+    <p>This is a user model that defines an association in which the user has many comments.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+     // User has many comments.
+    const CommentModel = require(&#039;./CommentModel&#039;);
+    this.hasMany(CommentModel, {
+      foreignKey: &#039;userId&#039;,  // comment.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;comments&#039;
+    });
+  }
+}</code></pre>
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `comments`.`id` AS `comments.id`,
+//        `comments`.`userId` AS `comments.userId`,
+//        `comments`.`text` AS `comments.text`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `comment` AS `comments` ON `user`.`id` = `comments`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;comments&quot;: [
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;text&quot;: &quot;First comment from Robin&quot;
+//               },
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;text&quot;: &quot;Second comment from Robin&quot;
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;comments&#039;,
+    attributes: [&#039;userId&#039;, &#039;text&#039;]
+  }
+});</code></pre>
+
+    <h4 id="model-method-belongs-to-many"><code class="method">public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a></code></h4>
+    <p>
+      Create an N:M association with a join table.<br>
+      Defining through is required.<br>
+      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" target="_blank">reference</a> for details.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{Model} target The target model.</li>
+      <li>{object} options belongsToMany association options.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{<a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" target="_blank">sequelize.BelongsToMany</a>} Many-to-many association with a join table.</p>
+    <p><strong>Example:</strong></p>
+    <p>
+      For many-to-many association we will use two tables as an example they are User and Book table.<br>
+      User is marking down Books that he has read. Each user can mark as many books as they want, creating a many to many association between User and Books.<br>
+      Books can belong to many users.<br>
+      Here's the relation diagram for it.
+    </p>
+    <img class="mb-3" src="images/belongs-to-many.png" alt="belongs to many relationship" width="361">
+    <p>
+      The BlongsToMany put the association key in the target model.<br>
+      Here user and book share a many to many relationship.<br>
+      Each user can make multiple books, and each book can be associated with multiple users.
+    </p>
+    <p>This is a user model that defines an association where users and books have a many-to-many relationship.</p>
+    <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+/**
+ * User model.
+ */
+module.exports = class extends Model {
+  /**
+   * Associate the model.
+   * Define associations with other models such as &quot;hasOne&quot;, &quot;hasMany&quot;, &quot;belongsTo&quot;, &quot;belongsToMany&quot;.
+   * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+   * This method is called automatically from within the &quot;express-sweet.mount&quot; method, so you don&#039;t have to run it yourself.
+   * 
+   * @see https://sequelize.org/master/manual/assocs.html
+   */
+  static association() {
+     // Users have many books, and books belong to many users.
+    const BookModel = require(&#039;./BookModel&#039;);
+    this.hasMany(BookModel, {
+      foreignKey: &#039;userId&#039;,  // book.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;books&#039;
+    });
+  }
+}</code></pre>
+    <p>This is an example of record search.</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+// SQL: SELECT
+//        `user`.`id`,
+//        `user`.`name`,
+//        `books`.`id` AS `books.id`,
+//        `books`.`userId` AS `books.userId`,
+//        `books`.`title` AS `books.title`
+//      FROM
+//        `user` AS `user`
+//        LEFT OUTER JOIN `book` AS `books` ON `user`.`id` = `books`.`userId`;
+// 
+// Output: [
+//           {
+//             &quot;id&quot;: 1,
+//             &quot;name&quot;: &quot;Robin&quot;,
+//             &quot;books&quot;: [
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;title&quot;: &quot;The Stars Tonight&quot;
+//               },
+//               {
+//                 &quot;userId&quot;: 1,
+//                 &quot;title&quot;: &quot;A Guide to Courteous Thievery&quot;
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;books&#039;,
+    attributes: [&#039;userId&#039;, &#039;title&#039;]
+  }
+});</code></pre>
+    <!--end::Class Model-->
+    <!--end::Model-->
+
+    <!--begin::User authentication-->
+    <h1 id="user-authentication">User authentication</h1>
+
+    <!--begin::Introduction-->
+    <h2 id="user-authentication-introduction">Introduction</h2>
+    <p>
+      Express Sweet has built-in passport authentication middleware for user authentication by username and password.<br>
+      You can immediately start user authentication in your application using the authentication configuration file and the authentication service module.<br>
+      If you want to know more about passport, please see this <a href="https://www.passportjs.org/" target="_blank">reference</a>.
+    </p>
+    <!--end::Introduction-->
+
+    <!--begin::Configuration-->
+    <h2 id="user-authentication-configuration">Configuration</h2>
+    <p>
+      The user authentication configuration is defined in the <em class="code">&quot;config/authentication.js&quot;</em> file.<br>
+      This file contains the following configuration values.
+    </p>
+    <h3>Configuration members</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Configuration</th>
+          <th>Description</th>
+          <th>Input Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>enabled</code></td>
+          <td class="w-100">
+            Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
+            User authentication is enabled (<em class="code">true</em>) by default.
+          </td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td><code>username</code></td>
+          <td class="w-100">
+            The login username field name used for authentication.<br>
+            This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>password</code></td>
+          <td class="w-100">
+            The login password field name used for authentication.<br>
+            This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>success_redirect</code></td>
+          <td class="w-100">
+            The URL to redirect to after successful authentication.<br>
+            The default is the root URL (<em class="code">/</em>).
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>failure_redirect</code></td>
+          <td class="w-100">
+            Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
+            This usually specifies the URL of the login page.<br>
+            The default is <em class="code">&quot;/login&quot;</em>.
+          </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>authenticate_user</code></td>
+          <td class="w-100">
+            This hook is called when authenticating a user.<br>
+            Please find the user information that owns the credentials based on the user name and password you received and return it.<br>
+            If the user who owns the credentials cannot be found, return null.<br>
+            <div class="callout callout-warning">Note that the user information must include an ID value that can identify the user.</div>
+            The following example uses the user model to find the user who owns the credentials based on the username and password.<br>
+            <pre><code class="js">authenticate_user: async (username, password) =&gt; {
+  const UserModel = require(&#039;../models/UserModel&#039;);
+  return UserModel.findOne({
+    where: {
+      email: username,
+      password: password
+    },
+    raw: true
+  });
+}</code></pre>
+          </td>
+          <td>(username: string, password: string) =&gt; Promise&lt;{[key: string]: any}|null&gt;</td>
+        </tr>
+        <tr>
+          <td><code>subscribe_user</code></td>
+          <td class="w-100">
+            This hook is called when user authentication is successful.<br>
+            Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.<br>
+            The returned data will be set in the req.user property and the view&#039;s session variable.<br>
+            The following example uses the user model to return the user information that owns the credentials based on the authenticated user's id.
+            <pre><code class="js">subscribe_user: async (id) =&gt; {
+  const UserModel = require(&#039;../models/UserModel&#039;);
+  return UserModel.findOne({
+    where: {id},
+    raw: true
+  });
+}</code></pre>
+          </td>
+          <td>(id: number|string) =&gt; Promise&lt;{[key: string]: any}&gt;</td>
+        </tr>
+        <tr>
+          <td><code>allow_unauthenticated</code></td>
+          <td class="w-100">
+            By default, it requires an authenticated user for all requests.<br>
+            You can use the <em class="code">&quot;allow_unauthenticated&quot;</em> option to disable this behavior on certain requests.<br>
+            For example, if you don’t want to authenticate all requests that contain &quot;api&quot; in the URL, set <em class="code">&quot;allow_unauthenticated&quot;</em> as follows.
+            <pre><code class="js">allow_unauthenticated: [
+  &#039;/api&#039;
+]</code></pre>
+          </td>
+          <td>string[]</td>
+        </tr>
+        <tr>
+          <td><code>expiration</code></td>
+          <td class="w-100">
+            Specifies the time, in milliseconds, before the session expires.<br>
+            The default is 24 hours (<em class="code">86400000</em> milliseconds).
+          </td>
+          <td>number</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <p>config/authentication.js:</p>
+    <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+
+/**
+ * User authentication configuration interface.
+ */
+module.exports = {
+  /**
+   * Enable user authentication, defaults to disabled (false).
+   * @type {boolean}
+   */
+  enabled: true,
+
+  /**
+   * Authentication user ID field name, defaults to `username`.
+   * @type {string}
+   */
+  username: &#039;email&#039;,
+
+  /**
+   * Authentication password field name, defaults to `password`.
+   * @type {string}
+   */
+  password: &#039;password&#039;,
+
+  /**
+   * URL to redirect after successful authentication, defaults to `/`.
+   * @type {string}
+   */
+  success_redirect: &#039;/&#039;,
+
+  /**
+   * URL to redirect after log off, defaults to `/login`.
+   * @type {string}
+   */
+  failure_redirect: &#039;/login&#039;,
+
+  /**
+   * This hook is called when authenticating a user.
+   * Please find the user information that owns the credentials based on the user name and password you received and return it.
+   * If the user who owns the credentials cannot be found, return null.
+   *
+   * Note that the user information must include an ID value that can identify the user.
+   * 
+   * @type {(username: string, password: string) =&gt; Promise&lt;{[key: string]: any}|null&gt;}
+   */
+  authenticate_user: async (username, password) =&gt; {
+    return UserModel.findOne({
+      where: {
+        email: username,
+        password: password
+      },
+      raw: true
+    });
+  },
+
+  /**
+   * This hook is called when user authentication is successful.
+   * Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.
+   * The returned data will be set in the req.user property and the view&#039;s session variable.
+   * 
+   * @type {(id: number|string) =&gt; Promise&lt;{[key: string]: any}&gt;}
+   */
+  subscribe_user: async (id) =&gt; {
+    return UserModel.findOne({
+      where: {id},
+      raw: true
+    });
+  },
+
+  /**
+   * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
+   * @type {string}
+   */
+  allow_unauthenticated: [&#039;/api&#039;],
+
+  /**
+   * Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
+   * @type {number}
+   */
+  expiration: 24 * 3600000
+}</code></pre>
+    <!--end::Configuration-->
+
+    <!--begin::Authenticating Users-->
+    <h2 id="user-authentication-authenticating-users">Authenticating Users</h2>
+      To authenticate the request, call <em class="code">&quot;express-sweet.services.Authentication.authenticate()&quot;</em> method.<br>
+      This method returns <em class="code">true</em> if the authentication succeeds and <em class="code">false</em> if it fails.<br>
+      If authentication succeeds, the next handler will be invoked and the <em class="code">req.user</em> property will be set to the authenticated user.
+    </p>
+
+    <h3>Example</h3>
+    <p>The post-authentication logic depends on whether the login request is received asynchronously or synchronously, so an example of both logics is shown here.</p>
+
+    <p>This example uses the following authentication user table.</p>
+    <pre><code class="sql">CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukUserEmail` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
+
+    <p>Also, set the email column and password column of the example user table in the <em class="code">username</em> and <em class="code">password</em> configuration values of <em class="code">&quot;config/authentication.js&quot;</em>.</p>
+    <pre><code class="js">/**
+ * Authentication user ID field name, defaults to `username`.
+ * @type {string}
+ */
+username: &#039;email&#039;,
+
+/**
+ * Authentication password field name, defaults to `password`.
+ * @type {string}
+ */
+password: &#039;password&#039;</code></pre>
+
+    <h4>For sync request.</h4>
+    <p>
+      If the authentication is successful, redirect to the page with the URL specified by <em class="code">success_redirect</em> in <em class="code">&quot;config/authentication.js&quot;</em>.<br>
+      If it fails, redirect to the page with the URL specified by <em class="code">failure_redirect</em> in <em class="code">&quot;config/authentication.js&quot;</em>.
+    </p>
+    <p>routes/api/user.js:</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+
+/**
+ * Login.
+ */
+router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
+  // Authenticate with username and password.
+  const isAuthenticated = await Authentication.authenticate(req, res, next);
+
+  // For sync request.If the authentication is successful, you will be redirected to the authentication success page, and if it is unsuccessful, you will be redirected to the login page.
+  if (isAuthenticated) 
+    Authentication.successRedirect(res);
+  else
+    Authentication.failureRedirect(res);
+});
+
+module.exports = router;</code></pre>
+
+    <p>HTML and JS:</p>
+    <pre><code class="html">&lt;form method=&quot;post&quot; action=&quot;/api/users/login&quot;&gt;
+  &lt;label&gt;Email address&lt;/label&gt;
+  &lt;input type=&quot;email&quot; name=&quot;email&quot; required autofocus&gt;
+
+  &lt;label class=&quot;form-label&quot;&gt;Password&lt;/label&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot; required&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+    <h4>For asynchronous requests.</h4>
+    <p>Returns the authentication result and executes subsequent processing on the front end.</p>
+
+    <p>routes/api/user.js:</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+
+/**
+ * Login.
+ */
+router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
+  // Authenticate with username and password.
+  const isAuthenticated = await Authentication.authenticate(req, res, next);
+
+  // For asynchronous requests.Returns the authentication result and executes subsequent processing on the front end.
+  res.json(isAuthenticated);
+});
+
+module.exports = router;</code></pre>
+
+    <p>HTML and JS:</p>
+    <pre><code class="html">&lt;form id=&quot;form&quot;&gt;
+  &lt;label&gt;Email address&lt;/label&gt;
+  &lt;input type=&quot;email&quot; name=&quot;email&quot; required autofocus&gt;
+
+  &lt;label class=&quot;form-label&quot;&gt;Password&lt;/label&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot; required&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+const form = document.querySelector(&#039;#form&#039;);
+form.addEventListener(&#039;submit&#039;, async event =&gt; {
+  event.preventDefault();
+
+  // Send an authentication request.
+  const res = await fetch(&#039;/api/users/login&#039;, {method: &#039;POST&#039;, body: new FormData(form)});
+
+  // Authentication result.
+  const isAuthenticated = await res.json();
+
+  // If login fails.
+  if (!isAuthenticated)
+    return void alert(&#039;The user name or password is incorrect.&#039;);
+
+  // After logging in successfully, you will be taken to the top page.
+  location.href = &#039;/&#039;;
+});
+&lt;/script&gt;</code></pre>
+
+    <p>
+      When the form submits, it sends a login request (/api/users/login), and the <em class="code">&quot;routes/api/user.js&quot;</em> router receives the request, authenticates it based on the username and password, and returns the result.<br>
+      After that, the front end checks the authentication result returned from the router and redirects to  &quot;/&quot; if the authentication result is successful (<em class="code">true</em>).<br>
+      If you redirect to "/", the page will automatically switch to the URL specified in <em class="code">success_redirect</em> of <em class="code">&quot;config/authentication.js&quot;</em>.
+    </p>
+    <!--end::Authenticating Users-->
+
+    <!--begin::Logging Out-->
+    <h2 id="user-authentication-logging-out">Logging Out</h2>
+    <p>
+      If you want to log out the user, call the <em class="code">&quot;express-sweet.services.Authentication.logout()&quot;</em> method.<br>
+      Invoking <em class="code">&quot;logout()&quot;</em> will remove the <em class="code">req.user</em> property and clear the login session (if any).
+    </p>
+
+    <h3>Example</h3>
+    <p>routes/api/user.js:</p>
+    <pre><code class="js">const express = require(&#039;express&#039;);
+const router = express.Router();
+const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+
+/**
+ * Logout.
+ */
+router.get(&#039;/logout&#039;, (req, res) =&gt; {
+  Authentication.logout(req);
+  res.redirect(&#039;/&#039;);
+});
+
+module.exports = router;</code></pre>
+
+    <p>HTML:</p>
+    <pre><code class="html">&lt;a href=&quot;{{baseUrl}}/api/users/logout&quot;&gt;Logout&lt;/a&gt;</code></pre>
+    <!--end::Logging Out-->
+    <!--end::User authentication-->
+
+    <!--begin::Rekognition-->
+    <h1 id="rekognition">Rekognition</h1>
+
+    <!--begin::Introduction-->
+    <h2 id="rekognition-introduction">Introduction</h2>
+    <p>
+      Express Sweet includes an extension of &quot;Amazon Rekognition&quot; for face recognition, face detection, and face comparison.<br>
+      This section describes how to use the modules that do them.<br>
+      If you want to know more about &quot;Amazon Rekognition&quot;, please see <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">&quot;Amazon Rekognition Reference&quot;</a>.
+    </p>
+    <!--end::Introduction-->
+
+    <!--begin::Class Rekognition-->
+    <h2 id="rekognition-class">Class Rekognition</h2>
+    <code class="d-block mb-3">express-sweet.services.AWSRekognitionClient</code>
+
+    <p>This is a class that uses machine learning to analyze images and videos.</p>
+
+    <h3>Method Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Detects faces within an image that is provided as input.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-compare-faces">compareFaces</a>(img1: string, img2: string): Promise&lt;number&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Compare the similarity of two faces.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-create-collection">createCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Add faces to the collection using the IndexFaces operation.<br>
+              For example, you might create collections, one for each of your application users.<br>
+              A user can then index faces using the IndexFaces operation and persist results in a specific collection.<br>
+              Then, a user can search the collection for faces in the user-specific container.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
+            <p class="mb-0 ms-3 mt-1">Returns list of collection IDs.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-delete-collection">deleteCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Deletes the specified collection.<br>
+              Note that this operation removes all faces in the collection.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-index-face">indexFace</a>(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Detects one face in the input image and adds it to the specified collection.<br>
+              This method doesn't save the actual faces that are detected.<br>
+              Instead, the underlying detection algorithm first detects the faces in the input image.<br>
+              The algorithm extracts facial features into a feature vector, and stores it in the backend database.
+              <div class="callout callout-warning">
+                Note that this method is used to index one face.<br>
+                Throws an exception if no face is found in the input image or multiple faces are found.
+              </div>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-search-faces">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
+              The operation compares the features of the input face with faces in the specified collection.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-list-faces">listFaces</a>(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Returns metadata for faces in the specified collection.<br>
+              This metadata includes information such as the bounding box coordinates, and face ID.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body">async <a href="#rekognition-method-delete-faces">deleteFaces</a>(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code>
+            <p class="mb-0 ms-3 mt-1">
+              Deletes faces from a collection.<br>
+              You specify a collection ID and an array of face IDs to remove from the collection.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Constructor Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Scope</th>
+          <th>Syntax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">public</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#rekognition-constructor">constructor</a>(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code>
+            <p class="mb-0 ms-3 mt-1">Constructs a rekognition client object.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Methods</h3>
+    <h4 id="rekognition-method-detect-faces"><code class="method">public async detectFaces(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;</code></h4>
+    <p>
+      Detects faces within an image that is provided as input.<br>
+      For each face detected, the operation returns a bounding box of the face.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} img Image path or Data Url or image buffer.</li>
+      <li class="d-flex">
+        <span>{number} minConfidence</span>
+        <span class="ms-2">
+          The minimum confidence of the detected face.<br>
+          Faces with a confidence lower than this value will not be returned as a result.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;} Returns the bounding box of the detected face.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Detect faces from path.
+// Output: [
+//           {
+//             width: 0.5004957914352417,
+//             height: 0.6926820874214172,
+//             left: 0.2928674817085266,
+//             top: 0.09095800668001175
+//           }
+//         ]
+await client.detectFaces(&#039;img.jpg&#039;);
+
+// Detect faces from data URL.
+await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
+
+// Detect faces from buffer.
+await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+
+    <h4 id="rekognition-method-compare-faces"><code class="method">public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</code></h4>
+    <p>Compare the similarity of two faces.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} img1 Image path or Data Url or image buffer.</li>
+      <li>{string} img2 Image path or Data Url or image buffer.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;number&gt;} Level of confidence that the faces match.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Compare faces from path.
+await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
+
+// Compare faces from data URL.
+await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+
+// Compare faces from buffer.
+await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+
+    <h4 id="rekognition-method-create-collection"><code class="method">public async createCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
+    <p>
+      Add faces to the collection using the IndexFaces operation.<br>
+      For example, you might create collections, one for each of your application users.<br>
+      A user can then index faces using the IndexFaces operation and persist results in a specific collection.<br>
+      Then, a user can search the collection for faces in the user-specific container.
+      <div class="callout callout-warning">Note that Collection names are case-sensitive.</div>
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li class="d-flex">
+        <span>{string} collectionId</span>
+        <span class="ms-2">
+          ID for the collection that you are creating.<br>
+          The maximum length is 255, and the characters that can be used are <em class="code">&quot;[a-zA-Z0-9_.\-]+&quot;</em>.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+try {
+  // Creates a collection.
+  await client.createCollection(&#039;MyCollection&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+
+    <h4 id="rekognition-method-list-collections"><code class="method">public async listCollections(): Promise&lt;string[]&gt;</code></h4>
+    <p>Returns list of collection IDs.</p>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;string[]&gt;} An array of collection IDs.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find the collection IDs.
+// Output: [
+//           &#039;MyCollection&#039;,
+//           &#039;AnotherCollection&#039;
+//         ]
+await client.listCollections();</code></pre>
+
+    <h4 id="rekognition-method-delete-collection"><code class="method">public async deleteCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
+    <p>
+      Deletes the specified collection.<br>
+      Note that this operation removes all faces in the collection.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId ID of the collection to delete.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete collection.
+await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+
+    <h4 id="rekognition-method-index-face"><code class="method">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code></h4>
+    <p>
+      Detects one face in the input image and adds it to the specified collection.<br>
+      This method doesn't save the actual faces that are detected.<br>
+      Instead, the underlying detection algorithm first detects the faces in the input image.<br>
+      The algorithm extracts facial features into a feature vector, and stores it in the backend database.
+      <div class="callout callout-warning">
+        Note that this method is used to index one face.<br>
+        Throws an exception if no face is found in the input image or multiple faces are found.
+      </div>
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId The ID of an existing collection to which you want to add the faces that are detected in the input images.</li>
+      <li>{string} img Image path or Data Url or image buffer.</li>
+      <li class="d-flex">
+        <span>{string} externalImageId</span>
+        <span class="ms-2">
+          The ID you want to assign to the faces detected in the image.<br>
+          When you call the <em class="code">&quot;listFaces&quot;</em> operation, the response returns the external ID.<br>
+          You can use this external image ID to create a client-side index to associate the faces with each image.<br>
+          You can then use the index to find all faces in an image.<br>
+          The maximum length is 255, and the characters that can be used are <em class="code">&quot;[a-zA-Z0-9_.\-:]+&quot;</em>.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;string&gt;} A unique identifier assigned to the face.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Add face to collection from path.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
+console.log(faceId);
+
+// Add face to collection from data URL.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
+console.log(faceId);
+
+// Add face to collection from buffer.
+// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
+const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
+console.log(faceId);
+
+// If the face is not found in the image, throw an error.
+// Output: name: IndexFaceFaceNotFound
+//         statusCode: 400
+//         message: No face was found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}
+
+// If multiple faces are found in the image, throw an error.
+// Output: name: IndexFaceMultipleFacesFound
+//         statusCode: 400
+//         message: Multiple faces found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+
+    <h4 id="rekognition-method-search-faces"><code class="method">public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code></h4>
+    <p>
+      For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
+      The operation compares the features of the input face with faces in the specified collection.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId ID of the collection to search.</li>
+      <li>{string} img Image path or Data Url or image buffer.</li>
+      <li class="d-flex">
+        <span>{number} options.minConfidence</span>
+        <span class="ms-2">
+          Specifies the minimum confidence in the face match to return.<br>
+          The default value is 80%.
+        </span>
+      </li>
+      <li class="d-flex">
+        <span>{number} options.maxFaces</span>
+        <span class="ms-2">
+          Maximum number of faces to return.<br>
+          The operation returns the maximum number of faces with the highest confidence in the match.<br>
+          The default value is 5.
+        </span>
+      </li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p class="d-flex">
+      <span>{Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;}</span>
+      <span class="ms-2">
+        If <em class="code">options.maxFaces</em> is 1, the face information found is returned.<br>
+        If <em class="code">options.maxFaces</em> is 2 or more, the list of face information found is returned.<br>
+        Returns <em class="code">null</em> if no face is found.
+      </span>
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// If you want to search for one face, specify 1 for the maxFaces option.
+// In that case, the search result will return the face data for one person.
+// Output: {
+//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//           boundingBox: {
+//             width: 0.500495970249176,
+//             height: 0.6926820278167725,
+//             left: 0.2928670048713684,
+//             top: 0.09095799922943115
+//           },
+//           externalImageId: &#039;img.jpg&#039;
+//         }
+const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
+console.log(match);
+
+// If you want to search for multiple faces, specify 2 or more for the maxFaces option.
+// In that case, the search results will return a list of the face data of multiple people found.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
+console.log(matches);
+
+// The input image can specify a buffer or DataURL in addition to the image path.
+await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+
+    <h4 id="rekognition-method-list-faces"><code class="method">public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;</code></h4>
+    <p>
+      Returns metadata for faces in the specified collection.<br>
+      This metadata includes information such as the bounding box coordinates, and face ID.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId ID of the collection from which to list the faces.</li>
+      <li>{number} maxResults Maximum number of faces to return.The default value is 1000.</li>
+    </ul>
+    <p><strong>Return:</strong></p>
+    <p>{Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;} Returns all face metadata in the collection.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find all face metadata in the collection.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const result = await client.listFaces(&#039;MyCollection&#039;);
+console.log(result);</code></pre>
+
+    <h4 id="rekognition-method-delete-faces"><code class="method">public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code></h4>
+    <p>
+      Deletes faces from a collection.<br>
+      You specify a collection ID and an array of face IDs to remove from the collection.
+    </p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} collectionId Collection from which to remove the specific faces.</li>
+      <li>{string[]} faceIds An array of face IDs to delete.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete a face from the collection.
+await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
+
+    <h3>Constructors</h3>
+    <h4 id="rekognition-constructor"><code class="method">public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code></h4>
+    <p>Constructs a rekognition client object.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li>{string} options.accessKeyId Your AWS access key ID.</li>
+      <li>{string} options.secretAccessKey Your AWS secret access key.</li>
+      <li>{string} options.region The region to send service requests to.</li>
+      <li>{number} options.timeout Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds.The default is 5000 milliseconds.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+// Instantiate Rekognition client.
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});</code></pre>
+    <!--end::Class Rekognition-->
+
+    <!--begin::Interface FaceMatch-->
+    <h2 id="rekognition-interface-face-match">Interface FaceMatch</h2>
+    <code class="d-block mb-3">express-sweet.interfaces.FaceMatch</code>
+
+    <p>This is the metadata structure of the bounding box coordinates, reliability (the bounding box contains a face), face ID, etc. returned by the <em class="code">searchFaces()</em>, <em class="code">listFaces()</em> methods, etc.</p>
+
+    <h3>Member Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Member name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">faceId: string</td>
+          <td class="w-100">A unique identifier assigned to the face.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">boundingBox: <a href="#rekognition-interface-bounding-box">BoundingBox</a></td>
+          <td class="w-100">
+            Bounding box of the face.<br>
+            <ul class="mb-0">
+              <li>width: Width of the bounding box as a ratio of the overall image width.</li>
+              <li>height: Height of the bounding box as a ratio of the overall image height.</li>
+              <li>left: Left coordinate of the bounding box as a ratio of overall image width.</li>
+              <li>top: Top coordinate of the bounding box as a ratio of overall image height.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">externalImageId?: string</td>
+          <td class="w-100">Identifier that you assign to all the faces in the input image.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--end::Interface FaceMatch-->
+
+    <!--begin::Interface BoundingBox-->
+    <h2 id="rekognition-interface-bounding-box">Interface BoundingBox</h2>
+    <code class="d-block mb-3">express-sweet.interfaces.BoundingBox</code>
+    <p>Bounding box interface for faces, labels, borders, etc.</p>
+    <h3>Member Summary</h3>
+    <table class="table table-bordered summary">
+      <thead class="table-light">
+        <tr>
+          <th>Member name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">width: number</td>
+          <td class="w-100">The width of the bounding box.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">height: number</td>
+          <td class="w-100">The height of the bounding box.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">left: number</td>
+          <td class="w-100">The x coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">top: number</td>
+          <td class="w-100">The y coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--end::Interface BoundingBox-->
+
+    <!--end::Rekognition-->
   </main>
 </div>
 
@@ -218,10 +3718,5 @@ app.listen(port, () =&gt; {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
 <script src="scripts/docs.js"></script>
-<script>
-document.querySelectorAll('pre code').forEach((block) => {
-  hljs.highlightBlock(block);
-});
-</script>
 </body>
 </html>

@@ -10,8 +10,6 @@ export default {
   external: [
     ...builtins,
     'express',
-    'express-hbs',
-    'express-session',
     'sequelize',
     'passport',
     'passport-local',

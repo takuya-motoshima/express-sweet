@@ -7,10 +7,8 @@ import CORS from '~/middlewares/CORS';
 import Local from '~/middlewares/Local';
 import Authentication from '~/middlewares/Authentication';
 import Router from '~/routing/Router';
-import Config from '~/interfaces/Config';
-import Hooks from '~/interfaces/Hooks';
-import ErrorHandling from '~/middlewares/ErrorHandling';
-import fs from 'fs';
+import loadModels from '~/database/loadModels';
+// import ErrorHandling from '~/middlewares/ErrorHandling';
 
 /**
  * Mount extensions on your application.
@@ -18,50 +16,33 @@ import fs from 'fs';
  * @param {express.Express}  app                Express application instance
  */
 export default function(app: express.Express): void {
+  // Model initialization and association.
+  loadModels();
+
   // Set global variables.
   Global.mount();
 
-  // Get config.
-  let config = <Config>{};
-  const configPath = `${process.cwd()}/config/config`;
-  if (fs.existsSync(`${configPath}.js`)) 
-    config = require(configPath) as Config;
-  // if (!fs.existsSync(`${configPath}.js`)) 
-  //   throw new Error(`${configPath} not found`);
-  // const config = require(configPath) as Config;
-
-  // Get Hooks configuration.
-  let hooks = <Hooks>{};
-  const hooksPath = `${process.cwd()}/config/hooks`;
-  if (fs.existsSync(`${hooksPath}.js`)) 
-    hooks = require(hooksPath) as Hooks;
-
   // Set environment variables.
-  Environment.mount(config);
+  Environment.mount();
 
   // Enable Handlebars template engine.
-  View.mount(app, config);
+  View.mount(app);
 
   // Defines all the requisites in HTTP.
-  Http.mount(app, config);
+  Http.mount(app);
 
   // Enables the CORS.
-  if (config.cors_enabled) {
-    console.log('CORS is enabled');
-    CORS.mount(app);
-  } else
-    console.log('CORS is disabled');
+  CORS.mount(app);
 
   // Set local variables.
-  Local.mount(app, hooks);
+  Local.mount(app);
 
   // Incorporate user authentication into your application.
-  if (config.auth_enabled)
-    Authentication.mount(app, config);
+  Authentication.mount(app);
 
   // Set up URL routing.
-  Router.mount(app, config);
+  Router.mount(app);
 
-  // // Error handling.
-  // ErrorHandling.mount(app, hooks);
+  // Error handling.
+  // ErrorHandling.mount(app);
 }

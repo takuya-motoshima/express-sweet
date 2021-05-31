@@ -4,12 +4,14 @@ import sequelize from 'sequelize';
  */
 export default class Model extends sequelize.Model {
     /**
-     * Table name used by the model.
+     * The name of the table that the model accesses.
+     * This member must be defined in a subclass.
      * @type {string}
      */
     protected static table: string;
     /**
-     * Table column list.
+     * List of columns in the table accessed by this model.
+     * This member must be defined in a subclass.
      * @type {sequelize.ModelAttributes}
      */
     protected static attributes: sequelize.ModelAttributes;
@@ -17,7 +19,7 @@ export default class Model extends sequelize.Model {
      * Column type.
      * @type {sequelize.DataTypes}
      */
-    static DataTypes: {
+    static readonly DataTypes: {
         [key: string]: any;
     };
     /**
@@ -73,20 +75,27 @@ export default class Model extends sequelize.Model {
      *
      * @type {sequelize.Op}
      */
-    static Op: {
+    static readonly Op: {
         [key: string]: any;
     };
     /**
-     * Mount on application.
+     * Initialize the model that represents the table in the DB with attributes and options.
+     * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
+     *
+     * @return {typeof Model} Returns this model class itself.
      */
-    static mount(): typeof Model;
+    static initialize(): (typeof Model);
     /**
-     * Define table associations.
+     * Associate the model.
+     * Define associations with other models such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
+     * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+     * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
+     *
      * @see https://sequelize.org/master/manual/assocs.html
      */
-    protected static association(): void;
+    static association(): void;
     /**
-     * Start a transaction.
+     * Starts a transaction and returns a transaction object to identify the running transaction.
      *
      * @example
      * // First, we start a transaction and save it into a variable
@@ -105,6 +114,8 @@ export default class Model extends sequelize.Model {
      *   await t.rollback();
      * }
      * @see https://sequelize.org/master/manual/transactions.html
+     *
+     * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
      */
     static begin(): Promise<sequelize.Transaction>;
     /**

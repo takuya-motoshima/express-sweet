@@ -1,5 +1,4 @@
 import express from 'express';
-import Hooks from '~/interfaces/Hooks';
 /**
  * Set local variables.
  * It can be accessed in all views as {{var}} or {{{var}}}.
@@ -11,5 +10,5 @@ export default class {
     /**
      * Mount on application.
      */
-    static mount(app: express.Express, hooks: Hooks): void;
+    static mount(app: express.Express): void;
 }
