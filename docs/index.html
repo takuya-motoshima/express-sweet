@@ -117,9 +117,7 @@
       The package elements that make up this extension.<br>
       In addition, some packages have been customized to make them easier for developers to use.
     </p>
-
     <div class="row g-3">
-
       <div class="col-md-6">
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">Framework</strong>
@@ -128,20 +126,27 @@
             Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
           </span>
         </div>
-
       </div>
-      
+      <div class="col-md-6">
+        <div class="d-block text-decoration-none">
+          <strong class="d-block h5 mb-0 text-primary">Automatic URL routing</strong>
+          <span class="text-secondary">
+            Express Sweet automatically maps the URL to express.Router defined in the routes directory.  
+            See <a href="#routing">&quot;Routing reference&quot;</a> for details.
+          </span>
+        </div>
+      </div>
       <div class="col-md-6">
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">Model</strong>
           <span class="text-secondary">
             The model uses <a href="https://sequelize.org/master/" target="_blank">Sequelize v6</a>.<br>
             Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>
-            It features solid transaction support, relations, eager and lazy loading, read replication and more.
+            It features solid transaction support, relations, eager and lazy loading, read replication and more.<br>
+            See the <a href="#model">&quot;Model reference&quot;</a> for details.
           </span>
         </div>
       </div>
-
       <div class="col-md-6">
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">View</strong>
@@ -149,32 +154,28 @@
             The view template engine uses <a href="https://handlebarsjs.com/" target="_blank">Handlebars v4</a>.<br>
             Handlebars is a simple templating language.<br>
             It uses a template and an input object to generate HTML or other text formats.<br>
-            Handlebars templates look like regular text with embedded Handlebars expressions.
+            Handlebars templates look like regular text with embedded Handlebars expressions.<br>
+            See the <a href="#views">&quot;View reference&quot;</a> for more details.
           </span>
         </div>
       </div>
-
       <div class="col-md-6">
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">User authentication</strong>
           <span class="text-secondary">
             User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
-            Passport is Express-compatible authentication middleware for Node.js.
+            Passport is Express-compatible authentication middleware for Node.js.<br>
+            See the <a href="#user-authentication">&quot;Authentication Reference&quot;</a> for more information.
           </span>
         </div>
       </div>
-
       <div class="col-md-6">
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">Service</strong>
-          <span class="text-secondary">Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.</span>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="d-block text-decoration-none">
-          <strong class="d-block h5 mb-0 text-primary">Utils</strong>
-          <span class="text-secondary">With Express Sweet, you can quickly use a variety of generic utility classes.</span>
+          <span class="text-secondary">
+            Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.<br>
+            For more information on Rekognition, see <a href="#rekognition">&quot;Rekognition Reference&quot;</a>.
+          </span>
         </div>
       </div>
     </div>
