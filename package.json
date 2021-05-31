@@ -1,7 +1,7 @@
 {
   "name": "express-sweet",
   "version": "1.0.0",
-  "description": "This is an extension package that makes it easy to develop applications with the latest Node.js Express.",
+  "description": "Extend Express functionality with Express Sweet and start developing fast, minimal web applications.",
   "main": "dist/build.common.js",
   "module": "dist/build.esm.js",
   "types": "types/index.d.ts",

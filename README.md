@@ -2,40 +2,55 @@
 
 Extend Express functionality with Express Sweet and start developing fast, minimal web applications.
 
-## Introduction
-
-The package elements that make up this extension.  
-In addition, some packages have been customized to make them easier for developers to use.  
-
-* Framework  
-    The framework uses Expess v4.  
-    Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
-* URI Routing  
-    Express Sweet automatically maps the URL to express.Router defined in the routes directory.
-* Model  
-    The model uses Sequelize v6.  
-    Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.
-* View  
-    The view template engine uses Handlebars v4.  
-    Handlebars is a simple templating language.  
-    It uses a template and an input object to generate HTML or other text formats. Handlebars templates look like regular text with embedded Handlebars expressions.
-* User authentication  
-    User authentication uses Passport v0.4.1.  
-    Passport is Express-compatible authentication middleware for Node.js.
-* Service  
-    Sweet includes a convenient interface for developing applications using "Amazon Rekognition" and "Google Cloud Vision".
-* Utils  
-    With Sweet, you can quickly use a variety of generic utility classes.
-
 ## Docs
 
-* [Website and Documentation](https://takuya-motoshima.github.io/express-sweet/) - [[website repo](https://github.com/takuya-motoshima/express-sweet)]
-* [Changelog](./CHANGELOG.md)
+* <a href="https://takuya-motoshima.github.io/express-sweet/" target="_blank">Website and Documentation</a> - <a href="https://github.com/takuya-motoshima/express-sweet" target="_blank">[website repo]</a>
+* <a href="https://github.com/takuya-motoshima/express-sweet/blob/main/CHANGELOG.md" target="_blank">Changelog</a>
+
+## Features
+
+Extend Express functionality with Express Sweet and start developing fast, minimal web applications. The package elements that make up this extension.  
+In addition, some packages have been customized to make them easier for developers to use.
+
+* Framework  
+    The framework uses <a href="https://expressjs.com/" target="_blank">Expess v4</a>.
+    Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+* Automatic URL routing  
+    Express Sweet automatically maps the URL to express.Router defined in the routes directory.
+    See <a href="https://takuya-motoshima.github.io/express-sweet/#routing" target="_blank">&quot;Routing reference&quot;</a> for details.
+* Model  
+    The model uses <a href="https://sequelize.org/master/" target="_blank">Sequelize v6</a>.
+    Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
+    It features solid transaction support, relations, eager and lazy loading, read replication and more.
+    See the <a href="https://takuya-motoshima.github.io/express-sweet/#model" target="_blank">&quot;Model reference&quot;</a> for details.
+* View  
+    The view template engine uses <a href="https://handlebarsjs.com/" target="_blank">Handlebars v4</a>.
+    Handlebars is a simple templating language.
+    It uses a template and an input object to generate HTML or other text formats.
+    Handlebars templates look like regular text with embedded Handlebars expressions.
+    See the <a href="https://takuya-motoshima.github.io/express-sweet/#views" target="_blank">&quot;View reference&quot;</a> for more details.
+* User authentication  
+    User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.
+    Passport is Express-compatible authentication middleware for Node.js.
+    See the <a href="https://takuya-motoshima.github.io/express-sweet/#user-authentication" target="_blank">&quot;Authentication Reference&quot;</a> for more information.
+* Service  
+    Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">&quot;Amazon Rekognition&quot;</a> and classes for easy user authentication.
+    For more information on Rekognition, see <a href="https://takuya-motoshima.github.io/express-sweet/#rekognition" target="_blank">&quot;Rekognition Reference&quot;</a>.
+
+## Installation
+
+This is a [Node.js](https://nodejs.org/en/) module available through the [npm registry](https://www.npmjs.com/).  
+Before installing, [download and install Node.js](https://nodejs.org/en/download/).  
+Node.js 0.10 or higher is required.  
+
+For details on installing Express Sweet, see the <a href="https://takuya-motoshima.github.io/express-sweet/#started-installation" target="_blank">&quot;installation reference&quot;</a>.
 
 ## Quick Start
 
-The quickest way to get started with Express Sweet is to utilize the executable `express-sweet(1)` to generate an application as shown below.  
-The application created here includes the following screens from the beginning.  
+The easiest way to get started with Express Sweet is to install express-sweet-generator and automatically create a template application.  
+From the beginning, the template includes the following screen and sample programs such as router, model class, and authentication.  
+Please refer to these and start developing your application.  
+See <a href="https://takuya-motoshima.github.io/express-sweet/#started-generator" target="_blank">&quot;Express Sweet app generator&quot;</a> for more information on how to use express-sweet-generator.
 
 <table>
     <tr>
@@ -65,149 +80,6 @@ The application created here includes the following screens from the beginning.
         </td>
     </tr>
 </table>
-
-Install the executable. The executable's major version will match Express Sweet's.
-
-```sh
-npm install -g express-sweet-generator;
-```
-
-Create the app.
-
-```sh
-express-sweet /tmp/foo && cd /tmp/foo;
-```
-
-Install dependencies.
-
-```sh
-npm install;
-```
-
-Create DB.
-
-```sql
-CREATE DATABASE IF NOT EXISTS `example` DEFAULT CHARACTER SET utf8mb4;
-
-USE `example`;
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ukUserEmail` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- User has one profile
-DROP TABLE IF EXISTS `profile`;
-CREATE TABLE `profile` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `userId` int(10) unsigned NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `tel` varchar(14) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ukProfileUserId` (`userId`),
-  CONSTRAINT `fkProfileUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- User has many comments
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `userId` int(10) unsigned NOT NULL,
-  `text` text NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fkCommentUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Users and books have a many-to-many relationship
-DROP TABLE IF EXISTS `book`;
-CREATE TABLE `book` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `userId` int(10) unsigned NOT NULL,
-  `title` text NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ukBookTitle` (`userId`, `title`(255)),
-  CONSTRAINT `fkBookUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Add sample user record
-INSERT INTO `user` (`id`, `email`, `password`, `name`) VALUES
-  (1, 'robin@example.com', 'password', 'Robin'),
-  (2, 'taylor@example.com', 'password', 'Taylor'),
-  (3, 'vivian@example.com', 'password', 'Vivian'),
-  (4, 'harry@example.com', 'password', 'Harry'),
-  (5, 'eliza@example.com', 'password', 'Eliza'),
-  (6, 'nancy@example.com', 'password', 'Nancy'),
-  (7, 'melinda@example.com', 'password', 'Melinda'),
-  (8, 'harley@example.com', 'password', 'Harley');
-
--- Add sample profile record
-INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
-  (1, '777 Brockton Avenue, Abington MA 2351', '202-555-0105'),
-  (2, '30 Memorial Drive, Avon MA 2322', ''),
-  (3, '250 Hartford Avenue, Bellingham MA 2019', '202-555-0175'),
-  (4, '700 Oak Street, Brockton MA 2301', '202-555-0167'),
-  (5, '66-4 Parkhurst Rd, Chelmsford MA 1824', '202-555-0154'),
-  (6, '591 Memorial Dr, Chicopee MA 1020', '202-555-0141'),
-  (7, '55 Brooksby Village Way, Danvers MA 1923', '202-555-0196'),
-  (8, '137 Teaticket Hwy, East Falmouth MA 2536', '202-555-0167');
-
--- Add a sample user comment record
-INSERT INTO `comment` (`userId`, `text`) VALUES
-  (1, 'First comment from Robin'),
-  (1, 'Second comment from Robin'),
-  (2, 'First comment from Taylor');
-
--- Add sample book record
-INSERT INTO `book` (`userId`, `title`) VALUES
-  (1, 'The Stars Tonight'),
-  (1, 'A Guide to Courteous Thievery'),
-  (1, 'The Sound of Light'),
-  (2, 'The Stars Tonight'),
-  (2, 'Why She Said Yes');
-```
-
-Start your Express Sweet app at `http://localhost:3000/`.
-
-```bash
-npm start;
-```
-
-## Installation
-
-This is a [Node.js](https://nodejs.org/en/) module available through the [npm registry](https://www.npmjs.com/).  
-Before installing, [download and install Node.js](https://nodejs.org/en/download/).  
-Node.js 0.10 or higher is required.
-
-If this is a brand new project, make sure to create a `package.json` first with the [`npm init` command](https://docs.npmjs.com/creating-a-package-json-file).  
-Installation is done using the [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
-
-Install Express Sweet and dependent packages.  
-
-```bash
-npm i express-sweet \
-      express \
-      express-hbs \
-      express-session \
-      sequelize \
-      passport \
-      passport-local \
-      aws-sdk;
-```
-
-Follow [our installing guide](https://takuya-motoshima.github.io/express-sweet/) for more information.
 
 ## License
 
