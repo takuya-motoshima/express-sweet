@@ -30,5 +30,43 @@ export default interface {
    * The endpoint to run when the root URL is requested, defaults to none (undefined).
    * @type {string}
    */
-  default_router?: string
+  default_router?: string,
+
+  /**
+   * This is a hook that rewrites the base URL.
+   * If you want to rewrite the app.locals.baseUrl property and the view's baseUrl variable, use this hook to return a new base URL.
+   * The default value is the referrer's origin (eg https://example.com).
+   *
+   * @example
+   * rewrite_base_url: baseUrl => {
+   *   return `${baseUrl}/admin`;
+   * }
+   * 
+   * @type {(baseUrl: string): string}
+   */
+  rewrite_base_url?: (baseUrl: string) => string,
+
+  /**
+   * This is a hook for error handling.
+   * For example, you can use it when you want to send an external notification of the error received by this hook.
+   * 
+   * @example
+   * error_handler: async err => {
+   *   // Notify system administrator of error.
+   *   return new Promise((resolve, reject) => {
+   *     const sendmail = require('sendmail')();
+   *     sendmail({
+   *       from: 'no-reply@example.com',
+   *       to: 'administrator@example.com',
+   *       subject: 'Error occurred',
+   *       text: err.message
+   *     }, err => {
+   *       err ? reject(err) : resolve();
+   *     });
+   *   });
+   * }
+   * 
+   * @type {(err: any): void|Promise<void>}
+   */
+  error_handler?: (err: any) => void|Promise<void>
 }

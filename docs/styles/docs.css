@@ -37,22 +37,30 @@ ol li {
   margin-bottom: .25rem
 }
 
-.table {
+table {
   max-width: 100%;
   margin-bottom: 1.5rem;
   font-size: .875rem
 }
 
 @media (max-width: 991.98px) {
-  .table {
+  table {
     display:block;
     overflow-x: auto;
   }
 }
 
-.table.summary tbody td:nth-child(1) {
-  min-width: 150px;
-}
+  table.summary tbody td:nth-child(1) {
+    min-width: 150px;
+  }
+
+  table.summary tbody td:nth-last-child(1) {
+    min-width: 200px;
+  }
+
+  th {
+    white-space: nowrap;
+  }
 
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5, h6 {
   line-height: unset;
@@ -267,10 +275,13 @@ h4 {
 
 code:not(.hljs),
 .code {
+  /* font-family: Source Code Pro,Consolas,Liberation Mono,Menlo,Courier,monospace; */
   font-size: 1em;
   color: #d63384;
   word-wrap: break-word;
   font-style: normal;
+  background-color: rgba(70,94,105,.05);
+  text-shadow: 0 1px 0 hsl(0deg 0% 100% / 60%);
 }
 
 .method,

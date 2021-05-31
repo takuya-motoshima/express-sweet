@@ -22,8 +22,8 @@ export default class {
       password: 'password',
       success_redirect: '/',
       failure_redirect: '/login',
-      authentication_hook: (username: string, password: string) => null,
-      subscribe_hook: (id: number) => {},
+      authenticate_user: (username: string, password: string) => null,
+      subscribe_user: (id: number) => {},
       // model: undefined,
       allow_unauthenticated: [],
       expiration: 24 * 3600000 // 24hours
@@ -51,7 +51,8 @@ export default class {
       passwordField: options.password,
       session: true
     }, async (username: string, password: string, done) => {
-      const user = <{[key: string]: any}|null> await options.authentication_hook(username, password);
+      // Find the user who owns the credentials.
+      const user = <{[key: string]: any}|null> await options.authenticate_user(username, password);
       // const user = <{[key: string]: any}> await (options.model as typeof Model).findOne({
       //   where: {
       //     [options.username]: username,
@@ -59,6 +60,14 @@ export default class {
       //   },
       //   raw: true
       // });
+
+      // Debug authentication results.
+      if (user)
+        console.log(`Successful authentication of ${username}`);
+      else
+        console.log(`Failure authentication of ${username}`);
+
+      // Authentication done.
       done(null, user||false);
     }));
 
@@ -67,10 +76,13 @@ export default class {
 
     // When the request is received, the user data corresponding to the ID is acquired and stored in req.user.
     passport.deserializeUser(async (id, done) => {
-      const user = <{[key: string]: any}> await options.subscribe_hook(id as number);
+      // Find credentialed user information.
+      const user = <{[key: string]: any}> await options.subscribe_user(id as number);
       // const user = <{[key: string]: any}> await options.model.findOne({where: {id}, raw: true});
       // // For security, delete the password value.
       // if (user) delete user[options.password];
+
+      // Done deserialization of authenticated user.
       done(null, user);
     });
 

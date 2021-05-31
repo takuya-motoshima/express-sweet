@@ -35,19 +35,40 @@ export default interface  {
      * Note that the user information must include an ID value that can identify the user.
      *
      * @example
+     * authenticate_user: async (username, password) => {
+     *   const UserModel = require('../models/UserModel');
+     *   return UserModel.findOne({
+     *     where: {
+     *       email: username,
+     *       password: password
+     *     },
+     *     raw: true
+     *   });
+     * }
      *
      * @type {(username: string, password: string) => Promise<{[key: string]: any}|null>}
      */
-    authentication_hook: (username: string, password: string) => Promise<{
+    authenticate_user: (username: string, password: string) => Promise<{
         [key: string]: any;
     } | null>;
     /**
      * This hook is called when user authentication is successful.
-     * Find and return the authenticated user information to be set in the session based on the received user ID.
+     * Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.
+     * The returned data will be set in the req.user property and the view's session variable.
+     *
+     * @example
+     *
+     * subscribe_user: async (id) => {
+     *   const UserModel = require('../models/UserModel');
+     *   return UserModel.findOne({
+     *     where: {id},
+     *     raw: true
+     *   });
+     * }
      *
      * @type {(id: number|string) => Promise<{[key: string]: any}>}
      */
-    subscribe_hook: (id: number | string) => Promise<{
+    subscribe_user: (id: number | string) => Promise<{
         [key: string]: any;
     }>;
     /**

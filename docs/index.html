@@ -516,19 +516,21 @@ module.exports = {
     <table class="table table-bordered summary">
       <thead class="table-light">
         <tr>
-          <th>Configuration value</th>
+          <th>Configuration</th>
           <th>Description</th>
+          <th>Input Type</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">NODE_ENV</td>
+          <td><code>NODE_ENV</code></td>
           <td class="w-100">
             <em class="code">NODE_ENV</em> is an environment variable made popular by the express web server framework.<br>
             When a node application is run, it can check the value of the environment variable and do different things based on the value.<br>
             <em class="code">NODE_ENV</em> specifically is used (by convention) to state whether a particular environment is a production or a development environment.<br>
             A common use-case is running additional debugging or logging code if running in a development environment.
           </td>
+          <td>string</td>
         </tr>
       </tbody>
     </table>
@@ -552,45 +554,50 @@ if (isDevelopment) {
     <table class="table table-bordered summary">
       <thead class="table-light">
         <tr>
-          <th>Configuration value</th>
+          <th>Configuration</th>
           <th>Description</th>
+          <th>Input Type</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">env_path: string</td>
+          <td><code>env_path</code></td>
           <td class="w-100">
             The path to the environment configuration file (.env).<br>
             When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in <em class="code">&quot;process.env&quot;</em>.<br>
             If the file does not exist or is not specified (undefined), the environment configuration file will not be read.<br>
             The default is <em class="code">&quot;.env&quot;</em>.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">cors_enabled: boolean</td>
+          <td><code>cors_enabled</code></td>
           <td class="w-100">
             Set to true to allow requests from another domain to the application.<br>
             The default is <em class="code">false</em>.
           </td>
+          <td>boolean</td>
         </tr>
         <tr>
-          <td class="text-nowrap">max_body_size: string</td>
+          <td><code>max_body_size</code></td>
           <td class="w-100">
             Controls the maximum request body size.<br>
             If this is a number, then the value specifies the number of bytes.<br>
             if it is a string, the value is passed to the <a href="https://www.npmjs.com/package/bytes" target="_blank">bytes library</a> for parsing.<br>
             The default is <em class="code">&quot;100kb&quot;</em>.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">router_dir: string</td>
+          <td><code>router_dir</code></td>
           <td class="w-100">
             The directory path where the routes module is located.<br>
             The default is the <em class="code">&quot;routes&quot;</em> directory directly under the application root.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">default_router: string</td>
+          <td><code>default_router</code></td>
           <td class="w-100">
             Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<em class="code">/</em>) is requested.<br>
             For example, to specify a default route, set <em class="code">&quot;default_router&quot;</em> as follows.<br>
@@ -606,6 +613,42 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 module.exports = router;</code></pre>
             Now when you request the root URL (<em class="code">/</em>), you will see &quot;Hello World!&quot;.
           </td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><code>rewrite_base_url</code></td>
+          <td class="w-100">
+            This is a hook that rewrites the base URL.<br>
+            If you want to rewrite the app.locals.baseUrl property and the view&#039;s baseUrl variable, use this hook to return a new base URL.<br>
+            The default value is the referrer&#039;s origin (eg https://example.com).<br>
+            In this example, <em class="code">https://example.com/admin</em> is used as the base URL.
+            <pre><code class="js">rewrite_base_url: baseUrl =&gt; {
+  return `${baseUrl}/admin`;
+}</code></pre>
+          </td>
+          <td>(baseUrl: string) =&gt; string</td>
+        </tr>
+        <tr>
+          <td><code>error_handler</code></td>
+          <td class="w-100">
+            This is a hook for error handling.<br>
+            For example, you can use it when you want to send an external notification of the error received by this hook.
+            <pre><code class="js">error_handler: async err =&gt; {
+  // Notify system administrator of error.
+  return new Promise((resolve, reject) =&gt; {
+    const sendmail = require(&#039;sendmail&#039;)();
+    sendmail({
+      from: &#039;no-reply@example.com&#039;,
+      to: &#039;administrator@example.com&#039;,
+      subject: &#039;Error occurred&#039;,
+      text: err.message
+    }, err =&gt; {
+      err ? reject(err) : resolve();
+    });
+  });
+}</code></pre>
+          </td>
+          <td>(err: any) =&gt; void|Promise&lt;void&gt;</td>
         </tr>
       </tbody>
     </table>
@@ -862,47 +905,53 @@ module.exports = router;</code></pre>
     <table class="table table-bordered summary">
       <thead class="table-light">
         <tr>
-          <th>Configuration value</th>
+          <th>Configuration</th>
           <th>Description</th>
+          <th>Input Type</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">views_dir: string</td>
+          <td><code>views_dir</code></td>
           <td class="w-100">
             The directory path where the view will be placed.<br>
             The default is the <em class="code">&quot;views&quot;</em> directory directly under the application root.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">partials_dir: string</td>
+          <td><code>partials_dir</code></td>
           <td class="w-100">
             The directory path where the reusable templates are located.<br>
             The default is the <em class="code">&quot;views/partials&quot;</em> directory directly under the application root.<br>
             Reusable templates are automatically loaded when you launch the Express Sweet application and can be called from other templates.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">layouts_dir: string</td>
+          <td><code>layouts_dir</code></td>
           <td class="w-100">
             The directory path where the reusable base template is located.<br>
             The default is the <em class="code">&quot;views/layout&quot;</em> directory directly under the application root.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">default_layout: string</td>
+          <td><code>default_layout</code></td>
           <td class="w-100">
             The path to the layout file used by default.<br>
             The default is the <em class="code">&quot;views/layout/default.*&quot;</em> File directly under the application root.<br>
             The extension of the default layout file is replaced with the extension specified by <em class="code">&quot;extension&quot;</em>.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">extension: string</td>
+          <td><code>extension</code></td>
           <td class="w-100">
             Extension for templates and partials files.<br>
             The default is <em class="code">&quot;.hbs&quot;</em>.
           </td>
+          <td>string</td>
         </tr>
       </tbody>
     </table>
@@ -1527,50 +1576,58 @@ let value = &#039;2&#039;
     <table class="table table-bordered summary">
       <thead class="table-light">
         <tr>
-          <th>Configuration value</th>
+          <th>Configuration</th>
           <th>Description</th>
+          <th>Input Type</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">username: string</td>
+          <td><code>username</code></td>
           <td class="w-100">The username which is used to authenticate against the database.</td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">password: string|null</td>
+          <td><code>password</code></td>
           <td class="w-100">
             The password which is used to authenticate against the database.<br>
             The default is no password (<em class="code">null</em>).
           </td>
+          <td>string|null</td>
         </tr>
         <tr>
-          <td class="text-nowrap">database: string</td>
+          <td><code>database</code></td>
           <td class="w-100">The name of the database.</td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">host: string</td>
+          <td><code>host</code></td>
           <td class="w-100">The host of the relational database.</td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">port: string</td>
+          <td><code>port</code></td>
           <td class="w-100">
             The port of the relational database.<br>
             The default is automatic selection (<em class="code">null</em>).
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">dialect: string</td>
+          <td><code>dialect</code></td>
           <td class="w-100">
             The dialect of the database you are connecting to.<br>
             One of <em class="code">&quot;mariadb&quot;</em>, <em class="code">&quot;mysql&quot;</em>, <em class="code">&quot;postgres&quot;</em>, <em class="code">&quot;sqlite&quot;</em> and <em class="code">&quot;mssql&quot;</em>.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">logging: boolean</td>
+          <td><code>logging</code></td>
           <td class="w-100">
             Set true to output the executed query etc. to the log.<br>
             The default is no log output (<em class="code">false</em>).
           </td>
+          <td>boolean</td>
         </tr>
       </tbody>
     </table>
@@ -2692,102 +2749,93 @@ await UserModel.findAll({
     <table class="table table-bordered summary">
       <thead class="table-light">
         <tr>
-          <th>Configuration value</th>
+          <th>Configuration</th>
           <th>Description</th>
+          <th>Input Type</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">enabled: boolean</td>
+          <td><code>enabled</code></td>
           <td class="w-100">
             Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
             User authentication is enabled (<em class="code">true</em>) by default.
           </td>
+          <td>boolean</td>
         </tr>
         <tr>
-          <td class="text-nowrap">username: string</td>
+          <td><code>username</code></td>
           <td class="w-100">
             The login username field name used for authentication.<br>
             This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">password: string</td>
+          <td><code>password</code></td>
           <td class="w-100">
             The login password field name used for authentication.<br>
             This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">success_redirect: string</td>
+          <td><code>success_redirect</code></td>
           <td class="w-100">
             The URL to redirect to after successful authentication.<br>
             The default is the root URL (<em class="code">/</em>).
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">failure_redirect: string</td>
+          <td><code>failure_redirect</code></td>
           <td class="w-100">
             Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
             This usually specifies the URL of the login page.<br>
             The default is <em class="code">&quot;/login&quot;</em>.
           </td>
+          <td>string</td>
         </tr>
         <tr>
-          <td class="text-nowrap">model: express-sweet.database.Model</td>
+          <td><code>authenticate_user</code></td>
           <td class="w-100">
-            A model class for the table that stores the users to authenticate.<br>
-            This should be a subclass that inherits from Express Sweet’s <em class="code">&quot;database.Model&quot;</em> class.<br>
-            For example, when there is user information to authenticate in the <em class="code">&quot;user&quot;</em> table, create <em class="code">&quot;models/UserModel.js&quot;</em>.
-            <pre><code class="js">const Model = require(&#039;express-sweet&#039;).database.Model;
-
-/**
- * User model.
- */
-module.exports = class extends Model {
-  /**
-   * Table name used by the model.
-   */
-  static get table() {
-    return &#039;user&#039;;
-  }
-
-  /**
-   * Table column list.
-   */
-  static get attributes() {
-    return {
-      id: {
-        type: this.DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      email: this.DataTypes.STRING,
-      password: this.DataTypes.STRING,
-      name: this.DataTypes.STRING,
-      created: this.DataTypes.DATE,
-      modified: this.DataTypes.DATE
-    };
-  }
+            This hook is called when authenticating a user.<br>
+            Please find the user information that owns the credentials based on the user name and password you received and return it.<br>
+            If the user who owns the credentials cannot be found, return null.<br>
+            <div class="callout callout-warning">Note that the user information must include an ID value that can identify the user.</div>
+            The following example uses the user model to find the user who owns the credentials based on the username and password.<br>
+            <pre><code class="js">authenticate_user: async (username, password) =&gt; {
+  const UserModel = require(&#039;../models/UserModel&#039;);
+  return UserModel.findOne({
+    where: {
+      email: username,
+      password: password
+    },
+    raw: true
+  });
 }</code></pre>
-            Next, set the created <em class="code">UserModel</em> class in the <em class="code">&quot;model&quot;</em> item of <em class="code">&quot;config/authentication.js&quot;</em>.
-            <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
-
-/**
- * User authentication configuration interface.
- */
-module.exports = {
-  /**
-   * Model class used for authentication, this is a required field.
-   * @type {typeof Model}
-   */
-  model: UserModel
-}</code></pre>
-            Now, Express Sweet automatically accesses the <em class="code">&quot;user&quot;</em> table at the time of authentication and performs the authentication process.
           </td>
+          <td>(username: string, password: string) =&gt; Promise&lt;{[key: string]: any}|null&gt;</td>
         </tr>
         <tr>
-          <td class="text-nowrap">allow_unauthenticated: string[]</td>
+          <td><code>subscribe_user</code></td>
+          <td class="w-100">
+            This hook is called when user authentication is successful.<br>
+            Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.<br>
+            The returned data will be set in the req.user property and the view&#039;s session variable.<br>
+            The following example uses the user model to return the user information that owns the credentials based on the authenticated user's id.
+            <pre><code class="js">subscribe_user: async (id) =&gt; {
+  const UserModel = require(&#039;../models/UserModel&#039;);
+  return UserModel.findOne({
+    where: {id},
+    raw: true
+  });
+}</code></pre>
+          </td>
+          <td>(id: number|string) =&gt; Promise&lt;{[key: string]: any}&gt;</td>
+        </tr>
+        <tr>
+          <td><code>allow_unauthenticated</code></td>
           <td class="w-100">
             By default, it requires an authenticated user for all requests.<br>
             You can use the <em class="code">&quot;allow_unauthenticated&quot;</em> option to disable this behavior on certain requests.<br>
@@ -2796,13 +2844,15 @@ module.exports = {
   &#039;/api&#039;
 ]</code></pre>
           </td>
+          <td>string[]</td>
         </tr>
         <tr>
-          <td class="text-nowrap">expiration: number</td>
+          <td><code>expiration</code></td>
           <td class="w-100">
             Specifies the time, in milliseconds, before the session expires.<br>
             The default is 24 hours (<em class="code">86400000</em> milliseconds).
           </td>
+          <td>number</td>
         </tr>
       </tbody>
     </table>
@@ -2846,10 +2896,37 @@ module.exports = {
   failure_redirect: &#039;/login&#039;,
 
   /**
-   * Model class used for authentication, this is a required field.
-   * @type {typeof Model}
+   * This hook is called when authenticating a user.
+   * Please find the user information that owns the credentials based on the user name and password you received and return it.
+   * If the user who owns the credentials cannot be found, return null.
+   *
+   * Note that the user information must include an ID value that can identify the user.
+   * 
+   * @type {(username: string, password: string) =&gt; Promise&lt;{[key: string]: any}|null&gt;}
    */
-  model: UserModel,
+  authenticate_user: async (username, password) =&gt; {
+    return UserModel.findOne({
+      where: {
+        email: username,
+        password: password
+      },
+      raw: true
+    });
+  },
+
+  /**
+   * This hook is called when user authentication is successful.
+   * Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.
+   * The returned data will be set in the req.user property and the view&#039;s session variable.
+   * 
+   * @type {(id: number|string) =&gt; Promise&lt;{[key: string]: any}&gt;}
+   */
+  subscribe_user: async (id) =&gt; {
+    return UserModel.findOne({
+      where: {id},
+      raw: true
+    });
+  },
 
   /**
    * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
