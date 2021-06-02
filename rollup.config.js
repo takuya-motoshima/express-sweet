@@ -34,13 +34,10 @@ export default {
     })
   ],
   output: [
-    // ES module (for bundlers) build.
     {
       format: 'esm',
       file: pkg.module
-    },
-    // CommonJS (for Node) build.
-    {
+    }, {
       format: 'cjs',
       file: pkg.main
     }

@@ -15,17 +15,15 @@ export default class {
    * Mount on application.
    */
   public static mount(app: express.Express) {
-    // Load the config.
-    const config = Object.assign({
-      router_dir: path.join(process.cwd(), 'routes'),
-      default_router: undefined
-    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) as Config : <Config>{});
+    // Load options.
+    const options = this.loadOptions();
 
-    console.log(`Router directory is ${config.router_dir}`);
-    console.log(`Default router is ${config.default_router||'nothing'}`);
+    // Debug routing options.
+    console.log(`Router directory is ${options.router_dir}`);
+    console.log(`Default router is ${options.default_router||'nothing'}`);
 
     // Set the URL to route based on the path of the file in the routes directory.
-    for (let filePath of File.find(`${config.router_dir}/**/*.js`)) {
+    for (let filePath of File.find(`${options.router_dir}/**/*.js`)) {
       // Import router module.
       let router = require(filePath);
 
@@ -41,7 +39,28 @@ export default class {
       // Generate a URL from the directory and filename and map the module to the URL.
       const url = dir ? `${dir}/${filename.toLowerCase()}` : `/${filename.toLowerCase()}`;
       console.log(`URL mapping ${url}`);
-      app.use(url === config.default_router ? '/' : url, router);
+      app.use(url === options.default_router ? '/' : url, router);
     }
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {Config} option.
+   */
+  private static loadOptions(): Config {
+    // Options with default values set.
+    const defaultOptions: Config = {
+      router_dir: path.join(process.cwd(), 'routes'),
+      default_router: undefined
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/config`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

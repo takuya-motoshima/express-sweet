@@ -10,13 +10,11 @@ export default class {
    * Mount on application.
    */
   public static mount(app: express.Express) {
-    // Load the config.
-    const config = Object.assign({
-      cors_enabled: false
-    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) as Config : <Config>{});
+    // Load options.
+    const options = this.loadOptions();
 
     // Exit if CORS is disabled.
-    if (!config.cors_enabled)
+    if (!options.cors_enabled)
       return void console.log('CORS is disabled');
 
     // Add CORS header to response when request received.
@@ -28,5 +26,25 @@ export default class {
       next();
     });
     console.log('CORS is enabled');
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {Config} option.
+   */
+  private static loadOptions(): Config {
+    // Options with default values set.
+    const defaultOptions: Config = {
+      cors_enabled: false
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/config`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

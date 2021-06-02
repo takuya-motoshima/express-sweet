@@ -43,11 +43,9 @@ export default class {
    * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
    */
   public static successRedirect(res: express.Response): void {
-    // Load the config.
-    const config = <AuthenticationOptions>Object.assign({
-      success_redirect: '/',
-    }, fs.existsSync(`${process.cwd()}/config/authentication.js`) ? require(`${process.cwd()}/config/authentication`) : {});
-    res.redirect(config.success_redirect as string);
+    // Load options.
+    const options = this.loadOptions();
+    res.redirect(options.success_redirect!);
   }
 
   /**
@@ -56,10 +54,29 @@ export default class {
    * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
    */
   public static failureRedirect(res: express.Response): void {
-    // Load the config.
-    const config = <AuthenticationOptions>Object.assign({
-      failure_redirect: '/login',
-    }, fs.existsSync(`${process.cwd()}/config/authentication.js`) ? require(`${process.cwd()}/config/authentication`) : {});
-    res.redirect(config.failure_redirect as string);
+    // Load options.
+    const options = this.loadOptions();
+    res.redirect(options.failure_redirect!);
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {AuthenticationOptions} option.
+   */
+  private static loadOptions(): Partial<AuthenticationOptions> {
+    // Options with default values set.
+    const defaultOptions: Partial<AuthenticationOptions> = {
+      success_redirect: '/',
+      failure_redirect: '/login'
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/authentication`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

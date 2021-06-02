@@ -30,4 +30,10 @@ export default class {
      * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
      */
     static failureRedirect(res: express.Response): void;
+    /**
+     * Returns the option.
+     *
+     * @return {AuthenticationOptions} option.
+     */
+    private static loadOptions;
 }

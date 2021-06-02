@@ -15,23 +15,11 @@ export default class {
    * Mount on application.
    */
   public static mount(app: express.Express) {
-    // Initialize options.
-    const options = <AuthenticationOptions>Object.assign({
-      enabled: false,
-      username: 'username',
-      password: 'password',
-      success_redirect: '/',
-      failure_redirect: '/login',
-      authenticate_user: (username: string, password: string) => null,
-      subscribe_user: (id: number) => {},
-      // model: undefined,
-      allow_unauthenticated: [],
-      expiration: 24 * 3600000 // 24hours
-    }, fs.existsSync(`${process.cwd()}/config/authentication.js`) ? require(`${process.cwd()}/config/authentication`) : {});
+    // Load options.
+    const options = this.loadOptions();
 
     // Exit if authentication is disabled.
-    if (!options.enabled)
-      return;
+    if (!options.enabled) return;
 
     // Set session save method.
     app.use(session({
@@ -125,5 +113,33 @@ export default class {
           res.redirect(options.failure_redirect);
       }
     });
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {AuthenticationOptions} option.
+   */
+  private static loadOptions(): AuthenticationOptions {
+    // Options with default values set.
+    const defaultOptions: AuthenticationOptions = {
+      enabled: false,
+      username: 'username',
+      password: 'password',
+      success_redirect: '/',
+      failure_redirect: '/login',
+      authenticate_user: (username: string, password: string) => new Promise(resolve => resolve(null)),
+      subscribe_user: (id: number|string) => new Promise(resolve => resolve({} as {[key: string]: any})),
+      allow_unauthenticated: [],
+      expiration: 24 * 3600000 // 24hours
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/authentication`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

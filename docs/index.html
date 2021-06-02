@@ -227,7 +227,7 @@ cd myapp;</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="hello-world-esm" role="tabpanel" aria-labelledby="hello-world-esm-tab">
           <pre><code class="js">import express from &#039;express&#039;;
-import sweet from(&#039;express-sweet&#039;);
+import * as sweet from(&#039;express-sweet&#039;);
 const port = 3000;
 
 // Creates and configures an ExpressJS web server.
@@ -2214,7 +2214,7 @@ await UserModel.destroy({
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="creating-your-model-esm" role="tabpanel" aria-labelledby="creating-your-model-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 /**
  * User model.
@@ -2363,7 +2363,7 @@ module.exports = class extends Model {
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="database-is-connect-esm" role="tabpanel" aria-labelledby="database-is-connect-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Check database connection.
 const isConnected = await sweet.database.Database.isConnect();</code></pre>
@@ -2601,7 +2601,7 @@ const isConnected = await database.isConnect();</code></pre>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-table-esm" role="tabpanel" aria-labelledby="model-table-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 /**
  * User model.
@@ -2650,7 +2650,7 @@ module.exports = class extends Model {
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-attributes-esm" role="tabpanel" aria-labelledby="model-attributes-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 /**
  * User model.
@@ -2821,7 +2821,7 @@ UserModel.destroy({
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-association-esm" role="tabpanel" aria-labelledby="model-association-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 /**
  * User model.
@@ -3376,7 +3376,7 @@ await UserModel.destroy({where: {id :1}});</code></pre>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-has-one-association-esm" role="tabpanel" aria-labelledby="model-has-one-association-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import ProfileModel from  &#039;./ProfileModel&#039;;
 
 /**
@@ -3549,7 +3549,7 @@ await UserModel.findAll({
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-belongs-to-association-esm" role="tabpanel" aria-labelledby="model-belongs-to-association-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import UserModel from &#039;./UserModel&#039;;
 
 /**
@@ -3722,7 +3722,7 @@ await ProfileModel.findAll({
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="mode-has-many-association-esm" role="tabpanel" aria-labelledby="mode-has-many-association-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import CommentModel from &#039;./CommentModel&#039;;
 
 /**
@@ -3901,7 +3901,7 @@ await UserModel.findAll({
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-belongs-to-many-association-esm" role="tabpanel" aria-labelledby="model-belongs-to-many-association-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import BookModel from &#039;./BookModel&#039;;
 
 /**
@@ -4409,7 +4409,7 @@ password: &#039;password&#039;</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="authentication-router-esm" role="tabpanel" aria-labelledby="authentication-router-esm-tab">
           <pre><code class="js">import {Router} from &#039;express&#039;;
-import sweet from &#039;express-sweet&#039;;
+import * as sweet from &#039;express-sweet&#039;;
 const router = Router();
 const Authentication = sweet.services.Authentication;
 
@@ -4480,7 +4480,7 @@ module.exports = router;</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="async-authentication-router-esm" role="tabpanel" aria-labelledby="async-authentication-router-esm-tab">
           <pre><code class="js">import {Router} from &#039;express&#039;;
-import sweet from &#039;express-sweet&#039;;
+import * as sweet from &#039;express-sweet&#039;;
 const router = Router();
 const Authentication = sweet.services.Authentication;
 
@@ -4577,7 +4577,7 @@ form.addEventListener(&#039;submit&#039;, async event =&gt; {
       <div class="tab-content">
         <div class="tab-pane fade show active" id="authentication-logging-out-esm" role="tabpanel" aria-labelledby="authentication-logging-out-esm-tab">
           <pre><code class="js">import {Router} from &#039;express&#039;;
-import sweet from &#039;express-sweet&#039;;
+import * as sweet from &#039;express-sweet&#039;;
 const router = Router();
 const Authentication = sweet.services.Authentication;
 
@@ -4783,7 +4783,7 @@ module.exports = router;</code></pre>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-detect-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-detect-faces-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
 // Instantiate Rekognition client.
@@ -4862,7 +4862,7 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-compare-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-compare-faces-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
 // Instantiate Rekognition client.
@@ -4934,7 +4934,7 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-create-collection-esm" role="tabpanel" aria-labelledby="rekognition-method-create-collection-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
 const client = new sweet.services.AWSRekognitionClient({
@@ -4992,7 +4992,7 @@ try {
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-list-collections-esm" role="tabpanel" aria-labelledby="rekognition-method-list-collections-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
 const client = new sweet.services.AWSRekognitionClient({
@@ -5049,7 +5049,7 @@ await client.listCollections();</code></pre>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-delete-collection-esm" role="tabpanel" aria-labelledby="rekognition-method-delete-collection-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
 const client = new sweet.services.AWSRekognitionClient({
@@ -5117,7 +5117,7 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-index-face-esm" role="tabpanel" aria-labelledby="rekognition-method-index-face-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
 // Instantiate Rekognition client.
@@ -5269,7 +5269,7 @@ try {
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-search-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-search-faces-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
 // Instantiate Rekognition client.
@@ -5389,7 +5389,7 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-list-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-list-faces-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
 const client = new sweet.services.AWSRekognitionClient({
@@ -5465,7 +5465,7 @@ console.log(result);</code></pre>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-method-delete-faces-esm" role="tabpanel" aria-labelledby="rekognition-method-delete-faces-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
 const client = new sweet.services.AWSRekognitionClient({
@@ -5515,7 +5515,7 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="rekognition-constructor-esm" role="tabpanel" aria-labelledby="rekognition-constructor-esm-tab">
-          <pre><code class="js">import sweet from &#039;express-sweet&#039;;
+          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
 const client = new sweet.services.AWSRekognitionClient({

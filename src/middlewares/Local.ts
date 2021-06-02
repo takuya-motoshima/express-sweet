@@ -14,10 +14,8 @@ export default class {
    * Mount on application.
    */
   public static mount(app: express.Express) {
-    // Load the config.
-    const config = <Config>Object.assign({
-      rewrite_base_url: (baseUrl: string): string => baseUrl
-    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) : {});
+    // Load options.
+    const options = this.loadOptions();
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -41,9 +39,29 @@ export default class {
       }
 
       // Call a callback function that rewrites baseUrl.
-      if (config.rewrite_base_url)
-        app.locals.baseUrl = config.rewrite_base_url(app.locals.baseUrl);
+      if (options.rewrite_base_url)
+        app.locals.baseUrl = options.rewrite_base_url(app.locals.baseUrl);
       next();
     });
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {Config} option.
+   */
+  private static loadOptions(): Config {
+    // Options with default values set.
+    const defaultOptions: Config = {
+      rewrite_base_url: (baseUrl: string): string => baseUrl
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/config`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

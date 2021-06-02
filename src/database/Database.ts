@@ -5,25 +5,16 @@ import fs from 'fs';
 /**
  * Connect to DB.
  */
-export default new class extends sequelize.Sequelize {
+export default new class Database extends sequelize.Sequelize {
   /**
    * Create a sequelize instance.
    */
   constructor() {
-    // Get the execution environment.
-    const env = process.env.NODE_ENV||'development';
+    // Load options.
+    const options = Database.loadOptions();
 
-    // Database connection config path.
-    const path = `${process.cwd()}/config/database`;
-    if (fs.existsSync(`${path}.js`)) {
-      // Instantiate sequelize with name of database, username and password.
-      const options = (require(path) as DatabaseOptions)[env] as sequelize.Options;
-      super(options.database!, options.username!, options.password||undefined, options);
-    } else {
-      console.error(`${path} not found`);
-      // throw new Error(`${path} not found`);
-      super('unkown', 'unkown', undefined, {host: 'localhost', dialect: 'mariadb'});
-    }
+    // Instantiate sequelize with name of database, username and password.
+    super(options.database!, options.username!, options.password||undefined, options);
   }
 
   /**
@@ -44,5 +35,33 @@ export default new class extends sequelize.Sequelize {
     } catch {
       return false;
     }
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {sequelize.Options} option.
+   */
+  public static loadOptions(): sequelize.Options {
+    // Options with default values set.
+    const defaultOptions: sequelize.Options = {
+      database: 'unkown',
+      username: 'unkown',
+      password: undefined,
+      host: 'localhost',
+      dialect: 'mariadb'
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/database`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+     // Get the execution environment.
+    const env = process.env.NODE_ENV||'development';
+
+    // If an options file is found, it returns options that override the default options.
+    const options = <DatabaseOptions>require(filePath).default||require(filePath);
+    return Object.assign(defaultOptions, options[env]);
   }
 }

@@ -12,20 +12,38 @@ export default class {
    * Mount on application.
    */
   public static mount() {
-    // Load the config.
-    const config = <Config>Object.assign({
-      env_path: undefined
-    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) : {});
+    // Load options.
+    const options = this.loadOptions();
 
     // Exit if there is no .env path.
-    if (!config.env_path)
+    if (!options.env_path)
       return;
 
     // Set environment variables in process.env.
-    const env = dotenv.parse(fs.readFileSync(config.env_path!));
+    const env = dotenv.parse(fs.readFileSync(options.env_path!));
     for (let key in env) {
       console.log(`Set ${key} in process.env`);
       process.env[key] = env[key]
     }
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {Config} option.
+   */
+  private static loadOptions(): Config {
+    // Options with default values set.
+    const defaultOptions: Config = {
+      env_path: undefined
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/config`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

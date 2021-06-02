@@ -13,14 +13,10 @@ export default class {
    * Mount on application.
    */
   public static mount(app: express.Express) {
-    // Initialize options.
-    const options = <ViewOptions>Object.assign({
-      views_dir: path.join(process.cwd(), 'views'),
-      partials_dir: path.join(process.cwd(), 'views/partials'),
-      layouts_dir: path.join(process.cwd(), 'views/layout'),
-      default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
-      extension: '.hbs'     
-    }, fs.existsSync(`${process.cwd()}/config/view.js`) ? require(`${process.cwd()}/config/view`) : {});
+    // Load options.
+    const options = this.loadOptions();
+
+    // Debug View options.
     console.log(`Set view directory to ${options.views_dir}`);
     console.log(`Set partials directory to ${options.partials_dir}`);
     console.log(`Set layouts directory to ${options.layouts_dir}`);
@@ -48,5 +44,29 @@ export default class {
     }));
     app.set('view engine', 'hbs');
     app.set('views',  options.views_dir);
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {ViewOptions} option.
+   */
+  private static loadOptions(): ViewOptions {
+    // Options with default values set.
+    const defaultOptions: ViewOptions = {
+      views_dir: path.join(process.cwd(), 'views'),
+      partials_dir: path.join(process.cwd(), 'views/partials'),
+      layouts_dir: path.join(process.cwd(), 'views/layout'),
+      default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
+      extension: '.hbs'
+   };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/view`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

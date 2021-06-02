@@ -16,21 +16,19 @@ export default class {
    * Mount on application.
    */
   public static mount(app: express.Express) {
-    // Load the config.
-    const config = <Config>Object.assign({
-      max_body_size: '100kb'
-    }, fs.existsSync(`${process.cwd()}/config/config.js`) ? require(`${process.cwd()}/config/config`) : {});
-    console.log(`The maximum body size is set to ${config.max_body_size}`);
+    // Load options.
+    const options = this.loadOptions();
+    console.log(`The maximum body size is set to ${options.max_body_size}`);
 
     // Log HTTP request.
     const morgan = require('morgan')
     app.use(morgan('dev'));
 
     // For parsing application/json.
-    app.use(express.json({limit: config.max_body_size}));
+    app.use(express.json({limit: options.max_body_size}));
 
     // For parsing application/x-www-form-urlencoded.
-    app.use(express.urlencoded({extended: true, limit: config.max_body_size}));
+    app.use(express.urlencoded({extended: true, limit: options.max_body_size}));
 
     // For parsing multipart/form-data.
     const multer = require('multer');
@@ -44,5 +42,25 @@ export default class {
     const publicDir = path.join(process.cwd(), 'public');
     console.log(`Set public directory to ${publicDir}`);
     app.use(express.static(publicDir));
+  }
+
+  /**
+   * Returns the option.
+   * 
+   * @return {Config} option.
+   */
+  private static loadOptions(): Config {
+    // Options with default values set.
+    const defaultOptions: Config = {
+       max_body_size: '100kb'
+    };
+
+    // If the options file is not found, the default options are returned.
+    const filePath = `${process.cwd()}/config/config`;
+    if (!fs.existsSync(`${filePath}.js`))
+      return defaultOptions;
+
+    // If an options file is found, it returns options that override the default options.
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

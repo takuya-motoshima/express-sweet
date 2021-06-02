@@ -22,7 +22,7 @@ export default function(): void {
   // const models:{[key: string]: typeof Model} = {};
   for (let modelPath of File.find(`${modelsDir}/**/*.js`)) {
     // console.log(`Load ${modelPath}`);
-    const model = require(modelPath) as typeof Model;
+    const model = <typeof Model>require(modelPath).default||require(modelPath);
     model.initialize();
     models.push(model);
   }

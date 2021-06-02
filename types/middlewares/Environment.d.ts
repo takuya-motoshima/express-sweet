@@ -8,4 +8,10 @@ export default class {
      * Mount on application.
      */
     static mount(): void;
+    /**
+     * Returns the option.
+     *
+     * @return {Config} option.
+     */
+    private static loadOptions;
 }
