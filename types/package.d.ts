@@ -80,7 +80,6 @@ export declare var devDependencies: {
     "rollup-plugin-node-resolve": string;
     "rollup-plugin-terser": string;
     "rollup-plugin-typescript2": string;
-    "sequelize-cli": string;
     "ts-loader": string;
     "ts-node": string;
     "tsc-alias": string;

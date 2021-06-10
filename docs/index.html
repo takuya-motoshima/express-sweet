@@ -227,7 +227,7 @@ cd myapp;</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="hello-world-esm" role="tabpanel" aria-labelledby="hello-world-esm-tab">
           <pre><code class="js">import express from &#039;express&#039;;
-import * as sweet from(&#039;express-sweet&#039;);
+import * as sweet from &#039;express-sweet&#039;;
 const port = 3000;
 
 // Creates and configures an ExpressJS web server.
@@ -309,6 +309,7 @@ express-sweet;</code></pre>
   Options:
 
         --version      output the version number
+    -o, --output &lt;output&gt;  add output &lt;module&gt; support (esm|cjs) (defaults to cjs)
     -p, --port &lt;port&gt;  application listening port (default: 3000)
     -f, --force        force on non-empty directory
     -h, --help         output usage information</code></pre>
@@ -317,7 +318,19 @@ express-sweet;</code></pre>
       For example, the following creates an Express app named <em class="code">&quot;myapp&quot;</em>.<br>
       The app will be created in a folder named <em class="code">&quot;myapp&quot;</em> in the current working directory.
     </p>
-    <pre><code class="bash">express-sweet myapp
+
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="started-generator-esm-tab" data-bs-toggle="tab" href="#started-generator-esm" role="tab" aria-controls="started-generator-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="started-generator-cjs-tab" data-bs-toggle="tab" href="#started-generator-cjs" role="tab" aria-controls="started-generator-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="started-generator-esm" role="tabpanel" aria-labelledby="started-generator-esm-tab">
+          <pre><code class="bash">express-sweet -o esm myapp
 
    create : myapp/bin/www
    create : myapp/ecosystem.config.js
@@ -332,6 +345,26 @@ express-sweet;</code></pre>
 
    run the app:
      $ DEBUG=myapp:* npm start</code></pre>
+        </div>
+        <div class="tab-pane fade" id="started-generator-cjs" role="tabpanel" aria-labelledby="started-generator-cjs-tab">
+          <pre><code class="bash">express-sweet myapp
+
+   create : myapp/bin/www
+   create : myapp/ecosystem.config.js
+   create : myapp/nginx.sample.conf
+   create : myapp/package.json
+
+   change directory:
+     $ cd myapp
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=myapp:* npm start</code></pre>
+        </div>
+      </div>
+    </div>
 
     <p>Then install dependencies.</p>
     <pre><code class="bash">cd myapp;
@@ -2822,6 +2855,7 @@ UserModel.destroy({
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-association-esm" role="tabpanel" aria-labelledby="model-association-esm-tab">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+import ProfileModel from &#039;./ProfileModel&#039;;
 
 /**
  * User model.
@@ -2837,7 +2871,6 @@ export default class extends sweet.database.Model {
    */
   static association() {
     // User has one profile.
-    const ProfileModel = require(&#039;./ProfileModel&#039;);
     this.hasOne(ProfileModel, {
       foreignKey: &#039;userId&#039;, // profile.userId
       sourceKey: &#039;id&#039;, // user.id
@@ -3787,7 +3820,7 @@ module.exports = class extends Model {
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="mode-has-many-find-esm" role="tabpanel" aria-labelledby="mode-has-many-find-esm-tab">
-          <pre><code class="js">import ProfileModel from  &#039;../models/UserModel&#039;;
+          <pre><code class="js">import UserModel from  &#039;../models/UserModel&#039;;
 
 // SQL: SELECT
 //        `user`.`id`,
