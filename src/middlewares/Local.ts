@@ -26,7 +26,7 @@ export default class {
         app.locals.baseUrl = url.origin;
 
         // Set the current URL to a local variable.
-        app.locals.currentPath = req.originalUrl;
+        app.locals.currentPath = url.pathname;
 
         // // Debug.
         // console.log(`app.locals.baseUrl: ${app.locals.baseUrl}`);
