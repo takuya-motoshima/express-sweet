@@ -19,18 +19,16 @@ export default class {
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+
+      // Set the current URL to a local variable.
+      app.locals.currentPath = new URL(`${req.protocol}://${req.get('host')}${req.originalUrl}`).pathname;
+
+      // Set base URL.
       if (req.headers.referer) {
         const url = new URL(req.headers.referer);
 
         // Set baseUrl to a local variable.
         app.locals.baseUrl = url.origin;
-
-        // Set the current URL to a local variable.
-        app.locals.currentPath = url.pathname;
-
-        // // Debug.
-        // console.log(`app.locals.baseUrl: ${app.locals.baseUrl}`);
-        // console.log(`app.locals.currentPath: ${app.locals.currentPath}`);
       } else {
         // Set baseUrl to a local variable.
         app.locals.baseUrl = 'x-forwarded-proto' in req.headers
