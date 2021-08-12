@@ -46,6 +46,7 @@ export declare var dependencies: {
     glob: string;
     hbs: string;
     "http-errors": string;
+    ioredis: string;
     mariadb: string;
     "mime-types": string;
     "module-alias": string;
@@ -66,6 +67,7 @@ export declare var devDependencies: {
     "@types/express": string;
     "@types/express-session": string;
     "@types/http-errors": string;
+    "@types/ioredis": string;
     "@types/jest": string;
     "@types/multer": string;
     "@types/node": string;

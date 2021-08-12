@@ -5,3 +5,5 @@ screencaps/
 rollup.config.js
 tsconfig.json
 logo.svg
+test/.env
+!test/.env.sample
