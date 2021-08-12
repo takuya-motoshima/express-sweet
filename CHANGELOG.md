@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.5] - 2021-08-12
+- Changed the maximum size per field for multipart (multipart/form-data) requests from 1MB to unlimited.
+
 ## [1.0.4] - 2021-06-13
 - Fixed a bug where the referrer URL was set in app.locals.currentPath instead of the current URL.
 

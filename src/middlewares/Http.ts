@@ -32,7 +32,7 @@ export default class {
 
     // For parsing multipart/form-data.
     const multer = require('multer');
-    const upload = multer();
+    const upload = multer({limits: {fieldSize: Infinity}});
     app.use(upload.array('files'));
 
     // // For parsing Cookie.
