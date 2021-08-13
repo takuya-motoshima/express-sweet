@@ -35,7 +35,11 @@ CREATE TABLE `comment` (
   KEY `fkCommentUser` (`bookId`),
   CONSTRAINT `fkCommentBook` FOREIGN KEY (`bookId`) REFERENCES `book` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
 
+Register test data in DB.  
+
+```sql
 INSERT INTO `book` (`title`) VALUES
   ('Moby Dick'),
   ('Get Rich Really Fast'),
@@ -45,10 +49,7 @@ INSERT INTO `comment` (`bookId`, `comment`) VALUES
   (1, 'Interesting.'),
   (1, 'Very excited.'),
   (2, 'Very interesting.');
-```
 
-
-```sql
 SELECT `id`, `title` FROM `book`;
 -- +----+----------------------+
 -- | id | title                |

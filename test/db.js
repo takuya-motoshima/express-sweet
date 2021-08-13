@@ -10,4 +10,7 @@ import BookModel from './models/BookModel.js';
 
   // Get the number of comments for each Book using subquery by sequelize.literal.
   await BookModel.getBookCommentsCount();
+
+  // Use sequelize.where to get only Books with a title length of 10 characters or less.
+  await BookModel.getBooksWithShortTitles();
 })();

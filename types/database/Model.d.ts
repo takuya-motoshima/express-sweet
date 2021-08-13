@@ -106,6 +106,12 @@ export default class Model extends sequelize.Model {
      */
     static readonly literal: (val: string) => any;
     /**
+     * A way of specifying attr = condition.
+     *
+     * @type {sequelize.where}
+     */
+    static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) => sequelize.Utils.Where;
+    /**
      * Initialize the model that represents the table in the DB with attributes and options.
      * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
      *

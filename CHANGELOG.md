@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2021-08-13
+### Fixed
+- Added where member functions to Model class. Please see [here](https://takuya-motoshima.github.io/express-sweet/#model-class) for details.
+
 ## [1.0.6] - 2021-08-13
 ### Fixed
 - Added fn, col and literal member functions to Model class. Please see [here](https://takuya-motoshima.github.io/express-sweet/#model-class) for details.
@@ -38,3 +42,4 @@ All notable changes to this project will be documented in this file.
 [1.0.4]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.3...v1.0.4
 [1.0.5]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.4...v1.0.5
 [1.0.6]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.5...v1.0.6
+[1.0.7]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.6...v1.0.7
