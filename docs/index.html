@@ -131,8 +131,8 @@
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">Automatic URL routing</strong>
           <span class="text-secondary">
-            Express Sweet automatically maps the URL to express.Router defined in the routes directory.  
-            See <a href="#routing">&quot;Routing reference&quot;</a> for details.
+            Express Sweet automatically maps the URL to express.Router defined in the routes directory.<br>
+            See <a href="#routing">here</a> for details.
           </span>
         </div>
       </div>
@@ -143,7 +143,7 @@
             The model uses <a href="https://sequelize.org/master/" target="_blank">Sequelize v6</a>.<br>
             Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.<br>
             It features solid transaction support, relations, eager and lazy loading, read replication and more.<br>
-            See the <a href="#model">&quot;Model reference&quot;</a> for details.
+            See the <a href="#model">here</a> for details.
           </span>
         </div>
       </div>
@@ -155,7 +155,7 @@
             Handlebars is a simple templating language.<br>
             It uses a template and an input object to generate HTML or other text formats.<br>
             Handlebars templates look like regular text with embedded Handlebars expressions.<br>
-            See the <a href="#views">&quot;View reference&quot;</a> for more details.
+            See the <a href="#views">here</a> for more details.
           </span>
         </div>
       </div>
@@ -165,7 +165,7 @@
           <span class="text-secondary">
             User authentication uses <a href="https://www.passportjs.org/docs/" target="_blank">Passport v0.4.1</a>.<br>
             Passport is Express-compatible authentication middleware for Node.js.<br>
-            See the <a href="#user-authentication">&quot;Authentication Reference&quot;</a> for more information.
+            See the <a href="#user-authentication">here</a> for more information.
           </span>
         </div>
       </div>
@@ -468,7 +468,7 @@ INSERT INTO `book` (`userId`, `title`) VALUES
     <p>
       Next, you need to set how the database is connected.<br>
       The database connection method can be set in <em class="code">&quot;config/database.js&quot;</em>, so change it according to your environment.<br>
-      See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">&quot;Sequelize’s configuration&quot;</a> for details on configuration items.
+      See <a href="https://sequelize.org/master/manual/migrations.html#configuration" target="_blank">here</a> for details.
     </p>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
@@ -883,17 +883,17 @@ module.exports = {
 
     <!--begin::View’s configuration-->
     <h2 id="configuration-views">View’s configuration</h2>
-    <p>See <a href="#view-configuration">&quot;View’s Configuration Reference&quot;</a> for configuring view.</p>
+    <p>See <a href="#view-configuration">here</a> for configuring view.</p>
     <!--end::View’s configuration-->
 
     <!--begin::Authentication configuration-->
     <h2 id="configuration-authentication">Authentication configuration</h2>
-    <p>See <a href="#user-authentication-configuration">&quot;User Authentication Configuration Reference&quot;</a> for configuring user authentication.</p>
+    <p>See <a href="#user-authentication-configuration">here</a> for configuring user authentication.</p>
     <!--end::Authentication configuration-->
 
     <!--begin::Database configuration-->
     <h2 id="configuration-database">Database configuration</h2>
-    <p>See <a href="#model-configuration">&quot;Database Configuration Reference&quot;</a> for configuring database.</p>
+    <p>See <a href="#model-configuration">here</a> for configuring database.</p>
     <!--end::Database configuration-->
     <!--end::Configuration-->
 
@@ -1266,7 +1266,7 @@ module.exports = router;</code></pre>
       This section describes the basic usage of the view on Express Sweet.
     </p>
     <div class="callout callout-info">
-      See the <a href="https://handlebarsjs.com/guide/" target="_blank">Handlebars reference</a> for more information on how to use Handlebars.
+      See the <a href="https://handlebarsjs.com/guide/" target="_blank">here</a> for more information on how to use Handlebars.
     </div>
     <!--end::Introduction-->
 
@@ -2337,7 +2337,7 @@ module.exports = class extends Model {
 
     <div class="callout callout-warning">
       This class returns an instance when loaded, so you don’t have to instantiate it yourself.<br>
-      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">&quot;Sequelize’s Reference&quot;</a> for more information on the methods and properties available in your model.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html" target="_blank">here</a> for more information on the methods and properties available in your model.<br>
       This section describes newly added methods and members, as well as frequently used members and methods.
     </div>
 
@@ -2422,7 +2422,7 @@ const isConnected = await database.isConnect();</code></pre>
     <p>This is a class that abstracts the tables in the database.</p>
 
     <div class="callout callout-warning">
-      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">&quot;Sequelize’s Model Reference&quot;</a> for more information on the methods and properties available in your model.<br>
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html" target="_blank">here</a> for more information on the methods and properties available in your model.<br>
       This section describes newly added methods and members, as well as frequently used members and methods.
     </div>
 
@@ -2462,7 +2462,7 @@ const isConnected = await database.isConnect();</code></pre>
             <p class="mb-0 ms-3 mt-1">
               A convenience class holding commonly used data types.<br>
               This is an alias for &quot;sequelize.DataTypes&quot;.<br>
-              See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">&quot;Sequelize’s data types reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
+              See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">here</a> for details.
             </p>
           </td>
         </tr>
@@ -2473,7 +2473,40 @@ const isConnected = await database.isConnect();</code></pre>
             <p class="mb-0 ms-3 mt-1">
               Operator symbols to be used when querying data.<br>
               This is an alias for &quot;sequelize.Op&quot;.<br>
-              See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">&quot;Sequelize’s operator symbols reference&quot;</a> for details on &quot;sequelize.DataTypes&quot;.
+              See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">here</a> for details.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static readonly</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-fn">fn</a>: (fn: string, ...args: unknown[]) =&gt; any</code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates an object representing a database function.<br>
+              This is an alias for &quot;sequelize.fn&quot;.<br>
+              See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-fn" target="_blank">here</a> for details.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static readonly</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-col">col</a>: (col: string) =&gt; any</code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates an object which represents a column in the DB, this allows referencing another column in your query.<br>
+              This is an alias for &quot;sequelize.col&quot;.<br>
+              See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-col" target="_blank">here</a> for details.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">public static readonly</td>
+          <td class="w-100">
+            <code class="text-body"><a href="#model-member-literal">literal</a>: (val: string) =&gt; any</code>
+            <p class="mb-0 ms-3 mt-1">
+              Creates an object representing a literal, i.e.<br>
+              This is an alias for &quot;sequelize.literal&quot;.<br>
+              See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-literal" target="_blank">here</a> for details.
             </p>
           </td>
         </tr>
@@ -2497,7 +2530,7 @@ const isConnected = await database.isConnect();</code></pre>
               Associate the model.<br>
               Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
               This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
-              See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.<br>
+              See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">here</a> for more information.<br>
               <i class="bi bi-exclamation-triangle-fill"></i>If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
             </p>
           </td>
@@ -2509,7 +2542,7 @@ const isConnected = await database.isConnect();</code></pre>
             <p class="mb-0 ms-3 mt-1">
               Starts a transaction and returns a transaction object to identify the running transaction.<br>
               This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
-              See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
+              See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">here</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">here</a> for more information.
             </p>
           </td>
         </tr>
@@ -2741,7 +2774,7 @@ module.exports = class extends Model {
     <p>
       A convenience class holding commonly used data types.<br>
       This is an alias for "sequelize.DataTypes".<br>
-      See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">"Sequelize’s data types reference"</a> for details on "sequelize.DataTypes".
+      See <a href="https://sequelize.org/master/variable/index.html#static-variable-DataTypes" target="_blank">here</a> for details.
     </p>
     <p><strong>Example:</strong></p>
     <pre><code class="js">{
@@ -2752,7 +2785,7 @@ module.exports = class extends Model {
     <p>
       Operator symbols to be used when querying data.<br>
       This is an alias for "sequelize.Op".<br>
-      See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">"Sequelize’s operator symbols reference"</a> for details on "sequelize.DataTypes".
+      See <a href="https://sequelize.org/master/variable/index.html#static-variable-Op" target="_blank">here</a> for details.
     </p>
     <p><strong>Example:</strong></p>
     <div class="example">
@@ -2766,69 +2799,199 @@ module.exports = class extends Model {
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-op-esm" role="tabpanel" aria-labelledby="model-op-esm-tab">
-          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+          <pre><code class="js">import UserModel from &#39;../models/UserModel&#39;;
 
-// SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
+// SELECT * FROM user WHERE email = &#39;robin@example.com&#39; AND password = &#39;password&#39;;
 UserModel.findOne({
   where: {
-    [this.Op.and]: [
-      {email: &#039;robin@example.com&#039;},
-      {password: &#039;password&#039;}
+    [UserModel.Op.and]: [
+      {email: &#39;robin@example.com&#39;},
+      {password: &#39;password&#39;}
     ]
   }
 });
 
-// SELECT * FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+// SELECT * FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
 UserModel.findAll({
   where: {
-    [this.Op.or]: [
-      {name: &#039;Robin&#039;},
-      {name: &#039;Taylor&#039;}
+    [UserModel.Op.or]: [
+      {name: &#39;Robin&#39;},
+      {name: &#39;Taylor&#39;}
     ]
   }
 });
 
-// DELETE FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+// DELETE FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
 UserModel.destroy({
   where: {
     name: {
-      [this.Op.or]: [&#039;Robin&#039;, &#039;Taylor&#039;]
+      [UserModel.Op.or]: [&#39;Robin&#39;, &#39;Taylor&#39;]
     }
   }
 });</code></pre>
         </div>
         <div class="tab-pane fade" id="model-op-cjs" role="tabpanel" aria-labelledby="model-op-cjs-tab">
-          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+          <pre><code class="js">const UserModel = require(&#39;../models/UserModel&#39;);
 
-// SELECT * FROM user WHERE email = &#039;robin@example.com&#039; AND password = &#039;password&#039;;
+// SELECT * FROM user WHERE email = &#39;robin@example.com&#39; AND password = &#39;password&#39;;
 UserModel.findOne({
   where: {
-    [this.Op.and]: [
-      {email: &#039;robin@example.com&#039;},
-      {password: &#039;password&#039;}
+    [UserModel.Op.and]: [
+      {email: &#39;robin@example.com&#39;},
+      {password: &#39;password&#39;}
     ]
   }
 });
 
-// SELECT * FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+// SELECT * FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
 UserModel.findAll({
   where: {
-    [this.Op.or]: [
-      {name: &#039;Robin&#039;},
-      {name: &#039;Taylor&#039;}
+    [UserModel.Op.or]: [
+      {name: &#39;Robin&#39;},
+      {name: &#39;Taylor&#39;}
     ]
   }
 });
 
-// DELETE FROM user WHERE name = &#039;Robin&#039; OR name = &#039;Taylor&#039;;
+// DELETE FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
 UserModel.destroy({
   where: {
     name: {
-      [this.Op.or]: [&#039;Robin&#039;, &#039;Taylor&#039;]
+      [UserModel.Op.or]: [&#39;Robin&#39;, &#39;Taylor&#39;]
     }
   }
+});</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <h4 id="model-member-fn"><code class="member">public static readonly fn: (fn: string, ...args: unknown[]) =&gt; any</code></h4>
+    <p>
+      Creates an object representing a database function.<br>
+      This can be used in search queries, both in where and order parts, and as default values in column definitions.<br>
+      If you want to refer to columns in your function, you should use sequelize.col, so that the columns are properly interpreted as columns and not a strings.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-fn" target="_blank">here</a> for details.
+    </p>
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-fn-esm-tab" data-bs-toggle="tab" href="#model-fn-esm" role="tab" aria-controls="model-fn-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-fn-cjs-tab" data-bs-toggle="tab" href="#model-fn-cjs" role="tab" aria-controls="model-fn-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-fn-esm" role="tabpanel" aria-labelledby="model-fn-esm-tab">
+          <pre><code class="js">import BookModel from '../models/BookModel';
+
+// SELECT upper(`title`) AS `title` FROM `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [
+    [BookModel.fn('upper', BookModel.col('title')), 'title']
+  ],
+  raw: true
 });
-</code></pre>
+
+// Output: books= [
+//           { title: 'MOBY DICK' },
+//           { title: 'GET RICH REALLY FAST' },
+//           { title: 'FINDING INNER PEACE' }
+//         ]
+console.log('books=', books);</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-fn-cjs" role="tabpanel" aria-labelledby="model-fn-cjs-tab">
+          <pre><code class="js">const BookModel = require(&#39;../models/BookModel&#39;);
+
+// SELECT upper(`title`) AS `title` FROM `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [
+    [BookModel.fn(&#39;upper&#39;, BookModel.col(&#39;title&#39;)), &#39;title&#39;]
+  ],
+  raw: true
+});
+
+// Output: books= [
+//           { title: &#39;MOBY DICK&#39; },
+//           { title: &#39;GET RICH REALLY FAST&#39; },
+//           { title: &#39;FINDING INNER PEACE&#39; }
+//         ]
+console.log(&#39;books=&#39;, books);</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <h4 id="model-member-col"><code class="member">public static readonly col: (col: string) =&gt; any</code></h4>
+    <p>
+      Creates an object which represents a column in the DB, this allows referencing another column in your query.<br>
+      This is often useful in conjunction with sequelize.fn, since raw string arguments to fn will be escaped.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-col" target="_blank">here</a> for details.
+    </p>
+
+    <h4 id="model-member-literal"><code class="member">public static readonly literal: (val: string) =&gt; any</code></h4>
+    <p>
+      Creates an object representing a literal, i.e. something that will not be escaped.<br>
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-literal" target="_blank">here</a> for details.
+    </p>
+    <div class="example">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="model-literal-esm-tab" data-bs-toggle="tab" href="#model-literal-esm" role="tab" aria-controls="model-literal-esm" aria-selected="true">ESM</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="model-literal-cjs-tab" data-bs-toggle="tab" href="#model-literal-cjs" role="tab" aria-controls="model-literal-cjs" aria-selected="false">CJS</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-literal-esm" role="tabpanel" aria-labelledby="model-literal-esm-tab">
+          <pre><code class="js">import BookModel from &#39;../models/BookModel&#39;;
+
+// SELECT
+//   `id`,
+//   `title`,
+//   (SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id) AS `count`
+// FROM
+//   `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [
+    &#39;id&#39;,
+    &#39;title&#39;,
+    [BookModel.literal(`(SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id)`), &#39;count&#39;]
+  ],
+  raw: true
+});
+
+// Output: books= [
+//           { id: 1, title: &#39;Moby Dick&#39;, count: 2 },
+//           { id: 2, title: &#39;Get Rich Really Fast&#39;, count: 1 },
+//           { id: 3, title: &#39;Finding Inner Peace&#39;, count: 0 }
+//         ]
+console.log(&#39;books=&#39;, books);</code></pre>
+        </div>
+        <div class="tab-pane fade" id="model-literal-cjs" role="tabpanel" aria-labelledby="model-literal-cjs-tab">
+          <pre><code class="js">const BookModel = require(&#39;../models/BookModel&#39;);
+
+// SELECT
+//   `id`,
+//   `title`,
+//   (SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id) AS `count`
+// FROM
+//   `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [
+    &#39;id&#39;,
+    &#39;title&#39;,
+    [BookModel.literal(`(SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id)`), &#39;count&#39;]
+  ],
+  raw: true
+});
+
+// Output: books= [
+//           { id: 1, title: &#39;Moby Dick&#39;, count: 2 },
+//           { id: 2, title: &#39;Get Rich Really Fast&#39;, count: 1 },
+//           { id: 3, title: &#39;Finding Inner Peace&#39;, count: 0 }
+//         ]
+console.log(&#39;books=&#39;, books);</code></pre>
         </div>
       </div>
     </div>
@@ -2839,7 +3002,7 @@ UserModel.destroy({
       Associate the model.<br>
       Define associations with other models such as <em class="code">hasOne</em>, <em class="code">hasMany</em>, <em class="code">belongsTo</em>, <em class="code">belongsToMany</em>.<br>
       This method is called automatically from within the <em class="code">express-sweet.mount method</em>, so you don't have to run it yourself.<br>
-      See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">&quot;Sequelize's association reference&quot;</a> for more information.
+      See the <a href="https://sequelize.org/master/manual/assocs.html" target="_blank">here</a> for more information.
     </p>
     <div class="callout callout-warning">If you omit the alias (<em class="code">as</em>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.</div>
     <p><strong>Example:</strong></p>
@@ -2912,7 +3075,7 @@ module.exports = class extends Model {
     <p>
       Starts a transaction and returns a transaction object to identify the running transaction.<br>
       This is an alias for the <em class="code">&quot;sequelize.Sequelize.transaction()&quot;</em> method.<br>
-      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">&quot;Sequelize's transaction method reference&quot;</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">&quot;Sequelize's transaction reference&quot;</a> for more information.
+      See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">here</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">here</a> for more information.
     </p>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;sequelize.Transaction&gt;} Returns a transaction object to identify the transaction being executed.</p>
@@ -2988,7 +3151,7 @@ try {
     <h4 id="model-method-create"><code class="method">public static async create(values: object, options: object): Promise&lt;Model&gt;</code></h4>
     <p>
       Builds a new model instance and calls <em class="code">save</em> on it.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-create" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-create" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3036,7 +3199,7 @@ await UserModel.create({
     <h4 id="model-method-save"><code class="method">public static async save(options: object): Promise&lt;Model&gt;</code></h4>
     <p>
       Validates this instance, and if the validation passes, persists it to the database.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-save" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-save" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3096,7 +3259,7 @@ await user.save();</code></pre>
     <p>
       Search for a single instance.<br>
       Returns the first instance found, or null if none can be found.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOne" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOne" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3135,7 +3298,7 @@ await UserModel.findOne();</code></pre>
     <h4 id="model-method-find-all"><code class="method">public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></h4>
     <p>
       Search for multiple instances.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3186,7 +3349,7 @@ const users = await UserModel.findAll({
     <h4 id="model-method-count"><code class="method">public static async count(options: object): Promise&lt;number&gt;</code></h4>
     <p>
       Count the number of records matching the provided where clause.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-count" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-count" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3225,7 +3388,7 @@ await UserModel.count();</code></pre>
     <h4 id="model-method-update"><code class="method">public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></h4>
     <p>
       Update multiple instances that match the where options.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3286,7 +3449,7 @@ await UserModel.update(
       An update will be executed if a row which matches the supplied values on either the primary key or a unique key is found.<br>
       Note that the unique index must be defined in your sequelize model and not just in the table.<br>
       Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3336,7 +3499,7 @@ await UserModel.upsert({
     <h4 id="model-method-destroy"><code class="method">public static async destroy(options: object): Promise&lt;number&gt;</code></h4>
     <p>
       Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3376,7 +3539,7 @@ await UserModel.destroy({where: {id :1}});</code></pre>
     <p>
       Creates an association between this (the source) and the provided target.<br>
       The foreign key is added on the target.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasOne" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasOne" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3549,7 +3712,7 @@ await UserModel.findAll({
     <p>
       Creates an association between this (the source) and the provided target.<br>
       The foreign key is added on the source.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3722,7 +3885,7 @@ await ProfileModel.findAll({
     <p>
       Creates a 1:m association between this (the source) and the provided target.<br>
       The foreign key is added on the target.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>
@@ -3900,7 +4063,7 @@ await UserModel.findAll({
     <p>
       Create an N:M association with a join table.<br>
       Defining through is required.<br>
-      See the <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" target="_blank">reference</a> for details.
+      See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" target="_blank">here</a> for details.
     </p>
     <p><strong>Parameters:</strong></p>
     <ul>

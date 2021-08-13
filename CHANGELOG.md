@@ -2,13 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.6] - 2021-08-13
+### Fixed
+- Added fn, col and literal member functions to Model class. Please see [here](https://takuya-motoshima.github.io/express-sweet/#model-class) for details.
+
 ## [1.0.5] - 2021-08-12
+### Fixed
 - Changed the maximum size per field for multipart (multipart/form-data) requests from 1MB to unlimited.
 
 ## [1.0.4] - 2021-06-13
+### Fixed
 - Fixed a bug where the referrer URL was set in app.locals.currentPath instead of the current URL.
 
 ## [1.0.3] - 2021-06-13
+### Fixed
 - Change the current URL path of a local variable.app.locals.currentPath is a USVString containing an initial '/' followed by the path of the URL not including the query string or fragment.
 
     ```js
@@ -29,3 +36,5 @@ All notable changes to this project will be documented in this file.
 [1.0.2]: https://github.com/takuya-motoshima/express-sweet/commit/8f7fba9d4875661a02f74327f3ec2298ce76290d
 [1.0.3]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.2...v1.0.3
 [1.0.4]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.3...v1.0.4
+[1.0.5]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.4...v1.0.5
+[1.0.6]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.5...v1.0.6
