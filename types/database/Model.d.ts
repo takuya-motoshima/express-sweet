@@ -51,7 +51,7 @@ export default class Model extends sequelize.Model {
      *       [this.Op.notBetween]: [11, 15],               // NOT BETWEEN 11 AND 15
      *
      *       // Other operators
-     *       [this.Op.all]: sequelize.literal('SELECT 1'), // > ALL (SELECT 1)
+     *       [this.Op.all]: this.literal('SELECT 1'),      // > ALL (SELECT 1)
      *       [this.Op.in]: [1, 2],                         // IN [1, 2]
      *       [this.Op.notIn]: [1, 2],                      // NOT IN [1, 2]
      *       [this.Op.like]: '%hat',                       // LIKE '%hat'
@@ -78,6 +78,33 @@ export default class Model extends sequelize.Model {
     static readonly Op: {
         [key: string]: any;
     };
+    /**
+     * Creates a object representing a database function. This can be used in search queries, both in where and
+     * order parts, and as default values in column definitions. If you want to refer to columns in your
+     * function, you should use `sequelize.col`, so that the columns are properly interpreted as columns and not a strings.
+     *
+     * @example
+     * // Convert a user's username to upper case
+     * Post.update({
+     *   username: this.fn('upper', this.col('username'))
+     * })
+     *
+     * @type {sequelize.fn}
+     */
+    static readonly fn: (fn: string, ...args: unknown[]) => any;
+    /**
+     * Creates a object representing a column in the DB. This is often useful in conjunction with
+     * `sequelize.fn`, since raw string arguments to fn will be escaped.
+     *
+     * @type {sequelize.col}
+     */
+    static readonly col: (col: string) => any;
+    /**
+     * Creates a object representing a literal, i.e. something that will not be escaped.
+     *
+     * @type {sequelize.literal}
+     */
+    static readonly literal: (val: string) => any;
     /**
      * Initialize the model that represents the table in the DB with attributes and options.
      * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.

@@ -1,12 +1,11 @@
-const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-const Environment = require('express-sweet').middlewares.Environment;
+import * as sweet from 'express-sweet';
 
 (async () => {
   // Read environment variables.
-  Environment.mount();
+  sweet.middlewares.Environment.mount();
 
   // Rekognition client instance.
-  const client = new AWSRekognitionClient({
+  const client = new sweet.services.AWSRekognitionClient({
     accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
     region: process.env.AWS_REKOGNITION_REGION
