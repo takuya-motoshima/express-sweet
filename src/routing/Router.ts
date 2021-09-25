@@ -39,7 +39,11 @@ export default class {
       // Generate a URL from the directory and filename and map the module to the URL.
       const url = dir ? `${dir}/${filename.toLowerCase()}` : `/${filename.toLowerCase()}`;
       console.log(`URL mapping ${url}`);
-      app.use(url === options.default_router ? '/' : url, router);
+      app.use(url, router);
+
+      // Set the default router to run when accessed with "/".
+      if (url === options.default_router)
+        app.use('/', router);
     }
   }
 
