@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.9] - 2021-10-13
+### Fixed
+- Updated dependent package'sharp'from 0.25.4 to 0.29.1.  
+  This update statically links sharp's pre-built libvips binaries, eliminating the need to install Phton.  
+  Click [here](https://sharp.pixelplumbing.com/changelog) for sharp change log.
+
 ## [1.0.8] - 2021-09-25
 ### Fixed
 - Fixed a bug where the default router couldn't aqua from the endpoint URL.
