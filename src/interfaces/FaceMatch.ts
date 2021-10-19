@@ -24,5 +24,12 @@ export default interface {
    * Identifier that you assign to all the faces in the input image.
    * @type {string}
    */
-  externalImageId?: string
+  externalImageId?: string,
+
+  /**
+   * Confidence in the match of this face with the input face.
+   * Valid Range: Minimum value of 0. Maximum value of 100.
+   * @type {number}
+  */
+  similarity?: number
 }

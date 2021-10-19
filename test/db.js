@@ -1,5 +1,5 @@
-import * as sweet from 'express-sweet';
-import BookModel from './models/BookModel.js';
+const sweet = require('../dist/build.common');
+const BookModel = require('./models/BookModel');
 
 (async () => {
   // Load and initialize all models.

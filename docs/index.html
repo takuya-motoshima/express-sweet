@@ -5551,7 +5551,8 @@ const client = new sweet.services.AWSRekognitionClient({
 //             left: 0.2928670048713684,
 //             top: 0.09095799922943115
 //           },
-//           externalImageId: &#039;img.jpg&#039;
+//           externalImageId: &#039;img.jpg&#039;,
+//           similarity: 99.98941802978516
 //         }
 const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
 console.log(match);
@@ -5567,7 +5568,8 @@ console.log(match);
 //               left: 0.2928670048713684,
 //               top: 0.09095799922943115
 //             },
-//             externalImageId: &#039;img.jpg&#039;
+//             externalImageId: &#039;img.jpg&#039;,
+//             similarity: 99.98941802978516
 //           }
 //         ]
 const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
@@ -5598,7 +5600,8 @@ const client = new AWSRekognitionClient({
 //             left: 0.2928670048713684,
 //             top: 0.09095799922943115
 //           },
-//           externalImageId: &#039;img.jpg&#039;
+//           externalImageId: &#039;img.jpg&#039;,
+//           similarity: 99.98941802978516
 //         }
 const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
 console.log(match);
@@ -5614,7 +5617,8 @@ console.log(match);
 //               left: 0.2928670048713684,
 //               top: 0.09095799922943115
 //             },
-//             externalImageId: &#039;img.jpg&#039;
+//             externalImageId: &#039;img.jpg&#039;,
+//             similarity: 99.98941802978516
 //           }
 //         ]
 const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
@@ -5834,6 +5838,10 @@ const client = new AWSRekognitionClient({
         <tr>
           <td class="text-nowrap">externalImageId?: string</td>
           <td class="w-100">Identifier that you assign to all the faces in the input image.</td>
+        </tr>
+        <tr>
+          <td class="text-nowrap">similarity?: number</td>
+          <td class="w-100">Confidence in the match of this face with the input face.<br>Valid Range: Minimum value of 0. Maximum value of 100.</td>
         </tr>
       </tbody>
     </table>

@@ -2,12 +2,6 @@
 
 ## Getting Started
 
-Install dependent packages.
-
-```sh
-npm install;
-```
-
 Build a DB to use for model validation.  
 This test uses MariaDB, so please install MariaDB in advance.  
 The DB settings are in "./config/database.js".
@@ -71,18 +65,12 @@ SELECT `bookId`, `comment` FROM `comment`;
 
 ## Usage
 
-### Face Rekognition
-
-Run the test.
-
+Test Face Rekognition.
 ```sh
 NODE_ENV=development node -r ./node_modules/esm/esm rekognition.js;
 ```
 
-### Model
-
-Run the test.
-
+Test to get data from DB.
 ```sh
 NODE_ENV=development node -r ./node_modules/esm/esm db.js;
 ```

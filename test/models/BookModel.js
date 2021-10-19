@@ -1,9 +1,9 @@
-import * as sweet from 'express-sweet';
+const sweet = require('../../dist/build.common');
 
 /**
  * Book model.
  */
-export default class extends sweet.database.Model {
+module.exports = class extends sweet.database.Model {
   /**
    * The name of the table that the model accesses.
    */

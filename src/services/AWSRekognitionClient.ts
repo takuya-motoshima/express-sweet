@@ -71,7 +71,7 @@ export default class {
    */
   public async detectFaces(img: string, minConfidence: number = 90): Promise<BoundingBox[]> {
     // Face detection result.
-    const boundingBoxes: BoundingBox[] = [];
+    const bbox: BoundingBox[] = [];
     try {
       // Detect faces.
       const data: AWS.Rekognition.Types.DetectFacesResponse = await new Promise((resolve, reject) => {
@@ -92,7 +92,7 @@ export default class {
         if (!detail.BoundingBox || !detail.Confidence || detail.Confidence < minConfidence)
           continue;
         const boundingBox = detail.BoundingBox as AWS.Rekognition.BoundingBox;
-        boundingBoxes.push({
+        bbox.push({
           width: boundingBox.Width as number,
           height: boundingBox.Height as number,
           left: boundingBox.Left as number,
@@ -104,7 +104,7 @@ export default class {
     }
 
     // Returns the face detection result.
-    return boundingBoxes;
+    return bbox;
   }
 
   /**
@@ -440,7 +440,8 @@ export default class {
           height: bbox.Height,
           left: bbox.Left,
           top: bbox.Top
-        }
+        },
+        similarity: match.Similarity
       } as FaceMatch;
       if (face.ExternalImageId != null)
         result.externalImageId = face.ExternalImageId;
