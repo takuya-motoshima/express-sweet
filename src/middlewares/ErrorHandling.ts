@@ -13,7 +13,7 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const opts = this.loadOptions();
 
     // Catch 404 and forward to error handler.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -26,11 +26,11 @@ export default class {
       console.error(err);
 
       // Call error handling Hook.
-      if (options.error_handler) {
-        if (Types.isAsyncFunction(options.error_handler))
-          await options.error_handler(err);
+      if (opts.error_handler) {
+        if (Types.isAsyncFunction(opts.error_handler))
+          await opts.error_handler(err);
         else
-          options.error_handler(err);
+          opts.error_handler(err);
       }
 
       // Set locals, only providing error in development.
@@ -55,16 +55,16 @@ export default class {
    */
   private static loadOptions(): Config {
     // Options with default values set.
-    const defaultOptions: Config = {
+    const defOpts: Config = {
       error_handler: (err: any): void|Promise<void> => {}
     };
 
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/config`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
+      return defOpts;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    return Object.assign(defOpts, require(filePath).default||require(filePath));
   }
 }

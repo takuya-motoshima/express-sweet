@@ -1,6 +1,7 @@
 import sequelize from 'sequelize';
 import DatabaseOptions from '~/interfaces/DatabaseOptions';
 import fs from 'fs';
+import Environment from '~/middlewares/Environment';
 
 /**
  * Connect to DB.
@@ -10,11 +11,14 @@ export default new class Database extends sequelize.Sequelize {
    * Create a sequelize instance.
    */
   constructor() {
+    // Set environment variables.
+    Environment.mount();
+
     // Load options.
-    const options = Database.loadOptions();
+    const opts = Database.loadOptions();
 
     // Instantiate sequelize with name of database, username and password.
-    super(options.database!, options.username!, options.password||undefined, options);
+    super(opts.database!, opts.username!, opts.password||undefined, opts);
   }
 
   /**
@@ -44,7 +48,7 @@ export default new class Database extends sequelize.Sequelize {
    */
   public static loadOptions(): sequelize.Options {
     // Options with default values set.
-    const defaultOptions: sequelize.Options = {
+    const defOpts: sequelize.Options = {
       database: 'unkown',
       username: 'unkown',
       password: undefined,
@@ -55,13 +59,15 @@ export default new class Database extends sequelize.Sequelize {
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/database`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
+      return defOpts;
 
-     // Get the execution environment.
+    // Get the execution environment.
     const env = process.env.NODE_ENV||'development';
 
     // If an options file is found, it returns options that override the default options.
-    const options = <DatabaseOptions>require(filePath).default||require(filePath);
-    return Object.assign(defaultOptions, options[env]);
+    const opts = <DatabaseOptions>require(filePath).default||require(filePath);
+    const envOpts = Object.assign(defOpts, opts[env]);
+    // console.log(`DB config: ${JSON.stringify(envOpts, null, 2)}`);
+    return envOpts;
   }
 }

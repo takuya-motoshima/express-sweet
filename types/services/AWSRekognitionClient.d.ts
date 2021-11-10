@@ -13,7 +13,7 @@ export default class {
     /**
      * Constructs a rekognition client object.
      */
-    constructor(options: RekognitionOptions);
+    constructor(opts: RekognitionOptions);
     /**
      * Detects faces within an image that is provided as input.
      * For each face detected, the operation returns a bounding box of the face.
@@ -268,7 +268,7 @@ export default class {
      *                                                                     If options.maxFaces is 2 or more, the list of face information found is returned.
      *                                                                     Returns null if no face is found.
      */
-    searchFaces(collectionId: string, img: string, options?: {
+    searchFaces(collectionId: string, img: string, opts?: {
         minConfidence?: number;
         maxFaces?: number;
     }): Promise<FaceMatch[] | FaceMatch | null>;

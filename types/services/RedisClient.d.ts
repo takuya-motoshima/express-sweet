@@ -76,5 +76,5 @@ export default class extends IORedis.Redis {
      *  const unixSocketRedis = new RedisClient({path: "/tmp/echo.sock"});
      *  const redis = new RedisClient({host: 'localhost', port: 6379});
      */
-    constructor(options: IORedis.IRedisOptions);
+    constructor(opts: IORedis.IRedisOptions);
 }

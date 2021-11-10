@@ -12,19 +12,29 @@ export default class {
    * Mount on application.
    */
   public static mount() {
+    // If you have already loaded env, do nothing.
+    if (global.loadedEnv)
+      return void console.log('env is already loaded, so do nothing');
+
     // Load options.
-    const options = this.loadOptions();
+    const opts = this.loadOptions();
+    // console.log(`env file path: ${opts.env_path||'undefined'}`);
 
     // Exit if there is no .env path.
-    if (!options.env_path)
+    if (!opts.env_path)
       return;
 
     // Set environment variables in process.env.
-    const env = dotenv.parse(fs.readFileSync(options.env_path!));
+    const env = dotenv.parse(fs.readFileSync(opts.env_path!));
     for (let key in env) {
       console.log(`Set ${key} in process.env`);
       process.env[key] = env[key]
     }
+
+    console.log(`Environment name: ${process.env.NODE_ENV||'undefined'}`);
+
+    // Set read completion flag to prevent multiple reading of env.
+    global.loadedEnv = true;
   }
 
   /**
@@ -34,16 +44,16 @@ export default class {
    */
   private static loadOptions(): Config {
     // Options with default values set.
-    const defaultOptions: Config = {
+    const defOpts: Config = {
       env_path: undefined
     };
 
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/config`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
+      return defOpts;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    return Object.assign(defOpts, require(filePath).default||require(filePath));
   }
 }

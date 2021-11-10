@@ -44,8 +44,8 @@ export default class {
    */
   public static successRedirect(res: express.Response): void {
     // Load options.
-    const options = this.loadOptions();
-    res.redirect(options.success_redirect!);
+    const opts = this.loadOptions();
+    res.redirect(opts.success_redirect!);
   }
 
   /**
@@ -55,8 +55,8 @@ export default class {
    */
   public static failureRedirect(res: express.Response): void {
     // Load options.
-    const options = this.loadOptions();
-    res.redirect(options.failure_redirect!);
+    const opts = this.loadOptions();
+    res.redirect(opts.failure_redirect!);
   }
 
   /**
@@ -66,7 +66,7 @@ export default class {
    */
   private static loadOptions(): Partial<AuthenticationOptions> {
     // Options with default values set.
-    const defaultOptions: Partial<AuthenticationOptions> = {
+    const defOpts: Partial<AuthenticationOptions> = {
       success_redirect: '/',
       failure_redirect: '/login'
     };
@@ -74,9 +74,9 @@ export default class {
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/authentication`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
+      return defOpts;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    return Object.assign(defOpts, require(filePath).default||require(filePath));
   }
 }

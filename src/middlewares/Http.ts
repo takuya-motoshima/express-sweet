@@ -17,18 +17,18 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
-    console.log(`The maximum body size is set to ${options.max_body_size}`);
+    const opts = this.loadOptions();
+    console.log(`The maximum body size is set to ${opts.max_body_size}`);
 
     // Log HTTP request.
     const morgan = require('morgan')
     app.use(morgan('dev'));
 
     // For parsing application/json.
-    app.use(express.json({limit: options.max_body_size}));
+    app.use(express.json({limit: opts.max_body_size}));
 
     // For parsing application/x-www-form-urlencoded.
-    app.use(express.urlencoded({extended: true, limit: options.max_body_size}));
+    app.use(express.urlencoded({extended: true, limit: opts.max_body_size}));
 
     // For parsing multipart/form-data.
     const multer = require('multer');
@@ -51,16 +51,16 @@ export default class {
    */
   private static loadOptions(): Config {
     // Options with default values set.
-    const defaultOptions: Config = {
+    const defOpts: Config = {
        max_body_size: '100kb'
     };
 
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/config`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
+      return defOpts;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    return Object.assign(defOpts, require(filePath).default||require(filePath));
   }
 }

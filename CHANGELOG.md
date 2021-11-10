@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.11] - 2021-11-10
+### Fixed
+- Fixed a bug that the database config was read before NODE_ENV was set and the database config matching NODE_ENV could not be read.
+
 ## [1.0.10] - 2021-10-19
 ### Fixed
 - Added face similarity found to face search results in collection.

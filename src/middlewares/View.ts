@@ -14,14 +14,14 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const opts = this.loadOptions();
 
     // Debug View options.
-    console.log(`Set view directory to ${options.views_dir}`);
-    console.log(`Set partials directory to ${options.partials_dir}`);
-    console.log(`Set layouts directory to ${options.layouts_dir}`);
-    console.log(`The default layout is ${options.default_layout}`);
-    console.log(`The extension of the view file is ${options.extension}`);
+    console.log(`Set view directory to ${opts.views_dir}`);
+    console.log(`Set partials directory to ${opts.partials_dir}`);
+    console.log(`Set layouts directory to ${opts.layouts_dir}`);
+    console.log(`The default layout is ${opts.default_layout}`);
+    console.log(`The extension of the view file is ${opts.extension}`);
 
     // Express handlebars template engine.
     const hbs = require('express-hbs');
@@ -36,14 +36,14 @@ export default class {
 
     // Apply template engine to your app.
     app.engine('hbs', hbs.express4({
-      partialsDir: options.partials_dir,
-      layoutsDir: options.layouts_dir,
-      defaultLayout: options.default_layout,
-      extname: options.extension
+      partialsDir: opts.partials_dir,
+      layoutsDir: opts.layouts_dir,
+      defaultLayout: opts.default_layout,
+      extname: opts.extension
       // handlebars: Handlebars
     }));
     app.set('view engine', 'hbs');
-    app.set('views',  options.views_dir);
+    app.set('views',  opts.views_dir);
   }
 
   /**
@@ -53,7 +53,7 @@ export default class {
    */
   private static loadOptions(): ViewOptions {
     // Options with default values set.
-    const defaultOptions: ViewOptions = {
+    const defOpts: ViewOptions = {
       views_dir: path.join(process.cwd(), 'views'),
       partials_dir: path.join(process.cwd(), 'views/partials'),
       layouts_dir: path.join(process.cwd(), 'views/layout'),
@@ -64,9 +64,9 @@ export default class {
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/view`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
+      return defOpts;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    return Object.assign(defOpts, require(filePath).default||require(filePath));
   }
 }

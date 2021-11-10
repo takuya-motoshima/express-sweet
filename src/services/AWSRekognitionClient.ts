@@ -19,15 +19,15 @@ export default class {
   /**
    * Constructs a rekognition client object.
    */
-  constructor(options: RekognitionOptions) {
+  constructor(opts: RekognitionOptions) {
     // Initialize options.
-    options = Object.assign({timeout: 5000}, options);
+    opts = Object.assign({timeout: 5000}, opts);
 
     // Generate AWS Rekognition client instance.
     this.client = new AWS.Rekognition({
-      ...options,
+      ...opts,
       httpOptions: {
-        connectTimeout: options.timeout
+        connectTimeout: opts.timeout
       }
     });
   }
@@ -406,17 +406,17 @@ export default class {
    *                                                                     If options.maxFaces is 2 or more, the list of face information found is returned.
    *                                                                     Returns null if no face is found.
    */
-  public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
+  public async searchFaces(collectionId: string, img: string, opts?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
     // Initialize options.
-    options = Object.assign({minConfidence: 80, maxFaces: 5}, options);
+    opts = Object.assign({minConfidence: 80, maxFaces: 5}, opts);
 
     // Search for collection faces.
     const data: AWS.Rekognition.Types.SearchFacesByImageResponse = await new Promise((resolve, reject) => {
       this.client.searchFacesByImage({
         CollectionId: collectionId,
         Image: {Bytes: this.getImageBuffer(img)},
-        FaceMatchThreshold: options!.minConfidence,
-        MaxFaces: options!.maxFaces!,
+        FaceMatchThreshold: opts!.minConfidence,
+        MaxFaces: opts!.maxFaces!,
         QualityFilter: 'AUTO'
       }, (err: AWS.AWSError, data: AWS.Rekognition.Types.SearchFacesByImageResponse) => {
         err ? reject(err) : resolve(data);
@@ -449,7 +449,7 @@ export default class {
     }
 
     // If options.maxFaces is 1, one search result element is returned, and if options.maxFaces is 2 or more, a search result list is returned.
-    return options.maxFaces === 1 ? results[0] : results;
+    return opts.maxFaces === 1 ? results[0] : results;
   }
 
   /**

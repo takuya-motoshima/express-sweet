@@ -16,14 +16,14 @@ import loadModels from '~/database/loadModels';
  * @param {express.Express}  app                Express application instance
  */
 export default function(app: express.Express): void {
-  // Model initialization and association.
-  loadModels();
-
   // Set global variables.
   Global.mount();
 
   // Set environment variables.
   Environment.mount();
+
+  // Model initialization and association.
+  loadModels();
 
   // Enable Handlebars template engine.
   View.mount(app);

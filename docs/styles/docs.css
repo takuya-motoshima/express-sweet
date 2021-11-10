@@ -4,13 +4,9 @@
   line-height: 1.0;
 }
 
-body {
-  font-size: 13px;
-}
-
 .topnav {
   padding: .75rem 0;
-  background-color: #6b00b1;
+  background-color: hsl(267deg, 43%, 35%);
 }
 
   .topnav .navbar-toggler {
@@ -32,6 +28,14 @@ body {
       height: 1rem
     }
 
+.min-w-150px {
+  min-width: 150px;
+}
+
+.min-w-200px {
+  min-width: 200px;
+}
+    
 ul li,
 ol li {
   margin-bottom: .25rem
@@ -49,18 +53,6 @@ table {
     overflow-x: auto;
   }
 }
-
-  table.summary tbody td:nth-child(1) {
-    min-width: 150px;
-  }
-
-  table.summary tbody td:nth-last-child(1) {
-    min-width: 200px;
-  }
-
-  th {
-    white-space: nowrap;
-  }
 
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5, h6 {
   line-height: unset;
@@ -131,20 +123,14 @@ h4 {
       margin-top: .125rem;
       margin-left: 1.25rem;
       width: fit-content;
-      color: rgba(0,0,0,0.65);
+      color: hsl(267deg, 43%, 35%);
       text-decoration: none;
     }
 
     .sidenav a:hover,
-    .sidenav a:focus {
-      color: rgba(0,0,0,0.85);
-      background-color: rgba(121,82,179,0.1);
-    }
-
     .sidenav .nav-link.active {
       font-weight: 600;
-      color: #b66dff;
-      /* color: #0d6efd; */
+      color: #0d6efd;
       background-color: transparent;
     }
 
@@ -265,34 +251,9 @@ h4 {
     margin-bottom: 0
   }
 
-  .callout code {
-    border-radius: .25rem
-  }
-
   .callout+.callout {
     margin-top: -.25rem
   }
-
-code:not(.hljs),
-.code {
-  /* font-family: Source Code Pro,Consolas,Liberation Mono,Menlo,Courier,monospace; */
-  font-size: 1em;
-  color: #d63384;
-  word-wrap: break-word;
-  font-style: normal;
-  background-color: rgba(70,94,105,.05);
-  text-shadow: 0 1px 0 hsl(0deg 0% 100% / 60%);
-}
-
-.method,
-.member {
-  padding: 6px 10px;
-  width: fit-content;
-  background: #E8F4FF;
-  color: #212529;
-  font-size: 1.1rem;
-  font-family: Monaco, Consolas, Courier, monospace;
-}
 
 .hljs {
   border-radius: .5em;
@@ -302,10 +263,6 @@ code:not(.hljs),
   .hljs-comment {
     color: #9e8f9e;
   }
-
-.text-primary {
-  color: #b66dff !important;
-}
 
 .example {
   margin-bottom: 1rem;

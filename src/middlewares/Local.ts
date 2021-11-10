@@ -15,7 +15,7 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const opts = this.loadOptions();
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -37,8 +37,8 @@ export default class {
       }
 
       // Call a callback function that rewrites baseUrl.
-      if (options.rewrite_base_url)
-        app.locals.baseUrl = options.rewrite_base_url(app.locals.baseUrl);
+      if (opts.rewrite_base_url)
+        app.locals.baseUrl = opts.rewrite_base_url(app.locals.baseUrl);
       next();
     });
   }
@@ -50,16 +50,16 @@ export default class {
    */
   private static loadOptions(): Config {
     // Options with default values set.
-    const defaultOptions: Config = {
+    const defOpts: Config = {
       rewrite_base_url: (baseUrl: string): string => baseUrl
     };
 
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/config`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
+      return defOpts;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    return Object.assign(defOpts, require(filePath).default||require(filePath));
   }
 }
