@@ -35,7 +35,11 @@
 .min-w-200px {
   min-width: 200px;
 }
-    
+
+.min-w-300px {
+  min-width: 300px;
+}
+
 ul li,
 ol li {
   margin-bottom: .25rem
