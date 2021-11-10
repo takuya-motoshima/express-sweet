@@ -44,8 +44,8 @@
   <aside class="sidebar" id="sidebar">
     <nav class="sidenav align-items-start navbar navbar-light py-0" id="sidenav">
       <nav class="nav nav-pills flex-column flex-nowrap mb-0 py-3 pt-md-1">
-        <a class="nav-link" href="#introduction">Introduction</a>
-        <a class="nav-link" href="#installation">Installation</a>
+        <a class="nav-link" href="#intro">Introduction</a>
+        <a class="nav-link" href="#instl">Installation</a>
         <a class="nav-link" href="#cfg">Configuration</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
           <a class="nav-link" href="#cfg-env">Environment Configuration</a>
@@ -54,42 +54,42 @@
           <a class="nav-link" href="#cfg-auth">Authentication configuration</a>
           <a class="nav-link" href="#cfg-database">Database configuration</a>
         </nav>
-        <a class="nav-link" href="#routing">Routing</a>
+        <a class="nav-link" href="#rtng">Routing</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#routing-introduction">Introduction</a>
-          <a class="nav-link" href="#routing-basic">Basic Routing</a>
-          <a class="nav-link" href="#routing-nested">Nested routes</a>
-          <a class="nav-link" href="#routing-default">Default Route</a>
-          <a class="nav-link" href="#routing-methods">Routing methods</a>
+          <a class="nav-link" href="#rtng-basic">Basic Routing</a>
+          <a class="nav-link" href="#rtng-nested">Nested routes</a>
+          <a class="nav-link" href="#rtng-default">Default Route</a>
+          <a class="nav-link" href="#rtng-meth">Routing methods</a>
         </nav>
         <a class="nav-link" href="#views">Views</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#view-introduction">Introduction</a>
           <a class="nav-link" href="#view-syntax">Syntax</a>
           <a class="nav-link" href="#view-layout">Layouts</a>
-          <a class="nav-link" href="#view-helper">Helpers</a>
+          <a class="nav-link" href="#view-cf-helper">Comparison helpers</a>
+          <a class="nav-link" href="#view-html-helper">HTML helpers</a>
+          <a class="nav-link" href="#view-obj-helper">Object helpers</a>
+          <a class="nav-link" href="#view-str-helper">String helpers</a>
         </nav>
         <a class="nav-link" href="#model">Model</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#model-introduction">Introduction</a>
           <a class="nav-link" href="#model-accessing">Accessing Models</a>
           <a class="nav-link" href="#model-creating">Creating Your Model</a>
-          <a class="nav-link" href="#model-connecting-to-the-database">Connecting to the Database</a>
+          <a class="nav-link" href="#model-connecting">Connecting to the Database</a>
           <a class="nav-link" href="#model-database-class">Class Database</a>
           <a class="nav-link" href="#model-class">Class Model</a>
         </nav>
-        <a class="nav-link" href="#user-auth">User authentication</a>
+        <a class="nav-link" href="#auth">User authentication</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#user-auth-introduction">Introduction</a>
-          <a class="nav-link" href="#user-auth-authenticating-users">Authenticating Users</a>
-          <a class="nav-link" href="#user-auth-logging-out">Logging Out</a>
+          <a class="nav-link" href="#auth-intro">Introduction</a>
+          <a class="nav-link" href="#auth-authenticating">Authenticating Users</a>
+          <a class="nav-link" href="#auth-logout">Logging Out</a>
         </nav>
-        <a class="nav-link" href="#rekognition">Rekognition</a>
+        <a class="nav-link" href="#rekog">Rekognition</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#rekognition-introduction">Introduction</a>
-          <a class="nav-link" href="#rekognition-class">Class Rekognition</a>
-          <a class="nav-link" href="#rekognition-interface-face-match">Interface FaceMatch</a>
-          <a class="nav-link" href="#rekognition-interface-bounding-box">Interface BoundingBox</a>
+          <a class="nav-link" href="#rekog-intro">Introduction</a>
+          <a class="nav-link" href="#rekog-class">Class Rekognition</a>
+          <a class="nav-link" href="#rekog-match-intf">Interface FaceMatch</a>
+          <a class="nav-link" href="#rekog-bbox-intf">Interface BoundingBox</a>
         </nav>
       </nav>
     </nav>
@@ -97,7 +97,7 @@
   <div class="sidebar-overlay"></div>
   <main class="main order-1 ps-lg-4">
     <!--begin::Introduction-->
-    <h1 id="introduction">Introduction</h1>
+    <h1 id="intro">Introduction</h1>
     <p>
       Extend Express functionality with Express Sweet and start developing fast, minimal web applications.<br>
       The package elements that make up this extension.<br>
@@ -116,7 +116,7 @@
         <div class="d-block text-decoration-none">
           <strong class="d-block h5 mb-0 text-primary">Automatic URL routing</strong>
           <span class="text-secondary">
-            Automatically maps the URL to the express.Router defined in the routes directory. See <a href="#routing">here</a> for details.
+            Automatically maps the URL to the express.Router defined in the routes directory. See <a href="#rtng">here</a> for details.
           </span>
         </div>
       </div>
@@ -149,7 +149,7 @@
           <strong class="d-block h5 mb-0 text-primary">Service</strong>
           <span class="text-secondary">
             Express Sweet includes convenient classes for developing applications using <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">"Amazon Rekognition"</a> and classes for easy user authentication.<br>
-            For more information on Rekognition, see <a href="#rekognition">"Rekognition Reference"</a>.
+            For more information on Rekognition, see <a href="#rekog">"Rekognition Reference"</a>.
           </span>
         </div>
       </div>
@@ -157,7 +157,7 @@
     <!--end::Introduction-->
 
     <!--begin::Installation-->
-    <h1 id="installation">Installation</h1>
+    <h1 id="instl">Installation</h1>
     <!--end::Installation-->
 
     <p>Use the application generator tool, "<code>express-sweet-generator</code>", to quickly create an application skeleton.<br></p>
@@ -184,10 +184,10 @@
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="started-generator-esm-tab" data-bs-toggle="tab" href="#started-generator-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="started-generator-esm-tab" data-bs-toggle="tab" href="#started-generator-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="started-generator-cjs-tab" data-bs-toggle="tab" href="#started-generator-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="started-generator-cjs-tab" data-bs-toggle="tab" href="#started-generator-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -335,10 +335,10 @@ INSERT INTO `book` (`userId`, `title`) VALUES
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="database-cfg-esm-tab" data-bs-toggle="tab" href="#database-cfg-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="database-cfg-esm-tab" data-bs-toggle="tab" href="#database-cfg-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="database-cfg-cjs-tab" data-bs-toggle="tab" href="#database-cfg-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="database-cfg-cjs-tab" data-bs-toggle="tab" href="#database-cfg-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -555,10 +555,10 @@ module.exports = {
             <div class="example bg-white">
               <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link active" id="default-router-esm-tab" data-bs-toggle="tab" href="#default-router-esm" role="tab">ESM</a>
+                  <a class="nav-link active" id="default-router-esm-tab" data-bs-toggle="tab" href="#default-router-esm">ESM</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" id="default-router-cjs-tab" data-bs-toggle="tab" href="#default-router-cjs" role="tab">CJS</a>
+                  <a class="nav-link" id="default-router-cjs-tab" data-bs-toggle="tab" href="#default-router-cjs">CJS</a>
                 </li>
               </ul>
               <div class="tab-content">
@@ -626,10 +626,10 @@ module.exports = router;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="basic-cfg-esm-tab" data-bs-toggle="tab" href="#basic-cfg-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="basic-cfg-esm-tab" data-bs-toggle="tab" href="#basic-cfg-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="basic-cfg-cjs-tab" data-bs-toggle="tab" href="#basic-cfg-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="basic-cfg-cjs-tab" data-bs-toggle="tab" href="#basic-cfg-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -768,10 +768,10 @@ module.exports = {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="view-cfg-esm-tab" data-bs-toggle="tab" href="#view-cfg-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="view-cfg-esm-tab" data-bs-toggle="tab" href="#view-cfg-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="view-cfg-cjs-tab" data-bs-toggle="tab" href="#view-cfg-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="view-cfg-cjs-tab" data-bs-toggle="tab" href="#view-cfg-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -963,10 +963,10 @@ module.exports = {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="auth-cfg-esm-tab" data-bs-toggle="tab" href="#auth-cfg-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="auth-cfg-esm-tab" data-bs-toggle="tab" href="#auth-cfg-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="auth-cfg-cjs-tab" data-bs-toggle="tab" href="#auth-cfg-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="auth-cfg-cjs-tab" data-bs-toggle="tab" href="#auth-cfg-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1202,10 +1202,10 @@ module.exports = {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-cfg-esm-tab" data-bs-toggle="tab" href="#model-cfg-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-cfg-esm-tab" data-bs-toggle="tab" href="#model-cfg-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-cfg-cjs-tab" data-bs-toggle="tab" href="#model-cfg-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-cfg-cjs-tab" data-bs-toggle="tab" href="#model-cfg-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1301,32 +1301,35 @@ module.exports = {
     <!--end::Configuration-->
 
     <!--begin::Routing-->
-    <h1 id="routing">Routing</h1>
-
-    <!--begin::Introduction-->
-    <h2 id="routing-introduction">Introduction</h2>
+    <h1 id="rtng">Routing</h1>
     <p>
       Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).<br>
       Each route can have one or more handler functions, which are executed when the route is matched.<br>
-      Route definition takes the following structure.
+      Route definition takes the following structure.<br>
+      <ul>
+        <li>app is an instance of express.</li>
+        <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
+        <li>PATH is a path on the server.</li>
+        <li>HANDLER is the function executed when the route is matched.</li>
+      </ul>
     </p>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="routing-esm-tab" data-bs-toggle="tab" href="#routing-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rtng-esm-tab" data-bs-toggle="tab" href="#rtng-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="routing-cjs-tab" data-bs-toggle="tab" href="#routing-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rtng-cjs-tab" data-bs-toggle="tab" href="#rtng-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="routing-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rtng-esm" role="tabpanel">
           <pre><code class="js">import express from &#039;express&#039;;
 
 const app = express();
 app.METHOD(PATH, HANDLER)</code></pre>
         </div>
-        <div class="tab-pane fade" id="routing-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rtng-cjs" role="tabpanel">
           <pre><code class="js">const express = require(&#039;express&#039;);
 const app = express();
 
@@ -1335,33 +1338,27 @@ app.METHOD(PATH, HANDLER)
         </div>
       </div>
     </div>
-    <ul>
-      <li>app is an instance of express.</li>
-      <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
-      <li>PATH is a path on the server.</li>
-      <li>HANDLER is the function executed when the route is matched.</li>
-    </ul>
     <!--end::Introduction-->
 
     <!--begin::Basic Routing-->
-    <h2 id="routing-basic">Basic Routing</h2>
+    <h2 id="rtng-basic">Basic Routing</h2>
     <p>
       All routes are defined in your route files, which are located in the <code>"routes"</code> directory.<br>
-      These files are automatically mapped by "Express Sweet" to the route files specified in the URI and the route handlers defined in the route files.
+      These files are automatically mapped by "Express Sweet" to the route files specified in the URI and the route handlers defined in the route files.<br>
+      The following examples illustrate defining simple routes.<br>
+      <code>"routes/user.js"</code> responds to <code>"GET /user"</code> requests.
     </p>
-    <p>The following examples illustrate defining simple routes.</p>
-    <p><code>"routes/user.js"</code> responds to <code>"GET /user"</code> requests.</p>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="basic-routing-esm-tab" data-bs-toggle="tab" href="#basic-routing-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="basic-rtng-esm-tab" data-bs-toggle="tab" href="#basic-rtng-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="basic-routing-cjs-tab" data-bs-toggle="tab" href="#basic-routing-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="basic-rtng-cjs-tab" data-bs-toggle="tab" href="#basic-rtng-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="basic-routing-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="basic-rtng-esm" role="tabpanel">
           <pre><code class="js">import {Router} from &#039;express&#039;;
 const router = Router();
 
@@ -1371,7 +1368,7 @@ router.get(&#039;/&#039;, (req, res) =&gt; {
 
 export default router;</code></pre>
         </div>
-        <div class="tab-pane fade" id="basic-routing-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="basic-rtng-cjs" role="tabpanel">
           <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 
@@ -1388,10 +1385,10 @@ module.exports = router;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="user-login-router-esm-tab" data-bs-toggle="tab" href="#user-login-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="user-login-router-esm-tab" data-bs-toggle="tab" href="#user-login-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="user-login-router-cjs-tab" data-bs-toggle="tab" href="#user-login-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="user-login-router-cjs-tab" data-bs-toggle="tab" href="#user-login-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1420,20 +1417,19 @@ module.exports = router;</code></pre>
     <!--end::Basic Routing-->
 
     <!--begin::Nested routes-->
-    <h2 id="routing-nested">Nested routes</h2>
+    <h2 id="rtng-nested">Nested routes</h2>
     <p>
       The router supports nested files.<br>
-      If you create a nested folder structure files will be automatically routed in the same way still.
+      If you create a nested folder structure files will be automatically routed in the same way still.<br>
+      <code>"routes/api/users.js"</code> responds to <code>"GET /api/users"</code> requests.
     </p>
-
-    <p><code>"routes/api/users.js"</code> responds to <code>"GET /api/users"</code> requests.</p>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="get-users-router-esm-tab" data-bs-toggle="tab" href="#get-users-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="get-users-router-esm-tab" data-bs-toggle="tab" href="#get-users-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="get-users-router-cjs-tab" data-bs-toggle="tab" href="#get-users-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="get-users-router-cjs-tab" data-bs-toggle="tab" href="#get-users-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1464,10 +1460,10 @@ module.exports = router;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="post-users-router-esm-tab" data-bs-toggle="tab" href="#post-users-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="post-users-router-esm-tab" data-bs-toggle="tab" href="#post-users-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="post-users-router-cjs-tab" data-bs-toggle="tab" href="#post-users-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="post-users-router-cjs-tab" data-bs-toggle="tab" href="#post-users-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1498,10 +1494,10 @@ module.exports = router;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="put-users-router-esm-tab" data-bs-toggle="tab" href="#put-users-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="put-users-router-esm-tab" data-bs-toggle="tab" href="#put-users-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="put-users-router-cjs-tab" data-bs-toggle="tab" href="#put-users-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="put-users-router-cjs-tab" data-bs-toggle="tab" href="#put-users-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1532,10 +1528,10 @@ module.exports = router;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="delete-users-router-esm-tab" data-bs-toggle="tab" href="#delete-users-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="delete-users-router-esm-tab" data-bs-toggle="tab" href="#delete-users-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="delete-users-router-cjs-tab" data-bs-toggle="tab" href="#delete-users-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="delete-users-router-cjs-tab" data-bs-toggle="tab" href="#delete-users-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1564,7 +1560,7 @@ module.exports = router;</code></pre>
     <!--end::Nested routes-->
 
     <!--begin::Default Route-->
-    <h2 id="routing-default">Default Route</h2>
+    <h2 id="rtng-default">Default Route</h2>
     <p>
       Express Sweet can be told to load a default router when a URI is not present, as will be the case when only your site root URL (<code>/</code>) is requested.<br>
       To specify a default router, open your <code>"config/config.js"</code> file and set this variable:
@@ -1577,10 +1573,10 @@ module.exports = router;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="default-blog-router-esm-tab" data-bs-toggle="tab" href="#default-blog-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="default-blog-router-esm-tab" data-bs-toggle="tab" href="#default-blog-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="default-blog-router-cjs-tab" data-bs-toggle="tab" href="#default-blog-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="default-blog-router-cjs-tab" data-bs-toggle="tab" href="#default-blog-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -1610,9 +1606,11 @@ module.exports = router;</code></pre>
     <!--end::Default Route-->
 
     <!--begin::Routing methods-->
-    <h2 id="routing-methods">Routing methods</h2>
-    <p>Express supports the following routing methods corresponding to the HTTP methods of the same names.</p>
-
+    <h2 id="rtng-meth">Routing methods</h2>
+    <p>
+      Express supports the following routing methods corresponding to the HTTP methods of the same names.<br>
+      For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees’s Routing Guide</a>.
+    </p>
     <div class="row">
       <div class="col-6 col-md-4">
         <ul class="list-unstyled">
@@ -1650,25 +1648,16 @@ module.exports = router;</code></pre>
         </ul>
       </div>
     </div>
-
-    <div class="callout callout-info">For more details about routing, see the <a href="https://expressjs.com/en/guide/routing.html#express-router" target="_blank">Exprees’s Routing Guide</a>.</div>
     <!--end::Routing methods-->
     <!--end::Routing-->
 
     <!--begin::Views-->
     <h1 id="views">Views</h1>
-
-    <!--begin::Introduction-->
-    <h2 id="view-introduction">Introduction</h2>
     <p>
       Express Sweet uses Handlebars as its view template engine.<br>
-      This section describes the basic usage of the view on Express Sweet.
-    </p>
-    <div class="callout callout-info">
+      This section describes the basic usage of the view on Express Sweet.<br>
       See the <a href="https://handlebarsjs.com/guide/" target="_blank">here</a> for more information on how to use Handlebars.
-    </div>
-    <!--end::Introduction-->
-
+    </p>
 
     <!--begin::View syntax-->
     <h2 id="view-syntax">Syntax</h2>
@@ -1740,21 +1729,8 @@ Else
     </ol>
     <!--end::View layout-->
 
-    <!--begin::View helper-->
-    <h2 id="view-helper">Helpers</h2>
-    <p>The following Handlebars helpers are available by default in Express Sweet.</p>
-
-    <h3>Categories</h3>
-    <p>Currently 20 helpers in 4 categories.</p>
-    <ul>
-      <li><a href="#comparison-helpers">Comparison helpers</a></li>
-      <li><a href="#html-helpers">HTML helpers</a></li>
-      <li><a href="#object-helpers">Object helpers</a></li>
-      <li><a href="#string-helpers">String helpers</a></li>
-    </ul>
-
     <!--begin::Comparison helpers-->
-    <h3 id="comparison-helpers">Comparison helpers</h3>
+    <h2 id="view-cf-helper">Comparison helpers</h2>
     <table class="table table-bordered table-striped">
       <thead class="table-light">
         <tr>
@@ -1764,228 +1740,191 @@ Else
       </thead>
       <tbody>
         <tr>
-          <td><a href="#view-helper-eq">eq</a></td>
-          <td>Strict equality <code>===</code></td>
+          <td class="min-w-150px text-primary">eq</td>
+          <td class="min-w-200px w-100">
+            <p>Determine whether or not two values are equal (===).</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the value and type are the same, false if they are different.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{eq &#039;3&#039; 3}} =&gt; false
+        
+{{#if (eqw foo &#039;bar&#039;)}}
+  Hello
+{{/if}}</code></pre>        
+          </td>
         </tr>
         <tr>
-          <td><a href="#view-helper-eqw">eqw</a></td>
-          <td>Equality <code>==</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-neq">neq</a></td>
-          <td>Strict inequality <code>!==</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-neqw">neqw</a></td>
-          <td>Inequality <code>!=</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-lt">lt</a></td>
-          <td>Less than <code>&lt;</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-lte">lte</a></td>
-          <td>Less than or equal <code>&lt;=</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-gt">gt</a></td>
-          <td>Greater than <code>&gt;</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-gte">gte</a></td>
-          <td>Greater than or equal <code>&gt;=</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-not">not</a></td>
-          <td>Not <code>!</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-ifx">ifx</a></td>
-          <td>Imitates conditional operator <code>?:</code></td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-empty">empty</a></td>
-          <td>Check if an array is empty</td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-count">count</a></td>
-          <td>Length of an array</td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-and">and</a></td>
-          <td>Logical AND operation</td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-or">or</a></td>
-          <td>Logical OR operation</td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-coalesce">coalesce</a></td>
-          <td>Returns first non-falsy value from list of parameters</td>
-        </tr>
-        <tr>
-          <td><a href="#view-helper-includes">includes</a></td>
-          <td>Check for a value inside an array</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h4 id="view-helper-eq"><code class="method">eq</code></h4>
-    <p>Determine whether or not two values are equal (===).</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the value and type are the same, false if they are different.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{eq &#039;3&#039; 3}} =&gt; false
-
+          <td class="min-w-150px text-primary">eqw</td>
+          <td class="min-w-200px w-100">
+            <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the values are the same, false if they are different.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{eqw &#039;3&#039; 3}} =&gt; true
+        
 {{#if (eqw foo &#039;bar&#039;)}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-eqw"><code class="method">eqw</code></h4>
-    <p>Determine whether or not two values are equal (==) i.e. weak checking.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the values are the same, false if they are different.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{eqw &#039;3&#039; 3}} =&gt; true
-
-{{#if (eqw foo &#039;bar&#039;)}}
-  Hello
-{{/if}}</code></pre>
-
-    <h4 id="view-helper-neq"><code class="method">neq</code></h4>
-    <p>Determine whether or not two values are not equal (!==).</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the value and type are different, false if they are the same.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{neq 4 3}} =&gt; true
-
-{{#if (neq foo &#039;bar&#039;)}}
-  Hello
-{{/if}}</code></pre>
-
-    <h4 id="view-helper-neqw"><code class="method">neqw</code></h4>
-    <p>Determine whether or not two values are not equal (!=) weak checking.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the values are different, false if they are the same.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{neqw &#039;3&#039; 3}} =&gt; false
-
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">neq</td>
+          <td class="min-w-200px w-100">
+            <p>Determine whether or not two values are not equal (!==).</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the value and type are different, false if they are the same.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{neq 4 3}} =&gt; true
+        
+        {{#if (neq foo &#039;bar&#039;)}}
+          Hello
+        {{/if}}</code></pre>
+        
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">neqw</td>
+          <td class="min-w-200px w-100">
+            <p>Determine whether or not two values are not equal (!=) weak checking.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the values are different, false if they are the same.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{neqw &#039;3&#039; 3}} =&gt; false
+        
 {{#if (neqw foo &#039;bar&#039;)}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-lt"><code class="method">lt</code></h4>
-    <p>Check for less than condition (a < b).</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the first value is less than the second value, false otherwise.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{lt 2 3}} =&gt; true
-
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">lt</td>
+          <td class="min-w-200px w-100">
+            <p>Check for less than condition (a < b).</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the first value is less than the second value, false otherwise.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{lt 2 3}} =&gt; true
+        
 {{#if (lt 2 5)}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-lte"><code class="method">lte</code></h4>
-    <p>Check for less than or equals condition (a <= b).</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the first value is less than or equal to the second value, false otherwise.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{lte 2 3}} =&gt; true
-
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">lte</td>
+          <td class="min-w-200px w-100">
+            <p>Check for less than or equals condition (a <= b).</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the first value is less than or equal to the second value, false otherwise.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{lte 2 3}} =&gt; true
+        
 {{#if (lte 2 5)}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-gt"><code class="method">gt</code></h4>
-    <p>Check for greater than condition (a > b).</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the first value exceeds the second value, false otherwise.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{gt 2 3}} =&gt; false
-
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">gt</td>
+          <td class="min-w-200px w-100">
+            <p>Check for greater than condition (a > b).</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the first value exceeds the second value, false otherwise.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{gt 2 3}} =&gt; false
+        
 {{#if (gt 5 6)}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-gte"><code class="method">gte</code></h4>
-    <p>Check for greater than or equals condition (a >= b).</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value1 First value to be compared with second.</li>
-      <li>{any} value2 Second value to be compared with first.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{gte 3 3}} =&gt; true
-
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">gte</td>
+          <td class="min-w-200px w-100">
+            <p>Check for greater than or equals condition (a >= b).</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value1 First value to be compared with second.</li>
+              <li>{any} value2 Second value to be compared with first.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{gte 3 3}} =&gt; true
 {{#if (gte 10 2)}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-not"><code class="method">not</code></h4>
-    <p>Logical NOT of any expression.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} expression Any expression.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns the logical negation of the value.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{not true}} =&gt; false
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">not</td>
+          <td class="min-w-200px w-100">
+            <p>Logical NOT of any expression.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} expression Any expression.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns the logical negation of the value.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{not true}} =&gt; false
 {{not false}} =&gt; true
 
 {{#if (not (eq foo &#039;bar&#039;))}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-ifx"><code class="method">ifx</code></h4>
-    <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{boolean} condition Satisfying condition for getting first value. Either true of false.</li>
-      <li>{any} value1 First value to be displayed as result.</li>
-      <li>{any} value2 Second value to be displayed as result. Defaults to an empty string.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{any} Returns the result of the ternary operator.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{ifx true &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">ifx</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-ifx"><code class="method">ifx</code></h4>
+            <p>Helper to imitate the ternary &#039;?:&#039; conditional operator.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{boolean} condition Satisfying condition for getting first value. Either true of false.</li>
+              <li>{any} value1 First value to be displayed as result.</li>
+              <li>{any} value2 Second value to be displayed as result. Defaults to an empty string.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{any} Returns the result of the ternary operator.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{ifx true &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
 {{ifx false &#039;Foo&#039; &#039;Bar&#039;}} =&gt; Foo
 {{ifx (eq value 1) 5 6}} =&gt; 6    // return (value === 1) ? 5 : 6
 {{ifx (not (eq value 1)) 5 6}} =&gt; 6    // return (value !== 1) ? 5 : 6
@@ -1993,45 +1932,57 @@ Else
 &lt;!-- The third parameter is optional, and by default it will be blank string (&#039;&#039;) --&gt;
 {{ifx true &#039;active&#039;}} =&gt; &#039;active&#039;
 {{ifx false &#039;active&#039;}} =&gt; &#039;&#039;</code></pre>
-
-    <h4 id="view-helper-empty"><code class="method">empty</code></h4>
-    <p>Check if an array is empty.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any[]} items Array/object to be checked.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the array is empty, false otherwise.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">let items = [5, 6];
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">empty</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-empty"><code class="method">empty</code></h4>
+            <p>Check if an array is empty.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any[]} items Array/object to be checked.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the array is empty, false otherwise.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">let items = [5, 6];
 {{empty items}} =&gt; false
 
 {{#if (empty items)}}
   Hello
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-count"><code class="method">count</code></h4>
-    <p>Determine the length of an array.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any[]} items Array whose elements to be counted.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{number|false} Returns the length of the array if the value is an array, false if the value is not an array.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">let items = [5, 6];
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">count</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-count"><code class="method">count</code></h4>
+            <p>Determine the length of an array.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any[]} items Array whose elements to be counted.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{number|false} Returns the length of the array if the value is an array, false if the value is not an array.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">let items = [5, 6];
 {{count items}} =&gt;  2</code></pre>
-
-    <h4 id="view-helper-and"><code class="method">and</code></h4>
-    <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{...any} params Any number of boolean parameters.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns the result of the logical product.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">let value1 = value2 = true;
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">and</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-and"><code class="method">and</code></h4>
+            <p>Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{...any} params Any number of boolean parameters.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns the result of the logical product.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">let value1 = value2 = true;
 {{and value1 value2}} =&gt; true
 
 let value1 = false, value2 = true;
@@ -2042,17 +1993,21 @@ let value1 = false, value2 = true;
 {{else}}
   // do something else
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-or"><code class="method">or</code></h4>
-    <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{...any} params Any number of boolean parameters.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns the result of the OR.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">let value1 = true, value2 = false;
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">or</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-or"><code class="method">or</code></h4>
+            <p>Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{...any} params Any number of boolean parameters.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns the result of the OR.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">let value1 = true, value2 = false;
 {{or value1 value2}} =&gt; true
 
 let value = value2 = false;
@@ -2063,37 +2018,45 @@ let value = value2 = false;
 {{else}}
   // do something else
 {{/if}}</code></pre>
-
-    <h4 id="view-helper-coalesce"><code class="method">coalesce</code></h4>
-    <p>
-      Returns the first non-falsy value from the parameter list.<br>
-      Works quite similar to the SQL&#039;s "COALESCE()" function, but unlike this checks for the first non-false parameter.
-    </p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{...any} params Any number of parameters.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{any} Returns the first non-false element of the parameter.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">let fullName = &#039;Foo Bar&#039;, nickName = &#039;foob&#039;;
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">coalesce</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-coalesce"><code class="method">coalesce</code></h4>
+            <p>
+              Returns the first non-falsy value from the parameter list.<br>
+              Works quite similar to the SQL&#039;s "COALESCE()" function, but unlike this checks for the first non-false parameter.
+            </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{...any} params Any number of parameters.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{any} Returns the first non-false element of the parameter.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">let fullName = &#039;Foo Bar&#039;, nickName = &#039;foob&#039;;
 {{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;Foo Bar&#039;
 
 let fullName = &#039;&#039;, nickName = &#039;foob&#039;;
 {{coalesce fullName nickName &#039;Unknown&#039;}} =&gt; &#039;foob&#039;</code></pre>
-
-    <h4 id="view-helper-includes"><code class="method">includes</code></h4>
-    <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any[]} items The array.</li>
-      <li>{any} value The value to be checked for existence in the array.</li>
-      <li>{boolean} strict FALSE for non-strict checking. TRUE by default.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{boolean} Returns true if the array contains the specified value, false otherwise.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">let items = [1, 2, 3];
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary">includes</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-includes"><code class="method">includes</code></h4>
+            <p>Returns boolean if the array contains the element strictly or non-strictly.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any[]} items The array.</li>
+              <li>{any} value The value to be checked for existence in the array.</li>
+              <li>{boolean} strict FALSE for non-strict checking. TRUE by default.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the array contains the specified value, false otherwise.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">let items = [1, 2, 3];
 let value = 2;
 
 {{includes items value}} =&gt; true
@@ -2104,14 +2067,18 @@ let value = &#039;2&#039;
 {{includes items value false}} =&gt; true
 
 {{#if (includes items value)}}
-   &lt;!-- Do something --&gt;
+    &lt;!-- Do something --&gt;
 {{/if}}
 
 {{ifx (includes items value) &#039;Yes&#039; &#039;No&#039;}}</code></pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <!--end::Comparison helpers-->
 
     <!--begin::HTML helpers-->
-    <h3 id="html-helpers">HTML helpers</h3>
+    <h2 id="view-html-helper">HTML helpers</h2>
     <table class="table table-bordered table-striped">
       <thead class="table-light">
         <tr>
@@ -2121,27 +2088,26 @@ let value = &#039;2&#039;
       </thead>
       <tbody>
         <tr>
-          <td><a href="#view-helper-cache-busting">cache_busting</a></td>
-          <td>Load automatically updated Assets</td>
+          <td class="min-w-150px text-primary">cache_busting</td>
+          <td class="min-w-200px w-100">
+            <p>Returns the Assets path containing the file update time parameter.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} filePath Paths of Assets files such as CSS and JS in public directories.</li>
+              <li>{string} baseUrl Application Origin URL.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{string} Returns the Assets file path with the update date and time parameters.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{cache_busting &#039;/assets/style.css&#039; &#039;//example.com&#039;}} =&gt; example.com/assets/style.css?1620526340463</code></pre>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <h4 id="view-helper-cache-busting"><code class="method">cache_busting</code></h4>
-    <p>Returns the Assets path containing the file update time parameter.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{string} filePath Paths of Assets files such as CSS and JS in public directories.</li>
-      <li>{string} baseUrl Application Origin URL.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{string} Returns the Assets file path with the update date and time parameters.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{cache_busting &#039;/assets/style.css&#039; &#039;//example.com&#039;}} =&gt; example.com/assets/style.css?1620526340463</code></pre>
     <!--end::HTML helpers-->
 
     <!--begin::Object helpers-->
-    <h3 id="object-helpers">Object helpers</h3>
+    <h2 id="view-obj-helper">Object helpers</h2>
     <table class="table table-bordered table-striped">
       <thead class="table-light">
         <tr>
@@ -2151,42 +2117,40 @@ let value = &#039;2&#039;
       </thead>
       <tbody>
         <tr>
-          <td><a href="#view-helper-json-stringify">json_stringify</a></td>
-          <td>Stringify an object using JSON.stringify</td>
+          <td class="min-w-150px text-primary">json_stringify</td>
+          <td class="min-w-200px w-100">
+            <p>Stringify an object using JSON.stringify.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value The value to convert to a JSON string.</li>
+              <li>{number} indent The number of space characters to use as whitespace.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{string} A JSON string representing the given value, or undefined.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{json_stringify value}}</code></pre>
+          </td>
         </tr>
         <tr>
-          <td><a href="#view-helper-json-parse">json_parse</a></td>
-          <td>Parses the given string using JSON.parse</td>
+          <td class="min-w-150px text-primary">json_parse</td>
+          <td class="min-w-200px w-100">
+            <p>Parses the given string using JSON.parse.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value Object to stringify.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{any} JavaScript value or object described by a string.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{json_parse value}}</code></pre>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <h4 id="view-helper-json-stringify"><code class="method">json_stringify</code></h4>
-    <p>Stringify an object using JSON.stringify.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value The value to convert to a JSON string.</li>
-      <li>{number} indent The number of space characters to use as whitespace.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{string} A JSON string representing the given value, or undefined.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{json_stringify value}}</code></pre>
-
-    <h4 id="view-helper-json-parse"><code class="method">json_parse</code></h4>
-    <p>Parses the given string using JSON.parse.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{any} value Object to stringify.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{any} JavaScript value or object described by a string.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{json_parse value}}</code></pre>
     <!--end::Object helpers-->
 
     <!--begin::String helpers-->
-    <h3 id="string-helpers">String helpers</h3>
+    <h2 id="view-str-helper">String helpers</h2>
     <table class="table table-bordered table-striped">
       <thead class="table-light">
         <tr>
@@ -2196,33 +2160,28 @@ let value = &#039;2&#039;
       </thead>
       <tbody>
         <tr>
-          <td><a href="#view-helper-replace">replace</a></td>
-          <td>Replace string</td>
+          <td class="min-w-150px text-primary">replace</td>
+          <td>
+            <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} value String.</li>
+              <li>{string} find The string to be replaced.</li>
+              <li>{string} replace The string to replace.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{string} Character string after replacement.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">{{replace &#039;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#039; &#039;dog&#039; &#039;monkey&#039;}}</code></pre>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <h4 id="view-helper-replace"><code class="method">replace</code></h4>
-    <p>Returns a new string with some or all matches of a pattern replaced by a replacement.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-      <li>{string} value String.</li>
-      <li>{string} find The string to be replaced.</li>
-      <li>{string} replace The string to replace.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{string} Character string after replacement.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code class="js">{{replace &#039;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#039; &#039;dog&#039; &#039;monkey&#039;}}</code></pre>
     <!--end::String helpers-->
-    <!--end::View helper-->
     <!--end::Views-->
 
     <!--begin::Model-->
     <h1 id="model">Model</h1>
-
-    <!--begin::Introduction-->
-    <h2 id="model-introduction">Introduction</h2>
     <p>
       Models provide a way to interact with a specific table in your database.<br>
       They come out of the box with helper methods for much of the standard ways you would need to interact with a database table, including finding records, updating records, deleting records, and more.
@@ -2234,7 +2193,6 @@ let value = &#039;2&#039;
       <li>and more</li>
     </ul>
     <p>This class provides a solid base from which to build your own models, allowing you to rapidly build out your application’s model layer.</p>
-    <!--end::Introduction-->
 
     <!--begin::Accessing Models-->
     <h2 id="model-accessing">Accessing Models</h2>
@@ -2246,10 +2204,10 @@ let value = &#039;2&#039;
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-accessing-esm-tab" data-bs-toggle="tab" href="#model-accessing-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-accessing-esm-tab" data-bs-toggle="tab" href="#model-accessing-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-accessing-cjs-tab" data-bs-toggle="tab" href="#model-accessing-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-accessing-cjs-tab" data-bs-toggle="tab" href="#model-accessing-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -2315,10 +2273,10 @@ await UserModel.destroy({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="creating-your-model-esm-tab" data-bs-toggle="tab" href="#creating-your-model-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="creating-your-model-esm-tab" data-bs-toggle="tab" href="#creating-your-model-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="creating-your-model-cjs-tab" data-bs-toggle="tab" href="#creating-your-model-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="creating-your-model-cjs-tab" data-bs-toggle="tab" href="#creating-your-model-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -2397,7 +2355,7 @@ module.exports = class extends Model {
     <!--end::Creating Your Model-->
 
     <!--begin::Connecting to the Database-->
-    <h2 id="model-connecting-to-the-database">Connecting to the Database</h2>
+    <h2 id="model-connecting">Connecting to the Database</h2>
     <p>
       The database connection is automatic when the model is loaded.<br>
       The configuration related to the database connection is defined in the "config/database.js" file.<br>
@@ -2464,10 +2422,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="database-is-connect-esm-tab" data-bs-toggle="tab" href="#database-is-connect-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="database-is-connect-esm-tab" data-bs-toggle="tab" href="#database-is-connect-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="database-is-connect-cjs-tab" data-bs-toggle="tab" href="#database-is-connect-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="database-is-connect-cjs-tab" data-bs-toggle="tab" href="#database-is-connect-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -2744,10 +2702,10 @@ const isConnected = await database.isConnect();</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-table-esm-tab" data-bs-toggle="tab" href="#model-table-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-table-esm-tab" data-bs-toggle="tab" href="#model-table-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-table-cjs-tab" data-bs-toggle="tab" href="#model-table-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-table-cjs-tab" data-bs-toggle="tab" href="#model-table-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -2793,10 +2751,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-attributes-esm-tab" data-bs-toggle="tab" href="#model-attributes-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-attributes-esm-tab" data-bs-toggle="tab" href="#model-attributes-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-attributes-cjs-tab" data-bs-toggle="tab" href="#model-attributes-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-attributes-cjs-tab" data-bs-toggle="tab" href="#model-attributes-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -2876,10 +2834,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-op-esm-tab" data-bs-toggle="tab" href="#model-op-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-op-esm-tab" data-bs-toggle="tab" href="#model-op-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-op-cjs-tab" data-bs-toggle="tab" href="#model-op-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-op-cjs-tab" data-bs-toggle="tab" href="#model-op-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -2960,10 +2918,10 @@ UserModel.destroy({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-fn-esm-tab" data-bs-toggle="tab" href="#model-fn-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-fn-esm-tab" data-bs-toggle="tab" href="#model-fn-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-fn-cjs-tab" data-bs-toggle="tab" href="#model-fn-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-fn-cjs-tab" data-bs-toggle="tab" href="#model-fn-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3021,10 +2979,10 @@ console.log(&#39;books=&#39;, books);</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-literal-esm-tab" data-bs-toggle="tab" href="#model-literal-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-literal-esm-tab" data-bs-toggle="tab" href="#model-literal-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-literal-cjs-tab" data-bs-toggle="tab" href="#model-literal-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-literal-cjs-tab" data-bs-toggle="tab" href="#model-literal-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3094,10 +3052,10 @@ console.log(&#39;books=&#39;, books);</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-where-esm-tab" data-bs-toggle="tab" href="#model-where-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-where-esm-tab" data-bs-toggle="tab" href="#model-where-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-where-cjs-tab" data-bs-toggle="tab" href="#model-where-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-where-cjs-tab" data-bs-toggle="tab" href="#model-where-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3149,10 +3107,10 @@ console.log(&#39;books=&#39;, books);</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-association-esm-tab" data-bs-toggle="tab" href="#model-association-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-association-esm-tab" data-bs-toggle="tab" href="#model-association-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-association-cjs-tab" data-bs-toggle="tab" href="#model-association-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-association-cjs-tab" data-bs-toggle="tab" href="#model-association-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3223,10 +3181,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-begin-esm-tab" data-bs-toggle="tab" href="#model-begin-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-begin-esm-tab" data-bs-toggle="tab" href="#model-begin-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-begin-cjs-tab" data-bs-toggle="tab" href="#model-begin-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-begin-cjs-tab" data-bs-toggle="tab" href="#model-begin-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3293,7 +3251,7 @@ try {
       Builds a new model instance and calls <code>save</code> on it.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-create" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} values Hash of data values to create new record with.</li>
       <li>{object} options Build and query options.</li>
@@ -3304,10 +3262,10 @@ try {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-create-esm-tab" data-bs-toggle="tab" href="#model-create-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-create-esm-tab" data-bs-toggle="tab" href="#model-create-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-create-cjs-tab" data-bs-toggle="tab" href="#model-create-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-create-cjs-tab" data-bs-toggle="tab" href="#model-create-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3341,7 +3299,7 @@ await UserModel.create({
       Validates this instance, and if the validation passes, persists it to the database.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-save" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} options save options.</li>
     </ul>
@@ -3351,10 +3309,10 @@ await UserModel.create({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-save-esm-tab" data-bs-toggle="tab" href="#model-save-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-save-esm-tab" data-bs-toggle="tab" href="#model-save-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-save-cjs-tab" data-bs-toggle="tab" href="#model-save-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-save-cjs-tab" data-bs-toggle="tab" href="#model-save-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3401,7 +3359,7 @@ await user.save();</code></pre>
       Returns the first instance found, or null if none can be found.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOne" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} options A hash of options to describe the scope of the search.</li>
     </ul>
@@ -3411,10 +3369,10 @@ await user.save();</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-find-one-esm-tab" data-bs-toggle="tab" href="#model-find-one-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-find-one-esm-tab" data-bs-toggle="tab" href="#model-find-one-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-find-one-cjs-tab" data-bs-toggle="tab" href="#model-find-one-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-find-one-cjs-tab" data-bs-toggle="tab" href="#model-find-one-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3440,7 +3398,7 @@ await UserModel.findOne();</code></pre>
       Search for multiple instances.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} options A hash of options to describe the scope of the search.</li>
     </ul>
@@ -3450,10 +3408,10 @@ await UserModel.findOne();</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-find-all-esm-tab" data-bs-toggle="tab" href="#model-find-all-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-find-all-esm-tab" data-bs-toggle="tab" href="#model-find-all-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-find-all-cjs-tab" data-bs-toggle="tab" href="#model-find-all-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-find-all-cjs-tab" data-bs-toggle="tab" href="#model-find-all-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3491,7 +3449,7 @@ const users = await UserModel.findAll({
       Count the number of records matching the provided where clause.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-count" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} options A hash of options to describe the scope of the search.</li>
     </ul>
@@ -3501,10 +3459,10 @@ const users = await UserModel.findAll({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-count-esm-tab" data-bs-toggle="tab" href="#model-count-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-count-esm-tab" data-bs-toggle="tab" href="#model-count-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-count-cjs-tab" data-bs-toggle="tab" href="#model-count-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-count-cjs-tab" data-bs-toggle="tab" href="#model-count-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3530,7 +3488,7 @@ await UserModel.count();</code></pre>
       Update multiple instances that match the where options.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} values hash of values to update.</li>
       <li>{object} options update options.</li>
@@ -3541,10 +3499,10 @@ await UserModel.count();</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-update-esm-tab" data-bs-toggle="tab" href="#model-update-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-update-esm-tab" data-bs-toggle="tab" href="#model-update-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-update-cjs-tab" data-bs-toggle="tab" href="#model-update-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-update-cjs-tab" data-bs-toggle="tab" href="#model-update-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3591,7 +3549,7 @@ await UserModel.update(
       Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} values hash of values to upsert.</li>
       <li>{object} options upsert options.</li>
@@ -3602,10 +3560,10 @@ await UserModel.update(
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-upsert-esm-tab" data-bs-toggle="tab" href="#model-upsert-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-upsert-esm-tab" data-bs-toggle="tab" href="#model-upsert-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-upsert-cjs-tab" data-bs-toggle="tab" href="#model-upsert-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-upsert-cjs-tab" data-bs-toggle="tab" href="#model-upsert-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3641,7 +3599,7 @@ await UserModel.upsert({
       Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{object} options destroy options.</li>
     </ul>
@@ -3651,10 +3609,10 @@ await UserModel.upsert({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-destroy-esm-tab" data-bs-toggle="tab" href="#model-destroy-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-destroy-esm-tab" data-bs-toggle="tab" href="#model-destroy-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-destroy-cjs-tab" data-bs-toggle="tab" href="#model-destroy-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-destroy-cjs-tab" data-bs-toggle="tab" href="#model-destroy-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3681,7 +3639,7 @@ await UserModel.destroy({where: {id :1}});</code></pre>
       The foreign key is added on the target.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasOne" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{Model} target The target model.</li>
       <li>{object} options hasOne association options.</li>
@@ -3704,10 +3662,10 @@ await UserModel.destroy({where: {id :1}});</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-has-one-association-esm-tab" data-bs-toggle="tab" href="#model-has-one-association-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-has-one-association-esm-tab" data-bs-toggle="tab" href="#model-has-one-association-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-has-one-association-cjs-tab" data-bs-toggle="tab" href="#model-has-one-association-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-has-one-association-cjs-tab" data-bs-toggle="tab" href="#model-has-one-association-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3770,10 +3728,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-has-one-find-esm-tab" data-bs-toggle="tab" href="#model-has-one-find-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-has-one-find-esm-tab" data-bs-toggle="tab" href="#model-has-one-find-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-has-one-find-cjs-tab" data-bs-toggle="tab" href="#model-has-one-find-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-has-one-find-cjs-tab" data-bs-toggle="tab" href="#model-has-one-find-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3854,7 +3812,7 @@ await UserModel.findAll({
       The foreign key is added on the source.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{Model} target The target model.</li>
       <li>{object} options belongsTo association options.</li>
@@ -3877,10 +3835,10 @@ await UserModel.findAll({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-belongs-to-association-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-association-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-belongs-to-association-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-association-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-belongs-to-association-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-association-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-belongs-to-association-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-association-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -3943,10 +3901,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-belongs-to-find-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-find-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-belongs-to-find-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-find-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-belongs-to-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-find-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-belongs-to-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-find-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -4027,7 +3985,7 @@ await ProfileModel.findAll({
       The foreign key is added on the target.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{Model} target The target model.</li>
       <li>{object} options hasMany association options.</li>
@@ -4050,10 +4008,10 @@ await ProfileModel.findAll({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="mode-has-many-association-esm-tab" data-bs-toggle="tab" href="#mode-has-many-association-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="mode-has-many-association-esm-tab" data-bs-toggle="tab" href="#mode-has-many-association-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="mode-has-many-association-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-association-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="mode-has-many-association-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-association-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -4115,10 +4073,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="mode-has-many-find-esm-tab" data-bs-toggle="tab" href="#mode-has-many-find-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="mode-has-many-find-esm-tab" data-bs-toggle="tab" href="#mode-has-many-find-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="mode-has-many-find-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-find-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="mode-has-many-find-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-find-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -4205,7 +4163,7 @@ await UserModel.findAll({
       Defining through is required.<br>
       See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" target="_blank">here</a> for details.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{Model} target The target model.</li>
       <li>{object} options belongsToMany association options.</li>
@@ -4229,10 +4187,10 @@ await UserModel.findAll({
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-belongs-to-many-association-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-many-association-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-belongs-to-many-association-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-many-association-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-belongs-to-many-association-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-association-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-belongs-to-many-association-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-association-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -4295,10 +4253,10 @@ module.exports = class extends Model {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="model-belongs-to-many-find-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-many-find-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="model-belongs-to-many-find-esm-tab" data-bs-toggle="tab" href="#model-belongs-to-many-find-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="model-belongs-to-many-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-find-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="model-belongs-to-many-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-find-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -4382,10 +4340,10 @@ await UserModel.findAll({
     <!--end::Model-->
 
     <!--begin::User authentication-->
-    <h1 id="user-auth">User authentication</h1>
+    <h1 id="auth">User authentication</h1>
 
     <!--begin::Introduction-->
-    <h2 id="user-auth-introduction">Introduction</h2>
+    <h2 id="auth-intro">Introduction</h2>
     <p>
       Express Sweet has built-in passport authentication middleware for user authentication by username and password.<br>
       You can immediately start user authentication in your application using the authentication configuration file and the authentication service module.<br>
@@ -4394,7 +4352,7 @@ await UserModel.findAll({
     <!--end::Introduction-->
 
     <!--begin::Authenticating Users-->
-    <h2 id="user-auth-authenticating-users">Authenticating Users</h2>
+    <h2 id="auth-authenticating">Authenticating Users</h2>
       To authenticate the request, call <code>"express-sweet.services.Authentication.authenticate()"</code> method.<br>
       This method returns <code>true</code> if the authentication succeeds and <code>false</code> if it fails.<br>
       If authentication succeeds, the next handler will be invoked and the <code>req.user</code> property will be set to the authenticated user.
@@ -4436,10 +4394,10 @@ password: &#039;password&#039;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="auth-router-esm-tab" data-bs-toggle="tab" href="#auth-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="auth-router-esm-tab" data-bs-toggle="tab" href="#auth-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="auth-router-cjs-tab" data-bs-toggle="tab" href="#auth-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="auth-router-cjs-tab" data-bs-toggle="tab" href="#auth-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -4507,10 +4465,10 @@ module.exports = router;</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="async-auth-router-esm-tab" data-bs-toggle="tab" href="#async-auth-router-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="async-auth-router-esm-tab" data-bs-toggle="tab" href="#async-auth-router-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="async-auth-router-cjs-tab" data-bs-toggle="tab" href="#async-auth-router-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="async-auth-router-cjs-tab" data-bs-toggle="tab" href="#async-auth-router-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -4593,7 +4551,7 @@ form.addEventListener(&#039;submit&#039;, async event =&gt; {
     <!--end::Authenticating Users-->
 
     <!--begin::Logging Out-->
-    <h2 id="user-auth-logging-out">Logging Out</h2>
+    <h2 id="auth-logout">Logging Out</h2>
     <p>
       If you want to log out the user, call the <code>"express-sweet.services.Authentication.logout()"</code> method.<br>
       Invoking <code>"logout()"</code> will remove the <code>req.user</code> property and clear the login session (if any).
@@ -4604,14 +4562,14 @@ form.addEventListener(&#039;submit&#039;, async event =&gt; {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="auth-logging-out-esm-tab" data-bs-toggle="tab" href="#auth-logging-out-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="auth-logout-esm-tab" data-bs-toggle="tab" href="#auth-logout-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="auth-logging-out-cjs-tab" data-bs-toggle="tab" href="#auth-logging-out-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="auth-logout-cjs-tab" data-bs-toggle="tab" href="#auth-logout-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="auth-logging-out-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="auth-logout-esm" role="tabpanel">
           <pre><code class="js">import {Router} from &#039;express&#039;;
 import * as sweet from &#039;express-sweet&#039;;
 const router = Router();
@@ -4627,7 +4585,7 @@ router.get(&#039;/logout&#039;, (req, res) =&gt; {
 
 export default router;</code></pre>
         </div>
-        <div class="tab-pane fade" id="auth-logging-out-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="auth-logout-cjs" role="tabpanel">
           <pre><code class="js">const express = require(&#039;express&#039;);
 const router = express.Router();
 const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
@@ -4651,10 +4609,10 @@ module.exports = router;</code></pre>
     <!--end::User authentication-->
 
     <!--begin::Rekognition-->
-    <h1 id="rekognition">Rekognition</h1>
+    <h1 id="rekog">Rekognition</h1>
 
     <!--begin::Introduction-->
-    <h2 id="rekognition-introduction">Introduction</h2>
+    <h2 id="rekog-intro">Introduction</h2>
     <p>
       Express Sweet includes an extension of "Amazon Rekognition" for face recognition, face detection, and face comparison.<br>
       This section describes how to use the modules that do them.<br>
@@ -4663,7 +4621,7 @@ module.exports = router;</code></pre>
     <!--end::Introduction-->
 
     <!--begin::Class Rekognition-->
-    <h2 id="rekognition-class">Class Rekognition</h2>
+    <h2 id="rekog-class">Class Rekognition</h2>
     <code class="d-block mb-3">express-sweet.services.AWSRekognitionClient</code>
 
     <p>This is a class that uses machine learning to analyze images and videos.</p>
@@ -4680,21 +4638,21 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">Detects faces within an image that is provided as input.</p>
           </td>
         </tr>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-compare-faces">compareFaces</a>(img1: string, img2: string): Promise&lt;number&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-compare-faces">compareFaces</a>(img1: string, img2: string): Promise&lt;number&gt;</code>
             <p class="mb-0 ms-3 mt-1">Compare the similarity of two faces.</p>
           </td>
         </tr>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-create-collection">createCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-create-collection">createCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               Add faces to the collection using the IndexFaces operation.<br>
               For example, you might create collections, one for each of your application users.<br>
@@ -4706,14 +4664,14 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">Returns list of collection IDs.</p>
           </td>
         </tr>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-delete-collection">deleteCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-delete-collection">deleteCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               Deletes the specified collection.<br>
               Note that this operation removes all faces in the collection.
@@ -4723,7 +4681,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-index-face">indexFace</a>(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-index-face">indexFace</a>(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               Detects one face in the input image and adds it to the specified collection.<br>
               This method doesn't save the actual faces that are detected.<br>
@@ -4739,7 +4697,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-search-faces">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-search-faces">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
               The operation compares the features of the input face with faces in the specified collection.
@@ -4749,7 +4707,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-list-faces">listFaces</a>(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-list-faces">listFaces</a>(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               Returns metadata for faces in the specified collection.<br>
               This metadata includes information such as the bounding box coordinates, and face ID.
@@ -4759,7 +4717,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body">async <a href="#rekognition-method-delete-faces">deleteFaces</a>(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code>
+            <code class="text-body">async <a href="#rekog-method-delete-faces">deleteFaces</a>(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code>
             <p class="mb-0 ms-3 mt-1">
               Deletes faces from a collection.<br>
               You specify a collection ID and an array of face IDs to remove from the collection.
@@ -4781,7 +4739,7 @@ module.exports = router;</code></pre>
         <tr>
           <td class="text-nowrap">public</td>
           <td class="w-100">
-            <code class="text-body"><a href="#rekognition-constructor">constructor</a>(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code>
+            <code class="text-body"><a href="#rekog-constructor">constructor</a>(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code>
             <p class="mb-0 ms-3 mt-1">Constructs a rekognition client object.</p>
           </td>
         </tr>
@@ -4789,12 +4747,12 @@ module.exports = router;</code></pre>
     </table>
 
     <h3>Methods</h3>
-    <h4 id="rekognition-method-detect-faces"><code class="method">public async detectFaces(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;</code></h4>
+    <h4 id="rekog-method-detect-faces"><code class="method">public async detectFaces(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;</code></h4>
     <p>
       Detects faces within an image that is provided as input.<br>
       For each face detected, the operation returns a bounding box of the face.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} img Image path or Data Url or image buffer.</li>
       <li class="d-flex">
@@ -4806,19 +4764,19 @@ module.exports = router;</code></pre>
       </li>
     </ul>
     <p><strong>Return:</strong></p>
-    <p>{Promise&lt;<a href="#rekognition-interface-bounding-box">BoundingBox</a>[]&gt;} Returns the bounding box of the detected face.</p>
+    <p>{Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;} Returns the bounding box of the detected face.</p>
     <p><strong>Example:</strong></p>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-detect-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-detect-faces-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-detect-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-detect-faces-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-detect-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-detect-faces-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-detect-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-detect-faces-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-detect-faces-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-detect-faces-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
@@ -4846,7 +4804,7 @@ await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
 // Detect faces from buffer.
 await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-detect-faces-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-detect-faces-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
@@ -4877,9 +4835,9 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
       </div>
     </div>
 
-    <h4 id="rekognition-method-compare-faces"><code class="method">public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</code></h4>
+    <h4 id="rekog-method-compare-faces"><code class="method">public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</code></h4>
     <p>Compare the similarity of two faces.</p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} img1 Image path or Data Url or image buffer.</li>
       <li>{string} img2 Image path or Data Url or image buffer.</li>
@@ -4890,14 +4848,14 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-compare-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-compare-faces-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-compare-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-compare-faces-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-compare-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-compare-faces-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-compare-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-compare-faces-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-compare-faces-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-compare-faces-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
@@ -4917,7 +4875,7 @@ await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data
 // Compare faces from buffer.
 await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-compare-faces-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-compare-faces-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
@@ -4940,7 +4898,7 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
       </div>
     </div>
 
-    <h4 id="rekognition-method-create-collection"><code class="method">public async createCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
+    <h4 id="rekog-method-create-collection"><code class="method">public async createCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
     <p>
       Add faces to the collection using the IndexFaces operation.<br>
       For example, you might create collections, one for each of your application users.<br>
@@ -4948,7 +4906,7 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
       Then, a user can search the collection for faces in the user-specific container.
       <div class="callout callout-warning">Note that Collection names are case-sensitive.</div>
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li class="d-flex">
         <span>{string} collectionId</span>
@@ -4962,14 +4920,14 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-create-collection-esm-tab" data-bs-toggle="tab" href="#rekognition-method-create-collection-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-create-collection-esm-tab" data-bs-toggle="tab" href="#rekog-method-create-collection-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-create-collection-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-create-collection-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-create-collection-cjs-tab" data-bs-toggle="tab" href="#rekog-method-create-collection-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-create-collection-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-create-collection-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
@@ -4989,7 +4947,7 @@ try {
   console.log(`message: ${e.message}`);
 }</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-create-collection-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-create-collection-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
@@ -5012,7 +4970,7 @@ try {
       </div>
     </div>
 
-    <h4 id="rekognition-method-list-collections"><code class="method">public async listCollections(): Promise&lt;string[]&gt;</code></h4>
+    <h4 id="rekog-method-list-collections"><code class="method">public async listCollections(): Promise&lt;string[]&gt;</code></h4>
     <p>Returns list of collection IDs.</p>
     <p><strong>Return:</strong></p>
     <p>{Promise&lt;string[]&gt;} An array of collection IDs.</p>
@@ -5020,14 +4978,14 @@ try {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-list-collections-esm-tab" data-bs-toggle="tab" href="#rekognition-method-list-collections-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-list-collections-esm-tab" data-bs-toggle="tab" href="#rekog-method-list-collections-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-list-collections-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-list-collections-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-list-collections-cjs-tab" data-bs-toggle="tab" href="#rekog-method-list-collections-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-list-collections-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-list-collections-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
@@ -5044,7 +5002,7 @@ const client = new sweet.services.AWSRekognitionClient({
 //         ]
 await client.listCollections();</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-list-collections-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-list-collections-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
@@ -5064,12 +5022,12 @@ await client.listCollections();</code></pre>
       </div>
     </div>
 
-    <h4 id="rekognition-method-delete-collection"><code class="method">public async deleteCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
+    <h4 id="rekog-method-delete-collection"><code class="method">public async deleteCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
     <p>
       Deletes the specified collection.<br>
       Note that this operation removes all faces in the collection.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} collectionId ID of the collection to delete.</li>
     </ul>
@@ -5077,14 +5035,14 @@ await client.listCollections();</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-delete-collection-esm-tab" data-bs-toggle="tab" href="#rekognition-method-delete-collection-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-delete-collection-esm-tab" data-bs-toggle="tab" href="#rekog-method-delete-collection-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-delete-collection-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-delete-collection-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-delete-collection-cjs-tab" data-bs-toggle="tab" href="#rekog-method-delete-collection-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-delete-collection-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-delete-collection-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
@@ -5097,7 +5055,7 @@ const client = new sweet.services.AWSRekognitionClient({
 // Delete collection.
 await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-delete-collection-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-delete-collection-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
@@ -5113,7 +5071,7 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
       </div>
     </div>
 
-    <h4 id="rekognition-method-index-face"><code class="method">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code></h4>
+    <h4 id="rekog-method-index-face"><code class="method">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code></h4>
     <p>
       Detects one face in the input image and adds it to the specified collection.<br>
       This method doesn't save the actual faces that are detected.<br>
@@ -5124,7 +5082,7 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
         Throws an exception if no face is found in the input image or multiple faces are found.
       </div>
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} collectionId The ID of an existing collection to which you want to add the faces that are detected in the input images.</li>
       <li>{string} img Image path or Data Url or image buffer.</li>
@@ -5145,14 +5103,14 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-index-face-esm-tab" data-bs-toggle="tab" href="#rekognition-method-index-face-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-index-face-esm-tab" data-bs-toggle="tab" href="#rekog-method-index-face-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-index-face-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-index-face-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-index-face-cjs-tab" data-bs-toggle="tab" href="#rekog-method-index-face-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-index-face-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-index-face-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
@@ -5204,7 +5162,7 @@ try {
   console.log(`message: ${e.message}`);
 }</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-index-face-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-index-face-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
@@ -5259,12 +5217,12 @@ try {
       </div>
     </div>
 
-    <h4 id="rekognition-method-search-faces"><code class="method">public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;</code></h4>
+    <h4 id="rekog-method-search-faces"><code class="method">public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;</code></h4>
     <p>
       For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
       The operation compares the features of the input face with faces in the specified collection.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} collectionId ID of the collection to search.</li>
       <li>{string} img Image path or Data Url or image buffer.</li>
@@ -5286,7 +5244,7 @@ try {
     </ul>
     <p><strong>Return:</strong></p>
     <p class="d-flex">
-      <span>{Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]|<a href="#rekognition-interface-face-match">FaceMatch</a>|null&gt;}</span>
+      <span>{Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;}</span>
       <span class="ms-2">
         If <code>options.maxFaces</code> is 1, the face information found is returned.<br>
         If <code>options.maxFaces</code> is 2 or more, the list of face information found is returned.<br>
@@ -5297,14 +5255,14 @@ try {
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-search-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-search-faces-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-search-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-search-faces-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-search-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-search-faces-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-search-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-search-faces-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-search-faces-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-search-faces-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
@@ -5353,7 +5311,7 @@ console.log(matches);
 await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
 await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-search-faces-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-search-faces-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 const fs = require(&#039;fs&#039;);
 
@@ -5405,30 +5363,30 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
       </div>
     </div>
 
-    <h4 id="rekognition-method-list-faces"><code class="method">public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;</code></h4>
+    <h4 id="rekog-method-list-faces"><code class="method">public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;</code></h4>
     <p>
       Returns metadata for faces in the specified collection.<br>
       This metadata includes information such as the bounding box coordinates, and face ID.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} collectionId ID of the collection from which to list the faces.</li>
       <li>{number} maxResults Maximum number of faces to return.The default value is 1000.</li>
     </ul>
     <p><strong>Return:</strong></p>
-    <p>{Promise&lt;<a href="#rekognition-interface-face-match">FaceMatch</a>[]&gt;} Returns all face metadata in the collection.</p>
+    <p>{Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;} Returns all face metadata in the collection.</p>
     <p><strong>Example:</strong></p>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-list-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-list-faces-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-list-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-list-faces-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-list-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-list-faces-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-list-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-list-faces-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-list-faces-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-list-faces-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
@@ -5454,7 +5412,7 @@ const client = new sweet.services.AWSRekognitionClient({
 const result = await client.listFaces(&#039;MyCollection&#039;);
 console.log(result);</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-list-faces-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-list-faces-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
@@ -5483,12 +5441,12 @@ console.log(result);</code></pre>
       </div>
     </div>
 
-    <h4 id="rekognition-method-delete-faces"><code class="method">public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code></h4>
+    <h4 id="rekog-method-delete-faces"><code class="method">public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code></h4>
     <p>
       Deletes faces from a collection.<br>
       You specify a collection ID and an array of face IDs to remove from the collection.
     </p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} collectionId Collection from which to remove the specific faces.</li>
       <li>{string[]} faceIds An array of face IDs to delete.</li>
@@ -5497,14 +5455,14 @@ console.log(result);</code></pre>
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-method-delete-faces-esm-tab" data-bs-toggle="tab" href="#rekognition-method-delete-faces-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-method-delete-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-delete-faces-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-method-delete-faces-cjs-tab" data-bs-toggle="tab" href="#rekognition-method-delete-faces-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-method-delete-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-delete-faces-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-method-delete-faces-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-method-delete-faces-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
@@ -5517,7 +5475,7 @@ const client = new sweet.services.AWSRekognitionClient({
 // Delete a face from the collection.
 await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-method-delete-faces-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-method-delete-faces-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
@@ -5534,9 +5492,9 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
     </div>
 
     <h3>Constructors</h3>
-    <h4 id="rekognition-constructor"><code class="method">public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code></h4>
+    <h4 id="rekog-constructor"><code class="method">public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code></h4>
     <p>Constructs a rekognition client object.</p>
-    <p><strong>Parameters:</strong></p>
+    <p><strong>Params:</strong></p>
     <ul>
       <li>{string} options.accessKeyId Your AWS access key ID.</li>
       <li>{string} options.secretAccessKey Your AWS secret access key.</li>
@@ -5547,14 +5505,14 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
     <div class="example">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="rekognition-constructor-esm-tab" data-bs-toggle="tab" href="#rekognition-constructor-esm" role="tab">ESM</a>
+          <a class="nav-link active" id="rekog-constructor-esm-tab" data-bs-toggle="tab" href="#rekog-constructor-esm">ESM</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="rekognition-constructor-cjs-tab" data-bs-toggle="tab" href="#rekognition-constructor-cjs" role="tab">CJS</a>
+          <a class="nav-link" id="rekog-constructor-cjs-tab" data-bs-toggle="tab" href="#rekog-constructor-cjs">CJS</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekognition-constructor-esm" role="tabpanel">
+        <div class="tab-pane fade show active" id="rekog-constructor-esm" role="tabpanel">
           <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
 // Instantiate Rekognition client.
@@ -5564,7 +5522,7 @@ const client = new sweet.services.AWSRekognitionClient({
   region: process.env.AWS_REKOGNITION_REGION
 });</code></pre>
         </div>
-        <div class="tab-pane fade" id="rekognition-constructor-cjs" role="tabpanel">
+        <div class="tab-pane fade" id="rekog-constructor-cjs" role="tabpanel">
           <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
 
 // Instantiate Rekognition client.
@@ -5579,7 +5537,7 @@ const client = new AWSRekognitionClient({
     <!--end::Class Rekognition-->
 
     <!--begin::Interface FaceMatch-->
-    <h2 id="rekognition-interface-face-match">Interface FaceMatch</h2>
+    <h2 id="rekog-match-intf">Interface FaceMatch</h2>
     <code class="d-block mb-3">express-sweet.interfaces.FaceMatch</code>
 
     <p>This is the metadata structure of the bounding box coordinates, reliability (the bounding box contains a face), face ID, etc. returned by the <code>searchFaces()</code>, <code>listFaces()</code> methods, etc.</p>
@@ -5598,7 +5556,7 @@ const client = new AWSRekognitionClient({
           <td class="w-100">A unique identifier assigned to the face.</td>
         </tr>
         <tr>
-          <td class="text-nowrap">boundingBox: <a href="#rekognition-interface-bounding-box">BoundingBox</a></td>
+          <td class="text-nowrap">boundingBox: <a href="#rekog-bbox-intf">BoundingBox</a></td>
           <td class="w-100">
             Bounding box of the face.<br>
             <ul class="mb-0">
@@ -5622,7 +5580,7 @@ const client = new AWSRekognitionClient({
     <!--end::Interface FaceMatch-->
 
     <!--begin::Interface BoundingBox-->
-    <h2 id="rekognition-interface-bounding-box">Interface BoundingBox</h2>
+    <h2 id="rekog-bbox-intf">Interface BoundingBox</h2>
     <code class="d-block mb-3">express-sweet.interfaces.BoundingBox</code>
     <p>Bounding box interface for faces, labels, borders, etc.</p>
     <h3>Member Summary</h3>
