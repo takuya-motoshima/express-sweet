@@ -6,7 +6,7 @@
 
 .topnav {
   padding: .75rem 0;
-  background-color: hsl(267deg, 43%, 35%);
+  background-color: hsl(267deg, 42%, 29%);
 }
 
   .topnav .navbar-toggler {
@@ -123,7 +123,7 @@ h4 {
       margin-top: .125rem;
       margin-left: 1.25rem;
       width: fit-content;
-      color: hsl(267deg, 43%, 35%);
+      color: hsl(267deg, 42%, 29%);
       text-decoration: none;
     }
 
