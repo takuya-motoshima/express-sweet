@@ -67,7 +67,8 @@ export default new class Database extends sequelize.Sequelize {
     // If an options file is found, it returns options that override the default options.
     const opts = <DatabaseOptions>require(filePath).default||require(filePath);
     const envOpts = Object.assign(defOpts, opts[env]);
-    // console.log(`DB config: ${JSON.stringify(envOpts, null, 2)}`);
+    console.log(`Connection DB host: ${envOpts.host}`);
+    console.log(`Connection DB: ${envOpts.database}`);
     return envOpts;
   }
 }

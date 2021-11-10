@@ -19,8 +19,8 @@ export default class {
     const opts = this.loadOptions();
 
     // Debug routing options.
-    console.log(`Router directory is ${opts.router_dir}`);
-    console.log(`Default router is ${opts.default_router||'nothing'}`);
+    // console.log(`Router directory is ${opts.router_dir}`);
+    // console.log(`Default router is ${opts.default_router||'nothing'}`);
 
     // Set the URL to route based on the path of the file in the routes directory.
     for (let filePath of File.find(`${opts.router_dir}/**/*.js`)) {

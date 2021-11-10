@@ -85,7 +85,6 @@
         </nav>
         <a class="nav-link" href="#rekog">Rekognition</a>
         <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
-          <a class="nav-link" href="#rekog-intro">Introduction</a>
           <a class="nav-link" href="#rekog-class">Class Rekognition</a>
           <a class="nav-link" href="#rekog-match-intf">Interface FaceMatch</a>
           <a class="nav-link" href="#rekog-bbox-intf">Interface BoundingBox</a>
@@ -100,7 +99,8 @@
     <p>
       Extend Express functionality with Express Sweet and start developing fast, minimal web applications.<br>
       The package elements that make up this extension.<br>
-      In addition, some packages have been customized to make them easier for developers to use.
+      In addition, some packages have been customized to make them easier for developers to use.<br>
+      "express-sweet" npm is <a href="https://www.npmjs.com/package/express-sweet" target="_blank">here</a>.
     </p>
     <!-- <div class="row g-3">
       <div class="col-md-6">
@@ -560,7 +560,7 @@ module.exports = {
                   <a class="nav-link" id="default-router-cjs-tab" data-bs-toggle="tab" href="#default-router-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="default-router-esm">
                   <pre><code class="js">import {Router} from &#039;express&#039;;
 const router = Router();
@@ -2358,7 +2358,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="database-is-connect-cjs-tab" data-bs-toggle="tab" href="#database-is-connect-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="database-is-connect-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
         
@@ -2409,7 +2409,7 @@ const isConnected = await database.isConnect();</code></pre>
                   <a class="nav-link" id="model-table-cjs-tab" data-bs-toggle="tab" href="#model-table-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-table-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
         
@@ -2446,7 +2446,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="model-attributes-cjs-tab" data-bs-toggle="tab" href="#model-attributes-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-attributes-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 
@@ -2519,7 +2519,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="model-op-cjs-tab" data-bs-toggle="tab" href="#model-op-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-op-esm">
                   <pre><code class="js">import UserModel from &#39;../models/UserModel&#39;;
         
@@ -2606,7 +2606,7 @@ UserModel.destroy({
                   <a class="nav-link" id="model-fn-cjs-tab" data-bs-toggle="tab" href="#model-fn-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-fn-esm">
                   <pre><code class="js">import BookModel from '../models/BookModel';
         
@@ -2671,7 +2671,7 @@ console.log(&#39;books=&#39;, books);</code></pre>
                   <a class="nav-link" id="model-literal-cjs-tab" data-bs-toggle="tab" href="#model-literal-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-literal-esm">
                   <pre><code class="js">import BookModel from &#39;../models/BookModel&#39;;
         
@@ -2747,7 +2747,7 @@ console.log(&#39;books=&#39;, books);</code></pre>
                   <a class="nav-link" id="model-where-cjs-tab" data-bs-toggle="tab" href="#model-where-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-where-esm">
                   <pre><code class="js">import BookModel from &#39;../models/BookModel&#39;;
         
@@ -2816,7 +2816,7 @@ console.log(&#39;books=&#39;, books);</code></pre>
                   <a class="nav-link" id="model-assoc-cjs-tab" data-bs-toggle="tab" href="#model-assoc-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-assoc-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import ProfileModel from &#039;./ProfileModel&#039;;
@@ -2871,7 +2871,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="model-begin-cjs-tab" data-bs-toggle="tab" href="#model-begin-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-begin-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -2945,7 +2945,7 @@ try {
                   <a class="nav-link" id="model-create-cjs-tab" data-bs-toggle="tab" href="#model-create-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-create-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -2985,7 +2985,7 @@ await UserModel.create({email: &#039;ellen@example.com&#039;, password: &#039;pa
                   <a class="nav-link" id="model-save-cjs-tab" data-bs-toggle="tab" href="#model-save-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-save-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3036,7 +3036,7 @@ await user.save();</code></pre>
                   <a class="nav-link" id="model-find-one-cjs-tab" data-bs-toggle="tab" href="#model-find-one-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-find-one-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3076,7 +3076,7 @@ await UserModel.findOne();</code></pre>
                   <a class="nav-link" id="model-find-all-cjs-tab" data-bs-toggle="tab" href="#model-find-all-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-find-all-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3128,7 +3128,7 @@ const users = await UserModel.findAll({
                   <a class="nav-link" id="model-count-cjs-tab" data-bs-toggle="tab" href="#model-count-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-count-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3169,7 +3169,7 @@ await UserModel.count();</code></pre>
                   <a class="nav-link" id="model-update-cjs-tab" data-bs-toggle="tab" href="#model-update-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-update-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3219,7 +3219,7 @@ await UserModel.update(
                   <a class="nav-link" id="model-upsert-cjs-tab" data-bs-toggle="tab" href="#model-upsert-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-upsert-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3269,7 +3269,7 @@ await UserModel.upsert({
                   <a class="nav-link" id="model-destroy-cjs-tab" data-bs-toggle="tab" href="#model-destroy-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-destroy-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3323,7 +3323,7 @@ await UserModel.destroy({where: {id :1}});</code></pre>
                   <a class="nav-link" id="model-has-one-assoc-cjs-tab" data-bs-toggle="tab" href="#model-has-one-assoc-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-has-one-assoc-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import ProfileModel from  &#039;./ProfileModel&#039;;
@@ -3367,7 +3367,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="model-has-one-find-cjs-tab" data-bs-toggle="tab" href="#model-has-one-find-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-has-one-find-esm">
                   <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
         
@@ -3477,7 +3477,7 @@ await UserModel.findAll({
                   <a class="nav-link" id="model-belongs-to-assoc-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-assoc-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-belongs-to-assoc-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import UserModel from &#039;./UserModel&#039;;
@@ -3521,7 +3521,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="model-belongs-to-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-find-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-belongs-to-find-esm">
                   <pre><code class="js">import ProfileModel from  &#039;../models/ProfileModel&#039;;
         
@@ -3631,7 +3631,7 @@ await ProfileModel.findAll({
                   <a class="nav-link" id="mode-has-many-assoc-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-assoc-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="mode-has-many-assoc-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import CommentModel from &#039;./CommentModel&#039;;
@@ -3674,7 +3674,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="mode-has-many-find-cjs-tab" data-bs-toggle="tab" href="#mode-has-many-find-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="mode-has-many-find-esm">
                   <pre><code class="js">import UserModel from  &#039;../models/UserModel&#039;;
         
@@ -3791,7 +3791,7 @@ await UserModel.findAll({
                   <a class="nav-link" id="model-belongs-to-many-assoc-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-assoc-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-belongs-to-many-assoc-esm">
                   <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
 import BookModel from &#039;./BookModel&#039;;
@@ -3835,7 +3835,7 @@ module.exports = class extends Model {
                   <a class="nav-link" id="model-belongs-to-many-find-cjs-tab" data-bs-toggle="tab" href="#model-belongs-to-many-find-cjs">CJS</a>
                 </li>
               </ul>
-              <div class="tab-content bg-white">
+              <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-belongs-to-many-find-esm">
                   <pre><code class="js">import UserModel from  &#039;../models/UserModel&#039;;
         
@@ -4147,79 +4147,402 @@ module.exports = router;</code></pre>
 
     <!--begin::Rekognition-->
     <h1 id="rekog">Rekognition</h1>
-
-    <!--begin::Introduction-->
-    <h2 id="rekog-intro">Introduction</h2>
     <p>
       Express Sweet includes an extension of "Amazon Rekognition" for face recognition, face detection, and face comparison.<br>
       This section describes how to use the modules that do them.<br>
       If you want to know more about "Amazon Rekognition", please see <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" target="_blank">"Amazon Rekognition Reference"</a>.
     </p>
-    <!--end::Introduction-->
 
     <!--begin::Class Rekognition-->
     <h2 id="rekog-class">Class Rekognition</h2>
     <code class="d-block mb-3">express-sweet.services.AWSRekognitionClient</code>
-
     <p>This is a class that uses machine learning to analyze images and videos.</p>
-
-    <h3>Method Summary</h3>
+    <p class="fw-bolder">Methods</p>
     <table class="table table-bordered">
       <thead class="table-light">
         <tr>
-          <th>Scope</th>
-          <th>Syntax</th>
+          <th>Method</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-detect-faces">detectFaces</a>(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;</code>
-            <p class="mb-0 ms-3 mt-1">Detects faces within an image that is provided as input.</p>
+          <td class="min-w-300px text-primary fw-bolder">public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</td>
+          <td class="min-w-200px w-100">
+            <p>Constructs a rekognition client object.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} options.accessKeyId Your AWS access key ID.</li>
+              <li>{string} options.secretAccessKey Your AWS secret access key.</li>
+              <li>{string} options.region The region to send service requests to.</li>
+              <li>{number} options.timeout Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds.The default is 5000 milliseconds.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-constructor-esm-tab" data-bs-toggle="tab" href="#rekog-constructor-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-constructor-cjs-tab" data-bs-toggle="tab" href="#rekog-constructor-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-constructor-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+            
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-constructor-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+            
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-compare-faces">compareFaces</a>(img1: string, img2: string): Promise&lt;number&gt;</code>
-            <p class="mb-0 ms-3 mt-1">Compare the similarity of two faces.</p>
+          <td class="min-w-300px text-primary fw-bolder">public async detectFaces(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>
+              Detects faces within an image that is provided as input.<br>
+              For each face detected, the operation returns a bounding box of the face.
+            </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} img Image path or Data Url or image buffer.</li>
+              <li class="d-flex">
+                <span>{number} minConfidence</span>
+                <span class="ms-2">
+                  The minimum confidence of the detected face.<br>
+                  Faces with a confidence lower than this value will not be returned as a result.
+                </span>
+              </li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;} Returns the bounding box of the detected face.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-detect-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-detect-faces-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-detect-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-detect-faces-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-detect-faces-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Detect faces from path.
+// Output: [
+//           {
+//             width: 0.5004957914352417,
+//             height: 0.6926820874214172,
+//             left: 0.2928674817085266,
+//             top: 0.09095800668001175
+//           }
+//         ]
+await client.detectFaces(&#039;img.jpg&#039;);
+
+// Detect faces from data URL.
+await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
+
+// Detect faces from buffer.
+await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-detect-faces-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Detect faces from path.
+// Output: [
+//           {
+//             width: 0.5004957914352417,
+//             height: 0.6926820874214172,
+//             left: 0.2928674817085266,
+//             top: 0.09095800668001175
+//           }
+//         ]
+await client.detectFaces(&#039;img.jpg&#039;);
+
+// Detect faces from data URL.
+await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
+
+// Detect faces from buffer.
+await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-create-collection">createCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
-            <p class="mb-0 ms-3 mt-1">
+          <td class="min-w-300px text-primary fw-bolder">public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>Compare the similarity of two faces.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} img1 Image path or Data Url or image buffer.</li>
+              <li>{string} img2 Image path or Data Url or image buffer.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{Promise&lt;number&gt;} Level of confidence that the faces match.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-compare-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-compare-faces-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-compare-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-compare-faces-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-compare-faces-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Compare faces from path.
+await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
+
+// Compare faces from data URL.
+await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+
+// Compare faces from buffer.
+await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-compare-faces-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Compare faces from path.
+await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
+
+// Compare faces from data URL.
+await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+
+// Compare faces from buffer.
+await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-300px text-primary fw-bolder">public async createCollection(collectionId: string): Promise&lt;void&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>
               Add faces to the collection using the IndexFaces operation.<br>
               For example, you might create collections, one for each of your application users.<br>
               A user can then index faces using the IndexFaces operation and persist results in a specific collection.<br>
               Then, a user can search the collection for faces in the user-specific container.
+              <div class="callout callout-warning">Note that Collection names are case-sensitive.</div>
             </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li class="d-flex">
+                <span>{string} collectionId</span>
+                <span class="ms-2">
+                  ID for the collection that you are creating.<br>
+                  The maximum length is 255, and the characters that can be used are <code>"[a-zA-Z0-9_.\-]+"</code>.
+                </span>
+              </li>
+            </ul>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-create-collection-esm-tab" data-bs-toggle="tab" href="#rekog-method-create-collection-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-create-collection-cjs-tab" data-bs-toggle="tab" href="#rekog-method-create-collection-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-create-collection-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+try {
+  // Creates a collection.
+  await client.createCollection(&#039;MyCollection&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-create-collection-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+try {
+  // Creates a collection.
+  await client.createCollection(&#039;MyCollection&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-list-collections">listCollections</a>(): Promise&lt;string[]&gt;</code>
-            <p class="mb-0 ms-3 mt-1">Returns list of collection IDs.</p>
+          <td class="min-w-300px text-primary fw-bolder">public async listCollections(): Promise&lt;string[]&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>Returns list of collection IDs.</p>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{Promise&lt;string[]&gt;} An array of collection IDs.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-list-collections-esm-tab" data-bs-toggle="tab" href="#rekog-method-list-collections-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-list-collections-cjs-tab" data-bs-toggle="tab" href="#rekog-method-list-collections-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-list-collections-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+        
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find the collection IDs.
+// Output: [
+//           &#039;MyCollection&#039;,
+//           &#039;AnotherCollection&#039;
+//         ]
+await client.listCollections();</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-list-collections-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+        
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find the collection IDs.
+// Output: [
+//           &#039;MyCollection&#039;,
+//           &#039;AnotherCollection&#039;
+//         ]
+await client.listCollections();</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-delete-collection">deleteCollection</a>(collectionId: string): Promise&lt;void&gt;</code>
-            <p class="mb-0 ms-3 mt-1">
+          <td class="min-w-300px text-primary fw-bolder">public async deleteCollection(collectionId: string): Promise&lt;void&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>
               Deletes the specified collection.<br>
               Note that this operation removes all faces in the collection.
             </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} collectionId ID of the collection to delete.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-delete-collection-esm-tab" data-bs-toggle="tab" href="#rekog-method-delete-collection-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-delete-collection-cjs-tab" data-bs-toggle="tab" href="#rekog-method-delete-collection-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-delete-collection-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+        
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete collection.
+await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-delete-collection-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+        
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Delete collection.
+await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-index-face">indexFace</a>(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code>
-            <p class="mb-0 ms-3 mt-1">
+          <td class="min-w-300px text-primary fw-bolder">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>
               Detects one face in the input image and adds it to the specified collection.<br>
               This method doesn't save the actual faces that are detected.<br>
               Instead, the underlying detection algorithm first detects the faces in the input image.<br>
@@ -4229,780 +4552,380 @@ module.exports = router;</code></pre>
                 Throws an exception if no face is found in the input image or multiple faces are found.
               </div>
             </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} collectionId The ID of an existing collection to which you want to add the faces that are detected in the input images.</li>
+              <li>{string} img Image path or Data Url or image buffer.</li>
+              <li class="d-flex">
+                <span>{string} externalImageId</span>
+                <span class="ms-2">
+                  The ID you want to assign to the faces detected in the image.<br>
+                  When you call the <code>"listFaces"</code> operation, the response returns the external ID.<br>
+                  You can use this external image ID to create a client-side index to associate the faces with each image.<br>
+                  You can then use the index to find all faces in an image.<br>
+                  The maximum length is 255, and the characters that can be used are <code>"[a-zA-Z0-9_.\-:]+"</code>.
+                </span>
+              </li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{Promise&lt;string&gt;} A unique identifier assigned to the face.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-index-face-esm-tab" data-bs-toggle="tab" href="#rekog-method-index-face-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-index-face-cjs-tab" data-bs-toggle="tab" href="#rekog-method-index-face-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-index-face-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Add face to collection from path.
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
+
+// Add face to collection from data URL.
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
+
+// Add face to collection from buffer.
+const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
+
+// If the face is not found in the image, throw an error.
+// Output: name: IndexFaceFaceNotFound
+//         statusCode: 400
+//         message: No face was found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}
+
+// If multiple faces are found in the image, throw an error.
+// Output: name: IndexFaceMultipleFacesFound
+//         statusCode: 400
+//         message: Multiple faces found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-index-face-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Add face to collection from path.
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
+
+// Add face to collection from data URL.
+const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
+
+// Add face to collection from buffer.
+const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
+
+// If the face is not found in the image, throw an error.
+// Output: name: IndexFaceFaceNotFound
+//         statusCode: 400
+//         message: No face was found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}
+
+// If multiple faces are found in the image, throw an error.
+// Output: name: IndexFaceMultipleFacesFound
+//         statusCode: 400
+//         message: Multiple faces found in the image
+try {
+  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
+} catch (e) {
+  // You can get the resulting HTTP status code from the exception.
+  console.log(`name: ${e.name}`);
+  console.log(`statusCode: ${e.statusCode}`);
+  console.log(`message: ${e.message}`);
+}</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-search-faces">searchFaces</a>(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;</code>
-            <p class="mb-0 ms-3 mt-1">
+          <td class="min-w-300px text-primary fw-bolder">public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>
               For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
               The operation compares the features of the input face with faces in the specified collection.
             </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} collectionId ID of the collection to search.</li>
+              <li>{string} img Image path or Data Url or image buffer.</li>
+              <li class="d-flex">
+                <span>{number} options.minConfidence</span>
+                <span class="ms-2">
+                  Specifies the minimum confidence in the face match to return.<br>
+                  The default value is 80%.
+                </span>
+              </li>
+              <li class="d-flex">
+                <span>{number} options.maxFaces</span>
+                <span class="ms-2">
+                  Maximum number of faces to return.<br>
+                  The operation returns the maximum number of faces with the highest confidence in the match.<br>
+                  The default value is 5.
+                </span>
+              </li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p class="d-flex">
+              <span>{Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;}</span>
+              <span class="ms-2">
+                If <code>options.maxFaces</code> is 1, the face information found is returned.<br>
+                If <code>options.maxFaces</code> is 2 or more, the list of face information found is returned.<br>
+                Returns <code>null</code> if no face is found.
+              </span>
+            </p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-search-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-search-faces-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-search-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-search-faces-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-search-faces-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+import fs from &#039;fs&#039;;
+
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// If you want to search for one face, specify 1 for the maxFaces option.
+// In that case, the search result will return the face data for one person.
+// Output: {
+//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//           boundingBox: {
+//             width: 0.500495970249176,
+//             height: 0.6926820278167725,
+//             left: 0.2928670048713684,
+//             top: 0.09095799922943115
+//           },
+//           externalImageId: &#039;img.jpg&#039;,
+//           similarity: 99.98941802978516
+//         }
+const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
+console.log(match);
+
+// If you want to search for multiple faces, specify 2 or more for the maxFaces option.
+// In that case, the search results will return a list of the face data of multiple people found.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;,
+//             similarity: 99.98941802978516
+//           }
+//         ]
+const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
+console.log(matches);
+
+// The input image can specify a buffer or DataURL in addition to the image path.
+await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-search-faces-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+const fs = require(&#039;fs&#039;);
+
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// If you want to search for one face, specify 1 for the maxFaces option.
+// In that case, the search result will return the face data for one person.
+// Output: {
+//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//           boundingBox: {
+//             width: 0.500495970249176,
+//             height: 0.6926820278167725,
+//             left: 0.2928670048713684,
+//             top: 0.09095799922943115
+//           },
+//           externalImageId: &#039;img.jpg&#039;,
+//           similarity: 99.98941802978516
+//         }
+const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
+console.log(match);
+
+// If you want to search for multiple faces, specify 2 or more for the maxFaces option.
+// In that case, the search results will return a list of the face data of multiple people found.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;,
+//             similarity: 99.98941802978516
+//           }
+//         ]
+const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
+console.log(matches);
+
+// The input image can specify a buffer or DataURL in addition to the image path.
+await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-list-faces">listFaces</a>(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;</code>
-            <p class="mb-0 ms-3 mt-1">
+          <td class="min-w-300px text-primary fw-bolder">public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>
               Returns metadata for faces in the specified collection.<br>
               This metadata includes information such as the bounding box coordinates, and face ID.
             </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} collectionId ID of the collection from which to list the faces.</li>
+              <li>{number} maxResults Maximum number of faces to return.The default value is 1000.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;} Returns all face metadata in the collection.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-list-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-list-faces-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-list-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-list-faces-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-list-faces-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+        
+const client = new sweet.services.AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find all face metadata in the collection.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const result = await client.listFaces(&#039;MyCollection&#039;);
+console.log(result);</code></pre>
+                </div>
+                <div class="tab-pane fade" id="rekog-method-list-faces-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+        
+const client = new AWSRekognitionClient({
+  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REKOGNITION_REGION
+});
+
+// Find all face metadata in the collection.
+// Output: [
+//           {
+//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             boundingBox: {
+//               width: 0.500495970249176,
+//               height: 0.6926820278167725,
+//               left: 0.2928670048713684,
+//               top: 0.09095799922943115
+//             },
+//             externalImageId: &#039;img.jpg&#039;
+//           }
+//         ]
+const result = await client.listFaces(&#039;MyCollection&#039;);
+console.log(result);</code></pre>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body">async <a href="#rekog-method-delete-faces">deleteFaces</a>(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code>
-            <p class="mb-0 ms-3 mt-1">
+          <td class="min-w-300px text-primary fw-bolder">public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>
               Deletes faces from a collection.<br>
               You specify a collection ID and an array of face IDs to remove from the collection.
             </p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Constructor Summary</h3>
-    <table class="table table-bordered">
-      <thead class="table-light">
-        <tr>
-          <th>Scope</th>
-          <th>Syntax</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="text-nowrap">public</td>
-          <td class="w-100">
-            <code class="text-body"><a href="#rekog-constructor">constructor</a>(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code>
-            <p class="mb-0 ms-3 mt-1">Constructs a rekognition client object.</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Methods</h3>
-    <h4 id="rekog-method-detect-faces"><code class="method">public async detectFaces(img: string, minConfidence: number = 90): Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;</code></h4>
-    <p>
-      Detects faces within an image that is provided as input.<br>
-      For each face detected, the operation returns a bounding box of the face.
-    </p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} img Image path or Data Url or image buffer.</li>
-      <li class="d-flex">
-        <span>{number} minConfidence</span>
-        <span class="ms-2">
-          The minimum confidence of the detected face.<br>
-          Faces with a confidence lower than this value will not be returned as a result.
-        </span>
-      </li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{Promise&lt;<a href="#rekog-bbox-intf">BoundingBox</a>[]&gt;} Returns the bounding box of the detected face.</p>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-detect-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-detect-faces-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-detect-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-detect-faces-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-detect-faces-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Detect faces from path.
-// Output: [
-//           {
-//             width: 0.5004957914352417,
-//             height: 0.6926820874214172,
-//             left: 0.2928674817085266,
-//             top: 0.09095800668001175
-//           }
-//         ]
-await client.detectFaces(&#039;img.jpg&#039;);
-
-// Detect faces from data URL.
-await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
-
-// Detect faces from buffer.
-await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-detect-faces-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-const fs = require(&#039;fs&#039;);
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Detect faces from path.
-// Output: [
-//           {
-//             width: 0.5004957914352417,
-//             height: 0.6926820874214172,
-//             left: 0.2928674817085266,
-//             top: 0.09095800668001175
-//           }
-//         ]
-await client.detectFaces(&#039;img.jpg&#039;);
-
-// Detect faces from data URL.
-await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
-
-// Detect faces from buffer.
-await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-compare-faces"><code class="method">public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</code></h4>
-    <p>Compare the similarity of two faces.</p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} img1 Image path or Data Url or image buffer.</li>
-      <li>{string} img2 Image path or Data Url or image buffer.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{Promise&lt;number&gt;} Level of confidence that the faces match.</p>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-compare-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-compare-faces-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-compare-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-compare-faces-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-compare-faces-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Compare faces from path.
-await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
-
-// Compare faces from data URL.
-await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
-
-// Compare faces from buffer.
-await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-compare-faces-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-const fs = require(&#039;fs&#039;);
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Compare faces from path.
-await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
-
-// Compare faces from data URL.
-await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
-
-// Compare faces from buffer.
-await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-create-collection"><code class="method">public async createCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
-    <p>
-      Add faces to the collection using the IndexFaces operation.<br>
-      For example, you might create collections, one for each of your application users.<br>
-      A user can then index faces using the IndexFaces operation and persist results in a specific collection.<br>
-      Then, a user can search the collection for faces in the user-specific container.
-      <div class="callout callout-warning">Note that Collection names are case-sensitive.</div>
-    </p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li class="d-flex">
-        <span>{string} collectionId</span>
-        <span class="ms-2">
-          ID for the collection that you are creating.<br>
-          The maximum length is 255, and the characters that can be used are <code>"[a-zA-Z0-9_.\-]+"</code>.
-        </span>
-      </li>
-    </ul>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-create-collection-esm-tab" data-bs-toggle="tab" href="#rekog-method-create-collection-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-create-collection-cjs-tab" data-bs-toggle="tab" href="#rekog-method-create-collection-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-create-collection-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-try {
-  // Creates a collection.
-  await client.createCollection(&#039;MyCollection&#039;);
-} catch (e) {
-  // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
-}</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-create-collection-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-try {
-  // Creates a collection.
-  await client.createCollection(&#039;MyCollection&#039;);
-} catch (e) {
-  // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
-}</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-list-collections"><code class="method">public async listCollections(): Promise&lt;string[]&gt;</code></h4>
-    <p>Returns list of collection IDs.</p>
-    <p><strong>Return:</strong></p>
-    <p>{Promise&lt;string[]&gt;} An array of collection IDs.</p>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-list-collections-esm-tab" data-bs-toggle="tab" href="#rekog-method-list-collections-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-list-collections-cjs-tab" data-bs-toggle="tab" href="#rekog-method-list-collections-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-list-collections-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Find the collection IDs.
-// Output: [
-//           &#039;MyCollection&#039;,
-//           &#039;AnotherCollection&#039;
-//         ]
-await client.listCollections();</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-list-collections-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Find the collection IDs.
-// Output: [
-//           &#039;MyCollection&#039;,
-//           &#039;AnotherCollection&#039;
-//         ]
-await client.listCollections();</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-delete-collection"><code class="method">public async deleteCollection(collectionId: string): Promise&lt;void&gt;</code></h4>
-    <p>
-      Deletes the specified collection.<br>
-      Note that this operation removes all faces in the collection.
-    </p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} collectionId ID of the collection to delete.</li>
-    </ul>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-delete-collection-esm-tab" data-bs-toggle="tab" href="#rekog-method-delete-collection-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-delete-collection-cjs-tab" data-bs-toggle="tab" href="#rekog-method-delete-collection-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-delete-collection-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Delete collection.
-await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-delete-collection-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Delete collection.
-await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-index-face"><code class="method">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code></h4>
-    <p>
-      Detects one face in the input image and adds it to the specified collection.<br>
-      This method doesn't save the actual faces that are detected.<br>
-      Instead, the underlying detection algorithm first detects the faces in the input image.<br>
-      The algorithm extracts facial features into a feature vector, and stores it in the backend database.
-      <div class="callout callout-warning">
-        Note that this method is used to index one face.<br>
-        Throws an exception if no face is found in the input image or multiple faces are found.
-      </div>
-    </p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} collectionId The ID of an existing collection to which you want to add the faces that are detected in the input images.</li>
-      <li>{string} img Image path or Data Url or image buffer.</li>
-      <li class="d-flex">
-        <span>{string} externalImageId</span>
-        <span class="ms-2">
-          The ID you want to assign to the faces detected in the image.<br>
-          When you call the <code>"listFaces"</code> operation, the response returns the external ID.<br>
-          You can use this external image ID to create a client-side index to associate the faces with each image.<br>
-          You can then use the index to find all faces in an image.<br>
-          The maximum length is 255, and the characters that can be used are <code>"[a-zA-Z0-9_.\-:]+"</code>.
-        </span>
-      </li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{Promise&lt;string&gt;} A unique identifier assigned to the face.</p>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-index-face-esm-tab" data-bs-toggle="tab" href="#rekog-method-index-face-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-index-face-cjs-tab" data-bs-toggle="tab" href="#rekog-method-index-face-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-index-face-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Add face to collection from path.
-// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
-console.log(faceId);
-
-// Add face to collection from data URL.
-// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
-console.log(faceId);
-
-// Add face to collection from buffer.
-// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
-console.log(faceId);
-
-// If the face is not found in the image, throw an error.
-// Output: name: IndexFaceFaceNotFound
-//         statusCode: 400
-//         message: No face was found in the image
-try {
-  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
-  // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
-}
-
-// If multiple faces are found in the image, throw an error.
-// Output: name: IndexFaceMultipleFacesFound
-//         statusCode: 400
-//         message: Multiple faces found in the image
-try {
-  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
-  // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
-}</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-index-face-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-const fs = require(&#039;fs&#039;);
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Add face to collection from path.
-// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
-console.log(faceId);
-
-// Add face to collection from data URL.
-// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
-console.log(faceId);
-
-// Add face to collection from buffer.
-// Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
-console.log(faceId);
-
-// If the face is not found in the image, throw an error.
-// Output: name: IndexFaceFaceNotFound
-//         statusCode: 400
-//         message: No face was found in the image
-try {
-  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
-  // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
-}
-
-// If multiple faces are found in the image, throw an error.
-// Output: name: IndexFaceMultipleFacesFound
-//         statusCode: 400
-//         message: Multiple faces found in the image
-try {
-  await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
-  // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
-}</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-search-faces"><code class="method">public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;</code></h4>
-    <p>
-      For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
-      The operation compares the features of the input face with faces in the specified collection.
-    </p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} collectionId ID of the collection to search.</li>
-      <li>{string} img Image path or Data Url or image buffer.</li>
-      <li class="d-flex">
-        <span>{number} options.minConfidence</span>
-        <span class="ms-2">
-          Specifies the minimum confidence in the face match to return.<br>
-          The default value is 80%.
-        </span>
-      </li>
-      <li class="d-flex">
-        <span>{number} options.maxFaces</span>
-        <span class="ms-2">
-          Maximum number of faces to return.<br>
-          The operation returns the maximum number of faces with the highest confidence in the match.<br>
-          The default value is 5.
-        </span>
-      </li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p class="d-flex">
-      <span>{Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]|<a href="#rekog-match-intf">FaceMatch</a>|null&gt;}</span>
-      <span class="ms-2">
-        If <code>options.maxFaces</code> is 1, the face information found is returned.<br>
-        If <code>options.maxFaces</code> is 2 or more, the list of face information found is returned.<br>
-        Returns <code>null</code> if no face is found.
-      </span>
-    </p>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-search-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-search-faces-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-search-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-search-faces-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-search-faces-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// If you want to search for one face, specify 1 for the maxFaces option.
-// In that case, the search result will return the face data for one person.
-// Output: {
-//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
-//           boundingBox: {
-//             width: 0.500495970249176,
-//             height: 0.6926820278167725,
-//             left: 0.2928670048713684,
-//             top: 0.09095799922943115
-//           },
-//           externalImageId: &#039;img.jpg&#039;,
-//           similarity: 99.98941802978516
-//         }
-const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
-console.log(match);
-
-// If you want to search for multiple faces, specify 2 or more for the maxFaces option.
-// In that case, the search results will return a list of the face data of multiple people found.
-// Output: [
-//           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
-//             boundingBox: {
-//               width: 0.500495970249176,
-//               height: 0.6926820278167725,
-//               left: 0.2928670048713684,
-//               top: 0.09095799922943115
-//             },
-//             externalImageId: &#039;img.jpg&#039;,
-//             similarity: 99.98941802978516
-//           }
-//         ]
-const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
-console.log(matches);
-
-// The input image can specify a buffer or DataURL in addition to the image path.
-await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
-await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-search-faces-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-const fs = require(&#039;fs&#039;);
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// If you want to search for one face, specify 1 for the maxFaces option.
-// In that case, the search result will return the face data for one person.
-// Output: {
-//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
-//           boundingBox: {
-//             width: 0.500495970249176,
-//             height: 0.6926820278167725,
-//             left: 0.2928670048713684,
-//             top: 0.09095799922943115
-//           },
-//           externalImageId: &#039;img.jpg&#039;,
-//           similarity: 99.98941802978516
-//         }
-const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
-console.log(match);
-
-// If you want to search for multiple faces, specify 2 or more for the maxFaces option.
-// In that case, the search results will return a list of the face data of multiple people found.
-// Output: [
-//           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
-//             boundingBox: {
-//               width: 0.500495970249176,
-//               height: 0.6926820278167725,
-//               left: 0.2928670048713684,
-//               top: 0.09095799922943115
-//             },
-//             externalImageId: &#039;img.jpg&#039;,
-//             similarity: 99.98941802978516
-//           }
-//         ]
-const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
-console.log(matches);
-
-// The input image can specify a buffer or DataURL in addition to the image path.
-await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
-await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-list-faces"><code class="method">public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;</code></h4>
-    <p>
-      Returns metadata for faces in the specified collection.<br>
-      This metadata includes information such as the bounding box coordinates, and face ID.
-    </p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} collectionId ID of the collection from which to list the faces.</li>
-      <li>{number} maxResults Maximum number of faces to return.The default value is 1000.</li>
-    </ul>
-    <p><strong>Return:</strong></p>
-    <p>{Promise&lt;<a href="#rekog-match-intf">FaceMatch</a>[]&gt;} Returns all face metadata in the collection.</p>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-list-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-list-faces-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-list-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-list-faces-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-list-faces-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Find all face metadata in the collection.
-// Output: [
-//           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
-//             boundingBox: {
-//               width: 0.500495970249176,
-//               height: 0.6926820278167725,
-//               left: 0.2928670048713684,
-//               top: 0.09095799922943115
-//             },
-//             externalImageId: &#039;img.jpg&#039;
-//           }
-//         ]
-const result = await client.listFaces(&#039;MyCollection&#039;);
-console.log(result);</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-list-faces-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});
-
-// Find all face metadata in the collection.
-// Output: [
-//           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
-//             boundingBox: {
-//               width: 0.500495970249176,
-//               height: 0.6926820278167725,
-//               left: 0.2928670048713684,
-//               top: 0.09095799922943115
-//             },
-//             externalImageId: &#039;img.jpg&#039;
-//           }
-//         ]
-const result = await client.listFaces(&#039;MyCollection&#039;);
-console.log(result);</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 id="rekog-method-delete-faces"><code class="method">public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code></h4>
-    <p>
-      Deletes faces from a collection.<br>
-      You specify a collection ID and an array of face IDs to remove from the collection.
-    </p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} collectionId Collection from which to remove the specific faces.</li>
-      <li>{string[]} faceIds An array of face IDs to delete.</li>
-    </ul>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-method-delete-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-delete-faces-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-method-delete-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-delete-faces-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-method-delete-faces-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-
-// Instantiate Rekognition client.
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} collectionId Collection from which to remove the specific faces.</li>
+              <li>{string[]} faceIds An array of face IDs to delete.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Example:</p>
+            <div class="example mb-0">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="rekog-method-delete-faces-esm-tab" data-bs-toggle="tab" href="#rekog-method-delete-faces-esm">ESM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rekog-method-delete-faces-cjs-tab" data-bs-toggle="tab" href="#rekog-method-delete-faces-cjs">CJS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="rekog-method-delete-faces-esm">
+                  <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
+        
 const client = new sweet.services.AWSRekognitionClient({
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
@@ -5011,11 +4934,10 @@ const client = new sweet.services.AWSRekognitionClient({
 
 // Delete a face from the collection.
 await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-method-delete-faces-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-
-// Instantiate Rekognition client.
+                </div>
+                <div class="tab-pane fade" id="rekog-method-delete-faces-cjs">
+                  <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
+        
 const client = new AWSRekognitionClient({
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
@@ -5024,77 +4946,35 @@ const client = new AWSRekognitionClient({
 
 // Delete a face from the collection.
 await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h3>Constructors</h3>
-    <h4 id="rekog-constructor"><code class="method">public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code></h4>
-    <p>Constructs a rekognition client object.</p>
-    <p><strong>Params:</strong></p>
-    <ul>
-      <li>{string} options.accessKeyId Your AWS access key ID.</li>
-      <li>{string} options.secretAccessKey Your AWS secret access key.</li>
-      <li>{string} options.region The region to send service requests to.</li>
-      <li>{number} options.timeout Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds.The default is 5000 milliseconds.</li>
-    </ul>
-    <p class="fw-bolder mb-0">Example:</p>
-    <div class="example">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="rekog-constructor-esm-tab" data-bs-toggle="tab" href="#rekog-constructor-esm">ESM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="rekog-constructor-cjs-tab" data-bs-toggle="tab" href="#rekog-constructor-cjs">CJS</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="rekog-constructor-esm">
-          <pre><code class="js">import * as sweet from &#039;express-sweet&#039;;
-
-// Instantiate Rekognition client.
-const client = new sweet.services.AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});</code></pre>
-        </div>
-        <div class="tab-pane fade" id="rekog-constructor-cjs">
-          <pre><code class="js">const AWSRekognitionClient = require(&#039;express-sweet&#039;).services.AWSRekognitionClient;
-
-// Instantiate Rekognition client.
-const client = new AWSRekognitionClient({
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
-});</code></pre>
-        </div>
-      </div>
-    </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <!--end::Class Rekognition-->
 
     <!--begin::Interface FaceMatch-->
     <h2 id="rekog-match-intf">Interface FaceMatch</h2>
     <code class="d-block mb-3">express-sweet.interfaces.FaceMatch</code>
-
     <p>This is the metadata structure of the bounding box coordinates, reliability (the bounding box contains a face), face ID, etc. returned by the <code>searchFaces()</code>, <code>listFaces()</code> methods, etc.</p>
-
-    <h3>Member Summary</h3>
+    <p class="fw-bolder">Properties</p>
     <table class="table table-bordered">
       <thead class="table-light">
         <tr>
-          <th>Member name</th>
+          <th>Property</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">faceId: string</td>
-          <td class="w-100">A unique identifier assigned to the face.</td>
+          <td class="min-w-300px text-primary fw-bolder">faceId: string</td>
+          <td class="min-w-200px w-100">A unique identifier assigned to the face.</td>
         </tr>
         <tr>
-          <td class="text-nowrap">boundingBox: <a href="#rekog-bbox-intf">BoundingBox</a></td>
-          <td class="w-100">
+          <td class="min-w-300px text-primary fw-bolder">boundingBox: <a href="#rekog-bbox-intf">BoundingBox</a></td>
+          <td class="min-w-200px w-100">
             Bounding box of the face.<br>
             <ul class="mb-0">
               <li>width: Width of the bounding box as a ratio of the overall image width.</li>
@@ -5105,12 +4985,12 @@ const client = new AWSRekognitionClient({
           </td>
         </tr>
         <tr>
-          <td class="text-nowrap">externalImageId?: string</td>
-          <td class="w-100">Identifier that you assign to all the faces in the input image.</td>
+          <td class="min-w-300px text-primary fw-bolder">externalImageId?: string</td>
+          <td class="min-w-200px w-100">Identifier that you assign to all the faces in the input image.</td>
         </tr>
         <tr>
-          <td class="text-nowrap">similarity?: number</td>
-          <td class="w-100">Confidence in the match of this face with the input face.<br>Valid Range: Minimum value of 0. Maximum value of 100.</td>
+          <td class="min-w-300px text-primary fw-bolder">similarity?: number</td>
+          <td class="min-w-200px w-100">Confidence in the match of this face with the input face.<br>Valid Range: Minimum value of 0. Maximum value of 100.</td>
         </tr>
       </tbody>
     </table>
@@ -5120,30 +5000,30 @@ const client = new AWSRekognitionClient({
     <h2 id="rekog-bbox-intf">Interface BoundingBox</h2>
     <code class="d-block mb-3">express-sweet.interfaces.BoundingBox</code>
     <p>Bounding box interface for faces, labels, borders, etc.</p>
-    <h3>Member Summary</h3>
+    <p class="fw-bolder">Properties</p>
     <table class="table table-bordered">
       <thead class="table-light">
         <tr>
-          <th>Member name</th>
+          <th>Property</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="text-nowrap">width: number</td>
-          <td class="w-100">The width of the bounding box.</td>
+          <td class="min-w-300px text-primary fw-bolder">width: number</td>
+          <td class="min-w-200px w-100">The width of the bounding box.</td>
         </tr>
         <tr>
-          <td class="text-nowrap">height: number</td>
-          <td class="w-100">The height of the bounding box.</td>
+          <td class="min-w-300px text-primary fw-bolder">height: number</td>
+          <td class="min-w-200px w-100">The height of the bounding box.</td>
         </tr>
         <tr>
-          <td class="text-nowrap">left: number</td>
-          <td class="w-100">The x coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+          <td class="min-w-300px text-primary fw-bolder">left: number</td>
+          <td class="min-w-200px w-100">The x coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
         </tr>
         <tr>
-          <td class="text-nowrap">top: number</td>
-          <td class="w-100">The y coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+          <td class="min-w-300px text-primary fw-bolder">top: number</td>
+          <td class="min-w-200px w-100">The y coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
         </tr>
       </tbody>
     </table>
