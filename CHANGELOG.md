@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file.
 
     // In cases where you don't need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
     // We didn't need to destructure the result here - the results were returned directly
-    const users = await sequelize.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
+    const users = await UserModel.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
     ```
 
 ## [1.0.11] - 2021-11-10
