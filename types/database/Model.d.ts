@@ -31,7 +31,7 @@ export default class Model extends sequelize.Model {
      * @type {sequelize.QueryTypes}
      */
     static readonly QueryTypes: {
-        [key: string]: any;
+        [key: string]: string;
     };
     /**
      * Operator.
@@ -180,6 +180,11 @@ export default class Model extends sequelize.Model {
      * const users = await sequelize.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
      *
      * @see https://sequelize.org/master/manual/raw-queries.html
+     *
+     * @param   {string} sql   SQL string.
+     * @param   {object} opts  Query options.
+     * @return  {Promise<any>} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
+     *                         If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
      */
     static query(sql: string, opts: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>): Promise<any>;
 }

@@ -34,7 +34,7 @@ export default class Model extends sequelize.Model {
    * @see https://sequelize.org/master/variable/index.html#static-variable-QueryTypes
    * @type {sequelize.QueryTypes}
    */
-   public static readonly QueryTypes: {[key: string]: any} = sequelize.QueryTypes;
+  public static readonly QueryTypes: {[key: string]: string} = sequelize.QueryTypes;
 
   /**
    * Operator.
@@ -206,6 +206,11 @@ export default class Model extends sequelize.Model {
    * const users = await sequelize.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
    * 
    * @see https://sequelize.org/master/manual/raw-queries.html
+   * 
+   * @param   {string} sql   SQL string.
+   * @param   {object} opts  Query options.
+   * @return  {Promise<any>} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
+   *                         If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
    */
   public static async query(
     sql: string,

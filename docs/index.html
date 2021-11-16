@@ -2784,6 +2784,13 @@ console.log(&#39;books=&#39;, books);</code></pre>
             </div>
           </td>
         </tr>
+        <tr>
+          <td class="min-w-300px text-primary fw-bolder">public static readonly QueryTypes: {[key: string]: string}</td>
+          <td class="min-w-200px w-100">
+            An enum of query types used by sequelize.query<br>
+            See <a href="https://sequelize.org/master/variable/index.html#static-variable-QueryTypes" target="_blank">here</a> for details.
+          </td>
+        </tr>
       </tbody>
     </table>
     
@@ -3912,6 +3919,27 @@ await UserModel.findAll({
                 </div>
               </div>
             </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-300px text-primary fw-bolder">public static async query(sql: string, opts: object): Promise&lt;any&gt;</td>
+          <td class="min-w-200px w-100">
+            <p>Raw Queries.<br>As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.</p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{string} sql SQL string.</li>
+              <li>{object} opts Query options.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{Promise&lt;any&gt;} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc. If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre><code class="js">// By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
+// Note that since this is a raw query, the metadata are dialect specific.
+const [results, metadata] = await UserModel.query(&quot;UPDATE user SET name = &#039;Beil&#039; WHERE id = 1&quot;);
+
+// In cases where you don&#039;t need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
+// We didn&#039;t need to destructure the result here - the results were returned directly
+const users = await sequelize.query(&quot;SELECT * FROM user&quot;, {type: UserModel.QueryTypes.SELECT});</code></pre>
           </td>
         </tr>
       </tbody>
