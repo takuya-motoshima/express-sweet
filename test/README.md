@@ -67,10 +67,10 @@ SELECT `bookId`, `comment` FROM `comment`;
 
 Test Face Rekognition.
 ```sh
-NODE_ENV=development node -r ./node_modules/esm/esm rekognition.js;
+NODE_ENV=development node rekognition.js
 ```
 
 Test to get data from DB.
 ```sh
-NODE_ENV=development node -r ./node_modules/esm/esm db.js;
+NODE_ENV=development node db.js
 ```

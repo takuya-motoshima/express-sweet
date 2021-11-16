@@ -22,9 +22,19 @@ export default class Model extends sequelize.Model {
 
   /**
    * Column type.
+   * 
+   * @see https://sequelize.org/master/variable/index.html#static-variable-DataTypes
    * @type {sequelize.DataTypes}
    */
   public static readonly DataTypes: {[key: string]: any} = sequelize.DataTypes;
+
+  /**
+   * An enum of query types used by sequelize.query
+   * 
+   * @see https://sequelize.org/master/variable/index.html#static-variable-QueryTypes
+   * @type {sequelize.QueryTypes}
+   */
+   public static readonly QueryTypes: {[key: string]: any} = sequelize.QueryTypes;
 
   /**
    * Operator.
@@ -180,5 +190,38 @@ export default class Model extends sequelize.Model {
    */
   public static async findById(id: number): Promise<{}|null> {
     return this.findOne({where: {id}, raw: true});
+  }
+
+  /**
+   * Raw Queries.
+   * As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.
+   * 
+   * @example
+   * // By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
+   * // Note that since this is a raw query, the metadata are dialect specific.
+   * const [results, metadata] = await UserModel.query("UPDATE user SET name = 'Beil' WHERE id = 1");
+   * 
+   * // In cases where you don't need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
+   * // We didn't need to destructure the result here - the results were returned directly
+   * const users = await sequelize.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
+   * 
+   * @see https://sequelize.org/master/manual/raw-queries.html
+   */
+  public static async query(
+    sql: string,
+    opts: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
+          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
+  ): Promise<any> {
+    return this.sequelize!.query(sql, opts);
   }
 }

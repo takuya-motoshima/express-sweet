@@ -1,7 +1,7 @@
 /**
  * Database configuration.
  */
- module.exports = {
+module.exports = {
   development: {
     username: 'root',
     password: null,
@@ -10,7 +10,7 @@
     port: undefined,
     dialect: 'mariadb',
     timezone: '+09:00',
-    logging: console.log
+    logging: false
     //,timezone: 'Etc/GMT-9'
     //,dialectOptions: {useUTC: false, timezone: 'Etc/GMT-9'}
   },

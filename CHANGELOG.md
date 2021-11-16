@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.12] - 2021-11-16
+### Fixed
+- Added a method to the model that can execute raw SQL.  
+    As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.  
+
+    ```js
+    // By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
+    // Note that since this is a raw query, the metadata are dialect specific.
+    const [results, metadata] = await UserModel.query("UPDATE user SET name = 'Beil' WHERE id = 1");
+
+    // In cases where you don't need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
+    // We didn't need to destructure the result here - the results were returned directly
+    const users = await sequelize.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
+    ```
+
 ## [1.0.11] - 2021-11-10
 ### Fixed
 - Fixed a bug that the database config was read before NODE_ENV was set and the database config matching NODE_ENV could not be read.
@@ -85,3 +100,5 @@ All notable changes to this project will be documented in this file.
 [1.0.8]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.7...v1.0.8
 [1.0.9]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.8...v1.0.9
 [1.0.10]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.9...v1.0.10
+[1.0.11]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.10...v1.0.11
+[1.0.12]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.11...v1.0.12
