@@ -6,7 +6,7 @@
   <title>Reference | Express Sweet</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link href="styles/docs.css" rel="stylesheet">
 </head>
@@ -294,23 +294,13 @@ CREATE TABLE `book` (
 INSERT INTO `user` (`id`, `email`, `password`, `name`) VALUES
   (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;),
   (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;),
-  (3, &#039;vivian@example.com&#039;, &#039;password&#039;, &#039;Vivian&#039;),
-  (4, &#039;harry@example.com&#039;, &#039;password&#039;, &#039;Harry&#039;),
-  (5, &#039;eliza@example.com&#039;, &#039;password&#039;, &#039;Eliza&#039;),
-  (6, &#039;nancy@example.com&#039;, &#039;password&#039;, &#039;Nancy&#039;),
-  (7, &#039;melinda@example.com&#039;, &#039;password&#039;, &#039;Melinda&#039;),
-  (8, &#039;harley@example.com&#039;, &#039;password&#039;, &#039;Harley&#039;);
+  (3, &#039;vivian@example.com&#039;, &#039;password&#039;, &#039;Vivian&#039;);
 
 -- Add sample profile record
 INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
   (1, &#039;777 Brockton Avenue, Abington MA 2351&#039;, &#039;202-555-0105&#039;),
   (2, &#039;30 Memorial Drive, Avon MA 2322&#039;, &#039;&#039;),
-  (3, &#039;250 Hartford Avenue, Bellingham MA 2019&#039;, &#039;202-555-0175&#039;),
-  (4, &#039;700 Oak Street, Brockton MA 2301&#039;, &#039;202-555-0167&#039;),
-  (5, &#039;66-4 Parkhurst Rd, Chelmsford MA 1824&#039;, &#039;202-555-0154&#039;),
-  (6, &#039;591 Memorial Dr, Chicopee MA 1020&#039;, &#039;202-555-0141&#039;),
-  (7, &#039;55 Brooksby Village Way, Danvers MA 1923&#039;, &#039;202-555-0196&#039;),
-  (8, &#039;137 Teaticket Hwy, East Falmouth MA 2536&#039;, &#039;202-555-0167&#039;);
+  (3, &#039;250 Hartford Avenue, Bellingham MA 2019&#039;, &#039;202-555-0175&#039;);
 
 -- Add a sample user comment record
 INSERT INTO `comment` (`userId`, `text`) VALUES
@@ -320,12 +310,9 @@ INSERT INTO `comment` (`userId`, `text`) VALUES
 
 -- Add sample book record
 INSERT INTO `book` (`userId`, `title`) VALUES
-  (1, &#039;The Stars Tonight&#039;),
-  (1, &#039;A Guide to Courteous Thievery&#039;),
-  (1, &#039;The Sound of Light&#039;),
-  (2, &#039;The Stars Tonight&#039;),
-  (2, &#039;Why She Said Yes&#039;);</code></pre>
-
+  (1, &#039;When Im Gone&#039;),
+  (1, &#039;Lose Yourself&#039;),
+  (2, &#039;When Im Gone&#039;);</code></pre>
     <p>
       Next, you need to set how the database is connected.<br>
       The database connection method can be set in <code>"config/database.js"</code>, so change it according to your environment.<br>
@@ -349,21 +336,21 @@ export default {
   development: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   test: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   production: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   }
@@ -377,21 +364,21 @@ module.exports = {
   development: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   test: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   production: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   }
@@ -912,13 +899,7 @@ module.exports = {
             The following example uses the user model to find the user who owns the credentials based on the username and password.<br>
             <pre><code class="js">authenticate_user: async (username, password) =&gt; {
   const UserModel = require(&#039;../models/UserModel&#039;);
-  return UserModel.findOne({
-    where: {
-      email: username,
-      password: password
-    },
-    raw: true
-  });
+  return UserModel.findOne({where: {email: username, password: password}, raw: true});
 }</code></pre>
           </td>
         </tr>
@@ -931,10 +912,7 @@ module.exports = {
             The following example uses the user model to return the user information that owns the credentials based on the authenticated user's id.
             <pre><code class="js">subscribe_user: async (id) =&gt; {
   const UserModel = require(&#039;../models/UserModel&#039;);
-  return UserModel.findOne({
-    where: {id},
-    raw: true
-  });
+  return UserModel.findOne({where: {id}, raw: true});
 }</code></pre>
           </td>
         </tr>
@@ -944,9 +922,7 @@ module.exports = {
             By default, it requires an authenticated user for all requests.<br>
             You can use the <code>"allow_unauthenticated"</code> option to disable this behavior on certain requests.<br>
             For example, if you don’t want to authenticate all requests that contain "api" in the URL, set <code>"allow_unauthenticated"</code> as follows.
-            <pre><code class="js">allow_unauthenticated: [
-  &#039;/api&#039;
-]</code></pre>
+            <pre><code class="js">allow_unauthenticated: [&#039;/api&#039;]</code></pre>
           </td>
         </tr>
         <tr>
@@ -1016,13 +992,7 @@ export default {
    * @type {(username: string, password: string) =&gt; Promise&lt;{[key: string]: any}|null&gt;}
    */
   authenticate_user: async (username, password) =&gt; {
-    return UserModel.findOne({
-      where: {
-        email: username,
-        password: password
-      },
-      raw: true
-    });
+    return UserModel.findOne({where: {email: username, password: password}, raw: true});
   },
 
   /**
@@ -1033,10 +1003,7 @@ export default {
    * @type {(id: number|string) =&gt; Promise&lt;{[key: string]: any}&gt;}
    */
   subscribe_user: async (id) =&gt; {
-    return UserModel.findOne({
-      where: {id},
-      raw: true
-    });
+    return UserModel.findOne({where: {id}, raw: true});
   },
 
   /**
@@ -1099,13 +1066,7 @@ module.exports = {
    * @type {(username: string, password: string) =&gt; Promise&lt;{[key: string]: any}|null&gt;}
    */
   authenticate_user: async (username, password) =&gt; {
-    return UserModel.findOne({
-      where: {
-        email: username,
-        password: password
-      },
-      raw: true
-    });
+    return UserModel.findOne({where: {email: username, password: password}, raw: true});
   },
 
   /**
@@ -1116,10 +1077,7 @@ module.exports = {
    * @type {(id: number|string) =&gt; Promise&lt;{[key: string]: any}&gt;}
    */
   subscribe_user: async (id) =&gt; {
-    return UserModel.findOne({
-      where: {id},
-      raw: true
-    });
+    return UserModel.findOne({where: {id}, raw: true});
   },
 
   /**
@@ -1216,38 +1174,32 @@ export default {
   development: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
-    port: undefined,
+    port: 3306,
     dialect: &#039;mariadb&#039;,
     timezone: &#039;+09:00&#039;,
     logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
   },
   test: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
-    port: undefined,
+    port: 3306,
     dialect: &#039;mariadb&#039;,
     timezone: &#039;+09:00&#039;,
     logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
   },
   production: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
-    port: undefined,
+    port: 3306,
     dialect: &#039;mariadb&#039;,
     timezone: &#039;+09:00&#039;,
     logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
   }
 }</code></pre>
         </div>
@@ -1259,38 +1211,32 @@ module.exports = {
   development: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
-    port: undefined,
+    port: 3306,
     dialect: &#039;mariadb&#039;,
     timezone: &#039;+09:00&#039;,
     logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
   },
   test: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
-    port: undefined,
+    port: 3306,
     dialect: &#039;mariadb&#039;,
     timezone: &#039;+09:00&#039;,
     logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
   },
   production: {
     username: &#039;root&#039;,
     password: null,
-    database: &#039;example&#039;,
+    database: &#039;testdb&#039;,
     host: &#039;localhost&#039;,
-    port: undefined,
+    port: 3306,
     dialect: &#039;mariadb&#039;,
     timezone: &#039;+09:00&#039;,
     logging: false
-    //,timezone: &#039;Etc/GMT-9&#039;
-    //,dialectOptions: {useUTC: false, timezone: &#039;Etc/GMT-9&#039;}
   }
 }</code></pre>
         </div>
@@ -2196,9 +2142,8 @@ let value = &#039;2&#039;
     <!--begin::Accessing Models-->
     <h2 id="model-accessing">Accessing Models</h2>
     <p>
-      Model classes are stored in the "models" directory in the root directory.<br>
-      Loading the model gives you instant access to the model’s functions for working with the database.<br>
-      In the following example, "routes/users.js" loads "models/UserModel.js" and tries CRUD to the user table.
+      Place the model in the "models" directory of the root directory.<br>
+      When you load the model, you have immediate access to the model's functions for working with the database.
     </p>
     <div class="example">
       <ul class="nav nav-tabs">
@@ -2211,34 +2156,34 @@ let value = &#039;2&#039;
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-accessing-esm">
-          <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+          <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
 
-// INSERT INTO user (email, name) VALUES (&#039;robin@example.com&#039;, &#039;Robin&#039;)
-await UserModel.create({email: &#039;robin@example.com&#039;, name: &#039;Robin&#039;});
+// INSERT INTO book (title) VALUES (&#039;When Im Gone&#039;)
+await BookModel.create({title: &#039;When Im Gone&#039;});
 
-// SELECT * FROM user
-await UserModel.findAll();
+// SELECT * FROM book
+await BookModel.findAll();
 
-// UPDATE user SET name = &#039;Taylor&#039; WHERE id= 1
-await UserModel.update({name: &#039;Taylor&#039;}, {where: {id: 1}});
+// UPDATE book SET title = &#039;When Im Gone&#039; WHERE id= 1
+await BookModel.update({title: &#039;When Im Gone&#039;}, {where: {id: 1}});
 
-// DELETE FROM user WHERE id= 1
-await UserModel.destroy({where: {id: 1}});</code></pre>
+// DELETE FROM book WHERE id= 1
+await BookModel.destroy({where: {id: 1}});</code></pre>
         </div>
         <div class="tab-pane fade" id="model-accessing-cjs">
-          <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+          <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
 
-// INSERT INTO user (email, name) VALUES (&#039;robin@example.com&#039;, &#039;Robin&#039;)
-await UserModel.create({email: &#039;robin@example.com&#039;, name: &#039;Robin&#039;});
+// INSERT INTO book (title) VALUES (&#039;When Im Gone&#039;)
+await BookModel.create({title: &#039;When Im Gone&#039;});
 
-// SELECT * FROM user
-await UserModel.findAll();
+// SELECT * FROM book
+await BookModel.findAll();
 
-// UPDATE user SET name = &#039;Taylor&#039; WHERE id= 1
-await UserModel.update({name: &#039;Taylor&#039;}, {where: {id: 1}});
+// UPDATE book SET title = &#039;When Im Gone&#039; WHERE id= 1
+await BookModel.update({title: &#039;When Im Gone&#039;}, {where: {id: 1}});
 
-// DELETE FROM user WHERE id= 1
-await UserModel.destroy({where: {id: 1}});</code></pre>
+// DELETE FROM book WHERE id= 1
+await BookModel.destroy({where: {id: 1}});</code></pre>
         </div>
       </div>
     </div>
@@ -2521,65 +2466,65 @@ module.exports = class extends Model {
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-op-esm">
-                  <pre><code class="js">import UserModel from &#39;../models/UserModel&#39;;
+                  <pre><code class="js">import BookModel from &#39;../models/BookModel&#39;;
         
-// SELECT * FROM user WHERE email = &#39;robin@example.com&#39; AND password = &#39;password&#39;;
-UserModel.findOne({
+// SELECT * FROM book WHERE title = &#39;When Im Gone&#39; AND genre = &#39;Nonfiction&#39;;
+BookModel.findOne({
   where: {
-    [UserModel.Op.and]: [
-      {email: &#39;robin@example.com&#39;},
-      {password: &#39;password&#39;}
+    [BookModel.Op.and]: [
+      {title: &#39;When Im Gone&#39;},
+      {genre: &#39;Nonfiction&#39;}
     ]
   }
 });
 
-// SELECT * FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
-UserModel.findAll({
+// SELECT * FROM book WHERE title = &#39;When Im Gone&#39; OR title = &#39;Lose Yourself&#39;;
+BookModel.findAll({
   where: {
-    [UserModel.Op.or]: [
-      {name: &#39;Robin&#39;},
-      {name: &#39;Taylor&#39;}
+    [BookModel.Op.or]: [
+      {title: &#39;When Im Gone&#39;},
+      {title: &#39;Lose Yourself&#39;}
     ]
   }
 });
 
-// DELETE FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
-UserModel.destroy({
+// DELETE FROM user WHERE name = &#39;When Im Gone&#39; OR name = &#39;Lose Yourself&#39;;
+BookModel.destroy({
   where: {
-    name: {
-      [UserModel.Op.or]: [&#39;Robin&#39;, &#39;Taylor&#39;]
+    title: {
+      [BookModel.Op.or]: [&#39;When Im Gone&#39;, &#39;Lose Yourself&#39;]
     }
   }
 });</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-op-cjs">
-                  <pre><code class="js">const UserModel = require(&#39;../models/UserModel&#39;);
+                  <pre><code class="js">const BookModel = require(&#39;../models/BookModel&#39;);
         
-// SELECT * FROM user WHERE email = &#39;robin@example.com&#39; AND password = &#39;password&#39;;
-UserModel.findOne({
+// SELECT * FROM book WHERE title = &#39;When Im Gone&#39; AND genre = &#39;Nonfiction&#39;;
+BookModel.findOne({
   where: {
-    [UserModel.Op.and]: [
-      {email: &#39;robin@example.com&#39;},
-      {password: &#39;password&#39;}
+    [BookModel.Op.and]: [
+      {title: &#39;When Im Gone&#39;},
+      {genre: &#39;Nonfiction&#39;}
     ]
   }
 });
 
-// SELECT * FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
-UserModel.findAll({
+// SELECT * FROM book WHERE title = &#39;When Im Gone&#39; OR title = &#39;Lose Yourself&#39;;
+BookModel.findAll({
   where: {
-    [UserModel.Op.or]: [
-      {name: &#39;Robin&#39;},
-      {name: &#39;Taylor&#39;}
+    [BookModel.Op.or]: [
+      {title: &#39;When Im Gone&#39;},
+      {title: &#39;Lose Yourself&#39;}
     ]
   }
 });
 
-// DELETE FROM user WHERE name = &#39;Robin&#39; OR name = &#39;Taylor&#39;;
-UserModel.destroy({
+// DELETE FROM user WHERE name = &#39;When Im Gone&#39; OR name = &#39;Lose Yourself&#39;;
+BookModel.destroy({
   where: {
-    name: {
-      [UserModel.Op.or]: [&#39;Robin&#39;, &#39;Taylor&#39;]
+    title: {
+      [BookModel.Op.or]: [&#39;When Im Gone&#39;, &#39;Lose Yourself&#39;]
     }
   }
 });</code></pre>
@@ -2619,9 +2564,9 @@ const books = await BookModel.findAll({
 });
 
 // Output: books= [
-//           { title: 'MOBY DICK' },
-//           { title: 'GET RICH REALLY FAST' },
-//           { title: 'FINDING INNER PEACE' }
+//           {title: 'MOBY DICK'},
+//           {title: 'GET RICH REALLY FAST'},
+//           {title: 'FINDING INNER PEACE'}
 //         ]
 console.log('books=', books);</code></pre>
                 </div>
@@ -2637,9 +2582,9 @@ const books = await BookModel.findAll({
 });
 
 // Output: books= [
-//           { title: &#39;MOBY DICK&#39; },
-//           { title: &#39;GET RICH REALLY FAST&#39; },
-//           { title: &#39;FINDING INNER PEACE&#39; }
+//           {title: &#39;MOBY DICK&#39;},
+//           {title: &#39;GET RICH REALLY FAST&#39;},
+//           {title: &#39;FINDING INNER PEACE&#39;}
 //         ]
 console.log(&#39;books=&#39;, books);</code></pre>
                 </div>
@@ -2691,9 +2636,8 @@ const books = await BookModel.findAll({
 });
 
 // Output: books= [
-//           { id: 1, title: &#39;Moby Dick&#39;, count: 2 },
-//           { id: 2, title: &#39;Get Rich Really Fast&#39;, count: 1 },
-//           { id: 3, title: &#39;Finding Inner Peace&#39;, count: 0 }
+//           {id: 1, title: &#39;When Im Gone&#39;, count: 2},
+//           {id: 2, title: &#39;Lose Yourself&#39;, count: 1}
 //         ]
 console.log(&#39;books=&#39;, books);</code></pre>
                 </div>
@@ -2716,9 +2660,8 @@ const books = await BookModel.findAll({
 });
 
 // Output: books= [
-//           { id: 1, title: &#39;Moby Dick&#39;, count: 2 },
-//           { id: 2, title: &#39;Get Rich Really Fast&#39;, count: 1 },
-//           { id: 3, title: &#39;Finding Inner Peace&#39;, count: 0 }
+//           {id: 1, title: &#39;When Im Gone&#39;, count: 2},
+//           {id: 2, title: &#39;Lose Yourself&#39;, count: 1}
 //         ]
 console.log(&#39;books=&#39;, books);</code></pre>
                 </div>
@@ -2734,7 +2677,7 @@ console.log(&#39;books=&#39;, books);</code></pre>
               The attr can either be an object taken from Model.rawAttributes (for example Model.rawAttributes.id or Model.rawAttributes.name).<br>
               The attribute should be defined in your model definition.<br>
               The attribute can also be an object from one of the sequelize utility functions (sequelize.fn, sequelize.col etc.)<br>
-              For string attributes, use the regular { where: { attr: something }} syntax.<br>
+              For string attributes, use the regular {where: {attr: something}} syntax.<br>
               If you don't want your string to be escaped, use sequelize.literal.<br>
               See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-where" target="_blank">here</a> for details.
             </p>
@@ -2761,7 +2704,7 @@ const books = await BookModel.findAll({
   raw: true
 });
 
-// Output: books= [ { title: &#39;Moby Dick&#39; } ]
+// Output: books= [{title: &#39;When Im Gone&#39;}]
 console.log(&#39;books=&#39;, books);</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-where-cjs">
@@ -2777,7 +2720,7 @@ const books = await BookModel.findAll({
   raw: true
 });
 
-// Output: books= [ { title: &#39;Moby Dick&#39; } ]
+// Output: books= [{title: &#39;When Im Gone&#39;}]
 console.log(&#39;books=&#39;, books);</code></pre>
                 </div>
               </div>
@@ -2880,49 +2823,74 @@ module.exports = class extends Model {
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-begin-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
-        
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
+
+// Simple transaction usage example.
 let transaction;
 try {
-  // START TRANSACTION;
-  transaction = await UserModel.begin();
-
-  // SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`id` = 1;
-  const user = await UserModel.findOne({where: {id: 1}}, {transaction});
-  user.name = &#039;Jane&#039;;
-
-  // UPDATE `user` SET `name`=? WHERE `id` = ?
-  await user.save({transaction});
-
-  // COMMIT;
+  transaction = await BookModel.begin();
+  const book = await BookModel.create({title: &#039;When Im Gone&#039;}, {transaction});
   await transaction.commit();
-} catch(e) {
-  // ROLLBACK;
-  await transaction.rollback();
+} catch(error) {
+  if (transaction)
+    await transaction.rollback();
+}
+
+// You can also use transaction options.
+let transaction;
+try {
+  transaction = await BookModel.begin({
+    isolationLevel: BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ,
+    type: BookModel.Transaction.TYPES.DEFERRED,
+  });
+  const book = await BookModel.findOne({where: {id: 1}}, {transaction});
+  book.title = &#039;When Im Gone&#039;;
+  await book.save({transaction});
+  await transaction.commit();
+
+  // Check the update result.
+  // Output: New title of book: When Im Gone
+  await book.reload();
+  console.log(`New title of book: ${book.title}`);
+} catch (err) {
+  if (transaction)
+    await transaction.rollback();
 }</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-begin-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
         
+// Simple transaction usage example.
 let transaction;
 try {
-  // START TRANSACTION;
-  transaction = await UserModel.begin();
-
-  // SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`id` = 1;
-  const user = await UserModel.findOne({where: {id: 1}}, {transaction});
-  user.name = &#039;Jane&#039;;
-
-  // UPDATE `user` SET `name`=? WHERE `id` = ?
-  await user.save({transaction});
-
-  // COMMIT;
+  transaction = await BookModel.begin();
+  const book = await BookModel.create({title: &#039;When Im Gone&#039;}, {transaction});
   await transaction.commit();
-} catch(e) {
-  // ROLLBACK;
-  await transaction.rollback();
+} catch(error) {
+  if (transaction)
+    await transaction.rollback();
 }
-</code></pre>
+
+// You can also use transaction options.
+let transaction;
+try {
+  transaction = await BookModel.begin({
+    isolationLevel: BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ,
+    type: BookModel.Transaction.TYPES.DEFERRED,
+  });
+  const book = await BookModel.findOne({where: {id: 1}}, {transaction});
+  book.title = &#039;When Im Gone&#039;;
+  await book.save({transaction});
+  await transaction.commit();
+
+  // Check the update result.
+  // Output: New title of book: When Im Gone
+  await book.reload();
+  console.log(`New title of book: ${book.title}`);
+} catch (err) {
+  if (transaction)
+    await transaction.rollback();
+}</code></pre>
                 </div>
               </div>
             </div>
@@ -2954,16 +2922,16 @@ try {
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-create-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
-// INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;ellen@example.com&#039;,&#039;password&#039;,&#039;Ellen&#039;);
-await UserModel.create({email: &#039;ellen@example.com&#039;, password: &#039;password&#039;, name: &#039;Ellen&#039;});</code></pre>
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;When Im Gone&#039;);
+await BookModel.create({title: &#039;When Im Gone&#039;});</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-create-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
         
-// INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;ellen@example.com&#039;,&#039;password&#039;,&#039;Ellen&#039;);
-await UserModel.create({email: &#039;ellen@example.com&#039;, password: &#039;password&#039;, name: &#039;Ellen&#039;});</code></pre>
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;When Im Gone&#039;);
+await BookModel.create({title: &#039;When Im Gone&#039;});</code></pre>
                 </div>
               </div>
             </div>
@@ -2994,26 +2962,26 @@ await UserModel.create({email: &#039;ellen@example.com&#039;, password: &#039;pa
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-save-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
-// INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,&#039;jane@example.com&#039;,&#039;password&#039;,&#039;Jane&#039;);
-const user = UserModel.build({email: &#039;jane@example.com&#039;, password: &#039;password&#039;, name: &#039;Jane&#039;});
-await user.save();
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;When Im Gone&#039;);
+const book = BookModel.build({title: &#039;When Im Gone&#039;});
+await book.save();
 
-// UPDATE `user` SET `name`=&#039;Ada&#039; WHERE `id` = 1;
-user.name = &#039;Ada&#039;;
-await user.save();</code></pre>
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+book.title = &#039;Lose Yourself&#039;;
+await book.save();</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-save-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
         
-// INSERT INTO `user` (`id`,`email`,`password`,`name`) VALUES (DEFAULT,'jane@example.com','password','Jane');
-const user = UserModel.build({email: 'jane@example.com', password: 'password', name: 'Jane'});
-await user.save();
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;When Im Gone&#039;);
+const book = BookModel.build({title: &#039;When Im Gone&#039;});
+await book.save();
 
-// UPDATE `user` SET `name`='Ada' WHERE `id` = 1;
-user.name = 'Ada';
-await user.save();</code></pre>
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+book.title = &#039;Lose Yourself&#039;;
+await book.save();</code></pre>
                 </div>
               </div>
             </div>
@@ -3045,16 +3013,16 @@ await user.save();</code></pre>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-find-one-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
-// SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` LIMIT 1;
-await UserModel.findOne();</code></pre>
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` LIMIT 1;
+await BookModel.findOne();</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-find-one-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
         
-// SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` LIMIT 1;
-await UserModel.findOne();</code></pre>
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` LIMIT 1;
+await BookModel.findOne();</code></pre>
                 </div>
               </div>
             </div>
@@ -3085,25 +3053,25 @@ await UserModel.findOne();</code></pre>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-find-all-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
-// SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`name` LIKE &#039;Robin%&#039;;
-const users = await UserModel.findAll({
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` WHERE `book`.`title` LIKE &#039;When Im Gone%&#039;;
+await BookModel.findAll({
   where: {
-    name: {
-      [UserModel.Op.like]: &#039;Robin%&#039;
+    title: {
+      [BookModel.Op.like]: &#039;When Im Gone%&#039;
     }
   }
 });</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-find-all-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
         
-// SELECT `id`, `email`, `password`, `name`, `created`, `modified` FROM `user` AS `user` WHERE `user`.`name` LIKE &#039;Robin%&#039;;
-const users = await UserModel.findAll({
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` WHERE `book`.`title` LIKE &#039;When Im Gone%&#039;;
+await BookModel.findAll({
   where: {
-    name: {
-      [UserModel.Op.like]: &#039;Robin%&#039;
+    title: {
+      [BookModel.Op.like]: &#039;When Im Gone%&#039;
     }
   }
 });</code></pre>
@@ -3137,16 +3105,16 @@ const users = await UserModel.findAll({
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-count-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
-// SELECT count(*) AS `count` FROM `user` AS `user`;
-await UserModel.count();</code></pre>
+// SELECT count(*) AS `count` FROM `book` AS `book`;
+await BookModel.count();</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-count-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
 
-// SELECT count(*) AS `count` FROM `user` AS `user`;
-await UserModel.count();</code></pre>
+// SELECT count(*) AS `count` FROM `book` AS `book`;
+await BookModel.count();</code></pre>
                 </div>
               </div>
             </div>
@@ -3178,22 +3146,16 @@ await UserModel.count();</code></pre>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-update-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
-// UPDATE `user` SET `name`=&#039;Jane&#039; WHERE `id` = 1;
-await UserModel.update(
-  {name: &#039;Jane&#039;},
-  {where: {id: 1}}
-);</code></pre>
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+await BookModel.update({title: &#039;Lose Yourself&#039;}, {where: {id: 1}});</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-update-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
 
-// UPDATE `user` SET `name`=&#039;Jane&#039; WHERE `id` = 1;
-await UserModel.update(
-  {name: &#039;Jane&#039;},
-  {where: {id: 1}}
-);</code></pre>
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+await BookModel.update({title: &#039;Lose Yourself&#039;}, {where: {id: 1}});</code></pre>
                 </div>
               </div>
             </div>
@@ -3228,26 +3190,16 @@ await UserModel.update(
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-upsert-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
-// INSERT INTO `user` (`email`,`password`,`name`) VALUES (?,?,?)
-// ON DUPLICATE KEY UPDATE `email`=VALUES(`email`),`password`=VALUES(`password`),`name`=VALUES(`name`);
-await UserModel.upsert({
-  email: &#039;robin@example.com&#039;,
-  password: &#039;password&#039;,
-  name: &#039;Robin&#039;
-});</code></pre>
+// INSERT INTO `book` (`title`) VALUES (?) ON DUPLICATE KEY UPDATE `title`=VALUES(`title`);
+await BookModel.upsert({title: &#039;Lose Yourself&#039;});</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-upsert-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
         
-// INSERT INTO `user` (`email`,`password`,`name`) VALUES (?,?,?)
-// ON DUPLICATE KEY UPDATE `email`=VALUES(`email`),`password`=VALUES(`password`),`name`=VALUES(`name`);
-await UserModel.upsert({
-  email: &#039;robin@example.com&#039;,
-  password: &#039;password&#039;,
-  name: &#039;Robin&#039;
-});</code></pre>
+// INSERT INTO `book` (`title`) VALUES (?) ON DUPLICATE KEY UPDATE `title`=VALUES(`title`);
+await BookModel.upsert({title: &#039;Lose Yourself&#039;});</code></pre>
                 </div>
               </div>
             </div>
@@ -3278,16 +3230,16 @@ await UserModel.upsert({
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="model-destroy-esm">
-                  <pre><code class="js">import UserModel from &#039;../models/UserModel&#039;;
+                  <pre><code class="js">import BookModel from &#039;../models/BookModel&#039;;
         
 // DELETE FROM `user` WHERE `id` = 1;
-await UserModel.destroy({where: {id :1}});</code></pre>
+await BookModel.destroy({where: {id :1}});</code></pre>
                 </div>
                 <div class="tab-pane fade" id="model-destroy-cjs">
-                  <pre><code class="js">const UserModel = require(&#039;../models/UserModel&#039;);
+                  <pre><code class="js">const BookModel = require(&#039;../models/BookModel&#039;);
         
 // DELETE FROM `user` WHERE `id` = 1;
-await UserModel.destroy({where: {id :1}});</code></pre>
+await BookModel.destroy({where: {id :1}});</code></pre>
                 </div>
               </div>
             </div>
@@ -3863,11 +3815,11 @@ module.exports = class extends Model {
 //             "books": [
 //               {
 //                 "userId": 1,
-//                 "title": "The Stars Tonight"
+//                 "title": "When Im Gone"
 //               },
 //               {
 //                 "userId": 1,
-//                 "title": "A Guide to Courteous Thievery"
+//                 "title": "Lose Yourself"
 //               }
 //             ]
 //           }
@@ -3900,11 +3852,11 @@ await UserModel.findAll({
 //             "books": [
 //               {
 //                 "userId": 1,
-//                 "title": "The Stars Tonight"
+//                 "title": "When Im Gone"
 //               },
 //               {
 //                 "userId": 1,
-//                 "title": "A Guide to Courteous Thievery"
+//                 "title": "Lose Yourself"
 //               }
 //             ]
 //           }
@@ -3935,11 +3887,11 @@ await UserModel.findAll({
             <p class="fw-bolder mb-0">Example:</p>
             <pre><code class="js">// By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
 // Note that since this is a raw query, the metadata are dialect specific.
-const [results, metadata] = await UserModel.query(&quot;UPDATE user SET name = &#039;Beil&#039; WHERE id = 1&quot;);
+const [results, metadata] = await BookModel.query(&quot;UPDATE book SET title = &#039;Lose Yourself&#039; WHERE id = 1&quot;);
 
 // In cases where you don&#039;t need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
 // We didn&#039;t need to destructure the result here - the results were returned directly
-const users = await UserModel.query(&quot;SELECT * FROM user&quot;, {type: UserModel.QueryTypes.SELECT});</code></pre>
+await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryTypes.SELECT});</code></pre>
           </td>
         </tr>
       </tbody>
@@ -4434,11 +4386,11 @@ const client = new sweet.services.AWSRekognitionClient({
 try {
   // Creates a collection.
   await client.createCollection(&#039;MyCollection&#039;);
-} catch (e) {
+} catch(err) {
   // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
+  console.log(`name: ${err.name}`);
+  console.log(`statusCode: ${err.statusCode}`);
+  console.log(`message: ${err.message}`);
 }</code></pre>
                 </div>
                 <div class="tab-pane fade" id="rekog-method-create-collection-cjs">
@@ -4453,11 +4405,11 @@ const client = new AWSRekognitionClient({
 try {
   // Creates a collection.
   await client.createCollection(&#039;MyCollection&#039;);
-} catch (e) {
+} catch(err) {
   // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
+  console.log(`name: ${err.name}`);
+  console.log(`statusCode: ${err.statusCode}`);
+  console.log(`message: ${err.message}`);
 }</code></pre>
                 </div>
               </div>
@@ -4633,11 +4585,11 @@ const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(
 //         message: No face was found in the image
 try {
   await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
+} catch(err) {
   // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
+  console.log(`name: ${err.name}`);
+  console.log(`statusCode: ${err.statusCode}`);
+  console.log(`message: ${err.message}`);
 }
 
 // If multiple faces are found in the image, throw an error.
@@ -4646,11 +4598,11 @@ try {
 //         message: Multiple faces found in the image
 try {
   await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
+} catch(err) {
   // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
+  console.log(`name: ${err.name}`);
+  console.log(`statusCode: ${err.statusCode}`);
+  console.log(`message: ${err.message}`);
 }</code></pre>
                 </div>
                 <div class="tab-pane fade" id="rekog-method-index-face-cjs">
@@ -4678,11 +4630,11 @@ const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(
 //         message: No face was found in the image
 try {
   await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
+} catch(err) {
   // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
+  console.log(`name: ${err.name}`);
+  console.log(`statusCode: ${err.statusCode}`);
+  console.log(`message: ${err.message}`);
 }
 
 // If multiple faces are found in the image, throw an error.
@@ -4691,11 +4643,11 @@ try {
 //         message: Multiple faces found in the image
 try {
   await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-} catch (e) {
+} catch(err) {
   // You can get the resulting HTTP status code from the exception.
-  console.log(`name: ${e.name}`);
-  console.log(`statusCode: ${e.statusCode}`);
-  console.log(`message: ${e.message}`);
+  console.log(`name: ${err.name}`);
+  console.log(`statusCode: ${err.statusCode}`);
+  console.log(`message: ${err.message}`);
 }</code></pre>
                 </div>
               </div>
@@ -5063,7 +5015,7 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 <script src="scripts/docs.js"></script>
 </body>
 </html>

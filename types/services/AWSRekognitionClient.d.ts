@@ -100,11 +100,11 @@ export default class {
      * try {
      *   // Creates a collection.
      *   await client.createCollection('MyCollection');
-     * } catch (e) {
+     * } catch(err) {
      *   // You can get the resulting HTTP status code from the exception.
-     *   console.log(`name: ${e.name}`);
-     *   console.log(`statusCode: ${e.statusCode}`);
-     *   console.log(`message: ${e.message}`);
+     *   console.log(`name: ${err.name}`);
+     *   console.log(`statusCode: ${err.statusCode}`);
+     *   console.log(`message: ${err.message}`);
      * }
      *
      * @param {string} collectionId ID for the collection that you are creating.
@@ -175,11 +175,11 @@ export default class {
      * //         message: No face was found in the image
      * try {
      *   await client.indexFace('MyCollection', 'img.jpg');
-     * } catch (e) {
+     * } catch(err) {
      *   // You can get the resulting HTTP status code from the exception.
-     *   console.log(`name: ${e.name}`);
-     *   console.log(`statusCode: ${e.statusCode}`);
-     *   console.log(`message: ${e.message}`);
+     *   console.log(`name: ${err.name}`);
+     *   console.log(`statusCode: ${err.statusCode}`);
+     *   console.log(`message: ${err.message}`);
      * }
      *
      * // If multiple faces are found in the image, throw an error.
@@ -188,11 +188,11 @@ export default class {
      * //         message: Multiple faces found in the image
      * try {
      *   await client.indexFace('MyCollection', 'img.jpg');
-     * } catch (e) {
+     * } catch(err) {
      *   // You can get the resulting HTTP status code from the exception.
-     *   console.log(`name: ${e.name}`);
-     *   console.log(`statusCode: ${e.statusCode}`);
-     *   console.log(`message: ${e.message}`);
+     *   console.log(`name: ${err.name}`);
+     *   console.log(`statusCode: ${err.statusCode}`);
+     *   console.log(`message: ${err.message}`);
      * }
      *
      * @param  {string}          collectionId    The ID of an existing collection to which you want to add the faces that are detected in the input images.

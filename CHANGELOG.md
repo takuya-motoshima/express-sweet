@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.13] - 2021-12-13
+### Fixed
+- The model's begin method now accepts the transaction option.  
+    See [Transaction | Sequelize](https://sequelize.org/master/class/lib/transaction.js~Transaction.html) for transaction options.  
+    ```js
+    let transaction;
+    try {
+      transaction = await BookModel.begin({
+        isolationLevel: BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ,
+        type: BookModel.Transaction.TYPES.DEFERRED,
+      });
+      const book = await BookModel.findOne({where: {id: 1}}, {transaction});
+      book.title = 'When Im Gone';
+      await book.save({transaction});
+      await transaction.commit();
+
+      // Check the update result.
+      // Output: New title of book: When Im Gone
+      await book.reload();
+      console.log(`New title of book: ${book.title}`);
+    } catch (err) {
+      if (transaction)
+        await transaction.rollback();
+    }
+    ```
+
 ## [1.0.12] - 2021-11-16
 ### Fixed
 - Added a method to the model that can execute raw SQL.  
@@ -10,11 +36,11 @@ All notable changes to this project will be documented in this file.
     ```js
     // By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
     // Note that since this is a raw query, the metadata are dialect specific.
-    const [results, metadata] = await UserModel.query("UPDATE user SET name = 'Beil' WHERE id = 1");
+    const [results, metadata] = await BookModel.query("UPDATE book SET title = 'When Im Gone' WHERE id = 1");
 
     // In cases where you don't need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
     // We didn't need to destructure the result here - the results were returned directly
-    const users = await UserModel.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
+    const users = await BookModel.query("SELECT * FROM book", {type: BookModel.QueryTypes.SELECT});
     ```
 
 ## [1.0.11] - 2021-11-10

@@ -5,37 +5,31 @@ module.exports = {
   development: {
     username: 'root',
     password: null,
-    database: 'test',
+    database: 'testdb',
     host: 'localhost',
-    port: undefined,
+    port: 3306,
     dialect: 'mariadb',
     timezone: '+09:00',
     logging: false
-    //,timezone: 'Etc/GMT-9'
-    //,dialectOptions: {useUTC: false, timezone: 'Etc/GMT-9'}
   },
   test: {
     username: 'root',
     password: null,
-    database: 'test',
+    database: 'testdb',
     host: 'localhost',
-    port: undefined,
+    port: 3306,
     dialect: 'mariadb',
     timezone: '+09:00',
     logging: false
-    //,timezone: 'Etc/GMT-9'
-    //,dialectOptions: {useUTC: false, timezone: 'Etc/GMT-9'}
   },
   production: {
     username: 'root',
     password: null,
-    database: 'test',
+    database: 'testdb',
     host: 'localhost',
-    port: undefined,
+    port: 3306,
     dialect: 'mariadb',
     timezone: '+09:00',
     logging: false
-    //,timezone: 'Etc/GMT-9'
-    //,dialectOptions: {useUTC: false, timezone: 'Etc/GMT-9'}
   }
 }

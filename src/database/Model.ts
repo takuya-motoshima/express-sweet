@@ -43,8 +43,8 @@ export default class Model extends sequelize.Model {
    * // Sequelize provides several operators.
    * Post.findAll({
    *   where: {
-   *     [this.Op.and]: [{ a: 5 }, { b: 6 }],            // (a = 5) AND (b = 6)
-   *     [this.Op.or]: [{ a: 5 }, { b: 6 }],             // (a = 5) OR (b = 6)
+   *     [this.Op.and]: [{a: 5}, {b: 6}],            // (a = 5) AND (b = 6)
+   *     [this.Op.or]: [{a: 5}, {b: 6}],             // (a = 5) OR (b = 6)
    *     someAttribute: {
    *       // Basics
    *       [this.Op.eq]: 3,                              // = 3
@@ -81,7 +81,7 @@ export default class Model extends sequelize.Model {
    *       [this.Op.notIRegexp]: '^[h|a|t]',             // !~* '^[h|a|t]' (PG only)
    *       [this.Op.any]: [2, 3],                        // ANY ARRAY[2, 3]::INTEGER (PG only)
    *       // In Postgres, this.Op.like/this.Op.iLike/this.Op.notLike can be combined to this.Op.any:
-   *       [this.Op.like]: { [this.Op.any]: ['cat', 'hat'] }  // LIKE ANY ARRAY['cat', 'hat']
+   *       [this.Op.like]: {[this.Op.any]: ['cat', 'hat']}  // LIKE ANY ARRAY['cat', 'hat']
    *       // There are more postgres-only range operators, see below
    *     }
    *   }
@@ -129,6 +129,21 @@ export default class Model extends sequelize.Model {
   public static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) => sequelize.Utils.Where = sequelize.where;
 
   /**
+   * Reference to sequelize.Transaction.  
+   * This includes properties such as isolation level enums used with the transaction option.
+   * 
+   * @example
+   * BookModel.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED // "READ UNCOMMITTED"
+   * BookModel.Transaction.ISOLATION_LEVELS.READ_COMMITTED // "READ COMMITTED"
+   * BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ  // "REPEATABLE READ"
+   * BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // "SERIALIZABLE"
+   * 
+   * @see https://sequelize.org/master/class/lib/transaction.js~Transaction.html
+   * @type {sequelize.Transaction}
+   */
+  public static readonly Transaction: (typeof sequelize.Transaction) = sequelize.Transaction;
+
+  /**
    * Initialize the model that represents the table in the DB with attributes and options.
    * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
    *
@@ -162,27 +177,44 @@ export default class Model extends sequelize.Model {
    * Starts a transaction and returns a transaction object to identify the running transaction.
    *
    * @example
-   * // First, we start a transaction and save it into a variable
-   * const t = await SampleModel.begin();
-   *
+   * // Simple transaction usage example.
+   * let transaction;
    * try {
-   *   // Then, we do some calls passing this transaction as an option:
-   *   const user = await SampleModel.create({ name: 'Bart' }, { transaction: t });
-   * 
-   *   // If the execution reaches this line, no errors were thrown.
-   *   // We commit the transaction.
-   *   await t.commit();
-   * } catch (error) {
-   *   // If the execution reaches this line, an error was thrown.
-   *   // We rollback the transaction.
-   *   await t.rollback();
+   *   transaction = await BookModel.begin();
+   *   const book = await BookModel.create({title: 'When Im Gone'}, {transaction});
+   *   await transaction.commit();
+   * } catch(error) {
+   *   if (transaction)
+   *     await transaction.rollback();
    * }
+   * 
+   * // You can also use transaction options.
+   * let transaction;
+   * try {
+   *   transaction = await BookModel.begin({
+   *     isolationLevel: BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ,
+   *     type: BookModel.Transaction.TYPES.DEFERRED,
+   *   });
+   *   const book = await BookModel.findOne({where: {id: 1}}, {transaction});
+   *   book.title = 'When Im Gone';
+   *   await book.save({transaction});
+   *   await transaction.commit();
+   * 
+   *   // Check the update result.
+   *   // Output: New title of book: When Im Gone
+   *   await book.reload();
+   *   console.log(`New title of book: ${book.title}`);
+   * } catch (err) {
+   *   if (transaction)
+   *     await transaction.rollback();
+   * }
+   * 
    * @see https://sequelize.org/master/manual/transactions.html
-   *
-   * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
+   * @param   {sequelize.TransactionOptions}    opts? Options provided when the transaction is created.
+   * @return  {Promise<sequelize.Transaction>}        Returns a transaction object to identify the transaction being executed.
    */
-  public static async begin(): Promise<sequelize.Transaction> {
-    return database.transaction();
+  public static async begin(opts?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
+    return database.transaction(opts);
   }
 
   /**
@@ -199,11 +231,11 @@ export default class Model extends sequelize.Model {
    * @example
    * // By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
    * // Note that since this is a raw query, the metadata are dialect specific.
-   * const [results, metadata] = await UserModel.query("UPDATE user SET name = 'Beil' WHERE id = 1");
+   * const [results, metadata] = await BookModel.query("UPDATE book SET title = 'When Im Gone' WHERE id = 1");
    * 
    * // In cases where you don't need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
    * // We didn't need to destructure the result here - the results were returned directly
-   * const users = await UserModel.query("SELECT * FROM user", {type: UserModel.QueryTypes.SELECT});
+   * const users = await BookModel.query("SELECT * FROM book", {type: BookModel.QueryTypes.SELECT});
    * 
    * @see https://sequelize.org/master/manual/raw-queries.html
    * 

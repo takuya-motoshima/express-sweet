@@ -7,16 +7,16 @@ This test uses MariaDB, so please install MariaDB in advance.
 The DB settings are in "./config/database.js".
 
 ```sql
-CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET utf8mb4;
-
-USE `test`;
+CREATE DATABASE IF NOT EXISTS `testdb` DEFAULT CHARACTER SET utf8mb4;
+USE `testdb`;
 
 CREATE TABLE `book` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` text NOT NULL,
+  `title` varchar(20) NOT NULL,
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukBookTitle` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `comment` (
@@ -34,33 +34,8 @@ CREATE TABLE `comment` (
 Register test data in DB.  
 
 ```sql
-INSERT INTO `book` (`title`) VALUES
-  ('Moby Dick'),
-  ('Get Rich Really Fast'),
-  ('Finding Inner Peace');
-
-INSERT INTO `comment` (`bookId`, `comment`) VALUES
-  (1, 'Interesting.'),
-  (1, 'Very excited.'),
-  (2, 'Very interesting.');
-
-SELECT `id`, `title` FROM `book`;
--- +----+----------------------+
--- | id | title                |
--- +----+----------------------+
--- |  1 | Moby Dick            |
--- |  2 | Get Rich Really Fast |
--- |  3 | Finding Inner Peace  |
--- +----+----------------------+
-
-SELECT `bookId`, `comment` FROM `comment`;
--- +--------+-------------------+
--- | bookId | comment           |
--- +--------+-------------------+
--- |      1 | Interesting.      |
--- |      1 | Very excited.     |
--- |      2 | Very interesting. |
--- +--------+-------------------+
+INSERT INTO `book` (`id`, `title`) VALUES (1, 'When Im Gone'), (2, 'Lose Yourself');
+INSERT INTO `comment` (`bookId`, `comment`) VALUES (1, 'Interesting'), (1, 'Very excited'), (2, 'Very interesting');
 ```
 
 ## Usage

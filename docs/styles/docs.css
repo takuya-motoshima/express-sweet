@@ -260,13 +260,8 @@ h4 {
   }
 
 .hljs {
-  border-radius: .5em;
-  background: #2e2e42;
+  background: #f8f9fa;
 }
-
-  .hljs-comment {
-    color: #9e8f9e;
-  }
 
 .example {
   margin-bottom: 1rem;

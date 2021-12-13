@@ -1,5 +1,5 @@
 export var name = "express-sweet";
-export var version = "1.0.11";
+export var version = "1.0.12";
 export var description = "Extend Express functionality with Express Sweet and start developing fast, minimal web applications.";
 export var main = "dist/build.common.js";
 export var module = "dist/build.esm.js";
