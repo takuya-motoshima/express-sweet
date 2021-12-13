@@ -6,7 +6,7 @@
 
 .topnav {
   padding: .75rem 0;
-  background-color: hsl(267deg, 42%, 29%);
+  background-color: hsl(202deg, 100%, 39%);
 }
 
   .topnav .navbar-toggler {
@@ -24,8 +24,8 @@
   }
 
     .topnav .navbar-nav-svg {
-      width: 1rem;
-      height: 1rem
+      width: 1.5rem;
+      height: 1.5rem
     }
 
 .min-w-150px {
@@ -127,7 +127,7 @@ h4 {
       margin-top: .125rem;
       margin-left: 1.25rem;
       width: fit-content;
-      color: hsl(267deg, 42%, 29%);
+      color: hsl(202deg, 100%, 20%);
       text-decoration: none;
     }
 

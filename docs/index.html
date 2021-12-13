@@ -2734,6 +2734,19 @@ console.log(&#39;books=&#39;, books);</code></pre>
             See <a href="https://sequelize.org/master/variable/index.html#static-variable-QueryTypes" target="_blank">here</a> for details.
           </td>
         </tr>
+        <tr>
+          <td class="min-w-300px text-primary fw-bolder">public static readonly Transaction: (typeof <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>)</td>
+          <td class="min-w-200px w-100">
+            Reference to <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>.<br>
+            This includes properties such as isolation level enums used with the transaction option.<br>
+            See <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">here</a> for details.
+                  <pre><code class="js">const BookModel = require(&#39;../models/BookModel&#39;);
+BookModel.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED // &quot;READ UNCOMMITTED&quot;
+BookModel.Transaction.ISOLATION_LEVELS.READ_COMMITTED // &quot;READ COMMITTED&quot;
+BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ  // &quot;REPEATABLE READ&quot;
+BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // &quot;SERIALIZABLE&quot;</code></pre>
+          </td>
+        </tr>
       </tbody>
     </table>
     
@@ -2802,13 +2815,17 @@ module.exports = class extends Model {
           </td>
         </tr>
         <tr>
-          <td class="min-w-300px text-primary fw-bolder">public static async begin(): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</td>
+          <td class="min-w-300px text-primary fw-bolder">public static async begin(opts?: sequelize.TransactionOptions): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">sequelize.Transaction</a>&gt;</td>
           <td class="min-w-200px w-100">
             <p>
               Starts a transaction and returns a transaction object to identify the running transaction.<br>
               This is an alias for the <code>"sequelize.Sequelize.transaction()"</code> method.<br>
               See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" target="_blank">here</a> and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" target="_blank">here</a> for more information.
             </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{sequelize.TransactionOptions} opts? Options provided when the transaction is created..</li>
+            </ul>
             <p class="fw-bolder mb-0">Return:</p>
             <p>{Promise&lt;sequelize.Transaction&gt;} Returns a transaction object to identify the transaction being executed.</p>
             <p class="fw-bolder mb-0">Example:</p>
