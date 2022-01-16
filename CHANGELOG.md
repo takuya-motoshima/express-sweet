@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.14] - 2022-01-17
+- empty view helper can now check any type. Previously I could only check arrays.
+    ```html
+    // If the value is an array.
+    let value = [5, 6];
+    {{empty value}} => false
+
+    {{#if (empty value)}}
+      Hello
+    {{/if}}
+
+    // If the value is a string.
+    let value = 'Hello';
+    {{empty value}} => false
+ 
+    let value = '';
+    {{empty value}} => true
+ 
+    let value = ' ';
+    {{empty value}} => true
+    ```
+
+- Added not_empty view helper.
+    ```html
+    // If the value is an array.
+    let value = [5, 6];
+    {{not_empty value}} => true
+
+    {{#if (not_empty value)}}
+      Hello
+    {{/if}}
+
+    // If the value is a string.
+    let value = 'Hello';
+    {{not_empty value}} => true
+
+    let value = '';
+    {{not_empty value}} => false
+
+    let value = ' ';
+    {{not_empty value}} => false
+    ```
+
 ## [1.0.13] - 2021-12-13
 ### Fixed
 - The model's begin method now accepts the transaction option.  

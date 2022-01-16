@@ -1883,20 +1883,70 @@ Else
           <td class="min-w-150px text-primary fw-bolder">empty</td>
           <td class="min-w-200px w-100">
             <h4 id="view-helper-empty"><code class="method">empty</code></h4>
-            <p>Check if an array is empty.</p>
+            <p>
+              Check if it is empty.<br>
+              If the value is an array, returns true if there are no elements.<br>
+              If the value is a string, the leading and trailing spaces are trimmed and then checked.
+            </p>
             <p class="fw-bolder mb-0">Params:</p>
             <ul>
-              <li>{any[]} items Array/object to be checked.</li>
+              <li>{any} value Character strings, arrays, objects, etc. to be checked.</li>
             </ul>
             <p class="fw-bolder mb-0">Return:</p>
-            <p>{boolean} Returns true if the array is empty, false otherwise.</p>
+            <p>{boolean} Returns true if the value is empty, false otherwise.</p>
             <p class="fw-bolder mb-0">Example:</p>
-            <pre class="mb-0"><code class="js">let items = [5, 6];
-{{empty items}} =&gt; false
+            <pre class="mb-0"><code class="js">// If the value is an array.
+let value = [5, 6];
+{{empty value}} =&gt; false
 
-{{#if (empty items)}}
+{{#if (empty value)}}
   Hello
-{{/if}}</code></pre>
+{{/if}}
+
+// If the value is a string.
+let value = &#039;Hello&#039;;
+{{empty value}} =&gt; false
+
+let value = &#039;&#039;;
+{{empty value}} =&gt; true
+
+let value = &#039; &#039;;
+{{empty value}} =&gt; true</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td class="min-w-150px text-primary fw-bolder">not_empty</td>
+          <td class="min-w-200px w-100">
+            <h4 id="view-helper-not_empty"><code class="method">not_empty</code></h4>
+            <p>
+              Check that it is not empty.<br>
+              If the value is an array, returns true if there is an element.<br>
+              If the value is a string, the leading and trailing spaces are trimmed and then checked.
+            </p>
+            <p class="fw-bolder mb-0">Params:</p>
+            <ul>
+              <li>{any} value Character strings, arrays, objects, etc. to be checked.</li>
+            </ul>
+            <p class="fw-bolder mb-0">Return:</p>
+            <p>{boolean} Returns true if the value is not empty, false otherwise.</p>
+            <p class="fw-bolder mb-0">Example:</p>
+            <pre class="mb-0"><code class="js">// If the value is an array.
+let value = [5, 6];
+{{not_empty value}} =&gt; true
+
+{{#if (not_empty value)}}
+  Hello
+{{/if}}
+
+// If the value is a string.
+let value = &#039;Hello&#039;;
+{{not_empty value}} =&gt; true
+
+let value = &#039;&#039;;
+{{not_empty value}} =&gt; false
+
+let value = &#039; &#039;;
+{{not_empty value}} =&gt; false</code></pre>
           </td>
         </tr>
         <tr>

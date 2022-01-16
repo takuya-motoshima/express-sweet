@@ -153,20 +153,61 @@ export declare function not(expression: any): boolean;
  */
 export declare function ifx(condition: boolean, value1: any, value2: any): any;
 /**
- * Check if an array is empty.
+ * Check if it is empty.
+ * If the value is an array, returns true if there are no elements.
+ * If the value is a string, the leading and trailing spaces are trimmed and then checked.
  *
  * @example
- * let items = [5, 6];
- * {{empty items}} => false
+ * // If the value is an array.
+ * let value = [5, 6];
+ * {{empty value}} => false
  *
- * {{#if (empty items)}}
+ * {{#if (empty value)}}
  *   Hello
  * {{/if}}
  *
- * @param   {any[]}   items Array/object to be checked.
- * @returns {boolean}       Returns true if the array is empty, false otherwise.
+ * // If the value is a string.
+ * let value = 'Hello';
+ * {{empty value}} => false
+ *
+ * let value = '';
+ * {{empty value}} => true
+ *
+ * let value = ' ';
+ * {{empty value}} => true
+ *
+ * @param   {any}     value Character strings, arrays, objects, etc. to be checked.
+ * @returns {boolean}       Returns true if the value is empty, false otherwise.
  */
-export declare function empty(items: any[]): boolean;
+export declare function empty(value: any): boolean;
+/**
+ * Check that it is not empty.
+ * If the value is an array, returns true if there is an element.
+ * If the value is a string, the leading and trailing spaces are trimmed and then checked.
+ *
+ * @example
+ * // If the value is an array.
+ * let value = [5, 6];
+ * {{not_empty value}} => true
+ *
+ * {{#if (not_empty value)}}
+ *   Hello
+ * {{/if}}
+ *
+ * // If the value is a string.
+ * let value = 'Hello';
+ * {{not_empty value}} => true
+ *
+ * let value = '';
+ * {{not_empty value}} => false
+ *
+ * let value = ' ';
+ * {{not_empty value}} => false
+ *
+ * @param   {any}     value Character strings, arrays, objects, etc. to be checked.
+ * @returns {boolean}       Returns true if the value is not empty, false otherwise.
+ */
+export declare function not_empty(value: any): boolean;
 /**
  * Determine the length of an array.
  *

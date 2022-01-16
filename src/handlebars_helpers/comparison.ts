@@ -1,8 +1,8 @@
 /**
  * Check if param is an object.
  *
- * @param {any} thing
- * @returns {boolean}
+ * @param {any} value Character strings, arrays, objects, etc. to be checked.
+ * @returns {boolean} Returns true if it is an object.
  */
 function isObject(value: any): boolean {
   return value != null && typeof value === 'object' && Array.isArray(value) === false;
@@ -199,24 +199,98 @@ export function ifx(condition: boolean, value1: any, value2: any): any {
 }
 
 /**
- * Check if an array is empty.
+ * Check if it is empty.
+ * If the value is an array, returns true if there are no elements.
+ * If the value is a string, the leading and trailing spaces are trimmed and then checked.
  *
  * @example
- * let items = [5, 6];
- * {{empty items}} => false
+ * // If the value is an array.
+ * let value = [5, 6];
+ * {{empty value}} => false
  * 
- * {{#if (empty items)}}
+ * {{#if (empty value)}}
  *   Hello
  * {{/if}}
  * 
- * @param   {any[]}   items Array/object to be checked.
- * @returns {boolean}       Returns true if the array is empty, false otherwise.
+ * // If the value is a string.
+ * let value = 'Hello';
+ * {{empty value}} => false
+ *
+ * let value = '';
+ * {{empty value}} => true
+ *
+ * let value = ' ';
+ * {{empty value}} => true
+ * 
+ * @param   {any}     value Character strings, arrays, objects, etc. to be checked.
+ * @returns {boolean}       Returns true if the value is empty, false otherwise.
  */
-export function empty(items: any[]): boolean {
-  if (!Array.isArray(items))
-    return true;
-  return items.length === 0;
+export function empty(value: any): boolean {
+  if (typeof value === 'string')
+    // Trim if it's a string.
+    value = value.replace(/^[\s　]+|[\s　]+$/g, ''); 
+  else if (Array.isArray(value) && value.length === 0)
+    // Replace value with null if it is an array and has no elements.
+    value = null;
+  return !!!value;
 }
+
+/**
+ * Check that it is not empty.
+ * If the value is an array, returns true if there is an element.
+ * If the value is a string, the leading and trailing spaces are trimmed and then checked.
+ *
+ * @example
+ * // If the value is an array.
+ * let value = [5, 6];
+ * {{not_empty value}} => true
+ * 
+ * {{#if (not_empty value)}}
+ *   Hello
+ * {{/if}}
+ * 
+ * // If the value is a string.
+ * let value = 'Hello';
+ * {{not_empty value}} => true
+ *
+ * let value = '';
+ * {{not_empty value}} => false
+ *
+ * let value = ' ';
+ * {{not_empty value}} => false
+ * 
+ * @param   {any}     value Character strings, arrays, objects, etc. to be checked.
+ * @returns {boolean}       Returns true if the value is not empty, false otherwise.
+ */
+export function not_empty(value: any): boolean {
+  if (typeof value === 'string')
+    // Trim if it's a string.
+    value = value.replace(/^[\s　]+|[\s　]+$/g, ''); 
+  else if (Array.isArray(value) && value.length === 0)
+    // Replace value with null if it is an array and has no elements.
+    value = null;
+  return !!value;
+}
+
+// /**
+//  * Check if an array is empty.
+//  *
+//  * @example
+//  * let items = [5, 6];
+//  * {{empty items}} => false
+//  * 
+//  * {{#if (empty items)}}
+//  *   Hello
+//  * {{/if}}
+//  * 
+//  * @param   {any[]}   items Array/object to be checked.
+//  * @returns {boolean}       Returns true if the array is empty, false otherwise.
+//  */
+// export function empty(items: any[]): boolean {
+//   if (!Array.isArray(items))
+//     return true;
+//   return items.length === 0;
+// }
 
 /**
  * Determine the length of an array.
