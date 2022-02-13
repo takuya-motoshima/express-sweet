@@ -1,6 +1,6 @@
 {
   "name": "express-sweet",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Extend Express functionality with Express Sweet and start developing fast, minimal web applications.",
   "main": "dist/build.common.js",
   "module": "dist/build.esm.js",
