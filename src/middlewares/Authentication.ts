@@ -87,8 +87,9 @@ export default class {
       // Check if the request URL does not require authentication
       if (opts.allow_unauthenticated && opts.allow_unauthenticated.length) {
         const url = req.path.replace(/\/$/, '');
-        for (let allowedString of opts.allow_unauthenticated) {
-          if (url.indexOf(allowedString) !== -1)
+        for (let allowed of opts.allow_unauthenticated) {
+          if ((typeof allowed === 'string' && url.indexOf(allowed) !== -1)
+              || (allowed instanceof RegExp && url.match(allowed)))
             return void next();
         }
       }

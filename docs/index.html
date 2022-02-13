@@ -923,6 +923,9 @@ module.exports = {
             You can use the <code>"allow_unauthenticated"</code> option to disable this behavior on certain requests.<br>
             For example, if you don’t want to authenticate all requests that contain "api" in the URL, set <code>"allow_unauthenticated"</code> as follows.
             <pre><code class="js">allow_unauthenticated: [&#039;/api&#039;]</code></pre>
+
+            You can also use regular expressions.
+            <pre><code class="js">allow_unauthenticated: [/^\/api/]</code></pre>
           </td>
         </tr>
         <tr>
@@ -1008,7 +1011,7 @@ export default {
 
   /**
    * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
-   * @type {string}
+   * @type {(string|RegExp)[]}
    */
   allow_unauthenticated: [&#039;/api&#039;],
 
@@ -1082,7 +1085,7 @@ module.exports = {
 
   /**
    * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
-   * @type {string}
+   * @type {(string|RegExp)[]}
    */
   allow_unauthenticated: [&#039;/api&#039;],
 

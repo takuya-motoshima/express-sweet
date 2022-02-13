@@ -84,9 +84,9 @@ export default interface {
 
   /**
    * URL without authentication. If the URL described in the access URL partially matches, authentication will not be performed, defaults to none.
-   * @type {string}
+   * @type {(string|RegExp)[]}
    */
-  allow_unauthenticated: string[],
+  allow_unauthenticated: (string|RegExp)[],
 
   /**
    * Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
