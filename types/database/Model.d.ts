@@ -189,10 +189,10 @@ export default class Model extends sequelize.Model {
      * }
      *
      * @see https://sequelize.org/master/manual/transactions.html
-     * @param   {sequelize.TransactionOptions}    opts? Options provided when the transaction is created.
-     * @return  {Promise<sequelize.Transaction>}        Returns a transaction object to identify the transaction being executed.
+     * @param   {sequelize.TransactionOptions}    options?  Options provided when the transaction is created.
+     * @return  {Promise<sequelize.Transaction>}            Returns a transaction object to identify the transaction being executed.
      */
-    static begin(opts?: sequelize.TransactionOptions): Promise<sequelize.Transaction>;
+    static begin(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction>;
     /**
      * Returns data that matches the ID.
      */
@@ -212,10 +212,10 @@ export default class Model extends sequelize.Model {
      *
      * @see https://sequelize.org/master/manual/raw-queries.html
      *
-     * @param   {string} sql   SQL string.
-     * @param   {object} opts  Query options.
-     * @return  {Promise<any>} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
-     *                         If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
+     * @param   {string} sql      SQL string.
+     * @param   {object} options  Query options.
+     * @return  {Promise<any>}    By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
+     *                            If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
      */
-    static query(sql: string, opts: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>): Promise<any>;
+    static query(sql: string, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW> | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>): Promise<any>;
 }

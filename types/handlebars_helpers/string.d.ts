@@ -14,7 +14,16 @@ export declare function replace(value: string, find: string, replace: string): s
  * Split `string` by the given `character`.
  *
  * @example
- * {{split "a,b,c" ","}} -> ['a', 'b', 'c']
+ * <!-- Basic usage. -->
+ * {{split "a,b,c" ","}} => ['a', 'b', 'c']
+ *
+ * <!-- Use with EACH. -->
+ * {{#each (split list ',')}}
+ *   {{this}}<br>
+ * {{/each}}
+ * => a<br>
+ *    b<br>
+ *    c<br>
  *
  * @param  {string} value     String.
  * @param  {string} separator A character that delimits the substrings in this string. Default is a comma.
