@@ -17,15 +17,14 @@ export default class {
       return void console.log('env is already loaded, so do nothing');
 
     // Load options.
-    const opts = this.loadOptions();
-    // console.log(`env file path: ${opts.env_path||'undefined'}`);
+    const options = this.loadOptions();
 
     // Exit if there is no .env path.
-    if (!opts.env_path)
+    if (!options.env_path)
       return;
 
     // Set environment variables in process.env.
-    const env = dotenv.parse(fs.readFileSync(opts.env_path!));
+    const env = dotenv.parse(fs.readFileSync(options.env_path!));
     for (let key in env) {
       console.log(`Set ${key} in process.env`);
       process.env[key] = env[key]

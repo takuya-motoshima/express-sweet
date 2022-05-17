@@ -44,8 +44,8 @@ export default class {
    */
   public static successRedirect(res: express.Response): void {
     // Load options.
-    const opts = this.loadOptions();
-    res.redirect(opts.success_redirect!);
+    const options = this.loadOptions();
+    res.redirect(options.success_redirect!);
   }
 
   /**
@@ -55,8 +55,8 @@ export default class {
    */
   public static failureRedirect(res: express.Response): void {
     // Load options.
-    const opts = this.loadOptions();
-    res.redirect(opts.failure_redirect!);
+    const options = this.loadOptions();
+    res.redirect(options.failure_redirect!);
   }
 
   /**

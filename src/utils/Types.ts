@@ -15,4 +15,15 @@ export default class {
   public static isAsyncFunction(value: Function): boolean {
     return value && value.constructor && value.constructor === Object.getPrototypeOf(async function(){}).constructor;
   }
+
+  /**
+    * Return true if `val` is a non-empty string.
+    *
+    * @param  {any} `val` The value to check
+    * @return {Boolean}
+    * @api public
+    */
+  public static isString(value: any): boolean {
+    return typeof value === 'string' && value !== '';
+  }
 }

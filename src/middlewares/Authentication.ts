@@ -16,10 +16,10 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const opts = this.loadOptions();
+    const options = this.loadOptions();
 
     // Exit if authentication is disabled.
-    if (!opts.enabled)
+    if (!options.enabled)
       return;
 
     // Set session save method.
@@ -30,22 +30,22 @@ export default class {
       cookie: {
         secure: false,
         httpOnly: true,
-        maxAge: opts.expiration
+        maxAge: options.expiration
       }
     }));
 
     // Use passport-local to set up local authentication with username and password.
     passport.use(new LocalStrategy({
-      usernameField: opts.username,
-      passwordField: opts.password,
+      usernameField: options.username,
+      passwordField: options.password,
       session: true
     }, async (username: string, password: string, done) => {
       // Find the user who owns the credentials.
-      const user = <{[key: string]: any}|null> await opts.authenticate_user(username, password);
-      // const user = <{[key: string]: any}> await (opts.model as typeof Model).findOne({
+      const user = <{[key: string]: any}|null> await options.authenticate_user(username, password);
+      // const user = <{[key: string]: any}> await (options.model as typeof Model).findOne({
       //   where: {
-      //     [opts.username]: username,
-      //     [opts.password]: password
+      //     [options.username]: username,
+      //     [options.password]: password
       //   },
       //   raw: true
       // });
@@ -66,10 +66,10 @@ export default class {
     // When the request is received, the user data corresponding to the ID is acquired and stored in req.user.
     passport.deserializeUser(async (id, done) => {
       // Find credentialed user information.
-      const user = <{[key: string]: any}> await opts.subscribe_user(id as number);
-      // const user = <{[key: string]: any}> await opts.model.findOne({where: {id}, raw: true});
+      const user = <{[key: string]: any}> await options.subscribe_user(id as number);
+      // const user = <{[key: string]: any}> await options.model.findOne({where: {id}, raw: true});
       // // For security, delete the password value.
-      // if (user) delete user[opts.password];
+      // if (user) delete user[options.password];
 
       // Done deserialization of authenticated user.
       done(null, user);
@@ -85,9 +85,9 @@ export default class {
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Check if the request URL does not require authentication
-      if (opts.allow_unauthenticated && opts.allow_unauthenticated.length) {
+      if (options.allow_unauthenticated && options.allow_unauthenticated.length) {
         const url = req.path.replace(/\/$/, '');
-        for (let allowed of opts.allow_unauthenticated) {
+        for (let allowed of options.allow_unauthenticated) {
           if ((typeof allowed === 'string' && url.indexOf(allowed) !== -1)
               || (allowed instanceof RegExp && url.match(allowed)))
             return void next();
@@ -100,19 +100,19 @@ export default class {
       // Check if you are logged in.
       if (req.isAuthenticated()) {
         // For authenticated users.
-        if (req.path !== opts.failure_redirect||isAjax) {
+        if (req.path !== options.failure_redirect||isAjax) {
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
         } else {
-          res.redirect(opts.success_redirect);
+          res.redirect(options.success_redirect);
         }
       } else {
         // For unauthenticated users.
-        if (req.path === opts.failure_redirect||isAjax)
+        if (req.path === options.failure_redirect||isAjax)
           next();
         else
-          res.redirect(opts.failure_redirect);
+          res.redirect(options.failure_redirect);
       }
     });
   }

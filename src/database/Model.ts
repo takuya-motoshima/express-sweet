@@ -210,11 +210,11 @@ export default class Model extends sequelize.Model {
    * }
    * 
    * @see https://sequelize.org/master/manual/transactions.html
-   * @param   {sequelize.TransactionOptions}    opts? Options provided when the transaction is created.
-   * @return  {Promise<sequelize.Transaction>}        Returns a transaction object to identify the transaction being executed.
+   * @param   {sequelize.TransactionOptions}    options?  Options provided when the transaction is created.
+   * @return  {Promise<sequelize.Transaction>}            Returns a transaction object to identify the transaction being executed.
    */
-  public static async begin(opts?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
-    return database.transaction(opts);
+  public static async begin(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
+    return database.transaction(options);
   }
 
   /**
@@ -239,14 +239,14 @@ export default class Model extends sequelize.Model {
    * 
    * @see https://sequelize.org/master/manual/raw-queries.html
    * 
-   * @param   {string} sql   SQL string.
-   * @param   {object} opts  Query options.
-   * @return  {Promise<any>} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
-   *                         If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
+   * @param   {string} sql      SQL string.
+   * @param   {object} options  Query options.
+   * @return  {Promise<any>}    By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
+   *                            If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
    */
   public static async query(
     sql: string,
-    opts: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE>
+    options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE>
           | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE>
           | sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT>
           | sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT>
@@ -259,6 +259,6 @@ export default class Model extends sequelize.Model {
           | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
           | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
   ): Promise<any> {
-    return this.sequelize!.query(sql, opts);
+    return this.sequelize!.query(sql, options);
   }
 }

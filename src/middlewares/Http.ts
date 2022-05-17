@@ -17,18 +17,18 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const opts = this.loadOptions();
-    console.log(`The maximum body size is set to ${opts.max_body_size}`);
+    const options = this.loadOptions();
+    console.log(`The maximum body size is set to ${options.max_body_size}`);
 
     // Log HTTP request.
     const morgan = require('morgan')
     app.use(morgan('dev'));
 
     // For parsing application/json.
-    app.use(express.json({limit: opts.max_body_size}));
+    app.use(express.json({limit: options.max_body_size}));
 
     // For parsing application/x-www-form-urlencoded.
-    app.use(express.urlencoded({extended: true, limit: opts.max_body_size}));
+    app.use(express.urlencoded({extended: true, limit: options.max_body_size}));
 
     // For parsing multipart/form-data.
     const multer = require('multer');

@@ -15,7 +15,7 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const opts = this.loadOptions();
+    const options = this.loadOptions();
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -37,8 +37,8 @@ export default class {
       }
 
       // Call a callback function that rewrites baseUrl.
-      if (opts.rewrite_base_url)
-        app.locals.baseUrl = opts.rewrite_base_url(app.locals.baseUrl);
+      if (options.rewrite_base_url)
+        app.locals.baseUrl = options.rewrite_base_url(app.locals.baseUrl);
       next();
     });
   }

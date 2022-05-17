@@ -1,7 +1,7 @@
 import express from 'express';
 import createError from 'http-errors';
 import Config from '~/interfaces/Config';
-import Types from '~/utils/Types';
+import utils from '~/utils';
 import fs from 'fs';
 
 /**
@@ -13,7 +13,7 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const opts = this.loadOptions();
+    const options = this.loadOptions();
 
     // Catch 404 and forward to error handler.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -26,11 +26,11 @@ export default class {
       console.error(err);
 
       // Call error handling Hook.
-      if (opts.error_handler) {
-        if (Types.isAsyncFunction(opts.error_handler))
-          await opts.error_handler(err);
+      if (options.error_handler) {
+        if (utils.isAsyncFunction(options.error_handler))
+          await options.error_handler(err);
         else
-          opts.error_handler(err);
+          options.error_handler(err);
       }
 
       // Set locals, only providing error in development.

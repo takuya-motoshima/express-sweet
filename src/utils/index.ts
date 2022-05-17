@@ -1,3 +1,5 @@
-import Types from './Types';
+import isAsyncFunction from './isAsyncFunction';
+import isString from './isString';
+import isObject from './isObject';
 
-export {Types}
+export {isAsyncFunction, isString, isObject}

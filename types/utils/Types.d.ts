@@ -13,4 +13,12 @@ export default class {
      * @return {boolean}
      */
     static isAsyncFunction(value: Function): boolean;
+    /**
+      * Return true if `val` is a non-empty string.
+      *
+      * @param  {any} `val` The value to check
+      * @return {Boolean}
+      * @api public
+      */
+    static isString(value: any): boolean;
 }

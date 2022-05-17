@@ -11,10 +11,10 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const opts = this.loadOptions();
+    const options = this.loadOptions();
 
     // Exit if CORS is disabled.
-    if (!opts.cors_enabled)
+    if (!options.cors_enabled)
       return void console.log('CORS is disabled');
 
     // Add CORS header to response when request received.

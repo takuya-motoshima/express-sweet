@@ -83,15 +83,15 @@ export default class extends IORedis.Redis {
    *  const unixSocketRedis = new RedisClient({path: "/tmp/echo.sock"});
    *  const redis = new RedisClient({host: 'localhost', port: 6379});
    */
-  constructor(opts: IORedis.IRedisOptions) {
+  constructor(options: IORedis.IRedisOptions) {
     // Initialize options.
-    opts = Object.assign(Redis.DEFAULT_REDIS_OPTIONS, opts);
+    options = Object.assign(Redis.DEFAULT_REDIS_OPTIONS, options);
 
     // Debug options.
-    console.log(`Redis option: ${JSON.stringify(opts, null, 2)}`);
+    console.log(`Redis option: ${JSON.stringify(options, null, 2)}`);
 
     // Generate Redis client instance.
-    super(opts);
-    // this.client = new IORedis(opts);
+    super(options);
+    // this.client = new IORedis(options);
   }
 }

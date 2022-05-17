@@ -10,3 +10,14 @@
  * @return {string}         Character string after replacement.
  */
 export declare function replace(value: string, find: string, replace: string): string;
+/**
+ * Split `string` by the given `character`.
+ *
+ * @example
+ * {{split "a,b,c" ","}} -> ['a', 'b', 'c']
+ *
+ * @param  {string} value     String.
+ * @param  {string} separator A character that delimits the substrings in this string. Default is a comma.
+ * @return {string}
+ */
+export declare function split(value: string, separator: string): string[];

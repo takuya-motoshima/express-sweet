@@ -1,3 +1,5 @@
+import utils from '~/utils';
+
 /**
  * Returns a new string with some or all matches of a pattern replaced by a replacement.
  *
@@ -11,4 +13,31 @@
  */
 export function replace(value: string, find: string, replace: string): string {
   return value.replace(find, replace);
+}
+
+/**
+ * Split `string` by the given `character`.
+ *
+ * @example
+ * <!-- Basic usage. -->
+ * {{split "a,b,c" ","}} => ['a', 'b', 'c']
+ *
+ * <!-- Use with EACH. -->
+ * {{#each (split list ',')}}
+ *   {{this}}<br>
+ * {{/each}}
+ * => a<br>
+ *    b<br>
+ *    c<br>
+ * 
+ * @param  {string} value     String.
+ * @param  {string} separator A character that delimits the substrings in this string. Default is a comma.
+ * @return {string}
+ */
+export function split(value: string, separator: string): string[] {
+  if (!utils.isString(value))
+    return [];
+  if (!utils.isString(separator))
+    separator = ',';
+  return value.split(separator);
 }

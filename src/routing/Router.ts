@@ -16,14 +16,10 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const opts = this.loadOptions();
-
-    // Debug routing options.
-    // console.log(`Router directory is ${opts.router_dir}`);
-    // console.log(`Default router is ${opts.default_router||'nothing'}`);
+    const options = this.loadOptions();
 
     // Set the URL to route based on the path of the file in the routes directory.
-    for (let filePath of File.find(`${opts.router_dir}/**/*.js`)) {
+    for (let filePath of File.find(`${options.router_dir}/**/*.js`)) {
       // Import router module.
       let router = require(filePath);
 
@@ -42,7 +38,7 @@ export default class {
       app.use(url, router);
 
       // Set the default router to run when accessed with "/".
-      if (url === opts.default_router)
+      if (url === options.default_router)
         app.use('/', router);
     }
   }

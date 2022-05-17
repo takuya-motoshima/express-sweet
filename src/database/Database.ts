@@ -15,10 +15,10 @@ export default new class Database extends sequelize.Sequelize {
     Environment.mount();
 
     // Load options.
-    const opts = Database.loadOptions();
+    const options = Database.loadOptions();
 
     // Instantiate sequelize with name of database, username and password.
-    super(opts.database!, opts.username!, opts.password||undefined, opts);
+    super(options.database!, options.username!, options.password||undefined, options);
   }
 
   /**
@@ -65,10 +65,10 @@ export default new class Database extends sequelize.Sequelize {
     const env = process.env.NODE_ENV||'development';
 
     // If an options file is found, it returns options that override the default options.
-    const opts = <DatabaseOptions>require(filePath).default||require(filePath);
-    const envOpts = Object.assign(defOpts, opts[env]);
-    console.log(`Connection DB host: ${envOpts.host}`);
-    console.log(`Connection DB: ${envOpts.database}`);
-    return envOpts;
+    const options = <DatabaseOptions>require(filePath).default||require(filePath);
+    const mergeOptions = Object.assign(defOpts, options[env]);
+    console.log(`Connection DB host: ${mergeOptions.host}`);
+    console.log(`Connection DB: ${mergeOptions.database}`);
+    return mergeOptions;
   }
 }

@@ -1,12 +1,4 @@
-/**
- * Check if param is an object.
- *
- * @param {any} value Character strings, arrays, objects, etc. to be checked.
- * @returns {boolean} Returns true if it is an object.
- */
-function isObject(value: any): boolean {
-  return value != null && typeof value === 'object' && Array.isArray(value) === false;
-}
+import utils from '~/utils';
 
 /**
  * Determine whether or not two values are equal (===).
@@ -191,7 +183,7 @@ export function ifx(condition: boolean, value1: any, value2: any): any {
   // Check if user has omitted the last parameter
   // if that's the case, it would be the Handlebars options object
   // which it sends always as the last parameter.
-  if (isObject(value2) && value2.name === 'ifx' && value2.hasOwnProperty('hash'))
+  if (utils.isObject(value2) && value2.name === 'ifx' && value2.hasOwnProperty('hash'))
     // This means the user has skipped the last parameter,
     // so we should return an empty string ('') in the else case instead.
     value2 = '';
@@ -329,7 +321,7 @@ export function count(items: any[]): number|false {
  */
 export function and(...params: any[]): boolean {
   // Ignore the object appended by handlebars.
-  if (isObject(params[params.length-1]))
+  if (utils.isObject(params[params.length-1]))
     params.pop();
   for (let param of params)
     if (!param) return false;
@@ -357,7 +349,7 @@ export function and(...params: any[]): boolean {
  */
 export function or(...params: any[]): boolean {
   // Ignore the object appended by handlebars.
-  if (isObject(params[params.length-1]))
+  if (utils.isObject(params[params.length-1]))
     params.pop();
   for (let param of params)
     if (param) return true;
@@ -380,7 +372,7 @@ export function or(...params: any[]): boolean {
  */
 export function coalesce(...params: any[]): any {
   // Ignore the object appended by handlebars.
-  if (isObject(params[params.length-1])) params.pop();
+  if (utils.isObject(params[params.length-1])) params.pop();
   for (let param of params)
     if (param)
       return param;
