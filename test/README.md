@@ -1,10 +1,10 @@
-# Test Express Sweet features
+# This is a test project for Express Sweet.
 
 ## Getting Started
+Create a DB for testing the model.
 
-Build a DB to use for model validation.  
-This test uses MariaDB, so please install MariaDB in advance.  
-The DB settings are in "./config/database.js".
+MariaDB will be used for this test, so please install MariaDB beforehand. 
+The DB configuration is located in ". /config/database.js".
 
 ```sql
 CREATE DATABASE IF NOT EXISTS `testdb` DEFAULT CHARACTER SET utf8mb4;
@@ -29,23 +29,19 @@ CREATE TABLE `comment` (
   KEY `fkCommentUser` (`bookId`),
   CONSTRAINT `fkCommentBook` FOREIGN KEY (`bookId`) REFERENCES `book` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
 
-Register test data in DB.  
-
-```sql
 INSERT INTO `book` (`id`, `title`) VALUES (1, 'When Im Gone'), (2, 'Lose Yourself');
 INSERT INTO `comment` (`bookId`, `comment`) VALUES (1, 'Interesting'), (1, 'Very excited'), (2, 'Very interesting');
 ```
 
 ## Usage
-
-Test Face Rekognition.
+Testing of face recognition.
 ```sh
 NODE_ENV=development node rekognition.js
 ```
 
-Test to get data from DB.
+Model testing.
 ```sh
 NODE_ENV=development node db.js
 ```
+

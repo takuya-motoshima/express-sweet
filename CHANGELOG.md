@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.17] - 2022-05-17
+### Fixed
+- Updated documentation and refactored variable names.
+
 ## [1.0.16] - 2022-02-14
 ### Fixed
 - I forgot to include the build file, so I added the build file.
@@ -184,3 +188,4 @@ All notable changes to this project will be documented in this file.
 [1.0.14]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.13...v1.0.14
 [1.0.15]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.14...v1.0.15
 [1.0.16]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.15...v1.0.16
+[1.0.17]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.16...v1.0.17
