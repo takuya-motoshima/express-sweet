@@ -53,7 +53,7 @@ export default class {
    */
   private static loadOptions(): ViewOptions {
     // Options with default values set.
-    const defOpts: ViewOptions = {
+    const defaultOptions: ViewOptions = {
       views_dir: path.join(process.cwd(), 'views'),
       partials_dir: path.join(process.cwd(), 'views/partials'),
       layouts_dir: path.join(process.cwd(), 'views/layout'),
@@ -64,9 +64,9 @@ export default class {
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/view`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defOpts;
+      return defaultOptions;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defOpts, require(filePath).default||require(filePath));
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

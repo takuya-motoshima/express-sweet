@@ -48,7 +48,7 @@ export default new class Database extends sequelize.Sequelize {
    */
   public static loadOptions(): sequelize.Options {
     // Options with default values set.
-    const defOpts: sequelize.Options = {
+    const defaultOptions: sequelize.Options = {
       database: 'unkown',
       username: 'unkown',
       password: undefined,
@@ -59,14 +59,14 @@ export default new class Database extends sequelize.Sequelize {
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/database`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defOpts;
+      return defaultOptions;
 
     // Get the execution environment.
     const env = process.env.NODE_ENV||'development';
 
     // If an options file is found, it returns options that override the default options.
     const options = <DatabaseOptions>require(filePath).default||require(filePath);
-    const mergeOptions = Object.assign(defOpts, options[env]);
+    const mergeOptions = Object.assign(defaultOptions, options[env]);
     console.log(`Connection DB host: ${mergeOptions.host}`);
     console.log(`Connection DB: ${mergeOptions.database}`);
     return mergeOptions;

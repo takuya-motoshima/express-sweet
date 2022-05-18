@@ -11,6 +11,12 @@ export default interface {
   enabled: boolean,
 
   /**
+   * The session store instance, defaults to a new MemoryStore(memory) instance.
+   * @type {'memory'|'redis'}
+   */
+  session_store: 'memory'|'redis',
+
+  /**
    * Authentication user ID field name, defaults to `username`.
    * @type {string}
    */

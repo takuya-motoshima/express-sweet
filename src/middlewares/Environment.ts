@@ -43,16 +43,16 @@ export default class {
    */
   private static loadOptions(): Config {
     // Options with default values set.
-    const defOpts: Config = {
+    const defaultOptions: Config = {
       env_path: undefined
     };
 
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/config`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defOpts;
+      return defaultOptions;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defOpts, require(filePath).default||require(filePath));
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

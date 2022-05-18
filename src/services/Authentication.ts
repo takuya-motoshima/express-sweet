@@ -66,7 +66,7 @@ export default class {
    */
   private static loadOptions(): Partial<AuthenticationOptions> {
     // Options with default values set.
-    const defOpts: Partial<AuthenticationOptions> = {
+    const defaultOptions: Partial<AuthenticationOptions> = {
       success_redirect: '/',
       failure_redirect: '/login'
     };
@@ -74,9 +74,9 @@ export default class {
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/authentication`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defOpts;
+      return defaultOptions;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defOpts, require(filePath).default||require(filePath));
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

@@ -11,6 +11,12 @@ export default {
   enabled: true,
 
   /**
+   * The session store instance, defaults to a new MemoryStore(memory) instance.
+   * @type {'memory|redis'}
+   */
+  session_store: 'memory',
+
+  /**
    * Authentication user ID field name, defaults to `username`.
    * @type {string}
    */

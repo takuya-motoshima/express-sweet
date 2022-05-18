@@ -4,8 +4,7 @@ import {Strategy as LocalStrategy} from 'passport-local';
 import session from 'express-session';
 import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import fs from 'fs';
-import Model from '~/database/Model';
-import Types from '~/utils/Types';
+// import Model from '~/database/Model';
 
 /**
  * Incorporate user authentication into your application.
@@ -124,8 +123,9 @@ export default class {
    */
   private static loadOptions(): AuthenticationOptions {
     // Options with default values set.
-    const defOpts: AuthenticationOptions = {
+    const defaultOptions: AuthenticationOptions = {
       enabled: false,
+      session_store: 'memory',
       username: 'username',
       password: 'password',
       success_redirect: '/',
@@ -139,9 +139,9 @@ export default class {
     // If the options file is not found, the default options are returned.
     const filePath = `${process.cwd()}/config/authentication`;
     if (!fs.existsSync(`${filePath}.js`))
-      return defOpts;
+      return defaultOptions;
 
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defOpts, require(filePath).default||require(filePath));
+    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }
