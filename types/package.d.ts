@@ -34,6 +34,7 @@ export declare var dependencies: {
     "body-parser": string;
     "class-transformer": string;
     "class-validator": string;
+    "connect-redis": string;
     "cookie-parser": string;
     cors: string;
     debug: string;
@@ -56,12 +57,14 @@ export declare var dependencies: {
     "nodejs-shared": string;
     passport: string;
     "passport-local": string;
+    redis: string;
     "reflect-metadata": string;
     sequelize: string;
     uniqid: string;
 };
 export declare var devDependencies: {
     "@types/aws-sdk": string;
+    "@types/connect-redis": string;
     "@types/cookie-parser": string;
     "@types/debug": string;
     "@types/express": string;

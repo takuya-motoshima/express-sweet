@@ -4,7 +4,11 @@ import {Strategy as LocalStrategy} from 'passport-local';
 import session from 'express-session';
 import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import fs from 'fs';
-// import Model from '~/database/Model';
+import connectRedis from 'connect-redis';
+
+// FIXME: When I read createClient with "import", a "Cannot read property transformRedisJsonNullReply of undefined" execution error occurred, but I could not solve it, so I used "require".
+const createClient = require('redis').createClient;
+// import {createClient} from 'redis';
 
 /**
  * Incorporate user authentication into your application.
@@ -21,8 +25,8 @@ export default class {
     if (!options.enabled)
       return;
 
-    // Set session save method.
-    app.use(session({
+    // Session connection options.
+    const sessionOptions: session.SessionOptions = {
       secret: 'secret',
       resave: false,
       saveUninitialized: false,
@@ -31,7 +35,26 @@ export default class {
         httpOnly: true,
         maxAge: options.expiration
       }
-    }));
+    };
+
+    // When session is stored in redis.
+    if (options.session_store === 'redis') {
+      // Create a client to connect to the redis server.
+      const redisClient = createClient({
+        url: options.redis_host as string,
+        legacyMode: true
+      });
+
+      // Check if you can connect to the Redis server.
+      redisClient.connect().catch(console.error);
+
+      // Set up redis session storage in the session store.
+      const RedisStore = connectRedis(session);
+      sessionOptions.store = new RedisStore({client: redisClient});
+    }
+
+    // Set session save method.
+    app.use(session(sessionOptions));
 
     // Use passport-local to set up local authentication with username and password.
     passport.use(new LocalStrategy({
@@ -41,19 +64,6 @@ export default class {
     }, async (username: string, password: string, done) => {
       // Find the user who owns the credentials.
       const user = <{[key: string]: any}|null> await options.authenticate_user(username, password);
-      // const user = <{[key: string]: any}> await (options.model as typeof Model).findOne({
-      //   where: {
-      //     [options.username]: username,
-      //     [options.password]: password
-      //   },
-      //   raw: true
-      // });
-
-      // Debug authentication results.
-      if (user)
-        console.log(`Successful authentication of ${username}`);
-      else
-        console.log(`Failure authentication of ${username}`);
 
       // Authentication done.
       done(null, user||false);
@@ -126,6 +136,7 @@ export default class {
     const defaultOptions: AuthenticationOptions = {
       enabled: false,
       session_store: 'memory',
+      redis_host: undefined,
       username: 'username',
       password: 'password',
       success_redirect: '/',
@@ -141,7 +152,14 @@ export default class {
     if (!fs.existsSync(`${filePath}.js`))
       return defaultOptions;
 
+    // If an options file is found, it is merged with the default options.
+    const mergeOptions = Object.assign(defaultOptions, require(filePath).default||require(filePath));
+
+    // Check required options.
+    if (mergeOptions.session_store === 'redis' && !mergeOptions.redis_host)
+      throw new TypeError('If the session store is redis, redis_host in the authentication configuration is required');
+
     // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    return mergeOptions;
   }
 }

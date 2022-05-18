@@ -16,23 +16,13 @@ export default class {
     // Load options.
     const options = this.loadOptions();
 
-    // Debug View options.
-    console.log(`Set view directory to ${options.views_dir}`);
-    console.log(`Set partials directory to ${options.partials_dir}`);
-    console.log(`Set layouts directory to ${options.layouts_dir}`);
-    console.log(`The default layout is ${options.default_layout}`);
-    console.log(`The extension of the view file is ${options.extension}`);
-
     // Express handlebars template engine.
     const hbs = require('express-hbs');
 
     // Added helper function.
-    for (let [_, helper] of Object.entries(helpers)) {
-      for (let [name, handler] of Object.entries(helper)) {
-        console.log(`Add ${name} to handlebars helper`);
+    for (let [_, helper] of Object.entries(helpers))
+      for (let [name, handler] of Object.entries(helper))
         hbs.registerHelper(name, handler);
-      }
-    }
 
     // Apply template engine to your app.
     app.engine('hbs', hbs.express4({

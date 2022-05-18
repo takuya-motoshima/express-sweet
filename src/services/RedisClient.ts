@@ -87,9 +87,6 @@ export default class extends IORedis.Redis {
     // Initialize options.
     options = Object.assign(Redis.DEFAULT_REDIS_OPTIONS, options);
 
-    // Debug options.
-    console.log(`Redis option: ${JSON.stringify(options, null, 2)}`);
-
     // Generate Redis client instance.
     super(options);
     // this.client = new IORedis(options);

@@ -18,7 +18,6 @@ export default class {
   public static mount(app: express.Express) {
     // Load options.
     const options = this.loadOptions();
-    console.log(`The maximum body size is set to ${options.max_body_size}`);
 
     // Log HTTP request.
     const morgan = require('morgan')
@@ -40,7 +39,6 @@ export default class {
 
     // Static file path.
     const publicDir = path.join(process.cwd(), 'public');
-    console.log(`Set public directory to ${publicDir}`);
     app.use(express.static(publicDir));
   }
 

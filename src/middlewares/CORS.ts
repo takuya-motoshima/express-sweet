@@ -15,7 +15,7 @@ export default class {
 
     // Exit if CORS is disabled.
     if (!options.cors_enabled)
-      return void console.log('CORS is disabled');
+      return;
 
     // Add CORS header to response when request received.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -25,7 +25,6 @@ export default class {
       res.header('Access-Control-Allow-Credentials', 'true');
       next();
     });
-    console.log('CORS is enabled');
   }
 
   /**

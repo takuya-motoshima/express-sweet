@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.18] - 2022-05-18
+### Fixed
+- User authentication sessions can now be stored in redis.  
+    To use redis for session storage, simply add the following option to config/authentication.js.  
+    Please give it a try.
+
+    config/authentication.js:  
+    ```json
+    /**
+    * The session store instance, defaults to a new MemoryStore(memory) instance.
+    * @type {'memory|redis'}
+    */
+    session_store: 'memory',
+
+    /**
+    * If the session is stored in "redis", this field is required and should be set to the hostname of the Redis server.
+    * For example, to connect to redis on localhost on port 6379, set "redis://localhost:6379".
+    * To connect to a different host or port, use a connection string in the format "redis[s]://[[username][:password]@][host][:port][/db-number]".
+    * For example, "redis://alice:foobared@awesome.redis.server:6380".
+    * @type {string|undefined}
+    */
+    redis_host: 'redis://localhost:6379'
+    ```
+
 ## [1.0.17] - 2022-05-17
 ### Fixed
 - Updated documentation and refactored variable names.
@@ -189,3 +213,4 @@ All notable changes to this project will be documented in this file.
 [1.0.15]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.14...v1.0.15
 [1.0.16]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.15...v1.0.16
 [1.0.17]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.16...v1.0.17
+[1.0.18]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.17...v1.0.18
