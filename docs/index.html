@@ -3251,6 +3251,19 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
           </div>
         </li>
         <li class="list-group-item">
+          <div class="fw-bold h5"><code>&#039;memory&#039;|&#039;redis&#039;</code>session_store</div>
+          <div class="ms-3">The session store instance, defaults to a new MemoryStore(<code>memory</code>) instance.</div>
+        </li>
+        <li class="list-group-item">
+          <div class="fw-bold h5"><code>string|undefined</code>redis_host?</div>
+          <div class="ms-3">
+            If the session is stored in <code>&quot;redis&quot;</code>, this field is required and should be set to the hostname of the Redis server.
+            For example, to connect to redis on localhost on port <code>6379</code>, set <code>&quot;redis://localhost:6379&quot;</code>.
+            To connect to a different host or port, use a connection string in the format <code>&quot;redis[s]://[[username][:password]@][host][:port][/db-number]&quot;</code>.
+            For example, <code>&quot;redis://alice:foobared@awesome.redis.server:6380&quot;</code>.
+          </div>
+        </li>
+        <li class="list-group-item">
           <div class="fw-bold h5"><code>string</code>username</div>
           <div class="ms-3">
             The login username field name used for authentication.<br>
