@@ -1,26 +1,26 @@
-/**
- * Stringify an object using JSON.stringify.
- *
- * @example
- * {{json_stringify value}}
- * 
-  * @param  {any}     value  The value to convert to a JSON string.
-  * @param  {number}  indent The number of space characters to use as whitespace.
-  * @return {string}         A JSON string representing the given value, or undefined.
- */
-export function json_stringify(value: any, indent: number|string = 0): string|undefined {
-  return JSON.stringify(value, null, indent);
-}
+import utils from '~/utils';
+import moment from 'moment';
 
 /**
- * Parses the given string using JSON.parse.
+ * Use moment to format the date.
  *
  * @example
- * {{json_parse value}}
- * 
-  * @param  {any} value Object to stringify.
-  * @return {any}       JavaScript value or object described by a string.
+ * {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
+ * {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}} => 2021/10/24
+ * {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
+ *
+ * @param {string}          format A format string based on moment.
+ * @param {string}          date Date string to format.
+ * @param {string|string[]} locale Language or language-country locale string (or array of strings) available in https://github.com/moment/moment/tree/develop/locale .
+ * @returns {string}        Returns formatted date.
  */
-export function json_parse(value: any): any {
-  return JSON.parse(value);
+export function format_date(format: string, date: string, locale: string|string[]): string {
+  format = utils.isString(format) ? format : '';
+  if (utils.isString(locale) || utils.isArray(locale)) {
+    const localeMoment = moment(date || new Date());
+    localeMoment.locale(locale);
+    return localeMoment.format(format);
+  }
+  // Use global moment and format with default locale.
+  return moment(date || new Date()).format(format);
 }

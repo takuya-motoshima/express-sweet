@@ -65,6 +65,7 @@
             <a class="nav-link" href="#views-html-helpers">HTML helpers</a>
             <a class="nav-link" href="#views-object-helpers">Object helpers</a>
             <a class="nav-link" href="#views-string-helpers">String helpers</a>
+            <a class="nav-link" href="#views-date-helpers">Date helpers</a>
           </nav>
           <a class="nav-link" href="#model">Model</a>
           <nav class="nav nav-pills flex-column flex-nowrap fw-normal small">
@@ -111,7 +112,7 @@
               </div>
               <hr class="mx-auto mx-lg-0 my-5">
               <p class="text-muted">
-                Currently <a href="https://github.com/takuya-motoshima/express-sweet/releases/tag/v1.0.18" target="_blank">v1.0.18</a>
+                Currently <a href="https://github.com/takuya-motoshima/express-sweet/releases/tag/v1.0.19" target="_blank">v1.0.19</a>
                 <span class="px-1">•</span>
                 <a href="#quick-start">Quick Start</a>
                 <span class="px-1">•</span>
@@ -1298,6 +1299,37 @@ let val = &#039;2&#039;
               <h6>Usage:</h6>
               <div class="highlight">
                 <pre><code class="js">{{replace &#039;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#039; &#039;dog&#039; &#039;monkey&#039;}}</code></pre>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 id="views-date-helpers">Date helpers</h2>
+      <table class="table">
+        <thead class="table-light">
+          <tr class="text-nowrap">
+            <th>Helper</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-nowrap"><code class="h5">format_date</code></td>
+            <td class="w-100">
+              <p>Use moment to format the date.</p>
+              <h6>Parameters</h6>
+              <ul>
+                <li><code>string</code> format A format string based on moment.</li>
+                <li><code>string</code> date Date string to format.</li>
+                <li><code>string|string[]</code> locale Language or language-country locale string (or array of strings) available in <a href="https://github.com/moment/moment/tree/develop/locale" target="_blank">https://github.com/moment/moment/tree/develop/locale</a>.</li>
+              </ul>
+              <h6>Return value</h6>
+              <p><code>string</code> Returns formatted date.</p>
+              <h6>Usage:</h6>
+              <div class="highlight">
+                <pre><code class="html">{{format_date &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot;}} =&gt; 2021/10/24
+{{format_date &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot; &#039;jp&#039;}} =&gt; 2021/10/24
+{{format_date &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot; &#039;es&#039;}} =&gt; 2021/10/24</code></pre>
               </div>
             </td>
           </tr>

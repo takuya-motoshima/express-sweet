@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.19] - 2022-05-20
+### Fixed
+- Add date format helper to view.
+    ```html
+    {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
+    {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}} => 2021/10/24
+    {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
+    ```
+
 ## [1.0.18] - 2022-05-18
 ### Fixed
 - User authentication sessions can now be stored in redis.  

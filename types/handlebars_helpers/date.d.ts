@@ -1,21 +1,14 @@
 /**
- * Stringify an object using JSON.stringify.
+ * Use moment to format the date.
  *
  * @example
- * {{json_stringify value}}
+ * {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
+ * {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}} => 2021/10/24
+ * {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
  *
-  * @param  {any}     value  The value to convert to a JSON string.
-  * @param  {number}  indent The number of space characters to use as whitespace.
-  * @return {string}         A JSON string representing the given value, or undefined.
+ * @param {string}          format A format string based on moment.
+ * @param {string}          date Date string to format.
+ * @param {string|string[]} locale Language or language-country locale string (or array of strings) available in https://github.com/moment/moment/tree/develop/locale .
+ * @returns {string}        Returns formatted date.
  */
-export declare function json_stringify(value: any, indent?: number | string): string | undefined;
-/**
- * Parses the given string using JSON.parse.
- *
- * @example
- * {{json_parse value}}
- *
-  * @param  {any} value Object to stringify.
-  * @return {any}       JavaScript value or object described by a string.
- */
-export declare function json_parse(value: any): any;
+export declare function format_date(format: string, date: string, locale: string | string[]): string;
