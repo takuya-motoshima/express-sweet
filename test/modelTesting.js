@@ -1,13 +1,20 @@
+/**
+ * @example
+ * node modelTesting.js
+ */
 const sweet = require('../dist/build.common');
 const BookModel = require('./models/BookModel');
 
-(async () => {
-  // Init models.
-  sweet.database.loadModels();
+// Load Model.
+sweet.database.loadModels();
 
-  // Use sequelize.fn and sequelize.col to get the Book title in uppercase.
-  // SQL: SELECT upper(`title`) AS `title` FROM `book` AS `book`;
-  // Output: [{title: 'MOBY DICK'}, {title: 'GET RICH REALLY FAST'}, {title: 'FINDING INNER PEACE'}]
+(async () => {
+  // SELECT upper(`title`) AS `title` FROM `book` AS `book`;
+  // Output:  [
+  //            {title: 'MOBY DICK'},
+  //            {title: 'GET RICH REALLY FAST'},
+  //            {title: 'FINDING INNER PEACE'}
+  //          ]
   let books = await BookModel.findAll({
     attributes: [
       [BookModel.fn('upper', BookModel.col('title')), 'title']
@@ -16,9 +23,11 @@ const BookModel = require('./models/BookModel');
   });
   console.log('All book titles: ', books);
 
-  // Get the number of comments for each Book using subquery by sequelize.literal.
-  // SQL: SELECT `id`, `title`, (SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id) AS `count` FROM `book` AS `book`;
-  // Output: [{id: 1, title: 'When Im Gone', count: 2}, {id: 2, title: 'Lose Yourself', count: 1}]
+  // SELECT `id`, `title`, (SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id) AS `count` FROM `book` AS `book`;
+  // Output:  [
+  //            {id: 1, title: 'When Im Gone', count: 2},
+  //            {id: 2, title: 'Lose Yourself', count: 1}
+  //          ]
   books = await BookModel.findAll({
     attributes: [
       'id',
@@ -30,7 +39,6 @@ const BookModel = require('./models/BookModel');
   console.log('Comment count for each book: ', books);
 
 
-  // Use sequelize.where to get only Books with a title length of 10 characters or less.
   // SQL: SELECT `title` FROM `book` AS `book` WHERE CHAR_LENGTH(`title`) <= 10;
   // Output: [{title: 'When Im Gone'}]
   books = await BookModel.findAll({
@@ -43,12 +51,14 @@ const BookModel = require('./models/BookModel');
   });
   console.log('Short book title:', books);
 
-  // Raw query.
-  // Output: [{title: 'When Im Gone'}, {title: 'Lose Yourself'}]
+  // Output:  [
+  //            {title: 'When Im Gone'},
+  //            {title: 'Lose Yourself'}
+  //          ]
   books = await BookModel.query("SELECT title FROM book", {type: BookModel.QueryTypes.SELECT});
   console.log('Raw query: ', books);
 
-  // Transaction testing.
+  // Transaction.
   let transaction;
   try {
     transaction = await BookModel.begin({
@@ -60,12 +70,13 @@ const BookModel = require('./models/BookModel');
     await book.save({transaction});
     await transaction.commit();
 
-    // Check the update result.
-    // Output: New title of book: When Im Gone
+    // Check the update result. Output: New title of book: When Im Gone
     await book.reload();
     console.log(`New title of book: ${book.title}`);
   } catch (err) {
     if (transaction)
       await transaction.rollback();
   }
+
+  process.exit(0);
 })();

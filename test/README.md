@@ -1,14 +1,13 @@
 # This is a test project for Express Sweet.
 
 ## Getting Started
-Create a DB for testing the model.
-
+Create a DB for testing the model.  
 MariaDB will be used for this test, so please install MariaDB beforehand. 
 The DB configuration is located in ". /config/database.js".
 
 ```sql
-CREATE DATABASE IF NOT EXISTS `testdb` DEFAULT CHARACTER SET utf8mb4;
-USE `testdb`;
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET utf8mb4;
+USE `test`;
 
 CREATE TABLE `book` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -35,13 +34,17 @@ INSERT INTO `comment` (`bookId`, `comment`) VALUES (1, 'Interesting'), (1, 'Very
 ```
 
 ## Usage
-Testing of face recognition.
-```sh
-NODE_ENV=development node rekognition.js
-```
-
 Model testing.
 ```sh
-NODE_ENV=development node db.js
+node modelTesting.js
 ```
 
+Testing of face detection.
+```sh
+node detectFaces.js
+```
+
+Testing of face collection.
+```sh
+node findFaceInCollection.js
+```

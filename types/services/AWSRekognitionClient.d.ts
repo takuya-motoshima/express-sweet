@@ -1,12 +1,13 @@
 import RekognitionOptions from '~/interfaces/RekognitionOptions';
 import FaceMatch from '~/interfaces/FaceMatch';
 import BoundingBox from '~/interfaces/BoundingBox';
+import FaceDetails from '~/interfaces/FaceDetails';
 /**
  * AWS Rekognition Client.
  */
 export default class {
     /**
-     * Rekognition client instance.
+     * Rekognition Client.
      * @type {AWS.Rekognition}
      */
     private client;
@@ -18,62 +19,17 @@ export default class {
      * Detects faces within an image that is provided as input.
      * For each face detected, the operation returns a bounding box of the face.
      *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     * const fs = require('fs');
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // Detect faces from path.
-     * // Output: [
-     * //           {
-     * //             width: 0.5004957914352417,
-     * //             height: 0.6926820874214172,
-     * //             left: 0.2928674817085266,
-     * //             top: 0.09095800668001175
-     * //           }
-     * //         ]
-     * await client.detectFaces('img.jpg');
-     *
-     * // Detect faces from data URL.
-     * await client.detectFaces('data:image/png;base64,/9j/4...');
-     *
-     * // Detect faces from buffer.
-     * await client.detectFaces(fs.readFileSync('img.jpg'));
-     *
      * @param  {string}                 img           Image path or Data Url or image buffer.
      * @param  {number}                 minConfidence The minimum confidence of the detected face.
      *                                                Faces with a confidence lower than this value will not be returned as a result.
-     * @return {Promise<BoundingBox[]>}               Returns the bounding box of the detected face.
+     * @param  {boolean}                withDetails   If false, returns only the face bounding box.
+     *                                                When true, returns the age group, gender, and emotion in addition to the face bounding box.
+     *
+     * @return {Promise<BoundingBox[]|FaceDetails[]>}
      */
-    detectFaces(img: string, minConfidence?: number): Promise<BoundingBox[]>;
+    detectFaces(img: string, minConfidence?: number, withDetails?: boolean): Promise<BoundingBox[] | FaceDetails[]>;
     /**
      * Compare the similarity of two faces.
-     *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     * const fs = require('fs');
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // Compare faces from path.
-     * await client.compareFaces('img1.jpg', 'img2.jpg');
-     *
-     * // Compare faces from data URL.
-     * await client.compareFaces('data:image/png;base64,/9j/4...', 'data:image/png;base64,/9j/4...');
-     *
-     * // Compare faces from buffer.
-     * await client.compareFaces(fs.readFileSync('img1.jpg'), fs.readFileSync('img1.jpg'));
      *
      * @param  {string}          img1 Image path or Data Url or image buffer.
      * @param  {string}          img2 Image path or Data Url or image buffer.
@@ -87,49 +43,12 @@ export default class {
      * Then, a user can search the collection for faces in the user-specific container.
      * Note that Collection names are case-sensitive.
      *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * try {
-     *   // Creates a collection.
-     *   await client.createCollection('MyCollection');
-     * } catch(err) {
-     *   // You can get the resulting HTTP status code from the exception.
-     *   console.log(`name: ${err.name}`);
-     *   console.log(`statusCode: ${err.statusCode}`);
-     *   console.log(`message: ${err.message}`);
-     * }
-     *
      * @param {string} collectionId ID for the collection that you are creating.
      *                              The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-]+".
      */
     createCollection(collectionId: string): Promise<void>;
     /**
      * Returns list of collection IDs.
-     *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // Find the collection IDs.
-     * // Output: [
-     * //           'MyCollection',
-     * //           'AnotherCollection'
-     * //         ]
-     * await client.listCollections();
      *
      * @return {Promise<string[]>} An array of collection IDs.
      */
@@ -142,58 +61,6 @@ export default class {
      *
      * Note that this method is used to index one face.
      * Throws an exception if no face is found in the input image or multiple faces are found.
-     *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     * const fs = require('fs');
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // Add face to collection from path.
-     * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-     * const faceId = await client.indexFace('MyCollection', 'img.jpg', 'img.jpg');
-     * console.log(faceId);
-     *
-     * // Add face to collection from data URL.
-     * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-     * const faceId = await client.indexFace('MyCollection', 'data:image/png;base64,/9j/4...', 'img.jpg');
-     * console.log(faceId);
-     *
-     * // Add face to collection from buffer.
-     * // Output: df8adc94-e888-4442-a03d-42aacd4a6cee
-     * const faceId = await client.indexFace('MyCollection', fs.readFileSync('img.jpg'), 'img.jpg');
-     * console.log(faceId);
-     *
-     * // If the face is not found in the image, throw an error.
-     * // Output: name: IndexFaceFaceNotFound
-     * //         statusCode: 400
-     * //         message: No face was found in the image
-     * try {
-     *   await client.indexFace('MyCollection', 'img.jpg');
-     * } catch(err) {
-     *   // You can get the resulting HTTP status code from the exception.
-     *   console.log(`name: ${err.name}`);
-     *   console.log(`statusCode: ${err.statusCode}`);
-     *   console.log(`message: ${err.message}`);
-     * }
-     *
-     * // If multiple faces are found in the image, throw an error.
-     * // Output: name: IndexFaceMultipleFacesFound
-     * //         statusCode: 400
-     * //         message: Multiple faces found in the image
-     * try {
-     *   await client.indexFace('MyCollection', 'img.jpg');
-     * } catch(err) {
-     *   // You can get the resulting HTTP status code from the exception.
-     *   console.log(`name: ${err.name}`);
-     *   console.log(`statusCode: ${err.statusCode}`);
-     *   console.log(`message: ${err.message}`);
-     * }
      *
      * @param  {string}          collectionId    The ID of an existing collection to which you want to add the faces that are detected in the input images.
      * @param  {string}          img             Image path or Data Url or image buffer.
@@ -208,53 +75,6 @@ export default class {
     /**
      * For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.
      * The operation compares the features of the input face with faces in the specified collection.
-     *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     * const fs = require('fs');
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // If you want to search for one face, specify 1 for the maxFaces option.
-     * // In that case, the search result will return the face data for one person.
-     * // Output: {
-     * //           faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
-     * //           boundingBox: {
-     * //             width: 0.500495970249176,
-     * //             height: 0.6926820278167725,
-     * //             left: 0.2928670048713684,
-     * //             top: 0.09095799922943115
-     * //           },
-     * //           externalImageId: 'img.jpg'
-     * //         }
-     * const match = await client.searchFaces('MyCollection', 'img.jpg', {minConfidence: 99, maxFaces: 1});
-     * console.log(match);
-     *
-     * // If you want to search for multiple faces, specify 2 or more for the maxFaces option.
-     * // In that case, the search results will return a list of the face data of multiple people found.
-     * // Output: [
-     * //           {
-     * //             faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
-     * //             boundingBox: {
-     * //               width: 0.500495970249176,
-     * //               height: 0.6926820278167725,
-     * //               left: 0.2928670048713684,
-     * //               top: 0.09095799922943115
-     * //             },
-     * //             externalImageId: 'img.jpg'
-     * //           }
-     * //         ]
-     * const matches = await client.searchFaces('MyCollection', 'img.jpg', {minConfidence: 99, maxFaces: 5});
-     * console.log(matches);
-     *
-     * // The input image can specify a buffer or DataURL in addition to the image path.
-     * await client.searchFaces('MyCollection', 'data:image/png;base64,/9j/4...');
-     * await client.searchFaces('MyCollection', fs.readFileSync('img.jpg'));
      *
      * @param  {string}                              collectionId          ID of the collection to search.
      * @param  {string}                              img                   Image path or Data Url or image buffer.
@@ -276,33 +96,6 @@ export default class {
      * Returns metadata for faces in the specified collection.
      * This metadata includes information such as the bounding box coordinates, and face ID.
      *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     * const fs = require('fs');
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // Find all face metadata in the collection.
-     * // Output: [
-     * //           {
-     * //             faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
-     * //             boundingBox: {
-     * //               width: 0.500495970249176,
-     * //               height: 0.6926820278167725,
-     * //               left: 0.2928670048713684,
-     * //               top: 0.09095799922943115
-     * //             },
-     * //             externalImageId: 'img.jpg'
-     * //           }
-     * //         ]
-     * const result = await client.listFaces('MyCollection');
-     * console.log(result);
-     *
      * @param  {string}               collectionId ID of the collection from which to list the faces.
      * @param  {number}               maxResults   Maximum number of faces to return.
      *                                             The default value is 1000.
@@ -313,19 +106,6 @@ export default class {
      * Deletes faces from a collection.
      * You specify a collection ID and an array of face IDs to remove from the collection.
      *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // Delete a face from the collection.
-     * await client.deleteFaces('MyCollection', ['f7befa24-3b83-43cc-b21f-7fac4b91f51d']);
-     *
      * @param {string}   collectionId Collection from which to remove the specific faces.
      * @param {string[]} faceIds      An array of face IDs to delete.
      */
@@ -334,24 +114,12 @@ export default class {
      * Deletes the specified collection.
      * Note that this operation removes all faces in the collection.
      *
-     * @example
-     * const AWSRekognitionClient = require('express-sweet').services.AWSRekognitionClient;
-     *
-     * // Instantiate Rekognition client.
-     * const client = new AWSRekognitionClient({
-     *   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-     *   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-     *   region: process.env.AWS_REKOGNITION_REGION
-     * });
-     *
-     * // Delete collection.
-     * await client.deleteCollection('MyCollection');
-     *
      * @param {string} collectionId ID of the collection to delete.
      */
     deleteCollection(collectionId: string): Promise<void>;
     /**
-     * Returns a buffer of images..
+     * Returns a buffer of images.
+     *
      * @param  {string|Buffer} img Image path or Data Url or image buffer.
      * @return {Buffer}            Image buffer.
      */

@@ -5,7 +5,7 @@ module.exports = {
   development: {
     username: 'root',
     password: null,
-    database: 'testdb',
+    database: 'test',
     host: 'localhost',
     port: 3306,
     dialect: 'mariadb',
@@ -15,7 +15,7 @@ module.exports = {
   test: {
     username: 'root',
     password: null,
-    database: 'testdb',
+    database: 'test',
     host: 'localhost',
     port: 3306,
     dialect: 'mariadb',
@@ -25,7 +25,7 @@ module.exports = {
   production: {
     username: 'root',
     password: null,
-    database: 'testdb',
+    database: 'test',
     host: 'localhost',
     port: 3306,
     dialect: 'mariadb',

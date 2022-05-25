@@ -1,5 +1,5 @@
 /**
- * Bounding box interface for faces, labels, borders, etc.
+ * Bounding box of the face.
  */
 export default interface  {
     /**

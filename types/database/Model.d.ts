@@ -162,7 +162,7 @@ export default class Model extends sequelize.Model {
      *   transaction = await BookModel.begin();
      *   const book = await BookModel.create({title: 'When Im Gone'}, {transaction});
      *   await transaction.commit();
-     * } catch(error) {
+     * } catch {
      *   if (transaction)
      *     await transaction.rollback();
      * }
