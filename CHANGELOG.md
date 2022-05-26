@@ -327,4 +327,4 @@ All notable changes to this project will be documented in this file.
 [1.0.18]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.17...v1.0.18
 [1.0.19]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.18...v1.0.19
 [1.0.20]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.19...v1.0.20
-[1.0.20]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.20...v1.0.21
+[1.0.21]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.20...v1.0.21
