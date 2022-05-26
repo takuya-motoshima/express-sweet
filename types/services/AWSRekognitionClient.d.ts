@@ -2,6 +2,7 @@ import RekognitionOptions from '~/interfaces/RekognitionOptions';
 import FaceMatch from '~/interfaces/FaceMatch';
 import BoundingBox from '~/interfaces/BoundingBox';
 import FaceDetails from '~/interfaces/FaceDetails';
+import IndexFaceDetails from '~/interfaces/IndexFaceDetails';
 /**
  * AWS Rekognition Client.
  */
@@ -55,23 +56,25 @@ export default class {
     listCollections(): Promise<string[]>;
     /**
      * Detects one face in the input image and adds it to the specified collection.
-     * This method doesn't save the actual faces that are detected.
-     * Instead, the underlying detection algorithm first detects the faces in the input image.
-     * The algorithm extracts facial features into a feature vector, and stores it in the backend database.
-     *
      * Note that this method is used to index one face.
      * Throws an exception if no face is found in the input image or multiple faces are found.
      *
-     * @param  {string}          collectionId    The ID of an existing collection to which you want to add the faces that are detected in the input images.
-     * @param  {string}          img             Image path or Data Url or image buffer.
-     * @param  {string}          externalImageId The ID you want to assign to the faces detected in the image.
-     *                                           When you call the "listFaces" operation, the response returns the external ID.
-     *                                           You can use this external image ID to create a client-side index to associate the faces with each image.
-     *                                           You can then use the index to find all faces in an image.
-     *                                           The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
-     * @return {Promise<string>}                 A unique identifier assigned to the face.
+     * @param  {string}           collectionId            The ID of an existing collection to which you want to add the faces that are detected in the input images.
+     * @param  {string}           img                     Image path or Data Url or image buffer.
+     * @param  {string|undefined} options.externalImageId The ID you want to assign to the faces detected in the image.
+     *                                                    When you call the "listFaces" operation, the response returns the external ID.
+     *                                                    You can use this external image ID to create a client-side index to associate the faces with each image.
+     *                                                    You can then use the index to find all faces in an image.
+     *                                                    The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
+     * @param  {boolean}          options.returnDetails   If false, only the face ID of the created face is returned.
+     *                                                    If true, returns the face ID of the created face, plus age range, gender, and emotion.
+     * @return {Promise<string|IndexFaceDetails>}         If options.returnDetails is false, the face identifier is returned.
+     *                                                    If options.returnDetails is true, returns the gender, age group, and emotion in addition to the face identifier.
      */
-    indexFace(collectionId: string, img: string, externalImageId?: string): Promise<string>;
+    indexFace(collectionId: string, img: string, options?: {
+        externalImageId?: string;
+        returnDetails?: boolean;
+    }): Promise<string | IndexFaceDetails>;
     /**
      * For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.
      * The operation compares the features of the input face with faces in the specified collection.

@@ -5,6 +5,7 @@ import RekognitionOptions from '~/interfaces/RekognitionOptions';
 import FaceMatch from '~/interfaces/FaceMatch';
 import BoundingBox from '~/interfaces/BoundingBox';
 import FaceDetails from '~/interfaces/FaceDetails';
+import IndexFaceDetails from '~/interfaces/IndexFaceDetails';
 import FaceDetailsEmotions from '~/interfaces/FaceDetailsEmotions';
 import ApiError from '~/exceptions/ApiError';
 
@@ -23,7 +24,9 @@ export default class {
    */
   constructor(options: RekognitionOptions) {
     // Initialize options.
-    options = Object.assign({timeout: 5000}, options);
+    options = Object.assign({
+      timeout: 5000
+    }, options);
 
     // Generate AWS Rekognition Client.
     this.client = new AWS.Rekognition({
@@ -82,10 +85,7 @@ export default class {
           const emotions = details.Emotions as AWS.Rekognition.Types.Emotions;
           (results as FaceDetails[]).push({
             boundingBox,
-            ageRange: {
-                        high: ageRange.High,
-                        low: ageRange.Low
-                      },
+            ageRange: {high: ageRange.High, low: ageRange.Low},
             gender: gender.Value === 'Male' ? 'male' : 'female',
             emotions: emotions.reduce((acc: any, current: AWS.Rekognition.Types.Emotion) => {
               const type = current.Type as AWS.Rekognition.Types.EmotionName;
@@ -177,23 +177,28 @@ export default class {
 
   /**
    * Detects one face in the input image and adds it to the specified collection.
-   * This method doesn't save the actual faces that are detected.
-   * Instead, the underlying detection algorithm first detects the faces in the input image.
-   * The algorithm extracts facial features into a feature vector, and stores it in the backend database.
-   *
    * Note that this method is used to index one face.
    * Throws an exception if no face is found in the input image or multiple faces are found.
    * 
-   * @param  {string}          collectionId    The ID of an existing collection to which you want to add the faces that are detected in the input images.
-   * @param  {string}          img             Image path or Data Url or image buffer.
-   * @param  {string}          externalImageId The ID you want to assign to the faces detected in the image.
-   *                                           When you call the "listFaces" operation, the response returns the external ID.
-   *                                           You can use this external image ID to create a client-side index to associate the faces with each image.
-   *                                           You can then use the index to find all faces in an image.
-   *                                           The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
-   * @return {Promise<string>}                 A unique identifier assigned to the face.
+   * @param  {string}           collectionId            The ID of an existing collection to which you want to add the faces that are detected in the input images.
+   * @param  {string}           img                     Image path or Data Url or image buffer.
+   * @param  {string|undefined} options.externalImageId The ID you want to assign to the faces detected in the image.
+   *                                                    When you call the "listFaces" operation, the response returns the external ID.
+   *                                                    You can use this external image ID to create a client-side index to associate the faces with each image.
+   *                                                    You can then use the index to find all faces in an image.
+   *                                                    The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
+   * @param  {boolean}          options.returnDetails   If false, only the face ID of the created face is returned.
+   *                                                    If true, returns the face ID of the created face, plus age range, gender, and emotion.
+   * @return {Promise<string|IndexFaceDetails>}         If options.returnDetails is false, the face identifier is returned.
+   *                                                    If options.returnDetails is true, returns the gender, age group, and emotion in addition to the face identifier.
    */
-  public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise<string> {
+  public async indexFace(collectionId: string, img: string, options?: {externalImageId? : string, returnDetails?: boolean}): Promise<string|IndexFaceDetails> {
+    // Initialize options.
+    options = Object.assign({
+      externalImageId: undefined,
+      returnDetails: false
+    }, options);
+  
     // Get the count of faces in the image.
     const numberOfFaces = (await this.detectFaces(img)).length;
     
@@ -209,7 +214,7 @@ export default class {
         CollectionId: collectionId,
         Image: {Bytes: this.getImageBuffer(img)},
         DetectionAttributes: ['ALL'],
-        ExternalImageId: externalImageId,
+        ExternalImageId: options!.externalImageId,
         MaxFaces: 1,
         QualityFilter: 'HIGH'
       }, (err: AWS.AWSError, data: AWS.Rekognition.Types.IndexFacesResponse) => {
@@ -221,9 +226,29 @@ export default class {
     if (data == null || !data.FaceRecords || !data.FaceRecords.length)
       throw new ApiError('IndexFaceNoResultsFound', 500, 'Face addition result not found');
 
-    // Returns a unique identifier assigned to the face.
-    // @ts-ignore
-    return data.FaceRecords[0].Face.FaceId as string;
+    // Records of faces created in the collection.
+    const faceRecord = data.FaceRecords[0] as AWS.Rekognition.Types.FaceRecord;
+
+    // Return information about the face you created.
+    if (!options.returnDetails)
+      // Returns a unique identifier assigned to the face.
+      return faceRecord.Face!.FaceId as string;
+    else {
+      const details = faceRecord.FaceDetail as AWS.Rekognition.Types.FaceDetail;
+      const ageRange = details.AgeRange as AWS.Rekognition.Types.AgeRange;
+      const gender = details.Gender as AWS.Rekognition.Types.Gender;
+      const emotions = details.Emotions as AWS.Rekognition.Types.Emotions;
+      return {
+        faceId: faceRecord.Face!.FaceId as string,
+        ageRange: {high: ageRange.High, low: ageRange.Low},
+        gender: gender.Value === 'Male' ? 'male' : 'female',
+        emotions: emotions.reduce((acc: any, current: AWS.Rekognition.Types.Emotion) => {
+          const type = current.Type as AWS.Rekognition.Types.EmotionName;
+          acc[type.toLowerCase()] = current.Confidence as number;
+          return acc;
+        }, {}) as FaceDetailsEmotions
+      } as IndexFaceDetails;
+    }
   }
 
   /**
@@ -244,7 +269,10 @@ export default class {
    */
   public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
     // Initialize options.
-    options = Object.assign({minConfidence: 80, maxFaces: 5}, options);
+    options = Object.assign({
+      minConfidence: 80,
+      maxFaces: 5
+    }, options);
 
     // Search for collection faces.
     const data: AWS.Rekognition.Types.SearchFacesByImageResponse = await new Promise((resolve, reject) => {

@@ -21,7 +21,7 @@ const collectionId = 'MyCollection';
   // Create a collection.
   const collections = await client.listCollections();
   if (!collections.includes(collectionId))
-    await client.createCollection();
+    await client.createCollection(collectionId);
   console.log(`The ${collectionId} collection was created`);
   
   // Add a face to the collection.

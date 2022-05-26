@@ -87,6 +87,7 @@
             <a class="nav-link" href="#rekognition-class">Class Rekognition</a>
             <a class="nav-link" href="#rekognition-match-interface">Interface FaceMatch</a>
             <a class="nav-link" href="#rekognition-face-details-interface">Interface FaceDetails</a>
+            <a class="nav-link" href="#rekognition-index-face-details-interface">Interface IndexFaceDetails</a>
             <a class="nav-link" href="#rekognition-face-details-emotions-interface">Interface FaceDetailsEmotions</a>
             <a class="nav-link" href="#rekognition-bbox-interface">Interface BoundingBox</a>
           </nav>
@@ -114,7 +115,7 @@
               </div>
               <hr class="mx-auto mx-lg-0 my-5">
               <p class="text-muted">
-                Currently <a href="https://github.com/takuya-motoshima/express-sweet/releases/tag/v1.0.20" target="_blank">v1.0.20</a>
+                Currently <a href="https://github.com/takuya-motoshima/express-sweet/releases/tag/v1.0.21" target="_blank">v1.0.21</a>
                 <span class="px-1">•</span>
                 <a href="#quick-start">Quick Start</a>
                 <span class="px-1">•</span>
@@ -4138,13 +4139,18 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold"><code class="h5">public async indexFace(collectionId: string, img: string, externalImageId?: string): Promise&lt;string&gt;</code></div>
+          <div class="fw-bold">
+            <code class="h5">
+              public async indexFace(
+                collectionId: string,
+                img: string,
+                options?: {externalImageId? : string, returnDetails?: boolean
+              }): Promise&lt;string|<a href="#rekognition-index-face-details-interface">IndexFaceDetails</a>&gt;
+            </code>
+          </div>
           <div class="ms-3">
             <p>
-              Detects one face in the input image and adds it to the specified collection.<br>
-              This method doesn't save the actual faces that are detected.<br>
-              Instead, the underlying detection algorithm first detects the faces in the input image.<br>
-              The algorithm extracts facial features into a feature vector, and stores it in the backend database.
+              Detects one face in the input image and adds it to the specified collection.
               <div class="callout callout-warning">
                 Note that this method is used to index one face.<br>
                 Throws an exception if no face is found in the input image or multiple faces are found.
@@ -4161,7 +4167,7 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                 <div class="ms-3">Image path or Data Url or image buffer.</div>
               </li>
               <li class="list-group-item pt-0 border-0">
-                <div class="fw-bold"><code>string</code>externalImageId</div>
+                <div class="fw-bold"><code>string|undefined</code>options.externalImageId</div>
                 <div class="ms-3">
                   The ID you want to assign to the faces detected in the image.<br>
                   When you call the <code>"listFaces"</code> operation, the response returns the external ID.<br>
@@ -4170,9 +4176,20 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                   The maximum length is 255, and the characters that can be used are <code>"[a-zA-Z0-9_.\-:]+"</code>.
                 </div>
               </li>
+              <li class="list-group-item pt-0 border-0">
+                <div class="fw-bold"><code>boolean</code>options.returnDetails</div>
+                <div class="ms-3">
+                  If <code>false</code>, only the face ID of the created face is returned.<br>
+                  If <code>true</code>, returns the face ID of the created face, plus age range, gender, and emotion.
+                </div>
+              </li>
             </ul>
             <h6>Return value</h6>
-            <p><code>Promise&lt;string&gt;</code>A unique identifier assigned to the face.</p>
+            <p>
+              <code>Promise&lt;string|<a href="#rekognition-index-face-details-interface">IndexFaceDetails</a>&gt;</code><br>
+              If <code>options.returnDetails</code> is <code>false</code>, the face identifier is returned.<br>
+              If <code>options.returnDetails</code> is <code>true</code>, returns the gender, age group, and emotion in addition to the face identifier.
+            </p>
             <h6>Example</h6>
             <ul class="nav nav-tabs">
               <li class="nav-item">
@@ -4198,26 +4215,35 @@ const client = new sweet.services.AWSRekognitionClient({
   region: process.env.AWS_REKOGNITION_REGION
 });
 
-// Add face to collection from path.
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
+// Create a face and get the ID of the created face.
+// Output: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
+const faceId = await client.indexFace(collectionId, &#039;img.jpg&#039;);
+console.log(faceId);
 
-// Add face to collection from data URL.
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
+// Create a face and get the details of the created face.
+// Output:  {
+//            faceId: &#039;7f2dd321-f047-44ff-8856-864637e1d286&#039;,
+//            ageRange: { high: 29, low: 21 },
+//            gender: &#039;female&#039;,
+//            emotions: {
+//              angry: 77.1907958984375,
+//              surprised: 9.944050788879395,
+//              fear: 7.514361381530762,
+//              confused: 4.780297756195068,
+//              sad: 2.91914963722229,
+//              happy: 2.5718722343444824,
+//              disgusted: 1.933768391609192,
+//              calm: 1.5354809761047363
+//            }
+//          }
+const faceDetails = await client.indexFace(collectionId, &#039;img.jpg&#039;, {returnDetails: true});
+console.log(faceDetails);
 
-// Add face to collection from buffer.
-const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
+// You can also index face images in DataURL format.
+await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
 
-// If the face is not found in the image, throw an error.
-// Output: name: IndexFaceFaceNotFound
-//         statusCode: 400
-//         message: No face was found in the image
-await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-
-// If multiple faces are found in the image, throw an error.
-// Output: name: IndexFaceMultipleFacesFound
-//         statusCode: 400
-//         message: Multiple faces found in the image
-await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);</code></pre>
+// Buffer face images can also be indexed.
+await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
                 </div>
               </div>
               <div class="tab-pane fade" id="rekognition-method-index-face-cjs">
@@ -4235,26 +4261,35 @@ const client = new sweet.services.AWSRekognitionClient({
   region: process.env.AWS_REKOGNITION_REGION
 });
 
-// Add face to collection from path.
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;, &#039;img.jpg&#039;);
+// Create a face and get the ID of the created face.
+// Output: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
+const faceId = await client.indexFace(collectionId, &#039;img.jpg&#039;);
+console.log(faceId);
 
-// Add face to collection from data URL.
-const faceId = await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;, &#039;img.jpg&#039;);
+// Create a face and get the details of the created face.
+// Output:  {
+//            faceId: &#039;7f2dd321-f047-44ff-8856-864637e1d286&#039;,
+//            ageRange: { high: 29, low: 21 },
+//            gender: &#039;female&#039;,
+//            emotions: {
+//              angry: 77.1907958984375,
+//              surprised: 9.944050788879395,
+//              fear: 7.514361381530762,
+//              confused: 4.780297756195068,
+//              sad: 2.91914963722229,
+//              happy: 2.5718722343444824,
+//              disgusted: 1.933768391609192,
+//              calm: 1.5354809761047363
+//            }
+//          }
+const faceDetails = await client.indexFace(collectionId, &#039;img.jpg&#039;, {returnDetails: true});
+console.log(faceDetails);
 
-// Add face to collection from buffer.
-const faceId = await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;), &#039;img.jpg&#039;);
+// You can also index face images in DataURL format.
+await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
 
-// If the face is not found in the image, throw an error.
-// Output: name: IndexFaceFaceNotFound
-//         statusCode: 400
-//         message: No face was found in the image
-await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);
-
-// If multiple faces are found in the image, throw an error.
-// Output: name: IndexFaceMultipleFacesFound
-//         statusCode: 400
-//         message: Multiple faces found in the image
-await client.indexFace(&#039;MyCollection&#039;, &#039;img.jpg&#039;);</code></pre>
+// Buffer face images can also be indexed.
+await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
                 </div>
               </div>
             </div>
@@ -4632,6 +4667,27 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
         </li>
         <li class="list-group-item">
           <div class="fw-bold"><code class="h5">emotions?: <a href="#rekognition-face-details-emotions-interface">FaceDetailsEmotions</a></code></div>
+          <div class="ms-3">The predicted gender of a detected face. </div>
+        </li>
+      </ul>
+      <h2 id="rekognition-index-face-details-interface">Interface IndexFaceDetails<span class="fs-5 ms-2">(express-sweet.interfaces.IndexFaceDetails)</span></h2>
+      <p>Detail of indexed face.</p>
+      <h3>Properties</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="fw-bold"><code class="h5">faceId: string</code></div>
+          <div class="ms-3">A unique identifier assigned to the face.</div>
+        </li>
+        <li class="list-group-item">
+          <div class="fw-bold"><code class="h5">ageRange: {high: UInteger, low: UInteger}</code></div>
+          <div class="ms-3">The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.</div>
+        </li>
+        <li class="list-group-item">
+          <div class="fw-bold"><code class="h5">gender: &#039;male&#039;|&#039;female&#039;</code></div>
+          <div class="ms-3">The predicted gender of a detected face. </div>
+        </li>
+        <li class="list-group-item">
+          <div class="fw-bold"><code class="h5">emotions: <a href="#rekognition-face-details-emotions-interface">FaceDetailsEmotions</a></code></div>
           <div class="ms-3">The predicted gender of a detected face. </div>
         </li>
       </ul>
