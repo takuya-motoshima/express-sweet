@@ -115,7 +115,7 @@
               </div>
               <hr class="mx-auto mx-lg-0 my-5">
               <p class="text-muted">
-                Currently <a href="https://github.com/takuya-motoshima/express-sweet/releases/tag/v1.0.21" target="_blank">v1.0.21</a>
+                Currently <a href="https://github.com/takuya-motoshima/express-sweet/releases/tag/v1.0.22" target="_blank">v1.0.22</a>
                 <span class="px-1">•</span>
                 <a href="#quick-start">Quick Start</a>
                 <span class="px-1">•</span>
@@ -687,14 +687,14 @@ module.exports = router;</code></pre>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <div class="fw-bold"><code class="h5">views_dir</code></div>
+          <div class="fw-bold"><code>string</code>views_dir</div>
           <div class="ms-3">
             The directory path where the view will be placed.<br>
             The default is the <code>"views"</code> directory directly under the application root.
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold"><code class="h5">partials_dir</code></div>
+          <div class="fw-bold"><code>string</code>partials_dir</div>
           <div class="ms-3">
             The directory path where the reusable templates are located.<br>
             The default is the <code>"views/partials"</code> directory directly under the application root.<br>
@@ -702,14 +702,14 @@ module.exports = router;</code></pre>
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold"><code class="h5">layouts_dir</code></div>
+          <div class="fw-bold"><code>string</code>layouts_dir</div>
           <div class="ms-3">
             The directory path where the reusable base template is located.<br>
             The default is the <code>"views/layout"</code> directory directly under the application root.
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold"><code class="h5">default_layout</code></div>
+          <div class="fw-bold"><code>string</code>default_layout</div>
           <div class="ms-3">
             The path to the layout file used by default.<br>
             The default is the <code>"views/layout/default.*"</code> File directly under the application root.<br>
@@ -717,10 +717,34 @@ module.exports = router;</code></pre>
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold"><code class="h5">extension</code></div>
+          <div class="fw-bold"><code>string</code>extension</div>
           <div class="ms-3">
             Extension for templates and partials files.<br>
             The default is <code>".hbs"</code>.
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="fw-bold"><code>(res: express.Response) =&gt; void</code>beforeRender</div>
+          <div class="ms-3">
+            Hook function just before the view is rendered.<br>
+            For example, you can set your own local variables that can be used within the view.<br>
+            <div class="highlight">
+              <pre><code class="js">/**
+  * Hook function just before the view is rendered.
+  * For example, you can set your own local variables that can be used within the view.
+  *
+  * @example
+  * // The message set here can be referenced in the view as {{message}}.
+  * beforeRender: res =&gt; {
+  *   res.loclas.message = &#039;Hello World&#039;;
+  * }
+  *
+  * @type {(res: express.Response) =&gt; void}
+  */
+beforeRender: res =&gt; {
+  res.locals.message = &#039;Hello World&#039;;
+}</code></pre>
+            </div>
           </div>
         </li>
       </ul>
@@ -3279,18 +3303,18 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>boolean</code>enabled</div>
+          <div class="fw-bold"><code>boolean</code>enabled</div>
           <div class="ms-3">
             Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" target="_blank">Passport middleware</a>.<br>
             User authentication is enabled (<code>true</code>) by default.
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>&#039;memory&#039;|&#039;redis&#039;</code>session_store</div>
+          <div class="fw-bold"><code>&#039;memory&#039;|&#039;redis&#039;</code>session_store</div>
           <div class="ms-3">The session store instance, defaults to a new MemoryStore(<code>memory</code>) instance.</div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>string|undefined</code>redis_host?</div>
+          <div class="fw-bold"><code>string|undefined</code>redis_host?</div>
           <div class="ms-3">
             If the session is stored in <code>&quot;redis&quot;</code>, this field is required and should be set to the hostname of the Redis server.
             For example, to connect to redis on localhost on port <code>6379</code>, set <code>&quot;redis://localhost:6379&quot;</code>.
@@ -3299,28 +3323,28 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>string</code>username</div>
+          <div class="fw-bold"><code>string</code>username</div>
           <div class="ms-3">
             The login username field name used for authentication.<br>
             This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>string</code>password</div>
+          <div class="fw-bold"><code>string</code>password</div>
           <div class="ms-3">
             The login password field name used for authentication.<br>
             This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>string</code>success_redirect</div>
+          <div class="fw-bold"><code>string</code>success_redirect</div>
           <div class="ms-3">
             The URL to redirect to after successful authentication.<br>
             The default is the root URL (<code>/</code>).
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>string</code>failure_redirect</div>
+          <div class="fw-bold"><code>string</code>failure_redirect</div>
           <div class="ms-3">
             Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
             This usually specifies the URL of the login page.<br>
@@ -3328,7 +3352,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>(username: string, password: string): Promise&lt;object|null&gt;</code>authenticate_user</div>
+          <div class="fw-bold"><code>(username: string, password: string): Promise&lt;object|null&gt;</code>authenticate_user</div>
           <div class="ms-3">
             This hook is called when authenticating a user.<br>
             Please find the user information that owns the credentials based on the user name and password you received and return it.<br>
@@ -3349,7 +3373,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>(id: number): Promise&lt;object&gt;</code>subscribe_user</div>
+          <div class="fw-bold"><code>(id: number): Promise&lt;object&gt;</code>subscribe_user</div>
           <div class="ms-3">
             This hook is called when user authentication is successful.<br>
             Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.<br>
@@ -3369,7 +3393,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>(string|RegExp)[]</code>allow_unauthenticated</div>
+          <div class="fw-bold"><code>(string|RegExp)[]</code>allow_unauthenticated</div>
           <div class="ms-3">
             By default, it requires an authenticated user for all requests.<br>
             You can use the <code>"allow_unauthenticated"</code> option to disable this behavior on certain requests.<br>
@@ -3384,7 +3408,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
           </div>
         </li>
         <li class="list-group-item">
-          <div class="fw-bold h5"><code>number</code>expiration</div>
+          <div class="fw-bold"><code>number</code>expiration</div>
           <div class="ms-3">
             Specifies the time, in milliseconds, before the session expires.<br>
             The default is 24 hours (<code>86400000</code> milliseconds).

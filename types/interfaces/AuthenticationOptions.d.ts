@@ -70,7 +70,6 @@ export default interface  {
      * The returned data will be set in the req.user property and the view's session variable.
      *
      * @example
-     *
      * subscribe_user: async (id) => {
      *   const UserModel = require('../models/UserModel');
      *   return UserModel.findOne({

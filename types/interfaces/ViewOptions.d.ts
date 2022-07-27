@@ -1,3 +1,4 @@
+import express from 'express';
 /**
  * View's configuration interface.
  */
@@ -27,4 +28,17 @@ export default interface  {
      * @type {string}
      */
     extension?: string;
+    /**
+     * Hook function just before the view is rendered.
+     * For example, you can set your own local variables that can be used within the view.
+     *
+     * @example
+     * // The message set here can be referenced in the view as {{message}}.
+     * beforeRender: res => {
+     *   res.loclas.message = 'Hello World';
+     * }
+     *
+     * @type {(res: express.Response) => void}
+     */
+    beforeRender?: (res: express.Response) => void;
 }

@@ -1,6 +1,30 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.22] - 2022-07-27
+### Fixed
+- You can now set hook functions that are called before the view is rendered.  
+    Hook functions can be used, for example, to set local variables that can be used in the view.  
+    
+    To use, add the beforeRender hook function to "config/view.js" as follows.
+    ```js
+    /**
+     * Hook function just before the view is rendered.
+     * For example, you can set your own local variables that can be used within the view.
+     *
+     * @example
+     * // The message set here can be referenced in the view as {{message}}.
+     * beforeRender: res => {
+     *   res.loclas.message = 'Hello World';
+     * }
+     *
+     * @type {(res: express.Response) => void}
+     */
+    beforeRender: res => {
+      res.loclas.message = 'Hello World';
+    }
+    ```
+
 ## [1.0.21] - 2022-05-26
 ### Fixed
 - Added an option to the face indexing method to retrieve details (gender, emotion, age group) of indexed faces.
@@ -328,3 +352,4 @@ All notable changes to this project will be documented in this file.
 [1.0.19]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.18...v1.0.19
 [1.0.20]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.19...v1.0.20
 [1.0.21]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.20...v1.0.21
+[1.0.22]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.21...v1.0.22

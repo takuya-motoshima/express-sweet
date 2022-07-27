@@ -34,6 +34,13 @@ export default class {
     }));
     app.set('view engine', 'hbs');
     app.set('views',  options.views_dir);
+
+    // Set variables that can be accessed from within the view.
+    app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+      if (options.beforeRender)
+        options.beforeRender(res);
+      next();
+    });
   }
 
   /**
@@ -48,7 +55,8 @@ export default class {
       partials_dir: path.join(process.cwd(), 'views/partials'),
       layouts_dir: path.join(process.cwd(), 'views/layout'),
       default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
-      extension: '.hbs'
+      extension: '.hbs',
+      beforeRender: (res: express.Response) => {}
    };
 
     // If the options file is not found, the default options are returned.
