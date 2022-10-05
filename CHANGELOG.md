@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.22] - 2022-07-27
+## [1.0.23] - 2022/10/5
+### Fixed
+- Methodical check of request URLs that do not require authentication.
+
+## [1.0.22] - 2022/7/27
 ### Fixed
 - You can now set hook functions that are called before the view is rendered.  
     Hook functions can be used, for example, to set local variables that can be used in the view.  
@@ -25,7 +29,7 @@ All notable changes to this project will be documented in this file.
     }
     ```
 
-## [1.0.21] - 2022-05-26
+## [1.0.21] - 2022/526
 ### Fixed
 - Added an option to the face indexing method to retrieve details (gender, emotion, age group) of indexed faces.
     ```js
@@ -69,7 +73,7 @@ All notable changes to this project will be documented in this file.
     console.log(faceDetails);
     ```
 
-## [1.0.20] - 2022-05-25
+## [1.0.20] - 2022/5/25
 ### Fixed
 - Added an option to get details (emotion, gender, age group) to the face detection method.
     ```js
@@ -128,7 +132,7 @@ All notable changes to this project will be documented in this file.
     })();
     ```
 
-## [1.0.19] - 2022-05-20
+## [1.0.19] - 2022/5/20
 ### Fixed
 - Add date format helper to view.
     ```html
@@ -137,7 +141,7 @@ All notable changes to this project will be documented in this file.
     {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
     ```
 
-## [1.0.18] - 2022-05-18
+## [1.0.18] - 2022/5/18
 ### Fixed
 - User authentication sessions can now be stored in redis.  
     To use redis for session storage, simply add the following option to config/authentication.js.  
@@ -161,19 +165,19 @@ All notable changes to this project will be documented in this file.
     redis_host: 'redis://localhost:6379'
     ```
 
-## [1.0.17] - 2022-05-17
+## [1.0.17] - 2022/5/17
 ### Fixed
 - Updated documentation and refactored variable names.
 
-## [1.0.16] - 2022-02-14
+## [1.0.16] - 2022/2/14
 ### Fixed
 - I forgot to include the build file, so I added the build file.
 
-## [1.0.15] - 2022-02-14
+## [1.0.15] - 2022/2/14
 ### Fixed
 - Changed the type of 'config/authentication.js#allow_unauthenticated' from'string[]' to'(string|RegExp)[]}'.
 
-## [1.0.14] - 2022-01-17
+## [1.0.14] - 2022/1/17
 ### Fixed
 - empty view helper can now check any type. Previously I could only check arrays.
     ```html
@@ -217,7 +221,7 @@ All notable changes to this project will be documented in this file.
     {{not_empty value}} => false
     ```
 
-## [1.0.13] - 2021-12-13
+## [1.0.13] - 2021/12/13
 ### Fixed
 - The model's begin method now accepts the transaction option.  
     See [Transaction | Sequelize](https://sequelize.org/master/class/lib/transaction.js~Transaction.html) for transaction options.  
@@ -243,7 +247,7 @@ All notable changes to this project will be documented in this file.
     }
     ```
 
-## [1.0.12] - 2021-11-16
+## [1.0.12] - 2021/11/16
 ### Fixed
 - Added a method to the model that can execute raw SQL.  
     As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.  
@@ -258,11 +262,11 @@ All notable changes to this project will be documented in this file.
     const users = await BookModel.query("SELECT * FROM book", {type: BookModel.QueryTypes.SELECT});
     ```
 
-## [1.0.11] - 2021-11-10
+## [1.0.11] - 2021/11/10
 ### Fixed
 - Fixed a bug that the database config was read before NODE_ENV was set and the database config matching NODE_ENV could not be read.
 
-## [1.0.10] - 2021-10-19
+## [1.0.10] - 2021/10/19
 ### Fixed
 - Added face similarity found to face search results in collection.
 
@@ -287,33 +291,33 @@ All notable changes to this project will be documented in this file.
     console.log('Face search results:', res);
     ```
 
-## [1.0.9] - 2021-10-13
+## [1.0.9] - 2021/10/13
 ### Fixed
 - Updated dependent package'sharp'from 0.25.4 to 0.29.1.  
   This update statically links sharp's pre-built libvips binaries, eliminating the need to install Phton.  
   Click [here](https://sharp.pixelplumbing.com/changelog) for sharp change log.
 
-## [1.0.8] - 2021-09-25
+## [1.0.8] - 2021/9/25
 ### Fixed
 - Fixed a bug where the default router couldn't aqua from the endpoint URL.
 
-## [1.0.7] - 2021-08-13
+## [1.0.7] - 2021/8/13
 ### Fixed
 - Added where member functions to Model class. Please see [here](https://takuya-motoshima.github.io/express-sweet/#model-class) for details.
 
-## [1.0.6] - 2021-08-13
+## [1.0.6] - 2021/8/13
 ### Fixed
 - Added fn, col and literal member functions to Model class. Please see [here](https://takuya-motoshima.github.io/express-sweet/#model-class) for details.
 
-## [1.0.5] - 2021-08-12
+## [1.0.5] - 2021/8/12
 ### Fixed
 - Changed the maximum size per field for multipart (multipart/form-data) requests from 1MB to unlimited.
 
-## [1.0.4] - 2021-06-13
+## [1.0.4] - 2021/6/13
 ### Fixed
 - Fixed a bug where the referrer URL was set in app.locals.currentPath instead of the current URL.
 
-## [1.0.3] - 2021-06-13
+## [1.0.3] - 2021/6/13
 ### Fixed
 - Change the current URL path of a local variable.app.locals.currentPath is a USVString containing an initial '/' followed by the path of the URL not including the query string or fragment.
 
@@ -322,12 +326,12 @@ All notable changes to this project will be documented in this file.
     console.log(app.locals.currentPath);
     ```
 
-## [1.0.2] - 2021-06-10
+## [1.0.2] - 2021//6/10
 ### Fixed
 - Updated rollup from version 2.44 to 2.51.
 - Fixed a bug where preloading models failed in cjs.
 
-## [1.0.1] - 2021-06-02
+## [1.0.1] - 2021/6/2
 ### Fixed
 - Fixed a bug that caused an error when reading options defined in ESM's default Export.
 
@@ -353,3 +357,4 @@ All notable changes to this project will be documented in this file.
 [1.0.20]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.19...v1.0.20
 [1.0.21]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.20...v1.0.21
 [1.0.22]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.21...v1.0.22
+[1.0.23]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.22...v1.0.23

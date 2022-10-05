@@ -5,7 +5,6 @@ import session from 'express-session';
 import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import fs from 'fs';
 import connectRedis from 'connect-redis';
-
 // FIXME: When I read createClient with "import", a "Cannot read property transformRedisJsonNullReply of undefined" execution error occurred, but I could not solve it, so I used "require".
 const createClient = require('redis').createClient;
 // import {createClient} from 'redis';
@@ -66,11 +65,11 @@ export default class {
       const user = <{[key: string]: any}|null> await options.authenticate_user(username, password);
 
       // Authentication done.
-      done(null, user||false);
+      done(null, user || false);
     }));
 
     // Serialize the user information (ID in this case) and embed it in the session.
-    passport.serializeUser<number>((user: {[key: string]: any}, done) => done(null, user.id||undefined));
+    passport.serializeUser<number>((user: {[key: string]: any}, done) => done(null, user.id || undefined));
 
     // When the request is received, the user data corresponding to the ID is acquired and stored in req.user.
     passport.deserializeUser(async (id, done) => {
@@ -78,7 +77,8 @@ export default class {
       const user = <{[key: string]: any}> await options.subscribe_user(id as number);
       // const user = <{[key: string]: any}> await options.model.findOne({where: {id}, raw: true});
       // // For security, delete the password value.
-      // if (user) delete user[options.password];
+      // if (user)
+      //   delete user[options.password];
 
       // Done deserialization of authenticated user.
       done(null, user);
@@ -93,15 +93,9 @@ export default class {
 
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-      // Check if the request URL does not require authentication
-      if (options.allow_unauthenticated && options.allow_unauthenticated.length) {
-        const url = req.path.replace(/\/$/, '');
-        for (let allowed of options.allow_unauthenticated) {
-          if ((typeof allowed === 'string' && url.indexOf(allowed) !== -1)
-              || (allowed instanceof RegExp && url.match(allowed)))
-            return void next();
-        }
-      }
+      // Check if the request URL does not require authentication.
+      if (options.allow_unauthenticated && this.isNotRequireAuthentication(req, options.allow_unauthenticated))
+        return void next();
 
       // Asynchronous request flag.
       const isAjax = req.xhr;
@@ -109,7 +103,7 @@ export default class {
       // Check if you are logged in.
       if (req.isAuthenticated()) {
         // For authenticated users.
-        if (req.path !== options.failure_redirect||isAjax) {
+        if (req.path !== options.failure_redirect || isAjax) {
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
@@ -118,7 +112,7 @@ export default class {
         }
       } else {
         // For unauthenticated users.
-        if (req.path === options.failure_redirect||isAjax)
+        if (req.path === options.failure_redirect || isAjax)
           next();
         else
           res.redirect(options.failure_redirect);
@@ -153,7 +147,7 @@ export default class {
       return defaultOptions;
 
     // If an options file is found, it is merged with the default options.
-    const mergeOptions = Object.assign(defaultOptions, require(filePath).default||require(filePath));
+    const mergeOptions = Object.assign(defaultOptions, require(filePath).default || require(filePath));
 
     // Check required options.
     if (mergeOptions.session_store === 'redis' && !mergeOptions.redis_host)
@@ -161,5 +155,23 @@ export default class {
 
     // If an options file is found, it returns options that override the default options.
     return mergeOptions;
+  }
+
+  /**
+   * Check if the request URL does not require authentication.
+   *
+   * @param {express.Request} req The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
+   * @param {(string|RegExp)[]} allowUrls A list of URLs that do not require authentication.
+   * @returns {boolean} Return true if the request URL does not require authentication.
+   */
+  private static isNotRequireAuthentication(req: express.Request, allowUrls: (string|RegExp)[]): boolean {
+    const requestUrl = req.path.replace(/\/$/, '');
+    if (!allowUrls.length)
+      return true;
+    for (let allowUrl of allowUrls)
+      if ((typeof allowUrl === 'string' && requestUrl.indexOf(allowUrl) !== -1) ||
+          (allowUrl instanceof RegExp && requestUrl.match(allowUrl)))
+        return true;
+    return false;
   }
 }
