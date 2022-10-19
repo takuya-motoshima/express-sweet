@@ -1,19 +1,19 @@
 # express-sweet
-![heading](docs/img/hero.svg)
-
 Extend Express functionality with Express Sweet and start developing fast, minimal web applications.
 
+![heading](hero.svg)
+
 ## Documentation
-* [Introduction](https://takuya-motoshima.github.io/express-sweet/#introduction)
-* [Quick Start](https://takuya-motoshima.github.io/express-sweet/#quick-start)
+* [Overview](https://takuya-motoshima.github.io/express-sweet/#overview)
+* [Install](https://takuya-motoshima.github.io/express-sweet/#install)
 * [Environment variable](https://takuya-motoshima.github.io/express-sweet/#environment-variable)
 * [Base configuration](https://takuya-motoshima.github.io/express-sweet/#base-configuration)
 * [Routing](https://takuya-motoshima.github.io/express-sweet/#routing)
-* [Views](https://takuya-motoshima.github.io/express-sweet/#views)
+* [View](https://takuya-motoshima.github.io/express-sweet/#view)
 * [Model](https://takuya-motoshima.github.io/express-sweet/#model)
-* [User authentication](https://takuya-motoshima.github.io/express-sweet/#user-authentication)
+* [User authentication](https://takuya-motoshima.github.io/express-sweet/#authentication)
 * [Rekognition](https://takuya-motoshima.github.io/express-sweet/#rekognition)
-* [Changelog](https://takuya-motoshima.github.io/express-sweet/#changelog)
+* [Changelog](CHANGELOG.md)
 
 ## Author
 **Takuya Motoshima**
