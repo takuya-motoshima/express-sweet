@@ -15,22 +15,12 @@
   <!--begin::Global Stylesheets Bundle(used by all pages)-->
   <link href="theme/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
   <link href="theme/css/style.bundle.css" rel="stylesheet" type="text/css" />
-  <!--end::Global Style
-  
-  sheets Bundle-->
+  <!--end::Global Stylesheets Bundle-->
   <!--begin::Custom CSS(used by this page)-->
   <style>
      code:not([class*=language-]) {
       color: #fff;
      }
-    /* code:not([class*=language-]) {
-      color: #fff;
-      margin: 0;
-      background-color: transparent;
-      box-shadow: none;
-      padding: 0;
-      border-radius: 0;
-    } */
   </style>
   <!--end::Custom CSS-->
 </head>
@@ -7166,9 +7156,6 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
   <!--begin::Custom Javascript(used by this page)-->
   <script>
     (() => {
-      /**
-       * Highlight code.
-       */
       function highlightCode() {
         for (let highlight of document.querySelectorAll('.highlight')) {
           const copy = highlight.querySelector('.highlight-copy');
@@ -7194,9 +7181,6 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
         }
       }
 
-      /**
-       * Initialize search dropdown.
-       */
       function intiSearchDropdown() {
         const results = document.querySelector('#searchResults');
         const recently = document.querySelector('#searchRecently');
@@ -7276,9 +7260,6 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
         }, {passive: false});
       }
 
-      /**
-       * Initialize menu.
-       */
       function initMenu() {
         const header = document.querySelector('#kt_app_header');
         const sidebar = document.querySelector('#kt_app_sidebar');
@@ -7304,14 +7285,26 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
           }, {passive: false})
       }
 
-      // Highlight code.
+      function activateAnchorMenu() {
+        if (!location.hash)
+          return;
+        const anchorMenu = document.querySelector(`#kt_app_sidebar_menu_wrapper .menu-link[href="${location.hash}"]`);
+        if (!anchorMenu)
+          return;
+        anchorMenu.classList.add('active');
+        const subMenuAccordion = anchorMenu.closest('.menu-sub');
+        if (subMenuAccordion) {
+          subMenuAccordion.classList.add('show');
+          const subMenuItem = subMenuAccordion.closest('.menu-item.menu-accordion');
+          if (subMenuItem)
+            subMenuItem.classList.add('hover', 'show');
+        }
+      }
+
       highlightCode();
-
-      // Initialize search dropdown.
       intiSearchDropdown();
-
-      // Initialize menu.
       initMenu();
+      activateAnchorMenu();
     })();
   </script>
   <!--end::Custom Javascript-->
