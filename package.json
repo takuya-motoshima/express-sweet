@@ -10,10 +10,12 @@
     "docs/",
     "types/",
     "CHANGELOG.md",
+    "hero.svg",
     "INSTALL-Redis.md",
     "LICENSE",
     "package.json",
-    "README.md"
+    "README.md",
+    "screencaps/"
   ],
   "scripts": {
     "watch": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.js --watch",

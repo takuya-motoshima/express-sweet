@@ -1,6 +1,38 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.24] - 2022/10/20
+### Fixed
+- A request body object has been added to the parameters of the callback function for user authentication.  
+    config/authentication.js:
+    ```js
+    const UserModel = require('../models/UserModel');
+
+    /**
+    * User authentication configuration interface.
+    */
+    module.exports = {
+      /**
+      * This hook is called when authenticating a user.
+      * Please find the user information that owns the credentials based on the user name and password you received and return it.
+      * If the user who owns the credentials cannot be found, return null.
+      *
+      * Note that the user information must include an ID value that can identify the user.
+      * 
+      * @type {(username: string, password: string, req: express.Request) => Promise<{[key: string]: any}|null>}
+      */
+      authenticate_user: async (username, password, req) => {
+        return UserModel.findOne({
+          where: {
+            email: username,
+            password
+          },
+          raw: true
+        });
+      }
+    }
+    ```
+
 ## [1.0.23] - 2022/10/5
 ### Fixed
 - Methodical check of request URLs that do not require authentication.
@@ -358,3 +390,4 @@ All notable changes to this project will be documented in this file.
 [1.0.21]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.20...v1.0.21
 [1.0.22]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.21...v1.0.22
 [1.0.23]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.22...v1.0.23
+[1.0.24]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.23...v1.0.24

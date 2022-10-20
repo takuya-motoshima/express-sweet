@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import {Strategy as LocalStrategy} from 'passport-local';
+import {Strategy as LocalStrategy, IVerifyOptions} from 'passport-local';
 import session from 'express-session';
 import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import fs from 'fs';
@@ -59,10 +59,17 @@ export default class {
     passport.use(new LocalStrategy({
       usernameField: options.username,
       passwordField: options.password,
-      session: true
-    }, async (username: string, password: string, done) => {
+      session: true,
+      // NOTE: The passReqToCallback option must be enabled in order to receive the request object in the first parameter of the authentication callback function.
+      passReqToCallback: true
+    }, async (
+      req: express.Request,
+      username: string,
+      password: string,
+      done: (error: any, user?: any, options?: IVerifyOptions
+    ) => void) => {
       // Find the user who owns the credentials.
-      const user = <{[key: string]: any}|null> await options.authenticate_user(username, password);
+      const user = <{[key: string]: any}|null> await options.authenticate_user(username, password, req);
 
       // Authentication done.
       done(null, user || false);
@@ -135,7 +142,7 @@ export default class {
       password: 'password',
       success_redirect: '/',
       failure_redirect: '/login',
-      authenticate_user: (username: string, password: string) => new Promise(resolve => resolve(null)),
+      authenticate_user: (username: string, password: string, req: express.Request) => new Promise(resolve => resolve(null)),
       subscribe_user: (id: number|string) => new Promise(resolve => resolve({} as {[key: string]: any})),
       allow_unauthenticated: [],
       expiration: 24 * 3600000 // 24hours

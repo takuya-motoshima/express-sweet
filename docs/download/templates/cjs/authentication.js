@@ -56,13 +56,13 @@ module.exports = {
    *
    * Note that the user information must include an ID value that can identify the user.
    * 
-   * @type {(username: string, password: string) => Promise<{[key: string]: any}|null>}
+   * @type {(username: string, password: string, req: express.Request) => Promise<{[key: string]: any}|null>}
    */
-  authenticate_user: async (username, password) => {
+  authenticate_user: async (username, password, req) => {
     return UserModel.findOne({
       where: {
         email: username,
-        password: password
+        password
       },
       raw: true
     });

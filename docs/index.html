@@ -74,7 +74,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.23</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.24</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -858,7 +858,8 @@
                           <!--end::Code-->
                         </li>
                         <li class="py-3">
-                          For example, the following creates an Express app named <code>myapp</code>.<br>The app will be created in a folder named <code>myapp</code> in the current working directory.
+                          Create an Express <code>myapp</code> named myapp.<br>
+                          The app is created in a folder named <code>myapp</code> in the working directory.
                           <!--begin::Code-->
                           <div class="py-5">
                             <!--begin::Highlight-->
@@ -896,19 +897,21 @@ npm install</code></pre>
                             <div class="highlight">
                               <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                               <div class="highlight-code">
-                                <pre class="language-sql" style="max-height:400px"><code class="language-sql">CREATE DATABASE IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb4;
+                                <pre class="language-sql" style="max-height:400px"><code class="language-sql">CREATE DATABASE IF NOT EXISTS `sampledb` DEFAULT CHARACTER SET utf8mb4;
 
-USE `mydb`;
+USE `sampledb`;
 
 CREATE TABLE `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `icon` varchar(768) NOT NULL DEFAULT MD5(RAND()),
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ukUserEmail` (`email`)
+  UNIQUE KEY `ukUserEmail` (`email`),
+  UNIQUE KEY `ukUserIcon`(`icon`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `profile` (
@@ -944,16 +947,16 @@ CREATE TABLE `book` (
   CONSTRAINT `fkBookUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `user` (`id`, `email`, `password`, `name`) VALUES
-  (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;),
-  (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;);
+INSERT INTO `user` (`id`, `email`, `password`, `name`, `icon`) VALUES
+  (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;, &#039;/upload/1.png&#039;),
+  (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;, &#039;/upload/2.png&#039;);
 INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
   (1, &#039;777 Brockton Avenue, Abington MA 2351&#039;, &#039;202-555-0105&#039;),
   (2, &#039;30 Memorial Drive, Avon MA 2322&#039;, &#039;&#039;);
 INSERT INTO `comment` (`userId`, `text`) VALUES
-  (1, &#039;First comment from Robin&#039;),
-  (1, &#039;Second comment from Robin&#039;),
-  (2, &#039;First comment from Taylor&#039;);
+  (1, &#039;From Robin #1&#039;),
+  (1, &#039;From Robin #2&#039;),
+  (2, &#039;From Taylor #1&#039;);
 INSERT INTO `book` (`userId`, `title`) VALUES
   (1, &#039;Beautiful&#039;),
   (1, &#039;Lose Yourself&#039;),
@@ -988,21 +991,21 @@ INSERT INTO `book` (`userId`, `title`) VALUES
   development: {
     username: &#039;root&#039;,
     password: &#039;password&#039;,
-    database: &#039;mydb&#039;,
+    database: &#039;sampledb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   test: {
     username: &#039;root&#039;,
     password: &#039;password&#039;,
-    database: &#039;mydb&#039;,
+    database: &#039;sampledb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   production: {
     username: &#039;root&#039;,
     password: &#039;password&#039;,
-    database: &#039;mydb&#039;,
+    database: &#039;sampledb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   }
@@ -1015,21 +1018,21 @@ INSERT INTO `book` (`userId`, `title`) VALUES
   development: {
     username: &#039;root&#039;,
     password: &#039;password&#039;,
-    database: &#039;mydb&#039;,
+    database: &#039;sampledb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   test: {
     username: &#039;root&#039;,
     password: &#039;password&#039;,
-    database: &#039;mydb&#039;,
+    database: &#039;sampledb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   },
   production: {
     username: &#039;root&#039;,
     password: &#039;password&#039;,
-    database: &#039;mydb&#039;,
+    database: &#039;sampledb&#039;,
     host: &#039;localhost&#039;,
     dialect: &#039;mariadb&#039;
   }
@@ -1106,10 +1109,16 @@ npm start</code></pre>
                           <div class="py-5">
                             <div class="rounded border d-flex flex-wrap p-10">
                               <div class="w-500px me-10 mb-5">
-                                <img class="img-fluid w-100 h-auto" src="img/login.jpg">
+                                <img class="img-fluid w-100 h-auto" src="img/screencaps/login.png">
                               </div>
                               <div class="w-500px me-10 mb-5">
-                                <img class="img-fluid w-100 h-auto" src="img/users.jpg">
+                                <img class="img-fluid w-100 h-auto" src="img/screencaps/users.png">
+                              </div>
+                              <div class="w-500px me-10 mb-5">
+                                <img class="img-fluid w-100 h-auto" src="img/screencaps/user-editing.png">
+                              </div>
+                              <div class="w-500px me-10 mb-5">
+                                <img class="img-fluid w-100 h-auto" src="img/screencaps/personal.png">
                               </div>
                             </div>
                           </div>
@@ -3118,9 +3127,10 @@ export default class extends sweet.database.Model {
         primaryKey: true,
         autoIncrement: true
       },
+      name: this.DataTypes.STRING,
       email: this.DataTypes.STRING,
       password: this.DataTypes.STRING,
-      name: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
       created: this.DataTypes.DATE,
       modified: this.DataTypes.DATE
     };
@@ -3144,9 +3154,10 @@ module.exports = class extends Model {
         primaryKey: true,
         autoIncrement: true
       },
+      name: this.DataTypes.STRING,
       email: this.DataTypes.STRING,
       password: this.DataTypes.STRING,
-      name: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
       created: this.DataTypes.DATE,
       modified: this.DataTypes.DATE
     };
@@ -3363,9 +3374,10 @@ export default class extends sweet.database.Model {
         primaryKey: true,
         autoIncrement: true
       },
+      name: this.DataTypes.STRING,
       email: this.DataTypes.STRING,
       password: this.DataTypes.STRING,
-      name: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
       created: this.DataTypes.DATE,
       modified: this.DataTypes.DATE
     };
@@ -3385,9 +3397,10 @@ module.exports = class extends Model {
         primaryKey: true,
         autoIncrement: true
       },
+      name: this.DataTypes.STRING,
       email: this.DataTypes.STRING,
       password: this.DataTypes.STRING,
-      name: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
       created: this.DataTypes.DATE,
       modified: this.DataTypes.DATE
     };
@@ -4864,11 +4877,11 @@ module.exports = class extends Model {
 //             "comments": [
 //               {
 //                 "userId": 1,
-//                 "text": "First comment from Robin"
+//                 "text": "From Robin #1"
 //               },
 //               {
 //                 "userId": 1,
-//                 "text": "Second comment from Robin"
+//                 "text": "From Robin #2"
 //               }
 //             ]
 //           }
@@ -4903,11 +4916,11 @@ await UserModel.findAll({
 //             "comments": [
 //               {
 //                 "userId": 1,
-//                 "text": "First comment from Robin"
+//                 "text": "From Robin #1"
 //               },
 //               {
 //                 "userId": 1,
-//                 "text": "Second comment from Robin"
+//                 "text": "From Robin #2"
 //               }
 //             ]
 //           }
@@ -5275,7 +5288,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>authenticate_user: (username: string, password: string): Promise&lt;object|null&gt;</code></td>
+                                <td class="mw-250px"><code>authenticate_user: (username: string, password: string, req: express.Request): Promise&lt;object|null&gt;</code></td>
                                 <td>
                                   This hook is called when authenticating a user.<br>
                                   Please find the user information that owns the credentials based on the user name and password you received and return it.<br>
@@ -5309,12 +5322,12 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                     <div class="highlight">
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">authenticate_user: async (username, password) =&gt; {
+                                        <pre class="language-javascript"><code class="language-javascript">authenticate_user: async (username, password, req) =&gt; {
   const UserModel = require(&#039;../models/UserModel&#039;);
   return UserModel.findOne({
     where: {
       email: username,
-      password: password
+      password
     },
     raw: true
   });
@@ -5427,12 +5440,15 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                           <div class="highlight-code">
                             <pre class="language-sql"><code class="language-sql">CREATE TABLE `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `icon` varchar(768) NOT NULL DEFAULT MD5(RAND()),
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ukUserEmail` (`email`)
+  UNIQUE KEY `ukUserEmail` (`email`),
+  UNIQUE KEY `ukUserIcon`(`icon`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
                           </div>
                         </div>
