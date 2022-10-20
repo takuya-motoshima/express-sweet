@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.24] - 2022/10/20
+## [1.0.23] - 2022/10/20
 ### Fixed
 - A request body object has been added to the parameters of the callback function for user authentication.  
     config/authentication.js:
@@ -32,10 +32,6 @@ All notable changes to this project will be documented in this file.
       }
     }
     ```
-
-## [1.0.23] - 2022/10/5
-### Fixed
-- Methodical check of request URLs that do not require authentication.
 
 ## [1.0.22] - 2022/7/27
 ### Fixed
@@ -390,4 +386,3 @@ All notable changes to this project will be documented in this file.
 [1.0.21]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.20...v1.0.21
 [1.0.22]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.21...v1.0.22
 [1.0.23]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.22...v1.0.23
-[1.0.24]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.23...v1.0.24
