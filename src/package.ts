@@ -1,10 +1,10 @@
 export var name = "express-sweet";
-export var version = "1.0.22";
+export var version = "1.0.23";
 export var description = "Extend Express functionality with Express Sweet and start developing fast, minimal web applications.";
 export var main = "dist/build.common.js";
 export var module = "dist/build.esm.js";
 export var types = "types/index.d.ts";
-export var files = ["dist/","docs/","types/","CHANGELOG.md","INSTALL-Redis.md","LICENSE","package.json","README.md"];
+export var files = ["dist/","docs/","types/","CHANGELOG.md","hero.svg","INSTALL-Redis.md","LICENSE","package.json","README.md","screencaps/"];
 export var scripts = {"watch":"node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.js --watch","prewatch":"rm -rf dist types && json2module package.json > src/package.ts","build":"node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.js","prebuild":"rm -rf dist types && json2module package.json > src/package.ts","test":"jest","start":"ts-node -r tsconfig-paths/register -P tsconfig.json -O '{\"module\":\"commonjs\"}' -e \"import * as index from '~/index';console.log(index);\"","prestart":"json2module package.json > src/package.ts"};
 export var _moduleAliases = {"~":"dist"};
 export var repository = {"type":"git","url":"git+https://github.com/takuya-motoshima/express-sweet.git"};

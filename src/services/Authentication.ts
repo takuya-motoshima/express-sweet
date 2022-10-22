@@ -17,11 +17,14 @@ export default class {
    */
   public static authenticate(req: express.Request, res: express.Response, next: express.NextFunction): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      passport.authenticate('local', (err, user) => {
-        if (err) return void reject(err);
-        if (!user) return void resolve(false);
-        req.logIn(user, err => {
-          if (err) return void reject(err);
+      passport.authenticate('local', (err: any, user: any) => {
+        if (err)
+          return void reject(err);
+        if (!user)
+          return void resolve(false);
+        req.logIn(user, (err: any) => {
+          if (err)
+            return void reject(err);
           resolve(true);
         });
       })(req, res, next);
