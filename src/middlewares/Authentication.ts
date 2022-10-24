@@ -11,6 +11,8 @@ const createClient = require('redis').createClient;
 
 /**
  * Incorporate user authentication into your application.
+ * If an unauthenticated user makes a request to a URL that allows access only if authenticated, the user will be redirected to the page specified by "failure_redirect".
+ * If that access is asynchronous, a 403 error is returned.
  */
 export default class {
   /**
@@ -18,7 +20,7 @@ export default class {
    */
   public static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const options: AuthenticationOptions = this.loadOptions();
 
     // Exit if authentication is disabled.
     if (!options.enabled)
@@ -105,7 +107,7 @@ export default class {
         return void next();
 
       // Asynchronous request flag.
-      const isAjax = req.xhr;
+      const isAjax = options.is_ajax(req);
 
       // Check if you are logged in.
       if (req.isAuthenticated()) {
@@ -114,16 +116,17 @@ export default class {
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
-        } else {
+        } else
           res.redirect(options.success_redirect);
-        }
-      } else {
-        // For unauthenticated users.
-        if (req.path === options.failure_redirect || isAjax)
+      } else if (!isAjax)
+        // If authentication is not established and asynchronous communication is not used, the user is redirected to the login page.
+        if (req.path === options.failure_redirect)
           next();
         else
           res.redirect(options.failure_redirect);
-      }
+      else
+        // If authentication is not established and asynchronous communication is used, a 403 error is returned.
+        res.status(403).end();
     });
   }
 
@@ -145,7 +148,10 @@ export default class {
       authenticate_user: (username: string, password: string, req: express.Request) => new Promise(resolve => resolve(null)),
       subscribe_user: (id: number|string) => new Promise(resolve => resolve({} as {[key: string]: any})),
       allow_unauthenticated: [],
-      expiration: 24 * 3600000 // 24hours
+      expiration: 24 * 3600000, // 24hours
+      is_ajax: (req: express.Request): boolean => {
+        return !!req.xhr;
+      }
     };
 
     // If the options file is not found, the default options are returned.

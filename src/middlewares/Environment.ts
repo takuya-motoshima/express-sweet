@@ -26,7 +26,7 @@ export default class {
     // Set environment variables in process.env.
     const env = dotenv.parse(fs.readFileSync(options.env_path!));
     for (let key in env) {
-      console.log(`Read environment variable ${key}`);
+      // console.log(`Read environment variable ${key}`);
       process.env[key] = env[key]
     }
 
