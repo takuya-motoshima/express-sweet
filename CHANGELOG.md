@@ -1,6 +1,27 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.24] - 2022/10/24
+### Fixed
+- Added is_ajax option to user authentication.
+    config/authentication.js:
+    ```js
+    /**
+    * How to determine if it is an ajax request.
+    * The default is that if there is an XMLHttpRequest in the request header (req.xhr) returns true.
+    * For example, if there is no XMLHttpRequest in req(express.Request) and the Ajax endpoint starts with /api, a custom Ajax decision can be made like "return /^\/api\//.test(req.path)".
+    *
+    * @type {(req: express.Request) => boolean}
+    * @example
+    * is_ajax: req => {
+    *   // If the request URL begins with /api, it is assumed to be Ajax.
+    *   return /^\/api/.test(req.path);
+    *   // return !!req.xhr;
+    * }
+    */
+    is_ajax: req => !!req.xhr
+    ```
+
 ## [1.0.23] - 2022/10/20
 ### Fixed
 - A request body object has been added to the parameters of the callback function for user authentication.  
@@ -386,3 +407,4 @@ All notable changes to this project will be documented in this file.
 [1.0.21]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.20...v1.0.21
 [1.0.22]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.21...v1.0.22
 [1.0.23]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.22...v1.0.23
+[1.0.24]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.23...v1.0.24

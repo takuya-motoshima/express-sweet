@@ -1,4 +1,7 @@
 import sequelize from 'sequelize';
+/**
+ * Connect to DB.
+ */
 declare const _default: {
     /**
      * Returns true if the DB can be connected.
@@ -80,83 +83,80 @@ declare const _default: {
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE>): Bluebird<T_1>;
     query<M extends sequelize.Model<any, any>>(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithModel): any;
-    query<T_1 extends object>(sql: string | {
+    }, options: sequelize.QueryOptionsWithModel): Bluebird<T_1>;
+    query<T_2 extends object>(sql: string | {
         query: string;
         values: unknown[];
     }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> & {
         plain: true;
-    }): any;
-    query<T_2 extends object>(sql: string | {
+    }): Bluebird<T_1>;
+    query<T_3 extends object>(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>): any;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
     }, options: (sequelize.QueryOptions | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>) & {
         plain: true;
-    }): any;
+    }): Bluebird<T_1>;
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options?: sequelize.QueryOptions | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW> | undefined): any;
+    }, options?: sequelize.QueryOptions | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW> | undefined): Bluebird<T_1>;
     random(): sequelize.Utils.Fn;
-    set(variables: object, options: sequelize.QueryOptionsTransactionRequired): any;
+    set(variables: object, options: sequelize.QueryOptionsTransactionRequired): Bluebird<T_1>;
     escape(value: string | number | Date): string;
-    createSchema(schema: string, options: sequelize.Logging): any;
-    showAllSchemas(options: sequelize.Logging): any;
-    dropSchema(schema: string, options: sequelize.Logging): any;
-    dropAllSchemas(options: sequelize.Logging): any;
-    sync(options?: sequelize.SyncOptions | undefined): any;
-    truncate(options?: sequelize.DestroyOptions | undefined): any;
-    drop(options?: sequelize.DropOptions | undefined): any;
-    authenticate(options?: sequelize.QueryOptions | undefined): any;
-    validate(options?: sequelize.QueryOptions | undefined): any;
-    transaction<T_3>(options: sequelize.TransactionOptions, autoCallback: (t: sequelize.Transaction) => PromiseLike<T_3>): any;
-    transaction<T_4>(autoCallback: (t: sequelize.Transaction) => PromiseLike<T_4>): any;
-    transaction(options?: sequelize.TransactionOptions | undefined): any;
-    close(): any;
-    databaseVersion(): any;
+    createSchema(schema: string, options: sequelize.Logging): Bluebird<T_1>;
+    showAllSchemas(options: sequelize.Logging): Bluebird<T_1>;
+    dropSchema(schema: string, options: sequelize.Logging): Bluebird<T_1>;
+    dropAllSchemas(options: sequelize.Logging): Bluebird<T_1>;
+    sync(options?: sequelize.SyncOptions | undefined): Bluebird<T_1>;
+    truncate(options?: sequelize.DestroyOptions | undefined): Bluebird<T_1>;
+    drop(options?: sequelize.DropOptions | undefined): Bluebird<T_1>;
+    authenticate(options?: sequelize.QueryOptions | undefined): Bluebird<T_1>;
+    validate(options?: sequelize.QueryOptions | undefined): Bluebird<T_1>;
+    transaction<T_4>(options: sequelize.TransactionOptions, autoCallback: (t: sequelize.Transaction) => PromiseLike<T_4>): Bluebird<T_1>;
+    transaction<T_5>(autoCallback: (t: sequelize.Transaction) => PromiseLike<T_5>): Bluebird<T_1>;
+    transaction(options?: sequelize.TransactionOptions | undefined): Bluebird<T_1>;
+    close(): Bluebird<T_1>;
+    databaseVersion(): Bluebird<T_1>;
     addHook<K extends keyof import("sequelize/types/lib/hooks").SequelizeHooks>(hookType: K, name: string, fn: import("sequelize/types/lib/hooks").SequelizeHooks[K]): any;
     addHook<K_1 extends keyof import("sequelize/types/lib/hooks").SequelizeHooks>(hookType: K_1, fn: import("sequelize/types/lib/hooks").SequelizeHooks[K_1]): any;
     removeHook<K_2 extends keyof import("sequelize/types/lib/hooks").SequelizeHooks>(hookType: K_2, name: string): any;
     hasHook<K_3 extends keyof import("sequelize/types/lib/hooks").SequelizeHooks>(hookType: K_3): boolean;
     hasHooks<K_4 extends keyof import("sequelize/types/lib/hooks").SequelizeHooks>(hookType: K_4): boolean;
 };
-/**
- * Connect to DB.
- */
 export default _default;

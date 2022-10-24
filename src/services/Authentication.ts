@@ -37,7 +37,7 @@ export default class {
    * @param {express.Request}      req  The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
    */
   public static logout(req: express.Request): void {
-    req.logout();
+    req.logout((err: any) => {});
   }
 
   /**

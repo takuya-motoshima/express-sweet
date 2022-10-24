@@ -19,7 +19,10 @@
   <!--begin::Custom CSS(used by this page)-->
   <style>
      code:not([class*=language-]) {
-      color: #fff;
+      color: #9efeff;
+      background-color: #364135;
+      padding: 0.1rem 0;
+      margin: 0;
      }
   </style>
   <!--end::Custom CSS-->
@@ -73,7 +76,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.23</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.24</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -5181,10 +5184,35 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                       <!--begin::Block-->
                       <div class="py-5">
                         Express Sweet has built-in passport authentication middleware for user authentication by username and password.<br>
-                        You can immediately start user authentication in your application using the authentication configuration file and the authentication service module.<br>
-                        If you want to know more about passport, please see this <a href="https://www.passportjs.org/" class="fw-semibold" target="_blank">reference</a>.
+                        You can immediately start user authentication in your application using the authentication configuration file and the authentication service module.<br><br>
+                        For more information about <code>passport</code>, click <a href="https://www.passportjs.org/" class="fw-semibold" target="_blank">here</a>.
                       </div>
                       <!--end::Block-->
+                      <!--begin::Notice-->
+                      <div class="py-5">
+                        <!--begin::Information-->
+                        <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary">
+                          <!--begin::Icon-->
+                          <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+                          <span class="svg-icon svg-icon-3x svg-icon-primary me-5">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
+                              <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="currentColor" />
+                              <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="currentColor" />
+                            </svg>
+                          </span>
+                          <!--end::Svg Icon-->
+                          <!--end::Icon-->
+                          <!--begin::Description-->
+                          <div class="text-gray-700 fw-bold fs-6">
+                            If an unauthenticated user makes a request to a URL that allows access only if authenticated, the user will be redirected to the page specified by <code>failure_redirect</code>.<br>
+                            If that access is asynchronous, a <code>403</code> error is returned.
+                          </div>
+                          <!--end::Description-->
+                        </div>
+                        <!--end::Information-->
+                      </div>
+                      <!--end::Notice-->
                     </div>
                     <!--end::Section-->
                     <!--begin::Section-->
@@ -5404,6 +5432,30 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                 <td>
                                   Specifies the time, in milliseconds, before the session expires.<br>
                                   The default is 24 hours (<code>86400000</code> milliseconds).
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="mw-250px"><code>is_ajax: (req: express.Request) =&gt; boolean</code></td>
+                                <td>
+                                  How to determine if it is an ajax request.<br>
+                                  The default is that if there is an XMLHttpRequest in the request header (<code>req.xhr</code>) returns <code>true</code>.<br><br>
+                                  For example, if there is no XMLHttpRequest in req(<code>express.Request</code>) and the Ajax endpoint starts with <code>/api</code>, a custom Ajax decision can be made like &quot;<code>return /^\/api\//.test(req.path)</code>&quot;.<br>
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">is_ajax: req =&gt; {
+  // If the request URL begins with /api, it is assumed to be Ajax.
+  return /^\/api/.test(req.path);
+  // return !!req.xhr;
+}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
                                 </td>
                               </tr>
                             </tbody>

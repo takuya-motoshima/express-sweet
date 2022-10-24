@@ -106,5 +106,20 @@ export default interface {
    * Authenticated user session expiration, defaults to 24 hours (24 * 3600000).
    * @type {number}
    */
-  expiration: number
+  expiration: number,
+
+  /**
+   * How to determine if it is an ajax request.
+   * The default is that if there is an XMLHttpRequest in the request header (req.xhr) returns true.
+   * For example, if there is no XMLHttpRequest in req(express.Request) and the Ajax endpoint starts with /api, a custom Ajax decision can be made like "return /^\/api\//.test(req.path)".
+   *
+   * @type {(req: express.Request) => boolean}
+   * @example
+   * is_ajax: req => {
+   *   // If the request URL begins with /api, it is assumed to be Ajax.
+   *   return /^\/api/.test(req.path);
+   *   // return !!req.xhr;
+   * }
+   */
+  is_ajax: (req: express.Request) => boolean
 }

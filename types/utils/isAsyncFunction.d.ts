@@ -1,4 +1,3 @@
-declare const _default: (value: Function) => boolean;
 /**
  * Returns true for asynchronous functions, false otherwise.
  *
@@ -9,4 +8,5 @@ declare const _default: (value: Function) => boolean;
  * @param  {Function} value
  * @return {boolean}
  */
+declare const _default: (value: Function) => boolean;
 export default _default;

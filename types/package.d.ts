@@ -58,7 +58,6 @@ export declare var dependencies: {
     passport: string;
     "passport-local": string;
     redis: string;
-    "reflect-metadata": string;
     sequelize: string;
     uniqid: string;
 };
