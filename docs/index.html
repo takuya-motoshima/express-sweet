@@ -2807,6 +2807,44 @@ let val = &#039;2&#039;
                                   <!--end::Code-->
                                 </td>
                               </tr>
+                              <tr>
+                                <td class="mw-250px"><code>split</code></td>
+                                <td>
+                                  Split `string` by the given `character`.
+                                  <div class="py-5">
+                                    <p class="mb-0">Parameters:</p> 
+                                    <ul class="py-0">
+                                      <li class="py-2"><code>val: string</code> String.</li>
+                                      <li class="py-2"><code>separator: string</code> A character that delimits the substrings in this string. Default is a comma.</li>
+                                    </ul>
+                                  </div>
+                                  <div class="py-5">
+                                    <p class="mb-0">Return value:</p> 
+                                    <code>string[]</code> An Array of strings, split at each point where the separator occurs in the given string. The default is a comma.
+                                  </div>
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">&lt;!-- Basic usage. --&gt;
+{{split &quot;a,b,c&quot; &quot;,&quot;}} =&gt; [&#039;a&#039;, &#039;b&#039;, &#039;c&#039;]
+
+&lt;!-- Use with EACH. --&gt;
+{{#each (split list &#039;,&#039;)}}
+  {{this}}&lt;br&gt;
+{{/each}}
+=&gt; a&lt;br&gt;
+   b&lt;br&gt;
+   c&lt;br&gt;</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
                             </tbody>
                             <!--end::Body-->
                           </table>
