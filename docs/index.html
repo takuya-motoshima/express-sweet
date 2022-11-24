@@ -76,7 +76,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.24</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.25</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -2838,6 +2838,38 @@ let val = &#039;2&#039;
 =&gt; a&lt;br&gt;
    b&lt;br&gt;
    c&lt;br&gt;</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="mw-250px"><code>format_bytes</code></td>
+                                <td>
+                                  Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).
+                                  <div class="py-5">
+                                    <p class="mb-0">Parameters:</p> 
+                                    <ul class="py-0">
+                                      <li class="py-2"><code>bytes: number</code> Bytes.</li>
+                                      <li class="py-2"><code>decimals?: number</code> Number of decimal places to display. Default is 0.</li>
+                                    </ul>
+                                  </div>
+                                  <div class="py-5">
+                                    <p class="mb-0">Return value:</p> 
+                                    <code>string</code> Returns a value with units.
+                                  </div>
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{format_bytes 1024}} =&gt; 1 KB
+{{format_bytes 1234 2}} =&gt; 1.21 KB
+{{format_bytes 1234 3}} =&gt; 1.205 KB
+{{format_bytes 0}} =&gt; 0 Bytes</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->

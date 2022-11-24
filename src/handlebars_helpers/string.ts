@@ -41,3 +41,29 @@ export function split(value: string, separator: string): string[] {
     separator = ',';
   return value.split(separator);
 }
+
+/**
+ * Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).
+ *
+ * @example
+ * {{format_bytes 1024}} => 1 KB
+ * {{format_bytes 1234 2}} => 1.21 KB
+ * {{format_bytes 1234 3}} => 1.205 KB
+ * {{format_bytes 0}} => 0 Bytes
+ *
+ * @param   {number}  bytes     Bytes.
+ * @param   {number}  decimals  Number of decimal places to display. Default is 0.
+ * @returns {string}            Returns a value with units.
+ */
+export function format_bytes(bytes: number, decimals: number = 0): string {
+  let result = 0;
+  let unit = 'Bytes';
+  if (bytes && bytes > 0) {
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    unit = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][i];
+    result = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
+  }
+  return `${result}${unit}`;
+}
