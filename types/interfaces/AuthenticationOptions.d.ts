@@ -95,7 +95,7 @@ export default interface  {
      */
     expiration: number;
     /**
-     * How to determine if it is an ajax request
+     * How to determine if it is an ajax request.
      * The default is that if there is an XMLHttpRequest in the request header (req.xhr) returns true.
      * For example, if there is no XMLHttpRequest in req(express.Request) and the Ajax endpoint starts with /api, a custom Ajax decision can be made like "return /^\/api\//.test(req.path)".
      *

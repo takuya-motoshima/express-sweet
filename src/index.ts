@@ -1,4 +1,3 @@
-import {version} from '~/package';
 import mount from './mount';
 import * as database from './database';
 import * as services from './services';
@@ -8,7 +7,6 @@ import * as exceptions from './exceptions';
 import * as interfaces from './interfaces';
 
 export {
-  version,
   mount,
   database,
   services,

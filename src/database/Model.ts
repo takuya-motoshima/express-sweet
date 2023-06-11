@@ -150,7 +150,8 @@ export default class Model extends sequelize.Model {
    * @return {typeof Model} Returns this model class itself.
    */
   public static initialize(): (typeof Model) {
-    console.log(`Initialize ${this.table} model`);
+    if (process.env.EXPRESS_DEBUG)
+      console.log(`Initialize ${this.table} model`);
     this.init(this.attributes, {
       modelName: this.table,
       sequelize: database,

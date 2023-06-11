@@ -34,7 +34,8 @@ export default class {
 
       // Generate a URL from the directory and filename and map the module to the URL.
       const url = dir ? `${dir}/${filename.toLowerCase()}` : `/${filename.toLowerCase()}`;
-      console.log(`URL mapping ${url}`);
+      if (process.env.EXPRESS_DEBUG)
+        console.log(`URL mapping ${url}`);
       app.use(url, router);
 
       // Set the default router to run when accessed with "/".

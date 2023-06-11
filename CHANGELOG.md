@@ -1,8 +1,28 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.26] - 2023/6/11
+### Changed
+- Update Sequelize from v5 to v6.
+- Changed the framework debug log to output only when the environment variable EXPRESS_DEBUG is defined.  
+    .env:
+    ```
+    EXPRESS_DEBUG=true
+    ```
+- A demo application was added [here](./demo).
+
+## [1.0.25] - 2022/11/24
+### Added
+- Added format_bytes view helper to convert bytes to appropriate units.
+    ```html
+    {{format_bytes 1024}} => 1 KB
+    {{format_bytes 1234 2}} => 1.21 KB
+    {{format_bytes 1234 3}} => 1.205 KB
+    {{format_bytes 0}} => 0 Bytes
+    ```
+
 ## [1.0.24] - 2022/10/24
-### Fixed
+### Added
 - Added is_ajax option to user authentication.
     config/authentication.js:
     ```js
@@ -23,7 +43,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.23] - 2022/10/20
-### Fixed
+### Added
 - A request body object has been added to the parameters of the callback function for user authentication.  
     config/authentication.js:
     ```js
@@ -55,7 +75,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.22] - 2022/7/27
-### Fixed
+### Added
 - You can now set hook functions that are called before the view is rendered.  
     Hook functions can be used, for example, to set local variables that can be used in the view.  
     
@@ -79,7 +99,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.21] - 2022/526
-### Fixed
+### Added
 - Added an option to the face indexing method to retrieve details (gender, emotion, age group) of indexed faces.
     ```js
     const sweet = require('../dist/build.common');
@@ -123,7 +143,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.20] - 2022/5/25
-### Fixed
+### Added
 - Added an option to get details (emotion, gender, age group) to the face detection method.
     ```js
     const sweet = require('../dist/build.common');
@@ -182,7 +202,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.19] - 2022/5/20
-### Fixed
+### Added
 - Add date format helper to view.
     ```html
     {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
@@ -191,7 +211,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.18] - 2022/5/18
-### Fixed
+### Added
 - User authentication sessions can now be stored in redis.  
     To use redis for session storage, simply add the following option to config/authentication.js.  
     Please give it a try.
@@ -215,7 +235,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.17] - 2022/5/17
-### Fixed
+### Changed
 - Updated documentation and refactored variable names.
 
 ## [1.0.16] - 2022/2/14
@@ -223,11 +243,11 @@ All notable changes to this project will be documented in this file.
 - I forgot to include the build file, so I added the build file.
 
 ## [1.0.15] - 2022/2/14
-### Fixed
+### Changed
 - Changed the type of 'config/authentication.js#allow_unauthenticated' from'string[]' to'(string|RegExp)[]}'.
 
 ## [1.0.14] - 2022/1/17
-### Fixed
+### Changed
 - empty view helper can now check any type. Previously I could only check arrays.
     ```html
     // If the value is an array.
@@ -271,7 +291,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.13] - 2021/12/13
-### Fixed
+### Added
 - The model's begin method now accepts the transaction option.  
     See [Transaction | Sequelize](https://sequelize.org/master/class/lib/transaction.js~Transaction.html) for transaction options.  
     ```js
@@ -297,7 +317,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.12] - 2021/11/16
-### Fixed
+### Added
 - Added a method to the model that can execute raw SQL.  
     As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.  
 
@@ -316,7 +336,7 @@ All notable changes to this project will be documented in this file.
 - Fixed a bug that the database config was read before NODE_ENV was set and the database config matching NODE_ENV could not be read.
 
 ## [1.0.10] - 2021/10/19
-### Fixed
+### Changed
 - Added face similarity found to face search results in collection.
 
     ```js
@@ -341,7 +361,7 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.9] - 2021/10/13
-### Fixed
+### Changed
 - Updated dependent package'sharp'from 0.25.4 to 0.29.1.  
   This update statically links sharp's pre-built libvips binaries, eliminating the need to install Phton.  
   Click [here](https://sharp.pixelplumbing.com/changelog) for sharp change log.
@@ -351,15 +371,15 @@ All notable changes to this project will be documented in this file.
 - Fixed a bug where the default router couldn't aqua from the endpoint URL.
 
 ## [1.0.7] - 2021/8/13
-### Fixed
+### Added
 - Added where member functions to Model class. Please see [here](https://takuya-motoshima.github.io/express-sweet/#model-class) for details.
 
 ## [1.0.6] - 2021/8/13
-### Fixed
+### Added
 - Added fn, col and literal member functions to Model class. Please see [here](https://takuya-motoshima.github.io/express-sweet/#model-class) for details.
 
 ## [1.0.5] - 2021/8/12
-### Fixed
+### Changed
 - Changed the maximum size per field for multipart (multipart/form-data) requests from 1MB to unlimited.
 
 ## [1.0.4] - 2021/6/13
@@ -367,7 +387,7 @@ All notable changes to this project will be documented in this file.
 - Fixed a bug where the referrer URL was set in app.locals.currentPath instead of the current URL.
 
 ## [1.0.3] - 2021/6/13
-### Fixed
+### Changed
 - Change the current URL path of a local variable.app.locals.currentPath is a USVString containing an initial '/' followed by the path of the URL not including the query string or fragment.
 
     ```js
@@ -376,8 +396,10 @@ All notable changes to this project will be documented in this file.
     ```
 
 ## [1.0.2] - 2021//6/10
-### Fixed
+### Changed
 - Updated rollup from version 2.44 to 2.51.
+
+### Fixed
 - Fixed a bug where preloading models failed in cjs.
 
 ## [1.0.1] - 2021/6/2
@@ -408,3 +430,5 @@ All notable changes to this project will be documented in this file.
 [1.0.22]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.21...v1.0.22
 [1.0.23]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.22...v1.0.23
 [1.0.24]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.23...v1.0.24
+[1.0.25]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.24...v1.0.25
+[1.0.26]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.25...v1.0.26
