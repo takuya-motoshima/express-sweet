@@ -14,7 +14,7 @@ export default class {
   public static mount() {
     // If you have already loaded env, do nothing.
     if (global.loadedEnv)
-      return void console.log('env is already loaded, so do nothing');
+      return;
 
     // Load options.
     const options = this.loadOptions();

@@ -7,7 +7,7 @@ export default class {
     /**
      * Mount on application.
      */
-    static mount(): undefined;
+    static mount(): void;
     /**
      * Returns the option.
      *

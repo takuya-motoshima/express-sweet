@@ -21,7 +21,6 @@ export default function(): void {
 
   // const models:{[key: string]: typeof Model} = {};
   for (let modelPath of File.find(`${modelsDir}/**/*.js`)) {
-    // console.log(`Load ${modelPath}`);
     const model = <typeof Model>(require(modelPath).prototype instanceof Model ? require(modelPath) : require(modelPath).default);
     model.initialize();
     models.push(model);
