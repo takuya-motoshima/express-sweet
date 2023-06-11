@@ -1,6 +1,6 @@
 [![Express Sweet Logo](hero.svg)](https://takuya-motoshima.github.io/express-sweet/#install)
 
-Extend Express functionality with Express Sweet and start developing fast, minimal web applications.
+Express framework extension.
 
 ## Documentation
 * [Express Sweet Documentation](https://takuya-motoshima.github.io/express-sweet/)

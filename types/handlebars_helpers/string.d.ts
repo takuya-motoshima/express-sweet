@@ -35,7 +35,7 @@ export declare function split(value: string, separator: string): string[];
  *
  * @example
  * {{format_bytes 1024}} => 1 KB
- * {{format_bytes 1234}} => 1.21 KB
+ * {{format_bytes 1234 2}} => 1.21 KB
  * {{format_bytes 1234 3}} => 1.205 KB
  * {{format_bytes 0}} => 0 Bytes
  *

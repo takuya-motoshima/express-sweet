@@ -67,7 +67,8 @@ export default new class Database extends sequelize.Sequelize {
     // If an options file is found, it returns options that override the default options.
     const options = <DatabaseOptions>require(filePath).default||require(filePath);
     const mergeOptions = Object.assign(defaultOptions, options[env]);
-    console.log(`Connection DB is ${mergeOptions.host} ${mergeOptions.database}`);
+    if (process.env.EXPRESS_DEBUG)
+      console.log(`Connection DB is ${mergeOptions.host} ${mergeOptions.database}`);
     return mergeOptions;
   }
 }

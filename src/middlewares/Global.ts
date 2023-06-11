@@ -14,6 +14,7 @@ export default class {
   public static mount() {
     // Application root directory.
     global.APP_DIR = process.cwd();
-    console.log('Set global variable APP_DIR');
+    if (process.env.EXPRESS_DEBUG)
+      console.log('Set global variable APP_DIR');
   }
 }

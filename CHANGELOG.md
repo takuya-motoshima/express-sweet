@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.26] - 2023/6/11
+### Changed
+- Update Sequelize from v5 to v6.
+- Changed the framework debug log to output only when the environment variable EXPRESS_DEBUG is defined.  
+    .env:
+    ```
+    EXPRESS_DEBUG=true
+    ```
+- A demo application was added [here](./demo).
+
 ## [1.0.25] - 2022/11/24
 ### Added
 - Added format_bytes view helper to convert bytes to appropriate units.
@@ -421,3 +431,4 @@ All notable changes to this project will be documented in this file.
 [1.0.23]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.22...v1.0.23
 [1.0.24]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.23...v1.0.24
 [1.0.25]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.24...v1.0.25
+[1.0.26]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.25...v1.0.26
