@@ -38,7 +38,7 @@ export default class {
     // Set variables that can be accessed from within the view.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       if (options.beforeRender)
-        options.beforeRender(res);
+        options.beforeRender(req, res);
       next();
     });
   }
@@ -56,7 +56,7 @@ export default class {
       layouts_dir: path.join(process.cwd(), 'views/layout'),
       default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
       extension: '.hbs',
-      beforeRender: (res: express.Response) => {}
+      beforeRender: (req: express.Request, res: express.Response) => {}
    };
 
     // If the options file is not found, the default options are returned.
