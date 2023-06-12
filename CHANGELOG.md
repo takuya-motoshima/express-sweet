@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.27] - 2023/6/12
+### Changed
+- Request object has been added to the arguments of the beforeRender function in the view configuration (config/view.js).
+    express-sweet v1.0.27 or later (current):
+    ```js
+    beforeRender: (req, res) => {}
+    ```
+
+    express-sweet v1.0.26 or earlier:
+    ```js
+    beforeRender: res => {}
+    ```
+
 ## [1.0.26] - 2023/6/11
 ### Changed
 - Update Sequelize from v5 to v6.
@@ -432,3 +445,4 @@ All notable changes to this project will be documented in this file.
 [1.0.24]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.23...v1.0.24
 [1.0.25]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.24...v1.0.25
 [1.0.26]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.25...v1.0.26
+[1.0.27]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.26...v1.0.27

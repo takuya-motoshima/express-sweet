@@ -1782,7 +1782,7 @@ module.exports = router;</code></pre>
                                 <td>Extension for templates and partials files.<br>The default is <code>.hbs</code>.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>beforeRender: (res: express.Response) =&gt; void</code></td>
+                                <td class="mw-250px"><code>beforeRender: (req: express.Request, res: express.Response) =&gt; void</code></td>
                                 <td>
                                   Hook function just before the view is rendered.<br>
                                   For example, you can set your own local variables that can be used within the view.<br>
@@ -1798,13 +1798,13 @@ module.exports = router;</code></pre>
   *
   * @example
   * // The message set here can be referenced in the view as {{message}}.
-  * beforeRender: res =&gt; {
+  * beforeRender: (req, res) =&gt; {
   *   res.locals.message = &#039;Hello World&#039;;
   * }
   *
   * @type {(res: express.Response) =&gt; void}
   */
-beforeRender: res =&gt; {
+beforeRender: (req, res) =&gt; {
   res.locals.message = &#039;Hello World&#039;;
 }</code></pre>
                                       </div>

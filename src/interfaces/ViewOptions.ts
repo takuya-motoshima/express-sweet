@@ -40,11 +40,11 @@ export default interface {
    *
    * @example
    * // The message set here can be referenced in the view as {{message}}.
-   * beforeRender: res => {
+   * beforeRender: (req, res) => {
    *   res.locals.message = 'Hello World';
    * }
    *
    * @type {(res: express.Response) => void}
    */
-  beforeRender?: (res: express.Response) => void
+  beforeRender?: (req: express.Request, res: express.Response) => void
 }
