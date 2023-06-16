@@ -65,7 +65,8 @@
   },
   "homepage": "https://github.com/takuya-motoshima/express-sweet#readme",
   "dependencies": {
-    "aws-sdk": "^2.1142.0",
+    "@aws-sdk/client-rekognition": "^3.352.0",
+    "@aws-sdk/node-http-handler": "^3.350.0",
     "body-parser": "^1.19.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
@@ -97,7 +98,7 @@
     "uniqid": "^5.2.0"
   },
   "devDependencies": {
-    "@types/aws-sdk": "^2.7.0",
+    "@aws-sdk/types": "^3.347.0",
     "@types/connect-redis": "^0.0.18",
     "@types/cookie-parser": "^1.4.2",
     "@types/debug": "^4.1.5",
