@@ -9,7 +9,7 @@ import IndexFaceDetails from '~/interfaces/IndexFaceDetails';
 export default class {
     /**
      * Rekognition Client.
-     * @type {AWS.Rekognition}
+     * @type {RekognitionClient}
      */
     private client;
     /**
@@ -21,11 +21,8 @@ export default class {
      * For each face detected, the operation returns a bounding box of the face.
      *
      * @param  {string}                 img           Image path or Data Url or image buffer.
-     * @param  {number}                 minConfidence The minimum confidence of the detected face.
-     *                                                Faces with a confidence lower than this value will not be returned as a result.
-     * @param  {boolean}                withDetails   If false, returns only the face bounding box.
-     *                                                When true, returns the age group, gender, and emotion in addition to the face bounding box.
-     *
+     * @param  {number}                 minConfidence The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.
+     * @param  {boolean}                withDetails   If false, returns only the face bounding box.When true, returns the age group, gender, and emotion in addition to the face bounding box.
      * @return {Promise<BoundingBox[]|FaceDetails[]>}
      */
     detectFaces(img: string, minConfidence?: number, withDetails?: boolean): Promise<BoundingBox[] | FaceDetails[]>;
@@ -111,20 +108,22 @@ export default class {
      *
      * @param {string}   collectionId Collection from which to remove the specific faces.
      * @param {string[]} faceIds      An array of face IDs to delete.
+     * @return {Promise<boolean>}     True on success.
      */
-    deleteFaces(collectionId: string, faceIds: string[]): Promise<void>;
+    deleteFaces(collectionId: string, faceIds: string[]): Promise<boolean>;
     /**
      * Deletes the specified collection.
      * Note that this operation removes all faces in the collection.
      *
      * @param {string} collectionId ID of the collection to delete.
+     * @return {Promise<boolean>}   True on success.
      */
-    deleteCollection(collectionId: string): Promise<void>;
+    deleteCollection(collectionId: string): Promise<boolean>;
     /**
      * Returns a buffer of images.
      *
      * @param  {string|Buffer} img Image path or Data Url or image buffer.
      * @return {Buffer}            Image buffer.
      */
-    private getImageBuffer;
+    private image2buffer;
 }
