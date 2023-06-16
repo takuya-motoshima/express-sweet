@@ -1,6 +1,6 @@
 {
   "name": "express-sweet",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "Express framework extension.",
   "main": "dist/build.common.js",
   "module": "dist/build.esm.js",
