@@ -13,7 +13,8 @@ export default {
     'sequelize',
     'passport',
     'passport-local',
-    'aws-sdk'
+    '@aws-sdk/client-rekognition',
+    '@aws-sdk/node-http-handler',
   ],
   // external: builtins,
   // external: Object.keys(pkg['dependencies'] || []),

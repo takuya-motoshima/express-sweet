@@ -1,6 +1,38 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.28] - 2023/6/16
+### Changed
+- Updated AWS SDK version from 2 to 3.  
+    Unit test results:
+    ```sh
+    npm run test
+
+    > express-sweet@1.0.25 test
+    > jest
+
+    PASS  __tests__/AWSRekognitionClient.test.js (8.773 s)
+      ? Should detect one person from the image (448 ms)
+      ? Should be able to get facial details (532 ms)
+      ? Should detect three persons from the image (589 ms)
+      ? The two faces should be the same person (131 ms)
+      ? The two faces should be different people (213 ms)
+      ? Should be able to create collections (98 ms)
+      ? Should index faces in the collection (242 ms)
+      ? Should return the details of the indexed face (346 ms)
+      ? Should be able to find faces from the collection (153 ms)
+      ? Should be able to find faces from the collection (132 ms)
+      ? Should list indexed faces (27 ms)
+      ? Should delete the face from the collection (53 ms)
+      ? Collection should be deleted (62 ms)
+
+    Test Suites: 1 passed, 1 total
+    Tests:       13 passed, 13 total
+    Snapshots:   0 total
+    Time:        9.323 s
+    Ran all test suites.
+    ```
+
 ## [1.0.27] - 2023/6/12
 ### Changed
 - Request object has been added to the arguments of the beforeRender function in the view configuration (config/view.js).
@@ -446,3 +478,4 @@ All notable changes to this project will be documented in this file.
 [1.0.25]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.24...v1.0.25
 [1.0.26]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.25...v1.0.26
 [1.0.27]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.26...v1.0.27
+[1.0.28]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.27...v1.0.28

@@ -1,5 +1,33 @@
 import fs from 'fs';
-import AWS from 'aws-sdk';
+import {Agent} from 'https';
+// import {Agent as HttpAgnet} from 'http';
+import {
+  RekognitionClient,
+  DetectFacesCommand,
+  DetectFacesResponse,
+  Emotion,
+  CompareFacesCommand,
+  CompareFacesResponse,
+  CreateCollectionCommand,
+  CreateCollectionResponse,
+  ListCollectionsCommand,
+  ListCollectionsResponse,
+  IndexFacesCommand,
+  IndexFacesResponse,
+  FaceRecord,
+  // EmotionName,
+  FaceDetail,
+  SearchFacesByImageCommand,
+  SearchFacesByImageResponse,
+  Face,
+  ListFacesCommand,
+  ListFacesResponse,
+  DeleteFacesCommand,
+  // DeleteFacesResponse,
+  DeleteCollectionCommand,
+  DeleteCollectionResponse,
+} from '@aws-sdk/client-rekognition';
+import {NodeHttpHandler} from '@aws-sdk/node-http-handler';
 import {File} from 'nodejs-shared';
 import RekognitionOptions from '~/interfaces/RekognitionOptions';
 import FaceMatch from '~/interfaces/FaceMatch';
@@ -7,7 +35,11 @@ import BoundingBox from '~/interfaces/BoundingBox';
 import FaceDetails from '~/interfaces/FaceDetails';
 import IndexFaceDetails from '~/interfaces/IndexFaceDetails';
 import FaceDetailsEmotions from '~/interfaces/FaceDetailsEmotions';
-import ApiError from '~/exceptions/ApiError';
+import CollectionCreationError from '~/exceptions/CollectionCreationError';
+import MissingFaceInImageError from '~/exceptions/MissingFaceInImageError';
+import MultipleFacesInImageError from '~/exceptions/MultipleFacesInImageError';
+import FaceIndexError from '~/exceptions/FaceIndexError';
+import CollectionDeletionError from '~/exceptions/CollectionDeletionError';
 
 /**
  * AWS Rekognition Client.
@@ -15,9 +47,9 @@ import ApiError from '~/exceptions/ApiError';
 export default class {
   /**
    * Rekognition Client.
-   * @type {AWS.Rekognition}
+   * @type {RekognitionClient}
    */
-  private client: AWS.Rekognition;
+  private client: RekognitionClient;
 
   /**
    * Constructs a rekognition client object.
@@ -29,11 +61,18 @@ export default class {
     }, options);
 
     // Generate AWS Rekognition Client.
-    this.client = new AWS.Rekognition({
+    this.client = new RekognitionClient({
       ...options,
-      httpOptions: {
-        connectTimeout: options.timeout
-      }
+      requestHandler: new NodeHttpHandler({
+        httpsAgent: new Agent({
+          /*params*/
+        }),
+        connectionTimeout: options.timeout, /*number in milliseconds*/
+        // socketTimeout: /*number in milliseconds*/
+      }),
+      // httpOptions: {
+      //   connectTimeout: options.timeout
+      // }
     });
   }
 
@@ -42,58 +81,65 @@ export default class {
    * For each face detected, the operation returns a bounding box of the face.
    *
    * @param  {string}                 img           Image path or Data Url or image buffer.
-   * @param  {number}                 minConfidence The minimum confidence of the detected face.
-   *                                                Faces with a confidence lower than this value will not be returned as a result.
-   * @param  {boolean}                withDetails   If false, returns only the face bounding box.
-   *                                                When true, returns the age group, gender, and emotion in addition to the face bounding box.
-   *                                                
+   * @param  {number}                 minConfidence The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.
+   * @param  {boolean}                withDetails   If false, returns only the face bounding box.When true, returns the age group, gender, and emotion in addition to the face bounding box.
    * @return {Promise<BoundingBox[]|FaceDetails[]>}
    */
   public async detectFaces(img: string, minConfidence: number = 90, withDetails: boolean = false): Promise<BoundingBox[]|FaceDetails[]> {
     // Face detection result.
     const results: FaceDetails[]|BoundingBox[] = [];
     try {
-      // Detect faces.
-      const data: AWS.Rekognition.Types.DetectFacesResponse = await new Promise((resolve, reject) => {
-        this.client.detectFaces({
-          Image: {Bytes: this.getImageBuffer(img)},
-          Attributes: [withDetails ? 'ALL' : 'DEFAULT']
-        }, (err: AWS.AWSError, data: AWS.Rekognition.Types.DetectFacesResponse) => {
-          err ? reject(err) : resolve(data);
-        });
-      });
+      // Send request.
+      const res: DetectFacesResponse = await this.client.send(new DetectFacesCommand({
+        Image: {Bytes: this.image2buffer(img)},
+        Attributes: [withDetails ? 'ALL' : 'DEFAULT']
+      }));
 
       // If no face is found in the image, it returns an empty array.
-      if (!data.FaceDetails)
+      if (!res.FaceDetails)
         return [];
 
       // If a face is found in the image, the position information of each face on the image is returned.
-      for (let details of data.FaceDetails) {
-        if (!details.BoundingBox || !details.Confidence || details.Confidence < minConfidence)
+      for (let detail of res.FaceDetails) {
+        if (!detail.BoundingBox
+          || !detail.Confidence
+          || detail.Confidence < minConfidence
+        )
           continue;
 
         // Face Bounding Box.
-        const box = details.BoundingBox as AWS.Rekognition.BoundingBox;
-        const boundingBox = {width: box.Width as number, height: box.Height as number, left: box.Left as number, top: box.Top as number};
+        const boundingBox = {
+          width: detail.BoundingBox.Width as number,
+          height: detail.BoundingBox.Height as number,
+          left: detail.BoundingBox.Left as number,
+          top: detail.BoundingBox.Top as number
+        };
 
         // Set Results.
         if (!withDetails) {
           (results as BoundingBox[]).push(boundingBox);
-        } else {
-          const ageRange = details.AgeRange as AWS.Rekognition.Types.AgeRange;
-          const gender = details.Gender as AWS.Rekognition.Types.Gender;
-          const emotions = details.Emotions as AWS.Rekognition.Types.Emotions;
-          (results as FaceDetails[]).push({
-            boundingBox,
-            ageRange: {high: ageRange.High, low: ageRange.Low},
-            gender: gender.Value === 'Male' ? 'male' : 'female',
-            emotions: emotions.reduce((acc: any, current: AWS.Rekognition.Types.Emotion) => {
-              const type = current.Type as AWS.Rekognition.Types.EmotionName;
-              acc[type.toLowerCase()] = current.Confidence as number;
-              return acc;
-            }, {}) as FaceDetailsEmotions
-          });
+          continue;
         }
+
+        // If the detail option is enabled, set the emotion and other information.
+        (results as FaceDetails[]).push({
+          boundingBox,
+          ageRange: detail.AgeRange ?
+            {
+              high: detail.AgeRange.High,
+              low: detail.AgeRange.Low
+            } :
+            undefined,
+          gender: detail.Gender ?
+            (detail.Gender.Value === 'Male' ? 'male' : 'female') :
+            undefined,
+          emotions: detail.Emotions ?
+            detail.Emotions.reduce((acc: any, current: Emotion) => {
+              acc[current.Type!.toLowerCase()] = current.Confidence as number;
+              return acc;
+            }, {}) as FaceDetailsEmotions :
+            undefined,
+          });
       }
     } catch (err) {
       console.error(err instanceof Error ? err.message : String(err));
@@ -111,21 +157,24 @@ export default class {
    * @return {Promise<number>}      Level of confidence that the faces match.
    */
   public async compareFaces(img1: string, img2: string): Promise<number> {
-    // Compare faces in two images.
-    const data: AWS.Rekognition.Types.CompareFacesResponse = await new Promise((resolve, reject) => {
-      this.client.compareFaces({
-        SourceImage: {Bytes: this.getImageBuffer(img1)},
-        TargetImage: {Bytes: this.getImageBuffer(img2)},
-        SimilarityThreshold: 0
-      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.CompareFacesResponse) => {
-        err ? reject(err) : resolve(data);
-      });
-    });
+    // Send request.
+    const res: CompareFacesResponse = await this.client.send(new CompareFacesCommand({
+      SourceImage: {
+        Bytes: this.image2buffer(img1)
+      },
+      TargetImage: {
+        Bytes: this.image2buffer(img2)
+      },
+      SimilarityThreshold: 0
+    }));
 
     // Get face similarity.
     let similarity = .0;
-    if (data.FaceMatches && data.FaceMatches.length > 0 && data.FaceMatches[0].Similarity)
-      similarity = Math.round(data.FaceMatches[0].Similarity * 10) / 10;
+    if (res.FaceMatches
+      && res.FaceMatches.length > 0
+      && res.FaceMatches[0].Similarity
+    )
+      similarity = Math.round(res.FaceMatches[0].Similarity * 10) / 10;
     return similarity;
   }
 
@@ -140,18 +189,14 @@ export default class {
    *                              The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-]+".
    */
   public async createCollection(collectionId: string): Promise<void> {
-    // Creates a collection.
-    const data: AWS.Rekognition.Types.CreateCollectionResponse = await new Promise((resolve, reject) => {
-      this.client.createCollection({
-        CollectionId: collectionId
-      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.CreateCollectionResponse) => {
-        err ? reject(err) : resolve(data);
-      });
-    });
+    // Send request.
+    const res: CreateCollectionResponse = await this.client.send(new CreateCollectionCommand({
+      CollectionId: collectionId
+    }));
 
     // Returns an error if the HTTP status code is other than 200.
-    if (data.StatusCode !== 200)
-      throw new ApiError('CreateCollectionUnknownError', data.StatusCode||500, 'An unknown error occurred while creating the collection');
+    if (res.StatusCode !== 200)
+      throw new CollectionCreationError(`Error creating collection ${collectionId} (HTTP status code: ${res.StatusCode})`);
   }
 
   /**
@@ -160,19 +205,15 @@ export default class {
    * @return {Promise<string[]>} An array of collection IDs.
    */
   public async listCollections(): Promise<string[]> {
-    // Request collection IDs.
-    const data: AWS.Rekognition.Types.ListCollectionsResponse = await new Promise((resolve, reject) => {
-      this.client.listCollections({}, (err: AWS.AWSError, data: AWS.Rekognition.Types.ListCollectionsResponse) => {
-        err ? reject(err) : resolve(data);
-      })
-    });
+    // Send request.
+    const res: ListCollectionsResponse = await this.client.send(new ListCollectionsCommand({}));
 
     // If the collection ID is not found, an empty array is returned.
-    if (!data.CollectionIds || !data.CollectionIds.length)
+    if (!res.CollectionIds || !res.CollectionIds.length)
       return [];
 
     // Returns the found collection IDs.
-    return data.CollectionIds;
+    return res.CollectionIds;
   }
 
   /**
@@ -201,52 +242,57 @@ export default class {
   
     // Get the count of faces in the image.
     const numberOfFaces = (await this.detectFaces(img)).length;
-    
-    // If no face is found or multiple faces are found, an error is returned.
     if (numberOfFaces === 0)
-      throw new ApiError('IndexFaceFaceNotFound', 400, 'No face was found in the image');
+      // If no face is found in the image, an error is returned.
+      throw new MissingFaceInImageError();
     else if (numberOfFaces > 1)
-      throw new ApiError('IndexFaceMultipleFacesFound', 400, 'Multiple faces found in the image');
-      
-    // Add a face to the collection.
-    const data: AWS.Rekognition.Types.IndexFacesResponse = await new Promise((resolve, reject) => {
-      this.client.indexFaces({
-        CollectionId: collectionId,
-        Image: {Bytes: this.getImageBuffer(img)},
-        DetectionAttributes: ['ALL'],
-        ExternalImageId: options!.externalImageId,
-        MaxFaces: 1,
-        QualityFilter: 'HIGH'
-      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.IndexFacesResponse) => {
-        err ? reject(err) : resolve(data);
-      })
-    });
+      // If more than one face is found in the image, an error is returned.
+      throw new MultipleFacesInImageError();
+
+    // Send request.
+    const res: IndexFacesResponse = await this.client.send(new IndexFacesCommand({
+      CollectionId: collectionId,
+      Image: {
+        Bytes: this.image2buffer(img)
+      },
+      DetectionAttributes: ['ALL'],
+      ExternalImageId: options!.externalImageId,
+      MaxFaces: 1,
+      QualityFilter: 'HIGH'
+    }));
 
     // Returns an error if the result of the added face is not found.
-    if (data == null || !data.FaceRecords || !data.FaceRecords.length)
-      throw new ApiError('IndexFaceNoResultsFound', 500, 'Face addition result not found');
+    if (res == null || !res.FaceRecords || !res.FaceRecords.length)
+      throw new FaceIndexError(`Error in indexing face to collection ID ${collectionId}`);
 
     // Records of faces created in the collection.
-    const faceRecord = data.FaceRecords[0] as AWS.Rekognition.Types.FaceRecord;
+    const faceRecord = res.FaceRecords[0] as FaceRecord;
+
+    // Detail of detected faces.
+    const detail = faceRecord.FaceDetail as FaceDetail;
 
     // Return information about the face you created.
     if (!options.returnDetails)
       // Returns a unique identifier assigned to the face.
       return faceRecord.Face!.FaceId as string;
     else {
-      const details = faceRecord.FaceDetail as AWS.Rekognition.Types.FaceDetail;
-      const ageRange = details.AgeRange as AWS.Rekognition.Types.AgeRange;
-      const gender = details.Gender as AWS.Rekognition.Types.Gender;
-      const emotions = details.Emotions as AWS.Rekognition.Types.Emotions;
       return {
         faceId: faceRecord.Face!.FaceId as string,
-        ageRange: {high: ageRange.High, low: ageRange.Low},
-        gender: gender.Value === 'Male' ? 'male' : 'female',
-        emotions: emotions.reduce((acc: any, current: AWS.Rekognition.Types.Emotion) => {
-          const type = current.Type as AWS.Rekognition.Types.EmotionName;
-          acc[type.toLowerCase()] = current.Confidence as number;
-          return acc;
-        }, {}) as FaceDetailsEmotions
+        ageRange: detail.AgeRange ?
+          {
+            high: detail.AgeRange.High,
+            low: detail.AgeRange.Low,
+          } :
+          undefined,
+        gender: detail.Gender ?
+          (detail.Gender.Value === 'Male' ? 'male' : 'female') :
+          undefined,
+        emotions: detail.Emotions ?
+          detail.Emotions.reduce((acc: any, current: Emotion) => {
+            acc[current.Type!.toLowerCase()] = current.Confidence as number;
+            return acc;
+          }, {}) as FaceDetailsEmotions : 
+          undefined
       } as IndexFaceDetails;
     }
   }
@@ -274,33 +320,32 @@ export default class {
       maxFaces: 5
     }, options);
 
-    // Search for collection faces.
-    const data: AWS.Rekognition.Types.SearchFacesByImageResponse = await new Promise((resolve, reject) => {
-      this.client.searchFacesByImage({
-        CollectionId: collectionId,
-        Image: {Bytes: this.getImageBuffer(img)},
-        FaceMatchThreshold: options!.minConfidence,
-        MaxFaces: options!.maxFaces!,
-        QualityFilter: 'AUTO'
-      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.SearchFacesByImageResponse) => {
-        err ? reject(err) : resolve(data);
-      })
-    });
+    // Send request.
+    const res: SearchFacesByImageResponse = await this.client.send(new SearchFacesByImageCommand({
+      CollectionId: collectionId,
+      Image: {Bytes: this.image2buffer(img)},
+      FaceMatchThreshold: options!.minConfidence,
+      MaxFaces: options!.maxFaces!,
+      QualityFilter: 'AUTO'
+    }));
 
     // Returns an empty array if the collection does not have a face that matches the target face.
-    const matches = <AWS.Rekognition.Types.FaceMatchList>data.FaceMatches || [];
-    if (!matches.length)
+    if (!res.FaceMatches || !res.FaceMatches.length)
       return null;
 
     // Put the search results of the faces of the collection in the array.
     const results: FaceMatch[] = [];
-    for (let match of matches) {
-      const face = match.Face as AWS.Rekognition.Types.Face;
-      const box = face.BoundingBox as AWS.Rekognition.Types.BoundingBox;
+    for (let match of res.FaceMatches) {
+      const face = match.Face as Face;
       const result = {
         faceId: face.FaceId,
-        boundingBox: {width: box.Width, height: box.Height, left: box.Left, top: box.Top},
-        similarity: match.Similarity
+        boundingBox: {
+          width: face.BoundingBox!.Width,
+          height: face.BoundingBox!.Height,
+          left: face.BoundingBox!.Left,
+          top: face.BoundingBox!.Top,
+        },
+        similarity: match.Similarity,
       } as FaceMatch;
       if (face.ExternalImageId != null)
         result.externalImageId = face.ExternalImageId;
@@ -321,24 +366,27 @@ export default class {
    * @return {Promise<FaceMatch[]>}              Returns all face metadata in the collection.
    */
   public async listFaces(collectionId: string, maxResults: number = 1000): Promise<FaceMatch[]> {
-    // Get metadata for all faces in the collection.
-    const data: AWS.Rekognition.Types.ListFacesResponse = await new Promise((resolve, reject) => {
-      this.client.listFaces({
-        CollectionId: collectionId,
-        MaxResults: maxResults
-      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.ListFacesResponse) => {
-        err ? reject(err) : resolve(data);
-      })
-    });
+    // Send request.
+    const res: ListFacesResponse = await this.client.send(new ListFacesCommand({
+      CollectionId: collectionId,
+      MaxResults: maxResults
+    }));
+
+    // If there is no data, an empty array is returned.
+    if (!res.Faces)
+      return [];
 
     // Put face metadata into an array.
     const results: FaceMatch[] = [];
-    const faces = data.Faces as AWS.Rekognition.Types.FaceList;
-    for (let face of faces) {
-      const box = face.BoundingBox as AWS.Rekognition.Types.BoundingBox;
+    for (let face of res.Faces) {
       const result = {
         faceId: face.FaceId,
-        boundingBox: {width: box.Width, height: box.Height, left: box.Left, top: box.Top}
+        boundingBox: {
+          width: face.BoundingBox!.Width,
+          height: face.BoundingBox!.Height,
+          left: face.BoundingBox!.Left,
+          top: face.BoundingBox!.Top,
+        }
       } as FaceMatch;
       if (face.ExternalImageId != null)
         result.externalImageId = face.ExternalImageId;
@@ -355,20 +403,15 @@ export default class {
    *
    * @param {string}   collectionId Collection from which to remove the specific faces.
    * @param {string[]} faceIds      An array of face IDs to delete.
+   * @return {Promise<boolean>}     True on success.
    */
-  public async deleteFaces(collectionId: string, faceIds: string[]): Promise<void> {
-    // Delete collection faces.
-    return new Promise((resolve, reject) => {
-      this.client.deleteFaces({
-        CollectionId: collectionId,
-        FaceIds: faceIds
-      }, (err: AWS.AWSError) => {
-        err ? reject(err) : resolve();
-      })
-      // }, (err: AWS.AWSError, data: AWS.Rekognition.Types.DeleteFacesResponse) => {
-      //   err ? reject(err) : resolve(data);
-      // })
-    });
+  public async deleteFaces(collectionId: string, faceIds: string[]): Promise<boolean> {
+    // Send request.
+    await this.client.send(new DeleteFacesCommand({
+      CollectionId: collectionId,
+      FaceIds: faceIds
+    }));
+    return true;
   }
 
   /**
@@ -376,20 +419,16 @@ export default class {
    * Note that this operation removes all faces in the collection.
    *
    * @param {string} collectionId ID of the collection to delete.
+   * @return {Promise<boolean>}   True on success.
    */
-  public async deleteCollection(collectionId: string): Promise<void> {
-    // Delete collection.
-    const data: AWS.Rekognition.Types.DeleteCollectionResponse = await new Promise((resolve, reject) => {
-      this.client.deleteCollection({
-        CollectionId: collectionId
-      }, (err: AWS.AWSError, data: AWS.Rekognition.Types.DeleteCollectionResponse) => {
-        err ? reject(err) : resolve(data);
-      });
-    });
+  public async deleteCollection(collectionId: string): Promise<boolean> {
+    // Send request.
+    const res: DeleteCollectionResponse = await this.client.send(new DeleteCollectionCommand({CollectionId: collectionId}));
 
     // Returns an error if the HTTP status code is other than 200.
-    if (data.StatusCode !== 200)
-      throw new ApiError('DeleteCollectionUnknownError', data.StatusCode||500, 'An unknown error occurred while deleting the collection');
+    if (res.StatusCode !== 200)
+      throw new CollectionDeletionError(`Error in deleting collection ID ${collectionId}`);
+    return true;
   }
 
   /**
@@ -398,17 +437,14 @@ export default class {
    * @param  {string|Buffer} img Image path or Data Url or image buffer.
    * @return {Buffer}            Image buffer.
    */
-  private getImageBuffer(img: string|Buffer): Buffer {
-    if (typeof img === 'string' && /^data:image\//.test(img)) {
+  private image2buffer(img: string|Buffer): Buffer {
+    if (typeof img === 'string' && /^data:image\//.test(img))
       // Convert Data URL to image buffer.
-      const base64 = img.replace(/^data:image\/[A-Za-z]+;base64,/, '');
-      return Buffer.from(base64, 'base64');
-    } else if (File.isFile(img)) {
+      return Buffer.from(img.replace(/^data:image\/[A-Za-z]+;base64,/, ''), 'base64');
+    else if (File.isFile(img))
       // Pull buffer from image path.
-      const base64 = fs.readFileSync(img, 'base64');
-      return Buffer.from(base64, 'base64');
-      // return new Buffer(base64, 'base64') as string;
-    } else if (Buffer.isBuffer(img))
+      return Buffer.from(fs.readFileSync(img, 'base64'), 'base64');
+    else if (Buffer.isBuffer(img))
       // If the image is a buffer, return it as it is.
       return img;
     else

@@ -76,7 +76,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.26</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.28</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -6342,7 +6342,7 @@ await client.listCollections();</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async deleteCollection(collectionId: string): Promise&lt;void&gt;</code></td>
+                                <td class="mw-250px"><code>public async deleteCollection(collectionId: string): Promise&lt;boolean&gt;</code></td>
                                 <td>
                                   Deletes the specified collection.<br>
                                   Note that this operation removes all faces in the collection.
@@ -6351,6 +6351,10 @@ await client.listCollections();</code></pre>
                                     <ul class="py-0">
                                       <li class="py-2"><code>collectionId: string</code> ID of the collection to delete.</li>
                                     </ul>
+                                  </div>
+                                  <div class="py-5">
+                                    <p class="mb-0">Return value:</p> 
+                                    <code>Promise&lt;boolean&gt;</code> True on success.
                                   </div>
                                   <!--begin::Code-->
                                   <div class="py-5">
@@ -6833,7 +6837,7 @@ console.log(result);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;void&gt;</code></td>
+                                <td class="mw-250px"><code>public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;boolean&gt;</code></td>
                                 <td>
                                   Deletes faces from a collection.<br>
                                   You specify a collection ID and an array of face IDs to remove from the collection.
@@ -6843,6 +6847,10 @@ console.log(result);</code></pre>
                                       <li class="py-2"><code>collectionId: string</code> Collection from which to remove the specific faces.</li>
                                       <li class="py-2"><code>faceIds: string[]</code> An array of face IDs to delete.</li>
                                     </ul>
+                                  </div>
+                                  <div class="py-5">
+                                    <p class="mb-0">Return value:</p> 
+                                    <code>Promise&lt;boolean&gt;</code> True on success.
                                   </div>
                                   <!--begin::Code-->
                                   <div class="py-5">
