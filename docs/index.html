@@ -18,12 +18,17 @@
   <!--end::Global Stylesheets Bundle-->
   <!--begin::Custom CSS(used by this page)-->
   <style>
-     code:not([class*=language-]) {
-      color: #9efeff;
-      background-color: #364135;
+    [data-theme=dark] {
+      --bs-link-hover-color: #33b1f9;
+    }
+
+    code:not([class*=language-]) {
+      color: #b362ff;
+      /* color: #9efeff; */
+      background-color: transparent;
       padding: 0.1rem 0;
       margin: 0;
-     }
+    }
   </style>
   <!--end::Custom CSS-->
 </head>
@@ -76,7 +81,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.28</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.29</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -691,6 +696,32 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                  <!--begin:Menu link-->
+                  <span class="menu-link">
+                    <span class="menu-title">SES</span>
+                    <span class="menu-arrow"></span>
+                  </span>
+                  <!--end:Menu link-->
+                  <!--begin:Menu sub-->
+                  <div class="menu-sub menu-sub-accordion">
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                      <!--begin:Menu link-->
+                      <a class="menu-link" href="#ses-class">
+                        <span class="menu-bullet">
+                          <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">SES Class</span>
+                      </a>
+                      <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                  </div>
+                  <!--end:Menu sub-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
                 <div class="menu-item">
                   <!--begin:Menu link-->
                   <a class="menu-link" href="#changelog">
@@ -714,7 +745,8 @@
             <!--begin::Content-->
             <div id="kt_app_content" class="app-content flex-column-fluid">
               <!--begin::Content container-->
-              <div id="kt_app_content_container" class="app-container container-xxl">
+              <div id="kt_app_content_container" class="app-container container-fluid">
+              <!-- <div id="kt_app_content_container" class="app-container container-xxl"> -->
                 <!--begin::Card-->
                 <div id="overview" data-search-item="true" data-search-title="Overview" data-search-description="Introduction &amp; Getting Started" class="card card-docs flex-row-fluid mb-12">
                   <!--begin::Card Body-->
@@ -1238,7 +1270,7 @@ npm start</code></pre>
                             <!--begin::Head-->
                             <thead>
                               <tr class="fs-4 fw-bold p-6">
-                                <th class="min-w-200px">Name</th>
+                                <th class="min-w-200px">Item Name</th>
                                 <th>Description</th>
                               </tr>
                             </thead>
@@ -1246,7 +1278,7 @@ npm start</code></pre>
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>env_path</code></td>
+                                <td class="w-250px"><code>env_path</code></td>
                                 <td>
                                   The path to the environment configuration file (<code>.env</code>).<br>
                                   When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in <code>process.env</code>.<br>
@@ -1254,11 +1286,11 @@ npm start</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>cors_enabled</code></td>
+                                <td class="w-250px"><code>cors_enabled</code></td>
                                 <td>Set to true to allow requests from another domain to the application.<br>The default is <code>false</code>.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>max_body_size</code></td>
+                                <td class="w-250px"><code>max_body_size</code></td>
                                 <td>
                                   Controls the maximum request body size.<br>
                                   If this is a number, then the value specifies the number of bytes.<br>
@@ -1267,11 +1299,11 @@ npm start</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>router_dir</code></td>
+                                <td class="w-250px"><code>router_dir</code></td>
                                 <td>The directory path where the routes module is located.<br>The default is the <code>routes</code> directory directly under the application root.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>default_router</code></td>
+                                <td class="w-250px"><code>default_router</code></td>
                                 <td>
                                   Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<code>/</code>) is requested.<br>
                                   For example, to specify a default route, set <code>default_router</code> as follows.<br>
@@ -1322,7 +1354,7 @@ module.exports = router;</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>rewrite_base_url</code></td>
+                                <td class="w-250px"><code>rewrite_base_url</code></td>
                                 <td>
                                   This is a hook that rewrites the base URL.<br>
                                   If you want to rewrite the app.locals.baseUrl property and the view&#039;s baseUrl variable, use this hook to return a new base URL.<br>
@@ -1345,7 +1377,7 @@ module.exports = router;</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>error_handler</code></td>
+                                <td class="w-250px"><code>error_handler</code></td>
                                 <td>
                                   This is a hook for error handling.<br>
                                   For example, you can use it when you want to send an external notification of the error received by this hook.
@@ -1394,11 +1426,11 @@ module.exports = router;</code></pre>
                         Each route can have one or more handler functions, which are executed when the route is matched.<br>
                         Route definition takes the following structure.<br>
                         <div class="py-5">
-                          <ul class="py-0">
-                            <li class="py-2">app is an instance of express.</li>
-                            <li class="py-2">METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
-                            <li class="py-2">PATH is a path on the server.</li>
-                            <li class="py-2">HANDLER is the function executed when the route is matched.</li>
+                          <ul>
+                            <li>app is an instance of express.</li>
+                            <li>METHOD is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP request method</a>, in lowercase.</li>
+                            <li>PATH is a path on the server.</li>
+                            <li>HANDLER is the function executed when the route is matched.</li>
                           </ul>
                         </div>
                       </div>
@@ -1640,41 +1672,41 @@ module.exports = router;</code></pre>
                         <!--begin::Col-->
                         <div class="col-6 col-md-4 pe-md-10 mb-10 mb-md-0">
                           <ul>
-                            <li class="py-2"><code>checkout</code></li>
-                            <li class="py-2"><code>copy</code></li>
-                            <li class="py-2"><code>delete</code></li>
-                            <li class="py-2"><code>get</code></li>
-                            <li class="py-2"><code>head</code></li>
-                            <li class="py-2"><code>lock</code></li>
-                            <li class="py-2"><code>merge</code></li>
-                            <li class="py-2"><code>mkactivity</code></li>
+                            <li><code>checkout</code></li>
+                            <li><code>copy</code></li>
+                            <li><code>delete</code></li>
+                            <li><code>get</code></li>
+                            <li><code>head</code></li>
+                            <li><code>lock</code></li>
+                            <li><code>merge</code></li>
+                            <li><code>mkactivity</code></li>
                           </ul>
                         </div>
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-6 col-md-4 pe-md-10 mb-10 mb-md-0">
                           <ul>
-                            <li class="py-2"><code>mkcol</code></li>
-                            <li class="py-2"><code>move</code></li>
-                            <li class="py-2"><code>m-search</code></li>
-                            <li class="py-2"><code>notify</code></li>
-                            <li class="py-2"><code>options</code></li>
-                            <li class="py-2"><code>patch</code></li>
-                            <li class="py-2"><code>post</code></li>
+                            <li><code>mkcol</code></li>
+                            <li><code>move</code></li>
+                            <li><code>m-search</code></li>
+                            <li><code>notify</code></li>
+                            <li><code>options</code></li>
+                            <li><code>patch</code></li>
+                            <li><code>post</code></li>
                           </ul>
                         </div>
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-6 col-md-4 ps-md-10">
                           <ul>
-                            <li class="py-2"><code>purge</code></li>
-                            <li class="py-2"><code>put</code></li>
-                            <li class="py-2"><code>report</code></li>
-                            <li class="py-2"><code>search</code></li>
-                            <li class="py-2"><code>subscribe</code></li>
-                            <li class="py-2"><code>trace</code></li>
-                            <li class="py-2"><code>unlock</code></li>
-                            <li class="py-2"><code>unsubscribe</code></li>
+                            <li><code>purge</code></li>
+                            <li><code>put</code></li>
+                            <li><code>report</code></li>
+                            <li><code>search</code></li>
+                            <li><code>subscribe</code></li>
+                            <li><code>trace</code></li>
+                            <li><code>unlock</code></li>
+                            <li><code>unsubscribe</code></li>
                           </ul>
                         </div>
                         <!--end::Col-->
@@ -1746,7 +1778,7 @@ module.exports = router;</code></pre>
                             <!--begin::Head-->
                             <thead>
                               <tr class="fs-4 fw-bold p-6">
-                                <th class="min-w-200px">Name</th>
+                                <th class="min-w-200px">Item Name</th>
                                 <th>Description</th>
                               </tr>
                             </thead>
@@ -1754,11 +1786,11 @@ module.exports = router;</code></pre>
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>views_dir: string</code></td>
+                                <td class="w-250px"><code>views_dir: string</code></td>
                                 <td>The directory path where the view will be placed.<br>The default is the <code>views</code> directory directly under the application root.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>partials_dir: string</code></td>
+                                <td class="w-250px"><code>partials_dir: string</code></td>
                                 <td>
                                   The directory path where the reusable templates are located.<br>
                                   The default is the <code>views/partials</code> directory directly under the application root.<br>
@@ -1766,11 +1798,11 @@ module.exports = router;</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>layouts_dir: string</code></td>
+                                <td class="w-250px"><code>layouts_dir: string</code></td>
                                 <td>The directory path where the reusable base template is located.<br>The default is the <code>views/layout</code> directory directly under the application root.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>default_layout: string</code></td>
+                                <td class="w-250px"><code>default_layout: string</code></td>
                                 <td>
                                   The path to the layout file used by default.<br>
                                   The default is the <code>views/layout/default.*</code> File directly under the application root.<br>
@@ -1778,11 +1810,11 @@ module.exports = router;</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>extension: string</code></td>
+                                <td class="w-250px"><code>extension: string</code></td>
                                 <td>Extension for templates and partials files.<br>The default is <code>.hbs</code>.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>beforeRender: (req: express.Request, res: express.Response) =&gt; void</code></td>
+                                <td class="w-250px"><code>beforeRender: (req: express.Request, res: express.Response) =&gt; void</code></td>
                                 <td>
                                   Hook function just before the view is rendered.<br>
                                   For example, you can set your own local variables that can be used within the view.<br>
@@ -2034,20 +2066,24 @@ Else
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>eq</code></td>
+                                <td class="w-250px"><code>eq()</code></td>
                                 <td>
                                   Determine whether or not two values are equal (===).
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the value and type are the same, false if they are different.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2064,20 +2100,24 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>eqw</code></td>
+                                <td class="w-250px"><code>eqw()</code></td>
                                 <td>
                                   Determine whether or not two values are equal (==) i.e. weak checking.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the values are the same, false if they are different.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2094,20 +2134,24 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>neq</code></td>
+                                <td class="w-250px"><code>neq()</code></td>
                                 <td>
                                   Determine whether or not two values are not equal (!==).
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the value and type are different, false if they are the same.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2124,20 +2168,24 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>neqw</code></td>
+                                <td class="w-250px"><code>neqw()</code></td>
                                 <td>
                                   Determine whether or not two values are not equal (!=) weak checking.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the values are different, false if they are the same.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2154,20 +2202,24 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>lt</code></td>
+                                <td class="w-250px"><code>lt()</code></td>
                                 <td>
                                   Check for less than condition (a < b).
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the first value is less than the second value, false otherwise.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2184,20 +2236,24 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>lte</code></td>
+                                <td class="w-250px"><code>lte()</code></td>
                                 <td>
                                   Check for less than or equals condition (a <= b).
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the first value is less than or equal to the second value, false otherwise.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2214,20 +2270,24 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>gt</code></td>
+                                <td class="w-250px"><code>gt()</code></td>
                                 <td>
                                   Check for greater than condition (a > b).
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the first value exceeds the second value, false otherwise.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2244,20 +2304,24 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>gte</code></td>
+                                <td class="w-250px"><code>gte()</code></td>
                                 <td>
                                   Check for greater than or equals condition (a >= b).
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val1: any</code> First value to be compared with second.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be compared with first.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: any</code> First value to be compared with second.</li>
+                                      <li><code>val2: any</code> Second value to be compared with first.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the first value is greater than or equal to the second value, false otherwise.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2274,19 +2338,23 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>not</code></td>
+                                <td class="w-250px"><code>not()</code></td>
                                 <td>
                                   Logical NOT of any expression.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val: any</code> Any expression.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: any</code> Any expression.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns the logical negation of the value.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2304,21 +2372,25 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>ifx</code></td>
+                                <td class="w-250px"><code>ifx()</code></td>
                                 <td>
                                   Helper to imitate the ternary &#039;?:&#039; conditional operator.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>condition: boolean</code> Satisfying condition for getting first value. Either true of false.</li>
-                                      <li class="py-2"><code>val1: any</code> First value to be displayed as result.</li>
-                                      <li class="py-2"><code>val2: any</code> Second value to be displayed as result. Defaults to an empty string.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>condition: boolean</code> Satisfying condition for getting first value. Either true of false.</li>
+                                      <li><code>val1: any</code> First value to be displayed as result.</li>
+                                      <li><code>val2: any</code> Second value to be displayed as result. Defaults to an empty string.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>any</code> Returns the result of the ternary operator.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2341,21 +2413,25 @@ Else
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>empty</code></td>
+                                <td class="w-250px"><code>empty()</code></td>
                                 <td>
                                   Check if it is empty.<br>
                                   If the value is an array, returns true if there are no elements.<br>
                                   If the value is a string, the leading and trailing spaces are trimmed and then checked.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>value: any</code> Character strings, arrays, objects, etc. to be checked.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>value: any</code> Character strings, arrays, objects, etc. to be checked.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the value is empty, false otherwise.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2385,21 +2461,25 @@ let val = &#039; &#039;;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>not_empty</code></td>
+                                <td class="w-250px"><code>not_empty()</code></td>
                                 <td>
                                   Check that it is not empty.<br>
                                   If the value is an array, returns true if there is an element.<br>
                                   If the value is a string, the leading and trailing spaces are trimmed and then checked.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val: any</code> Character strings, arrays, objects, etc. to be checked.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: any</code> Character strings, arrays, objects, etc. to be checked.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the value is not empty, false otherwise.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2429,19 +2509,23 @@ let val = &#039; &#039;;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>count</code></td>
+                                <td class="w-250px"><code>count()</code></td>
                                 <td>
                                   Determine the length of an array.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>items: any[]</code> Array whose elements to be counted.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>items: any[]</code> Array whose elements to be counted.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>number|false</code> Returns the length of the array if the value is an array, false if the value is not an array.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2458,19 +2542,23 @@ let val = &#039; &#039;;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>and</code></td>
+                                <td class="w-250px"><code>and()</code></td>
                                 <td>
                                   Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>...params: any[]</code> Any number of boolean parameters.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>...params: any[]</code> Any number of boolean parameters.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns the result of the logical product.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2496,19 +2584,23 @@ let val1 = false, val2 = true;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>or</code></td>
+                                <td class="w-250px"><code>or()</code></td>
                                 <td>
                                   Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>...params: any[]</code> Any number of boolean parameters.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>...params: any[]</code> Any number of boolean parameters.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns the result of the OR.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2534,20 +2626,24 @@ let val = val2 = false;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>coalesce</code></td>
+                                <td class="w-250px"><code>coalesce()</code></td>
                                 <td>
                                   Returns the first non-falsy value from the parameter list.<br>
                                   Works quite similar to the SQL&#039;s <code>COALESCE()</code> function, but unlike this checks for the first non-false parameter.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>...params: any[]</code> Any number of parameters.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>...params: any[]</code> Any number of parameters.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>any</code> Returns the first non-false element of the parameter.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2567,21 +2663,25 @@ let fullName = &#039;&#039;, nickName = &#039;foob&#039;;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>includes</code></td>
+                                <td class="w-250px"><code>includes()</code></td>
                                 <td>
                                   Returns boolean if the array contains the element strictly or non-strictly.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>items: any[]</code> The array.</li>
-                                      <li class="py-2"><code>val: any</code> The value to be checked for existence in the array.</li>
-                                      <li class="py-2"><code>strict: boolean</code> FALSE for non-strict checking. TRUE by default.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>items: any[]</code> The array.</li>
+                                      <li><code>val: any</code> The value to be checked for existence in the array.</li>
+                                      <li><code>strict: boolean</code> FALSE for non-strict checking. TRUE by default.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>boolean</code> Returns true if the array contains the specified value, false otherwise.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2638,20 +2738,24 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>cache_busting</code></td>
+                                <td class="w-250px"><code>cache_busting()</code></td>
                                 <td>
                                   Returns the Assets path containing the file update time parameter.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>filePath: string</code> Paths of Assets files such as CSS and JS in public directories.</li>
-                                      <li class="py-2"><code>baseUrl: string</code> Application Origin URL.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>filePath: string</code> Paths of Assets files such as CSS and JS in public directories.</li>
+                                      <li><code>baseUrl: string</code> Application Origin URL.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>string</code> Returns the Assets file path with the update date and time parameters.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2695,20 +2799,24 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>json_stringify</code></td>
+                                <td class="w-250px"><code>json_stringify()</code></td>
                                 <td>
                                   Stringify an object using JSON.stringify.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val: any</code> The value to convert to a JSON string.</li>
-                                      <li class="py-2"><code>indent: number</code> The number of space characters to use as whitespace.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: any</code> The value to convert to a JSON string.</li>
+                                      <li><code>indent: number</code> The number of space characters to use as whitespace.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>string</code> A JSON string representing the given value, or undefined.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2724,19 +2832,23 @@ let val = &#039;2&#039;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>json_parse</code></td>
+                                <td class="w-250px"><code>json_parse()</code></td>
                                 <td>
                                   Parses the given string using JSON.parse.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val: any</code> Object to stringify.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: any</code> Object to stringify.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>any</code> JavaScript value or object described by a string.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2778,21 +2890,25 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>replace</code></td>
+                                <td class="w-250px"><code>replace()</code></td>
                                 <td>
                                   Returns a new string with some or all matches of a pattern replaced by a replacement.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val: string</code> String.</li>
-                                      <li class="py-2"><code>find: string</code> The string to be replaced.</li>
-                                      <li class="py-2"><code>replace: string</code> The string to replace.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: string</code> String.</li>
+                                      <li><code>find: string</code> The string to be replaced.</li>
+                                      <li><code>replace: string</code> The string to replace.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>string</code> Character string after replacement.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2808,20 +2924,24 @@ let val = &#039;2&#039;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>split</code></td>
+                                <td class="w-250px"><code>split()</code></td>
                                 <td>
                                   Split `string` by the given `character`.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>val: string</code> String.</li>
-                                      <li class="py-2"><code>separator: string</code> A character that delimits the substrings in this string. Default is a comma.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: string</code> String.</li>
+                                      <li><code>separator: string</code> A character that delimits the substrings in this string. Default is a comma.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>string[]</code> An Array of strings, split at each point where the separator occurs in the given string. The default is a comma.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2846,20 +2966,24 @@ let val = &#039;2&#039;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>format_bytes</code></td>
+                                <td class="w-250px"><code>format_bytes()</code></td>
                                 <td>
                                   Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>bytes: number</code> Bytes.</li>
-                                      <li class="py-2"><code>decimals?: number</code> Number of decimal places to display. Default is 0.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>bytes: number</code> Bytes.</li>
+                                      <li><code>decimals?: number</code> Number of decimal places to display. Default is 0.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>string</code> Returns a value with units.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2905,21 +3029,25 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>format_date</code></td>
+                                <td class="w-250px"><code>format_date()</code></td>
                                 <td>
                                   Use moment to format the date.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>format: string</code> A format string based on moment.</li>
-                                      <li class="py-2"><code>date: string</code> Date string to format.</li>
-                                      <li class="py-2"><code>locale: string|string[]</code> Language or language-country locale string (or array of strings) available in <a href="https://github.com/moment/moment/tree/develop/locale" class="fw-semibold" target="_blank">https://github.com/moment/moment/tree/develop/locale</a>.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>format: string</code> A format string based on moment.</li>
+                                      <li><code>date: string</code> Date string to format.</li>
+                                      <li><code>locale: string|string[]</code> Language or language-country locale string (or array of strings) available in <a href="https://github.com/moment/moment/tree/develop/locale" class="fw-semibold" target="_blank">https://github.com/moment/moment/tree/develop/locale</a>.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>string</code> Returns formatted date.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -2964,10 +3092,10 @@ let val = &#039;2&#039;
                         Models provide a way to interact with a specific table in your database.<br>
                         Express Sweet provides a <a href="https://sequelize.org/docs/v6/" target="_blank">Sequelize</a> based model class that offers some great features, including.
                         <div class="py-5">
-                          <ul class="py-0">
-                            <li class="py-2">Automatic database connection.</li>
-                            <li class="py-2">Basic CRUD methods.</li>
-                            <li class="py-2">And more.</li>
+                          <ul>
+                            <li>Automatic database connection.</li>
+                            <li>Basic CRUD methods.</li>
+                            <li>And more.</li>
                           </ul>
                         </div>
                         This class provides a solid base from which to build your own models, allowing you to rapidly build out your application’s model layer.
@@ -3017,7 +3145,7 @@ let val = &#039;2&#039;
                             <!--begin::Head-->
                             <thead>
                               <tr class="fs-4 fw-bold p-6">
-                                <th class="min-w-200px">Name</th>
+                                <th class="min-w-200px">Item Name</th>
                                 <th>Description</th>
                               </tr>
                             </thead>
@@ -3025,44 +3153,44 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>username: string</code></td>
+                                <td class="w-250px"><code>username: string</code></td>
                                 <td>The username which is used to authenticate against the database.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>password: string|null</code></td>
+                                <td class="w-250px"><code>password: string|null</code></td>
                                 <td>
                                   The password which is used to authenticate against the database.<br>
                                   The default is no password (<code>null</code>).
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>database: string</code></td>
+                                <td class="w-250px"><code>database: string</code></td>
                                 <td>The name of the database.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>host: string</code></td>
+                                <td class="w-250px"><code>host: string</code></td>
                                 <td>The host of the relational database.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>port: number|null</code></td>
+                                <td class="w-250px"><code>port: number|null</code></td>
                                 <td>The port of the relational database.<br>The default is automatic selection (<code>null</code>).</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>dialect: string</code></td>
+                                <td class="w-250px"><code>dialect: string</code></td>
                                 <td>
                                   The dialect of the database you are connecting to.<br>
                                   One of <code>mariadb</code>, <code>mysql</code>, <code>postgres</code>, <code>sqlite</code> and <code>mssql</code>.
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>logging: boolean|(...message: any[]) => void</code></td>
+                                <td class="w-250px"><code>logging: boolean|(...message: any[]) => void</code></td>
                                 <td>
                                   Set true to output the executed query etc. to the log.<br>
                                   The default is no log output (<code>false</code>).
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>timezone</code></td>
+                                <td class="w-250px"><code>timezone</code></td>
                                 <td>
                                   Time zone dedicated to writing to the database.<br>
                                   For example, for the Japanese time zone, do the following.<br>
@@ -3286,17 +3414,19 @@ module.exports = class extends Model {
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>public constructor()</code></td>
+                                <td class="w-250px"><code>constructor()</code></td>
                                 <td>Instantiate sequelize with name of database, username and password.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async isConnect(): Promise&lt;boolean&gt;</code></td>
+                                <td class="w-250px"><code>isConnect()</code></td>
                                 <td>
                                   Test the connection by trying to authenticate. It runs <code>SELECT 1+1 AS result</code> query.
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;boolean&gt;</code> Returns <code>true</code> if it can connect to the database, <code>false</code> if it cannot.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -3371,7 +3501,7 @@ const isConnected = await database.isConnect();</code></pre>
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>protected static table: string</code></td>
+                                <td class="w-250px"><code>protected static table: string</code></td>
                                 <td>The name of the table that the model accesses. This member must be defined in a subclass.
                                   <!--begin::Code-->
                                   <div class="py-5">
@@ -3417,7 +3547,7 @@ module.exports = class extends Model {
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>protected static attributes: sequelize.ModelAttributes</code></td>
+                                <td class="w-250px"><code>protected static attributes: sequelize.ModelAttributes</code></td>
                                 <td>List of columns in the table accessed by this model. This member must be defined in a subclass.
                                   <!--begin::Code-->
                                   <div class="py-5">
@@ -3487,7 +3617,7 @@ module.exports = class extends Model {
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly DataTypes: {[key: string]: any}</code></td>
+                                <td class="w-250px"><code>static readonly DataTypes: {[key: string]: any}</code></td>
                                 <td>
                                   A convenience class holding commonly used data types.<br>
                                   This is an alias for <code>sequelize.DataTypes</code>.<br>
@@ -3507,7 +3637,7 @@ module.exports = class extends Model {
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly Op: {[key: string]: any}</code></td>
+                                <td class="w-250px"><code>static readonly Op: {[key: string]: any}</code></td>
                                 <td>
                                   Operator symbols to be used when querying data. This is an alias for <code>sequelize.Op</code>.<br>
                                   See <a href="https://sequelize.org/v5/variable/index.html#static-variable-Op" class="fw-semibold" target="_blank">here</a> for details.
@@ -3597,7 +3727,7 @@ BookModel.destroy({
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly fn: (fn: string, ...args: unknown[]) =&gt; any</code></td>
+                                <td class="w-250px"><code>static readonly fn: (fn: string, ...args: unknown[]) =&gt; any</code></td>
                                 <td>
                                   Creates an object representing a database function.<br>
                                   This can be used in search queries, both in where and order parts, and as default values in column definitions.<br>
@@ -3659,7 +3789,7 @@ console.log(&#39;books=&#39;, books);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly col: (col: string) =&gt; any</code></td>
+                                <td class="w-250px"><code>static readonly col: (col: string) =&gt; any</code></td>
                                 <td>
                                   Creates an object which represents a column in the DB, this allows referencing another column in your query.<br>
                                   This is often useful in conjunction with sequelize.fn, since raw string arguments to fn will be escaped.<br>
@@ -3667,7 +3797,7 @@ console.log(&#39;books=&#39;, books);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly literal: (val: string) =&gt; any</code></td>
+                                <td class="w-250px"><code>static readonly literal: (val: string) =&gt; any</code></td>
                                 <td>
                                   Creates an object representing a literal, i.e. something that will not be escaped.<br>
                                   See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#static-method-literal" class="fw-semibold" target="_blank">here</a> for details.
@@ -3743,7 +3873,7 @@ console.log(&#39;books=&#39;, books);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) =&gt; sequelize.Utils.Where</code></td>
+                                <td class="w-250px"><code>static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) =&gt; sequelize.Utils.Where</code></td>
                                 <td>
                                   A way of specifying attr = condition.<br>
                                   The attr can either be an object taken from Model.rawAttributes (for example Model.rawAttributes.id or Model.rawAttributes.name).<br>
@@ -3808,14 +3938,14 @@ console.log(&#39;books=&#39;, books);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly QueryTypes: {[key: string]: string}</code></td>
+                                <td class="w-250px"><code>static readonly QueryTypes: {[key: string]: string}</code></td>
                                 <td>
                                   An enum of query types used by sequelize.query<br>
                                   See <a href="https://sequelize.org/master/variable/index.html#static-variable-QueryTypes" class="fw-semibold" target="_blank">here</a> for details.
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static readonly Transaction: (typeof <a href="https://sequelize.org/docs/v6/other-topics/transactions/" class="fw-semibold" target="_blank">sequelize.Transaction</a>)</code></td>
+                                <td class="w-250px"><code>static readonly Transaction: (typeof <a href="https://sequelize.org/docs/v6/other-topics/transactions/" class="fw-semibold" target="_blank">sequelize.Transaction</a>)</code></td>
                                 <td>
                                   Reference to <a href="https://sequelize.org/docs/v6/other-topics/transactions/" class="fw-semibold" target="_blank">sequelize.Transaction</a>.<br>
                                   This includes properties such as isolation level enums used with the transaction option.<br>
@@ -3864,7 +3994,7 @@ BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // &quot;SERIALIZABLE&quot;<
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>public static association(): void</code></td>
+                                <td class="w-250px"><code>static association()</code></td>
                                 <td>
                                   Associate the model.<br>
                                   Define associations with other models such as <code>hasOne</code>, <code>hasMany</code>, <code>belongsTo</code>, <code>belongsToMany</code>.<br>
@@ -3927,22 +4057,26 @@ module.exports = class extends Model {
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async begin(options?: sequelize.TransactionOptions): Promise&lt;<a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" class="fw-semibold target="_blank">sequelize.Transaction</a>&gt;</code></td>
+                                <td class="w-250px"><code>static begin()</code></td>
                                 <td>
                                   Starts a transaction and returns a transaction object to identify the running transaction.<br>
                                   This is an alias for the <code>"sequelize.Sequelize.transaction()"</code> method.<br>
                                   See <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-method-transaction" class="fw-semibold" target="_blank">here</a><br>
                                   and <a href="https://sequelize.org/master/class/lib/transaction.js~Transaction.html" class="fw-semibold" target="_blank">here</a> for more information.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>options?: sequelize.TransactionOptions</code> Options provided when the transaction is created.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options?: sequelize.TransactionOptions</code> Options provided when the transaction is created.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;sequelize.Transaction&gt;</code> Returns a transaction object to identify the transaction being executed.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4039,21 +4173,25 @@ try {
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async create(values: object, options: object): Promise&lt;Model&gt;</code></td>
+                                <td class="w-250px"><code>static create()</code></td>
                                 <td>
                                   Builds a new model instance and calls <code>save</code> on it.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-create" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>values: object</code> Hash of data values to create new record with.</li>
-                                      <li class="py-2"><code>options: object</code> Build and query options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>values: object</code> Hash of data values to create new record with.</li>
+                                      <li><code>options: object</code> Build and query options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;Model&gt;</code> Returns a model that contains the data for the added record.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4092,20 +4230,24 @@ await BookModel.create({title: &#039;Beautiful&#039;});</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async save(options: object): Promise&lt;Model&gt;</code></td>
+                                <td class="w-250px"><code>static save()</code></td>
                                 <td>
                                   Validates this instance, and if the validation passes, persists it to the database.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-save" class="fw-semibold target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>options: object</code> save options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options: object</code> save options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;Model&gt;</code> Returns a model that contains data for manipulated records such as add and update.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4154,21 +4296,25 @@ await book.save();</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async findOne(options: object): Promise&lt;Model|null&gt;</code></td>
+                                <td class="w-250px"><code>static findOne()</code></td>
                                 <td>
                                   Search for a single instance.<br>
                                   Returns the first instance found, or null if none can be found.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOne" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>options: object</code> A hash of options to describe the scope of the search.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options: object</code> A hash of options to describe the scope of the search.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;Model|null&gt;</code> Returns a Model containing the first data found in the database.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4207,20 +4353,24 @@ await BookModel.findOne();</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async findAll(options: object): Promise&lt;Array&lt;Model&gt;&gt;</code></td>
+                                <td class="w-250px"><code>static findAll()</code></td>
                                 <td>
                                   Search for multiple instances.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" class="fw-semibold target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>options: object</code> A hash of options to describe the scope of the search.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options: object</code> A hash of options to describe the scope of the search.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;Array&lt;Model&gt;&gt;</code> Returns a model containing the data found in the database.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4271,20 +4421,24 @@ await BookModel.findAll({
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async count(options: object): Promise&lt;number&gt;</code></td>
+                                <td class="w-250px"><code>static count()</code></td>
                                 <td>
                                   Count the number of records matching the provided where clause.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-count" class="fw-semibold target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>options: object</code> A hash of options to describe the scope of the search.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options: object</code> A hash of options to describe the scope of the search.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;number&gt;</code> Returns the count of records that match the condition.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4323,21 +4477,25 @@ await BookModel.count();</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async update(values: object, options: object): Promise&lt;Array&lt;number, number&gt;&gt;</code></td>
+                                <td class="w-250px"><code>static update()</code></td>
                                 <td>
                                   Update multiple instances that match the where options.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>values: object</code> hash of values to update.</li>
-                                      <li class="py-2"><code>options: object</code> update options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>values: object</code> hash of values to update.</li>
+                                      <li><code>options: object</code> update options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;Array&lt;number, number&gt;&gt;</code> The first element is always the number of affected rows, while the second element is the actual affected rows (only supported in postgres with <code>options.returning</code> true).
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4376,24 +4534,28 @@ await BookModel.update({title: &#039;Lose Yourself&#039;}, {where: {id: 1}});</c
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async upsert(values: object, options: object): Promise&lt;Model, boolean|null&gt;</code></td>
+                                <td class="w-250px"><code>static upsert()</code></td>
                                 <td>
                                   Insert or update a single row.<br>
                                   An update will be executed if a row which matches the supplied values on either the primary key or a unique key is found.<br>
                                   Note that the unique index must be defined in your sequelize model and not just in the table.<br>
                                   Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-upsert" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>values: object</code> hash of values to upsert.</li>
-                                      <li class="py-2"><code>options: object</code> upsert options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>values: object</code> hash of values to upsert.</li>
+                                      <li><code>options: object</code> upsert options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;Model, boolean|null&gt;</code> returns record and whether row was created or updated as boolean. For Postgres/SQLite dialects boolean value is always null.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4432,20 +4594,24 @@ await BookModel.upsert({title: &#039;Lose Yourself&#039;});</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async destroy(options: object): Promise&lt;number&gt;</code></td>
+                                <td class="w-250px"><code>static destroy()</code></td>
                                 <td>
                                   Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>options: object</code> destroy options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options: object</code> destroy options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;number&gt;</code> The number of destroyed rows.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -4484,23 +4650,26 @@ await BookModel.destroy({where: {id :1}});</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static hasOne(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" class="fw-semibold" target="_blank">sequelize.HasOne</a></code></td>
+                                <td class="w-250px"><code>static hasOne()</code></td>
                                 <td>
                                   Creates an association between this (the source) and the provided target.<br>
                                   The foreign key is added on the target.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasOne" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>target: Model</code> The target model.</li>
-                                      <li class="py-2"><code>options: object</code> hasOne association options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>target: Model</code> The target model.</li>
+                                      <li><code>options: object</code> hasOne association options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code><a href="https://sequelize.org/master/class/lib/associations/has-one.js~HasOne.html" class="fw-semibold" target="_blank">sequelize.HasOne</a></code> One-to-one association.
                                   </div>
-
+                                  <!--end::Return value-->
                                   For one-to-one association we will use two tables as an example they are User and Profile table.<br>
                                   User table has one Profile table and Profile table belongs to the User table.<br>
                                   Here's the relation diagram for it.
@@ -4659,22 +4828,26 @@ await UserModel.findAll({
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static belongsTo(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" class="fw-semibold target="_blank">sequelize.BelongsTo</a></code></td>
+                                <td class="w-250px"><code>static belongsTo()</code></td>
                                 <td>
                                   Creates an association between this (the source) and the provided target.<br>
                                   The foreign key is added on the source.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsTo" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>target: Model</code> The target model.</li>
-                                      <li class="py-2"><code>options: object</code> belongsTo association options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>target: Model</code> The target model.</li>
+                                      <li><code>options: object</code> belongsTo association options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code><a href="https://sequelize.org/master/class/lib/associations/belongs-to.js~BelongsTo.html" class="fw-semibold target="_blank">sequelize.BelongsTo</a></code> One-to-one association.
                                   </div>
+                                  <!--end::Return value-->
                                   For one-to-one association we will use two tables as an example they are User and Profile table.<br>
                                   User table has one Profile table and Profile table belongs to the User table.<br>
                                   Here's the relation diagram for it.
@@ -4833,22 +5006,26 @@ await ProfileModel.findAll({
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static hasMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" class="fw-semibold" target="_blank">sequelize.HasMany</a></code></td>
+                                <td class="w-250px"><code>static hasMany()</code></td>
                                 <td>
                                   Creates a 1:m association between this (the source) and the provided target.<br>
                                   The foreign key is added on the target.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-hasMany" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>target: Model</code> The target model.</li>
-                                      <li class="py-2"><code>options: object</code> hasMany association options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>target: Model</code> The target model.</li>
+                                      <li><code>options: object</code> hasMany association options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code><a href="https://sequelize.org/master/class/lib/associations/has-many.js~HasMany.html" class="fw-semibold" target="_blank">sequelize.HasMany</a></code> One-to-many association.
                                   </div>
+                                  <!--end::Return value-->
                                   For one-to-many association we will use two tables as an example they are User and Comment table.<br>
                                   User table has many Comment table and Comment table belongs to the User table.<br>
                                   Here's the relation diagram for it.
@@ -5013,22 +5190,26 @@ await UserModel.findAll({
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static belongsToMany(target: Model, options: object): <a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" class="fw-semibold" target="_blank">sequelize.BelongsToMany</a></code></td>
+                                <td class="w-250px"><code>static belongsToMany()</code></td>
                                 <td>
                                   Create an N:M association with a join table.<br>
                                   Defining through is required.<br>
                                   See <a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-belongsToMany" class="fw-semibold" target="_blank">here</a> for details.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>target: Model</code> The target model.</li>
-                                      <li class="py-2"><code>options: object</code> belongsToMany association options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>target: Model</code> The target model.</li>
+                                      <li><code>options: object</code> belongsToMany association options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code><a href="https://sequelize.org/master/class/lib/associations/belongs-to-many.js~BelongsToMany.html" class="fw-semibold" target="_blank">sequelize.BelongsToMany</a></code> Many-to-many association with a join table.
                                   </div>
+                                  <!--end::Return value-->
                                   For many-to-many association we will use two tables as an example they are User and Book table.<br>
                                   User is marking down Books that he has read. Each user can mark as many books as they want, creating a many to many association between User and Books.<br>
                                   Books can belong to many users.<br>
@@ -5194,20 +5375,24 @@ await UserModel.findAll({
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public static async query(sql: string, options: object): Promise&lt;any&gt;</code></td>
+                                <td class="w-250px"><code>static query()</code></td>
                                 <td>
                                   Raw Queries.<br>As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>sql: string</code> SQL string.</li>
-                                      <li class="py-2"><code>options: object</code> Query options.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>sql: string</code> SQL string.</li>
+                                      <li><code>options: object</code> Query options.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;any&gt;</code> By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc. If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -5327,7 +5512,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                             <!--begin::Head-->
                             <thead>
                               <tr class="fs-4 fw-bold p-6">
-                                <th class="min-w-200px">Name</th>
+                                <th class="min-w-200px">Item Name</th>
                                 <th>Description</th>
                               </tr>
                             </thead>
@@ -5335,18 +5520,18 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>enabled: boolean</code></td>
+                                <td class="w-250px"><code>enabled: boolean</code></td>
                                 <td>
                                   Set to true to enable user authentication using <a href="https://www.passportjs.org/docs/" class="fw-semibold" target="_blank">Passport middleware</a>.<br>
                                   User authentication is enabled (<code>true</code>) by default.
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>session_store: &#039;memory&#039;|&#039;redis&#039;</code></td>
+                                <td class="w-250px"><code>session_store: &#039;memory&#039;|&#039;redis&#039;</code></td>
                                 <td>The session store instance, defaults to a new MemoryStore(<code>memory</code>) instance.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>redis_host?: string|undefined</code></td>
+                                <td class="w-250px"><code>redis_host?: string|undefined</code></td>
                                 <td>
                                   If the session is stored in <code>&quot;redis&quot;</code>, this field is required and should be set to the hostname of the Redis server.<br>
                                   For example, to connect to redis on localhost on port <code>6379</code>, set <code>&quot;redis://localhost:6379&quot;</code>.<br>
@@ -5355,28 +5540,28 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>username: string</code></td>
+                                <td class="w-250px"><code>username: string</code></td>
                                 <td>
                                   The login username field name used for authentication.<br>
                                   This should be set to the same value as the user field name in the POST body sent to the server and the user example name in the login user table.
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>password: string</code></td>
+                                <td class="w-250px"><code>password: string</code></td>
                                 <td>
                                   The login password field name used for authentication.<br>
                                   This should be set to the same value as the password field name in the POST body sent to the server and the password column name in the login user table.
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>success_redirect: string</code></td>
+                                <td class="w-250px"><code>success_redirect: string</code></td>
                                 <td>
                                   The URL to redirect to after successful authentication.<br>
                                   The default is the root URL (<code>/</code>).
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>failure_redirect: string</code></td>
+                                <td class="w-250px"><code>failure_redirect: string</code></td>
                                 <td>
                                   Specify the URL to redirect after logging out, or the URL to redirect when the logoff user requests a URL that only the logged-in user can access.<br>
                                   This usually specifies the URL of the login page.<br>
@@ -5384,7 +5569,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>authenticate_user: (username: string, password: string, req: express.Request): Promise&lt;object|null&gt;</code></td>
+                                <td class="w-250px"><code>authenticate_user: (username: string, password: string, req: express.Request): Promise&lt;object|null&gt;</code></td>
                                 <td>
                                   This hook is called when authenticating a user.<br>
                                   Please find the user information that owns the credentials based on the user name and password you received and return it.<br>
@@ -5436,7 +5621,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>subscribe_user: (id: number): Promise&lt;object&gt;</code></td>
+                                <td class="w-250px"><code>subscribe_user: (id: number): Promise&lt;object&gt;</code></td>
                                 <td>
                                   This hook is called when user authentication is successful.<br>
                                   Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.<br>
@@ -5465,7 +5650,7 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>allow_unauthenticated: (string|RegExp)[]</code></td>
+                                <td class="w-250px"><code>allow_unauthenticated: (string|RegExp)[]</code></td>
                                 <td>
                                   By default, it requires an authenticated user for all requests.<br>
                                   You can use the <code>allow_unauthenticated</code> option to disable this behavior on certain requests.<br>
@@ -5498,14 +5683,14 @@ await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryType
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>expiration: number</code></td>
+                                <td class="w-250px"><code>expiration: number</code></td>
                                 <td>
                                   Specifies the time, in milliseconds, before the session expires.<br>
                                   The default is 24 hours (<code>86400000</code> milliseconds).
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>is_ajax: (req: express.Request) =&gt; boolean</code></td>
+                                <td class="w-250px"><code>is_ajax: (req: express.Request) =&gt; boolean</code></td>
                                 <td>
                                   How to determine if it is an ajax request.<br>
                                   The default is that if there is an XMLHttpRequest in the request header (<code>req.xhr</code>) returns <code>true</code>.<br><br>
@@ -5819,7 +6004,6 @@ module.exports = router;</code></pre>
                   <!--end::Card Body-->
                 </div>
                 <!--end::Card-->
-
                 <!--begin::Card-->
                 <div id="rekognition" data-search-item="true" data-search-title="Rekognition" data-search-description="How to use Rekognition" class="card card-docs flex-row-fluid mb-12">
                   <!--begin::Card Body-->
@@ -5831,9 +6015,8 @@ module.exports = router;</code></pre>
                       <!--end::Heading-->
                       <!--begin::Block-->
                       <div class="py-5">
-                        Express Sweet includes an extension of <code>Amazon Rekognition</code> for face recognition, face detection, and face comparison.<br>
-                        This section describes how to use the modules that do them.<br>
-                        If you want to know more about <code>Amazon Rekognition</code>, please see <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" class="fw-semibold" target="_blank">Amazon Rekognition Reference</a>.
+                        It recognizes, detects, and compares faces.<br>
+                        This is an extension of AWS Rekognition, learn more about AWS Rekognition <a href="https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html" class="fw-semibold" target="_blank">here</a>.
                       </div>
                       <!--end::Block-->
                     </div>
@@ -5844,7 +6027,7 @@ module.exports = router;</code></pre>
                       <h1 class="fw-bold mb-5">Class Rekognition (express-sweet.services.AWSRekognitionClient)</h1>
                       <!--end::Heading-->
                       <!--begin::Block-->
-                      <div class="py-5">This is a class that uses machine learning to analyze images and videos.</div>
+                      <div class="py-5">Analyzes faces on images and videos using machine learning.</div>
                       <!--end::Block-->
                       <h2 class="text-gray-700 py-5 fw-normal">Methods of the Rekognition</h2>
                       <!--begin::Table-->
@@ -5864,18 +6047,20 @@ module.exports = router;</code></pre>
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>public constructor(options: {accessKeyId: string, secretAccessKey: string, region: string, timeout?: number})</code></td>
+                                <td class="w-250px"><code>constructor()</code></td>
                                 <td>
                                   Constructs a rekognition client object.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>options.accessKeyId: string</code> AWS access key ID.</li>
-                                      <li class="py-2"><code>options.secretAccessKey: string</code> AWS secret access key.</li>
-                                      <li class="py-2"><code>options.region: string</code> The region to send service requests to.</li>
-                                      <li class="py-2"><code>options.timeout: number</code> Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds.The default is 5000 milliseconds.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options.region: string</code> The region to send service requests to.</li>
+                                      <li><code>options.accessKeyId: string</code> AWS access key ID.</li>
+                                      <li><code>options.secretAccessKey: string</code> AWS secret access key.</li>
+                                      <li><code>options.timeout: number</code> Timeout period (milliseconds). Default is 5000.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -5899,9 +6084,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });</code></pre>
                                           </div>
                                         </div>
@@ -5914,9 +6099,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });</code></pre>
                                           </div>
                                         </div>
@@ -5928,22 +6113,26 @@ const client = new sweet.services.AWSRekognitionClient({
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async detectFaces(img: string, minConfidence: number = 90, withDetails: boolean = false): Promise&lt;<a href="#rekognition-bbox-if">BoundingBox</a>[]|<a href="#rekognition-face-details-if">FaceDetails</a>[]&gt;</code></td>
+                                <td class="w-250px"><code>detectFaces()</code></td>
                                 <td>
                                   Detects faces within an image that is provided as input.<br>
                                   For each face detected, the operation returns a bounding box of the face.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>img: string</code> Image path or Data Url or image buffer.</li>
-                                      <li class="py-2"><code>minConfidence: number</code> The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.</li>
-                                      <li class="py-2"><code>withDetails: boolean</code> If false, returns only the face bounding box. When true, returns the age group, gender, and emotion in addition to the face bounding box.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>img: string</code> Image path or Data Url or image buffer.</li>
+                                      <li><code>minConfidence: number</code> The minimum confidence of the detected face. Faces with a confidence lower than this value will not be returned as a result.</li>
+                                      <li><code>withDetails: boolean</code> If false, returns only the face bounding box. When true, returns the age group, gender, and emotion in addition to the face bounding box.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;<a href="#rekognition-bbox-if">BoundingBox</a>[]|<a href="#rekognition-face-details-if">FaceDetails</a>[]&gt;</code> Returns the bounding box of the detected face.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -5968,9 +6157,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Detects bounding boxes on faces.
@@ -6030,9 +6219,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Detects bounding boxes on faces.
@@ -6090,20 +6279,24 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async compareFaces(img1: string, img2: string): Promise&lt;number&gt;</code></td>
+                                <td class="w-250px"><code>compareFaces()</code></td>
                                 <td>
                                   Compare the similarity of two faces.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>img1: string</code> Image path or Data Url or image buffer.</li>
-                                      <li class="py-2"><code>img2: string</code> Image path or Data Url or image buffer.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>img1: string</code> Image path or Data Url or image buffer.</li>
+                                      <li><code>img2: string</code> Image path or Data Url or image buffer.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;number&gt;</code> Level of confidence that the faces match.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6128,9 +6321,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Compare faces from path.
@@ -6153,9 +6346,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Compare faces from path.
@@ -6176,7 +6369,7 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async createCollection(collectionId: string): Promise&lt;void&gt;</code></td>
+                                <td class="w-250px"><code>createCollection()</code></td>
                                 <td>
                                   Add faces to the collection using the IndexFaces operation.<br>
                                   For example, you might create collections, one for each of your application users.<br>
@@ -6204,12 +6397,14 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
                                     <!--end::Information-->
                                   </div>
                                   <!--end::Notice-->
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>collectionId: string</code> ID for the collection that you are creating. The maximum length is 255, and the characters that can be used are <code>[a-zA-Z0-9_.\-]+</code>.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>collectionId: string</code> ID for the collection that you are creating. The maximum length is 255, and the characters that can be used are <code>[a-zA-Z0-9_.\-]+</code>.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6233,9 +6428,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Creates a collection.
@@ -6251,9 +6446,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Creates a collection.
@@ -6268,13 +6463,15 @@ await client.createCollection(&#039;MyCollection&#039;);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async listCollections(): Promise&lt;string[]&gt;</code></td>
+                                <td class="w-250px"><code>listCollections()</code></td>
                                 <td>
                                   Returns list of collection IDs.
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;string[]&gt;</code> An array of collection IDs.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6299,9 +6496,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Find the collection IDs.
@@ -6321,9 +6518,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Find the collection IDs.
@@ -6342,20 +6539,24 @@ await client.listCollections();</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async deleteCollection(collectionId: string): Promise&lt;boolean&gt;</code></td>
+                                <td class="w-250px"><code>deleteCollection()</code></td>
                                 <td>
                                   Deletes the specified collection.<br>
                                   Note that this operation removes all faces in the collection.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>collectionId: string</code> ID of the collection to delete.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>collectionId: string</code> ID of the collection to delete.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;boolean&gt;</code> True on success.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6379,9 +6580,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Delete collection.
@@ -6397,9 +6598,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Delete collection.
@@ -6414,7 +6615,7 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async indexFace(collectionId: string, img: string, options?: {externalImageId? : string, returnDetails?: boolean}): Promise&lt;string|<a href="#rekognition-index-face-if">IndexFaceDetails</a>&gt;</code></td>
+                                <td class="w-250px"><code>indexFace()</code></td>
                                 <td>
                                   Detects one face in the input image and adds it to the specified collection.
                                   <!--begin::Notice-->
@@ -6439,12 +6640,13 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                                     <!--end::Information-->
                                   </div>
                                   <!--end::Notice-->
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>collectionId: string</code> The ID of an existing collection to which you want to add the faces that are detected in the input images.</li>
-                                      <li class="py-2"><code>img: string</code> Image path or Data Url or image buffer.</li>
-                                      <li class="py-2">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>collectionId: string</code> The ID of an existing collection to which you want to add the faces that are detected in the input images.</li>
+                                      <li><code>img: string</code> Image path or Data Url or image buffer.</li>
+                                      <li>
                                         <code>options.externalImageId: string|undefined</code>
                                         The ID you want to assign to the faces detected in the image.<br>
                                         When you call the <code>listFaces</code> operation, the response returns the external ID.<br>
@@ -6452,19 +6654,22 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                                         You can then use the index to find all faces in an image.<br>
                                         The maximum length is 255, and the characters that can be used are <code>[a-zA-Z0-9_.\-:]+</code>.
                                       </li>
-                                      <li class="py-2">
+                                      <li>
                                         <code>options.returnDetails: boolean</code>
                                         If <code>false</code>, only the face ID of the created face is returned.<br>
                                         If <code>true</code>, returns the face ID of the created face, plus age range, gender, and emotion.
                                       </li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;string|<a href="#rekognition-index-face-if">IndexFaceDetails</a>&gt;</code>
                                     If <code>options.returnDetails</code> is <code>false</code>, the face identifier is returned.<br>
                                     If <code>options.returnDetails</code> is <code>true</code>, returns the gender, age group, and emotion in addition to the face identifier.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6489,9 +6694,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Create a face and get the ID of the created face.
@@ -6535,9 +6740,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Create a face and get the ID of the created face.
@@ -6579,21 +6784,22 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise&lt;<a href="#rekognition-match-if">FaceMatch</a>[]|<a href="#rekognition-match-if">FaceMatch</a>|null&gt;</code></td>
+                                <td class="w-250px"><code>searchFaces()</code></td>
                                 <td>
                                   For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
                                   The operation compares the features of the input face with faces in the specified collection.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>collectionId: string</code> ID of the collection to search.</li>
-                                      <li class="py-2"><code>img: string</code> Image path or Data Url or image buffer.</li>
-                                      <li class="py-2">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>collectionId: string</code> ID of the collection to search.</li>
+                                      <li><code>img: string</code> Image path or Data Url or image buffer.</li>
+                                      <li>
                                         <code>options.minConfidence: number</code>
                                         Specifies the minimum confidence in the face match to return.<br>
                                         The default value is 80%.
                                       </li>
-                                      <li class="py-2">
+                                      <li>
                                         <code>options.maxFaces: number</code>
                                         Maximum number of faces to return.<br>
                                         The operation returns the maximum number of faces with the highest confidence in the match.<br>
@@ -6601,13 +6807,16 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
                                       </li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;<a href="#rekognition-match-if">FaceMatch</a>[]|<a href="#rekognition-match-if">FaceMatch</a>|null&gt;</code>
                                     If <code>options.maxFaces</code> is 1, the face information found is returned.<br>
                                     If <code>options.maxFaces</code> is 2 or more, the list of face information found is returned.<br>
                                     Returns <code>null</code> if no face is found.
-                                  </div>                                  
+                                  </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6632,9 +6841,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // If you want to search for one face, specify 1 for the maxFaces option.
@@ -6686,9 +6895,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // If you want to search for one face, specify 1 for the maxFaces option.
@@ -6738,21 +6947,25 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async listFaces(collectionId: string, maxResults: number = 1000): Promise&lt;<a href="#rekognition-match-if">FaceMatch</a>[]&gt;</code></td>
+                                <td class="w-250px"><code>listFaces()</code></td>
                                 <td>
                                   Returns metadata for faces in the specified collection.<br>
                                   This metadata includes information such as the bounding box coordinates, and face ID.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>collectionId: string</code> ID of the collection from which to list the faces.</li>
-                                      <li class="py-2"><code>maxResults: number</code> Maximum number of faces to return.The default value is 1000.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>collectionId: string</code> ID of the collection from which to list the faces.</li>
+                                      <li><code>maxResults: number</code> Maximum number of faces to return.The default value is 1000.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;<a href="#rekognition-match-if">FaceMatch</a>[]&gt;</code> Returns all face metadata in the collection.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6776,9 +6989,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Find all face metadata in the collection.
@@ -6807,9 +7020,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Find all face metadata in the collection.
@@ -6837,21 +7050,25 @@ console.log(result);</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>public async deleteFaces(collectionId: string, faceIds: string[]): Promise&lt;boolean&gt;</code></td>
+                                <td class="w-250px"><code>deleteFaces()</code></td>
                                 <td>
                                   Deletes faces from a collection.<br>
                                   You specify a collection ID and an array of face IDs to remove from the collection.
+                                  <!--begin::Parameters-->
                                   <div class="py-5">
-                                    <p class="mb-0">Parameters:</p> 
-                                    <ul class="py-0">
-                                      <li class="py-2"><code>collectionId: string</code> Collection from which to remove the specific faces.</li>
-                                      <li class="py-2"><code>faceIds: string[]</code> An array of face IDs to delete.</li>
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>collectionId: string</code> Collection from which to remove the specific faces.</li>
+                                      <li><code>faceIds: string[]</code> An array of face IDs to delete.</li>
                                     </ul>
                                   </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
                                   <div class="py-5">
-                                    <p class="mb-0">Return value:</p> 
+                                    <p>Return value:</p> 
                                     <code>Promise&lt;boolean&gt;</code> True on success.
                                   </div>
+                                  <!--end::Return value-->
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
@@ -6875,9 +7092,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Delete a face from the collection.
@@ -6893,9 +7110,9 @@ sweet.middlewares.Environment.mount();
 
 // Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
+  region: process.env.AWS_REKOGNITION_REGION,
   accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REKOGNITION_REGION
 });
 
 // Delete a face from the collection.
@@ -6945,27 +7162,27 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>faceId: string</code></td>
+                                <td class="w-250px"><code>faceId: string</code></td>
                                 <td>A unique identifier assigned to the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>boundingBox: <a href="#rekognition-bbox-if">BoundingBox</a></code></td>
+                                <td class="w-250px"><code>boundingBox: <a href="#rekognition-bbox-if">BoundingBox</a></code></td>
                                 <td>
                                   Bounding box of the face.
-                                  <ul class="py-0">
-                                    <li class="py-2">width: Width of the bounding box as a ratio of the overall image width.</li>
-                                    <li class="py-2">height: Height of the bounding box as a ratio of the overall image height.</li>
-                                    <li class="py-2">left: Left coordinate of the bounding box as a ratio of overall image width.</li>
-                                    <li class="py-2">top: Top coordinate of the bounding box as a ratio of overall image height.</li>
+                                  <ul>
+                                    <li>width: Width of the bounding box as a ratio of the overall image width.</li>
+                                    <li>height: Height of the bounding box as a ratio of the overall image height.</li>
+                                    <li>left: Left coordinate of the bounding box as a ratio of overall image width.</li>
+                                    <li>top: Top coordinate of the bounding box as a ratio of overall image height.</li>
                                   </ul>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>externalImageId?: string</code></td>
+                                <td class="w-250px"><code>externalImageId?: string</code></td>
                                 <td>Identifier that you assign to all the faces in the input image.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>similarity?: number</code></td>
+                                <td class="w-250px"><code>similarity?: number</code></td>
                                 <td>Confidence in the match of this face with the input face.<br>Valid Range: Minimum value of 0. Maximum value of 100.</td>
                               </tr>
                             </tbody>
@@ -7004,20 +7221,20 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>boundingBox: <a href="#rekognition-bbox-if">BoundingBox</a></code></td>
+                                <td class="w-250px"><code>boundingBox: <a href="#rekognition-bbox-if">BoundingBox</a></code></td>
                                 <td>Bounding box of the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>ageRange?: {high: UInteger, low: UInteger}</code></td>
+                                <td class="w-250px"><code>ageRange?: {high: UInteger, low: UInteger}</code></td>
                                 <td>The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>gender?: &#039;male&#039;|&#039;female&#039;</code></td>
+                                <td class="w-250px"><code>gender?: &#039;male&#039;|&#039;female&#039;</code></td>
                                 <td>The predicted gender of a detected face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>emotions?: <a href="#rekognition-emotions-if">FaceDetailsEmotions</a></code></td>
-                                <td>The predicted gender of a detected face.</td>
+                                <td class="w-250px"><code>emotions?: <a href="#rekognition-emotions-if">FaceDetailsEmotions</a></code></td>
+                                <td>Emotions detected from the face.</td>
                               </tr>
                             </tbody>
                             <!--end::Body-->
@@ -7055,20 +7272,20 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>faceId: string</code></td>
+                                <td class="w-250px"><code>faceId: string</code></td>
                                 <td>A unique identifier assigned to the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>ageRange: {high: UInteger, low: UInteger}</code></td>
+                                <td class="w-250px"><code>ageRange: {high: UInteger, low: UInteger}</code></td>
                                 <td>The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>gender: &#039;male&#039;|&#039;female&#039;</code></td>
+                                <td class="w-250px"><code>gender: &#039;male&#039;|&#039;female&#039;</code></td>
                                 <td>The predicted gender of a detected face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>emotions: <a href="#rekognition-emotions-if">FaceDetailsEmotions</a></code></td>
-                                <td>The predicted gender of a detected face.</td>
+                                <td class="w-250px"><code>emotions: <a href="#rekognition-emotions-if">FaceDetailsEmotions</a></code></td>
+                                <td>Emotions detected from the face.</td>
                               </tr>
                             </tbody>
                             <!--end::Body-->
@@ -7106,31 +7323,31 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>disgusted: number</code></td>
+                                <td class="w-250px"><code>disgusted: number</code></td>
                                 <td>Confidence level of &quot;disgusted&quot; predicted from the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>happy: number</code></td>
+                                <td class="w-250px"><code>happy: number</code></td>
                                 <td>Confidence level of &quot;happy&quot; predicted from the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>surprised: number</code></td>
+                                <td class="w-250px"><code>surprised: number</code></td>
                                 <td>Confidence level of &quot;surprised&quot; predicted from the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>angry: number</code></td>
+                                <td class="w-250px"><code>angry: number</code></td>
                                 <td>Confidence level of &quot;angry&quot; predicted from the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>confused: number</code></td>
+                                <td class="w-250px"><code>confused: number</code></td>
                                 <td>Confidence level of &quot;confused&quot; predicted from the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>calm: number</code></td>
+                                <td class="w-250px"><code>calm: number</code></td>
                                 <td>Confidence level of &quot;calm&quot; predicted from the face.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>sad: number</code></td>
+                                <td class="w-250px"><code>sad: number</code></td>
                                 <td>Confidence level of &quot;sad&quot; predicted from the face.</td>
                               </tr>
                             </tbody>
@@ -7169,20 +7386,351 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="mw-250px"><code>width: number</code></td>
+                                <td class="w-250px"><code>width: number</code></td>
                                 <td>The width of the bounding box.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>height: number</code></td>
+                                <td class="w-250px"><code>height: number</code></td>
                                 <td>The height of the bounding box.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>left: number</code></td>
+                                <td class="w-250px"><code>left: number</code></td>
                                 <td>The x coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
                               </tr>
                               <tr>
-                                <td class="mw-250px"><code>top: number</code></td>
+                                <td class="w-250px"><code>top: number</code></td>
                                 <td>The y coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+                              </tr>
+                            </tbody>
+                            <!--end::Body-->
+                          </table>
+                          <!--end::Table-->
+                        </div>
+                        <!--end::Table wrapper-->
+                      </div>
+                      <!--end::Table-->
+                    </div>
+                    <!--end::Section-->
+                  </div>
+                  <!--end::Card Body-->
+                </div>
+                <!--end::Card-->
+                <!--begin::Card-->
+                <div id="ses" data-search-item="true" data-search-title="SES" data-search-description="How to use SES" class="card card-docs flex-row-fluid mb-12">
+                  <!--begin::Card Body-->
+                  <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+                    <!--begin::Section-->
+                    <div class="pb-10">
+                      <!--begin::Heading-->
+                      <h1 class="fs-2tx fw-bold mb-5">SES</h1>
+                      <!--end::Heading-->
+                      <!--begin::Block-->
+                      <div class="py-5">
+                        Send an email.<br>
+                        This is an extension of AWS SES, learn more about AWS SES <a href="https://docs.aws.amazon.com/ses/latest/dg/Welcome.html" class="fw-semibold" target="_blank">here</a>.
+                      </div>
+                      <!--end::Block-->
+                    </div>
+                    <!--end::Section-->
+                    <!--begin::Section-->
+                    <div id="ses-class" class="py-10">
+                      <!--begin::Heading-->
+                      <h1 class="fw-bold mb-5">Class SES (express-sweet.services.AWSSesClient)</h1>
+                      <!--end::Heading-->
+                      <!--begin::Block-->
+                      <div class="py-5">Send an email.</div>
+                      <!--end::Block-->
+                      <h2 class="text-gray-700 py-5 fw-normal">Methods of the SES</h2>
+                      <!--begin::Table-->
+                      <div class="py-2">
+                        <!--begin::Table wrapper-->
+                        <div class="table-responsive border rounded">
+                          <!--begin::Table-->
+                          <table class="table table-striped mb-0 g-6">
+                            <!--begin::Head-->
+                            <thead>
+                              <tr class="fs-4 fw-bold p-6">
+                                <th class="min-w-200px">Method</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <!--end::Head-->
+                            <!--begin::Body-->
+                            <tbody>
+                              <tr>
+                                <td class="w-250px"><code>constructor()</code></td>
+                                <td>
+                                  Constructs a SES client object.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>options.apiVersion: string</code> API version in YYYYY-MM-DD format (or date). Specify &#039;latest&#039; to use the latest possible version. The default is &#039;latest&#039;.</li>
+                                      <li><code>options.region: string</code> The region to send service requests to.</li>
+                                      <li><code>options.accessKeyId: string</code> AWS access key ID.</li>
+                                      <li><code>options.secretAccessKey: string</code> AWS secret access key.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <ul class="nav nav-pills" role="tablist">
+                                        <li class="nav-item">
+                                          <a class="nav-link active" data-bs-toggle="tab" href="#ses-constructor-for-esm" role="tab">ESM</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" data-bs-toggle="tab" href="#ses-constructor-for-cjs" role="tab">CJS</a>
+                                        </li>
+                                      </ul>
+                                      <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="ses-constructor-for-esm" role="tabpanel">
+                                          <div class="highlight-code">
+                                            <pre class="language-javascript" style="max-height:400px"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+
+// Load environment variables.
+sweet.middlewares.Environment.mount();
+
+// AWS SES Client.
+const client = new sweet.services.AWSSesClient({
+  apiVersion: process.env.SES_API_VERSION,
+  region: process.env.SES_REGION,
+  accessKeyId: process.env.SES_ACCESS_KEY_ID,
+  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+});</code></pre>
+                                          </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="ses-constructor-for-cjs" role="tabpanel">
+                                          <div class="highlight-code">
+                                            <pre class="language-javascript" style="max-height:400px"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+
+// Load environment variables.
+sweet.middlewares.Environment.mount();
+
+// AWS SES Client.
+const client = new sweet.services.AWSSesClient({
+  apiVersion: process.env.SES_API_VERSION,
+  region: process.env.SES_REGION,
+  accessKeyId: process.env.SES_ACCESS_KEY_ID,
+  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+});</code></pre>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>send()</code></td>
+                                <td>
+                                  Send email.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>type: &#039;text&#039;|&#039;html&#039;</code> E-Mail type (&#039;html&#039;: HTML mail, &#039;text&#039;: text mail). Default is &#039;text&#039;.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>Promise&lt;string&gt;</code> Unique ID assigned by Amazon SES for a successfully sent email.
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <ul class="nav nav-pills" role="tablist">
+                                        <li class="nav-item">
+                                          <a class="nav-link active" data-bs-toggle="tab" href="#ses-send-for-esm" role="tab">ESM</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" data-bs-toggle="tab" href="#ses-send-for-cjs" role="tab">CJS</a>
+                                        </li>
+                                      </ul>
+                                      <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="ses-send-for-esm" role="tabpanel">
+                                          <div class="highlight-code">
+                                            <pre class="language-javascript" style="max-height:400px"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+
+// Load environment variables.
+sweet.middlewares.Environment.mount();
+
+// AWS SES Client.
+const client = new sweet.services.AWSSesClient({
+  apiVersion: process.env.SES_API_VERSION,
+  region: process.env.SES_REGION,
+  accessKeyId: process.env.SES_ACCESS_KEY_ID,
+  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+});
+
+// Send email.
+await client
+  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;user2@example.com&#039;)
+  .subject(&#039;Test email&#039;) 
+  .body(&#039;Hi, this is a test email&#039;)
+  .send();
+
+// Use variables in the body of the e-mail.
+// The body can use the handlebars and handlebars-extd syntax.
+await client
+  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;user2@example.com&#039;)
+  .subject(&#039;Test email&#039;) 
+  .body(&#039;Hello {{name}}&#039;, {name: &#039;Mason&#039;})
+  .send();</code></pre>
+                                          </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="ses-send-for-cjs" role="tabpanel">
+                                          <div class="highlight-code">
+                                            <pre class="language-javascript" style="max-height:400px"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+
+// Load environment variables.
+sweet.middlewares.Environment.mount();
+
+// AWS SES Client.
+const client = new sweet.services.AWSSesClient({
+  apiVersion: process.env.SES_API_VERSION,
+  region: process.env.SES_REGION,
+  accessKeyId: process.env.SES_ACCESS_KEY_ID,
+  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+});
+
+// Send email.
+await client
+  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;user2@example.com&#039;)
+  .subject(&#039;Test email&#039;) 
+  .body(&#039;Hi, this is a test email&#039;)
+  .send();
+
+// Use variables in the body of the e-mail.
+// The body can use the handlebars and handlebars-extd syntax.
+await client
+  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;user2@example.com&#039;)
+  .subject(&#039;Test email&#039;) 
+  .body(&#039;Hello {{name}}&#039;, {name: &#039;Mason&#039;})
+  .send();</code></pre>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>from()</code></td>
+                                <td>
+                                  Set the sender's email address.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>from: string</code> Sender&#039;s email address.</li>
+                                      <li><code>name?: string</code> Sender Name.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>AWSSesClient</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>to()</code></td>
+                                <td>
+                                  Set the destination email address.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>to: string|string[]</code> Email address to be sent to.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>AWSSesClient</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>cc()</code></td>
+                                <td>
+                                  Set CC email address.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>cc: string|string[]</code> CC email address.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>AWSSesClient</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>subject()</code></td>
+                                <td>
+                                  Set the email subject.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>subject: string</code> Email Subject.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>AWSSesClient</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>body()</code></td>
+                                <td>
+                                  Set the body of the email.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>body: string</code> Email Body. The body can use the <a href="https://handlebarsjs.com/" class="fw-semibold" target="_blank">handlebars</a> and <a href="https://www.npmjs.com/package/handlebars-extd" class="fw-semibold" target="_blank">handlebars-extd</a> syntax.</li>
+                                      <li><code>vars: {[key: string]: any}</code> The value of a variable in the body of the e-mail.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>AWSSesClient</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                </td>
                               </tr>
                             </tbody>
                             <!--end::Body-->

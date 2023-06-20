@@ -26,7 +26,7 @@ export default class Model extends sequelize.Model {
    * @see https://sequelize.org/master/variable/index.html#static-variable-DataTypes
    * @type {sequelize.DataTypes}
    */
-  public static readonly DataTypes: {[key: string]: any} = sequelize.DataTypes;
+  static readonly DataTypes: {[key: string]: any} = sequelize.DataTypes;
 
   /**
    * An enum of query types used by sequelize.query
@@ -34,7 +34,7 @@ export default class Model extends sequelize.Model {
    * @see https://sequelize.org/master/variable/index.html#static-variable-QueryTypes
    * @type {sequelize.QueryTypes}
    */
-  public static readonly QueryTypes: {[key: string]: string} = sequelize.QueryTypes;
+  static readonly QueryTypes: {[key: string]: string} = sequelize.QueryTypes;
 
   /**
    * Operator.
@@ -89,7 +89,7 @@ export default class Model extends sequelize.Model {
    * 
    * @type {sequelize.Op}
    */
-  public static readonly Op: {[key: string]: any} = sequelize.Op;
+  static readonly Op: {[key: string]: any} = sequelize.Op;
 
   /**
    * Creates a object representing a database function. This can be used in search queries, both in where and
@@ -104,7 +104,7 @@ export default class Model extends sequelize.Model {
    * 
    * @type {sequelize.fn}
    */
-  public static readonly fn: (fn: string, ...args: unknown[]) => any = sequelize.fn;
+  static readonly fn: (fn: string, ...args: unknown[]) => any = sequelize.fn;
 
   /**
    * Creates a object representing a column in the DB. This is often useful in conjunction with
@@ -112,21 +112,21 @@ export default class Model extends sequelize.Model {
    * 
    * @type {sequelize.col}
    */
-  public static readonly col: (col: string) => any = sequelize.col;
+  static readonly col: (col: string) => any = sequelize.col;
 
   /**
    * Creates a object representing a literal, i.e. something that will not be escaped.
    * 
    * @type {sequelize.literal}
    */
-  public static readonly literal: (val: string) => any = sequelize.literal;
+  static readonly literal: (val: string) => any = sequelize.literal;
 
   /**
    * A way of specifying attr = condition.
    * 
    * @type {sequelize.where}
    */
-  public static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) => sequelize.Utils.Where = sequelize.where;
+  static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) => sequelize.Utils.Where = sequelize.where;
 
   /**
    * Reference to sequelize.Transaction.  
@@ -141,7 +141,7 @@ export default class Model extends sequelize.Model {
    * @see https://sequelize.org/master/class/lib/transaction.js~Transaction.html
    * @type {sequelize.Transaction}
    */
-  public static readonly Transaction: (typeof sequelize.Transaction) = sequelize.Transaction;
+  static readonly Transaction: (typeof sequelize.Transaction) = sequelize.Transaction;
 
   /**
    * Initialize the model that represents the table in the DB with attributes and options.
@@ -149,7 +149,7 @@ export default class Model extends sequelize.Model {
    *
    * @return {typeof Model} Returns this model class itself.
    */
-  public static initialize(): (typeof Model) {
+  static initialize(): (typeof Model) {
     if (process.env.EXPRESS_DEBUG)
       console.log(`Initialize ${this.table} model`);
     this.init(this.attributes, {
@@ -170,7 +170,7 @@ export default class Model extends sequelize.Model {
    * 
    * @see https://sequelize.org/master/manual/assocs.html
    */
-  public static association(): void {
+  static association(): void {
     // Define association in subclass.
   }
 
@@ -214,14 +214,14 @@ export default class Model extends sequelize.Model {
    * @param   {sequelize.TransactionOptions}    options?  Options provided when the transaction is created.
    * @return  {Promise<sequelize.Transaction>}            Returns a transaction object to identify the transaction being executed.
    */
-  public static async begin(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
+  static async begin(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
     return database.transaction(options);
   }
 
   /**
    * Returns data that matches the ID.
    */
-  public static async findById(id: number): Promise<{}|null> {
+  static async findById(id: number): Promise<{}|null> {
     return this.findOne({where: {id}, raw: true});
   }
 
@@ -245,7 +245,7 @@ export default class Model extends sequelize.Model {
    * @return  {Promise<any>}    By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
    *                            If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
    */
-  public static async query(
+  static async query(
     sql: string,
     options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE>
           | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE>

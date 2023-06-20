@@ -11,9 +11,9 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
 
     // Catch 404 and forward to error handler.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -47,13 +47,12 @@ export default class {
     });
   }
 
-
   /**
    * Returns the option.
    * 
    * @return {Config} option.
    */
-  private static loadOptions(): Config {
+  static #loadOptions(): Config {
     // Options with default values set.
     const defaultOptions: Config = {
       error_handler: (err: any): void|Promise<void> => {}

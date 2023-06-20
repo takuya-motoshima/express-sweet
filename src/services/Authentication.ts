@@ -15,7 +15,7 @@ export default class {
    * @param  {express.NextFunction} next A function that can access the next middleware function in the application's request-response cycle.
    * @return {Promise<boolean>}     Returns true if authentication is successful, false otherwise.
    */
-  public static authenticate(req: express.Request, res: express.Response, next: express.NextFunction): Promise<boolean> {
+  static authenticate(req: express.Request, res: express.Response, next: express.NextFunction): Promise<boolean> {
     return new Promise((resolve, reject) => {
       passport.authenticate('local', (err: any, user: any) => {
         if (err)
@@ -36,7 +36,7 @@ export default class {
    * 
    * @param {express.Request}      req  The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
    */
-  public static logout(req: express.Request): void {
+  static logout(req: express.Request): void {
     req.logout((err: any) => {});
   }
 
@@ -45,9 +45,9 @@ export default class {
    * 
    * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
    */
-  public static successRedirect(res: express.Response): void {
+  static successRedirect(res: express.Response): void {
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
     res.redirect(options.success_redirect!);
   }
 
@@ -56,9 +56,9 @@ export default class {
    * 
    * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
    */
-  public static failureRedirect(res: express.Response): void {
+  static failureRedirect(res: express.Response): void {
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
     res.redirect(options.failure_redirect!);
   }
 
@@ -67,7 +67,7 @@ export default class {
    * 
    * @return {AuthenticationOptions} option.
    */
-  private static loadOptions(): Partial<AuthenticationOptions> {
+  static #loadOptions(): Partial<AuthenticationOptions> {
     // Options with default values set.
     const defaultOptions: Partial<AuthenticationOptions> = {
       success_redirect: '/',

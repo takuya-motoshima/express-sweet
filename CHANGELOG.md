@@ -1,6 +1,44 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.29] - 2023/6/20
+### Changed
+- Changed class private variables and methods from soft private to hard private.
+  
+### Added
+- Added AWS SES email sending client class.
+    ```js
+    const sweet = require('express-sweet');
+
+    // Load environment variables.
+    sweet.middlewares.Environment.mount();
+
+    // SES Client.
+    const client = new sweet.services.AWSSesClient({
+      apiVersion: process.env.SES_API_VERSION,
+      region: process.env.SES_REGION,
+      accessKeyId: process.env.SES_ACCESS_KEY_ID,
+      secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+    });
+
+    // Send an email from "test<user1@example.com>" to "user2@example.com".
+    await client
+      .from('user1@example.com', 'Sender Name')
+      .to('user2@example.com')
+      .subject('Test email')
+      .body('Hi, this is a test email')
+      .send();
+
+    // Use variables in the body of the e-mail.
+    // The body can use the handlebars and handlebars-extd syntax.
+    await client
+      .from('user1@example.com', 'Sender Name')
+      .to('user2@example.com')
+      .subject('Test email')
+      .body('Hello {{name}}', {name: 'Mason'})
+      .send();
+    ```
+
 ## [1.0.28] - 2023/6/16
 ### Changed
 - Updated AWS SDK version from 2 to 3.  
@@ -147,7 +185,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Added an option to the face indexing method to retrieve details (gender, emotion, age group) of indexed faces.
     ```js
-    const sweet = require('../dist/build.common');
+    const sweet = require('express-sweet');
 
     // Load environment variables.
     sweet.middlewares.Environment.mount();
@@ -191,7 +229,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Added an option to get details (emotion, gender, age group) to the face detection method.
     ```js
-    const sweet = require('../dist/build.common');
+    const sweet = require('express-sweet');
 
     // Load environment variables.
     sweet.middlewares.Environment.mount();
@@ -479,3 +517,4 @@ All notable changes to this project will be documented in this file.
 [1.0.26]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.25...v1.0.26
 [1.0.27]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.26...v1.0.27
 [1.0.28]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.27...v1.0.28
+[1.0.29]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.28...v1.0.29

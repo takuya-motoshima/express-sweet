@@ -18,9 +18,9 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  static mount(app: express.Express) {
     // Load options.
-    const options: AuthenticationOptions = this.loadOptions();
+    const options: AuthenticationOptions = this.#loadOptions();
 
     // Exit if authentication is disabled.
     if (!options.enabled)
@@ -103,7 +103,7 @@ export default class {
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Check if the request URL does not require authentication.
-      if (options.allow_unauthenticated && this.isNotRequireAuthentication(req, options.allow_unauthenticated))
+      if (options.allow_unauthenticated && this.#isNotRequireAuthentication(req, options.allow_unauthenticated))
         return void next();
 
       // Asynchronous request flag.
@@ -135,7 +135,7 @@ export default class {
    * 
    * @return {AuthenticationOptions} option.
    */
-  private static loadOptions(): AuthenticationOptions {
+  static #loadOptions(): AuthenticationOptions {
     // Options with default values set.
     const defaultOptions: AuthenticationOptions = {
       enabled: false,
@@ -177,7 +177,7 @@ export default class {
    * @param {(string|RegExp)[]} allowUrls A list of URLs that do not require authentication.
    * @returns {boolean} Return true if the request URL does not require authentication.
    */
-  private static isNotRequireAuthentication(req: express.Request, allowUrls: (string|RegExp)[]): boolean {
+  static #isNotRequireAuthentication(req: express.Request, allowUrls: (string|RegExp)[]): boolean {
     const requestUrl = req.path.replace(/\/$/, '');
     if (!allowUrls.length)
       return true;

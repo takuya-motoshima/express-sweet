@@ -12,7 +12,7 @@ export default class {
    * @param  {Function} value
    * @return {boolean}
    */
-  public static isAsyncFunction(value: Function): boolean {
+  static isAsyncFunction(value: Function): boolean {
     return value && value.constructor && value.constructor === Object.getPrototypeOf(async function(){}).constructor;
   }
 
@@ -23,7 +23,7 @@ export default class {
     * @return {Boolean}
     * @api public
     */
-  public static isString(value: any): boolean {
+  static isString(value: any): boolean {
     return typeof value === 'string' && value !== '';
   }
 }

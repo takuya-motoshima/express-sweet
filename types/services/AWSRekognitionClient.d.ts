@@ -7,11 +7,7 @@ import IndexFaceDetails from '~/interfaces/IndexFaceDetails';
  * AWS Rekognition Client.
  */
 export default class {
-    /**
-     * Rekognition Client.
-     * @type {RekognitionClient}
-     */
-    private client;
+    #private;
     /**
      * Constructs a rekognition client object.
      */
@@ -119,11 +115,4 @@ export default class {
      * @return {Promise<boolean>}   True on success.
      */
     deleteCollection(collectionId: string): Promise<boolean>;
-    /**
-     * Returns a buffer of images.
-     *
-     * @param  {string|Buffer} img Image path or Data Url or image buffer.
-     * @return {Buffer}            Image buffer.
-     */
-    private image2buffer;
 }

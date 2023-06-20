@@ -5,7 +5,7 @@ export default class extends Error {
   /**
    * @type {string}
    */
-  public name: string;
+  name: string;
 
   /**
    * @param {string} message Error message.

@@ -12,9 +12,9 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
 
     // Express handlebars template engine.
     const hbs = require('express-hbs');
@@ -48,7 +48,7 @@ export default class {
    * 
    * @return {ViewOptions} option.
    */
-  private static loadOptions(): ViewOptions {
+  static #loadOptions(): ViewOptions {
     // Options with default values set.
     const defaultOptions: ViewOptions = {
       views_dir: path.join(process.cwd(), 'views'),

@@ -11,13 +11,13 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount() {
+  static mount() {
     // If you have already loaded env, do nothing.
     if (global.loadedEnv)
       return;
 
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
 
     // Exit if there is no .env path.
     if (!options.env_path)
@@ -39,7 +39,7 @@ export default class {
    * 
    * @return {Config} option.
    */
-  private static loadOptions(): Config {
+  static #loadOptions(): Config {
     // Options with default values set.
     const defaultOptions: Config = {
       env_path: undefined

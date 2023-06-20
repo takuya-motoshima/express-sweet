@@ -4,6 +4,7 @@ import DatabaseOptions from './DatabaseOptions';
 import FaceMatch from './FaceMatch';
 import BoundingBox from './BoundingBox';
 import RekognitionOptions from './RekognitionOptions';
+import SesOptions from './SesOptions';
 import ViewOptions from './ViewOptions';
 
 export {
@@ -13,5 +14,6 @@ export {
   FaceMatch,
   BoundingBox,
   RekognitionOptions,
+  SesOptions,
   ViewOptions
 }

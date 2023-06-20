@@ -14,9 +14,9 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
 
     // Set the URL to route based on the path of the file in the routes directory.
     for (let filePath of File.find(`${options.router_dir}/**/*.js`)) {
@@ -49,7 +49,7 @@ export default class {
    * 
    * @return {Config} option.
    */
-  private static loadOptions(): Config {
+  static #loadOptions(): Config {
     // Options with default values set.
     const defaultOptions: Config = {
       router_dir: path.join(process.cwd(), 'routes'),

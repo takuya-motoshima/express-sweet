@@ -1,32 +1,7 @@
 import fs from 'fs';
 import {Agent} from 'https';
 // import {Agent as HttpAgnet} from 'http';
-import {
-  RekognitionClient,
-  DetectFacesCommand,
-  DetectFacesResponse,
-  Emotion,
-  CompareFacesCommand,
-  CompareFacesResponse,
-  CreateCollectionCommand,
-  CreateCollectionResponse,
-  ListCollectionsCommand,
-  ListCollectionsResponse,
-  IndexFacesCommand,
-  IndexFacesResponse,
-  FaceRecord,
-  // EmotionName,
-  FaceDetail,
-  SearchFacesByImageCommand,
-  SearchFacesByImageResponse,
-  Face,
-  ListFacesCommand,
-  ListFacesResponse,
-  DeleteFacesCommand,
-  // DeleteFacesResponse,
-  DeleteCollectionCommand,
-  DeleteCollectionResponse,
-} from '@aws-sdk/client-rekognition';
+import * as AWS from '@aws-sdk/client-rekognition';
 import {NodeHttpHandler} from '@aws-sdk/node-http-handler';
 import {File} from 'nodejs-shared';
 import RekognitionOptions from '~/interfaces/RekognitionOptions';
@@ -47,9 +22,9 @@ import CollectionDeletionError from '~/exceptions/CollectionDeletionError';
 export default class {
   /**
    * Rekognition Client.
-   * @type {RekognitionClient}
+   * @type {AWS.RekognitionClient}
    */
-  private client: RekognitionClient;
+  #client: AWS.RekognitionClient;
 
   /**
    * Constructs a rekognition client object.
@@ -61,7 +36,7 @@ export default class {
     }, options);
 
     // Generate AWS Rekognition Client.
-    this.client = new RekognitionClient({
+    this.#client = new AWS.RekognitionClient({
       ...options,
       requestHandler: new NodeHttpHandler({
         httpsAgent: new Agent({
@@ -85,13 +60,13 @@ export default class {
    * @param  {boolean}                withDetails   If false, returns only the face bounding box.When true, returns the age group, gender, and emotion in addition to the face bounding box.
    * @return {Promise<BoundingBox[]|FaceDetails[]>}
    */
-  public async detectFaces(img: string, minConfidence: number = 90, withDetails: boolean = false): Promise<BoundingBox[]|FaceDetails[]> {
+  async detectFaces(img: string, minConfidence: number = 90, withDetails: boolean = false): Promise<BoundingBox[]|FaceDetails[]> {
     // Face detection result.
     const results: FaceDetails[]|BoundingBox[] = [];
     try {
       // Send request.
-      const res: DetectFacesResponse = await this.client.send(new DetectFacesCommand({
-        Image: {Bytes: this.image2buffer(img)},
+      const res: AWS.DetectFacesResponse = await this.#client.send(new AWS.DetectFacesCommand({
+        Image: {Bytes: this.#image2buffer(img)},
         Attributes: [withDetails ? 'ALL' : 'DEFAULT']
       }));
 
@@ -134,7 +109,7 @@ export default class {
             (detail.Gender.Value === 'Male' ? 'male' : 'female') :
             undefined,
           emotions: detail.Emotions ?
-            detail.Emotions.reduce((acc: any, current: Emotion) => {
+            detail.Emotions.reduce((acc: any, current: AWS.Emotion) => {
               acc[current.Type!.toLowerCase()] = current.Confidence as number;
               return acc;
             }, {}) as FaceDetailsEmotions :
@@ -156,14 +131,14 @@ export default class {
    * @param  {string}          img2 Image path or Data Url or image buffer.
    * @return {Promise<number>}      Level of confidence that the faces match.
    */
-  public async compareFaces(img1: string, img2: string): Promise<number> {
+  async compareFaces(img1: string, img2: string): Promise<number> {
     // Send request.
-    const res: CompareFacesResponse = await this.client.send(new CompareFacesCommand({
+    const res: AWS.CompareFacesResponse = await this.#client.send(new AWS.CompareFacesCommand({
       SourceImage: {
-        Bytes: this.image2buffer(img1)
+        Bytes: this.#image2buffer(img1)
       },
       TargetImage: {
-        Bytes: this.image2buffer(img2)
+        Bytes: this.#image2buffer(img2)
       },
       SimilarityThreshold: 0
     }));
@@ -188,9 +163,9 @@ export default class {
    * @param {string} collectionId ID for the collection that you are creating.
    *                              The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-]+".
    */
-  public async createCollection(collectionId: string): Promise<void> {
+  async createCollection(collectionId: string): Promise<void> {
     // Send request.
-    const res: CreateCollectionResponse = await this.client.send(new CreateCollectionCommand({
+    const res: AWS.CreateCollectionResponse = await this.#client.send(new AWS.CreateCollectionCommand({
       CollectionId: collectionId
     }));
 
@@ -204,9 +179,9 @@ export default class {
    *
    * @return {Promise<string[]>} An array of collection IDs.
    */
-  public async listCollections(): Promise<string[]> {
+  async listCollections(): Promise<string[]> {
     // Send request.
-    const res: ListCollectionsResponse = await this.client.send(new ListCollectionsCommand({}));
+    const res: AWS.ListCollectionsResponse = await this.#client.send(new AWS.ListCollectionsCommand({}));
 
     // If the collection ID is not found, an empty array is returned.
     if (!res.CollectionIds || !res.CollectionIds.length)
@@ -233,7 +208,7 @@ export default class {
    * @return {Promise<string|IndexFaceDetails>}         If options.returnDetails is false, the face identifier is returned.
    *                                                    If options.returnDetails is true, returns the gender, age group, and emotion in addition to the face identifier.
    */
-  public async indexFace(collectionId: string, img: string, options?: {externalImageId? : string, returnDetails?: boolean}): Promise<string|IndexFaceDetails> {
+  async indexFace(collectionId: string, img: string, options?: {externalImageId? : string, returnDetails?: boolean}): Promise<string|IndexFaceDetails> {
     // Initialize options.
     options = Object.assign({
       externalImageId: undefined,
@@ -250,10 +225,10 @@ export default class {
       throw new MultipleFacesInImageError();
 
     // Send request.
-    const res: IndexFacesResponse = await this.client.send(new IndexFacesCommand({
+    const res: AWS.IndexFacesResponse = await this.#client.send(new AWS.IndexFacesCommand({
       CollectionId: collectionId,
       Image: {
-        Bytes: this.image2buffer(img)
+        Bytes: this.#image2buffer(img)
       },
       DetectionAttributes: ['ALL'],
       ExternalImageId: options!.externalImageId,
@@ -266,10 +241,10 @@ export default class {
       throw new FaceIndexError(`Error in indexing face to collection ID ${collectionId}`);
 
     // Records of faces created in the collection.
-    const faceRecord = res.FaceRecords[0] as FaceRecord;
+    const faceRecord = res.FaceRecords[0] as AWS.FaceRecord;
 
     // Detail of detected faces.
-    const detail = faceRecord.FaceDetail as FaceDetail;
+    const detail = faceRecord.FaceDetail as AWS.FaceDetail;
 
     // Return information about the face you created.
     if (!options.returnDetails)
@@ -288,7 +263,7 @@ export default class {
           (detail.Gender.Value === 'Male' ? 'male' : 'female') :
           undefined,
         emotions: detail.Emotions ?
-          detail.Emotions.reduce((acc: any, current: Emotion) => {
+          detail.Emotions.reduce((acc: any, current: AWS.Emotion) => {
             acc[current.Type!.toLowerCase()] = current.Confidence as number;
             return acc;
           }, {}) as FaceDetailsEmotions : 
@@ -313,7 +288,7 @@ export default class {
    *                                                                     If options.maxFaces is 2 or more, the list of face information found is returned.
    *                                                                     Returns null if no face is found.
    */
-  public async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
+  async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
     // Initialize options.
     options = Object.assign({
       minConfidence: 80,
@@ -321,9 +296,9 @@ export default class {
     }, options);
 
     // Send request.
-    const res: SearchFacesByImageResponse = await this.client.send(new SearchFacesByImageCommand({
+    const res: AWS.SearchFacesByImageResponse = await this.#client.send(new AWS.SearchFacesByImageCommand({
       CollectionId: collectionId,
-      Image: {Bytes: this.image2buffer(img)},
+      Image: {Bytes: this.#image2buffer(img)},
       FaceMatchThreshold: options!.minConfidence,
       MaxFaces: options!.maxFaces!,
       QualityFilter: 'AUTO'
@@ -336,7 +311,7 @@ export default class {
     // Put the search results of the faces of the collection in the array.
     const results: FaceMatch[] = [];
     for (let match of res.FaceMatches) {
-      const face = match.Face as Face;
+      const face = match.Face as AWS.Face;
       const result = {
         faceId: face.FaceId,
         boundingBox: {
@@ -365,9 +340,9 @@ export default class {
    *                                             The default value is 1000.
    * @return {Promise<FaceMatch[]>}              Returns all face metadata in the collection.
    */
-  public async listFaces(collectionId: string, maxResults: number = 1000): Promise<FaceMatch[]> {
+  async listFaces(collectionId: string, maxResults: number = 1000): Promise<FaceMatch[]> {
     // Send request.
-    const res: ListFacesResponse = await this.client.send(new ListFacesCommand({
+    const res: AWS.ListFacesResponse = await this.#client.send(new AWS.ListFacesCommand({
       CollectionId: collectionId,
       MaxResults: maxResults
     }));
@@ -405,9 +380,9 @@ export default class {
    * @param {string[]} faceIds      An array of face IDs to delete.
    * @return {Promise<boolean>}     True on success.
    */
-  public async deleteFaces(collectionId: string, faceIds: string[]): Promise<boolean> {
+  async deleteFaces(collectionId: string, faceIds: string[]): Promise<boolean> {
     // Send request.
-    await this.client.send(new DeleteFacesCommand({
+    await this.#client.send(new AWS.DeleteFacesCommand({
       CollectionId: collectionId,
       FaceIds: faceIds
     }));
@@ -421,9 +396,9 @@ export default class {
    * @param {string} collectionId ID of the collection to delete.
    * @return {Promise<boolean>}   True on success.
    */
-  public async deleteCollection(collectionId: string): Promise<boolean> {
+  async deleteCollection(collectionId: string): Promise<boolean> {
     // Send request.
-    const res: DeleteCollectionResponse = await this.client.send(new DeleteCollectionCommand({CollectionId: collectionId}));
+    const res: AWS.DeleteCollectionResponse = await this.#client.send(new AWS.DeleteCollectionCommand({CollectionId: collectionId}));
 
     // Returns an error if the HTTP status code is other than 200.
     if (res.StatusCode !== 200)
@@ -437,7 +412,7 @@ export default class {
    * @param  {string|Buffer} img Image path or Data Url or image buffer.
    * @return {Buffer}            Image buffer.
    */
-  private image2buffer(img: string|Buffer): Buffer {
+  #image2buffer(img: string|Buffer): Buffer {
     if (typeof img === 'string' && /^data:image\//.test(img))
       // Convert Data URL to image buffer.
       return Buffer.from(img.replace(/^data:image\/[A-Za-z]+;base64,/, ''), 'base64');

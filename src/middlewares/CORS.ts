@@ -9,9 +9,9 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
 
     // Exit if CORS is disabled.
     if (!options.cors_enabled)
@@ -32,7 +32,7 @@ export default class {
    * 
    * @return {Config} option.
    */
-  private static loadOptions(): Config {
+  static #loadOptions(): Config {
     // Options with default values set.
     const defaultOptions: Config = {
       cors_enabled: false

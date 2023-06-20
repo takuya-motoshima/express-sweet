@@ -15,9 +15,9 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount(app: express.Express) {
+  static mount(app: express.Express) {
     // Load options.
-    const options = this.loadOptions();
+    const options = this.#loadOptions();
 
     // Log HTTP request.
     const morgan = require('morgan')
@@ -47,7 +47,7 @@ export default class {
    * 
    * @return {Config} option.
    */
-  private static loadOptions(): Config {
+  static #loadOptions(): Config {
     // Options with default values set.
     const defaultOptions: Config = {
        max_body_size: '100kb'

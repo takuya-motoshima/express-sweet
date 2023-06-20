@@ -32,7 +32,7 @@ export default new class Database extends sequelize.Sequelize {
    *
    * @return {Promise<boolean>} Returns true if it can connect to the database, false if it cannot.
    */
-  public async isConnect(): Promise<boolean> {
+  async isConnect(): Promise<boolean> {
     try {
       await this.authenticate();
       return true;
@@ -46,7 +46,7 @@ export default new class Database extends sequelize.Sequelize {
    * 
    * @return {sequelize.Options} option.
    */
-  public static loadOptions(): sequelize.Options {
+  static loadOptions(): sequelize.Options {
     // Options with default values set.
     const defaultOptions: sequelize.Options = {
       database: 'unkown',

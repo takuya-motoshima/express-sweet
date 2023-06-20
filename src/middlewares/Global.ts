@@ -11,7 +11,7 @@ export default class {
   /**
    * Mount on application.
    */
-  public static mount() {
+  static mount() {
     // Application root directory.
     global.APP_DIR = process.cwd();
     if (process.env.EXPRESS_DEBUG)
