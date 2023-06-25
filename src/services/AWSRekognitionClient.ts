@@ -37,7 +37,11 @@ export default class {
 
     // Generate AWS Rekognition Client.
     this.#client = new AWS.RekognitionClient({
-      ...options,
+      region: options.region,
+      credentials: {
+        accessKeyId: options.accessKeyId,
+        secretAccessKey: options.secretAccessKey,
+      },
       requestHandler: new NodeHttpHandler({
         httpsAgent: new Agent({
           /*params*/

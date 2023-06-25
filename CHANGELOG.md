@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.30] - 2023/6/26
+### Changed
+- Fixed AWS Rekognition credentials passing.
+
 ## [1.0.29] - 2023/6/20
 ### Changed
 - Changed class private variables and methods from soft private to hard private.
@@ -518,3 +522,4 @@ All notable changes to this project will be documented in this file.
 [1.0.27]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.26...v1.0.27
 [1.0.28]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.27...v1.0.28
 [1.0.29]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.28...v1.0.29
+[1.0.30]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.29...v1.0.30
