@@ -14,10 +14,10 @@ export declare function replace(value: string, find: string, replace: string): s
  * Split `string` by the given `character`.
  *
  * @example
- * <!-- Basic usage. -->
+ * {{!-- Basic usage. --}}
  * {{split "a,b,c" ","}} => ['a', 'b', 'c']
  *
- * <!-- Use with EACH. -->
+ * {{!-- Use with EACH. --}}
  * {{#each (split list ',')}}
  *   {{this}}<br>
  * {{/each}}
@@ -34,13 +34,13 @@ export declare function split(value: string, separator: string): string[];
  * Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).
  *
  * @example
- * {{format_bytes 1024}} => 1 KB
- * {{format_bytes 1234 2}} => 1.21 KB
- * {{format_bytes 1234 3}} => 1.205 KB
- * {{format_bytes 0}} => 0 Bytes
+ * {{formatBytes 1024}} => 1 KB
+ * {{formatBytes 1234 2}} => 1.21 KB
+ * {{formatBytes 1234 3}} => 1.205 KB
+ * {{formatBytes 0}} => 0 Bytes
  *
  * @param   {number}  bytes     Bytes.
  * @param   {number}  decimals  Number of decimal places to display. Default is 0.
  * @returns {string}            Returns a value with units.
  */
-export declare function format_bytes(bytes: number, decimals?: number): string;
+export declare function formatBytes(bytes: number, decimals?: number): string;

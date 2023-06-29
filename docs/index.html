@@ -81,7 +81,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.29</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.31</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -465,6 +465,18 @@
                           <span class="bullet bullet-dot"></span>
                         </span>
                         <span class="menu-title">Date Helper</span>
+                      </a>
+                      <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                      <!--begin:Menu link-->
+                      <a class="menu-link" href="#view-number-helper">
+                        <span class="menu-bullet">
+                          <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">Number Helper</span>
                       </a>
                       <!--end:Menu link-->
                     </div>
@@ -2402,7 +2414,7 @@ Else
 {{ifx (eq val 1) 5 6}} =&gt; 6
 {{ifx (not (eq val 1)) 5 6}} =&gt; 6
 
-&lt;!-- The third parameter is optional, and by default it will be blank string (&#039;&#039;) --&gt;
+{{!-- The third parameter is optional, and by default it will be blank string (&#039;&#039;) --}}
 {{ifx true &#039;active&#039;}} =&gt; &#039;active&#039;
 {{ifx false &#039;active&#039;}} =&gt; &#039;&#039;</code></pre>
                                       </div>
@@ -2461,7 +2473,7 @@ let val = &#039; &#039;;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>not_empty()</code></td>
+                                <td class="w-250px"><code>notEmpty()</code></td>
                                 <td>
                                   Check that it is not empty.<br>
                                   If the value is an array, returns true if there is an element.<br>
@@ -2488,19 +2500,19 @@ let val = &#039; &#039;;
                                       <div class="highlight-code">
                                         <pre class="language-javascript"><code class="language-javascript">{{!-- If the value is an array. --}}
 let val = [5, 6];
-{{not_empty val}} =&gt; true
+{{notEmpty val}} =&gt; true
 
-{{#if (not_empty val)}}Hello World{{/if}}
+{{#if (notEmpty val)}}Hello World{{/if}}
 
 {{!-- If the value is a string. --}}
 let val = &#039;Hello World&#039;;
-{{not_empty val}} =&gt; true
+{{notEmpty val}} =&gt; true
 
 let val = &#039;&#039;;
-{{not_empty val}} =&gt; false
+{{notEmpty val}} =&gt; false
 
 let val = &#039; &#039;;
-{{not_empty val}} =&gt; false</code></pre>
+{{notEmpty val}} =&gt; false</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->
@@ -2699,7 +2711,7 @@ let val = &#039;2&#039;
 {{includes items val false}} =&gt; true
 
 {{#if (includes items val)}}
-    &lt;!-- Do something --&gt;
+    {{!-- Do something --}}
 {{/if}}
 
 {{ifx (includes items val) &#039;Yes&#039; &#039;No&#039;}}</code></pre>
@@ -2738,7 +2750,7 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="w-250px"><code>cache_busting()</code></td>
+                                <td class="w-250px"><code>cacheBusting()</code></td>
                                 <td>
                                   Returns the Assets path containing the file update time parameter.
                                   <!--begin::Parameters-->
@@ -2746,7 +2758,7 @@ let val = &#039;2&#039;
                                     <p>Parameters:</p> 
                                     <ul>
                                       <li><code>filePath: string</code> Paths of Assets files such as CSS and JS in public directories.</li>
-                                      <li><code>baseUrl: string</code> Application Origin URL.</li>
+                                      <li><code>baseUrl: string</code> Application Origin URL. The default is none (<code>undefined</code>).</li>
                                     </ul>
                                   </div>
                                   <!--end::Parameters-->
@@ -2763,7 +2775,7 @@ let val = &#039;2&#039;
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
                                         <pre class="language-javascript"><code class="language-javascript">{{!-- https://example.com/assets/style.css?1620526340463 --}}
-{{cache_busting &#039;/assets/style.css&#039; &#039;https://example.com&#039;}}</code></pre>
+{{cacheBusting &#039;/assets/style.css&#039; &#039;https://example.com&#039;}}</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->
@@ -2799,7 +2811,7 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="w-250px"><code>json_stringify()</code></td>
+                                <td class="w-250px"><code>jsonStringify()</code></td>
                                 <td>
                                   Stringify an object using JSON.stringify.
                                   <!--begin::Parameters-->
@@ -2823,7 +2835,7 @@ let val = &#039;2&#039;
                                     <div class="highlight">
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">{{json_stringify val}}</code></pre>
+                                        <pre class="language-javascript"><code class="language-javascript">{{jsonStringify val}}</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->
@@ -2832,7 +2844,7 @@ let val = &#039;2&#039;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>json_parse()</code></td>
+                                <td class="w-250px"><code>jsonParse()</code></td>
                                 <td>
                                   Parses the given string using JSON.parse.
                                   <!--begin::Parameters-->
@@ -2855,7 +2867,7 @@ let val = &#039;2&#039;
                                     <div class="highlight">
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">{{json_parse val}}</code></pre>
+                                        <pre class="language-javascript"><code class="language-javascript">{{jsonParse val}}</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->
@@ -2948,10 +2960,10 @@ let val = &#039;2&#039;
                                     <div class="highlight">
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">&lt;!-- Basic usage. --&gt;
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- Basic usage. --}}
 {{split &quot;a,b,c&quot; &quot;,&quot;}} =&gt; [&#039;a&#039;, &#039;b&#039;, &#039;c&#039;]
 
-&lt;!-- Use with EACH. --&gt;
+{{!-- Use with EACH. --}}
 {{#each (split list &#039;,&#039;)}}
   {{this}}&lt;br&gt;
 {{/each}}
@@ -2966,7 +2978,7 @@ let val = &#039;2&#039;
                                 </td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>format_bytes()</code></td>
+                                <td class="w-250px"><code>formatBytes()</code></td>
                                 <td>
                                   Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).
                                   <!--begin::Parameters-->
@@ -2990,10 +3002,10 @@ let val = &#039;2&#039;
                                     <div class="highlight">
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">{{format_bytes 1024}} =&gt; 1 KB
-{{format_bytes 1234 2}} =&gt; 1.21 KB
-{{format_bytes 1234 3}} =&gt; 1.205 KB
-{{format_bytes 0}} =&gt; 0 Bytes</code></pre>
+                                        <pre class="language-javascript"><code class="language-javascript">{{formatBytes 1024}} =&gt; 1 KB
+{{formatBytes 1234 2}} =&gt; 1.21 KB
+{{formatBytes 1234 3}} =&gt; 1.205 KB
+{{formatBytes 0}} =&gt; 0 Bytes</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->
@@ -3029,7 +3041,7 @@ let val = &#039;2&#039;
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="w-250px"><code>format_date()</code></td>
+                                <td class="w-250px"><code>formatDate()</code></td>
                                 <td>
                                   Use moment to format the date.
                                   <!--begin::Parameters-->
@@ -3054,9 +3066,76 @@ let val = &#039;2&#039;
                                     <div class="highlight">
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">{{format_date &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot;}} =&gt; 2021/10/24
-{{format_date &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot; &#039;jp&#039;}} =&gt; 2021/10/24
-{{format_date &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot; &#039;es&#039;}} =&gt; 2021/10/24</code></pre>
+                                        <pre class="language-javascript"><code class="language-javascript">{{formatDate &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot;}} =&gt; 2021/10/24
+{{formatDate &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot; &#039;jp&#039;}} =&gt; 2021/10/24
+{{formatDate &#039;YYYY/MM/DD&#039; &quot;2021-10-24T02:13:06.610Z&quot; &#039;es&#039;}} =&gt; 2021/10/24</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                            </tbody>
+                            <!--end::Body-->
+                          </table>
+                          <!--end::Table-->
+                        </div>
+                        <!--end::Table wrapper-->
+                      </div>
+                      <!--end::Table-->
+                      <!--begin::Block-->
+                      <h2 id="view-number-helper" class="text-gray-700 py-5 fw-normal">Number Helper</h2>
+                      <!--end::Block-->
+                      <!--begin::Table-->
+                      <div class="py-2">
+                        <!--begin::Table wrapper-->
+                        <div class="table-responsive border rounded">
+                          <!--begin::Table-->
+                          <table class="table table-striped mb-0 g-6">
+                            <!--begin::Head-->
+                            <thead>
+                              <tr class="fs-4 fw-bold p-6">
+                                <th class="min-w-200px">Function</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <!--end::Head-->
+                            <!--begin::Body-->
+                            <tbody>
+                              <tr>
+                                <td class="w-250px"><code>number2locale()</code></td>
+                                <td>
+                                  Returns the language-sensitive representation of a number as a string.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: number|string</code> Target number or numeric string.</li>
+                                      <li><code>locales: string|undefined</code> 
+                                        A string with a BCP 47 language tag, or an array of such strings.<br>
+                                        Corresponds to the <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#locales" target="_blank">locales</a> parameter of the Intl.NumberFormat() constructor.<br>
+                                        In implementations without Intl.NumberFormat support, this parameter is ignored and the host's locale is usually used.
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>string</code> A string with a language-sensitive representation of the given number.
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{number2locale 123456.789}} =&gt; 123,456.789
+
+{{!-- German uses comma as decimal separator and period for thousands. --}}
+{{number2locale 123456.789 &#039;de-DE&#039;}} =&gt; 123.456,789</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->

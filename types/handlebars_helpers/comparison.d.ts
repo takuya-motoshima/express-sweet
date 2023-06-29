@@ -142,7 +142,7 @@ export declare function not(expression: any): boolean;
  * {{ifx (eq value 1) 5 6}} => 6    // return (value === 1) ? 5 : 6
  * {{ifx (not (eq value 1)) 5 6}} => 6    // return (value !== 1) ? 5 : 6
  *
- * <!-- The third parameter is optional, and by default it will be blank string ('') -->
+ * {{!-- The third parameter is optional, and by default it will be blank string ('') --}}
  * {{ifx true 'active'}} => 'active'
  * {{ifx false 'active'}} => ''
  *
@@ -188,26 +188,26 @@ export declare function empty(value: any): boolean;
  * @example
  * // If the value is an array.
  * let value = [5, 6];
- * {{not_empty value}} => true
+ * {{notEmpty value}} => true
  *
- * {{#if (not_empty value)}}
+ * {{#if (notEmpty value)}}
  *   Hello
  * {{/if}}
  *
  * // If the value is a string.
  * let value = 'Hello';
- * {{not_empty value}} => true
+ * {{notEmpty value}} => true
  *
  * let value = '';
- * {{not_empty value}} => false
+ * {{notEmpty value}} => false
  *
  * let value = ' ';
- * {{not_empty value}} => false
+ * {{notEmpty value}} => false
  *
  * @param   {any}     value Character strings, arrays, objects, etc. to be checked.
  * @returns {boolean}       Returns true if the value is not empty, false otherwise.
  */
-export declare function not_empty(value: any): boolean;
+export declare function notEmpty(value: any): boolean;
 /**
  * Determine the length of an array.
  *
@@ -289,7 +289,7 @@ export declare function coalesce(...params: any[]): any;
  * {{includes items value false}} => true
  *
  * {{#if (includes items value)}}
- *    <!-- Do something -->
+ *    {{!-- Do something --}}
  * {{/if}}
  *
  * {{ifx (includes items value) 'Yes' 'No'}}

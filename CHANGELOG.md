@@ -1,6 +1,27 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.31] - 2023/6/29
+### Changed
+- Changed helper function names in the view (Handlebars) from SnakeCase to CamelCase.
+    |After|Before|Description|
+    |--|--|--|
+    |notEmpty|not_empty|Check that it is not empty.|
+    |formatDate|format_date|Use moment to format the date.|
+    |cacheBusting|cache_busting|Returns the Assets path containing the file update time parameter.|
+    |jsonStringify|json_stringify|Stringify an object using JSON.stringify.|
+    |jsonParse|json_parse|Parses the given string using JSON.parse.|
+    |formatBytes|format_bytes|Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).|
+
+### Added
+- Added view helper to convert numeric values to strings with language-sensitive representations.
+    ```html
+    {{number2locale 123456.789}} => 123,456.789
+
+    {{!-- German uses comma as decimal separator and period for thousands. --}}
+    {{number2locale 123456.789 'de-DE'}} => 123.456,789
+    ```
+
 ## [1.0.30] - 2023/6/26
 ### Changed
 - Fixed AWS Rekognition credentials passing.
@@ -100,12 +121,12 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.25] - 2022/11/24
 ### Added
-- Added format_bytes view helper to convert bytes to appropriate units.
+- Added formatBytes view helper to convert bytes to appropriate units.
     ```html
-    {{format_bytes 1024}} => 1 KB
-    {{format_bytes 1234 2}} => 1.21 KB
-    {{format_bytes 1234 3}} => 1.205 KB
-    {{format_bytes 0}} => 0 Bytes
+    {{formatBytes 1024}} => 1 KB
+    {{formatBytes 1234 2}} => 1.21 KB
+    {{formatBytes 1234 3}} => 1.205 KB
+    {{formatBytes 0}} => 0 Bytes
     ```
 
 ## [1.0.24] - 2022/10/24
@@ -292,9 +313,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Add date format helper to view.
     ```html
-    {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
-    {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}} => 2021/10/24
-    {{format_date 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
+    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
+    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}} => 2021/10/24
+    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
     ```
 
 ## [1.0.18] - 2022/5/18
@@ -356,25 +377,25 @@ All notable changes to this project will be documented in this file.
     {{empty value}} => true
     ```
 
-- Added not_empty view helper.
+- Added notEmpty view helper.
     ```html
     // If the value is an array.
     let value = [5, 6];
-    {{not_empty value}} => true
+    {{notEmpty value}} => true
 
-    {{#if (not_empty value)}}
+    {{#if (notEmpty value)}}
       Hello
     {{/if}}
 
     // If the value is a string.
     let value = 'Hello';
-    {{not_empty value}} => true
+    {{notEmpty value}} => true
 
     let value = '';
-    {{not_empty value}} => false
+    {{notEmpty value}} => false
 
     let value = ' ';
-    {{not_empty value}} => false
+    {{notEmpty value}} => false
     ```
 
 ## [1.0.13] - 2021/12/13
@@ -523,3 +544,4 @@ All notable changes to this project will be documented in this file.
 [1.0.28]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.27...v1.0.28
 [1.0.29]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.28...v1.0.29
 [1.0.30]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.29...v1.0.30
+[1.0.31]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.30...v1.0.31
