@@ -3,7 +3,6 @@ import Authentication from './Authentication';
 // import RedisClient from './RedisClient';
 import AWSSesClient from './AWSSesClient';
 
-
 export {
   AWSRekognitionClient,
   Authentication,

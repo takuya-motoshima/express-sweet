@@ -25,11 +25,11 @@ export default function(app: express.Express): void {
   // Model initialization and association.
   loadModels();
 
-  // Enable Handlebars template engine.
-  View.mount(app);
-
   // Defines all the requisites in HTTP.
   Http.mount(app);
+
+  // Enable Handlebars template engine.
+  View.mount(app);
 
   // Enables the CORS.
   CORS.mount(app);

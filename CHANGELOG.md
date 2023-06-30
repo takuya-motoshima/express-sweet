@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.32] - 2023/7/1
+### Fixed
+- Fixed a bug that cookies (req.cookies) cannot be referenced in the hook function before view rendering (config/view.js#beforeRender).
+
 ## [1.0.31] - 2023/6/29
 ### Changed
 - Changed helper function names in the view (Handlebars) from SnakeCase to CamelCase.
@@ -545,3 +549,4 @@ All notable changes to this project will be documented in this file.
 [1.0.29]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.28...v1.0.29
 [1.0.30]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.29...v1.0.30
 [1.0.31]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.30...v1.0.31
+[1.0.32]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.31...v1.0.32

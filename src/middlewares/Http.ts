@@ -34,7 +34,7 @@ export default class {
     const upload = multer({limits: {fieldSize: Infinity}});
     app.use(upload.array('files'));
 
-    // // For parsing Cookie.
+    // For parsing Cookie.
     app.use(cookieParser());
 
     // Static file path.
