@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.34] - 2023/7/1
+- Changed the response status code from 403 to 401 when asynchronous communication requiring authentication fails to authenticate.
+
 ## [1.0.33] - 2023/7/1
 - Added regular expression comparison view helper.
     ```html
@@ -585,3 +588,4 @@ All notable changes to this project will be documented in this file.
 [1.0.31]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.30...v1.0.31
 [1.0.32]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.31...v1.0.32
 [1.0.33]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.32...v1.0.33
+[1.0.34]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.33...v1.0.34
