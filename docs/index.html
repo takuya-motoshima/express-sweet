@@ -3835,7 +3835,7 @@ const books = await BookModel.findAll({
   attributes: [[BookModel.fn('upper', BookModel.col('title')), 'title']],
   raw: true
 });
-// Output: books= [
+// results in: books= [
 //           {title: 'MOBY DICK'},
 //           {title: 'GET RICH REALLY FAST'},
 //           {title: 'FINDING INNER PEACE'}
@@ -3852,7 +3852,7 @@ const books = await BookModel.findAll({
   attributes: [[BookModel.fn(&#39;upper&#39;, BookModel.col(&#39;title&#39;)), &#39;title&#39;]],
   raw: true
 });
-// Output: books= [
+// results in: books= [
 //           {title: &#39;MOBY DICK&#39;},
 //           {title: &#39;GET RICH REALLY FAST&#39;},
 //           {title: &#39;FINDING INNER PEACE&#39;}
@@ -3912,7 +3912,7 @@ const books = await BookModel.findAll({
   ],
   raw: true
 });
-// Output: books= [
+// results in: books= [
 //           {id: 1, title: &#39;Beautiful&#39;, count: 2},
 //           {id: 2, title: &#39;Lose Yourself&#39;, count: 1}
 //         ]
@@ -3937,7 +3937,7 @@ const books = await BookModel.findAll({
   ],
   raw: true
 });
-// Output: books= [
+// results in: books= [
 //           {id: 1, title: &#39;Beautiful&#39;, count: 2},
 //           {id: 2, title: &#39;Lose Yourself&#39;, count: 1}
 //         ]
@@ -3988,7 +3988,7 @@ const books = await BookModel.findAll({
   ),
   raw: true
 });
-// Output: books= [{title: &#39;Beautiful&#39;}]
+// results in: books= [{title: &#39;Beautiful&#39;}]
 console.log(&#39;books=&#39;, books);</code></pre>
                                           </div>
                                         </div>
@@ -4005,7 +4005,7 @@ const books = await BookModel.findAll({
   ),
   raw: true
 });
-// Output: books= [{title: &#39;Beautiful&#39;}]
+// results in: books= [{title: &#39;Beautiful&#39;}]
 console.log(&#39;books=&#39;, books);</code></pre>
                                           </div>
                                         </div>
@@ -4198,7 +4198,7 @@ try {
   await transaction.commit();
 
   // Check the update result.
-  // Output: New title of book: Beautiful
+  // results in: New title of book: Beautiful
   await book.reload();
   console.log(`New title of book: ${book.title}`);
 } catch {
@@ -4235,7 +4235,7 @@ try {
   await transaction.commit();
 
   // Check the update result.
-  // Output: New title of book: Beautiful
+  // results in: New title of book: Beautiful
   await book.reload();
   console.log(`New title of book: ${book.title}`);
 } catch {
@@ -4842,7 +4842,7 @@ module.exports = class extends Model {
 //   `user` AS `user`
 //   LEFT OUTER JOIN `profile` AS `profile` ON `user`.`id` = `profile`.`userId`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "id": 1,
 //             "name": "Robin",
@@ -4878,7 +4878,7 @@ await UserModel.findAll({
 //   `user` AS `user`
 //   LEFT OUTER JOIN `profile` AS `profile` ON `user`.`id` = `profile`.`userId`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "id": 1,
 //             "name": "Robin",
@@ -5020,7 +5020,7 @@ module.exports = class extends Model {
 //   `profile` AS `profile`
 //   INNER JOIN `user` AS `user` ON `profile`.`userId` = `user`.`id`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "userId": 1,
 //             "address": "777 Brockton Avenue, Abington MA 2351",
@@ -5056,7 +5056,7 @@ await ProfileModel.findAll({
 //   `profile` AS `profile`
 //   INNER JOIN `user` AS `user` ON `profile`.`userId` = `user`.`id`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "userId": 1,
 //             "address": "777 Brockton Avenue, Abington MA 2351",
@@ -5197,7 +5197,7 @@ module.exports = class extends Model {
 //   `user` AS `user`
 //   LEFT OUTER JOIN `comment` AS `comments` ON `user`.`id` = `comments`.`userId`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "id": 1,
 //             "name": "Robin",
@@ -5236,7 +5236,7 @@ await UserModel.findAll({
 //   `user` AS `user`
 //   LEFT OUTER JOIN `comment` AS `comments` ON `user`.`id` = `comments`.`userId`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "id": 1,
 //             "name": "Robin",
@@ -5382,7 +5382,7 @@ module.exports = class extends Model {
 //   `user` AS `user`
 //   LEFT OUTER JOIN `book` AS `books` ON `user`.`id` = `books`.`userId`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "id": 1,
 //             "name": "Robin",
@@ -5421,7 +5421,7 @@ await UserModel.findAll({
 //    `user` AS `user`
 //    LEFT OUTER JOIN `book` AS `books` ON `user`.`id` = `books`.`userId`;
 // 
-// Output: [
+// results in: [
 //           {
 //             "id": 1,
 //             "name": "Robin",
@@ -6242,7 +6242,7 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Detects bounding boxes on faces.
-// Output:  [
+// results in:  [
 //            {
 //              width: 0.3099822998046875,
 //              height: 0.661512017250061,
@@ -6254,7 +6254,7 @@ let res = await client.detectFaces(&#039;img/face2.jpg&#039;);
 console.log(res);
 
 // Detect facial details.
-// Output:  [
+// results in:  [
 //            {
 //              boundingBox: {
 //                width: 0.3099822998046875,
@@ -6304,7 +6304,7 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Detects bounding boxes on faces.
-// Output:  [
+// results in:  [
 //            {
 //              width: 0.3099822998046875,
 //              height: 0.661512017250061,
@@ -6316,7 +6316,7 @@ let res = await client.detectFaces(&#039;img/face2.jpg&#039;);
 console.log(res);
 
 // Detect facial details.
-// Output:  [
+// results in:  [
 //            {
 //              boundingBox: {
 //                width: 0.3099822998046875,
@@ -6581,7 +6581,7 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Find the collection IDs.
-// Output: [
+// results in: [
 //           &#039;MyCollection&#039;,
 //           &#039;AnotherCollection&#039;
 //         ]
@@ -6603,7 +6603,7 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Find the collection IDs.
-// Output: [
+// results in: [
 //           &#039;MyCollection&#039;,
 //           &#039;AnotherCollection&#039;
 //         ]
@@ -6779,12 +6779,12 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Create a face and get the ID of the created face.
-// Output: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
+// results in: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
 const faceId = await client.indexFace(collectionId, &#039;img.jpg&#039;);
 console.log(faceId);
 
 // Create a face and get the details of the created face.
-// Output:  {
+// results in:  {
 //            faceId: &#039;7f2dd321-f047-44ff-8856-864637e1d286&#039;,
 //            ageRange: { high: 29, low: 21 },
 //            gender: &#039;female&#039;,
@@ -6825,12 +6825,12 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Create a face and get the ID of the created face.
-// Output: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
+// results in: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
 const faceId = await client.indexFace(collectionId, &#039;img.jpg&#039;);
 console.log(faceId);
 
 // Create a face and get the details of the created face.
-// Output:  {
+// results in:  {
 //            faceId: &#039;7f2dd321-f047-44ff-8856-864637e1d286&#039;,
 //            ageRange: { high: 29, low: 21 },
 //            gender: &#039;female&#039;,
@@ -6927,7 +6927,7 @@ const client = new sweet.services.AWSRekognitionClient({
 
 // If you want to search for one face, specify 1 for the maxFaces option.
 // In that case, the search result will return the face data for one person.
-// Output: {
+// results in: {
 //           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
 //           boundingBox: {
 //             width: 0.500495970249176,
@@ -6943,7 +6943,7 @@ console.log(match);
 
 // If you want to search for multiple faces, specify 2 or more for the maxFaces option.
 // In that case, the search results will return a list of the face data of multiple people found.
-// Output: [
+// results in: [
 //           {
 //             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
 //             boundingBox: {
@@ -6981,7 +6981,7 @@ const client = new sweet.services.AWSRekognitionClient({
 
 // If you want to search for one face, specify 1 for the maxFaces option.
 // In that case, the search result will return the face data for one person.
-// Output: {
+// results in: {
 //           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
 //           boundingBox: {
 //             width: 0.500495970249176,
@@ -6997,7 +6997,7 @@ console.log(match);
 
 // If you want to search for multiple faces, specify 2 or more for the maxFaces option.
 // In that case, the search results will return a list of the face data of multiple people found.
-// Output: [
+// results in: [
 //           {
 //             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
 //             boundingBox: {
@@ -7074,7 +7074,7 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Find all face metadata in the collection.
-// Output: [
+// results in: [
 //           {
 //             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
 //             boundingBox: {
@@ -7105,7 +7105,7 @@ const client = new sweet.services.AWSRekognitionClient({
 });
 
 // Find all face metadata in the collection.
-// Output: [
+// results in: [
 //           {
 //             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
 //             boundingBox: {

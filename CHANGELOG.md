@@ -230,12 +230,12 @@ All notable changes to this project will be documented in this file.
     const collectionId = 'MyCollection';
 
     // Create a face and get the ID of the created face.
-    // Output: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
+    // results in: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
     const faceId = await client.indexFace(collectionId, 'img/face4.jpg');
     console.log(faceId);
 
     // Create a face and get the details of the created face.
-    // Output:  {
+    // results in:  {
     //            faceId: '7f2dd321-f047-44ff-8856-864637e1d286',
     //            ageRange: { high: 29, low: 21 },
     //            gender: 'female',
@@ -272,7 +272,7 @@ All notable changes to this project will be documented in this file.
 
     (async () => {
       // Detects bounding boxes on faces.
-      // Output:  [
+      // results in:  [
       //            {
       //              width: 0.3099822998046875,
       //              height: 0.661512017250061,
@@ -284,7 +284,7 @@ All notable changes to this project will be documented in this file.
       console.log(res);
 
       // Detect facial details.
-      // Output:  [
+      // results in:  [
       //            {
       //              boundingBox: {
       //                width: 0.3099822998046875,
@@ -419,7 +419,7 @@ All notable changes to this project will be documented in this file.
       await transaction.commit();
 
       // Check the update result.
-      // Output: New title of book: When Im Gone
+      // results in: New title of book: When Im Gone
       await book.reload();
       console.log(`New title of book: ${book.title}`);
     } catch (err) {
@@ -455,7 +455,7 @@ All notable changes to this project will be documented in this file.
     import * as sweet from 'express-sweet';
 
     // Find a face from the collection.
-    // Output: Face search results: [
+    // results in: Face search results: [
     //           {
     //             faceId: '385e1b00-4ede-4219-a7b0-0b9cbe4953e5',
     //             boundingBox: {
