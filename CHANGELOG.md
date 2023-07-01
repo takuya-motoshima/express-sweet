@@ -1,6 +1,30 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.33] - 2023/7/1
+- Added regular expression comparison view helper.
+    ```html
+    {{!-- results in: true --}}
+    {{regexMatch 'foobar' 'foo'}}
+
+    {{!-- results in: false --}}
+    {{regexMatch 'bar' 'foo'}}
+
+    {{!-- results in: false --}}
+    {{regexMatch 'foobar' '^foo$'}}
+
+    {{!-- results in: true --}}
+    {{regexMatch 'Visit Here' 'here' 'i'}}
+
+    {{!-- results in: false --}}
+    {{regexMatch 'Visit Here' 'here'}}
+
+    {{!-- results in: Match --}}
+    {{#if (regexMatch 'foobar' 'foo')}}
+      Match
+    {{/if}}
+    ```
+
 ## [1.0.32] - 2023/7/1
 ### Fixed
 - Fixed a bug that cookies (req.cookies) cannot be referenced in the hook function before view rendering (config/view.js#beforeRender).
@@ -20,10 +44,12 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Added view helper to convert numeric values to strings with language-sensitive representations.
     ```html
-    {{number2locale 123456.789}} => 123,456.789
+    {{!-- results in: 123,456.789 --}}
+    {{number2locale 123456.789}}
 
     {{!-- German uses comma as decimal separator and period for thousands. --}}
-    {{number2locale 123456.789 'de-DE'}} => 123.456,789
+    {{!-- results in: 123.456,789 --}}
+    {{number2locale 123456.789 'de-DE'}}
     ```
 
 ## [1.0.30] - 2023/6/26
@@ -127,10 +153,17 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Added formatBytes view helper to convert bytes to appropriate units.
     ```html
-    {{formatBytes 1024}} => 1 KB
-    {{formatBytes 1234 2}} => 1.21 KB
-    {{formatBytes 1234 3}} => 1.205 KB
-    {{formatBytes 0}} => 0 Bytes
+    {{!-- results in: 1 KB --}}
+    {{formatBytes 1024}}
+
+    {{!-- results in: 1.21 KB --}}
+    {{formatBytes 1234 2}}
+
+    {{!-- results in: 1.205 KB --}}
+    {{formatBytes 1234 3}}
+
+    {{!-- results in: 0 Bytes --}}
+    {{formatBytes 0}}
     ```
 
 ## [1.0.24] - 2022/10/24
@@ -317,9 +350,14 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Add date format helper to view.
     ```html
-    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
-    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}} => 2021/10/24
-    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
+    {{!-- results in: 2021/10/24 --}}
+    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}}
+
+    {{!-- results in: 2021/10/24 --}}
+    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}}
+
+    {{!-- results in: 2021/10/24 --}}
+    {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}}
     ```
 
 ## [1.0.18] - 2022/5/18
@@ -362,44 +400,40 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - empty view helper can now check any type. Previously I could only check arrays.
     ```html
-    // If the value is an array.
-    let value = [5, 6];
-    {{empty value}} => false
+    {{!-- results in: false --}}
+    {{empty [5, 6]}}
 
-    {{#if (empty value)}}
+    {{#if (empty 'foo')}}
       Hello
     {{/if}}
 
-    // If the value is a string.
-    let value = 'Hello';
-    {{empty value}} => false
+    {{!-- results in: false --}}
+    {{empty 'Hello'}}
  
-    let value = '';
-    {{empty value}} => true
+    {{!-- results in: true --}}
+    {{empty ''}}
  
-    let value = ' ';
-    {{empty value}} => true
+    {{!-- results in: true --}}
+    {{empty value}}
     ```
 
 - Added notEmpty view helper.
     ```html
-    // If the value is an array.
-    let value = [5, 6];
-    {{notEmpty value}} => true
+    {{!-- results in: true --}}
+    {{notEmpty [5, 6]}}
 
-    {{#if (notEmpty value)}}
+    {{#if (notEmpty 'foo')}}
       Hello
     {{/if}}
 
-    // If the value is a string.
-    let value = 'Hello';
-    {{notEmpty value}} => true
+    {{!-- results in: true --}}
+    {{notEmpty 'Hello'}}
 
-    let value = '';
-    {{notEmpty value}} => false
+    {{!-- results in: false --}}
+    {{notEmpty ''}}
 
-    let value = ' ';
-    {{notEmpty value}} => false
+    {{!-- results in: false --}}
+    {{notEmpty ' '}}
     ```
 
 ## [1.0.13] - 2021/12/13
@@ -550,3 +584,4 @@ All notable changes to this project will be documented in this file.
 [1.0.30]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.29...v1.0.30
 [1.0.31]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.30...v1.0.31
 [1.0.32]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.31...v1.0.32
+[1.0.33]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.32...v1.0.33

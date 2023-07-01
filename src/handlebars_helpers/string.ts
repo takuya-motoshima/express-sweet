@@ -5,7 +5,7 @@ import utils from '~/utils';
  *
  * @example
  * {{replace 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?' 'dog' 'monkey'}}
- * 
+ *
  * @param  {string} value   String.
  * @param  {string} find    The string to be replaced.
  * @param  {string} replace The string to replace.
@@ -19,17 +19,14 @@ export function replace(value: string, find: string, replace: string): string {
  * Split `string` by the given `character`.
  *
  * @example
- * {{!-- Basic usage. --}}
- * {{split "a,b,c" ","}} => ['a', 'b', 'c']
+ * {{!-- results in: ['a', 'b', 'c'] --}}
+ * {{split "a,b,c" ","}}
  *
- * {{!-- Use with EACH. --}}
+ * {{!-- results in: <div>a</div><div>b</div><div>c</div> --}}
  * {{#each (split list ',')}}
- *   {{this}}<br>
+ *   <div>{{this}}</div>
  * {{/each}}
- * => a<br>
- *    b<br>
- *    c<br>
- * 
+ *
  * @param  {string} value     String.
  * @param  {string} separator A character that delimits the substrings in this string. Default is a comma.
  * @return {string[]}         An Array of strings, split at each point where the separator occurs in the given string. The default is a comma.
@@ -46,10 +43,17 @@ export function split(value: string, separator: string): string[] {
  * Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).
  *
  * @example
- * {{formatBytes 1024}} => 1 KB
- * {{formatBytes 1234 2}} => 1.21 KB
- * {{formatBytes 1234 3}} => 1.205 KB
- * {{formatBytes 0}} => 0 Bytes
+ * {{!-- results in: 1 KB --}}
+ * {{formatBytes 1024}}
+ *
+ * {{!-- results in: 1.21 KB --}}
+ * {{formatBytes 1234 2}}
+ *
+ * {{!-- results in: 1.205 KB --}}
+ * {{formatBytes 1234 3}}
+ *
+ * {{!-- results in: 0 Bytes --}}
+ * {{formatBytes 0}}
  *
  * @param   {number}  bytes     Bytes.
  * @param   {number}  decimals  Number of decimal places to display. Default is 0.

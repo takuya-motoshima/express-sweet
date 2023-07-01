@@ -5,9 +5,14 @@ import moment from 'moment';
  * Use moment to format the date.
  *
  * @example
- * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}} => 2021/10/24
- * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}} => 2021/10/24
- * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}} => 2021/10/24
+ * {{!-- results in: 2021/10/24 --}}
+ * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}}
+ *
+ * {{!-- results in: 2021/10/24 --}}
+ * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}}
+ *
+ * {{!-- results in: 2021/10/24 --}}
+ * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}}
  *
  * @param {string}          format A format string based on moment.
  * @param {string}          date Date string to format.

@@ -180,7 +180,7 @@ export default class Model extends sequelize.Model {
      *   await transaction.commit();
      *
      *   // Check the update result.
-     *   // Output: New title of book: When Im Gone
+     *   // results in: New title of book: When Im Gone
      *   await book.reload();
      *   console.log(`New title of book: ${book.title}`);
      * } catch (err) {

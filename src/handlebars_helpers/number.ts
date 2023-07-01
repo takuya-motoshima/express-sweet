@@ -4,10 +4,12 @@ import utils from '~/utils';
  * Returns the language-sensitive representation of a number as a string.
  *
  * @example
- * {{number2locale 123456.789}} => 123,456.789
- * 
+ * {{!-- results in: 123,456.789 --}}
+ * {{number2locale 123456.789}}
+ *
  * {{!-- German uses comma as decimal separator and period for thousands. --}}
- * {{number2locale 123456.789 'de-DE'}} => 123.456,789
+ * {{!-- results in: 123.456,789 --}}
+ * {{number2locale 123456.789 'de-DE'}}
  *
  * @param  {number|string}    val     Target number or numeric string.
  * @param  {string|undefined} locales A string with a BCP 47 language tag, or an array of such strings.

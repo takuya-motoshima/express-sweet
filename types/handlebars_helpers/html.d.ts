@@ -2,7 +2,8 @@
  * Returns the Assets path containing the file update time parameter.
  *
  * @example
- * {{cacheBusting '/assets/style.css' '//example.com'}} => example.com/assets/style.css?1620526340463
+ * {{!-- results in: example.com/assets/style.css?1620526340463 --}}
+ * {{cacheBusting '/assets/style.css' '//example.com'}}
  *
  * @param  {string} filePath Paths of Assets files such as CSS and JS in public directories.
  * @param  {string} baseUrl  Application Origin URL. The default is none (undefined).

@@ -5,7 +5,6 @@ import fs from 'fs';
 /**
  * Set local variables.
  * It can be accessed in all views as {{var}} or {{{var}}}.
- * 
  * Below is a description of the variables.
  * baseUrl: The base URL for this application.
  */

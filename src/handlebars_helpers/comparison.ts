@@ -4,12 +4,13 @@ import utils from '~/utils';
  * Determine whether or not two values are equal (===).
  *
  * @example
- * {{eq '3' 3}} => false
- * 
+ * {{!-- results in: false --}}
+ * {{eq '3' 3}}
+ *
  * {{#if (eqw foo 'bar')}}
  *   Hello
  * {{/if}}
- * 
+ *
  * @param   {any}     value1 First value to be compared with second.
  * @param   {any}     value2 Second value to be compared with first.
  * @returns {boolean}        Returns true if the value and type are the same, false if they are different.
@@ -22,11 +23,12 @@ export function eq(value1: any, value2: any): boolean {
  * Determine whether or not two values are equal (==) i.e weak checking.
  *
  * @example
- * {{eqw '3' 3}} => true
- * 
+ * {{!-- results in: true --}}
+ * {{eqw '3' 3}}
+ *
  * {{#if (eqw foo 'bar')}}
  *   Hello
- * {{/if}}
+ * {/if}}
  *
  * @param   {any}       value1 First value to be compared with second.
  * @param   {any}       value2 Second value to be compared with first.
@@ -40,12 +42,13 @@ export function eqw(value1: any, value2: any): boolean {
  * Determine whether or not two values are not equal (!==).
  *
  * @example
- * {{neq 4 3}} => true
+ * {{!-- results in: true --}}
+ * {{neq 4 3}}
  *
  * {{#if (neq foo 'bar')}}
  *   Hello
  * {{/if}}
- * 
+ *
  * @param   {any}       value1 First value to be compared with second.
  * @param   {any}       value2 Second value to be compared with first.
  * @returns {boolean}          Returns true if the value and type are different, false if they are the same.
@@ -58,12 +61,13 @@ export function neq(value1: any, value2: any): boolean {
  * Determine whether or not two values are not equal (!=) weak checking.
  *
  * @example
- * {{neqw '3' 3}} => false
+ * {{!-- results in: false --}}
+ * {{neqw '3' 3}}
  *
  * {{#if (neqw foo 'bar')}}
  *   Hello
  * {{/if}}
- * 
+ *
  * @param   {any}       value1 First value to be compared with second.
  * @param   {any}       value2 Second value to be compared with first.
  * @returns {boolean}          Returns true if the values are different, false if they are the same.
@@ -76,12 +80,13 @@ export function neqw(value1: any, value2: any): boolean {
  * Check for less than condition (a < b).
  *
  * @example
- * {{lt 2 3}} => true
+ * {{!-- results in: true --}}
+ * {{lt 2 3}}
  *
  * {{#if (lt 2 5)}}
  *   Hello
  * {{/if}}
- * 
+ *
  * @param   {any}       value1 First value to be compared with second.
  * @param   {any}       value2 Second value to be compared with first.
  * @returns {boolean}          Returns true if the first value is less than the second value, false otherwise.
@@ -94,8 +99,9 @@ export function lt(value1: any, value2: any): boolean {
  * Check for less than or equals condition (a <= b).
  *
  * @example
- * {{lte 2 3}} => true
- * 
+ * {{!-- results in: true --}}
+ * {{lte 2 3}}
+ *
  * {{#if (lte 2 5)}}
  *   Hello
  * {{/if}}
@@ -112,8 +118,9 @@ export function lte(value1: any, value2: any): boolean {
  * Check for greater than condition (a > b).
  *
  * @example
- * {{gt 2 3}} => false
- * 
+ * {{!-- results in: false --}}
+ * {{gt 2 3}}
+ *
  * {{#if (gt 5 6)}}
  *   Hello
  * {{/if}}
@@ -130,12 +137,13 @@ export function gt(value1: any, value2: any): boolean {
  * Check for greater than or equals condition (a >= b).
  *
  * @example
- * {{gte 3 3}} => true
+ * {{!-- results in: true --}}
+ * {{gte 3 3}}
  *
  * {{#if (gte 10 2)}}
  *   Hello
  * {{/if}}
- * 
+ *
  * @param   {any}       value1 First value to be compared with second.
  * @param   {any}       value2 Second value to be compared with first.
  * @returns {boolean}          Returns true if the first value is greater than or equal to the second value, false otherwise.
@@ -147,9 +155,12 @@ export function gte(value1: any, value2: any): boolean {
  * Logical NOT of any expression.
  *
  * @example
- * {{not true}} => false
- * {{not false}} => true
- * 
+ * {{!-- results in: false --}}
+ * {{not true}}
+ *
+ * {{!-- results in: true --}}
+ * {{not false}}
+ *
  * {{#if (not (eq foo 'bar'))}}
  *   Hello
  * {{/if}}
@@ -165,15 +176,25 @@ export function not(expression: any): boolean {
  * Helper to imitate the ternary '?:' conditional operator.
  *
  * @example
- * {{ifx true 'Foo' 'Bar'}} => Foo
- * {{ifx false 'Foo' 'Bar'}} => Foo
- * {{ifx (eq value 1) 5 6}} => 6    // return (value === 1) ? 5 : 6
- * {{ifx (not (eq value 1)) 5 6}} => 6    // return (value !== 1) ? 5 : 6
- * 
+ * {{!-- results in: foo --}}
+ * {{ifx true 'foo' 'bar'}}
+ *
+ * {{!-- results in: bar --}}
+ * {{ifx false 'foo' 'bar'}}
+ *
+ * {{!-- results in: 6 --}}
+ * {{ifx (eq value 1) 5 6}}
+ *
+ * {{!-- results in: 6 --}}
+ * {{ifx (not (eq value 1)) 5 6}}
+ *
  * {{!-- The third parameter is optional, and by default it will be blank string ('') --}}
- * {{ifx true 'active'}} => 'active'
- * {{ifx false 'active'}} => ''
- * 
+ * {{!-- results in: active --}}
+ * {{ifx true 'active'}}
+ *
+ * {{!-- results in: '' --}}
+ * {{ifx false 'active'}}
+ *
  * @param   {boolean} condition Satisfying condition for getting first value. Either true of false.
  * @param   {any}     value1    First value to be displayed as result..
  * @param   {any}     value2    Second value to be displayed as result. Defaults to an empty string.
@@ -196,24 +217,22 @@ export function ifx(condition: boolean, value1: any, value2: any): any {
  * If the value is a string, the leading and trailing spaces are trimmed and then checked.
  *
  * @example
- * // If the value is an array.
- * let value = [5, 6];
- * {{empty value}} => false
- * 
- * {{#if (empty value)}}
+ * {{!-- results in: false --}}
+ * {{empty [5, 6]}}
+ *
+ * {{#if (empty 'foo')}}
  *   Hello
  * {{/if}}
- * 
- * // If the value is a string.
- * let value = 'Hello';
- * {{empty value}} => false
  *
- * let value = '';
- * {{empty value}} => true
+ * {{!-- results in: false --}}
+ * {{empty 'Hello'}}
  *
- * let value = ' ';
- * {{empty value}} => true
- * 
+ * {{!-- results in: true --}}
+ * {{empty ''}}
+ *
+ * {{!-- results in: true --}}
+ * {{empty ' '}}
+ *
  * @param   {any}     value Character strings, arrays, objects, etc. to be checked.
  * @returns {boolean}       Returns true if the value is empty, false otherwise.
  */
@@ -233,24 +252,22 @@ export function empty(value: any): boolean {
  * If the value is a string, the leading and trailing spaces are trimmed and then checked.
  *
  * @example
- * // If the value is an array.
- * let value = [5, 6];
- * {{notEmpty value}} => true
- * 
- * {{#if (notEmpty value)}}
+ * {{!-- results in: true --}}
+ * {{notEmpty [5, 6]}}
+ *
+ * {{#if (notEmpty 'foo')}}
  *   Hello
  * {{/if}}
- * 
- * // If the value is a string.
- * let value = 'Hello';
- * {{notEmpty value}} => true
  *
- * let value = '';
- * {{notEmpty value}} => false
+ * {{!-- results in: true --}}
+ * {{notEmpty 'Hello'}}
  *
- * let value = ' ';
- * {{notEmpty value}} => false
- * 
+ * {{!-- results in: false --}}
+ * {{notEmpty ''}}
+ *
+ * {{!-- results in: false --}}
+ * {{notEmpty ' '}}
+ *
  * @param   {any}     value Character strings, arrays, objects, etc. to be checked.
  * @returns {boolean}       Returns true if the value is not empty, false otherwise.
  */
@@ -264,32 +281,12 @@ export function notEmpty(value: any): boolean {
   return !!value;
 }
 
-// /**
-//  * Check if an array is empty.
-//  *
-//  * @example
-//  * let items = [5, 6];
-//  * {{empty items}} => false
-//  * 
-//  * {{#if (empty items)}}
-//  *   Hello
-//  * {{/if}}
-//  * 
-//  * @param   {any[]}   items Array/object to be checked.
-//  * @returns {boolean}       Returns true if the array is empty, false otherwise.
-//  */
-// export function empty(items: any[]): boolean {
-//   if (!Array.isArray(items))
-//     return true;
-//   return items.length === 0;
-// }
-
 /**
  * Determine the length of an array.
  *
  * @example
- * let items = [5, 6];
- * {{count items}} =>  2
+ * {{!-- results in: 2 --}}
+ * {{count [5, 6]}}
  *
  * @param   {any[]}        items Array whose elements to be counted.
  * @returns {number|false}       Returns the length of the array if the value is an array, false if the value is not an array.
@@ -304,18 +301,18 @@ export function count(items: any[]): number|false {
  * Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.
  *
  * @example
- * let value1 = value2 = true;
- * {{and value1 value2}} => true
- * 
- * let value1 = false, value2 = true;
- * {{and value1 value2}} => false
- * 
+ * {{!-- results in: true --}}
+ * {{and true true}}
+ *
+ * {{!-- results in: false --}}
+ * {{and false true}}
+ *
  * {{#if (and value1 value2)}}
- *   // do something
+ *   {{!-- do something --}}
  * {{else}}
- *   // do something else
+ *   {{!-- do something else --}}
  * {{/if}}
- * 
+ *
  * @param   {...any}    params Any number of boolean parameters.
  * @returns {boolean}          Returns the result of the logical product.
  */
@@ -332,16 +329,16 @@ export function and(...params: any[]): boolean {
  * Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.
  *
  * @example
- * let value1 = true, value2 = false;
- * {{or value1 value2}} => true
- * 
- * let value = value2 = false;
- * {{or value1 value2}} => false
- * 
+ * {{!-- results in: true --}}
+ * {{or true false}}
+ *
+ * {{!-- results in: false --}}
+ * {{or false false}}
+ *
  * {{#if (or value1 value2)}}
- *   // do something
+ *   {{!-- do something --}}
  * {{else}}
- *   // do something else
+ *   {{!-- do something else --}}
  * {{/if}}
  *
  * @param   {...any}  params Any number of boolean parameters.
@@ -361,11 +358,11 @@ export function or(...params: any[]): boolean {
  * Works quite similar to the SQL's "COALESCE()" function, but unlike this checks for the first non-false parameter.
  *
  * @example
- * let fullName = 'Foo Bar', nickName = 'foob';
- * {{coalesce fullName nickName 'Unknown'}} => 'Foo Bar'
+ * {{!-- results in: foo bar --}}
+ * {{coalesce 'foo bar' 'foob' 'unknown'}}
  *
- * let fullName = '', nickName = 'foob';
- * {{coalesce fullName nickName 'Unknown'}} => 'foob'
+ * {{!-- results in: foob --}}
+ * {{coalesce '' 'foob' 'unknown'}}
  *
  * @param   {...any} params Any number of parameters.
  * @returns {any}           Returns the first non-false element of the parameter.
@@ -383,21 +380,23 @@ export function coalesce(...params: any[]): any {
  * Returns boolean if the array contains the element strictly or non-strictly.
  *
  * @example
- * let items = [1, 2, 3];
- * let value = 2;
- * 
- * {{includes items value}} => true
- * 
- * let value = '2'
- * {{includes items value}} => false
- * {{includes items value true}} => false
- * {{includes items value false}} => true
- * 
- * {{#if (includes items value)}}
+ * {{!-- results in: true --}}
+ * {{includes [1, 2, 3] 2}}
+ *
+ * {{!-- results in: false --}}
+ * {{includes [1, 2, 3] '2'}}
+ *
+ * {{!-- results in: false --}}
+ * {{includes [1, 2, 3] '2' true}}
+ *
+ * {{!-- results in: true --}}
+ * {{includes [1, 2, 3] '2' false}}
+ *
+ * {{#if (includes [1, 2, 3] '2')}}
  *    {{!-- Do something --}}
  * {{/if}}
- * 
- * {{ifx (includes items value) 'Yes' 'No'}}
+ *
+ * {{ifx (includes [1, 2, 3] '2') 'yes' 'no'}}
  *
  * @param   {any[]}   items  The array.
  * @param   {any}     value  The value to be checked for existence in the array.
@@ -410,4 +409,44 @@ export function includes(items: any[], value: any, strict: boolean = true): bool
     if (strict && item === value || !strict && item == value)
       return true;
   return false;
+}
+
+/**
+ * Returns true if the given str matches the given regex.
+ *
+ * @example
+ * {{!-- results in: true --}}
+ * {{regexMatch 'foobar' 'foo'}}
+ *
+ * {{!-- results in: false --}}
+ * {{regexMatch 'bar' 'foo'}}
+ *
+ * {{!-- results in: false --}}
+ * {{regexMatch 'foobar' '^foo$'}}
+ *
+ * {{!-- results in: true --}}
+ * {{regexMatch 'Visit Here' 'here' 'i'}}
+ *
+ * {{!-- results in: false --}}
+ * {{regexMatch 'Visit Here' 'here'}}
+ *
+ * {{!-- results in: Match --}}
+ * {{#if (regexMatch 'foobar' 'foo')}}
+ *   Match
+ * {{/if}}
+ *
+ * @param {string} val The string against which to match the regular expression.
+ * @param {string} pattern The text of the regular expression.
+ * @param {string} flags? Regular expression flags, such as global and case-insensitive searches. The default is none (undefined).
+ * @returns {boolean} true if there is a match between the regular expression and the string str. Otherwise, false.
+ */
+export function regexMatch(val: string, pattern: string, flags?: string): boolean {
+  if (!utils.isString(val))
+    val = val.toString();
+
+  // If the optional flags parameter is a Handlebars option object, replace flags with undefined.
+  if (utils.isObject(flags))
+    flags = undefined;
+  const regex = new RegExp(pattern, flags);
+  return regex.test(val);
 }
