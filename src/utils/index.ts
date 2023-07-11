@@ -1,11 +1,13 @@
-import isAsyncFunction from './isAsyncFunction';
-import isString from './isString';
-import isObject from './isObject';
 import isArray from './isArray';
+import isAsyncFunction from './isAsyncFunction';
+import isFunction from './isFunction';
+import isObject from './isObject';
+import isString from './isString';
 
 export default {
+  isArray,
   isAsyncFunction,
-  isString,
+  isFunction,
   isObject,
-  isArray
+  isString,
 }

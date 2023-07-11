@@ -1,10 +1,47 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.35] - 2023/7/11
+### Changed
+- The URL to redirect to when login fails (failure_redirect) option in the authentication configuration (config/authentication.js) can now be defined with a function.  
+  
+    config/authentication.js:
+    ```js
+    // Set the URL to redirect to in case of login failure as a string.
+    failure_redirect: '/login',
+
+    // Dynamically set the url to redirect to on login failure.
+    failure_redirect: (req, res) => {
+      // If the role stored in the cookie is admin, redirect to the admin login screen.
+      return req.cookies.role === 'admin' ? '/adminlogin' : 'login';
+    },
+    ```
+- The arguments of the failureRedirect method of the authentication service class (services/Authentication) have changed.  
+    The argument to the Authentication.failureRedirect method used to be just express.Response, but now it requires express.Request and express.Response.
+
+    Example of login routes:
+    ```js
+    import {Router} from 'express';
+    import * as sweet from 'express-sweet';
+    const router = Router();
+    const Authentication = sweet.services.Authentication;
+
+    router.post('/login', async (req, res, next) => {
+      const isAuth = await Authentication.authenticate(req, res, next);
+      if (isAuth)
+        Authentication.successRedirect(res);
+      else
+        Authentication.failureRedirect(req, res);
+    });
+    export default router;
+    ```
+
 ## [1.0.34] - 2023/7/1
+### Changed
 - Changed the response status code from 403 to 401 when asynchronous communication requiring authentication fails to authenticate.
 
 ## [1.0.33] - 2023/7/1
+### Added
 - Added regular expression comparison view helper.
     ```html
     {{!-- results in: true --}}
@@ -589,3 +626,4 @@ All notable changes to this project will be documented in this file.
 [1.0.32]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.31...v1.0.32
 [1.0.33]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.32...v1.0.33
 [1.0.34]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.33...v1.0.34
+[1.0.35]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.34...v1.0.35

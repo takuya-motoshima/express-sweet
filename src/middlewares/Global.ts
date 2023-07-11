@@ -1,5 +1,3 @@
-import path from 'path';
-
 /**
  * Set global variables.
  * It can be accessed like "global.xxx" in all router and model classes.

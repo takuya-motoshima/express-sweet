@@ -1,8 +1,8 @@
+import fs from 'fs';
+import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import path from 'path';
 import Config from '~/interfaces/Config';
-import fs from 'fs';
 // TODO: Importing multer results in a run-time error.I couldn't find a solution, so I decided to load multer with require.
 // import multer from 'multer';
 // TODO: If you import morgan here, "GMT morgan deprecated" will occur, so morgan is used by require.

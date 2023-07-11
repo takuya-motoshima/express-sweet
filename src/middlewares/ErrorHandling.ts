@@ -1,8 +1,8 @@
+import fs from 'fs';
 import express from 'express';
 import createError from 'http-errors';
 import Config from '~/interfaces/Config';
 import utils from '~/utils';
-import fs from 'fs';
 
 /**
  * Error handling.

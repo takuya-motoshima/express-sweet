@@ -1,13 +1,14 @@
+import fs from 'fs';
 import express from 'express';
 import passport from 'passport';
 import {Strategy as LocalStrategy, IVerifyOptions} from 'passport-local';
 import session from 'express-session';
 import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
-import fs from 'fs';
 import connectRedis from 'connect-redis';
 // FIXME: When I read createClient with "import", a "Cannot read property transformRedisJsonNullReply of undefined" execution error occurred, but I could not solve it, so I used "require".
 const createClient = require('redis').createClient;
 // import {createClient} from 'redis';
+import utils from '~/utils';
 
 /**
  * Incorporate user authentication into your application.
@@ -109,10 +110,15 @@ export default class {
       // Asynchronous request flag.
       const isAjax = options.is_ajax(req);
 
+      // URL to redirect to in case of login failure.
+      const failureRedirectUrl = (utils.isFunction(options.failure_redirect)
+        ? (options.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
+        : options.failure_redirect) as string;
+
       // Check if you are logged in.
       if (req.isAuthenticated()) {
         // For authenticated users.
-        if (req.path !== options.failure_redirect || isAjax) {
+        if (req.path !== failureRedirectUrl || isAjax) {
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
@@ -120,10 +126,10 @@ export default class {
           res.redirect(options.success_redirect);
       } else if (!isAjax)
         // If authentication is not established and asynchronous communication is not used, the user is redirected to the login page.
-        if (req.path === options.failure_redirect)
+        if (req.path === failureRedirectUrl)
           next();
         else
-          res.redirect(options.failure_redirect);
+          res.redirect(failureRedirectUrl);
       else
         // If authentication is not established and asynchronous communication is used, a 401 error is returned.
         res.status(401).end();

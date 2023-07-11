@@ -1,7 +1,8 @@
+import fs from 'fs';
 import express from 'express';
 import passport from 'passport';
 import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
-import fs from 'fs';
+import utils from '~/utils';
 
 /**
  * User authentication service.
@@ -54,12 +55,18 @@ export default class {
   /**
    * Redirects to the page that responds immediately after authentication failure set in "failure_redirect" of "config/authentication.js".
    * 
+   * @param {express.Request} req The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
    * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
    */
-  static failureRedirect(res: express.Response): void {
+  static failureRedirect(req: express.Request, res: express.Response): void {
     // Load options.
     const options = this.#loadOptions();
-    res.redirect(options.failure_redirect!);
+
+    // URL to redirect to in case of login failure.
+    const failureRedirectUrl = (utils.isFunction(options.failure_redirect)
+      ? (options.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
+      : options.failure_redirect) as string;
+    res.redirect(failureRedirectUrl);
   }
 
   /**

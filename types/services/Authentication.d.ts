@@ -28,7 +28,8 @@ export default class {
     /**
      * Redirects to the page that responds immediately after authentication failure set in "failure_redirect" of "config/authentication.js".
      *
+     * @param {express.Request} req The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
      * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
      */
-    static failureRedirect(res: express.Response): void;
+    static failureRedirect(req: express.Request, res: express.Response): void;
 }

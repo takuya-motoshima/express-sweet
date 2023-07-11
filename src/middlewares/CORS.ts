@@ -1,6 +1,6 @@
+import fs from 'fs';
 import express from 'express';
 import Config from '~/interfaces/Config';
-import fs from 'fs';
 
 /**
  * Enables the CORS.
