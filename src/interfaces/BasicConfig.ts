@@ -1,38 +1,38 @@
-const path = require('path');
+import express from 'express';
 
 /**
  * Express Sweet basic configuration interface.
  */
-module.exports = {
+export default interface {
   /**
    * Environment variable file (.env) path, defaults to none (undefined).
    * @type {string}
    */
-  env_path: '.env',
+  env_path?: string,
 
   /**
    * CORS permission, defaults to invalid (false).
    * @type {{enabled: boolean}}
    */
-  cors_enabled: true,
+  cors_enabled?: boolean,
 
   /**
    * Maximum body size you can request, defaults to `100kb`.
    * @type {string|number}
    */
-  max_body_size: '100mb',
+  max_body_size?: string|number,
 
   /**
    * Absolute path to the router directory, defaults to `<application root directory>/routes`.
    * @type {string}
    */
-  router_dir: path.join(process.cwd(), 'routes'),
+  router_dir?: string,
 
   /**
    * The endpoint to run when the root URL is requested, defaults to none (undefined).
    * @type {string}
    */
-  default_router: '/users',
+  default_router?: string,
 
   /**
    * This is a hook that rewrites the base URL.
@@ -46,24 +46,22 @@ module.exports = {
    * 
    * @type {(baseUrl: string): string}
    */
-  rewrite_base_url: baseUrl => {
-    return baseUrl;
-  },
+  rewrite_base_url?: (baseUrl: string) => string,
 
   /**
-  * How to determine if it is an ajax request.
-  * The default is that if there is an XMLHttpRequest in the request header (req.xhr) returns true.
-  * For example, if there is no XMLHttpRequest in req(express.Request) and the Ajax endpoint starts with /api, a custom Ajax decision can be made like "return /^\/api\//.test(req.path)".
-  *
-  * @type {(req: express.Request) => boolean}
-  * @example
-  * is_ajax: req => {
-  *   // If the request URL begins with /api, it is assumed to be Ajax.
-  *   return /^\/api/.test(req.path);
-  *   // return !!req.xhr;
-  * }
-  */
-  is_ajax: req => !!req.xhr,
+   * How to determine if it is an ajax request.
+   * The default is that if there is an XMLHttpRequest in the request header (req.xhr) returns true.
+   * For example, if there is no XMLHttpRequest in req(express.Request) and the Ajax endpoint starts with /api, a custom Ajax decision can be made like "return /^\/api\//.test(req.path)".
+   *
+   * @type {(req: express.Request) => boolean}
+   * @example
+   * is_ajax: req => {
+   *   // If the request URL begins with /api, it is assumed to be Ajax.
+   *   return /^\/api/.test(req.path);
+   *   // return !!req.xhr;
+   * }
+   */
+  is_ajax: (req: express.Request) => boolean,
 
   /**
    * Hooks the default behavior on request errors.
@@ -80,5 +78,5 @@ module.exports = {
    *     res.render('error-unknown');
    * },
    */
-  hook_handle_error: undefined,
+  hook_handle_error?: (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => void,
 }

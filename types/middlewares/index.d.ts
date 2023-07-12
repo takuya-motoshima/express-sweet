@@ -1,8 +1,8 @@
-import CORS from './CORS';
-import Environment from './Environment';
-import Global from './Global';
-import Http from './Http';
-import Local from './Local';
-import View from './View';
-import ErrorHandling from './ErrorHandling';
-export { CORS, Environment, Global, Http, Local, View, ErrorHandling };
+import CORS from '~/middlewares/CORS';
+import Environment from '~/middlewares/Environment';
+import Global from '~/middlewares/Global';
+import Http from '~/middlewares/Http';
+import Local from '~/middlewares/Local';
+import View from '~/middlewares/View';
+import ErrorHandler from '~/middlewares/ErrorHandler';
+export { CORS, Environment, Global, Http, Local, View, ErrorHandler, };

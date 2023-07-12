@@ -1,8 +1,6 @@
 import express from 'express';
 import {File} from 'nodejs-shared';
-import path from 'path';
-import Config from '~/interfaces/Config';
-import fs from 'fs';
+import utils from '~/utils';
 
 /**
  * Set up URL routing.
@@ -15,11 +13,11 @@ export default class {
    * Mount on application.
    */
   static mount(app: express.Express) {
-    // Load options.
-    const options = this.#loadOptions();
+    // Load configuration.
+    const basicConfig = utils.loadBasicConfig();
 
     // Set the URL to route based on the path of the file in the routes directory.
-    for (let filePath of File.find(`${options.router_dir}/**/*.js`)) {
+    for (let filePath of File.find(`${basicConfig.router_dir}/**/*.js`)) {
       // Import router module.
       let router = require(filePath);
 
@@ -39,29 +37,8 @@ export default class {
       app.use(url, router);
 
       // Set the default router to run when accessed with "/".
-      if (url === options.default_router)
+      if (url === basicConfig.default_router)
         app.use('/', router);
     }
-  }
-
-  /**
-   * Returns the option.
-   * 
-   * @return {Config} option.
-   */
-  static #loadOptions(): Config {
-    // Options with default values set.
-    const defaultOptions: Config = {
-      router_dir: path.join(process.cwd(), 'routes'),
-      default_router: undefined
-    };
-
-    // If the options file is not found, the default options are returned.
-    const filePath = `${process.cwd()}/config/config`;
-    if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
-
-    // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

@@ -1,6 +1,6 @@
-import Database from './Database';
-import Model from './Model';
-import loadModels from './loadModels';
+import Database from '~/database/Database';
+import Model from '~/database/Model';
+import loadModels from '~/database/loadModels';
 
 export {
   Database,

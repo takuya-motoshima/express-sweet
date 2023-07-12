@@ -1,6 +1,49 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.36] - 2023/7/12
+### Changed
+- Moved the Ajax determination option (is_ajax) in the authentication configuration (config/authentication) to the basic configuration (config/config).  
+    
+    config/config.js:
+    ```js
+    /**
+     * How to determine if it is an ajax request.
+     * The default is that if there is an XMLHttpRequest in the request header (req.xhr) returns true.
+     * For example, if there is no XMLHttpRequest in req(express.Request) and the Ajax endpoint starts with /api, a custom Ajax decision can be made like "return /^\/api\//.test(req.path)".
+     *
+     * @type {(req: express.Request) => boolean}
+     * @example
+     * is_ajax: req => {
+     *   // If the request URL begins with /api, it is assumed to be Ajax.
+     *   return /^\/api/.test(req.path);
+     *   // return !!req.xhr;
+     * }
+     */
+    is_ajax: req => !!req.xhr,
+    ```
+- The error handle option (error_handler) in the basic configuration (config/config.js) has been removed and an option to hook error handles (hook_handle_error) added instead.  
+    
+    config/config.js:
+    ```js
+    /**
+     * Hooks the default behavior on request errors.
+     * If unset, simply returns an error HTTP status. (<code>res.status(err.status||500).end();</code>)
+     *
+     * @type {(err: any, req: express.Request, res: express.Response, next: express.NextFunction) => void}
+     * @example
+     * hook_handle_error: (err, req, res, next) => {
+     *   if (err.status === 404)
+     *     // If the URL cannot be found, a 404 error screen (views/error-404.hbs) is displayed.
+     *     res.render('error-404');
+     *   else
+     *     // For other errors, unknown error screen (views/error-unknown.hbs) is displayed.
+     *     res.render('error-unknown');
+     * },
+     */
+    hook_handle_error: undefined,
+    ```
+
 ## [1.0.35] - 2023/7/11
 ### Changed
 - The URL to redirect to when login fails (failure_redirect) option in the authentication configuration (config/authentication.js) can now be defined with a function.  
@@ -627,3 +670,4 @@ All notable changes to this project will be documented in this file.
 [1.0.33]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.32...v1.0.33
 [1.0.34]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.33...v1.0.34
 [1.0.35]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.34...v1.0.35
+[1.0.36]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.35...v1.0.36

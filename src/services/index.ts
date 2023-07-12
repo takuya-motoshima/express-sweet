@@ -1,7 +1,7 @@
-import AWSRekognitionClient from './AWSRekognitionClient';
-import Authentication from './Authentication';
-// import RedisClient from './RedisClient';
-import AWSSesClient from './AWSSesClient';
+import AWSRekognitionClient from '~/services/AWSRekognitionClient';
+import Authentication from '~/services/Authentication';
+// import RedisClient from '~/services/RedisClient';
+import AWSSesClient from '~/services/AWSSesClient';
 
 export {
   AWSRekognitionClient,

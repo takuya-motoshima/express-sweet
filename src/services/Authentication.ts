@@ -1,7 +1,6 @@
 import fs from 'fs';
 import express from 'express';
 import passport from 'passport';
-import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
 import utils from '~/utils';
 
 /**
@@ -47,9 +46,9 @@ export default class {
    * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
    */
   static successRedirect(res: express.Response): void {
-    // Load options.
-    const options = this.#loadOptions();
-    res.redirect(options.success_redirect!);
+    // Load configuration.
+    const authenticationConfig = utils.loadAuthenticationConfig();
+    res.redirect(authenticationConfig.success_redirect!);
   }
 
   /**
@@ -59,34 +58,13 @@ export default class {
    * @param {express.Response} res  The res object represents the HTTP response that an Express app sends when it gets an HTTP request.
    */
   static failureRedirect(req: express.Request, res: express.Response): void {
-    // Load options.
-    const options = this.#loadOptions();
+    // Load configuration.
+    const authenticationConfig = utils.loadAuthenticationConfig();
 
     // URL to redirect to in case of login failure.
-    const failureRedirectUrl = (utils.isFunction(options.failure_redirect)
-      ? (options.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
-      : options.failure_redirect) as string;
+    const failureRedirectUrl = (utils.isFunction(authenticationConfig.failure_redirect)
+      ? (authenticationConfig.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
+      : authenticationConfig.failure_redirect) as string;
     res.redirect(failureRedirectUrl);
-  }
-
-  /**
-   * Returns the option.
-   * 
-   * @return {AuthenticationOptions} option.
-   */
-  static #loadOptions(): Partial<AuthenticationOptions> {
-    // Options with default values set.
-    const defaultOptions: Partial<AuthenticationOptions> = {
-      success_redirect: '/',
-      failure_redirect: '/login'
-    };
-
-    // If the options file is not found, the default options are returned.
-    const filePath = `${process.cwd()}/config/authentication`;
-    if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
-
-    // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

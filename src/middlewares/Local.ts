@@ -1,6 +1,5 @@
-import fs from 'fs';
 import express from 'express';
-import Config from '~/interfaces/Config';
+import utils from '~/utils';
 
 /**
  * Set local variables.
@@ -13,8 +12,8 @@ export default class {
    * Mount on application.
    */
   static mount(app: express.Express) {
-    // Load options.
-    const options = this.#loadOptions();
+    // Load configuration.
+    const basicConfig = utils.loadBasicConfig();
 
     // Generate baseUrl for this application based on request header.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -36,29 +35,9 @@ export default class {
       }
 
       // Call a callback function that rewrites baseUrl.
-      if (options.rewrite_base_url)
-        app.locals.baseUrl = options.rewrite_base_url(app.locals.baseUrl);
+      if (basicConfig.rewrite_base_url)
+        app.locals.baseUrl = basicConfig.rewrite_base_url(app.locals.baseUrl);
       next();
     });
-  }
-
-  /**
-   * Returns the option.
-   * 
-   * @return {Config} option.
-   */
-  static #loadOptions(): Config {
-    // Options with default values set.
-    const defaultOptions: Config = {
-      rewrite_base_url: (baseUrl: string): string => baseUrl
-    };
-
-    // If the options file is not found, the default options are returned.
-    const filePath = `${process.cwd()}/config/config`;
-    if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
-
-    // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

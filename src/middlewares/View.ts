@@ -1,9 +1,6 @@
-import fs from 'fs';
-import path from 'path';
 import express from 'express';
 import * as helpers from '~/handlebars_helpers';
-import ViewOptions from '~/interfaces/ViewOptions';
-// import Handlebars from 'handlebars';
+import utils from '~/utils';
 
 /**
  * Enable Handlebars template engine.
@@ -13,8 +10,8 @@ export default class {
    * Mount on application.
    */
   static mount(app: express.Express) {
-    // Load options.
-    const options = this.#loadOptions();
+    // Load configuration.
+    const viewConfig = utils.loadViewConfig();
 
     // Express handlebars template engine.
     const hbs = require('express-hbs');
@@ -26,45 +23,19 @@ export default class {
 
     // Apply template engine to your app.
     app.engine('hbs', hbs.express4({
-      partialsDir: options.partials_dir,
-      layoutsDir: options.layouts_dir,
-      defaultLayout: options.default_layout,
-      extname: options.extension
-      // handlebars: Handlebars
+      partialsDir: viewConfig.partials_dir,
+      layoutsDir: viewConfig.layouts_dir,
+      defaultLayout: viewConfig.default_layout,
+      extname: viewConfig.extension,
     }));
     app.set('view engine', 'hbs');
-    app.set('views',  options.views_dir);
+    app.set('views',  viewConfig.views_dir);
 
     // Set variables that can be accessed from within the view.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-      if (options.beforeRender)
-        options.beforeRender(req, res);
+      if (viewConfig.beforeRender)
+        viewConfig.beforeRender(req, res);
       next();
     });
-  }
-
-  /**
-   * Returns the option.
-   * 
-   * @return {ViewOptions} option.
-   */
-  static #loadOptions(): ViewOptions {
-    // Options with default values set.
-    const defaultOptions: ViewOptions = {
-      views_dir: path.join(process.cwd(), 'views'),
-      partials_dir: path.join(process.cwd(), 'views/partials'),
-      layouts_dir: path.join(process.cwd(), 'views/layout'),
-      default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
-      extension: '.hbs',
-      beforeRender: (req: express.Request, res: express.Response) => {}
-   };
-
-    // If the options file is not found, the default options are returned.
-    const filePath = `${process.cwd()}/config/view`;
-    if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
-
-    // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

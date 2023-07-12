@@ -1,7 +1,7 @@
-import sequelize from 'sequelize';
-import DatabaseOptions from '~/interfaces/DatabaseOptions';
 import fs from 'fs';
+import sequelize from 'sequelize';
 import Environment from '~/middlewares/Environment';
+import utils from '~/utils';
 
 /**
  * Connect to DB.
@@ -14,11 +14,16 @@ export default new class Database extends sequelize.Sequelize {
     // Set environment variables.
     Environment.mount();
 
-    // Load options.
-    const options = Database.loadOptions();
+    // Load configuration.
+    const databaseConfig = utils.loadDatabaseConfig();
 
     // Instantiate sequelize with name of database, username and password.
-    super(options.database!, options.username!, options.password||undefined, options);
+    super(
+      databaseConfig.database!,
+      databaseConfig.username!,
+      databaseConfig.password||undefined,
+      databaseConfig
+    );
   }
 
   /**
@@ -39,36 +44,5 @@ export default new class Database extends sequelize.Sequelize {
     } catch {
       return false;
     }
-  }
-
-  /**
-   * Returns the option.
-   * 
-   * @return {sequelize.Options} option.
-   */
-  static loadOptions(): sequelize.Options {
-    // Options with default values set.
-    const defaultOptions: sequelize.Options = {
-      database: 'unkown',
-      username: 'unkown',
-      password: undefined,
-      host: 'localhost',
-      dialect: 'mariadb'
-    };
-
-    // If the options file is not found, the default options are returned.
-    const filePath = `${process.cwd()}/config/database`;
-    if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
-
-    // Get the execution environment.
-    const env = process.env.NODE_ENV||'development';
-
-    // If an options file is found, it returns options that override the default options.
-    const options = <DatabaseOptions>require(filePath).default||require(filePath);
-    const mergeOptions = Object.assign(defaultOptions, options[env]);
-    if (process.env.EXPRESS_DEBUG)
-      console.log(`Connection DB is ${mergeOptions.host} ${mergeOptions.database}`);
-    return mergeOptions;
   }
 }

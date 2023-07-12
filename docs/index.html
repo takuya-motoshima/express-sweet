@@ -81,7 +81,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.35</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.36</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -1290,7 +1290,7 @@ npm start</code></pre>
                             <!--begin::Body-->
                             <tbody>
                               <tr>
-                                <td class="w-250px"><code>env_path</code></td>
+                                <td class="w-250px"><code>env_path: string</code></td>
                                 <td>
                                   The path to the environment configuration file (<code>.env</code>).<br>
                                   When you start the Express Sweet application, the contents of the environment configuration file are automatically read and saved in <code>process.env</code>.<br>
@@ -1298,11 +1298,11 @@ npm start</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>cors_enabled</code></td>
+                                <td class="w-250px"><code>cors_enabled: boolean</code></td>
                                 <td>Set to true to allow requests from another domain to the application.<br>The default is <code>false</code>.</td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>max_body_size</code></td>
+                                <td class="w-250px"><code>max_body_size: string|number</code></td>
                                 <td>
                                   Controls the maximum request body size.<br>
                                   If this is a number, then the value specifies the number of bytes.<br>
@@ -1311,11 +1311,11 @@ npm start</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>router_dir</code></td>
+                                <td class="w-250px"><code>router_dir: string</code></td>
                                 <td>The directory path where the routes module is located.<br>The default is the <code>routes</code> directory directly under the application root.</td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>default_router</code></td>
+                                <td class="w-250px"><code>default_router: string</code></td>
                                 <td>
                                   Express Sweet can be told to load a default router when a URI is not present, as will be the case when root URL (<code>/</code>) is requested.<br>
                                   For example, to specify a default route, set <code>default_router</code> as follows.<br>
@@ -1366,7 +1366,7 @@ module.exports = router;</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>rewrite_base_url</code></td>
+                                <td class="w-250px"><code>rewrite_base_url: (baseUrl: string) =&gt; string</code></td>
                                 <td>
                                   This is a hook that rewrites the base URL.<br>
                                   If you want to rewrite the app.locals.baseUrl property and the view&#039;s baseUrl variable, use this hook to return a new base URL.<br>
@@ -1389,19 +1389,48 @@ module.exports = router;</code></pre>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>error_handler</code></td>
+                                <td class="w-250px"><code>is_ajax: (req: express.Request) =&gt; boolean</code></td>
                                 <td>
-                                  This is a hook for error handling.<br>
-                                  For example, you can use it when you want to send an external notification of the error received by this hook.
+                                  How to determine if it is an ajax request.<br>
+                                  The default is that if there is an XMLHttpRequest in the request header (<code>req.xhr</code>) returns <code>true</code>.<br><br>
+                                  For example, if there is no XMLHttpRequest in req(<code>express.Request</code>) and the Ajax endpoint starts with <code>/api</code>, a custom Ajax decision can be made like &quot;<code>return /^\/api\//.test(req.path)</code>&quot;.<br>
                                   <!--begin::Code-->
                                   <div class="py-5">
                                     <!--begin::Highlight-->
                                     <div class="highlight">
                                       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                                       <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">error_handler: async err =&gt; {
-  console.error(&#039;Error received&#039;);
+                                        <pre class="language-javascript"><code class="language-javascript">is_ajax: req =&gt; {
+  // If the request URL begins with /api, it is assumed to be Ajax.
+  return /^\/api/.test(req.path);
+  // return !!req.xhr;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>hook_handle_error: (err: any, req: express.Request, res: express.Response, next: express.NextFunction) =&gt; void</code></td>
+                                <td>
+                                  Hooks the default behavior on request errors.<br>
+                                  If unset, simply returns an error HTTP status. (<code>res.status(err.status||500).end();</code>)
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">hook_handle_error: (err, req, res, next) =&gt; {
+  if (err.status === 404)
+    // If the URL cannot be found, a 404 error screen (views/error-404.hbs) is displayed.
+    res.render(&#039;error-404&#039;);
+  else
+    // For other errors, unknown error screen (views/error-unknown.hbs) is displayed.
+    res.render(&#039;error-unknown&#039;);
+},</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->
@@ -5898,30 +5927,6 @@ failure_redirect: (req, res) =&gt; {
                                 <td>
                                   Specifies the time, in milliseconds, before the session expires.<br>
                                   The default is 24 hours (<code>86400000</code> milliseconds).
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="w-250px"><code>is_ajax: (req: express.Request) =&gt; boolean</code></td>
-                                <td>
-                                  How to determine if it is an ajax request.<br>
-                                  The default is that if there is an XMLHttpRequest in the request header (<code>req.xhr</code>) returns <code>true</code>.<br><br>
-                                  For example, if there is no XMLHttpRequest in req(<code>express.Request</code>) and the Ajax endpoint starts with <code>/api</code>, a custom Ajax decision can be made like &quot;<code>return /^\/api\//.test(req.path)</code>&quot;.<br>
-                                  <!--begin::Code-->
-                                  <div class="py-5">
-                                    <!--begin::Highlight-->
-                                    <div class="highlight">
-                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
-                                      <div class="highlight-code">
-                                        <pre class="language-javascript"><code class="language-javascript">is_ajax: req =&gt; {
-  // If the request URL begins with /api, it is assumed to be Ajax.
-  return /^\/api/.test(req.path);
-  // return !!req.xhr;
-}</code></pre>
-                                      </div>
-                                    </div>
-                                    <!--end::Highlight-->
-                                  </div>
-                                  <!--end::Code-->
                                 </td>
                               </tr>
                             </tbody>

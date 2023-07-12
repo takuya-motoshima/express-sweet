@@ -8,7 +8,7 @@ import Local from '~/middlewares/Local';
 import Authentication from '~/middlewares/Authentication';
 import Router from '~/routing/Router';
 import loadModels from '~/database/loadModels';
-// import ErrorHandling from '~/middlewares/ErrorHandling';
+import ErrorHandler from '~/middlewares/ErrorHandler';
 
 /**
  * Mount extensions on your application.
@@ -44,5 +44,5 @@ export default function(app: express.Express): void {
   Router.mount(app);
 
   // Error handling.
-  // ErrorHandling.mount(app);
+  ErrorHandler.mount(app);
 }

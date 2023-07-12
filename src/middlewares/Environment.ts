@@ -1,6 +1,6 @@
 import fs from 'fs';
 import dotenv from 'dotenv';
-import Config from '~/interfaces/Config';
+import utils from '~/utils';
 
 /**
  * Set environment variables.
@@ -15,15 +15,15 @@ export default class {
     if (global.loadedEnv)
       return;
 
-    // Load options.
-    const options = this.#loadOptions();
+    // Load configuration.
+    const basicConfig = utils.loadBasicConfig();
 
     // Exit if there is no .env path.
-    if (!options.env_path)
+    if (!basicConfig.env_path)
       return;
 
     // Set environment variables in process.env.
-    const env = dotenv.parse(fs.readFileSync(options.env_path!));
+    const env = dotenv.parse(fs.readFileSync(basicConfig.env_path!));
     for (let key in env) {
       // console.log(`Read environment variable ${key}`);
       process.env[key] = env[key]
@@ -31,25 +31,5 @@ export default class {
 
     // Set read completion flag to prevent multiple reading of env.
     global.loadedEnv = true;
-  }
-
-  /**
-   * Returns the option.
-   * 
-   * @return {Config} option.
-   */
-  static #loadOptions(): Config {
-    // Options with default values set.
-    const defaultOptions: Config = {
-      env_path: undefined
-    };
-
-    // If the options file is not found, the default options are returned.
-    const filePath = `${process.cwd()}/config/config`;
-    if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
-
-    // If an options file is found, it returns options that override the default options.
-    return Object.assign(defaultOptions, require(filePath).default||require(filePath));
   }
 }

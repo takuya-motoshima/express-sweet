@@ -6,7 +6,6 @@ import express from 'express';
  * baseUrl: The base URL for this application.
  */
 export default class {
-    #private;
     /**
      * Mount on application.
      */

@@ -1,3 +1,3 @@
-import Router from './Router';
+import Router from '~/routing/Router';
 
 export {Router}

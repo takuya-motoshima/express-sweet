@@ -3,7 +3,6 @@ import express from 'express';
  * User authentication service.
  */
 export default class {
-    #private;
     /**
      * Authenticate the user.
      *

@@ -1,9 +1,8 @@
-import fs from 'fs';
 import express from 'express';
 import passport from 'passport';
 import {Strategy as LocalStrategy, IVerifyOptions} from 'passport-local';
 import session from 'express-session';
-import AuthenticationOptions from '~/interfaces/AuthenticationOptions';
+import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
 import connectRedis from 'connect-redis';
 // FIXME: When I read createClient with "import", a "Cannot read property transformRedisJsonNullReply of undefined" execution error occurred, but I could not solve it, so I used "require".
 const createClient = require('redis').createClient;
@@ -20,11 +19,12 @@ export default class {
    * Mount on application.
    */
   static mount(app: express.Express) {
-    // Load options.
-    const options: AuthenticationOptions = this.#loadOptions();
+    // Load configuration.
+    const authenticationConfig: AuthenticationConfig = utils.loadAuthenticationConfig();
+    const basicConfig = utils.loadBasicConfig();
 
     // Exit if authentication is disabled.
-    if (!options.enabled)
+    if (!authenticationConfig.enabled)
       return;
 
     // Session connection options.
@@ -35,15 +35,15 @@ export default class {
       cookie: {
         secure: false,
         httpOnly: true,
-        maxAge: options.expiration
+        maxAge: authenticationConfig.expiration
       }
     };
 
     // When session is stored in redis.
-    if (options.session_store === 'redis') {
+    if (authenticationConfig.session_store === 'redis') {
       // Create a client to connect to the redis server.
       const redisClient = createClient({
-        url: options.redis_host as string,
+        url: authenticationConfig.redis_host as string,
         legacyMode: true
       });
 
@@ -60,35 +60,26 @@ export default class {
 
     // Use passport-local to set up local authentication with username and password.
     passport.use(new LocalStrategy({
-      usernameField: options.username,
-      passwordField: options.password,
+      usernameField: authenticationConfig.username,
+      passwordField: authenticationConfig.password,
       session: true,
       // NOTE: The passReqToCallback option must be enabled in order to receive the request object in the first parameter of the authentication callback function.
       passReqToCallback: true
-    }, async (
-      req: express.Request,
-      username: string,
-      password: string,
-      done: (error: any, user?: any, options?: IVerifyOptions
-    ) => void) => {
+    }, async (req: express.Request, username: string, password: string, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
       // Find the user who owns the credentials.
-      const user = <{[key: string]: any}|null> await options.authenticate_user(username, password, req);
+      const user = <{[key: string]: any}|null> await authenticationConfig.authenticate_user(username, password, req);
 
       // Authentication done.
       done(null, user || false);
     }));
 
     // Serialize the user information (ID in this case) and embed it in the session.
-    passport.serializeUser<number>((user: {[key: string]: any}, done) => done(null, user.id || undefined));
+    passport.serializeUser<number>((user: {[key: string]: any}, done: any) => done(null, user.id || undefined));
 
     // When the request is received, the user data corresponding to the ID is acquired and stored in req.user.
-    passport.deserializeUser(async (id, done) => {
+    passport.deserializeUser(async (id: any, done: any) => {
       // Find credentialed user information.
-      const user = <{[key: string]: any}> await options.subscribe_user(id as number);
-      // const user = <{[key: string]: any}> await options.model.findOne({where: {id}, raw: true});
-      // // For security, delete the password value.
-      // if (user)
-      //   delete user[options.password];
+      const user = <{[key: string]: any}> await authenticationConfig.subscribe_user(id as number);
 
       // Done deserialization of authenticated user.
       done(null, user);
@@ -104,16 +95,16 @@ export default class {
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Check if the request URL does not require authentication.
-      if (options.allow_unauthenticated && this.#isNotRequireAuthentication(req, options.allow_unauthenticated))
+      if (authenticationConfig.allow_unauthenticated && this.#isNotRequireAuthentication(req, authenticationConfig.allow_unauthenticated))
         return void next();
 
       // Asynchronous request flag.
-      const isAjax = options.is_ajax(req);
+      const isAjax = basicConfig.is_ajax(req);
 
       // URL to redirect to in case of login failure.
-      const failureRedirectUrl = (utils.isFunction(options.failure_redirect)
-        ? (options.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
-        : options.failure_redirect) as string;
+      const failureRedirectUrl = (utils.isFunction(authenticationConfig.failure_redirect)
+        ? (authenticationConfig.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
+        : authenticationConfig.failure_redirect) as string;
 
       // Check if you are logged in.
       if (req.isAuthenticated()) {
@@ -123,7 +114,7 @@ export default class {
           res.locals.session = req.user;
           next();
         } else
-          res.redirect(options.success_redirect);
+          res.redirect(authenticationConfig.success_redirect);
       } else if (!isAjax)
         // If authentication is not established and asynchronous communication is not used, the user is redirected to the login page.
         if (req.path === failureRedirectUrl)
@@ -134,46 +125,6 @@ export default class {
         // If authentication is not established and asynchronous communication is used, a 401 error is returned.
         res.status(401).end();
     });
-  }
-
-  /**
-   * Returns the option.
-   * 
-   * @return {AuthenticationOptions} option.
-   */
-  static #loadOptions(): AuthenticationOptions {
-    // Options with default values set.
-    const defaultOptions: AuthenticationOptions = {
-      enabled: false,
-      session_store: 'memory',
-      redis_host: undefined,
-      username: 'username',
-      password: 'password',
-      success_redirect: '/',
-      failure_redirect: '/login',
-      authenticate_user: (username: string, password: string, req: express.Request) => new Promise(resolve => resolve(null)),
-      subscribe_user: (id: number|string) => new Promise(resolve => resolve({} as {[key: string]: any})),
-      allow_unauthenticated: [],
-      expiration: 24 * 3600000, // 24hours
-      is_ajax: (req: express.Request): boolean => {
-        return !!req.xhr;
-      }
-    };
-
-    // If the options file is not found, the default options are returned.
-    const filePath = `${process.cwd()}/config/authentication`;
-    if (!fs.existsSync(`${filePath}.js`))
-      return defaultOptions;
-
-    // If an options file is found, it is merged with the default options.
-    const mergeOptions = Object.assign(defaultOptions, require(filePath).default || require(filePath));
-
-    // Check required options.
-    if (mergeOptions.session_store === 'redis' && !mergeOptions.redis_host)
-      throw new TypeError('If the session store is redis, redis_host in the authentication configuration is required');
-
-    // If an options file is found, it returns options that override the default options.
-    return mergeOptions;
   }
 
   /**
