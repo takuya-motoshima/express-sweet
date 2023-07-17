@@ -44,7 +44,7 @@ export default interface {
    *   res.locals.message = 'Hello World';
    * }
    *
-   * @type {(res: express.Response) => void}
+   * @type {(res: express.Response) => Promise<void>|void}
    */
-  beforeRender?: (req: express.Request, res: express.Response) => void
+  beforeRender?: (req: express.Request, res: express.Response) => Promise<void>|void
 }

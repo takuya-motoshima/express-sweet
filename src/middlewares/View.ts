@@ -32,9 +32,14 @@ export default class {
     app.set('views',  viewConfig.views_dir);
 
     // Set variables that can be accessed from within the view.
-    app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-      if (viewConfig.beforeRender)
-        viewConfig.beforeRender(req, res);
+    app.use(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+      if (viewConfig.beforeRender) {
+        // Determine if the view drawing callback is asynchronous.
+        if (utils.isAsyncFunction(viewConfig.beforeRender))
+          await viewConfig.beforeRender(req, res);
+        else
+          viewConfig.beforeRender(req, res);
+      }
       next();
     });
   }

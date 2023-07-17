@@ -1,9 +1,29 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.37] - 2023/7/17
+### Changed
+- The beforeRender option in the view configuration (config/view.js) can now specify asynchronous functions.
+
+### Added
+- New Math-related view helpers have been added.  
+
+    See [here](https://takuya-motoshima.github.io/express-sweet/#view-math-helper) how to use the helper.
+  
+    Added view helpers:  
+    |Helper|Description|
+    |--|--|
+    |add|Calculates the sum of two numbers.|
+    |sub|Calculates the difference of the given values.|
+    |multiply|Calculate the multiplication of the given values.|
+    |divide|Compute the division of the given values.|
+    |ceil|Round up the value.|
+    |floor|Rounds down a number.|
+    |abs|Returns an absolute value.|
+
 ## [1.0.36] - 2023/7/12
 ### Changed
-- Moved the Ajax determination option (is_ajax) in the authentication configuration (config/authentication) to the basic configuration (config/config).  
+- Moved the Ajax determination option (is_ajax) in the authentication configuration (config/authentication.js) to the basic configuration (config/config.js).  
     
     config/config.js:
     ```js
@@ -671,3 +691,4 @@ All notable changes to this project will be documented in this file.
 [1.0.34]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.33...v1.0.34
 [1.0.35]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.34...v1.0.35
 [1.0.36]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.35...v1.0.36
+[1.0.37]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.36...v1.0.37

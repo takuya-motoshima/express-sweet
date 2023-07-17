@@ -481,6 +481,18 @@
                       <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                      <!--begin:Menu link-->
+                      <a class="menu-link" href="#view-math-helper">
+                        <span class="menu-bullet">
+                          <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">Math Helper</span>
+                      </a>
+                      <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
                   </div>
                   <!--end:Menu sub-->
                 </div>
@@ -1855,7 +1867,7 @@ module.exports = router;</code></pre>
                                 <td>Extension for templates and partials files.<br>The default is <code>.hbs</code>.</td>
                               </tr>
                               <tr>
-                                <td class="w-250px"><code>beforeRender: (req: express.Request, res: express.Response) =&gt; void</code></td>
+                                <td class="w-250px"><code>beforeRender: (req: express.Request, res: express.Response) =&gt; Promise&lt;void&gt;|void</code></td>
                                 <td>
                                   Hook function just before the view is rendered.<br>
                                   For example, you can set your own local variables that can be used within the view.<br>
@@ -1875,7 +1887,7 @@ module.exports = router;</code></pre>
   *   res.locals.message = &#039;Hello World&#039;;
   * }
   *
-  * @type {(res: express.Response) =&gt; void}
+  * @type {(res: express.Response) =&gt; Promise&lt;void&gt;|void}
   */
 beforeRender: (req, res) =&gt; {
   res.locals.message = &#039;Hello World&#039;;
@@ -3278,6 +3290,272 @@ Else
 {{!-- German uses comma as decimal separator and period for thousands. --}}
 {{!-- results in: 123.456,789 --}}
 {{number2locale 123456.789 &#039;de-DE&#039;}}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                            </tbody>
+                            <!--end::Body-->
+                          </table>
+                          <!--end::Table-->
+                        </div>
+                        <!--end::Table wrapper-->
+                      </div>
+                      <!--end::Table-->
+
+
+
+
+                      <!--begin::Block-->
+                      <h2 id="view-math-helper" class="text-gray-700 py-5 fw-normal">Math Helper</h2>
+                      <!--end::Block-->
+                      <!--begin::Table-->
+                      <div class="py-2">
+                        <!--begin::Table wrapper-->
+                        <div class="table-responsive border rounded">
+                          <!--begin::Table-->
+                          <table class="table table-striped mb-0 g-6">
+                            <!--begin::Head-->
+                            <thead>
+                              <tr class="fs-4 fw-bold p-6">
+                                <th class="min-w-200px">Function</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <!--end::Head-->
+                            <!--begin::Body-->
+                            <tbody>
+                              <tr>
+                                <td class="w-250px"><code>add()</code></td>
+                                <td>
+                                  Calculates the sum of two numbers.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: number|string</code> The first number.</li>
+                                      <li><code>val2: number|string</code> The second number.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>number</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- results in: 3 --}}
+{{add 1 2}}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>sub()</code></td>
+                                <td>
+                                  Calculates the difference of the given values.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: number|string</code> The first number.</li>
+                                      <li><code>val2: number|string</code> The second number.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>number</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- results in: 3 --}}
+{{sub 5 2}}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>multiply()</code></td>
+                                <td>
+                                  Calculate the multiplication of the given values.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: number|string</code> The first number.</li>
+                                      <li><code>val2: number|string</code> The second number.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>number</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- results in: 10 --}}
+{{multiply 5 2}}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>divide()</code></td>
+                                <td>
+                                  Compute the division of the given values.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val1: number|string</code> The first number.</li>
+                                      <li><code>val2: number|string</code> The second number.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>number</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- results in: 5 --}}
+{{divide 10 2}}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>ceil()</code></td>
+                                <td>
+                                  Round up the value.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: number|string</code> Number to be rounded to nearest greater integer.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>number</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- results in: 6 --}}
+{{ceil 5.6}}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>floor()</code></td>
+                                <td>
+                                  Rounds down a number.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: number|string</code> Number to be rounded to nearest lower integer.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>number</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- results in: 5 --}}
+{{floor 5.6}}</code></pre>
+                                      </div>
+                                    </div>
+                                    <!--end::Highlight-->
+                                  </div>
+                                  <!--end::Code-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="w-250px"><code>abs()</code></td>
+                                <td>
+                                  Returns an absolute value.
+                                  <!--begin::Parameters-->
+                                  <div class="py-5">
+                                    <p>Parameters:</p> 
+                                    <ul>
+                                      <li><code>val: number|string</code> Number to perform absolute value operation on.</li>
+                                    </ul>
+                                  </div>
+                                  <!--end::Parameters-->
+                                  <!--begin::Return value-->
+                                  <div class="py-5">
+                                    <p>Return value:</p> 
+                                    <code>number</code>
+                                  </div>
+                                  <!--end::Return value-->
+                                  <!--begin::Code-->
+                                  <div class="py-5">
+                                    <!--begin::Highlight-->
+                                    <div class="highlight">
+                                      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                                      <div class="highlight-code">
+                                        <pre class="language-javascript"><code class="language-javascript">{{!-- results in: 5.6 --}}
+{{abs -5.6}}</code></pre>
                                       </div>
                                     </div>
                                     <!--end::Highlight-->
