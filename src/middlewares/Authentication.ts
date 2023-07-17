@@ -8,6 +8,7 @@ import connectRedis from 'connect-redis';
 const createClient = require('redis').createClient;
 // import {createClient} from 'redis';
 import utils from '~/utils';
+import View from '~/middlewares/View';
 
 /**
  * Incorporate user authentication into your application.
@@ -25,7 +26,8 @@ export default class {
 
     // Exit if authentication is disabled.
     if (!authenticationConfig.enabled)
-      return;
+      // Mount middleware to be executed just before drawing the view.
+      return void View.mountBeforeRender(app);
 
     // Session connection options.
     const sessionOptions: session.SessionOptions = {
@@ -91,6 +93,9 @@ export default class {
     // Authenticate access with session.
     // It also manages req.user, reads the session id from the client cookie, and "deserializes" to the user information based on it.
     app.use(passport.session());
+
+    // Mount middleware to be executed just before drawing the view.
+    View.mountBeforeRender(app);
 
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {

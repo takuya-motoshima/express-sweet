@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.38] - 2023/7/17
+### Fixed
+- Fixed a bug that login user data (req.user) could not be referenced in the function called just before view rendering (config/view.js#beforeRender).
+
 ## [1.0.37] - 2023/7/17
 ### Changed
 - The beforeRender option in the view configuration (config/view.js) can now specify asynchronous functions.
@@ -692,3 +696,4 @@ All notable changes to this project will be documented in this file.
 [1.0.35]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.34...v1.0.35
 [1.0.36]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.35...v1.0.36
 [1.0.37]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.36...v1.0.37
+[1.0.38]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.37...v1.0.38

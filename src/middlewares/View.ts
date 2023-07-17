@@ -31,6 +31,19 @@ export default class {
     app.set('view engine', 'hbs');
     app.set('views',  viewConfig.views_dir);
 
+    // NOTE: Fixed a bug that login user data (req.user) could not be referenced in the function called just before view rendering (config/view.js#beforeRender).
+    //        This needed to be done after the login user was loaded in the login authentication middleware (middlewares/Authentication).
+    // // Mount middleware to be executed just before drawing the view.
+    // this.mountBeforeRender(app);
+  }
+
+  /**
+   * Mount middleware to be executed just before drawing the view.
+   */
+  static mountBeforeRender(app: express.Express) {
+    // Load configuration.
+    const viewConfig = utils.loadViewConfig();
+
     // Set variables that can be accessed from within the view.
     app.use(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
       if (viewConfig.beforeRender) {
