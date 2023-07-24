@@ -1,6 +1,77 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.39] - 2023/7/24
+### Changed
+- Changed exception class name.
+    <table>
+        <thead>
+            <tr>
+                <th>Before Class Name</th>
+                <th>After class name</th>
+                <th>Instance member</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CollectionCreationError</td>
+                <td>FaceCollectionCreateFailed</td>
+                <td>
+                    <ul>
+                        <li>name: Error Name.</li>
+                        <li>collectionId: Collection ID.</li>
+                        <li>httpStatusCode: HTTP status code.</li>
+                    </ul>
+                </td>
+                <td>Thrown when face collection creation (<code>AWSRekognitionClient.createCollection()</code>) fails.</td>
+            </tr>
+            <tr>
+                <td>CollectionDeletionError</td>
+                <td>FaceCollectionDeleteFailed</td>
+                <td>
+                    <ul>
+                        <li>name: Error Name.</li>
+                        <li>collectionId: Collection ID.</li>
+                        <li>httpStatusCode: HTTP status code.</li>
+                    </ul>
+                </td>
+                <td>Thrown when deleting a face collection (<code>AWSRekognitionClient.deleteCollection()</code>) fails.</td>
+            </tr>
+            <tr>
+                <td>FaceIndexError</td>
+                <td>FaceIndexFailed</td>
+                <td>
+                    <ul>
+                        <li>name: Error Name.</li>
+                        <li>collectionId: Collection ID.</li>
+                    </ul>
+                </td>
+                <td>Thrown when face indexing (<code>AWSRekognitionClient.indexFace()</code>) fails.</td>
+            </tr>
+            <tr>
+                <td>MissingFaceInImageError</td>
+                <td>FaceMissingInPhoto</td>
+                <td>
+                    <ul>
+                        <li>name: Error Name.</li>
+                    </ul>
+                </td>
+                <td>Thrown if the face to index (<code>AWSRekognitionClient.indexFace()</code>) is not in the photo.</td>
+            </tr>
+            <tr>
+                <td>MultipleFacesInImageError</td>
+                <td>FacesMultipleInPhoto</td>
+                <td>
+                    <ul>
+                        <li>name: Error Name.</li>
+                    </ul>
+                </td>
+                <td>Thrown when there are multiple faces to index (<code>AWSRekognitionClient.indexFace()</code>) in a photo.</td>
+            </tr>
+        </tbody>
+    </table>
+
 ## [1.0.38] - 2023/7/17
 ### Fixed
 - Fixed a bug that login user data (req.user) could not be referenced in the function called just before view rendering (config/view.js#beforeRender).
@@ -697,3 +768,4 @@ All notable changes to this project will be documented in this file.
 [1.0.36]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.35...v1.0.36
 [1.0.37]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.36...v1.0.37
 [1.0.38]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.37...v1.0.38
+[1.0.39]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.38...v1.0.39

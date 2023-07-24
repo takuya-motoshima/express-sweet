@@ -10,11 +10,11 @@ import BoundingBox from '~/interfaces/BoundingBox';
 import FaceDetails from '~/interfaces/FaceDetails';
 import IndexFaceDetails from '~/interfaces/IndexFaceDetails';
 import FaceDetailsEmotions from '~/interfaces/FaceDetailsEmotions';
-import CollectionCreationError from '~/exceptions/CollectionCreationError';
-import MissingFaceInImageError from '~/exceptions/MissingFaceInImageError';
-import MultipleFacesInImageError from '~/exceptions/MultipleFacesInImageError';
-import FaceIndexError from '~/exceptions/FaceIndexError';
-import CollectionDeletionError from '~/exceptions/CollectionDeletionError';
+import FaceCollectionCreateFailed from '~/exceptions/FaceCollectionCreateFailed';
+import FaceMissingInPhoto from '~/exceptions/FaceMissingInPhoto';
+import FacesMultipleInPhoto from '~/exceptions/FacesMultipleInPhoto';
+import FaceIndexFailed from '~/exceptions/FaceIndexFailed';
+import FaceCollectionDeleteFailed from '~/exceptions/FaceCollectionDeleteFailed';
 
 /**
  * AWS Rekognition Client.
@@ -175,7 +175,7 @@ export default class {
 
     // Returns an error if the HTTP status code is other than 200.
     if (res.StatusCode !== 200)
-      throw new CollectionCreationError(`Error creating collection ${collectionId} (HTTP status code: ${res.StatusCode})`);
+      throw new FaceCollectionCreateFailed(collectionId, res.StatusCode as number);
   }
 
   /**
@@ -223,10 +223,10 @@ export default class {
     const numberOfFaces = (await this.detectFaces(img)).length;
     if (numberOfFaces === 0)
       // If no face is found in the image, an error is returned.
-      throw new MissingFaceInImageError();
+      throw new FaceMissingInPhoto();
     else if (numberOfFaces > 1)
       // If more than one face is found in the image, an error is returned.
-      throw new MultipleFacesInImageError();
+      throw new FacesMultipleInPhoto();
 
     // Send request.
     const res: AWS.IndexFacesResponse = await this.#client.send(new AWS.IndexFacesCommand({
@@ -242,7 +242,7 @@ export default class {
 
     // Returns an error if the result of the added face is not found.
     if (res == null || !res.FaceRecords || !res.FaceRecords.length)
-      throw new FaceIndexError(`Error in indexing face to collection ID ${collectionId}`);
+      throw new FaceIndexFailed(collectionId);
 
     // Records of faces created in the collection.
     const faceRecord = res.FaceRecords[0] as AWS.FaceRecord;
@@ -406,7 +406,7 @@ export default class {
 
     // Returns an error if the HTTP status code is other than 200.
     if (res.StatusCode !== 200)
-      throw new CollectionDeletionError(`Error in deleting collection ID ${collectionId}`);
+      throw new FaceCollectionDeleteFailed(collectionId, res.StatusCode as number);
     return true;
   }
 

@@ -1,13 +1,13 @@
-import CollectionCreationError from '~/exceptions/CollectionCreationError';
-import CollectionDeletionError from '~/exceptions/CollectionDeletionError';
-import FaceIndexError from '~/exceptions/FaceIndexError';
-import MissingFaceInImageError from '~/exceptions/MissingFaceInImageError';
-import MultipleFacesInImageError from '~/exceptions/MultipleFacesInImageError';
+import FaceCollectionCreateFailed from '~/exceptions/FaceCollectionCreateFailed';
+import FaceCollectionDeleteFailed from '~/exceptions/FaceCollectionDeleteFailed';
+import FaceIndexFailed from '~/exceptions/FaceIndexFailed';
+import FaceMissingInPhoto from '~/exceptions/FaceMissingInPhoto';
+import FacesMultipleInPhoto from '~/exceptions/FacesMultipleInPhoto';
 
 export {
-  CollectionCreationError,
-  CollectionDeletionError,
-  FaceIndexError,
-  MissingFaceInImageError,
-  MultipleFacesInImageError,
+  FaceCollectionCreateFailed,
+  FaceCollectionDeleteFailed,
+  FaceIndexFailed,
+  FaceMissingInPhoto,
+  FacesMultipleInPhoto,
 }
