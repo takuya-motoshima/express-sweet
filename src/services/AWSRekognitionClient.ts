@@ -299,6 +299,12 @@ export default class {
       maxFaces: 5
     }, options);
 
+    // Get the count of faces in the image.
+    const numberOfFaces = (await this.detectFaces(img)).length;
+    if (numberOfFaces === 0)
+      // If no face is found in the image, null is returned.
+      return null;
+
     // Send request.
     const res: AWS.SearchFacesByImageResponse = await this.#client.send(new AWS.SearchFacesByImageCommand({
       CollectionId: collectionId,

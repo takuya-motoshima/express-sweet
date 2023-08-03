@@ -162,6 +162,11 @@ test('Should be able to find faces from the collection', async () => {
   expect(result).toHaveProperty('similarity');
 });
 
+test('Should return null if collection is searched using faceless images', async () => {
+  const result = await client.searchFaces(collectionId4, `${__dirname}/input/no-face.jpg`);
+  expect(result).toBe(null);
+});
+
 test('Should list indexed faces', async () => {
   const result = await client.listFaces(collectionId4);
   for (let match of result) {
