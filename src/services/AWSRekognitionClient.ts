@@ -17,7 +17,7 @@ import FaceIndexFailed from '~/exceptions/FaceIndexFailed';
 import FaceCollectionDeleteFailed from '~/exceptions/FaceCollectionDeleteFailed';
 
 /**
- * AWS Rekognition Client.
+ * Rekognition Client.
  */
 export default class {
   /**
@@ -35,7 +35,7 @@ export default class {
       timeout: 5000
     }, options);
 
-    // Generate AWS Rekognition Client.
+    // Generate Rekognition Client.
     this.#client = new AWS.RekognitionClient({
       region: options.region,
       credentials: {
@@ -209,6 +209,8 @@ export default class {
    *                                                    The maximum length is 255, and the characters that can be used are "[a-zA-Z0-9_.\-:]+".
    * @param  {boolean}          options.returnDetails   If false, only the face ID of the created face is returned.
    *                                                    If true, returns the face ID of the created face, plus age range, gender, and emotion.
+   * @throws {FaceMissingInPhoto}                       Throws an exception if no face is found in the image.
+   * @throws {FacesMultipleInPhoto}                     Throws an exception if more than one face is found in the image.
    * @return {Promise<string|IndexFaceDetails>}         If options.returnDetails is false, the face identifier is returned.
    *                                                    If options.returnDetails is true, returns the gender, age group, and emotion in addition to the face identifier.
    */
@@ -280,30 +282,52 @@ export default class {
    * For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.
    * The operation compares the features of the input face with faces in the specified collection.
    * 
-   * @param  {string}                              collectionId          ID of the collection to search.
-   * @param  {string}                              img                   Image path or Data Url or image buffer.
-   * @param  {object}                              options               option.
-   * @param  {number}                              options.minConfidence Specifies the minimum confidence in the face match to return.
-   *                                                                     The default value is 80%.
-   * @param  {number}                              options.maxFaces      Maximum number of faces to return.
-   *                                                                     The operation returns the maximum number of faces with the highest confidence in the match.
-   *                                                                     The default value is 5.
-   * @return {Promise<FaceMatch[]|FaceMatch|null>}                       If options.maxFaces is 1, the face information found is returned.
-   *                                                                     If options.maxFaces is 2 or more, the list of face information found is returned.
-   *                                                                     Returns null if no face is found.
+   * @param  {string}                               collectionId                        ID of the collection to search.
+   * @param  {string}                               img                                 Image path or Data Url or image buffer.
+   * @param  {object}                               options                             option.
+   * @param  {number}                               options.minConfidence               Specifies the minimum confidence in the face match to return.
+   *                                                                                    The default value is 80%.
+   * @param  {number}                               options.maxFaces                    Maximum number of faces to return.
+   *                                                                                    The operation returns the maximum number of faces with the highest confidence in the match.
+   *                                                                                    The default value is 5.
+   * @param  {boolean}                              options.throwNotFoundFaceException  If true, throws a FaceMissingInPhoto exception when a face is not found in the image; if false, returns null. Default is false.
+   * @param  {boolean}                              options.throwTooManyFaceException   If true, throws a FacesMultipleInPhoto exception when more than one face is found in the image. Default is false.
+   * @throws {FaceMissingInPhoto}                                                       Throws an exception if options.throwNotFoundFaceException is true and no face is found in the image
+   * @throws {FacesMultipleInPhoto}                                                     Throws an exception if options.throwTooManyFaceException is true and more than one face is found in the image
+   * @return {Promise<FaceMatch[]|FaceMatch|null>}                                      If options.maxFaces is 1, the face information found is returned.
+   *                                                                                    If options.maxFaces is 2 or more, the list of face information found is returned.
+   *                                                                                    Returns null if no face is found.
    */
-  async searchFaces(collectionId: string, img: string, options?: {minConfidence? : number, maxFaces?: number}): Promise<FaceMatch[]|FaceMatch|null> {
+  async searchFaces(
+    collectionId: string,
+    img: string,
+    options?: {
+      minConfidence? : number,
+      maxFaces?: number,
+      throwNotFoundFaceException?: boolean,
+      throwTooManyFaceException?: boolean,
+    }
+  ): Promise<FaceMatch[]|FaceMatch|null> {
     // Initialize options.
     options = Object.assign({
       minConfidence: 80,
-      maxFaces: 5
+      maxFaces: 5,
+      throwNotFoundFaceException: false,
+      throwTooManyFaceException: false,
     }, options);
 
     // Get the count of faces in the image.
     const numberOfFaces = (await this.detectFaces(img)).length;
-    if (numberOfFaces === 0)
-      // If no face is found in the image, null is returned.
-      return null;
+    if (numberOfFaces === 0) {
+      if (options.throwNotFoundFaceException)
+        // Throws an exception if no face is found in the image.
+        throw new FaceMissingInPhoto();
+      else
+        // If no face is found in the image, null is returned.
+        return null;
+    } else if (numberOfFaces > 1 && options.throwTooManyFaceException)
+      // If more than one face is found in the image, an error is returned.
+      throw new FacesMultipleInPhoto();
 
     // Send request.
     const res: AWS.SearchFacesByImageResponse = await this.#client.send(new AWS.SearchFacesByImageCommand({

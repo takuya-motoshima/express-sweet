@@ -1,6 +1,60 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.41] - 2023/8/4
+### Changed
+- Added an option to the method that searches for faces in the collection to throw an exception if a face is not found or if multiple faces are found.
+    <table>
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>throwNotFoundFaceException</td>
+                <td>boolean</td>
+                <td>If true, throws a FaceMissingInPhoto exception when a face is not found in the image; if false, returns null. Default is false.</td>
+            </tr>
+            <tr>
+                <td>throwTooManyFaceException</td>
+                <td>boolean</td>
+                <td>If true, throws a FacesMultipleInPhoto exception when more than one face is found in the image. Default is false.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    Example:
+    ```js
+    const {services: {AWSRekognitionClient}, exceptions: {FaceMissingInPhoto, FacesMultipleInPhoto}} = require('express-sweet');
+
+    // Rekognition Client.
+    const client =  new AWSRekognitionClient({
+      accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+      region: process.env.AWS_REKOGNITION_REGION,
+    });
+
+    // Find a face in the collection.
+    const collectionId = 'MyCollection';
+
+    try {
+      await client.searchFaces(collectionId, 'face.jpg', {
+        throwNotFoundFaceException: true,
+        throwTooManyFaceException: true,
+      });
+    } catch (err) {
+      if (err instanceof FaceMissingInPhoto)
+        console.log('No face was found');
+      else if (err instanceof FacesMultipleInPhoto)
+        console.log('Multiple faces were found');
+      else
+        console.log('Other errors');
+    }
+    ```
+
 ## [1.0.40] - 2023/8/4
 ### Changed
 - Fixed to return null instead of throwing an error when looking for faces in the collection using images without faces (<code>AWSRekognitionClient.searchFaces()</code>).
@@ -446,7 +500,7 @@ All notable changes to this project will be documented in this file.
 
     // Create a face and get the ID of the created face.
     // results in: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
-    const faceId = await client.indexFace(collectionId, 'img/face4.jpg');
+    const faceId = await client.indexFace(collectionId, 'face4.jpg');
     console.log(faceId);
 
     // Create a face and get the details of the created face.
@@ -465,7 +519,7 @@ All notable changes to this project will be documented in this file.
     //              calm: 1.5354809761047363
     //            }
     //          }
-    const faceDetails = await client.indexFace(collectionId, 'img/face5.jpg', {returnDetails: true});
+    const faceDetails = await client.indexFace(collectionId, 'face5.jpg', {returnDetails: true});
     console.log(faceDetails);
     ```
 
@@ -495,7 +549,7 @@ All notable changes to this project will be documented in this file.
       //              top: 0.11531734466552734
       //            }
       //          ]
-      let res = await client.detectFaces('img/face.jpg');
+      let res = await client.detectFaces('face.jpg');
       console.log(res);
 
       // Detect facial details.
@@ -523,7 +577,7 @@ All notable changes to this project will be documented in this file.
       //          ]
       const minConfidence = 90;
       const withDetails = true;
-      res = await client.detectFaces('img/face.jpg', minConfidence, withDetails);
+      res = await client.detectFaces('face.jpg', minConfidence, withDetails);
       console.log(res);
     })();
     ```
@@ -684,7 +738,7 @@ All notable changes to this project will be documented in this file.
     //           }
     //         ]
     const collectionId = 'MyCollection';
-    const res = await client.searchFaces(collectionId, 'img/face.jpg');
+    const res = await client.searchFaces(collectionId, 'face.jpg');
     console.log('Face search results:', res);
     ```
 
@@ -774,3 +828,4 @@ All notable changes to this project will be documented in this file.
 [1.0.38]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.37...v1.0.38
 [1.0.39]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.38...v1.0.39
 [1.0.40]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.39...v1.0.40
+[1.0.41]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.40...v1.0.41

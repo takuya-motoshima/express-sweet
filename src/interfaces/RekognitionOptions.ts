@@ -1,5 +1,5 @@
 /**
- * AWS Rekognition Client Optional Interface.
+ * Rekognition Client Optional Interface.
  */
 export default interface {
   /**

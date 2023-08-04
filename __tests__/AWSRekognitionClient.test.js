@@ -1,7 +1,7 @@
 const path = require('path');
-const {services: {AWSRekognitionClient}} = require('../dist/build.common');
+const {services: {AWSRekognitionClient}, exceptions: {FaceMissingInPhoto, FacesMultipleInPhoto}} = require('../dist/build.common');
 
-// AWS Rekognition Client.
+// Rekognition Client.
 let client;
 
 // Test Collection ID.
@@ -19,7 +19,7 @@ beforeAll(() => {
     // Load AWS Rekognition access keys, etc. into environment variables.
     require('dotenv').config({path: path.join(__dirname, '.env')});
 
-    // AWS Rekognition Client.
+    // Rekognition Client.
     client =  new AWSRekognitionClient({
       accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
@@ -165,6 +165,18 @@ test('Should be able to find faces from the collection', async () => {
 test('Should return null if collection is searched using faceless images', async () => {
   const result = await client.searchFaces(collectionId4, `${__dirname}/input/no-face.jpg`);
   expect(result).toBe(null);
+});
+
+test('If the throwNotFoundFaceException option is enabled and the collection is searched for images without faces, an FaceMissingInPhoto exception should be thrown', async () => {
+  await expect(client.searchFaces(collectionId4, `${__dirname}/input/no-face.jpg`, {throwNotFoundFaceException: true}))
+    .rejects
+    .toThrow(FaceMissingInPhoto);
+});
+
+test('If the throwTooManyFaceException option is enabled and an image with multiple faces is searched for in the collection, an FacesMultipleInPhoto exception should be thrown', async () => {
+  await expect(client.searchFaces(collectionId4, `${__dirname}/input/three-persons.jpg`, {throwTooManyFaceException: true}))
+    .rejects
+    .toThrow(FacesMultipleInPhoto);
 });
 
 test('Should list indexed faces', async () => {
