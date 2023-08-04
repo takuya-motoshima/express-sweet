@@ -81,7 +81,7 @@
               <!--begin::Title-->
               <h1 class="page-heading d-flex text-dark fw-bold fs-3 justify-content-center align-items-baseline my-0">
               <!-- <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"> -->
-                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.40</a>
+                DevDocs<a href="#changelog" class="badge fw-semibold fs-7 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.41</a>
               </h1>
               <!--end::Title-->
             </div>
@@ -7298,6 +7298,14 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
                                         Maximum number of faces to return.<br>
                                         The operation returns the maximum number of faces with the highest confidence in the match.<br>
                                         The default value is 5.
+                                      </li>
+                                      <li>
+                                        <code>options.throwNotFoundFaceException: boolean</code>
+                                        If true, throws a <code>FaceMissingInPhoto</code> exception when a face is not found in the image; if false, returns null. Default is false.
+                                      </li>
+                                      <li>
+                                        <code>options.throwTooManyFaceException: booleanr</code>
+                                        If true, throws a <code>FacesMultipleInPhoto</code> exception when more than one face is found in the image. Default is false.
                                       </li>
                                     </ul>
                                   </div>

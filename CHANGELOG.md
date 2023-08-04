@@ -16,12 +16,12 @@ All notable changes to this project will be documented in this file.
             <tr>
                 <td>throwNotFoundFaceException</td>
                 <td>boolean</td>
-                <td>If true, throws a FaceMissingInPhoto exception when a face is not found in the image; if false, returns null. Default is false.</td>
+                <td>If true, throws a <code>FaceMissingInPhoto</code> exception when a face is not found in the image; if false, returns null. Default is false.</td>
             </tr>
             <tr>
                 <td>throwTooManyFaceException</td>
                 <td>boolean</td>
-                <td>If true, throws a FacesMultipleInPhoto exception when more than one face is found in the image. Default is false.</td>
+                <td>If true, throws a <code>FacesMultipleInPhoto</code> exception when more than one face is found in the image. Default is false.</td>
             </tr>
         </tbody>
     </table>
