@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.42] - 2023/8/31
+### Changed
+- Update TypeScript version from 4.8.4 to 5.2.2.
+- Update redis dependency package used for user authentication.
+    - Updated redis package version from 4.3.1 to 4.6.8.  
+        [Here](https://github.com/redis/node-redis/blob/master/CHANGELOG.md) are the changes.
+    - Updated connect-redis package version from 6.1.3 to 7.1.0.  
+        [Here](https://github.com/tj/connect-redis/releases) are the changes.
+
+
 ## [1.0.41] - 2023/8/4
 ### Changed
 - Added an option to the method that searches for faces in the collection to throw an exception if a face is not found or if multiple faces are found.
@@ -829,3 +839,4 @@ All notable changes to this project will be documented in this file.
 [1.0.39]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.38...v1.0.39
 [1.0.40]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.39...v1.0.40
 [1.0.41]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.40...v1.0.41
+[1.0.42]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.41...v1.0.42

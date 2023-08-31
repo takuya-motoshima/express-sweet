@@ -1,6 +1,6 @@
 import express from 'express';
 import {File} from 'nodejs-shared';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Set up URL routing.

@@ -1,4 +1,4 @@
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Returns a new string with some or all matches of a pattern replaced by a replacement.

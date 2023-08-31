@@ -1,6 +1,6 @@
 import express from 'express';
 import createError from 'http-errors';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Error handling.

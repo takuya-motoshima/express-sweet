@@ -3,7 +3,7 @@ import FaceDetailsEmotions from '~/interfaces/FaceDetailsEmotions';
 /**
  * Detail of indexed face.
  */
-export default interface {
+export default interface IndexFaceDetails {
   /**
    * A unique identifier assigned to the face.
    * @type {string}
@@ -12,11 +12,11 @@ export default interface {
 
   /**
    * The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.
-   * @type {{high: UInteger, low: UInteger}}
+   * @type {{high: number, low: number}}
    */
   ageRange: {
-    high: UInteger,
-    low: UInteger
+    high: number,
+    low: number
   },
 
   /**

@@ -3,7 +3,10 @@ import passport from 'passport';
 import {Strategy as LocalStrategy, IVerifyOptions} from 'passport-local';
 import session from 'express-session';
 import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
-import RedisStore from 'connect-redis';
+import connectRedis from 'connect-redis';
+// FIXME: When I read createClient with "import", a "Cannot read property transformRedisJsonNullReply of undefined" execution error occurred, but I could not solve it, so I used "require".
+const createClient = require('redis').createClient;
+// import {createClient} from 'redis';
 import * as utils from '~/utils';
 import View from '~/middlewares/View';
 
@@ -41,13 +44,17 @@ export default class {
     // When session is stored in redis.
     if (authenticationConfig.session_store === 'redis') {
       // Create a client to connect to the redis server.
-      const client = require('redis').createClient({url: authenticationConfig.redis_host as string});
+      const redisClient = createClient({
+        url: authenticationConfig.redis_host as string,
+        legacyMode: true
+      });
 
       // Check if you can connect to the Redis server.
-      client.connect().catch(console.error);
+      redisClient.connect().catch(console.error);
 
       // Set up redis session storage in the session store.
-      sessionOptions.store = new RedisStore({client});
+      const RedisStore = connectRedis(session);
+      sessionOptions.store = new RedisStore({client: redisClient});
     }
 
     // Set session save method.

@@ -2,7 +2,7 @@ import express from 'express';
 /**
  * Express Sweet basic configuration interface.
  */
-export default interface  {
+export default interface BasicConfig {
     /**
      * Environment variable file (.env) path, defaults to none (undefined).
      * @type {string}

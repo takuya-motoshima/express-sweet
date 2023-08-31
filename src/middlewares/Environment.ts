@@ -1,6 +1,6 @@
 import fs from 'fs';
 import dotenv from 'dotenv';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Set environment variables.

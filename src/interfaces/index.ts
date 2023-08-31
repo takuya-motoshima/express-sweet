@@ -1,19 +1,8 @@
-import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
-import BasicConfig from '~/interfaces/BasicConfig';
-import DatabaseConfig from '~/interfaces/DatabaseConfig';
-import FaceMatch from '~/interfaces/FaceMatch';
-import BoundingBox from '~/interfaces/BoundingBox';
-import RekognitionOptions from '~/interfaces/RekognitionOptions';
-import SesOptions from '~/interfaces/SesOptions';
-import ViewConfig from '~/interfaces/ViewConfig';
-
-export {
-  AuthenticationConfig,
-  BasicConfig,
-  DatabaseConfig,
-  FaceMatch,
-  BoundingBox,
-  RekognitionOptions,
-  SesOptions,
-  ViewConfig
-}
+export {default as AuthenticationConfig} from '~/interfaces/AuthenticationConfig';
+export {default as BasicConfig} from '~/interfaces/BasicConfig';
+export {default as DatabaseConfig} from '~/interfaces/DatabaseConfig';
+export {default as FaceMatch} from '~/interfaces/FaceMatch';
+export {default as BoundingBox} from '~/interfaces/BoundingBox';
+export {default as RekognitionOptions} from '~/interfaces/RekognitionOptions';
+export {default as SesOptions} from '~/interfaces/SesOptions';
+export {default as ViewConfig} from '~/interfaces/ViewConfig';

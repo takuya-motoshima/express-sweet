@@ -68,8 +68,8 @@ declare const _default: {
     afterFind(fn: (instancesOrInstance: sequelize.Model<any, any> | sequelize.Model<any, any>[] | null, options: sequelize.FindOptions<any>) => void): void;
     beforeDefine(name: string, fn: (attributes: sequelize.ModelAttributes<sequelize.Model<any, any>, any>, options: sequelize.ModelOptions<sequelize.Model<any, any>>) => void): void;
     beforeDefine(fn: (attributes: sequelize.ModelAttributes<sequelize.Model<any, any>, any>, options: sequelize.ModelOptions<sequelize.Model<any, any>>) => void): void;
-    afterDefine(name: string, fn: (model: sequelize.ModelType<any, any>) => void): void;
-    afterDefine(fn: (model: sequelize.ModelType<any, any>) => void): void;
+    afterDefine(name: string, fn: (model: sequelize.ModelType) => void): void;
+    afterDefine(fn: (model: sequelize.ModelType) => void): void;
     beforeInit(name: string, fn: (config: sequelize.Config, options: sequelize.Options) => void): void;
     beforeInit(fn: (config: sequelize.Config, options: sequelize.Options) => void): void;
     afterInit(name: string, fn: (sequelize: sequelize.Sequelize) => void): void;

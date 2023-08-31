@@ -1,7 +1,7 @@
 /**
  * Bounding box of the face.
  */
-export default interface {
+export default interface BoundingBox {
   /**
    * The width of the bounding box.
    * @type {number}

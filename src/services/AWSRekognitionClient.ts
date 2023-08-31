@@ -1,6 +1,5 @@
 import fs from 'fs';
 import {Agent} from 'https';
-// import {Agent as HttpAgnet} from 'http';
 import * as AWS from '@aws-sdk/client-rekognition';
 import {NodeHttpHandler} from '@aws-sdk/node-http-handler';
 import {File} from 'nodejs-shared';
@@ -103,15 +102,8 @@ export default class {
         // If the detail option is enabled, set the emotion and other information.
         (results as FaceDetails[]).push({
           boundingBox,
-          ageRange: detail.AgeRange ?
-            {
-              high: detail.AgeRange.High,
-              low: detail.AgeRange.Low
-            } :
-            undefined,
-          gender: detail.Gender ?
-            (detail.Gender.Value === 'Male' ? 'male' : 'female') :
-            undefined,
+          ageRange: detail.AgeRange ? {high: detail.AgeRange.High as number, low: detail.AgeRange.Low as number} : undefined,
+          gender: detail.Gender ? (detail.Gender.Value === 'Male' ? 'male' : 'female') : undefined,
           emotions: detail.Emotions ?
             detail.Emotions.reduce((acc: any, current: AWS.Emotion) => {
               acc[current.Type!.toLowerCase()] = current.Confidence as number;
@@ -259,15 +251,8 @@ export default class {
     else {
       return {
         faceId: faceRecord.Face!.FaceId as string,
-        ageRange: detail.AgeRange ?
-          {
-            high: detail.AgeRange.High,
-            low: detail.AgeRange.Low,
-          } :
-          undefined,
-        gender: detail.Gender ?
-          (detail.Gender.Value === 'Male' ? 'male' : 'female') :
-          undefined,
+        ageRange: detail.AgeRange ? {high: detail.AgeRange.High as number, low: detail.AgeRange.Low as number} : undefined,
+        gender: detail.Gender ? (detail.Gender.Value === 'Male' ? 'male' : 'female') : undefined,
         emotions: detail.Emotions ?
           detail.Emotions.reduce((acc: any, current: AWS.Emotion) => {
             acc[current.Type!.toLowerCase()] = current.Confidence as number;

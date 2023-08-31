@@ -1,21 +1,9 @@
-import isArray from '~/utils/isArray';
-import isAsyncFunction from '~/utils/isAsyncFunction';
-import isFunction from '~/utils/isFunction';
-import isObject from '~/utils/isObject';
-import isString from '~/utils/isString';
-import loadAuthenticationConfig from '~/utils/loadAuthenticationConfig';
-import loadBasicConfig from '~/utils/loadBasicConfig';
-import loadDatabaseConfig from '~/utils/loadDatabaseConfig';
-import loadViewConfig from '~/utils/loadViewConfig';
-
-export default {
-  isArray,
-  isAsyncFunction,
-  isFunction,
-  isObject,
-  isString,
-  loadAuthenticationConfig,
-  loadBasicConfig,
-  loadDatabaseConfig,
-  loadViewConfig,
-}
+export {default as isArray} from '~/utils/isArray';
+export {default as isAsyncFunction} from '~/utils/isAsyncFunction';
+export {default as isFunction} from '~/utils/isFunction';
+export {default as isObject} from '~/utils/isObject';
+export {default as isString} from '~/utils/isString';
+export {default as loadAuthenticationConfig} from '~/utils/loadAuthenticationConfig';
+export {default as loadBasicConfig} from '~/utils/loadBasicConfig';
+export {default as loadDatabaseConfig} from '~/utils/loadDatabaseConfig';
+export {default as loadViewConfig} from '~/utils/loadViewConfig';

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import sequelize from 'sequelize';
 import Environment from '~/middlewares/Environment';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Connect to DB.

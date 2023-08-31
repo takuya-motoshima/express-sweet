@@ -3,7 +3,7 @@ import BoundingBox from '~/interfaces/BoundingBox';
 /**
  * This is the metadata structure of the bounding box coordinates, reliability (the bounding box contains a face), face ID, etc. returned by the searchFaces(), listFaces() methods, etc.
  */
-export default interface {
+export default interface FaceMatch {
   /**
    * A unique identifier assigned to the face.
    * @type {string}

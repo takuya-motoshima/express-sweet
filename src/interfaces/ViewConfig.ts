@@ -3,7 +3,7 @@ import express from 'express';
 /**
  * View's configuration interface.
  */
-export default interface {
+export default interface SesOptions {
   /**
    * Absolute path to the directory where the view files are located, defaults to `<application root directory>/views`.
    * @type {string}

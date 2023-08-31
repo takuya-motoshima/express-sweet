@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 // import multer from 'multer';
 // TODO: If you import morgan here, "GMT morgan deprecated" will occur, so morgan is used by require.
 // import morgan from 'morgan';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Defines all the requisites in HTTP.

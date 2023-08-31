@@ -1,7 +1,7 @@
 /**
  * AWS SES Client Optional Interface.
  */
-export default interface  {
+export default interface SesOptions {
     /**
      * API version in YYYYY-MM-DD format (or date).
      * Specify 'latest' to use the latest possible version.

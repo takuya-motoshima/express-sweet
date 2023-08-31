@@ -3,7 +3,7 @@ import express from 'express';
 /**
  * User authentication configuration interface.
  */
-export default interface {
+export default interface AuthenticationConfig {
   /**
    * Enable user authentication, defaults to disabled (false).
    * @type {boolean}

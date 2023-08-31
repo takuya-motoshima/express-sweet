@@ -1,6 +1,6 @@
 import express from 'express';
 import * as helpers from '~/handlebars_helpers';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Enable Handlebars template engine.

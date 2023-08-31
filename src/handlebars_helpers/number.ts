@@ -1,4 +1,4 @@
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Returns the language-sensitive representation of a number as a string.

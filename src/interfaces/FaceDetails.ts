@@ -4,7 +4,7 @@ import FaceDetailsEmotions from '~/interfaces/FaceDetailsEmotions';
 /**
  * Details of each face found in the image. 
  */
-export default interface {
+export default interface FaceDetails {
   /**
    * Bounding box of the face.
    * @type {BoundingBox}
@@ -13,11 +13,11 @@ export default interface {
 
   /**
    * The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.
-   * @type {{high: UInteger, low: UInteger}}
+   * @type {{high: number, low: number}}
    */
   ageRange?: {
-    high: UInteger,
-    low: UInteger
+    high: number,
+    low: number
   },
 
   /**

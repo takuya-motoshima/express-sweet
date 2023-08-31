@@ -1,2 +1,1 @@
-import Router from '~/routing/Router';
-export { Router };
+export { default as Router } from '~/routing/Router';

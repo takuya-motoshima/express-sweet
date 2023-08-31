@@ -152,6 +152,13 @@ See <a href="https://takuya-motoshima.github.io/express-sweet/" target="_blank">
     npm start
     ```
 
+## Testing
+With [npm](http://npmjs.org) do:
+
+```sh
+npm test
+```
+
 ## Author
 **Takuya Motoshima**
 

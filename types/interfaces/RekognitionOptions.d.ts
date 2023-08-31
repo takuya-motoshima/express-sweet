@@ -1,7 +1,7 @@
 /**
  * Rekognition Client Optional Interface.
  */
-export default interface  {
+export default interface RekognitionOptions {
     /**
      * Your AWS access key ID.
      * @type {string}

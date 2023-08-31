@@ -1,7 +1,7 @@
 /**
  * The emotions that appear to be expressed on the face, and the confidence level in the determination.
  */
-export default interface  {
+export default interface FaceDetailsEmotions {
     /**
      * Confidence level of "disgusted" predicted from the face.
      * @type {number}

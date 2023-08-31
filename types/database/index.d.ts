@@ -1,4 +1,3 @@
-import Database from '~/database/Database';
-import Model from '~/database/Model';
-import loadModels from '~/database/loadModels';
-export { Database, Model, loadModels };
+export { default as Database } from '~/database/Database';
+export { default as Model } from '~/database/Model';
+export { default as loadModels } from '~/database/loadModels';

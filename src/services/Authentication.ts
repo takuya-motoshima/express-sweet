@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * User authentication service.

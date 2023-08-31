@@ -1,5 +1,5 @@
 import express from 'express';
-import utils from '~/utils';
+import * as utils from '~/utils';
 
 /**
  * Set local variables.
