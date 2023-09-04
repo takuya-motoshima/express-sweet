@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [1.0.43] - Undecided
 ### Changed
 - Refactor the unit class.
-- Delete unnecessary dependencies (class-transformer,class-validator)
+- Delete unnecessary dependencies (class-transformer,class-validator).
 
 ## [1.0.42] - 2023/8/31
 ### Changed
