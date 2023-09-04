@@ -1,0 +1,10 @@
+https://www.example.com/path
+https://www.example.com/path/path
+https://example.com/*
+https://*.example.com/*
+https://www.example.com
+https://sub.example.com
+https://example.com
+https://www.example.com/*
+https://sub.example.com/*
+https://example.com/*

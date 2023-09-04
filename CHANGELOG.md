@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.43] - Undecided
+### Changed
+- Refactor the unit class.
+- Delete unnecessary dependencies (class-transformer,class-validator)
+
 ## [1.0.42] - 2023/8/31
 ### Changed
 - Update TypeScript version from 4.8.4 to 5.2.2.
@@ -840,3 +845,4 @@ All notable changes to this project will be documented in this file.
 [1.0.40]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.39...v1.0.40
 [1.0.41]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.40...v1.0.41
 [1.0.42]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.41...v1.0.42
+[1.0.43]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.42...v1.0.43

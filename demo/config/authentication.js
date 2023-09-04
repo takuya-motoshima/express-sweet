@@ -14,8 +14,8 @@ module.exports = {
    * The session store instance, defaults to a new MemoryStore(memory) instance.
    * @type {'memory|redis'}
    */
-  // session_store: 'memory',
-  session_store: 'redis',
+  session_store: 'memory',
+  // session_store: 'redis',
 
   /**
    * If the session is stored in "redis", this field is required and should be set to the hostname of the Redis server.
@@ -24,8 +24,8 @@ module.exports = {
    * For example, "redis://alice:foobared@awesome.redis.server:6380".
    * @type {string|undefined}
    */
-  redis_host: 'redis://127.0.0.1:6379',
-  // redis_host: undefined,
+  redis_host: undefined,
+  // redis_host: 'redis://127.0.0.1:6379',
 
   /**
    * Authentication user ID field name, defaults to `username`.

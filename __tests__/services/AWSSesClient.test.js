@@ -1,12 +1,12 @@
 const path = require('path');
-const {services: {AWSSesClient}} = require('../dist/build.common');
+const {services: {AWSSesClient}} = require('../../dist/build.common');
 
 // AWS SES Client.
 let client;
 
 beforeAll(() => {
   // Load AWS SES access keys, etc. into environment variables.
-  require('dotenv').config({path: path.join(__dirname, '.env')});
+  require('dotenv').config({path: path.join(__dirname, '../.env')});
 
   // AWS SES Client.
   client =  new AWSSesClient({

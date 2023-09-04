@@ -1,0 +1,48 @@
+foobar.com
+www.foobar.com
+foobar.com/
+valid.au
+ftp://www.foobar.com/
+test.com?ref=http://test2.com
+http://duckduckgo.com/?q=%2F
+http://foobar.com/?foo=bar#baz=qux
+http://foobar.com?foo=bar
+http://foobar.com#baz=qux
+http://example.com/example.json#/foo/bar
+http://localhost:3000/
+//foobar.com
+xyz://foobar.com
+invalid/
+invalid.x
+invalid.
+.com
+http://com/
+http://300.0.0.1/
+mailto:foo@bar.com
+rtmp://foobar.com
+http://www.xn--.com/
+http://xn--.com/
+http://www.foobar.com:0/
+http://www.foobar.com:70000/
+http://www.foobar.com:99999/
+http://www.-foobar.com/
+http://www.foobar-.com/
+http://foobar/# lol
+http://foobar/? lol
+http://foobar/ lol/
+http://lol @foobar.com/
+http://lol:lol @foobar.com/
+http://lol:lol:lol@foobar.com/
+http://lol: @foobar.com/
+http://www.foo_bar.com/
+http://@foobar.com
+http://:@foobar.com
+http://*.foo.com
+*.foo.com
+!.foo.com
+http://example.com.
+http://localhost:61500this is an invalid url!!!!
+////foobar.com
+http:////foobar.com
+https://example.com/foo/<script>alert(\XSS\)</script>/
+https://example.com:abc
