@@ -1,11 +1,9 @@
 /**
   * Returns true for asynchronous functions, false otherwise.
-  * 
   * @example
   * utils.isAsyncFunction(async () => {});// true
   * utils.isAsyncFunction(() => {});// false
-  * 
-  * @param  {any} value
+  * @param {any} value.
   * @return {boolean}
   */
 export default (value: any): boolean => {

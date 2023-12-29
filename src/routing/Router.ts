@@ -4,7 +4,6 @@ import * as utils from '~/utils';
 
 /**
  * Set up URL routing.
- *
  * Define URL routing based on the path of the file in the routes directory.
  * For example, if you have "routes/api/users.js", you can request the method in "user.js (ts)" with the base URL as "https:////api/users".
  */

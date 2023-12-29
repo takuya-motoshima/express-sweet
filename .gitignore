@@ -4,3 +4,4 @@ demo/.env
 demo/node_modules/
 __tests__/.env
 !__tests__/.env.sample
+docs/node_modules/

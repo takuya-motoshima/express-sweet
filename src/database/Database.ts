@@ -1,4 +1,3 @@
-import fs from 'fs';
 import sequelize from 'sequelize';
 import Environment from '~/middlewares/Environment';
 import * as utils from '~/utils';
@@ -28,13 +27,11 @@ export default new class Database extends sequelize.Sequelize {
 
   /**
    * Returns true if the DB can be connected.
-   *
    * @example
    * const database = require('express-sweet').database.Database;
    * 
    * // Check database connection.
    * const isConnected = await database.isConnect();
-   *
    * @return {Promise<boolean>} Returns true if it can connect to the database, false if it cannot.
    */
   async isConnect(): Promise<boolean> {

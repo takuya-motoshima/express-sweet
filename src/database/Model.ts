@@ -5,7 +5,6 @@ import database from '~/database/Database';
  * Model base class.
  */
 export default class Model extends sequelize.Model {
-
   /**
    * The name of the table that the model accesses.
    * This member must be defined in a subclass.
@@ -22,23 +21,20 @@ export default class Model extends sequelize.Model {
 
   /**
    * Column type.
-   * 
-   * @see https://sequelize.org/master/variable/index.html#static-variable-DataTypes
+   * @see https://sequelize.org/api/v6/variable/index.html#static-variable-DataTypes
    * @type {sequelize.DataTypes}
    */
   static readonly DataTypes: {[key: string]: any} = sequelize.DataTypes;
 
   /**
-   * An enum of query types used by sequelize.query
-   * 
-   * @see https://sequelize.org/master/variable/index.html#static-variable-QueryTypes
+   * An enum of query types used by sequelize.query.
+   * @see https://sequelize.org/api/v6/variable/index.html#static-variable-QueryTypes
    * @type {sequelize.QueryTypes}
    */
   static readonly QueryTypes: {[key: string]: string} = sequelize.QueryTypes;
 
   /**
    * Operator.
-   * 
    * @example
    * // Sequelize provides several operators.
    * Post.findAll({
@@ -86,7 +82,6 @@ export default class Model extends sequelize.Model {
    *     }
    *   }
    * });
-   * 
    * @type {sequelize.Op}
    */
   static readonly Op: {[key: string]: any} = sequelize.Op;
@@ -95,13 +90,11 @@ export default class Model extends sequelize.Model {
    * Creates a object representing a database function. This can be used in search queries, both in where and
    * order parts, and as default values in column definitions. If you want to refer to columns in your
    * function, you should use `sequelize.col`, so that the columns are properly interpreted as columns and not a strings.
-   * 
    * @example
    * // Convert a user's username to upper case
    * Post.update({
    *   username: this.fn('upper', this.col('username'))
    * })
-   * 
    * @type {sequelize.fn}
    */
   static readonly fn: (fn: string, ...args: unknown[]) => any = sequelize.fn;
@@ -109,21 +102,18 @@ export default class Model extends sequelize.Model {
   /**
    * Creates a object representing a column in the DB. This is often useful in conjunction with
    * `sequelize.fn`, since raw string arguments to fn will be escaped.
-   * 
    * @type {sequelize.col}
    */
   static readonly col: (col: string) => any = sequelize.col;
 
   /**
    * Creates a object representing a literal, i.e. something that will not be escaped.
-   * 
    * @type {sequelize.literal}
    */
   static readonly literal: (val: string) => any = sequelize.literal;
 
   /**
    * A way of specifying attr = condition.
-   * 
    * @type {sequelize.where}
    */
   static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) => sequelize.Utils.Where = sequelize.where;
@@ -131,14 +121,13 @@ export default class Model extends sequelize.Model {
   /**
    * Reference to sequelize.Transaction.  
    * This includes properties such as isolation level enums used with the transaction option.
-   * 
    * @example
    * BookModel.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED // "READ UNCOMMITTED"
    * BookModel.Transaction.ISOLATION_LEVELS.READ_COMMITTED // "READ COMMITTED"
    * BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ  // "REPEATABLE READ"
    * BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // "SERIALIZABLE"
    * 
-   * @see https://sequelize.org/master/class/lib/transaction.js~Transaction.html
+   * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
    * @type {sequelize.Transaction}
    */
   static readonly Transaction: (typeof sequelize.Transaction) = sequelize.Transaction;
@@ -146,7 +135,6 @@ export default class Model extends sequelize.Model {
   /**
    * Initialize the model that represents the table in the DB with attributes and options.
    * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
-   *
    * @return {typeof Model} Returns this model class itself.
    */
   static initialize(): (typeof Model) {
@@ -167,8 +155,7 @@ export default class Model extends sequelize.Model {
    * Define associations with other models such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
    * If you omit the alias (as) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
    * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
-   * 
-   * @see https://sequelize.org/master/manual/assocs.html
+   * @see https://sequelize.org/api/v6/class/src/associations/base.js~association
    */
   static association(): void {
     // Define association in subclass.
@@ -176,7 +163,6 @@ export default class Model extends sequelize.Model {
 
   /**
    * Starts a transaction and returns a transaction object to identify the running transaction.
-   *
    * @example
    * // Simple transaction usage example.
    * let transaction;
@@ -209,10 +195,9 @@ export default class Model extends sequelize.Model {
    *   if (transaction)
    *     await transaction.rollback();
    * }
-   * 
-   * @see https://sequelize.org/master/manual/transactions.html
-   * @param   {sequelize.TransactionOptions}    options?  Options provided when the transaction is created.
-   * @return  {Promise<sequelize.Transaction>}            Returns a transaction object to identify the transaction being executed.
+   * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
+   * @param {sequelize.TransactionOptions} options? Options provided when the transaction is created.
+   * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
    */
   static async begin(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
     return database.transaction(options);
@@ -228,7 +213,6 @@ export default class Model extends sequelize.Model {
   /**
    * Raw Queries.
    * As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.
-   * 
    * @example
    * // By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
    * // Note that since this is a raw query, the metadata are dialect specific.
@@ -237,28 +221,26 @@ export default class Model extends sequelize.Model {
    * // In cases where you don't need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
    * // We didn't need to destructure the result here - the results were returned directly
    * const users = await BookModel.query("SELECT * FROM book", {type: BookModel.QueryTypes.SELECT});
-   * 
    * @see https://sequelize.org/master/manual/raw-queries.html
-   * 
-   * @param   {string} sql      SQL string.
-   * @param   {object} options  Query options.
-   * @return  {Promise<any>}    By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
-   *                            If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
+   * @param {string} sql SQL string.
+   * @param {object} options Query options.
+   * @return {Promise<any>} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
+   *                        If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
    */
   static async query(
     sql: string,
     options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPDATE>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
-          | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKUPDATE>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.INSERT>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.UPSERT>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DELETE>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.BULKDELETE>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SHOWTABLES>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
+      | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>
   ): Promise<any> {
     return this.sequelize!.query(sql, options);
   }

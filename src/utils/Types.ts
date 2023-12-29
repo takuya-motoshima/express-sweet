@@ -4,12 +4,10 @@
 export default class {
   /**
    * Returns true for asynchronous functions, false otherwise.
-   * 
    * @example
    * Types.isAsyncFunction(async () => {});// true
    * Types.isAsyncFunction(() => {});// false
-   * 
-   * @param  {Function} value
+   * @param {Function} value.
    * @return {boolean}
    */
   static isAsyncFunction(value: Function): boolean {
@@ -18,8 +16,7 @@ export default class {
 
   /**
     * Return true if `val` is a non-empty string.
-    *
-    * @param  {any} `val` The value to check
+    * @param {any} `val` The value to check
     * @return {Boolean}
     * @api public
     */

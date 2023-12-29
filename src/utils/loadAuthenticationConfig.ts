@@ -4,7 +4,6 @@ import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
 
 /**
   * Get Authentication configuration (config/authentication).
-  * 
   * @return {AuthenticationConfig} Loaded configuration.
   */
 export default (): AuthenticationConfig => {

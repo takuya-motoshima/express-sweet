@@ -5,7 +5,6 @@ import BasicConfig from '~/interfaces/BasicConfig';
 
 /**
   * Get basic configuration (config/config).
-  * 
   * @return {BasicConfig} Loaded configuration.
   */
 export default (): BasicConfig => {

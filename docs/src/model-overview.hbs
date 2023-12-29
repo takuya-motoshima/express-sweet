@@ -1,0 +1,368 @@
+{{!< default}}
+{{#contentFor 'title'}}Model Overview{{/contentFor}}
+{{#contentFor 'sidenav'}}
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#overview" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Overview</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#configuration" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Configuration</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#accessing-model" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Accessing Model</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#creating-model" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Creating Model</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#connect-to-database" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Connect to Database</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+{{/contentFor}}
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="overview" data-kt-scroll-offset="100">
+    <a href="#overview"></a>Model
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    Models provide a way to interact with a specific table in your database.<br>
+    Express Sweet provides a <a href="https://sequelize.org/docs/v6/" target="_blank">Sequelize</a> based model class that offers some great features, including.
+    <div class="py-5">
+      <ul>
+        <li>Automatic database connection.</li>
+        <li>Basic CRUD methods.</li>
+        <li>And more.</li>
+      </ul>
+    </div>
+    This class provides a solid base from which to build your own models, allowing you to rapidly build out your application’s model layer.
+  </div>
+  <!--end::Block-->
+</div>
+<!--end::Section-->
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="configuration" data-kt-scroll-offset="100">
+    <a href="#configuration"></a>Configuration
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    The database configuration is defined in the <code>config/database.js</code> file.
+  </div>
+  <!--end::Block-->
+  <!--begin::Block-->
+  <div class="py-5">
+    <!--begin::Notice-->
+    <div class="notice d-flex align-items-center bg-light-primary rounded min-w-lg-600px flex-shrink-0 p-6">
+      <!--begin::Icon-->
+      <i class="ki-duotone ki-information-3 fs-2tx text-primary me-4">
+        <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+      </i>
+      <!--end::Icon-->
+      <!--begin::Description-->
+      <div class="text-gray-700 fw-bold fs-6">
+        Click <a href="download/templates/esm/database.js" class="fw-semibold" download="database.js">here</a> to download a sample <span class="fw-bolder">ESM</span> configuration and<br>
+        <a href="download/templates/cjs/database.js" class="fw-semibold" download="database.js">here</a> to download a sample <span class="fw-bolder">CJS</span> configuration.
+      </div>
+      <!--end::Description-->
+    </div>
+    <!--end::Notice-->
+  </div>
+  <!--end::Block-->
+  <!--begin::Block-->
+  <div class="py-5">
+    <!--begin::Heading-->
+    <div class="fs-2 py-5">Explanation of Values</div>
+    <!--end::Heading-->
+    <!--begin::Table wrapper-->
+    <div class="table-responsive">
+      <!--begin::Table-->
+      <table class="table table-row-bordered mb-0 gy-5">
+        <!--begin::Head-->
+        <thead>
+          <tr class="p-6">
+            <th class="min-w-250px">Name Config</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <!--end::Head-->
+        <!--begin::Body-->
+        <tbody>
+          <tr>
+            <td><code>username: string</code></td>
+            <td>The username which is used to authenticate against the database.</td>
+          </tr>
+          <tr>
+            <td><code>password: string|null</code></td>
+            <td>
+              The password which is used to authenticate against the database.<br>
+              The default is no password (<code>null</code>).
+            </td>
+          </tr>
+          <tr>
+            <td><code>database: string</code></td>
+            <td>The name of the database.</td>
+          </tr>
+          <tr>
+            <td><code>host: string</code></td>
+            <td>The host of the relational database.</td>
+          </tr>
+          <tr>
+            <td><code>port: number|null</code></td>
+            <td>The port of the relational database.<br>The default is automatic selection (<code>null</code>).</td>
+          </tr>
+          <tr>
+            <td><code>dialect: string</code></td>
+            <td>
+              The dialect of the database you are connecting to.<br>
+              One of <code>mariadb</code>, <code>mysql</code>, <code>postgres</code>, <code>sqlite</code> and <code>mssql</code>.
+            </td>
+          </tr>
+          <tr>
+            <td><code>logging: boolean|(...message: any[]) => void</code></td>
+            <td>
+              Set true to output the executed query etc. to the log.<br>
+              The default is no log output (<code>false</code>).
+            </td>
+          </tr>
+          <tr>
+            <td><code>timezone</code></td>
+            <td>
+              Time zone dedicated to writing to the database.<br>
+              For example, for the Japanese time zone, do the following.<br>
+              <!--begin::Code-->
+              <div class="pt-3">
+                <!--begin::Highlight-->
+                <div class="highlight">
+                  <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                  <div class="highlight-code">
+                    <pre class="language-javascript"><code class="language-javascript">timezone: &#039;+09:00&#039;</code></pre>
+                  </div>
+                </div>
+                <!--end::Highlight-->
+              </div>
+              <!--end::Code-->
+            </td>
+          </tr>
+        </tbody>
+        <!--end::Body-->
+      </table>
+      <!--end::Table-->
+    </div>
+    <!--end::Table wrapper-->
+  </div>
+  <!--end::Block-->
+</div>
+<!--end::Section-->
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="accessing-model" data-kt-scroll-offset="100">
+    <a href="#accessing-model"></a>Accessing Model
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    Place the model in the "models" directory of the root directory.<br>
+    When you load the model, you have immediate access to the model's functions for working with the database.
+  </div>
+  <!--end::Block-->
+  <!--begin::Code-->
+  <div class="py-5">
+    <!--begin::Highlight-->
+    <div class="highlight">
+      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+      <ul class="nav nav-pills" role="tablist">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#model-accessing-esm-tab" role="tab">ESM</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#model-accessing-cjs-tag" role="tab">CJS</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-accessing-esm-tab" role="tabpanel">
+          <div class="highlight-code">
+            <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+
+// INSERT INTO book (title) VALUES (&#039;Beautiful&#039;)
+await BookModel.create({title: &#039;Beautiful&#039;});
+
+// SELECT * FROM book
+await BookModel.findAll();
+
+// UPDATE book SET title = &#039;Beautiful&#039; WHERE id= 1
+await BookModel.update({title: &#039;Beautiful&#039;}, {where: {id: 1}});
+
+// DELETE FROM book WHERE id= 1
+await BookModel.destroy({where: {id: 1}});</code></pre>
+                              </div>
+                            </div>
+                            <div class="tab-pane fade" id="model-accessing-cjs-tag" role="tabpanel">
+                              <div class="highlight-code">
+                                <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+
+// INSERT INTO book (title) VALUES (&#039;Beautiful&#039;)
+await BookModel.create({title: &#039;Beautiful&#039;});
+
+// SELECT * FROM book
+await BookModel.findAll();
+
+// UPDATE book SET title = &#039;Beautiful&#039; WHERE id= 1
+await BookModel.update({title: &#039;Beautiful&#039;}, {where: {id: 1}});
+
+// DELETE FROM book WHERE id= 1
+await BookModel.destroy({where: {id: 1}});</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end::Highlight-->
+  </div>
+  <!--end::Code-->
+</div>
+<!--end::Section-->
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="creating-model" data-kt-scroll-offset="100">
+    <a href="#creating-model"></a>Creating Model
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    To take advantage of Express Sweet’s model, you would simply create a new model class that extends <code>express-sweet/database/Model</code>.<br>
+    This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.<br>
+    For more information, see <a href="model-class.html">reference</a>.
+  </div>
+  <!--end::Block-->
+  <!--begin::Code-->
+  <div class="py-5">
+    <!--begin::Highlight-->
+    <div class="highlight">
+      <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+      <ul class="nav nav-pills" role="tablist">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#model-creating-esm-tab" role="tab">ESM</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#model-creating-cjs-tag" role="tab">CJS</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="model-creating-esm-tab" role="tabpanel">
+          <div class="highlight-code">
+            <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+
+export default class extends sweet.database.Model {
+  static get table() {
+    return &#039;user&#039;;
+  }
+
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      name: this.DataTypes.STRING,
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="model-creating-cjs-tag" role="tabpanel">
+          <div class="highlight-code">
+            <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+
+module.exports = class extends Model {
+  static get table() {
+    return &#039;user&#039;;
+  }
+
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      name: this.DataTypes.STRING,
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end::Highlight-->
+  </div>
+  <!--end::Code-->
+</div>
+<!--end::Section-->
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="connect-to-database" data-kt-scroll-offset="100">
+    <a href="#connect-to-database"></a>Connect to Database
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    The database connection is automatic when the model is loaded.<br>
+    The configuration related to the database connection is defined in the <code>config/database.js</code> file.<br>
+    For more information on database configuration, see <a href="#configuration" class="fw-semibold">Database configuration</a>.
+  </div>
+  <!--end::Block-->
+</div>
+<!--end::Section-->

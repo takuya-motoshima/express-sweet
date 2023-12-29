@@ -1,0 +1,318 @@
+{{!< default}}
+{{#contentFor 'title'}}Install{{/contentFor}}
+{{#contentFor 'style'}}
+<style>
+/*Hide side navigation*/
+#kt_app_sidebar_navs {
+  display: none;
+}
+</style>
+{{/contentFor}}
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5">Install</h1>
+  <!--end::Heading-->
+  <!--begin::List-->
+  <ol class="py-5">
+    <li class="py-2">
+      Use the application generator tool, <code>express-sweet-generator</code>, to quickly create an application skeleton.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <div class="highlight-code">
+            <pre class="language-bash"><code class="language-bash">npm install -g express-sweet-generator</code></pre>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      You can check the help with the <code>-h</code> option.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <div class="highlight-code">
+            <pre class="language-bash"><code class="language-bash">express-sweet -h
+
+  Usage: express-sweet [options] [dir]
+
+  Options:
+
+        --version      output the version number
+    -o, --output &lt;output&gt;  add output &lt;module&gt; support (esm|cjs) (defaults to cjs)
+    -p, --port &lt;port&gt;  application listening port (default: 3000)
+    -f, --force        force on non-empty directory
+    -h, --help         output usage information</code></pre>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      Create an Express <code>myapp</code> named myapp.<br>
+      The app is created in a folder named <code>myapp</code> in the working directory.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <div class="highlight-code">
+            <pre class="language-bash"><code class="language-bash">express-sweet -o esm myapp</code></pre>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      Install dependent packages.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <div class="highlight-code">
+            <pre class="language-bash"><code class="language-bash">cd myapp
+npm install</code></pre>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      This sample application uses a database.<br>Execute the following SQL to create the database.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <div class="highlight-code">
+            <pre class="language-sql"><code class="language-sql">CREATE DATABASE IF NOT EXISTS `sampledb` DEFAULT CHARACTER SET utf8mb4;
+
+USE `sampledb`;
+
+CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `icon` varchar(768) NOT NULL DEFAULT MD5(RAND()),
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukUserEmail` (`email`),
+  UNIQUE KEY `ukUserIcon`(`icon`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `profile` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `tel` varchar(14) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukProfileUserId` (`userId`),
+  CONSTRAINT `fkProfileUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `text` text NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fkCommentUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `book` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `title` text NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ukBookTitle` (`userId`, `title`(255)),
+  CONSTRAINT `fkBookUser` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `user` (`id`, `email`, `password`, `name`, `icon`) VALUES
+  (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;, &#039;/upload/1.png&#039;),
+  (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;, &#039;/upload/2.png&#039;);
+INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
+  (1, &#039;777 Brockton Avenue, Abington MA 2351&#039;, &#039;202-555-0105&#039;),
+  (2, &#039;30 Memorial Drive, Avon MA 2322&#039;, &#039;&#039;);
+INSERT INTO `comment` (`userId`, `text`) VALUES
+  (1, &#039;From Robin #1&#039;),
+  (1, &#039;From Robin #2&#039;),
+  (2, &#039;From Taylor #1&#039;);
+INSERT INTO `book` (`userId`, `title`) VALUES
+  (1, &#039;Beautiful&#039;),
+  (1, &#039;Lose Yourself&#039;),
+  (2, &#039;When Im Gone&#039;);</code></pre>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      Next, you need to set how the database is connected.<br>
+      The database connection method can be set in <code>config/database.js</code>, so change it according to your environment.<br>
+      See <a href="https://sequelize.org/master/manual/migrations.html#cfg" class="fw-semibold me-1" target="_blank">here</a> for details.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#db-config-esm-tab" role="tab">ESM</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#db-config-cjs-tag" role="tab">CJS</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="db-config-esm-tab" role="tabpanel">
+              <div class="highlight-code">
+                <pre class="language-javascript"><code class="language-javascript">export default {
+  development: {
+    username: &#039;root&#039;,
+    password: &#039;password&#039;,
+    database: &#039;sampledb&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: &#039;password&#039;,
+    database: &#039;sampledb&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: &#039;password&#039;,
+    database: &#039;sampledb&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  }
+}</code></pre>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="db-config-cjs-tag" role="tabpanel">
+              <div class="highlight-code">
+                <pre class="language-javascript"><code class="language-javascript">module.exports = {
+  development: {
+    username: &#039;root&#039;,
+    password: &#039;password&#039;,
+    database: &#039;sampledb&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  test: {
+    username: &#039;root&#039;,
+    password: &#039;password&#039;,
+    database: &#039;sampledb&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  },
+  production: {
+    username: &#039;root&#039;,
+    password: &#039;password&#039;,
+    database: &#039;sampledb&#039;,
+    host: &#039;localhost&#039;,
+    dialect: &#039;mariadb&#039;
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      The DB to be used can be defined individually for each environment.<br>Specify the environment in the <code>.env</code> file.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <div class="highlight-code">
+            <pre class="language-bash"><code class="language-bash">NODE_ENV=development</code></pre>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      Launch the application.
+      <!--begin::Code-->
+      <div class="pt-3">
+        <!--begin::Highlight-->
+        <div class="highlight">
+          <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#macos-tab" role="tab">MacOS</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#windows-tab" role="tab">Windows</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#windows-powershell-tab" role="tab">Windows PowerShell</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="macos-tab" role="tabpanel">
+              <div class="highlight-code">
+                <pre class="language-bash"><code class="language-bash">DEBUG=myapp:* npm start</code></pre>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="windows-tab" role="tabpanel">
+              <div class="highlight-code">
+                <pre class="language-bash"><code class="language-bash">set DEBUG=myapp:*
+npm start</code></pre>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="windows-powershell-tab" role="tabpanel">
+              <div class="highlight-code">
+                <pre class="language-bash"><code class="language-bash">$env:DEBUG=&#039myapp:*&#039;
+npm start</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end::Highlight-->
+      </div>
+      <!--end::Code-->
+    </li>
+    <li class="py-2">
+      Then load <code>http://localhost:3000/</code> in your browser to access the app.<br>
+      and you should be greeted by the following page.
+      <!--begin::Block-->
+      <div class="my-5">
+        <div class="rounded border d-flex flex-wrap p-10">
+          <div class="w-500px me-10 mb-5">
+            <img class="img-fluid w-100 h-auto" src="media/screencaps/login.png">
+          </div>
+          <div class="w-500px me-10 mb-5">
+            <img class="img-fluid w-100 h-auto" src="media/screencaps/users.png">
+          </div>
+          <div class="w-500px me-10 mb-5">
+            <img class="img-fluid w-100 h-auto" src="media/screencaps/user-editing.png">
+          </div>
+          <div class="w-500px me-10 mb-5">
+            <img class="img-fluid w-100 h-auto" src="media/screencaps/personal.png">
+          </div>
+        </div>
+      </div>
+      <!--end::Block-->
+    </li>
+  </ol>
+  <!--end::List-->
+</div>
+<!--end::Section-->

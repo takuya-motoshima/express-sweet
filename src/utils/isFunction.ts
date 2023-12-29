@@ -1,12 +1,10 @@
 /**
   * Returns true for functions, false otherwise.
-  * 
   * @example
   * utils.isFunction(() => {});// true
   * utils.isFunction(async () => {});// true
   * utils.isFunction('');// false
-  * 
-  * @param  {any} value
+  * @param {any} value.
   * @return {boolean}
   */
 export default (value: any): boolean => {

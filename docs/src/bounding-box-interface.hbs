@@ -1,0 +1,65 @@
+{{!< default}}
+{{#contentFor 'title'}}BoundingBox Interface{{/contentFor}}
+{{#contentFor 'style'}}
+<style>
+/*Hide side navigation*/
+#kt_app_sidebar_navs {
+  display: none;
+}
+</style>
+{{/contentFor}}
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5">BoundingBox Interface</h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    Bounding box of the face.
+  </div>
+  <!--end::Block-->
+  <!--begin::Block-->
+  <div class="my-5">
+    <!--begin::Heading-->
+    <div class="fs-2 py-5">Instance Properties</div>
+    <!--end::Heading-->
+    <!--begin::Table wrapper-->
+    <div class="table-responsive">
+      <!--begin::Table-->
+      <table class="table table-row-bordered mb-0 gy-5">
+        <!--begin::Head-->
+        <thead>
+          <tr class="p-6">
+            <th class="min-w-250px">Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <!--end::Head-->
+        <!--begin::Body-->
+        <tbody>
+          <tr>
+            <td><code>width: number</code></td>
+            <td>The width of the bounding box.</td>
+          </tr>
+          <tr>
+            <td><code>height: number</code></td>
+            <td>The height of the bounding box.</td>
+          </tr>
+          <tr>
+            <td><code>left: number</code></td>
+            <td>The x coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+          </tr>
+          <tr>
+            <td><code>top: number</code></td>
+            <td>The y coordinate of the bounding box with the origin (0,0) in the upper left corner.</td>
+          </tr>
+        </tbody>
+        <!--end::Body-->
+      </table>
+      <!--end::Table-->
+    </div>
+    <!--end::Table wrapper-->
+  </div>
+  <!--end::Block-->
+</div>
+<!--end::Section-->

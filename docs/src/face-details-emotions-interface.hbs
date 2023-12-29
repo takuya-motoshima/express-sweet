@@ -1,0 +1,77 @@
+{{!< default}}
+{{#contentFor 'title'}}FaceDetailsEmotions Interface{{/contentFor}}
+{{#contentFor 'style'}}
+<style>
+/*Hide side navigation*/
+#kt_app_sidebar_navs {
+  display: none;
+}
+</style>
+{{/contentFor}}
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5">FaceDetailsEmotions Interface</h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    The emotions that appear to be expressed on the face, and the confidence level in the determination.
+  </div>
+  <!--end::Block-->
+  <!--begin::Block-->
+  <div class="my-5">
+    <!--begin::Heading-->
+    <div class="fs-2 py-5">Instance Properties</div>
+    <!--end::Heading-->
+    <!--begin::Table wrapper-->
+    <div class="table-responsive">
+      <!--begin::Table-->
+      <table class="table table-row-bordered mb-0 gy-5">
+        <!--begin::Head-->
+        <thead>
+          <tr class="p-6">
+            <th class="min-w-250px">Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <!--end::Head-->
+        <!--begin::Body-->
+        <tbody>
+          <tr>
+            <td><code>disgusted: number</code></td>
+            <td>Confidence level of &quot;disgusted&quot; predicted from the face.</td>
+          </tr>
+          <tr>
+            <td><code>happy: number</code></td>
+            <td>Confidence level of &quot;happy&quot; predicted from the face.</td>
+          </tr>
+          <tr>
+            <td><code>surprised: number</code></td>
+            <td>Confidence level of &quot;surprised&quot; predicted from the face.</td>
+          </tr>
+          <tr>
+            <td><code>angry: number</code></td>
+            <td>Confidence level of &quot;angry&quot; predicted from the face.</td>
+          </tr>
+          <tr>
+            <td><code>confused: number</code></td>
+            <td>Confidence level of &quot;confused&quot; predicted from the face.</td>
+          </tr>
+          <tr>
+            <td><code>calm: number</code></td>
+            <td>Confidence level of &quot;calm&quot; predicted from the face.</td>
+          </tr>
+          <tr>
+            <td><code>sad: number</code></td>
+            <td>Confidence level of &quot;sad&quot; predicted from the face.</td>
+          </tr>
+        </tbody>
+        <!--end::Body-->
+      </table>
+      <!--end::Table-->
+    </div>
+    <!--end::Table wrapper-->
+  </div>
+  <!--end::Block-->
+</div>
+<!--end::Section-->

@@ -4,7 +4,6 @@ import DatabaseConfig from '~/interfaces/DatabaseConfig';
 
 /**
   * Get database configuration (config/database).
-  * 
   * @return {sequelize.Options} Loaded configuration.
   */
 export default (): sequelize.Options => {

@@ -5,7 +5,6 @@ import ViewConfig from '~/interfaces/ViewConfig';
 
 /**
   * Get view configuration (config/view).
-  * 
   * @return {ViewConfig} Loaded configuration.
   */
 export default (): ViewConfig => {

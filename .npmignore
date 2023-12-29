@@ -5,3 +5,8 @@ tsconfig.json
 demo/.env
 !demo/.env.sample
 demo/node_modules/
+docs/node_modules/
+docs/src/
+docs/compile-documentation.js
+docs/package.json
+docs/package-lock.json

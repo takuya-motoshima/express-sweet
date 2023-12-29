@@ -1,0 +1,2042 @@
+{{!< default}}
+{{#contentFor 'title'}}Model Class{{/contentFor}}
+{{#contentFor 'style'}}
+<style>
+.anchor .extends {
+  display: inline-block;
+  margin-left: 0.75rem;
+  color: var(--bs-text-gray-700);
+}
+
+  .anchor .extends a {
+    display: inline;
+    width: auto;
+    margin-left: 0;
+    font-size: inherit;
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  }
+
+  .anchor .extends a:hover {
+    color: rgba(var(--bs-link-hover-color-rgb), var(--bs-link-opacity, 1));
+  }
+
+    .anchor .extends a::before {
+      content: none;
+    }
+</style>
+{{/contentFor}}
+{{#contentFor 'sidenav'}}
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#overview" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Overview</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#class-properties" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Class Properties</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+<!--begin::Item-->
+<li class="menu-item py-2 px-3">
+  <!--begin::Link-->
+  <a href="#class-methods" data-kt-scroll-toggle="true" class="menu-link p-0 nav-link">
+    <span class="menu-bullet">
+      <span class="bullet bullet-dot"></span>
+    </span>
+    <span class="menu-title">Class Methods</span>
+  </a>
+  <!--end::Link-->
+</li>
+<!--end::Item-->
+{{/contentFor}}
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="overview" data-kt-scroll-offset="100">
+    <a href="#overview"></a>Model Class
+    <span class="extends">
+      extends <a href="https://sequelize.org/api/v6/class/src/model.js~model" target="_blank">sequelize.Model</a>
+    </span>
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Block-->
+  <div class="py-5">
+    This is a class that abstracts the tables in the database.<br>
+    See <a href="https://sequelize.org/api/v6/class/src/model.js~model" class="fw-semibold" target="_blank">here</a> for more information on the methods and properties available in your model.
+  </div>
+  <!--end::Block-->
+</div>
+<!--end::Section-->
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="class-properties" data-kt-scroll-offset="100">
+    <a href="#class-properties"></a>Class Properties
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Table wrapper-->
+  <div class="table-responsive">
+    <!--begin::Table-->
+    <table class="table table-row-bordered mb-0 gy-5">
+      <!--begin::Head-->
+      <thead>
+        <tr class="p-6">
+          <th class="min-w-250px">Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <!--end::Head-->
+      <!--begin::Body-->
+      <tbody>
+        <tr>
+          <td><code>protected static table: string</code></td>
+          <td>The name of the table that the model accesses. This member must be defined in a subclass.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#table-property-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#table-property-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="table-property-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+        
+export default class extends sweet.database.Model {
+  static get table() {
+    return &#039;user&#039;;
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="table-property-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+        
+module.exports = class extends Model {
+  static get table() {
+    return &#039;user&#039;;
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>protected static attributes: sequelize.ModelAttributes</code></td>
+          <td>List of columns in the table accessed by this model. This member must be defined in a subclass.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#attributes-property-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#attributes-property-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="attributes-property-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+
+export default class extends sweet.database.Model {
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      name: this.DataTypes.STRING,
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="attributes-property-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const Model = require('express-sweet').database.Model;
+
+module.exports = class extends Model {
+  static get attributes() {
+    return {
+      id: {
+        type: this.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      name: this.DataTypes.STRING,
+      email: this.DataTypes.STRING,
+      password: this.DataTypes.STRING,
+      icon: this.DataTypes.STRING,
+      created: this.DataTypes.DATE,
+      modified: this.DataTypes.DATE
+    };
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly DataTypes: {[key: string]: any}</code></td>
+          <td>
+            A convenience class holding commonly used data types.<br>
+            This is an alias for <code>sequelize.DataTypes</code>.<br>
+            See <a href="https://sequelize.org/api/v6/variable/index.html#static-variable-DataTypes" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <div class="highlight-code">
+                  <pre class="language-javascript"><code class="language-javascript">{id: this.DataTypes.INTEGER}</code></pre>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly Op: {[key: string]: any}</code></td>
+          <td>
+            Operator symbols to be used when querying data. This is an alias for <code>sequelize.Op</code>.<br>
+            See <a href="https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#operators" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#op-property-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#op-property-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="op-property-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#39;../models/BookModel&#39;;
+        
+// SELECT * FROM book WHERE title = &#39;Beautiful&#39; AND genre = &#39;Nonfiction&#39;;
+BookModel.findOne({
+  where: {
+    [BookModel.Op.and]: [
+      {title: &#39;Beautiful&#39;},
+      {genre: &#39;Nonfiction&#39;}
+    ]
+  }
+});
+
+// SELECT * FROM book WHERE title = &#39;Beautiful&#39; OR title = &#39;Lose Yourself&#39;;
+BookModel.findAll({
+  where: {
+    [BookModel.Op.or]: [
+      {title: &#39;Beautiful&#39;},
+      {title: &#39;Lose Yourself&#39;}
+    ]
+  }
+});
+
+// DELETE FROM user WHERE name = &#39;Beautiful&#39; OR name = &#39;Lose Yourself&#39;;
+BookModel.destroy({
+  where: {
+    title: {[BookModel.Op.or]: [&#39;Beautiful&#39;, &#39;Lose Yourself&#39;]}
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="op-property-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#39;../models/BookModel&#39;);
+        
+// SELECT * FROM book WHERE title = &#39;Beautiful&#39; AND genre = &#39;Nonfiction&#39;;
+BookModel.findOne({
+  where: {
+    [BookModel.Op.and]: [
+      {title: &#39;Beautiful&#39;},
+      {genre: &#39;Nonfiction&#39;}
+    ]
+  }
+});
+
+// SELECT * FROM book WHERE title = &#39;Beautiful&#39; OR title = &#39;Lose Yourself&#39;;
+BookModel.findAll({
+  where: {
+    [BookModel.Op.or]: [
+      {title: &#39;Beautiful&#39;},
+      {title: &#39;Lose Yourself&#39;}
+    ]
+  }
+});
+
+// DELETE FROM user WHERE name = &#39;Beautiful&#39; OR name = &#39;Lose Yourself&#39;;
+BookModel.destroy({
+  where: {
+    title: {[BookModel.Op.or]: [&#39;Beautiful&#39;, &#39;Lose Yourself&#39;]}
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly fn: (fn: string, ...args: unknown[]) =&gt; any</code></td>
+          <td>
+            Creates an object representing a database function.<br>
+            This can be used in search queries, both in where and order parts, and as default values in column definitions.<br>
+            If you want to refer to columns in your function, you should use sequelize.col, so that the columns are properly interpreted as columns and not a strings.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#static-method-fn" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#fn-property-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#fn-property-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="fn-property-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from '../models/BookModel';
+        
+// SELECT upper(`title`) AS `title` FROM `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [[BookModel.fn('upper', BookModel.col('title')), 'title']],
+  raw: true
+});
+// books: [
+//   {title: 'MOBY DICK'},
+//   {title: 'GET RICH REALLY FAST'},
+//    {title: 'FINDING INNER PEACE'}
+// ]</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="fn-property-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#39;../models/BookModel&#39;);
+        
+// SELECT upper(`title`) AS `title` FROM `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [[BookModel.fn(&#39;upper&#39;, BookModel.col(&#39;title&#39;)), &#39;title&#39;]],
+  raw: true
+});
+// books: [
+//   {title: 'MOBY DICK'},
+//   {title: 'GET RICH REALLY FAST'},
+//   {title: 'FINDING INNER PEACE'}
+// ]</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly col: (col: string) =&gt; any</code></td>
+          <td>
+            Creates an object which represents a column in the DB, this allows referencing another column in your query.<br>
+            This is often useful in conjunction with sequelize.fn, since raw string arguments to fn will be escaped.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#static-method-col" class="fw-semibold" target="_blank">here</a> for details.
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly literal: (val: string) =&gt; any</code></td>
+          <td>
+            Creates an object representing a literal, i.e. something that will not be escaped.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#static-method-literal" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#literal-property-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#literal-property-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="literal-property-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#39;../models/BookModel&#39;;
+        
+// SELECT
+//   `id`,
+//   `title`,
+//   (SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id) AS `count`
+// FROM
+//   `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [
+    &#39;id&#39;,
+    &#39;title&#39;,
+    [BookModel.literal(`(SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id)`), &#39;count&#39;]
+  ],
+  raw: true
+});
+// books: [
+//   {id: 1, title: &#39;Beautiful&#39;, count: 2},
+//   {id: 2, title: &#39;Lose Yourself&#39;, count: 1}
+// ]</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="literal-property-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#39;../models/BookModel&#39;);
+        
+// SELECT
+//   `id`,
+//   `title`,
+//   (SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id) AS `count`
+// FROM
+//   `book` AS `book`;
+const books = await BookModel.findAll({
+  attributes: [
+    &#39;id&#39;,
+    &#39;title&#39;,
+    [BookModel.literal(`(SELECT COUNT(*) FROM comment WHERE comment.bookId = book.id)`), &#39;count&#39;]
+  ],
+  raw: true
+});
+// books: [
+//   {id: 1, title: &#39;Beautiful&#39;, count: 2},
+//   {id: 2, title: &#39;Lose Yourself&#39;, count: 1}
+// ]</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) =&gt; sequelize.Utils.Where</code></td>
+          <td>
+            A way of specifying attr = condition.<br>
+            The attr can either be an object taken from Model.rawAttributes (for example Model.rawAttributes.id or Model.rawAttributes.name).<br>
+            The attribute should be defined in your model definition.<br>
+            The attribute can also be an object from one of the sequelize utility functions (sequelize.fn, sequelize.col etc.)<br>
+            For string attributes, use the regular {where: {attr: something}} syntax.<br>
+            If you don't want your string to be escaped, use sequelize.literal.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#static-method-where" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#where-property-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#where-property-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="where-property-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#39;../models/BookModel&#39;;
+        
+// SELECT `title` FROM `book` AS `book` WHERE CHAR_LENGTH(`title`) &lt;= 10;
+const books = await BookModel.findAll({
+  attributes: [&#39;title&#39;],
+  where: BookModel.where(
+    BookModel.fn(&#39;CHAR_LENGTH&#39;, BookModel.col(&#39;title&#39;)),
+    {[BookModel.Op.lte]: 10}
+  ),
+  raw: true
+});
+// books: [{title: &#39;Beautiful&#39;}]</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="where-property-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#39;../models/BookModel&#39;);
+
+// SELECT `title` FROM `book` AS `book` WHERE CHAR_LENGTH(`title`) &lt;= 10;
+const books = await BookModel.findAll({
+  attributes: [&#39;title&#39;],
+  where: BookModel.where(
+    BookModel.fn(&#39;CHAR_LENGTH&#39;, BookModel.col(&#39;title&#39;)),
+    {[BookModel.Op.lte]: 10}
+  ),
+  raw: true
+});
+// books: [{title: &#39;Beautiful&#39;}]</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly QueryTypes: {[key: string]: string}</code></td>
+          <td>
+            An enum of query types used by <code>sequelize.query</code>.<br>
+            See <a href="https://sequelize.org/api/v6/variable/index.html#static-variable-QueryTypes" class="fw-semibold" target="_blank">here</a> for details.
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static readonly Transaction: (typeof <a href="https://sequelize.org/api/v6/class/src/transaction.js~transaction" class="fw-semibold" target="_blank">sequelize.Transaction</a>)</code></td>
+          <td>
+            Reference to <a href="https://sequelize.org/api/v6/class/src/transaction.js~transaction" class="fw-semibold" target="_blank">sequelize.Transaction</a>.<br>
+            This includes properties such as isolation level enums used with the transaction option.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/transaction.js~transaction" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <div class="highlight-code">
+                  <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#39;../models/BookModel&#39;);
+BookModel.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED // &quot;READ UNCOMMITTED&quot;
+BookModel.Transaction.ISOLATION_LEVELS.READ_COMMITTED // &quot;READ COMMITTED&quot;
+BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ  // &quot;REPEATABLE READ&quot;
+BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // &quot;SERIALIZABLE&quot;</code></pre>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+      </tbody>
+      <!--end::Body-->
+    </table>
+    <!--end::Table-->
+  </div>
+  <!--end::Table wrapper-->
+</div>
+<!--end::Section-->
+<!--begin::Section-->
+<div class="pb-10">
+  <!--begin::Heading-->
+  <h1 class="anchor fw-bold mb-5" id="class-methods" data-kt-scroll-offset="100">
+    <a href="#class-methods"></a>Class Methods
+  </h1>
+  <!--end::Heading-->
+  <!--begin::Table wrapper-->
+  <div class="table-responsive">
+    <!--begin::Table-->
+    <table class="table table-row-bordered mb-0 gy-5">
+      <!--begin::Head-->
+      <thead>
+        <tr class="p-6">
+          <th class="min-w-250px">Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <!--end::Head-->
+      <!--begin::Body-->
+      <tbody>
+        <tr>
+          <td><code>public static association()</code></td>
+          <td>
+            Associate the model.<br>
+            Define associations with other models such as <code>hasOne</code>, <code>hasMany</code>, <code>belongsTo</code>, <code>belongsToMany</code>.<br>
+            This method is called automatically from within the <code>express-sweet.mount method</code>, so you don't have to run it yourself.<br>
+            See the <a href="https://sequelize.org/api/v6/class/src/associations/base.js~association" class="fw-semibold" target="_blank">here</a> for more information.<br>
+            If you omit the alias (<code>as</code>) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#association-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#association-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="association-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+import ProfileModel from &#039;./ProfileModel&#039;;
+
+export default class extends sweet.database.Model {
+  static association() {
+    // User has one profile.
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="association-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+        
+module.exports = class extends Model {
+  static association() {
+    // User has one profile.
+    const ProfileModel = require(&#039;./ProfileModel&#039;);
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static begin()</code></td>
+          <td>
+            Starts a transaction and returns a transaction object to identify the running transaction.<br>
+            This is an alias for the <code>"sequelize.Sequelize.transaction()"</code> method.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-transaction" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>options?: sequelize.TransactionOptions</code>
+                <!--begin::Block-->
+                <div class="pt-3">Options provided when the transaction is created.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;sequelize.Transaction&gt;</code> Returns a transaction object to identify the transaction being executed.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#begin-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#begin-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="begin-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+// Simple transaction usage example.
+let transaction;
+try {
+  transaction = await BookModel.begin();
+  const book = await BookModel.create({title: &#039;Beautiful&#039;}, {transaction});
+  await transaction.commit();
+} catch {
+  if (transaction)
+    await transaction.rollback();
+}
+
+// You can also use transaction options.
+let transaction;
+try {
+  transaction = await BookModel.begin({
+    isolationLevel: BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ,
+    type: BookModel.Transaction.TYPES.DEFERRED,
+  });
+  const book = await BookModel.findOne({where: {id: 1}}, {transaction});
+  book.title = &#039;Beautiful&#039;;
+  await book.save({transaction});
+  await transaction.commit();
+
+  // Check the update result.
+  // results in: New title of book: Beautiful
+  await book.reload();
+} catch {
+  if (transaction)
+    await transaction.rollback();
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="begin-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+        
+// Simple transaction usage example.
+let transaction;
+try {
+  transaction = await BookModel.begin();
+  const book = await BookModel.create({title: &#039;Beautiful&#039;}, {transaction});
+  await transaction.commit();
+} catch {
+  if (transaction)
+    await transaction.rollback();
+}
+
+// You can also use transaction options.
+let transaction;
+try {
+  transaction = await BookModel.begin({
+    isolationLevel: BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ,
+    type: BookModel.Transaction.TYPES.DEFERRED,
+  });
+  const book = await BookModel.findOne({where: {id: 1}}, {transaction});
+  book.title = &#039;Beautiful&#039;;
+  await book.save({transaction});
+  await transaction.commit();
+
+  // Check the update result.
+  // results in: New title of book: Beautiful
+  await book.reload();
+} catch {
+  if (transaction)
+    await transaction.rollback();
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static create()</code></td>
+          <td>
+            Builds a new model instance and calls <code>save</code> on it.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-create" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>values: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">Hash of data values to create new record with.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">Build and query options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;Model&gt;</code> Returns a model that contains the data for the added record.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#create-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#create-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="create-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;Beautiful&#039;);
+await BookModel.create({title: &#039;Beautiful&#039;});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="create-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+        
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;Beautiful&#039;);
+await BookModel.create({title: &#039;Beautiful&#039;});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static save()</code></td>
+          <td>
+            Validates this instance, and if the validation passes, persists it to the database.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#instance-method-save" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">save options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;Model&gt;</code> Returns a model that contains data for manipulated records such as add and update.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#save-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#save-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="save-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;Beautiful&#039;);
+const book = BookModel.build({title: &#039;Beautiful&#039;});
+await book.save();
+
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+book.title = &#039;Lose Yourself&#039;;
+await book.save();</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="save-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+        
+// INSERT INTO `book` (`id`,`title`) VALUES (DEFAULT,&#039;Beautiful&#039;);
+const book = BookModel.build({title: &#039;Beautiful&#039;});
+await book.save();
+
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+book.title = &#039;Lose Yourself&#039;;
+await book.save();</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static findOne()</code></td>
+          <td>
+            Search for a single instance.<br>
+            Returns the first instance found, or null if none can be found.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-findOne" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">A hash of options to describe the scope of the search.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;Model|null&gt;</code> Returns a Model containing the first data found in the database.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#find-one-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#find-one-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="find-one-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` LIMIT 1;
+await BookModel.findOne();</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="find-one-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+        
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` LIMIT 1;
+await BookModel.findOne();</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static findAll()</code></td>
+          <td>
+            Search for multiple instances.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-findAll" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">A hash of options to describe the scope of the search.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;Array&lt;Model&gt;&gt;</code> Returns a model containing the data found in the database.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#find-all-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#find-all-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="find-all-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` WHERE `book`.`title` LIKE &#039;Beautiful%&#039;;
+await BookModel.findAll({
+  where: {
+    title: {
+      [BookModel.Op.like]: &#039;Beautiful%&#039;
+    }
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="find-all-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+        
+// SELECT `id`, `title`, `created`, `modified` FROM `book` AS `book` WHERE `book`.`title` LIKE &#039;Beautiful%&#039;;
+await BookModel.findAll({
+  where: {
+    title: {
+      [BookModel.Op.like]: &#039;Beautiful%&#039;
+    }
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static count()</code></td>
+          <td>
+            Count the number of records matching the provided where clause.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-count" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">A hash of options to describe the scope of the search.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;number&gt;</code> Returns the count of records that match the condition.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#count-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#count-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="count-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// SELECT count(*) AS `count` FROM `book` AS `book`;
+await BookModel.count();</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="count-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+
+// SELECT count(*) AS `count` FROM `book` AS `book`;
+await BookModel.count();</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static update()</code></td>
+          <td>
+            Update multiple instances that match the where options.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-update" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>values: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">hash of values to update.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">update options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;Array&lt;number, number&gt;&gt;</code> The first element is always the number of affected rows, while the second element is the actual affected rows (only supported in postgres with <code>options.returning</code> true).</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#update-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#update-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="update-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+await BookModel.update({title: &#039;Lose Yourself&#039;}, {where: {id: 1}});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="update-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+
+// UPDATE `book` SET `title`=&#039;Lose Yourself&#039; WHERE `id` = 1;
+await BookModel.update({title: &#039;Lose Yourself&#039;}, {where: {id: 1}});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static upsert()</code></td>
+          <td>
+            Insert or update a single row.<br>
+            An update will be executed if a row which matches the supplied values on either the primary key or a unique key is found.<br>
+            Note that the unique index must be defined in your sequelize model and not just in the table.<br>
+            Otherwise you may experience a unique constraint violation, because sequelize fails to identify the row that should be updated.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-upsert" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>values: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">hash of values to upsert.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">upsert options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;Model, boolean|null&gt;</code> returns record and whether row was created or updated as boolean. For Postgres/SQLite dialects boolean value is always null.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#upsert-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#upsert-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="upsert-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// INSERT INTO `book` (`title`) VALUES (?) ON DUPLICATE KEY UPDATE `title`=VALUES(`title`);
+await BookModel.upsert({title: &#039;Lose Yourself&#039;});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="upsert-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+        
+// INSERT INTO `book` (`title`) VALUES (?) ON DUPLICATE KEY UPDATE `title`=VALUES(`title`);
+await BookModel.upsert({title: &#039;Lose Yourself&#039;});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static destroy()</code></td>
+          <td>
+            Delete multiple instances, or set their deletedAt timestamp to the current time if paranoid is enabled.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-destroy" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">destroy options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;number&gt;</code> The number of destroyed rows.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#destroy-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#destroy-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="destroy-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+        
+// DELETE FROM `user` WHERE `id` = 1;
+await BookModel.destroy({where: {id :1}});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="destroy-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+      
+// DELETE FROM `user` WHERE `id` = 1;
+await BookModel.destroy({where: {id :1}});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static hasOne()</code></td>
+          <td>
+            Creates an association between this (the source) and the provided target.<br>
+            The foreign key is added on the target.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-hasOne" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>target: Model</code>
+                <!--begin::Block-->
+                <div class="pt-3">The target model.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">hasOne association options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code><a href="https://sequelize.org/api/v6/class/src/associations/has-one.js~hasone" class="fw-semibold" target="_blank">sequelize.HasOne</a></code> One-to-one association.</li>
+            </ul>
+            <!--end::Return-->
+            For one-to-one association we will use two tables as an example they are User and Profile table.<br>
+            User table has one Profile table and Profile table belongs to the User table.<br>
+            Here's the relation diagram for it.
+            <div class="py-3">
+              <img src="media/has-one.png" alt="has one relationship" width="361">
+            </div>
+            HasOne put the association key in the target model.<br>
+            Here User can exist without a Profile, but the vice versa is not possible.<br>
+            This means, we will insert userId field to Profile model’s table.<br><br>
+            This is a user model that defines an association in which the user has one profile.
+            <!--begin::Code-->
+            <div class="py-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#has-one-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#has-one-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="has-one-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+import ProfileModel from  &#039;./ProfileModel&#039;;
+
+export default class extends sweet.database.Model {
+  static association() {
+    // User has one profile.
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="has-one-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+        
+module.exports = class extends Model {
+  static association() {
+    // User has one profile.
+    const ProfileModel = require(&#039;./ProfileModel&#039;);
+    this.hasOne(ProfileModel, {
+      foreignKey: &#039;userId&#039;, // profile.userId
+      sourceKey: &#039;id&#039;, // user.id
+      as: &#039;profile&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+            This is an example of record search.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#has-one-find-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#has-one-find-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="has-one-find-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import UserModel from &#039;../models/UserModel&#039;;
+        
+// SELECT
+//   `user`.`id`,
+//   `user`.`name`,
+//   `profile`.`id` AS `profile.id`,
+//   `profile`.`userId` AS `profile.userId`,
+//   `profile`.`address` AS `profile.address`,
+//   `profile`.`tel` AS `profile.tel`
+// FROM
+//   `user` AS `user`
+//   LEFT OUTER JOIN `profile` AS `profile` ON `user`.`id` = `profile`.`userId`;
+// 
+// results in: [
+//           {
+//             "id": 1,
+//             "name": "Robin",
+//             "profile": {
+//               "userId": 1,
+//               "address": "777 Brockton Avenue, Abington MA 2351",
+//               "tel": "202-555-0105"
+//             }
+//           }
+//         ]
+// 
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: [{
+    association: &#039;profile&#039;,
+    attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;]
+  }]
+});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="has-one-find-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const UserModel = require(&#039;../models/UserModel&#039;);
+        
+// SELECT
+//   `user`.`id`,
+//   `user`.`name`,
+//   `profile`.`id` AS `profile.id`,
+//   `profile`.`userId` AS `profile.userId`,
+//   `profile`.`address` AS `profile.address`,
+//   `profile`.`tel` AS `profile.tel`
+// FROM
+//   `user` AS `user`
+//   LEFT OUTER JOIN `profile` AS `profile` ON `user`.`id` = `profile`.`userId`;
+// 
+// results in: [
+//           {
+//             "id": 1,
+//             "name": "Robin",
+//             "profile": {
+//               "userId": 1,
+//               "address": "777 Brockton Avenue, Abington MA 2351",
+//               "tel": "202-555-0105"
+//             }
+//           }
+//         ]
+// 
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: [{
+    association: &#039;profile&#039;,
+    attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;]
+  }]
+});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static belongsTo()</code></td>
+          <td>
+            Creates an association between this (the source) and the provided target.<br>
+            The foreign key is added on the source.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-belongsTo" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>target: Model</code>
+                <!--begin::Block-->
+                <div class="pt-3">The target model.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">belongsTo association options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code><a href="https://sequelize.org/api/v6/class/src/associations/belongs-to.js~belongsto" class="fw-semibold" target="_blank">sequelize.BelongsTo</a></code> One-to-one association.</li>
+            </ul>
+            <!--end::Return-->
+            For one-to-one association we will use two tables as an example they are User and Profile table.<br>
+            User table has one Profile table and Profile table belongs to the User table.<br>
+            Here's the relation diagram for it.
+            <div class="py-3">
+              <img src="media/belongs-to.png" alt="belongs to relationship" width="361">
+            </div>
+            BelongsTo put the associations key in the source model.<br>
+            Here User can exist without a Profile, but the vice versa is not possible.<br>
+            This means, we will insert userId field to Profile model’s table.<br><br>
+            This is a profile model that defines an association whose profile belongs to one user.
+            <!--begin::Code-->
+            <div class="py-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#belongs-to-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#belongs-to-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="belongs-to-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+import UserModel from &#039;./UserModel&#039;;
+
+export default class extends sweet.database.Model {
+  static association() {
+    // Profile belongs to one user.
+    this.belongsTo(UserModel, {
+      foreignKey: &#039;userId&#039;,  // profile.userId,
+      targetKey: &#039;id&#039;,  // user.id
+      as: &#039;user&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="belongs-to-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+        
+module.exports = class extends Model {
+  static association() {
+    // Profile belongs to one user.
+    const UserModel = require(&#039;./UserModel&#039;);
+    this.belongsTo(UserModel, {
+      foreignKey: &#039;userId&#039;,  // profile.userId,
+      targetKey: &#039;id&#039;,  // user.id
+      as: &#039;user&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+            This is an example of record search.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#belongs-to-find-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#belongs-to-find-method-cjs-tag" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="belongs-to-find-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import ProfileModel from  &#039;../models/ProfileModel&#039;;
+        
+// SELECT
+//   `profile`.`id`,
+//   `profile`.`userId`,
+//   `profile`.`address`,
+//   `profile`.`tel`,
+//   `user`.`id` AS `user.id`,
+//   `user`.`name` AS `user.name`
+// FROM
+//   `profile` AS `profile`
+//   INNER JOIN `user` AS `user` ON `profile`.`userId` = `user`.`id`;
+// 
+// results in: [
+//           {
+//             "userId": 1,
+//             "address": "777 Brockton Avenue, Abington MA 2351",
+//             "tel": "202-555-0105",
+//             "user": {
+//               "id": 1,
+//               "name": "Robin"
+//             }
+//           }
+//         ]
+await ProfileModel.findAll({
+  attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;],
+  include: {
+    association: &#039;user&#039;,
+    required: true,
+    attributes: [&#039;id&#039;, &#039;name&#039;]
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="belongs-to-find-method-cjs-tag" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const ProfileModel = require(&#039;../models/ProfileModel&#039;);
+        
+// SELECT
+//   `profile`.`id`,
+//   `profile`.`userId`,
+//   `profile`.`address`,
+//   `profile`.`tel`,
+//   `user`.`id` AS `user.id`,
+//   `user`.`name` AS `user.name`
+// FROM
+//   `profile` AS `profile`
+//   INNER JOIN `user` AS `user` ON `profile`.`userId` = `user`.`id`;
+// 
+// results in: [
+//           {
+//             "userId": 1,
+//             "address": "777 Brockton Avenue, Abington MA 2351",
+//             "tel": "202-555-0105",
+//             "user": {
+//               "id": 1,
+//               "name": "Robin"
+//             }
+//           }
+//         ]
+await ProfileModel.findAll({
+  attributes: [&#039;userId&#039;, &#039;address&#039;, &#039;tel&#039;],
+  include: {
+    association: &#039;user&#039;,
+    required: true,
+    attributes: [&#039;id&#039;, &#039;name&#039;]
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static hasMany()</code></td>
+          <td>
+            Creates a 1:m association between this (the source) and the provided target.<br>
+            The foreign key is added on the target.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-hasMany" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>target: Model</code>
+                <!--begin::Block-->
+                <div class="pt-3">The target model.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">hasMany association options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code><a href="https://sequelize.org/api/v6/class/src/associations/has-many.js~hasmany" class="fw-semibold" target="_blank">sequelize.HasMany</a></code> One-to-many association.</li>
+            </ul>
+            <!--end::Return-->
+            For one-to-many association we will use two tables as an example they are User and Comment table.<br>
+            User table has many Comment table and Comment table belongs to the User table.<br>
+            Here's the relation diagram for it.
+            <div class="py-3">
+              <img src="media/has-many.png" alt="has many relationship" width="361">
+            </div>
+            The HasMany put the association key in the target model.<br>
+            Here user and comments share a one to many relationship.<br>
+            Each user can make multiple comments while each comment is associated with only a single user.<br><br>
+            This is a user model that defines an association in which the user has many comments.
+            <!--begin::Code-->
+            <div class="py-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#has-many-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#has-many-method-cjs-tab" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="has-many-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+import CommentModel from &#039;./CommentModel&#039;;
+
+export default class extends sweet.database.Model {
+  static association() {
+      // User has many comments.
+    this.hasMany(CommentModel, {
+      foreignKey: &#039;userId&#039;,  // comment.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;comments&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="has-many-method-cjs-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+        
+module.exports = class extends Model {
+  static association() {
+      // User has many comments.
+    const CommentModel = require(&#039;./CommentModel&#039;);
+    this.hasMany(CommentModel, {
+      foreignKey: &#039;userId&#039;,  // comment.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;comments&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+            This is an example of record search.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#has-many-find-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#has-many-find-method-cjs-tab" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="has-many-find-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import UserModel from  &#039;../models/UserModel&#039;;
+        
+// SELECT
+//   `user`.`id`,
+//   `user`.`name`,
+//   `comments`.`id` AS `comments.id`,
+//   `comments`.`userId` AS `comments.userId`,
+//   `comments`.`text` AS `comments.text`
+// FROM
+//   `user` AS `user`
+//   LEFT OUTER JOIN `comment` AS `comments` ON `user`.`id` = `comments`.`userId`;
+// 
+// results in: [
+//           {
+//             "id": 1,
+//             "name": "Robin",
+//             "comments": [
+//               {
+//                 "userId": 1,
+//                 "text": "From Robin #1"
+//               },
+//               {
+//                 "userId": 1,
+//                 "text": "From Robin #2"
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;comments&#039;,
+    attributes: [&#039;userId&#039;, &#039;text&#039;]
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="has-many-find-method-cjs-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const UserModel = require(&#039;../models/UserModel&#039;);
+        
+// SELECT
+//   `user`.`id`,
+//   `user`.`name`,
+//   `comments`.`id` AS `comments.id`,
+//   `comments`.`userId` AS `comments.userId`,
+//   `comments`.`text` AS `comments.text`
+// FROM
+//   `user` AS `user`
+//   LEFT OUTER JOIN `comment` AS `comments` ON `user`.`id` = `comments`.`userId`;
+// 
+// results in: [
+//           {
+//             "id": 1,
+//             "name": "Robin",
+//             "comments": [
+//               {
+//                 "userId": 1,
+//                 "text": "From Robin #1"
+//               },
+//               {
+//                 "userId": 1,
+//                 "text": "From Robin #2"
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;comments&#039;,
+    attributes: [&#039;userId&#039;, &#039;text&#039;]
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static belongsToMany()</code></td>
+          <td>
+            Create an N:M association with a join table.<br>
+            Defining through is required.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-belongsToMany" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>target: Model</code>
+                <!--begin::Block-->
+                <div class="pt-3">The target model.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">belongsToMany association options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code><a href="https://sequelize.org/api/v6/class/src/associations/belongs-to-many.js~belongstomany" class="fw-semibold" target="_blank">sequelize.BelongsToMany</a></code> Many-to-many association with a join table.</li>
+            </ul>
+            <!--end::Return-->
+            For many-to-many association we will use two tables as an example they are User and Book table.<br>
+            User is marking down Books that he has read. Each user can mark as many books as they want, creating a many to many association between User and Books.<br>
+            Books can belong to many users.<br>
+            Here's the relation diagram for it.
+            <div class="py-3">
+              <img src="media/belongs-to-many.png" alt="belongs to many relationship" width="361">
+            </div>
+            The BlongsToMany put the association key in the target model.<br>
+            Here user and book share a many to many relationship.<br>
+            Each user can make multiple books, and each book can be associated with multiple users.<br><br>
+            This is a user model that defines an association where users and books have a many-to-many relationship.
+            <!--begin::Code-->
+            <div class="py-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#belongs-to-many-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#belongs-to-many-method-cjs-tab" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="belongs-to-many-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+import BookModel from &#039;./BookModel&#039;;
+
+export default class extends sweet.database.Model {
+  static association() {
+      // Users have many books, and books belong to many users.
+    this.hasMany(BookModel, {
+      foreignKey: &#039;userId&#039;,  // book.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;books&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="belongs-to-many-method-cjs-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+        
+module.exports = class extends Model {
+  static association() {
+      // Users have many books, and books belong to many users.
+    const BookModel = require(&#039;./BookModel&#039;);
+    this.hasMany(BookModel, {
+      foreignKey: &#039;userId&#039;,  // book.userId
+      sourceKey: &#039;id&#039;,  // user.id
+      as: &#039;books&#039;
+    });
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+            This is an example of record search.
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#belongs-to-many-find-method-esm-tab" role="tab">ESM</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#belongs-to-many-find-method-cjs-tab" role="tab">CJS</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="belongs-to-many-find-method-esm-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">import UserModel from  &#039;../models/UserModel&#039;;
+        
+// SELECT
+//   `user`.`id`,
+//   `user`.`name`,
+//   `books`.`id` AS `books.id`,
+//   `books`.`userId` AS `books.userId`,
+//   `books`.`title` AS `books.title`
+// FROM
+//   `user` AS `user`
+//   LEFT OUTER JOIN `book` AS `books` ON `user`.`id` = `books`.`userId`;
+// 
+// results in: [
+//           {
+//             "id": 1,
+//             "name": "Robin",
+//             "books": [
+//               {
+//                 "userId": 1,
+//                 "title": "Beautiful"
+//               },
+//               {
+//                 "userId": 1,
+//                 "title": "Lose Yourself"
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;books&#039;,
+    attributes: [&#039;userId&#039;, &#039;title&#039;]
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="belongs-to-many-find-method-cjs-tab" role="tabpanel">
+                    <div class="highlight-code">
+                      <pre class="language-javascript"><code class="language-javascript">const UserModel = require(&#039;../models/UserModel&#039;);
+        
+// SELECT
+//    `user`.`id`,
+//    `user`.`name`,
+//    `books`.`id` AS `books.id`,
+//    `books`.`userId` AS `books.userId`,
+//    `books`.`title` AS `books.title`
+//  FROM
+//    `user` AS `user`
+//    LEFT OUTER JOIN `book` AS `books` ON `user`.`id` = `books`.`userId`;
+// 
+// results in: [
+//           {
+//             "id": 1,
+//             "name": "Robin",
+//             "books": [
+//               {
+//                 "userId": 1,
+//                 "title": "Beautiful"
+//               },
+//               {
+//                 "userId": 1,
+//                 "title": "Lose Yourself"
+//               }
+//             ]
+//           }
+//         ]
+await UserModel.findAll({
+  attributes: [&#039;id&#039;, &#039;name&#039;],
+  include: {
+    association: &#039;books&#039;,
+    attributes: [&#039;userId&#039;, &#039;title&#039;]
+  }
+});</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+        <tr>
+          <td><code>public static query()</code></td>
+          <td>
+            Raw Queries.<br>
+            As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.<br>
+            This is an alias for the <code>"sequelize.Sequelize.query()"</code> method.<br>
+            See <a href="https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-query" class="fw-semibold" target="_blank">here</a> for details.
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Parameters:</div>
+            <!--end::Heading-->
+            <!--begin::Parameters-->
+            <ul>
+              <li class="py-2"><code>sql: string</code>
+                <!--begin::Block-->
+                <div class="pt-3">SQL string.</div>
+                <!--end::Block-->
+              </li>
+              <li class="py-2"><code>options: object</code>
+                <!--begin::Block-->
+                <div class="pt-3">Query options.</div>
+                <!--end::Block-->
+              </li>
+            </ul>
+            <!--end::Parameters-->
+            <!--begin::Heading-->
+            <div class="py-3 text-gray-700">Return value:</div>
+            <!--end::Heading-->
+            <!--begin::Return-->
+            <ul class="list-style-none">
+              <li class="py-2"><code>Promise&lt;any&gt;</code> By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc. If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results.</li>
+            </ul>
+            <!--end::Return-->
+            <!--begin::Code-->
+            <div class="pt-3">
+              <!--begin::Highlight-->
+              <div class="highlight">
+                <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
+                <div class="highlight-code">
+                  <pre class="language-javascript"><code class="language-javascript">// By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
+// Note that since this is a raw query, the metadata are dialect specific.
+const [results, metadata] = await BookModel.query(&quot;UPDATE book SET title = &#039;Lose Yourself&#039; WHERE id = 1&quot;);
+
+// In cases where you don&#039;t need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
+// We didn&#039;t need to destructure the result here - the results were returned directly
+await BookModel.query(&quot;SELECT * FROM book&quot;, {type: BookModel.QueryTypes.SELECT});</code></pre>
+                </div>
+              </div>
+              <!--end::Highlight-->
+            </div>
+            <!--end::Code-->
+          </td>
+        </tr>
+      </tbody>
+      <!--end::Body-->
+    </table>
+    <!--end::Table-->
+  </div>
+  <!--end::Table wrapper-->
+</div>
+<!--end::Section-->
