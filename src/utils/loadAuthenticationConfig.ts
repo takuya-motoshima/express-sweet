@@ -11,6 +11,7 @@ export default (): AuthenticationConfig => {
   const defaultOptions: AuthenticationConfig = {
     enabled: false,
     session_store: 'memory',
+    cookie_name: 'connect.sid',
     redis_host: undefined,
     username: 'username',
     password: 'password',
@@ -33,6 +34,10 @@ export default (): AuthenticationConfig => {
   // Check required options.
   if (mergeOptions.session_store === 'redis' && !mergeOptions.redis_host)
     throw new TypeError('If the session store is redis, redis_host in the authentication configuration is required');
+
+  // If the session cookie name is overwritten with an empty value, replace it with the default value.
+  if (!mergeOptions.cookie_name)
+    mergeOptions.cookie_name = 'connect.sid';
 
   // If an options file is found, it returns options that override the default options.
   return mergeOptions;

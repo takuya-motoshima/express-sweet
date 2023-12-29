@@ -121,6 +121,13 @@
             <td>The session store instance, defaults to a new MemoryStore(<code>memory</code>) instance.</td>
           </tr>
           <tr>
+            <td><code>cookie_name?: string|undefined</code></td>
+            <td>
+              The name of the session ID cookie to set in the response (and read from in the request).<br>
+              The default value is <code>connect.sid<code>.
+            </td>
+          </tr>
+          <tr>
             <td><code>redis_host?: string|undefined</code></td>
             <td>
               If the session is stored in <code>&quot;redis&quot;</code>, this field is required and should be set to the hostname of the Redis server.<br>

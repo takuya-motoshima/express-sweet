@@ -68,7 +68,7 @@
               <div class="page-title d-flex flex-column flex-lg-row align-items-lg-center py-5 mb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_app_content_container', 'lg': '#kt_app_header_title'}">
                 <!--begin::Title-->
                 <h1 class="d-flex align-items-center text-dark my-1 fs-4">
-                  Documentation <a href="#!" class="badge fw-semibold fs-9 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.42</a>
+                  Documentation <a href="#!" class="badge fw-semibold fs-9 px-2 ms-2 bg-body text-dark text-hover-primary shadow-sm">v1.0.43</a>
                 </h1>
                 <!--end::Title-->
               </div>
@@ -546,6 +546,13 @@
           <tr>
             <td><code>session_store: &#039;memory&#039;|&#039;redis&#039;</code></td>
             <td>The session store instance, defaults to a new MemoryStore(<code>memory</code>) instance.</td>
+          </tr>
+          <tr>
+            <td><code>cookie_name?: string|undefined</code></td>
+            <td>
+              The name of the session ID cookie to set in the response (and read from in the request).<br>
+              The default value is <code>connect.sid<code>.
+            </td>
           </tr>
           <tr>
             <td><code>redis_host?: string|undefined</code></td>

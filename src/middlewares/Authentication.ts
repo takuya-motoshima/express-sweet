@@ -31,6 +31,7 @@ export default class {
       secret: 'secret',
       resave: false,
       saveUninitialized: false,
+      name: authenticationConfig.cookie_name,
       cookie: {
         secure: false,
         httpOnly: true,

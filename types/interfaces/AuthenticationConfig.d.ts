@@ -14,6 +14,12 @@ export default interface AuthenticationConfig {
      */
     session_store: 'memory' | 'redis';
     /**
+     * The name of the session ID cookie to set in the response (and read from in the request).
+     * The default value is 'connect.sid'.
+     * @type {string|undefined}
+     */
+    cookie_name?: string;
+    /**
      * If the session is stored in "redis", this field is required and should be set to the hostname of the Redis server.
      * For example, to connect to redis on localhost on port 6379, set "redis://localhost:6379".
      * To connect to a different host or port, use a connection string in the format "redis[s]://[[username][:password]@][host][:port][/db-number]".

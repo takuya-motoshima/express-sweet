@@ -2,9 +2,18 @@
 All notable changes to this project will be documented in this file.
 
 ## [1.0.43] - Undecided
-### Changed
-- Refactor the unit class.
-- Delete unnecessary dependencies (class-transformer,class-validator).
+### Added
+- The cookie name for storing session IDs can now be set in the `cookie_name` field of the authentication configuration file (`config/authentication.js`).  
+
+    config/authentication.js:
+    ```js
+    /**
+    * The name of the session ID cookie to set in the response (and read from in the request).
+    * The default value is 'connect.sid'.
+    * @type {string|undefined}
+    */
+    cookie_name: 'connect.sid'
+    ```
 
 ## [1.0.42] - 2023/8/31
 ### Changed
