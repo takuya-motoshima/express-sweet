@@ -8,17 +8,17 @@ All notable changes to this project will be documented in this file.
     config/authentication.js:
     ```js
     /**
-    * Specifies the boolean value for the Secure Set-Cookie attribute.
-    * The default is true, which sets the Secure attribute on the cookie.
-    * @type {boolean|undefined}
-    */
+     * Specifies the boolean value for the Secure Set-Cookie attribute.
+     * The default is true, which sets the Secure attribute on the cookie.
+     * @type {boolean|undefined}
+     */
     cookie_secure: true,
 
     /**
-    * Specifies the boolean value for the HttpOnly Set-Cookie attribute. 
-    * Defaults to true, which sets the HttpOnly attribute on the cookie.
-    * @type {boolean|undefined}
-    */
+     * Specifies the boolean value for the HttpOnly Set-Cookie attribute. 
+     * Defaults to true, which sets the HttpOnly attribute on the cookie.
+     * @type {boolean|undefined}
+     */
     cookie_httpOnly: true,
     ```
 
@@ -29,10 +29,10 @@ All notable changes to this project will be documented in this file.
     config/authentication.js:
     ```js
     /**
-    * The name of the session ID cookie to set in the response (and read from in the request).
-    * The default value is 'connect.sid'.
-    * @type {string|undefined}
-    */
+     * The name of the session ID cookie to set in the response (and read from in the request).
+     * The default value is 'connect.sid'.
+     * @type {string|undefined}
+     */
     cookie_name: 'connect.sid'
     ```
 
