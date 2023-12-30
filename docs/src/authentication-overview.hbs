@@ -128,6 +128,20 @@
             </td>
           </tr>
           <tr>
+            <td><code>cookie_secure?: boolean|undefined</code></td>
+            <td>
+              Specifies the boolean value for the <code>Secure</code> Set-Cookie attribute.<br>
+              The default is <code>true</code>, which sets the <code>Secure</code> attribute on the cookie.
+            </td>
+          </tr>
+          <tr>
+            <td><code>cookie_httpOnly?: boolean|undefined</code></td>
+            <td>
+              Specifies the boolean value for the <code>HttpOnly</code> Set-Cookie attribute.<br>
+              Defaults to <code>true</code>, which sets the <code>HttpOnly</code> attribute on the cookie.
+            </td>
+          </tr>
+          <tr>
             <td><code>redis_host?: string|undefined</code></td>
             <td>
               If the session is stored in <code>&quot;redis&quot;</code>, this field is required and should be set to the hostname of the Redis server.<br>

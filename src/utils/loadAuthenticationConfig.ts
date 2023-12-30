@@ -12,6 +12,8 @@ export default (): AuthenticationConfig => {
     enabled: false,
     session_store: 'memory',
     cookie_name: 'connect.sid',
+    cookie_secure: true,
+    cookie_httpOnly: true,
     redis_host: undefined,
     username: 'username',
     password: 'password',

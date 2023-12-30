@@ -1,8 +1,29 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.44] - 2023/12/30
+### Changed
+- The `Secure` and `HttpOnly` attributes of the session cookie can now be set from the authentication configuration file (`config/authentication.js`).
+
+    config/authentication.js:
+    ```js
+    /**
+    * Specifies the boolean value for the Secure Set-Cookie attribute.
+    * The default is true, which sets the Secure attribute on the cookie.
+    * @type {boolean|undefined}
+    */
+    cookie_secure: false,
+
+    /**
+    * Specifies the boolean value for the HttpOnly Set-Cookie attribute. 
+    * Defaults to true, which sets the HttpOnly attribute on the cookie.
+    * @type {boolean|undefined}
+    */
+    cookie_httpOnly: true,
+    ```
+
 ## [1.0.43] - 2023/12/30
-### Added
+### Changed
 - The cookie name for storing session IDs can now be set in the `cookie_name` field of the authentication configuration file (`config/authentication.js`).  
 
     config/authentication.js:
@@ -789,3 +810,4 @@ All notable changes to this project will be documented in this file.
 [1.0.41]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.40...v1.0.41
 [1.0.42]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.41...v1.0.42
 [1.0.43]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.42...v1.0.43
+[1.0.44]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.43...v1.0.44

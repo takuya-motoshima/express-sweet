@@ -1,7 +1,7 @@
 {
   "name": "express-sweet",
   "version": "1.0.43",
-  "description": "Express framework extension.",
+  "description": "Express Extension.",
   "main": "dist/build.common.js",
   "module": "dist/build.esm.js",
   "types": "types/index.d.ts",
@@ -10,7 +10,6 @@
     "docs/",
     "types/",
     "CHANGELOG.md",
-    "hero.svg",
     "INSTALL-Redis.md",
     "LICENSE",
     "package.json",

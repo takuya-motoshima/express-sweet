@@ -33,8 +33,8 @@ export default class {
       saveUninitialized: false,
       name: authenticationConfig.cookie_name,
       cookie: {
-        secure: false,
-        httpOnly: true,
+        secure: authenticationConfig.cookie_secure,
+        httpOnly: authenticationConfig.cookie_httpOnly,
         maxAge: authenticationConfig.expiration
       }
     };

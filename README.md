@@ -1,6 +1,5 @@
-[![Express Sweet Logo](hero.svg)](https://takuya-motoshima.github.io/express-sweet/v1/install.html)
-
-Express framework extension.
+# EXPRESS SWEET 
+This is an extension of Express.
 
 ## Documentation
 * [Express Sweet Documentation](https://takuya-motoshima.github.io/express-sweet/v1/)
