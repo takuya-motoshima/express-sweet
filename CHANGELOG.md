@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
     * The default is true, which sets the Secure attribute on the cookie.
     * @type {boolean|undefined}
     */
-    cookie_secure: false,
+    cookie_secure: true,
 
     /**
     * Specifies the boolean value for the HttpOnly Set-Cookie attribute. 
