@@ -66,7 +66,7 @@
           <td>
             Constructs a rekognition client object.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -149,7 +149,7 @@ const client = new sweet.services.AWSRekognitionClient({
             Detects faces within an image that is provided as input.<br>
             For each face detected, the operation returns a bounding box of the face.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -171,7 +171,7 @@ const client = new sweet.services.AWSRekognitionClient({
             </ul>
             <!--end::Parameters-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
@@ -328,7 +328,7 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
           <td>
             Compare the similarity of two faces.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -345,7 +345,7 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
             </ul>
             <!--end::Parameters-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
@@ -449,7 +449,7 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
             </div>
             <!--end::Block-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -522,7 +522,7 @@ await client.createCollection(&#039;MyCollection&#039;);</code></pre>
           <td>
             Returns list of collection IDs.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
@@ -601,7 +601,7 @@ await client.listCollections();</code></pre>
             Deletes the specified collection.<br>
             Note that this operation removes all faces in the collection.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -613,7 +613,7 @@ await client.listCollections();</code></pre>
             </ul>
             <!--end::Parameters-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
@@ -700,7 +700,7 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
             </div>
             <!--end::Block-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -736,7 +736,7 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
             </ul>
             <!--end::Parameters-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
@@ -869,7 +869,7 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
             For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces.<br>
             The operation compares the features of the input face with faces in the specified collection.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -913,7 +913,7 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
             </ul>
             <!--end::Parameters-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
@@ -1063,7 +1063,7 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
             Returns metadata for faces in the specified collection.<br>
             This metadata includes information such as the bounding box coordinates, and face ID.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -1080,7 +1080,7 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
             </ul>
             <!--end::Parameters-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
@@ -1176,7 +1176,7 @@ console.log(result);</code></pre>
             Deletes faces from a collection.<br>
             You specify a collection ID and an array of face IDs to remove from the collection.
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Parameters:</div>
+            <h5 class="py-3 mb-0">Parameters:</h5>
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
@@ -1193,7 +1193,7 @@ console.log(result);</code></pre>
             </ul>
             <!--end::Parameters-->
             <!--begin::Heading-->
-            <div class="py-3 text-gray-700">Return value:</div>
+            <h5 class="py-3 mb-0">Return:</h5>
             <!--end::Heading-->
             <!--begin::Return-->
             <ul class="list-style-none">
