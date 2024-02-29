@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.45] - Undecided.
+### Changed
+- Added ability to change color theme to docs and demo.
+- Updated the demo theme to Metronic v8.1.8.
+
 ## [1.0.44] - 2023/12/30
 ### Changed
 - The `Secure` and `HttpOnly` attributes of the session cookie can now be set from the authentication configuration file (`config/authentication.js`).

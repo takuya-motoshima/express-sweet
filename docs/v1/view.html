@@ -2,11 +2,11 @@
 <html lang="en" data-bs-theme="light">
 <!--begin::Head-->
 <head>
-  <title>View - Express Sweet</title>
+  <title>View - Express Sweet Documentation</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="media/logos/favicon.svg" type="image/svg+xml"/>
-  <!--begin::Fonts-->
+  <link rel="shortcut icon" type="image/svg+xml" href="media/logos/favicon.svg" />
+  <!--begin::Fonts(mandatory for all pages)-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
   <!--end::Fonts-->
   <!--begin::Vendor Stylesheets(used for this page only)-->
@@ -14,14 +14,12 @@
   <link href="theme/metronic_8.1.8/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" type="text/css" />
   <link href="theme/metronic_8.1.8/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
   <!--end::Vendor Stylesheets-->
-  <!--begin::Global Stylesheets Bundle(used by all pages)-->
+  <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
   <link href="theme/metronic_8.1.8/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
   <link href="theme/metronic_8.1.8/css/style.bundle.css" rel="stylesheet" type="text/css" />
   <!--end::Global Stylesheets Bundle-->
-  <!--begin::Custom Stylesheets(used by this page)-->
-  <link href="css/docs.css" rel="stylesheet" type="text/css" />
+  <link href="css/app.css" rel="stylesheet" type="text/css" />
   
-  <!--end::Custom Stylesheets-->
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -74,8 +72,8 @@
           <!--begin::Mobile logo-->
           <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
             <a href="/index" class="d-lg-none">
-              <img alt="Logo" src="media/logos/default-small.svg" class="theme-light-show h-25px" />
-              <img alt="Logo" src="media/logos/default-small-dark.svg" class="theme-dark-show h-25px" />
+              <img alt="Logo" src="media/logos/default-small.svg" class="theme-light-show h-30px">
+              <img alt="Logo" src="media/logos/default-small-dark.svg" class="theme-dark-show h-30px">
             </a>
           </div>
           <!--end::Mobile logo-->
@@ -184,17 +182,42 @@
       <!--begin::Wrapper-->
       <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
         <!--begin::Sidebar-->
-        <div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true" data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
+        <div
+          id="kt_app_sidebar"
+          class="app-sidebar flex-column"
+          data-kt-drawer="true"
+          data-kt-drawer-name="app-sidebar"
+          data-kt-drawer-activate="{default: true, lg: false}"
+          data-kt-drawer-overlay="true"
+          data-kt-drawer-width="225px"
+          data-kt-drawer-direction="start"
+          data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
           <!--begin::Logo-->
           <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
             <!--begin::Logo image-->
             <a href="/index">
-              <img alt="Logo" src="media/logos/default.svg" class="theme-light-show h-25px app-sidebar-logo-default" />
-              <img alt="Logo" src="media/logos/default-dark.svg" class="theme-dark-show h-25px app-sidebar-logo-default" />
-              <img alt="Logo" src="media/logos/default-small.svg" class="theme-light-show h-20px app-sidebar-logo-minimize" />
-              <img alt="Logo" src="media/logos/default-small-dark.svg" class="theme-dark-show h-20px app-sidebar-logo-minimize" />
+              <img alt="Logo" src="media/logos/default.svg" class="theme-light-show h-25px app-sidebar-logo-default">
+              <img alt="Logo" src="media/logos/default-small.svg" class="theme-light-show h-25px app-sidebar-logo-minimize">
+              <img alt="Logo" src="media/logos/default-dark.svg" class="theme-dark-show h-25px app-sidebar-logo-default">
+              <img alt="Logo" src="media/logos/default-small-dark.svg" class="theme-dark-show h-25px app-sidebar-logo-minimize">
             </a>
             <!--end::Logo image-->
+            <!--begin::Sidebar toggle-->
+            <!--begin::Minimized sidebar setup:
+          if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_state"] === "on") {
+              1. "src/js/layout/sidebar.js" adds "sidebar_minimize_state" cookie value to save the sidebar minimize state.
+              2. Set data-kt-app-sidebar-minimize="on" attribute for body tag.
+              3. Set data-kt-toggle-state="active" attribute to the toggle element with "kt_app_sidebar_toggle" id.
+              4. Add "active" class to to sidebar toggle element with "kt_app_sidebar_toggle" id.
+          }
+      -->
+            <div id="kt_app_sidebar_toggle" class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary body-bg h-30px w-30px position-absolute top-50 start-100 translate-middle rotate" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="app-sidebar-minimize">
+              <i class="ki-duotone ki-double-left fs-2 rotate-180">
+                <span class="path1"></span>
+                <span class="path2"></span>
+              </i>
+            </div>
+            <!--end::Sidebar toggle-->
           </div>
           <!--end::Logo-->
           <!--begin::sidebar menu-->
@@ -2902,7 +2925,7 @@ Else
       * @author Petros Kyladitis */
     Prism.languages.sql={comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|((--)|(\/\/)).*?(\r?\n|$))/g,lookbehind:!0},string: /("|')(\\?.)*?\1/g,keyword:/\b(ACTION|ADD|AFTER|ALGORITHM|ALTER|ANALYZE|APPLY|AS|AS|ASC|AUTHORIZATION|BACKUP|BDB|BEGIN|BERKELEYDB|BIGINT|BINARY|BIT|BLOB|BOOL|BOOLEAN|BREAK|BROWSE|BTREE|BULK|BY|CALL|CASCADE|CASCADED|CASE|CHAIN|CHAR VARYING|CHARACTER VARYING|CHECK|CHECKPOINT|CLOSE|CLUSTERED|COALESCE|COLUMN|COLUMNS|COMMENT|COMMIT|COMMITTED|COMPUTE|CONNECT|CONSISTENT|CONSTRAINT|CONTAINS|CONTAINSTABLE|CONTINUE|CONVERT|CREATE|CROSS|CURRENT|CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|CURSOR|DATA|DATABASE|DATABASES|DATETIME|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFINER|DELAYED|DELETE|DENY|DESC|DESCRIBE|DETERMINISTIC|DISABLE|DISCARD|DISK|DISTINCT|DISTINCTROW|DISTRIBUTED|DO|DOUBLE|DOUBLE PRECISION|DROP|DUMMY|DUMP|DUMPFILE|DUPLICATE KEY|ELSE|ENABLE|ENCLOSED BY|END|ENGINE|ENUM|ERRLVL|ERRORS|ESCAPE|ESCAPED BY|EXCEPT|EXEC|EXECUTE|EXIT|EXPLAIN|EXTENDED|FETCH|FIELDS|FILE|FILLFACTOR|FIRST|FIXED|FLOAT|FOLLOWING|FOR|FOR EACH ROW|FORCE|FOREIGN|FREETEXT|FREETEXTTABLE|FROM|FULL|FUNCTION|GEOMETRY|GEOMETRYCOLLECTION|GLOBAL|GOTO|GRANT|GROUP|HANDLER|HASH|HAVING|HOLDLOCK|IDENTITY|IDENTITY_INSERT|IDENTITYCOL|IF|IGNORE|IMPORT|INDEX|INFILE|INNER|INNODB|INOUT|INSERT|INT|INTEGER|INTERSECT|INTO|INVOKER|ISOLATION LEVEL|JOIN|KEY|KEYS|KILL|LANGUAGE SQL|LAST|LEFT|LIMIT|LINENO|LINES|LINESTRING|LOAD|LOCAL|LOCK|LONGBLOB|LONGTEXT|MATCH|MATCHED|MEDIUMBLOB|MEDIUMINT|MEDIUMTEXT|MERGE|MIDDLEINT|MODIFIES SQL DATA|MODIFY|MULTILINESTRING|MULTIPOINT|MULTIPOLYGON|NATIONAL|NATIONAL CHAR VARYING|NATIONAL CHARACTER|NATIONAL CHARACTER VARYING|NATIONAL VARCHAR|NATURAL|NCHAR|NCHAR VARCHAR|NEXT|NO|NO SQL|NOCHECK|NOCYCLE|NONCLUSTERED|NULLIF|NUMERIC|OF|OFF|OFFSETS|ON|OPEN|OPENDATASOURCE|OPENQUERY|OPENROWSET|OPTIMIZE|OPTION|OPTIONALLY|ORDER|OUT|OUTER|OUTFILE|OVER|PARTIAL|PARTITION|PERCENT|PIVOT|PLAN|POINT|POLYGON|PRECEDING|PRECISION|PREV|PRIMARY|PRINT|PRIVILEGES|PROC|PROCEDURE|PUBLIC|PURGE|QUICK|RAISERROR|READ|READS SQL DATA|READTEXT|REAL|RECONFIGURE|REFERENCES|RELEASE|RENAME|REPEATABLE|REPLICATION|REQUIRE|RESTORE|RESTRICT|RETURN|RETURNS|REVOKE|RIGHT|ROLLBACK|ROUTINE|ROWCOUNT|ROWGUIDCOL|ROWS?|RTREE|RULE|SAVE|SAVEPOINT|SCHEMA|SELECT|SERIAL|SERIALIZABLE|SESSION|SESSION_USER|SET|SETUSER|SHARE MODE|SHOW|SHUTDOWN|SIMPLE|SMALLINT|SNAPSHOT|SOME|SONAME|START|STARTING BY|STATISTICS|STATUS|STRIPED|SYSTEM_USER|TABLE|TABLES|TABLESPACE|TEMPORARY|TEMPTABLE|TERMINATED BY|TEXT|TEXTSIZE|THEN|TIMESTAMP|TINYBLOB|TINYINT|TINYTEXT|TO|TOP|TRAN|TRANSACTION|TRANSACTIONS|TRIGGER|TRUNCATE|TSEQUAL|TYPE|TYPES|UNBOUNDED|UNCOMMITTED|UNDEFINED|UNION|UNPIVOT|UPDATE|UPDATETEXT|USAGE|USE|USER|USING|VALUE|VALUES|VARBINARY|VARCHAR|VARCHARACTER|VARYING|VIEW|WAITFOR|WARNINGS|WHEN|WHERE|WHILE|WITH|WITH ROLLUP|WITHIN|WORK|WRITE|WRITETEXT)\b/gi,boolean:/\b(TRUE|FALSE|NULL)\b/gi,number:/\b-?(0x)?\d*\.?[\da-f]+\b/g,operator:/\b(ALL|AND|ANY|BETWEEN|EXISTS|IN|LIKE|NOT|OR|IS|UNIQUE|CHARACTER SET|COLLATE|DIV|OFFSET|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b|[-+]{1}|!|=?&lt;|=?&gt;|={1}|(&amp;){1,2}|\|?\||\?|\*|\//gi,ignore:/&(lt|gt|amp);/gi,punctuation:/[;[\]()`,.]/g};
   </script>
-  <script src="js/docs.js"></script>
+  <script src="js/app.js"></script>
   
   <!--end::Custom Javascript-->
   <!--end::Javascript-->

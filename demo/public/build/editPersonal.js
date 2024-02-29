@@ -1079,7 +1079,7 @@ function initForm() {
           return void userApi.logout();
         } else
           throw Error('Unknown error');
-      build.Toast.success('Personal settings have been updated.');
+      build.Toast.success('Profile Settings have been updated.');
       const currentEmail = (0,build.trim)(ref.user.email.val(), true);
       if (originalEmail !== currentEmail) {
         await build.Dialog.info('Email address has been changed. Please re-login.');
