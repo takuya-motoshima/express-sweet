@@ -17,6 +17,9 @@ With [npm](http://npmjs.org) do:
 npm test
 ```
 
+## How to start the demo with Docker
+See [here](demo/README.md).
+
 ## Author
 **Takuya Motoshima**
 

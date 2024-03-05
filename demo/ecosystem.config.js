@@ -9,8 +9,12 @@ module.exports = {
       watch: '.',
       watch_delay: 3000,
       ignore_watch : [
+        'client',
         'node_modules',
         'public',
+        'sql',
+        'views',
+        'volumes',
         'views'
       ],
       watch_options: {

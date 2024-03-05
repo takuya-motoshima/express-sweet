@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 - Added ability to change color theme to docs and demo.
 - Updated the demo theme to Metronic v8.1.8.
 
+### Added
+- Demo (. /demo) Docker environment added. See [here](demo/README.md) for details.
+
 ## [1.0.44] - 2023/12/30
 ### Changed
 - The `Secure` and `HttpOnly` attributes of the session cookie can now be set from the authentication configuration file (`config/authentication.js`).
@@ -816,3 +819,4 @@ All notable changes to this project will be documented in this file.
 [1.0.42]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.41...v1.0.42
 [1.0.43]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.42...v1.0.43
 [1.0.44]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.43...v1.0.44
+[1.0.45]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.44...v1.0.45

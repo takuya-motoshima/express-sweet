@@ -10,3 +10,5 @@ docs/src/
 docs/generate-documentation.js
 docs/package.json
 docs/package-lock.json
+__tests__/.env
+!__tests__/.env.sample
