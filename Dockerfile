@@ -10,8 +10,10 @@ RUN yum install procps -y
 RUN ln -snf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && echo Asia/Tokyo > /etc/timezone
 
 # Install Node.js.
-RUN yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
-RUN yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
+RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+RUN yum install -y nodejs
+# RUN yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
+# RUN yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
 
 # Install ImageMagick.
 RUN yum install ImageMagick-1:6.9.12.82-1.amzn2023.0.3.x86_64 -y

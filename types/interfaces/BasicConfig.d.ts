@@ -1,3 +1,4 @@
+/// <reference types="cookie-parser" />
 import express from 'express';
 /**
  * Express Sweet basic configuration interface.

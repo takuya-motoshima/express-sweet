@@ -1,3 +1,4 @@
+/// <reference types="cookie-parser" />
 import express from 'express';
 /**
  * View's configuration interface.

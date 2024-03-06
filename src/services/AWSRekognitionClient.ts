@@ -1,7 +1,8 @@
 import fs from 'fs';
 import {Agent} from 'https';
 import * as AWS from '@aws-sdk/client-rekognition';
-import {NodeHttpHandler} from '@aws-sdk/node-http-handler';
+import {NodeHttpHandler} from "@smithy/node-http-handler";
+// import {NodeHttpHandler} from '@aws-sdk/node-http-handler';
 import {File} from 'nodejs-shared';
 import RekognitionOptions from '~/interfaces/RekognitionOptions';
 import FaceMatch from '~/interfaces/FaceMatch';
