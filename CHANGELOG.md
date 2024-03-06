@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.0] - Undecided.
+## [1.1.0] - 2024/3/6
 ### Changed
 - Updated Express Sweet's dependency packages.
     - [express](https://www.npmjs.com/package/express) from v4.18.2 to v4.18.3

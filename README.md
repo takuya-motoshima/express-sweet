@@ -2,13 +2,13 @@
 This is an extension of Express.
 
 - [Express Sweet](#express-sweet)
-  - [Documentation](#documentation)
-  - [Quick Start](#quick-start)
-  - [How to start the demo with Docker](#how-to-start-the-demo-with-docker)
-  - [Release Notes](#release-notes)
-  - [Testing](#testing)
-  - [Author](#author)
-  - [License](#license)
+    - [Documentation](#documentation)
+    - [Quick Start](#quick-start)
+    - [How to start the demo with Docker](#how-to-start-the-demo-with-docker)
+    - [Release Notes](#release-notes)
+    - [Testing](#testing)
+    - [Author](#author)
+    - [License](#license)
 
 ## Documentation
 For Express Sweet documentation, please click [here](https://takuya-motoshima.github.io/express-sweet/v1/).
@@ -22,7 +22,7 @@ See [here](demo/README.md).
 ## Release Notes
 All changes can be found [here](CHANGELOG.md).
 
-- ### [1.1.0] - Undecided.
+- ### [1.1.0] - 2024/3/6
     #### Changed
     - Updated Express Sweet's dependency packages.
         - [express](https://www.npmjs.com/package/express) from v4.18.2 to v4.18.3
