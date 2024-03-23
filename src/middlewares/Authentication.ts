@@ -65,12 +65,20 @@ export default class {
       // Find the user who owns the credentials.
       const user = <{[key: string]: any}|null> await authenticationConfig.authenticate_user(username, password, req);
 
+      // Get request protocol.
+      const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+      if (user && protocol === 'http' && authenticationConfig.cookie_secure)
+        // If cookie security is enabled and the application is running on the HTTP protocol, a warning is output.
+        console.warn('Warning: Cookie security must be disabled for user authentication to work over the HTTP protocol (config/authentication.js#cookie_secure)');
+      
       // Authentication done.
       done(null, user || false);
     }));
 
     // Serialize the user information (ID in this case) and embed it in the session.
-    passport.serializeUser<number>((user: {[key: string]: any}, done: any) => done(null, user.id || undefined));
+    passport.serializeUser<number>((user: {[key: string]: any}, done: any) => {
+      done(null, user.id || undefined);
+    });
 
     // When the request is received, the user data corresponding to the ID is acquired and stored in req.user.
     passport.deserializeUser(async (id: any, done: any) => {

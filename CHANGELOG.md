@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2024/3/23
+### Changed
+- When cookie security is enabled (`config/authentication.js#cookie_secure`) and the application is running on the HTTP protocol, the following warning message is output upon user authentication.
+  ```sh
+  Warning: Cookie security must be disabled for user authentication to work over the HTTP protocol (config/authentication.js#cookie_secure)
+  ```
+
 ## [1.1.0] - 2024/3/6
 ### Changed
 - Updated Express Sweet's dependency packages.
@@ -827,3 +834,4 @@ All notable changes to this project will be documented in this file.
 [1.0.44]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.43...v1.0.44
 [1.0.45]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.44...v1.0.45
 [1.1.0]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.45...v1.1.0
+[1.1.1]: https://github.com/takuya-motoshima/express-sweet/compare/v1.1.0...v1.1.1

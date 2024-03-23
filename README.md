@@ -22,6 +22,12 @@ See [here](demo/README.md).
 ## Release Notes
 All changes can be found [here](CHANGELOG.md).
 
+- ### [1.1.1] - 2024/3/23
+    #### Changed
+    - When cookie security is enabled (`config/authentication.js#cookie_secure`) and the application is running on the HTTP protocol, the following warning message is output upon user authentication.
+        ```sh
+        Warning: Cookie security must be disabled for user authentication to work over the HTTP protocol (config/authentication.js#cookie_secure)
+        ```
 - ### [1.1.0] - 2024/3/6
     #### Changed
     - Updated Express Sweet's dependency packages.
@@ -35,26 +41,6 @@ All changes can be found [here](CHANGELOG.md).
 
     #### Added
     - Demo (./demo) Docker environment added. See [here](demo/README.md) for details.
-- ### [1.0.44] - 2023/12/30
-    #### Changed
-    - The `Secure` and `HttpOnly` attributes of the session cookie can now be set from the authentication configuration file (`config/authentication.js`).
-
-        config/authentication.js:
-        ```js
-        /**
-        * Specifies the boolean value for the Secure Set-Cookie attribute.
-        * The default is true, which sets the Secure attribute on the cookie.
-        * @type {boolean|undefined}
-        */
-        cookie_secure: true,
-
-        /**
-        * Specifies the boolean value for the HttpOnly Set-Cookie attribute. 
-        * Defaults to true, which sets the HttpOnly attribute on the cookie.
-        * @type {boolean|undefined}
-        */
-        cookie_httpOnly: true,
-        ```
 
 ## Testing
 With [npm](http://npmjs.org) do:

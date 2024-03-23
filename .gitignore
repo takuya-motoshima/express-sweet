@@ -7,3 +7,4 @@ demo/volumes/
 docs/node_modules/
 __tests__/.env
 !__tests__/.env.sample
+.vscode/

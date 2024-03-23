@@ -2,9 +2,9 @@
 It describes the configuration of the demo and how to start the demo with Docker.
 
 ## Directory structure
-Demo (. /demo) directory structure.
+Demo (./demo) directory structure.
 ```
-.
+demo
 ├── bin
 │   └── www             Application startup script
 ├── client              Front-end module
@@ -38,6 +38,15 @@ Demo (. /demo) directory structure.
     ```sh
     docker-compose build --no-cache
     docker-compose up -d
+    ```
+
+    Notes: In rare cases, an empty `node_modules` directory in the host will cause a build error.  
+            In that case, delete the `node_modules` directory of the host.
+    ```sh
+    rm -rf node_modules/ \
+        demo/node_modules/ \
+        demo/client/node_modules/ \
+        docs/node_modules/ 
     ```
 1. Connect to container.
     ```sh
