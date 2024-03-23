@@ -659,14 +659,10 @@
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
             
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });</code></pre>
                     </div>
                   </div>
@@ -674,14 +670,10 @@ const client = new sweet.services.AWSRekognitionClient({
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });</code></pre>
                     </div>
                   </div>
@@ -746,14 +738,10 @@ const client = new sweet.services.AWSRekognitionClient({
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Detects bounding boxes on faces.
@@ -808,14 +796,10 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 const fs = require(&#039;fs&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Detects bounding boxes on faces.
@@ -920,14 +904,10 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Compare faces from path.
@@ -945,14 +925,10 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 const fs = require(&#039;fs&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Compare faces from path.
@@ -1027,14 +1003,10 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Creates a collection.
@@ -1045,14 +1017,10 @@ await client.createCollection(&#039;MyCollection&#039;);</code></pre>
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Creates a collection.
@@ -1097,14 +1065,10 @@ await client.createCollection(&#039;MyCollection&#039;);</code></pre>
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
         
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Find the collection IDs.
@@ -1119,14 +1083,10 @@ await client.listCollections();</code></pre>
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Find the collection IDs.
@@ -1187,14 +1147,10 @@ await client.listCollections();</code></pre>
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Delete collection.
@@ -1205,14 +1161,10 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Delete collection.
@@ -1318,14 +1270,10 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Create a face and get the ID of the created face.
@@ -1364,14 +1312,10 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 const fs = require(&#039;fs&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Create a face and get the ID of the created face.
@@ -1496,14 +1440,10 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 import fs from &#039;fs&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // If you want to search for one face, specify 1 for the maxFaces option.
@@ -1550,14 +1490,10 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 const fs = require(&#039;fs&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // If you want to search for one face, specify 1 for the maxFaces option.
@@ -1654,14 +1590,10 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Find all face metadata in the collection.
@@ -1685,14 +1617,10 @@ console.log(result);</code></pre>
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Find all face metadata in the collection.
@@ -1767,14 +1695,10 @@ console.log(result);</code></pre>
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Delete a face from the collection.
@@ -1785,14 +1709,10 @@ await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// Rekognition Client.
 const client = new sweet.services.AWSRekognitionClient({
-  region: process.env.AWS_REKOGNITION_REGION,
-  accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Delete a face from the collection.

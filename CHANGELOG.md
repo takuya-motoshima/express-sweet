@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2024/3/24
+### Changed
+- Express Sweet version 2 no longer depends on the AWS SDK.  
+    The `services.AWSRekognitionClient` and `services.AWSSesClient` have been migrated to the [AWS SDK Extension](https://www.npmjs.com/package/aws-sdk-extension) NPM package, so please install from there if needed.
+
 ## [1.1.1] - 2024/3/23
 ### Changed
 - When cookie security is enabled (`config/authentication.js#cookie_secure`) and the application is running on the HTTP protocol, the following warning message is output upon user authentication.
@@ -98,9 +103,9 @@ All notable changes to this project will be documented in this file.
 
     // Rekognition Client.
     const client =  new AWSRekognitionClient({
-      accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-      region: process.env.AWS_REKOGNITION_REGION,
+      accessKeyId: 'your AWS access key ID',
+      secretAccessKey: 'your AWS secret access key',
+      region: 'the region to send service requests to',
     });
 
     // Find a face in the collection.
@@ -346,21 +351,18 @@ All notable changes to this project will be documented in this file.
     ```js
     const sweet = require('express-sweet');
 
-    // Load environment variables.
-    sweet.middlewares.Environment.mount();
-
     // SES Client.
     const client = new sweet.services.AWSSesClient({
-      apiVersion: process.env.SES_API_VERSION,
-      region: process.env.SES_REGION,
-      accessKeyId: process.env.SES_ACCESS_KEY_ID,
-      secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+      apiVersion: 'API Version ("YYYYY-MM-DD" or "latest")',
+      region: 'the region to send service requests to',
+      accessKeyId: 'your AWS access key ID',
+      secretAccessKey: 'your AWS secret access key',
     });
 
-    // Send an email from "test<user1@example.com>" to "user2@example.com".
+    // Send an email from "test<from@example.com>" to "to@example.com".
     await client
-      .from('user1@example.com', 'Sender Name')
-      .to('user2@example.com')
+      .from('from@example.com', 'Sender Name')
+      .to('to@example.com')
       .subject('Test email')
       .body('Hi, this is a test email')
       .send();
@@ -368,8 +370,8 @@ All notable changes to this project will be documented in this file.
     // Use variables in the body of the e-mail.
     // The body can use the handlebars and handlebars-extd syntax.
     await client
-      .from('user1@example.com', 'Sender Name')
-      .to('user2@example.com')
+      .from('from@example.com', 'Sender Name')
+      .to('to@example.com')
       .subject('Test email')
       .body('Hello {{name}}', {name: 'Mason'})
       .send();
@@ -497,14 +499,11 @@ All notable changes to this project will be documented in this file.
     ```js
     const sweet = require('express-sweet');
 
-    // Load environment variables.
-    sweet.middlewares.Environment.mount();
-
     // Rekognition Client.
     const client = new sweet.services.AWSRekognitionClient({
-      accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-      region: process.env.AWS_REKOGNITION_REGION
+      accessKeyId: 'your AWS access key ID',
+      secretAccessKey: 'your AWS secret access key',
+      region: 'the region to send service requests to'
     });
 
     // Collection ID for testing.
@@ -541,14 +540,11 @@ All notable changes to this project will be documented in this file.
     ```js
     const sweet = require('express-sweet');
 
-    // Load environment variables.
-    sweet.middlewares.Environment.mount();
-
     // Rekognition Client.
     const client = new sweet.services.AWSRekognitionClient({
-      accessKeyId: process.env.AWS_REKOGNITION_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_REKOGNITION_SECRET_ACCESS_KEY,
-      region: process.env.AWS_REKOGNITION_REGION
+      accessKeyId: 'your AWS access key ID',
+      secretAccessKey: 'your AWS secret access key',
+      region: 'the region to send service requests to'
     });
 
     (async () => {
@@ -835,3 +831,4 @@ All notable changes to this project will be documented in this file.
 [1.0.45]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.44...v1.0.45
 [1.1.0]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.45...v1.1.0
 [1.1.1]: https://github.com/takuya-motoshima/express-sweet/compare/v1.1.0...v1.1.1
+[2.0.0]: https://github.com/takuya-motoshima/express-sweet/compare/v1.1.1...v2.0.0

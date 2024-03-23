@@ -1,0 +1,21 @@
+/* Highlight Code. */
+.highlight-code > pre[class*=language-] {
+  max-height: 200px;
+}
+
+  .highlight-code > pre[class*=language-] > code {
+    white-space: break-spaces;
+  }
+
+/* Non-highlighted codes. */
+code:not([class*=language-]) {
+  border: 0;
+  margin: 0;
+}
+
+/* Demonstration area */
+.demonstration-block {
+  padding: 2.5rem;
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  border-radius: 0.475rem;
+}

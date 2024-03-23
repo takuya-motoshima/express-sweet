@@ -1,17 +1,10 @@
 # Express Sweet
 This is an extension of Express.
 
-- [Express Sweet](#express-sweet)
-    - [Documentation](#documentation)
-    - [Quick Start](#quick-start)
-    - [How to start the demo with Docker](#how-to-start-the-demo-with-docker)
-    - [Release Notes](#release-notes)
-    - [Testing](#testing)
-    - [Author](#author)
-    - [License](#license)
-
 ## Documentation
-For Express Sweet documentation, please click [here](https://takuya-motoshima.github.io/express-sweet/v1/).
+The latest API reference for Express Sweet can be found [here](https://takuya-motoshima.github.io/express-sweet/v2/).
+
+The API reference for previous versions can be found [here](https://takuya-motoshima.github.io/express-sweet/v1/).
 
 ## Quick Start
 See [here](QUICK_START.md).
@@ -21,6 +14,11 @@ See [here](demo/README.md).
 
 ## Release Notes
 All changes can be found [here](CHANGELOG.md).
+
+- ### [2.0.0] - 2024/3/24
+    #### Changed
+    - Express Sweet version 2 no longer depends on the AWS SDK.  
+        The `services.AWSRekognitionClient` and `services.AWSSesClient` have been migrated to the [AWS SDK Extension](https://www.npmjs.com/package/aws-sdk-extension) NPM package, so please install from there if needed.
 
 - ### [1.1.1] - 2024/3/23
     #### Changed
@@ -42,12 +40,12 @@ All changes can be found [here](CHANGELOG.md).
     #### Added
     - Demo (./demo) Docker environment added. See [here](demo/README.md) for details.
 
-## Testing
+<!-- ## Testing
 With [npm](http://npmjs.org) do:
 
 ```sh
 npm test
-```
+``` -->
 
 ## Author
 **Takuya Motoshima**

@@ -21,7 +21,7 @@ const render = hbs({
 // File.makeDirectory(path.join(__dirname, 'docs'));
 
 (async () => {
-  const version = 'v1';
+  const version = 'v2';
   let i = 0;
   for (let template of templates) {
     // Compile template.

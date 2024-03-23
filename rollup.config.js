@@ -10,14 +10,10 @@ import alias from '@rollup/plugin-alias';
 export default {
   external: [
     ...builtins,
-    'express',
+    // 'express',
     'sequelize',
-    'passport',
-    'passport-local',
-    '@aws-sdk/client-rekognition',
-    '@aws-sdk/node-http-handler',
-    '@aws-sdk/client-ses',
-    'libmime',
+    // 'passport',
+    // 'passport-local',
   ],
   // external: builtins,
   // external: Object.keys(pkg['dependencies'] || []),

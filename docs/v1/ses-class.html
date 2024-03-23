@@ -659,15 +659,11 @@
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// AWS SES Client.
 const client = new sweet.services.AWSSesClient({
-  apiVersion: process.env.SES_API_VERSION,
-  region: process.env.SES_REGION,
-  accessKeyId: process.env.SES_ACCESS_KEY_ID,
-  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });</code></pre>
                     </div>
                   </div>
@@ -675,15 +671,11 @@ const client = new sweet.services.AWSSesClient({
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// AWS SES Client.
 const client = new sweet.services.AWSSesClient({
-  apiVersion: process.env.SES_API_VERSION,
-  region: process.env.SES_REGION,
-  accessKeyId: process.env.SES_ACCESS_KEY_ID,
-  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });</code></pre>
                     </div>
                   </div>
@@ -736,21 +728,17 @@ const client = new sweet.services.AWSSesClient({
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// AWS SES Client.
 const client = new sweet.services.AWSSesClient({
-  apiVersion: process.env.SES_API_VERSION,
-  region: process.env.SES_REGION,
-  accessKeyId: process.env.SES_ACCESS_KEY_ID,
-  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Send email.
 await client
-  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;user2@example.com&#039;)
+  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;to@example.com&#039;)
   .subject(&#039;Test email&#039;) 
   .body(&#039;Hi, this is a test email&#039;)
   .send();
@@ -758,8 +746,8 @@ await client
 // Use variables in the body of the e-mail.
 // The body can use the handlebars and handlebars-extd syntax.
 await client
-  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;user2@example.com&#039;)
+  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;to@example.com&#039;)
   .subject(&#039;Test email&#039;) 
   .body(&#039;Hello &#039;, {name: &#039;Mason&#039;})
   .send();</code></pre>
@@ -769,21 +757,17 @@ await client
                     <div class="highlight-code">
                       <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
 
-// Load environment variables.
-sweet.middlewares.Environment.mount();
-
-// AWS SES Client.
 const client = new sweet.services.AWSSesClient({
-  apiVersion: process.env.SES_API_VERSION,
-  region: process.env.SES_REGION,
-  accessKeyId: process.env.SES_ACCESS_KEY_ID,
-  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
+  region: &#039;the region to send service requests to&#039;,
+  accessKeyId: &#039;your AWS access key ID&#039;,
+  secretAccessKey: &#039;your AWS secret access key&#039;,
 });
 
 // Send email.
 await client
-  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;user2@example.com&#039;)
+  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;to@example.com&#039;)
   .subject(&#039;Test email&#039;) 
   .body(&#039;Hi, this is a test email&#039;)
   .send();
@@ -791,8 +775,8 @@ await client
 // Use variables in the body of the e-mail.
 // The body can use the handlebars and handlebars-extd syntax.
 await client
-  .from(&#039;user1@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;user2@example.com&#039;)
+  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
+  .to(&#039;to@example.com&#039;)
   .subject(&#039;Test email&#039;) 
   .body(&#039;Hello &#039;, {name: &#039;Mason&#039;})
   .send();</code></pre>
