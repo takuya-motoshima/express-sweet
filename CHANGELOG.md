@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2024/4/5
+### Changed
+- Removed [nodejs-shared](https://www.npmjs.com/package/nodejs-shared) package dependency.
+
 ## [2.0.0] - 2024/3/24
 ### Changed
 - Express Sweet version 2 no longer depends on the AWS SDK.  
@@ -832,3 +836,4 @@ All notable changes to this project will be documented in this file.
 [1.1.0]: https://github.com/takuya-motoshima/express-sweet/compare/v1.0.45...v1.1.0
 [1.1.1]: https://github.com/takuya-motoshima/express-sweet/compare/v1.1.0...v1.1.1
 [2.0.0]: https://github.com/takuya-motoshima/express-sweet/compare/v1.1.1...v2.0.0
+[2.0.1]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.0...v2.0.1

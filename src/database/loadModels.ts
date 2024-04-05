@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {File} from 'nodejs-shared';
+import {globSync} from 'glob';
 import Model from '~/database/Model';
 
 /**
@@ -20,7 +20,7 @@ export default function(): void {
   const models: typeof Model[] = <typeof Model[]>[];
 
   // const models:{[key: string]: typeof Model} = {};
-  for (let modelPath of File.find(`${modelsDir}/**/*.js`)) {
+  for (let modelPath of globSync(`${modelsDir}/**/*.js`, {nodir: false})) {
     const model = <typeof Model>(require(modelPath).prototype instanceof Model ? require(modelPath) : require(modelPath).default);
     model.initialize();
     models.push(model);

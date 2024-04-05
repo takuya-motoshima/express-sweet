@@ -1,5 +1,5 @@
 import express from 'express';
-import {File} from 'nodejs-shared';
+import {globSync} from 'glob';
 import * as utils from '~/utils';
 
 /**
@@ -16,7 +16,7 @@ export default class {
     const basicConfig = utils.loadBasicConfig();
 
     // Set the URL to route based on the path of the file in the routes directory.
-    for (let filePath of File.find(`${basicConfig.router_dir}/**/*.js`)) {
+    for (let filePath of globSync(`${basicConfig.router_dir}/**/*.js`, {nodir: false})) {
       // Import router module.
       let router = require(filePath);
 
