@@ -13,4 +13,4 @@
  *                                   In implementations without Intl.NumberFormat support, this parameter is ignored and the host's locale is usually used.
  * @return {string} A string with a language-sensitive representation of the given number.
  */
-export declare function number2locale(val: number | string, locales?: string): string;
+export declare const number2locale: (val: number | string, locales?: string) => string;

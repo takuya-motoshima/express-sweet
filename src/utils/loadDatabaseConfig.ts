@@ -1,6 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
+import {createRequire} from 'node:module';
 import sequelize from 'sequelize';
 import DatabaseConfig from '~/interfaces/DatabaseConfig';
+const require = createRequire(import.meta.url);
 
 /**
   * Get database configuration (config/database).

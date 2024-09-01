@@ -6,7 +6,7 @@ const host = process.env.IS_DOCKER ? 'express_sweet_db' : 'localhost';
 module.exports = {
   development: {
     username: 'root',
-    // password: 'password',
+    password: 'password',
     database: 'express_sweet_db',
     host,
     port: undefined,
@@ -16,7 +16,7 @@ module.exports = {
   },
   test: {
     username: 'root',
-    // password: 'password',
+    password: 'password',
     database: 'express_sweet_db',
     host,
     port: undefined,
@@ -26,7 +26,7 @@ module.exports = {
   },
   production: {
     username: 'root',
-    // password: 'password',
+    password: 'password',
     database: 'express_sweet_db',
     host,
     port: undefined,

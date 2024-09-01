@@ -15,7 +15,7 @@ import * as utils from '~/utils';
  *                                   In implementations without Intl.NumberFormat support, this parameter is ignored and the host's locale is usually used.
  * @return {string} A string with a language-sensitive representation of the given number.
  */
-export function number2locale(val: number|string, locales?: string): string {
+export const number2locale = (val: number|string, locales?: string): string => {
   // String type is converted to numeric.
   if (utils.isString(val))
     val = Number(val);

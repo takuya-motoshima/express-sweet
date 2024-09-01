@@ -16,7 +16,7 @@ demo
 ├── sql                 DB schema and initial input data creation SQL
 ├── views               Application view
 ├── volumes             Docker container volume
-├── .env.sample         Sample environment variables. Copy and create `.env`.
+├── .env                Environment variable file
 ├── app.js              Application Entry Point
 ├── package-lock.json
 └── package.json
@@ -61,10 +61,6 @@ demo
     ```sh
     cd /usr/src/app/demo
     npm link express-sweet
-    ```
-1. Create environment variables.
-    ```sh
-    cp .env.sample .env
     ```
 1. Launch demo.
     ```sh

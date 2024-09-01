@@ -1,6 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
+import {createRequire} from 'node:module';
 import express from 'express';
 import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
+const require = createRequire(import.meta.url);
 
 /**
   * Get Authentication configuration (config/authentication).

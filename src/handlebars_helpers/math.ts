@@ -7,7 +7,7 @@
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export function add(val1: number|string, val2: number|string): number {
+export const add = (val1: number|string, val2: number|string): number => {
   return Number(val1) + Number(val2);
 }
 
@@ -20,7 +20,7 @@ export function add(val1: number|string, val2: number|string): number {
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export function sub(val1: number|string, val2: number|string): number {
+export const sub = (val1: number|string, val2: number|string): number => {
   return Number(val1) - Number(val2);
 }
 
@@ -33,7 +33,7 @@ export function sub(val1: number|string, val2: number|string): number {
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export function multiply(val1: number|string, val2: number|string): number {
+export const multiply = (val1: number|string, val2: number|string): number => {
   return Number(val1) * Number(val2);
 }
 
@@ -46,7 +46,7 @@ export function multiply(val1: number|string, val2: number|string): number {
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export function divide(val1: number|string, val2: number|string): number {
+export const divide = (val1: number|string, val2: number|string): number => {
   return Number(val1) / Number(val2);
 }
 
@@ -58,7 +58,7 @@ export function divide(val1: number|string, val2: number|string): number {
  * @param {number|string} val Number to be rounded to nearest greater integer.
  * @return {number}
  */
-export function ceil(val: number|string): number {
+export const ceil = (val: number|string): number => {
   return Math.ceil(Number(val));
 }
 
@@ -70,7 +70,7 @@ export function ceil(val: number|string): number {
  * @param {number|string} val Number to be rounded to nearest lower integer.
  * @return {number}
  */
-export function floor(val: number|string): number {
+export const floor = (val: number|string): number => {
   return Math.floor(Number(val));
 }
 
@@ -82,6 +82,6 @@ export function floor(val: number|string): number {
  * @param {number} val Number to perform absolute value operation on.
  * @return {number}
  */
-export function abs(val: number|string): number {
+export const abs = (val: number|string): number => {
   return Math.abs(Number(val));
 }

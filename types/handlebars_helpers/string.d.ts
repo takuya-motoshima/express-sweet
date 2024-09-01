@@ -7,7 +7,7 @@
  * @param {string} replace The string to replace.
  * @return {string} Character string after replacement.
  */
-export declare function replace(value: string, find: string, replace: string): string;
+export declare const replace: (value: string, find: string, replace: string) => string;
 /**
  * Split `string` by the given `character`.
  * @example
@@ -22,7 +22,7 @@ export declare function replace(value: string, find: string, replace: string): s
  * @param {string} separator A character that delimits the substrings in this string. Default is a comma.
  * @return {string[]} An Array of strings, split at each point where the separator occurs in the given string. The default is a comma.
  */
-export declare function split(value: string, separator: string): string[];
+export declare const split: (value: string, separator: string) => string[];
 /**
  * Convert bytes to just the right units(KB, MB, GB, TB, PB, EB, ZB, YB).
  * @example
@@ -41,4 +41,4 @@ export declare function split(value: string, separator: string): string[];
  * @param {number} decimals Number of decimal places to display. Default is 0.
  * @return {string} Returns a value with units.
  */
-export declare function formatBytes(bytes: number, decimals?: number): string;
+export declare const formatBytes: (bytes: number, decimals?: number) => string;

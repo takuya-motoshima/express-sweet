@@ -26,28 +26,28 @@ declare const _default: {
     readonly modelManager: import("sequelize/types/model-manager").ModelManager;
     readonly connectionManager: import("sequelize/types/dialects/abstract/connection-manager").ConnectionManager;
     readonly models: {
-        [key: string]: sequelize.ModelCtor<sequelize.Model<any, any>>;
+        [key: string]: sequelize.ModelCtor<sequelize.Model>;
     };
-    beforeValidate(name: string, fn: (instance: sequelize.Model<any, any>, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
-    beforeValidate(fn: (instance: sequelize.Model<any, any>, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
-    afterValidate(name: string, fn: (instance: sequelize.Model<any, any>, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
-    afterValidate(fn: (instance: sequelize.Model<any, any>, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
-    beforeCreate(name: string, fn: (attributes: sequelize.Model<any, any>, options: sequelize.CreateOptions<any>) => void): void;
-    beforeCreate(fn: (attributes: sequelize.Model<any, any>, options: sequelize.CreateOptions<any>) => void): void;
-    afterCreate(name: string, fn: (attributes: sequelize.Model<any, any>, options: sequelize.CreateOptions<any>) => void): void;
-    afterCreate(fn: (attributes: sequelize.Model<any, any>, options: sequelize.CreateOptions<any>) => void): void;
-    beforeDestroy(name: string, fn: (instance: sequelize.Model<any, any>, options: sequelize.InstanceDestroyOptions) => void): void;
-    beforeDestroy(fn: (instance: sequelize.Model<any, any>, options: sequelize.InstanceDestroyOptions) => void): void;
-    afterDestroy(name: string, fn: (instance: sequelize.Model<any, any>, options: sequelize.InstanceDestroyOptions) => void): void;
-    afterDestroy(fn: (instance: sequelize.Model<any, any>, options: sequelize.InstanceDestroyOptions) => void): void;
-    beforeUpdate(name: string, fn: (instance: sequelize.Model<any, any>, options: sequelize.UpdateOptions<any>) => void): void;
-    beforeUpdate(fn: (instance: sequelize.Model<any, any>, options: sequelize.UpdateOptions<any>) => void): void;
-    afterUpdate(name: string, fn: (instance: sequelize.Model<any, any>, options: sequelize.UpdateOptions<any>) => void): void;
-    afterUpdate(fn: (instance: sequelize.Model<any, any>, options: sequelize.UpdateOptions<any>) => void): void;
-    beforeBulkCreate(name: string, fn: (instances: sequelize.Model<any, any>[], options: sequelize.BulkCreateOptions<any>) => void): void;
-    beforeBulkCreate(fn: (instances: sequelize.Model<any, any>[], options: sequelize.BulkCreateOptions<any>) => void): void;
-    afterBulkCreate(name: string, fn: (instances: sequelize.Model<any, any>[], options: sequelize.BulkCreateOptions<any>) => void): void;
-    afterBulkCreate(fn: (instances: sequelize.Model<any, any>[], options: sequelize.BulkCreateOptions<any>) => void): void;
+    beforeValidate(name: string, fn: (instance: sequelize.Model, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
+    beforeValidate(fn: (instance: sequelize.Model, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
+    afterValidate(name: string, fn: (instance: sequelize.Model, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
+    afterValidate(fn: (instance: sequelize.Model, options: import("sequelize/types/instance-validator").ValidationOptions) => void): void;
+    beforeCreate(name: string, fn: (attributes: sequelize.Model, options: sequelize.CreateOptions<any>) => void): void;
+    beforeCreate(fn: (attributes: sequelize.Model, options: sequelize.CreateOptions<any>) => void): void;
+    afterCreate(name: string, fn: (attributes: sequelize.Model, options: sequelize.CreateOptions<any>) => void): void;
+    afterCreate(fn: (attributes: sequelize.Model, options: sequelize.CreateOptions<any>) => void): void;
+    beforeDestroy(name: string, fn: (instance: sequelize.Model, options: sequelize.InstanceDestroyOptions) => void): void;
+    beforeDestroy(fn: (instance: sequelize.Model, options: sequelize.InstanceDestroyOptions) => void): void;
+    afterDestroy(name: string, fn: (instance: sequelize.Model, options: sequelize.InstanceDestroyOptions) => void): void;
+    afterDestroy(fn: (instance: sequelize.Model, options: sequelize.InstanceDestroyOptions) => void): void;
+    beforeUpdate(name: string, fn: (instance: sequelize.Model, options: sequelize.UpdateOptions<any>) => void): void;
+    beforeUpdate(fn: (instance: sequelize.Model, options: sequelize.UpdateOptions<any>) => void): void;
+    afterUpdate(name: string, fn: (instance: sequelize.Model, options: sequelize.UpdateOptions<any>) => void): void;
+    afterUpdate(fn: (instance: sequelize.Model, options: sequelize.UpdateOptions<any>) => void): void;
+    beforeBulkCreate(name: string, fn: (instances: sequelize.Model[], options: sequelize.BulkCreateOptions<any>) => void): void;
+    beforeBulkCreate(fn: (instances: sequelize.Model[], options: sequelize.BulkCreateOptions<any>) => void): void;
+    afterBulkCreate(name: string, fn: (instances: sequelize.Model[], options: sequelize.BulkCreateOptions<any>) => void): void;
+    afterBulkCreate(fn: (instances: sequelize.Model[], options: sequelize.BulkCreateOptions<any>) => void): void;
     beforeBulkDestroy(name: string, fn: (options: sequelize.BulkCreateOptions<any>) => void): void;
     beforeBulkDestroy(fn: (options: sequelize.BulkCreateOptions<any>) => void): void;
     afterBulkDestroy(name: string, fn: (options: sequelize.DestroyOptions<any>) => void): void;
@@ -62,10 +62,10 @@ declare const _default: {
     beforeFindAfterExpandIncludeAll(fn: (options: sequelize.FindOptions<any>) => void): void;
     beforeFindAfterOptions(name: string, fn: (options: sequelize.FindOptions<any>) => void): void;
     beforeFindAfterOptions(fn: (options: sequelize.FindOptions<any>) => void): void;
-    afterFind(name: string, fn: (instancesOrInstance: sequelize.Model<any, any> | sequelize.Model<any, any>[] | null, options: sequelize.FindOptions<any>) => void): void;
-    afterFind(fn: (instancesOrInstance: sequelize.Model<any, any> | sequelize.Model<any, any>[] | null, options: sequelize.FindOptions<any>) => void): void;
-    beforeDefine(name: string, fn: (attributes: sequelize.ModelAttributes<sequelize.Model<any, any>, any>, options: sequelize.ModelOptions<sequelize.Model<any, any>>) => void): void;
-    beforeDefine(fn: (attributes: sequelize.ModelAttributes<sequelize.Model<any, any>, any>, options: sequelize.ModelOptions<sequelize.Model<any, any>>) => void): void;
+    afterFind(name: string, fn: (instancesOrInstance: sequelize.Model[] | sequelize.Model | null, options: sequelize.FindOptions<any>) => void): void;
+    afterFind(fn: (instancesOrInstance: sequelize.Model[] | sequelize.Model | null, options: sequelize.FindOptions<any>) => void): void;
+    beforeDefine(name: string, fn: (attributes: sequelize.ModelAttributes<sequelize.Model, any>, options: sequelize.ModelOptions) => void): void;
+    beforeDefine(fn: (attributes: sequelize.ModelAttributes<sequelize.Model, any>, options: sequelize.ModelOptions) => void): void;
     afterDefine(name: string, fn: (model: sequelize.ModelType) => void): void;
     afterDefine(fn: (model: sequelize.ModelType) => void): void;
     beforeInit(name: string, fn: (config: sequelize.Config, options: sequelize.Options) => void): void;
@@ -83,8 +83,8 @@ declare const _default: {
     getDialect(): string;
     getDatabaseName(): string;
     getQueryInterface(): sequelize.QueryInterface;
-    define<M extends sequelize.Model<any, any>, TAttributes = sequelize.Attributes<M>>(modelName: string, attributes: sequelize.ModelAttributes<M, TAttributes>, options?: sequelize.ModelOptions<M> | undefined): sequelize.ModelCtor<M>;
-    model(modelName: string): sequelize.ModelCtor<sequelize.Model<any, any>>;
+    define<M extends sequelize.Model, TAttributes = sequelize.Attributes<M>>(modelName: string, attributes: sequelize.ModelAttributes<M, TAttributes>, options?: sequelize.ModelOptions<M>): sequelize.ModelCtor<M>;
+    model(modelName: string): sequelize.ModelCtor<sequelize.Model>;
     isDefined(modelName: string): boolean;
     query(sql: string | {
         query: string;
@@ -118,26 +118,26 @@ declare const _default: {
         query: string;
         values: unknown[];
     }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.DESCRIBE>): Promise<sequelize.ColumnsDescription>;
-    query<M_1 extends sequelize.Model<any, any>>(sql: string | {
+    query<M extends sequelize.Model>(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithModel<M_1> & {
+    }, options: sequelize.QueryOptionsWithModel<M> & {
         plain: true;
-    }): Promise<M_1 | null>;
-    query<M_2 extends sequelize.Model<any, any>>(sql: string | {
+    }): Promise<M | null>;
+    query<M extends sequelize.Model>(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithModel<M_2>): Promise<M_2[]>;
+    }, options: sequelize.QueryOptionsWithModel<M>): Promise<M[]>;
     query<T extends object>(sql: string | {
         query: string;
         values: unknown[];
     }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT> & {
         plain: true;
     }): Promise<T | null>;
-    query<T_1 extends object>(sql: string | {
+    query<T extends object>(sql: string | {
         query: string;
         values: unknown[];
-    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>): Promise<T_1[]>;
+    }, options: sequelize.QueryOptionsWithType<sequelize.QueryTypes.SELECT>): Promise<T[]>;
     query(sql: string | {
         query: string;
         values: unknown[];
@@ -149,7 +149,7 @@ declare const _default: {
     query(sql: string | {
         query: string;
         values: unknown[];
-    }, options?: sequelize.QueryOptions | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW> | undefined): Promise<[unknown[], unknown]>;
+    }, options?: sequelize.QueryOptions | sequelize.QueryOptionsWithType<sequelize.QueryTypes.RAW>): Promise<[unknown[], unknown]>;
     random(): sequelize.Utils.Fn;
     set(variables: object, options: sequelize.QueryOptionsTransactionRequired): Promise<unknown>;
     escape(value: string | number | Date): string;
@@ -157,23 +157,23 @@ declare const _default: {
     showAllSchemas(options: sequelize.Logging): Promise<object[]>;
     dropSchema(schema: string, options: sequelize.Logging): Promise<unknown[]>;
     dropAllSchemas(options: sequelize.Logging): Promise<unknown[]>;
-    sync(options?: sequelize.SyncOptions | undefined): Promise<any>;
-    truncate(options?: sequelize.DestroyOptions<any> | undefined): Promise<unknown[]>;
-    drop(options?: sequelize.DropOptions | undefined): Promise<unknown[]>;
-    authenticate(options?: sequelize.QueryOptions | undefined): Promise<void>;
-    validate(options?: sequelize.QueryOptions | undefined): Promise<void>;
-    transaction<T_2>(options: sequelize.TransactionOptions, autoCallback: (t: sequelize.Transaction) => PromiseLike<T_2>): Promise<T_2>;
-    transaction<T_3>(autoCallback: (t: sequelize.Transaction) => PromiseLike<T_3>): Promise<T_3>;
-    transaction(options?: sequelize.TransactionOptions | undefined): Promise<sequelize.Transaction>;
+    sync(options?: sequelize.SyncOptions): Promise<any>;
+    truncate(options?: sequelize.DestroyOptions<any>): Promise<unknown[]>;
+    drop(options?: sequelize.DropOptions): Promise<unknown[]>;
+    authenticate(options?: sequelize.QueryOptions): Promise<void>;
+    validate(options?: sequelize.QueryOptions): Promise<void>;
+    transaction<T>(options: sequelize.TransactionOptions, autoCallback: (t: sequelize.Transaction) => PromiseLike<T>): Promise<T>;
+    transaction<T>(autoCallback: (t: sequelize.Transaction) => PromiseLike<T>): Promise<T>;
+    transaction(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction>;
     close(): Promise<void>;
     databaseVersion(): Promise<string>;
     _model: sequelize.Model<any, any>;
     _attributes: any;
     _creationAttributes: any;
-    addHook<K extends keyof import("sequelize/types/hooks").SequelizeHooks<M_3, TModelAttributes, TCreationAttributes>>(hookType: K, name: string, fn: import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>[K]): any;
-    addHook<K_1 extends keyof import("sequelize/types/hooks").SequelizeHooks<M_3, TModelAttributes, TCreationAttributes>>(hookType: K_1, fn: import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>[K_1]): any;
-    removeHook<K_2 extends keyof import("sequelize/types/hooks").SequelizeHooks<M_3, TModelAttributes, TCreationAttributes>>(hookType: K_2, name: string): any;
-    hasHook<K_3 extends keyof import("sequelize/types/hooks").SequelizeHooks<M_3, TModelAttributes, TCreationAttributes>>(hookType: K_3): boolean;
-    hasHooks<K_4 extends keyof import("sequelize/types/hooks").SequelizeHooks<M_3, TModelAttributes, TCreationAttributes>>(hookType: K_4): boolean;
+    addHook<K extends keyof import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>>(hookType: K, name: string, fn: import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>[K]): any;
+    addHook<K extends keyof import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>>(hookType: K, fn: import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>[K]): any;
+    removeHook<K extends keyof import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>>(hookType: K, name: string): any;
+    hasHook<K extends keyof import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>>(hookType: K): boolean;
+    hasHooks<K extends keyof import("sequelize/types/hooks").SequelizeHooks<sequelize.Model<any, any>, any, any>>(hookType: K): boolean;
 };
 export default _default;

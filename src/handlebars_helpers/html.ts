@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 /**
  * Returns the Assets path containing the file update time parameter.
@@ -10,7 +10,7 @@ import path from 'path';
  * @param {string} baseUrl Application Origin URL. The default is none (undefined).
  * @return {string} Returns the Assets file path with the update date and time parameters.
  */
-export function cacheBusting(filePath: string, baseUrl?: string): string {
+export const cacheBusting = (filePath: string, baseUrl?: string): string => {
   // Absolute path of file.
   const absolutePath = `${path.join(process.cwd(), 'public')}/${filePath.replace(/^\//, '')}`;
 

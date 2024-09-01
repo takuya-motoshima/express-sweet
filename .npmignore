@@ -2,5 +2,3 @@ node_modules/
 src/
 rollup.config.js
 tsconfig.json
-__tests__/.env
-!__tests__/.env.sample

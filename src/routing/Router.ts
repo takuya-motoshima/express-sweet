@@ -1,6 +1,8 @@
+import {createRequire} from 'node:module';
 import express from 'express';
 import {globSync} from 'glob';
 import * as utils from '~/utils';
+const require = createRequire(import.meta.url);
 
 /**
  * Set up URL routing.

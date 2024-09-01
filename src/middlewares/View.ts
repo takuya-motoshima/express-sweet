@@ -1,6 +1,8 @@
+import {createRequire} from 'node:module';
 import express from 'express';
 import * as helpers from '~/handlebars_helpers';
 import * as utils from '~/utils';
+const require = createRequire(import.meta.url);
 
 /**
  * Enable Handlebars template engine.
@@ -13,10 +15,8 @@ export default class {
     // Load configuration.
     const viewConfig = utils.loadViewConfig();
 
-    // Express handlebars template engine.
-    const hbs = require('express-hbs');
-
     // Added helper function.
+    const hbs = require('express-hbs');
     for (let [_, helper] of Object.entries(helpers))
       for (let [name, handler] of Object.entries(helper))
         hbs.registerHelper(name, handler);

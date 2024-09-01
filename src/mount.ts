@@ -14,7 +14,7 @@ import ErrorHandler from '~/middlewares/ErrorHandler';
  * Mount extensions on your application.
  * @param {express.Express} app Express application instance
  */
-export default function(app: express.Express): void {
+export default (app: express.Express): void => {
   // Set global variables.
   Global.mount();
 

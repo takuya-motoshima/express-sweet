@@ -6,7 +6,7 @@
  * @param {number} indent The number of space characters to use as whitespace.
  * @return {string} A JSON string representing the given value, or undefined.
  */
-export declare function jsonStringify(value: any, indent?: number | string): string | undefined;
+export declare const jsonStringify: (value: any, indent?: number | string) => string | undefined;
 /**
  * Parses the given string using JSON.parse.
  * @example
@@ -14,4 +14,4 @@ export declare function jsonStringify(value: any, indent?: number | string): str
  * @param {any} value Object to stringify.
  * @return {any} JavaScript value or object described by a string.
  */
-export declare function jsonParse(value: any): any;
+export declare const jsonParse: (value: any) => any;

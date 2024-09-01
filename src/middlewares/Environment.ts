@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import dotenv from 'dotenv';
 import * as utils from '~/utils';
 
@@ -26,7 +26,7 @@ export default class {
     const env = dotenv.parse(fs.readFileSync(basicConfig.env_path!));
     for (let key in env) {
       // console.log(`Read environment variable ${key}`);
-      process.env[key] = env[key]
+      process.env[key] = env[key];
     }
 
     // Set read completion flag to prevent multiple reading of env.

@@ -7,7 +7,7 @@
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export declare function add(val1: number | string, val2: number | string): number;
+export declare const add: (val1: number | string, val2: number | string) => number;
 /**
  * Calculates the difference of the given values.
  * @example
@@ -17,7 +17,7 @@ export declare function add(val1: number | string, val2: number | string): numbe
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export declare function sub(val1: number | string, val2: number | string): number;
+export declare const sub: (val1: number | string, val2: number | string) => number;
 /**
  * Calculate the multiplication of the given values.
  * @example
@@ -27,7 +27,7 @@ export declare function sub(val1: number | string, val2: number | string): numbe
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export declare function multiply(val1: number | string, val2: number | string): number;
+export declare const multiply: (val1: number | string, val2: number | string) => number;
 /**
  * Compute the division of the given values.
  * @example
@@ -37,7 +37,7 @@ export declare function multiply(val1: number | string, val2: number | string): 
  * @param {number|string} val2 The second number.
  * @return {number}
  */
-export declare function divide(val1: number | string, val2: number | string): number;
+export declare const divide: (val1: number | string, val2: number | string) => number;
 /**
  * Round up the value.
  * @example
@@ -46,7 +46,7 @@ export declare function divide(val1: number | string, val2: number | string): nu
  * @param {number|string} val Number to be rounded to nearest greater integer.
  * @return {number}
  */
-export declare function ceil(val: number | string): number;
+export declare const ceil: (val: number | string) => number;
 /**
  * Rounds down a number.
  * @example
@@ -55,7 +55,7 @@ export declare function ceil(val: number | string): number;
  * @param {number|string} val Number to be rounded to nearest lower integer.
  * @return {number}
  */
-export declare function floor(val: number | string): number;
+export declare const floor: (val: number | string) => number;
 /**
  * Returns an absolute value.
  * @example
@@ -64,4 +64,4 @@ export declare function floor(val: number | string): number;
  * @param {number} val Number to perform absolute value operation on.
  * @return {number}
  */
-export declare function abs(val: number | string): number;
+export declare const abs: (val: number | string) => number;

@@ -9,7 +9,7 @@ import * as utils from '~/utils';
  * @param {string} replace The string to replace.
  * @return {string} Character string after replacement.
  */
-export function replace(value: string, find: string, replace: string): string {
+export const replace = (value: string, find: string, replace: string): string => {
   return value.replace(find, replace);
 }
 
@@ -27,7 +27,7 @@ export function replace(value: string, find: string, replace: string): string {
  * @param {string} separator A character that delimits the substrings in this string. Default is a comma.
  * @return {string[]} An Array of strings, split at each point where the separator occurs in the given string. The default is a comma.
  */
-export function split(value: string, separator: string): string[] {
+export const split = (value: string, separator: string): string[] => {
   if (!utils.isString(value))
     return [];
   if (!utils.isString(separator))
@@ -53,7 +53,7 @@ export function split(value: string, separator: string): string[] {
  * @param {number} decimals Number of decimal places to display. Default is 0.
  * @return {string} Returns a value with units.
  */
-export function formatBytes(bytes: number, decimals: number = 0): string {
+export const formatBytes = (bytes: number, decimals: number = 0): string => {
   let result = 0;
   let unit = 'Bytes';
   if (bytes && bytes > 0) {

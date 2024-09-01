@@ -14,4 +14,4 @@
  * @param {string|string[]} locale Language or language-country locale string (or array of strings) available in https://github.com/moment/moment/tree/develop/locale .
  * @return {string} Returns formatted date.
  */
-export declare function formatDate(format: string, date: string, locale: string | string[]): string;
+export declare const formatDate: (format: string, date: string, locale: string | string[]) => string;

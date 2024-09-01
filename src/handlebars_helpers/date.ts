@@ -17,7 +17,7 @@ import moment from 'moment';
  * @param {string|string[]} locale Language or language-country locale string (or array of strings) available in https://github.com/moment/moment/tree/develop/locale .
  * @return {string} Returns formatted date.
  */
-export function formatDate(format: string, date: string, locale: string|string[]): string {
+export const formatDate = (format: string, date: string, locale: string|string[]): string => {
   format = utils.isString(format) ? format : '';
   if (utils.isString(locale) || utils.isArray(locale)) {
     const localeMoment = moment(date || new Date());

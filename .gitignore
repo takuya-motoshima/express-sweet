@@ -1,10 +1,6 @@
 node_modules/
-demo/.env
-!demo/.env.sample
 demo/node_modules/
 demo/volumes/
 # demo/public/build/
 docs/node_modules/
-__tests__/.env
-!__tests__/.env.sample
 .vscode/

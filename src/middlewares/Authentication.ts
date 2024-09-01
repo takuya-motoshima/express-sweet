@@ -4,6 +4,7 @@ import {Strategy as LocalStrategy, IVerifyOptions} from 'passport-local';
 import session from 'express-session';
 import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
 import RedisStore from 'connect-redis';
+import {createClient} from 'redis';
 import * as utils from '~/utils';
 import View from '~/middlewares/View';
 
@@ -42,7 +43,7 @@ export default class {
     // When session is stored in redis.
     if (authenticationConfig.session_store === 'redis') {
       // Create a client to connect to the redis server.
-      const client = require('redis').createClient({url: authenticationConfig.redis_host as string});
+      const client = createClient({url: authenticationConfig.redis_host as string});
 
       // Check if you can connect to the Redis server.
       client.connect().catch(console.error);

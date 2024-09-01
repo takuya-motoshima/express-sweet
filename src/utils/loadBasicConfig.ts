@@ -1,7 +1,9 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
+import {createRequire} from 'node:module';
 import express from 'express';
 import BasicConfig from '~/interfaces/BasicConfig';
+const require = createRequire(import.meta.url);
 
 /**
   * Get basic configuration (config/config).

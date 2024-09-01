@@ -13,7 +13,7 @@ import * as utils from '~/utils';
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the value and type are the same, false if they are different.
  */
-export function eq(value1: any, value2: any): boolean {
+export const eq = (value1: any, value2: any): boolean => {
   return value1 === value2;
 }
 
@@ -30,7 +30,7 @@ export function eq(value1: any, value2: any): boolean {
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the values are the same, false if they are different.
  */
-export function eqw(value1: any, value2: any): boolean {
+export const eqw = (value1: any, value2: any): boolean => {
   return value1 == value2;
 }
 
@@ -47,7 +47,7 @@ export function eqw(value1: any, value2: any): boolean {
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the value and type are different, false if they are the same.
  */
-export function neq(value1: any, value2: any): boolean {
+export const neq = (value1: any, value2: any): boolean => {
   return value1 !== value2;
 }
 
@@ -64,7 +64,7 @@ export function neq(value1: any, value2: any): boolean {
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the values are different, false if they are the same.
  */
-export function neqw(value1: any, value2: any): boolean {
+export const neqw = (value1: any, value2: any): boolean => {
   return value1 != value2;
 }
 
@@ -81,7 +81,7 @@ export function neqw(value1: any, value2: any): boolean {
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value is less than the second value, false otherwise.
  */
-export function lt(value1: any, value2: any): boolean {
+export const lt = (value1: any, value2: any): boolean => {
   return value1 < value2;
 }
 
@@ -98,7 +98,7 @@ export function lt(value1: any, value2: any): boolean {
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value is less than or equal to the second value, false otherwise.
  */
-export function lte(value1: any, value2: any): boolean {
+export const lte = (value1: any, value2: any): boolean => {
   return value1 <= value2;
 }
 
@@ -115,7 +115,7 @@ export function lte(value1: any, value2: any): boolean {
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value exceeds the second value, false otherwise.
  */
-export function gt(value1: any, value2: any): boolean {
+export const gt = (value1: any, value2: any): boolean => {
   return value1 > value2;
 }
 
@@ -132,7 +132,7 @@ export function gt(value1: any, value2: any): boolean {
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.
  */
-export function gte(value1: any, value2: any): boolean {
+export const gte = (value1: any, value2: any): boolean => {
   return value1 >= value2;
 }
 /**
@@ -150,7 +150,7 @@ export function gte(value1: any, value2: any): boolean {
  * @param {any} expression Any expression.
  * @return {boolean} Returns the logical negation of the value.
  */
-export function not(expression: any): boolean {
+export const not = (expression: any): boolean => {
   return !expression;
 }
 
@@ -180,7 +180,7 @@ export function not(expression: any): boolean {
  * @param {any} value2 Second value to be displayed as result. Defaults to an empty string.
  * @return {any} Returns the result of the ternary operator.
  */
-export function ifx(condition: boolean, value1: any, value2: any): any {
+export const ifx = (condition: boolean, value1: any, value2: any): any => {
   // Check if user has omitted the last parameter
   // if that's the case, it would be the Handlebars options object
   // which it sends always as the last parameter.
@@ -214,7 +214,7 @@ export function ifx(condition: boolean, value1: any, value2: any): any {
  * @param {any} value Character strings, arrays, objects, etc. to be checked.
  * @return {boolean} Returns true if the value is empty, false otherwise.
  */
-export function empty(value: any): boolean {
+export const empty = (value: any): boolean => {
   if (typeof value === 'string')
     // Trim if it's a string.
     value = value.replace(/^[\s　]+|[\s　]+$/g, ''); 
@@ -247,7 +247,7 @@ export function empty(value: any): boolean {
  * @param {any} value Character strings, arrays, objects, etc. to be checked.
  * @return {boolean} Returns true if the value is not empty, false otherwise.
  */
-export function notEmpty(value: any): boolean {
+export const notEmpty = (value: any): boolean => {
   if (typeof value === 'string')
     // Trim if it's a string.
     value = value.replace(/^[\s　]+|[\s　]+$/g, ''); 
@@ -266,7 +266,7 @@ export function notEmpty(value: any): boolean {
  * @param {any[]} items Array whose elements to be counted.
  * @return {number|false} Returns the length of the array if the value is an array, false if the value is not an array.
  */
-export function count(items: any[]): number|false {
+export const count = (items: any[]): number|false => {
   if (!Array.isArray(items))
     return false;
   return items.length;
@@ -289,7 +289,7 @@ export function count(items: any[]): number|false {
  * @param {...any} params Any number of boolean parameters.
  * @return {boolean} Returns the result of the logical product.
  */
-export function and(...params: any[]): boolean {
+export const and = (...params: any[]): boolean => {
   // Ignore the object appended by handlebars.
   if (utils.isObject(params[params.length-1]))
     params.pop();
@@ -315,7 +315,7 @@ export function and(...params: any[]): boolean {
  * @param {...any}  params Any number of boolean parameters.
  * @return {boolean} Returns the result of the OR.
  */
-export function or(...params: any[]): boolean {
+export const or = (...params: any[]): boolean => {
   // Ignore the object appended by handlebars.
   if (utils.isObject(params[params.length-1]))
     params.pop();
@@ -336,7 +336,7 @@ export function or(...params: any[]): boolean {
  * @param {...any} params Any number of parameters.
  * @return {any} Returns the first non-false element of the parameter.
  */
-export function coalesce(...params: any[]): any {
+export const coalesce = (...params: any[]): any => {
   // Ignore the object appended by handlebars.
   if (utils.isObject(params[params.length-1])) params.pop();
   for (let param of params)
@@ -370,7 +370,7 @@ export function coalesce(...params: any[]): any {
  * @param {boolean} strict FALSE for non-strict checking. TRUE by default.
  * @return {boolean} Returns true if the array contains the specified value, false otherwise.
  */
-export function includes(items: any[], value: any, strict: boolean = true): boolean {
+export const includes = (items: any[], value: any, strict: boolean = true): boolean => {
   if (!Array.isArray(items) || items.length === 0) return false;
   for (let item of items)
     if (strict && item === value || !strict && item == value)
@@ -405,7 +405,7 @@ export function includes(items: any[], value: any, strict: boolean = true): bool
  * @param {string} flags? Regular expression flags, such as global and case-insensitive searches. The default is none (undefined).
  * @return {boolean} true if there is a match between the regular expression and the string str. Otherwise, false.
  */
-export function regexMatch(val: string, pattern: string, flags?: string): boolean {
+export const regexMatch = (val: string, pattern: string, flags?: string): boolean => {
   if (!utils.isString(val))
     val = val.toString();
 

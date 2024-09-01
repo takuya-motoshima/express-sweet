@@ -3,4 +3,5 @@
  * All models must be pre-loaded before associating models.So it loads and caches all defined models in advance.
  * This must be done before any method that may load other models is called.
  */
-export default function (): void;
+declare const _default: () => void;
+export default _default;

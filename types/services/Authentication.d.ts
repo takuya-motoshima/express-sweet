@@ -1,4 +1,3 @@
-/// <reference types="cookie-parser" />
 import express from 'express';
 /**
  * User authentication service.

@@ -11,7 +11,7 @@
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the value and type are the same, false if they are different.
  */
-export declare function eq(value1: any, value2: any): boolean;
+export declare const eq: (value1: any, value2: any) => boolean;
 /**
  * Determine whether or not two values are equal (==) i.e weak checking.
  * @example
@@ -25,7 +25,7 @@ export declare function eq(value1: any, value2: any): boolean;
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the values are the same, false if they are different.
  */
-export declare function eqw(value1: any, value2: any): boolean;
+export declare const eqw: (value1: any, value2: any) => boolean;
 /**
  * Determine whether or not two values are not equal (!==).
  * @example
@@ -39,7 +39,7 @@ export declare function eqw(value1: any, value2: any): boolean;
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the value and type are different, false if they are the same.
  */
-export declare function neq(value1: any, value2: any): boolean;
+export declare const neq: (value1: any, value2: any) => boolean;
 /**
  * Determine whether or not two values are not equal (!=) weak checking.
  * @example
@@ -53,7 +53,7 @@ export declare function neq(value1: any, value2: any): boolean;
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the values are different, false if they are the same.
  */
-export declare function neqw(value1: any, value2: any): boolean;
+export declare const neqw: (value1: any, value2: any) => boolean;
 /**
  * Check for less than condition (a < b).
  * @example
@@ -67,7 +67,7 @@ export declare function neqw(value1: any, value2: any): boolean;
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value is less than the second value, false otherwise.
  */
-export declare function lt(value1: any, value2: any): boolean;
+export declare const lt: (value1: any, value2: any) => boolean;
 /**
  * Check for less than or equals condition (a <= b).
  * @example
@@ -81,7 +81,7 @@ export declare function lt(value1: any, value2: any): boolean;
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value is less than or equal to the second value, false otherwise.
  */
-export declare function lte(value1: any, value2: any): boolean;
+export declare const lte: (value1: any, value2: any) => boolean;
 /**
  * Check for greater than condition (a > b).
  * @example
@@ -95,7 +95,7 @@ export declare function lte(value1: any, value2: any): boolean;
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value exceeds the second value, false otherwise.
  */
-export declare function gt(value1: any, value2: any): boolean;
+export declare const gt: (value1: any, value2: any) => boolean;
 /**
  * Check for greater than or equals condition (a >= b).
  * @example
@@ -109,7 +109,7 @@ export declare function gt(value1: any, value2: any): boolean;
  * @param {any} value2 Second value to be compared with first.
  * @return {boolean} Returns true if the first value is greater than or equal to the second value, false otherwise.
  */
-export declare function gte(value1: any, value2: any): boolean;
+export declare const gte: (value1: any, value2: any) => boolean;
 /**
  * Logical NOT of any expression.
  * @example
@@ -125,7 +125,7 @@ export declare function gte(value1: any, value2: any): boolean;
  * @param {any} expression Any expression.
  * @return {boolean} Returns the logical negation of the value.
  */
-export declare function not(expression: any): boolean;
+export declare const not: (expression: any) => boolean;
 /**
  * Helper to imitate the ternary '?:' conditional operator.
  * @example
@@ -152,7 +152,7 @@ export declare function not(expression: any): boolean;
  * @param {any} value2 Second value to be displayed as result. Defaults to an empty string.
  * @return {any} Returns the result of the ternary operator.
  */
-export declare function ifx(condition: boolean, value1: any, value2: any): any;
+export declare const ifx: (condition: boolean, value1: any, value2: any) => any;
 /**
  * Check if it is empty.
  * If the value is an array, returns true if there are no elements.
@@ -176,7 +176,7 @@ export declare function ifx(condition: boolean, value1: any, value2: any): any;
  * @param {any} value Character strings, arrays, objects, etc. to be checked.
  * @return {boolean} Returns true if the value is empty, false otherwise.
  */
-export declare function empty(value: any): boolean;
+export declare const empty: (value: any) => boolean;
 /**
  * Check that it is not empty.
  * If the value is an array, returns true if there is an element.
@@ -200,7 +200,7 @@ export declare function empty(value: any): boolean;
  * @param {any} value Character strings, arrays, objects, etc. to be checked.
  * @return {boolean} Returns true if the value is not empty, false otherwise.
  */
-export declare function notEmpty(value: any): boolean;
+export declare const notEmpty: (value: any) => boolean;
 /**
  * Determine the length of an array.
  *
@@ -210,7 +210,7 @@ export declare function notEmpty(value: any): boolean;
  * @param {any[]} items Array whose elements to be counted.
  * @return {number|false} Returns the length of the array if the value is an array, false if the value is not an array.
  */
-export declare function count(items: any[]): number | false;
+export declare const count: (items: any[]) => number | false;
 /**
  * Returns the boolean AND of two or more parameters passed i.e it is true iff all the parameters are true.
  * @example
@@ -228,7 +228,7 @@ export declare function count(items: any[]): number | false;
  * @param {...any} params Any number of boolean parameters.
  * @return {boolean} Returns the result of the logical product.
  */
-export declare function and(...params: any[]): boolean;
+export declare const and: (...params: any[]) => boolean;
 /**
  * Returns the boolean OR of two or more parameters passed i.e it is true if any of the parameters is true.
  * @example
@@ -246,7 +246,7 @@ export declare function and(...params: any[]): boolean;
  * @param {...any}  params Any number of boolean parameters.
  * @return {boolean} Returns the result of the OR.
  */
-export declare function or(...params: any[]): boolean;
+export declare const or: (...params: any[]) => boolean;
 /**
  * Returns the first non-falsy value from the parameter list.
  * Works quite similar to the SQL's "COALESCE()" function, but unlike this checks for the first non-false parameter.
@@ -259,7 +259,7 @@ export declare function or(...params: any[]): boolean;
  * @param {...any} params Any number of parameters.
  * @return {any} Returns the first non-false element of the parameter.
  */
-export declare function coalesce(...params: any[]): any;
+export declare const coalesce: (...params: any[]) => any;
 /**
  * Returns boolean if the array contains the element strictly or non-strictly.
  * @example
@@ -285,7 +285,7 @@ export declare function coalesce(...params: any[]): any;
  * @param {boolean} strict FALSE for non-strict checking. TRUE by default.
  * @return {boolean} Returns true if the array contains the specified value, false otherwise.
  */
-export declare function includes(items: any[], value: any, strict?: boolean): boolean;
+export declare const includes: (items: any[], value: any, strict?: boolean) => boolean;
 /**
  * Returns true if the given str matches the given regex.
  * @example
@@ -313,4 +313,4 @@ export declare function includes(items: any[], value: any, strict?: boolean): bo
  * @param {string} flags? Regular expression flags, such as global and case-insensitive searches. The default is none (undefined).
  * @return {boolean} true if there is a match between the regular expression and the string str. Otherwise, false.
  */
-export declare function regexMatch(val: string, pattern: string, flags?: string): boolean;
+export declare const regexMatch: (val: string, pattern: string, flags?: string) => boolean;

@@ -7,4 +7,4 @@
  * @param {string} baseUrl Application Origin URL. The default is none (undefined).
  * @return {string} Returns the Assets file path with the update date and time parameters.
  */
-export declare function cacheBusting(filePath: string, baseUrl?: string): string;
+export declare const cacheBusting: (filePath: string, baseUrl?: string) => string;
