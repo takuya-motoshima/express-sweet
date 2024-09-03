@@ -498,13 +498,13 @@
  * Authentication user ID field name, defaults to `username`.
  * @type {string}
  */
-username: &#039;email&#039;,
+username: 'email',
 
 /**
  * Authentication password field name, defaults to `password`.
  * @type {string}
  */
-password: &#039;password&#039;</code></pre>
+password: 'password'</code></pre>
           </div>
         </div>
         <!--end::Highlight-->
@@ -536,13 +536,12 @@ password: &#039;password&#039;</code></pre>
           <div class="tab-content">
             <div class="tab-pane fade show active" id="async-login-esm-tab" role="tabpanel">
               <div class="highlight-code">
-                <pre class="language-javascript"><code class="language-javascript">import {Router} from &#039;express&#039;;
-import * as sweet from &#039;express-sweet&#039;;
-const router = Router();
-const Authentication = sweet.services.Authentication;
+                <pre class="language-javascript"><code class="language-javascript">import {Router} from 'express';
+import * as expressExtension from 'express-sweet';
 
-router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
-  const isAuth = await Authentication.authenticate(req, res, next);
+const router = Router();
+router.post('/login', async (req, res, next) =&gt; {
+  const isAuth = await expressExtension.services.Authentication.authenticate(req, res, next);
   res.json(isAuth);
 });
 export default router;</code></pre>
@@ -550,12 +549,12 @@ export default router;</code></pre>
             </div>
             <div class="tab-pane fade" id="async-login-cjs-tab" role="tabpanel">
               <div class="highlight-code">
-                <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
-const router = express.Router();
-const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+                <pre class="language-javascript"><code class="language-javascript">const express = require('express');
+const expressExtension = require('express-sweet');
 
-router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
-  const isAuth = await Authentication.authenticate(req, res, next);
+const router = express.Router();
+router.post('/login', async (req, res, next) =&gt; {
+  const isAuth = await expressExtension.services.Authentication.authenticate(req, res, next);
   res.json(isAuth);
 });
 module.exports = router;</code></pre>
@@ -570,20 +569,20 @@ module.exports = router;</code></pre>
 &lt;/form&gt;
 
 &lt;script&gt;
-const form = document.querySelector(&#039;#form&#039;);
-form.addEventListener(&#039;submit&#039;, async event =&gt; {
+const form = document.querySelector('#form');
+form.addEventListener('submit', async event =&gt; {
   event.preventDefault();
 
   // Send an authentication request.
-  const res = await fetch(&#039;/api/users/login&#039;, {method: &#039;POST&#039;, body: new FormData(form)});
+  const res = await fetch('/api/users/login', {method: 'POST', body: new FormData(form)});
   const isAuth = await res.json();
 
   // If login fails.
   if (!isAuth)
-    return void alert(&#039;The user name or password is incorrect.&#039;);
+    return void alert('The user name or password is incorrect.');
 
   // After logging in successfully, you will be taken to the top page.
-  location.href = &#039;/&#039;;
+  location.href = '/';
 });
 &lt;/script&gt;</code></pre>
               </div>
@@ -617,33 +616,32 @@ form.addEventListener(&#039;submit&#039;, async event =&gt; {
           <div class="tab-content">
             <div class="tab-pane fade show active" id="sync-login-esm-tab" role="tabpanel">
               <div class="highlight-code">
-                <pre class="language-javascript"><code class="language-javascript">import {Router} from &#039;express&#039;;
-import * as sweet from &#039;express-sweet&#039;;
-const router = Router();
-const Authentication = sweet.services.Authentication;
+                <pre class="language-javascript"><code class="language-javascript">import {Router} from 'express';
+import * as expressExtension from 'express-sweet';
 
-router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
-  const isAuth = await Authentication.authenticate(req, res, next);
+const router = Router();
+router.post('/login', async (req, res, next) =&gt; {
+  const isAuth = await expressExtension.services.Authentication.authenticate(req, res, next);
   if (isAuth) 
-    Authentication.successRedirect(res);
+    await expressExtension.services.Authentication.successRedirect(res);
   else
-    Authentication.failureRedirect(req, res);
+    await expressExtension.services.Authentication.failureRedirect(req, res);
 });
 export default router;</code></pre>
               </div>
             </div>
             <div class="tab-pane fade" id="sync-login-cjs-tab" role="tabpanel">
               <div class="highlight-code">
-                <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
-const router = express.Router();
-const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+                <pre class="language-javascript"><code class="language-javascript">const express = require('express');
+const expressExtension = require('express-sweet');
 
-router.post(&#039;/login&#039;, async (req, res, next) =&gt; {
-  const isAuth = await Authentication.authenticate(req, res, next);
+const router = express.Router();
+router.post('/login', async (req, res, next) =&gt; {
+  const isAuth = await expressExtension.services.Authentication.authenticate(req, res, next);
   if (isAuth) 
-    Authentication.successRedirect(res);
+    await expressExtension.services.Authentication.successRedirect(res);
   else
-    Authentication.failureRedirect(req, res);
+    await expressExtension.services.Authentication.failureRedirect(req, res);
 });
 module.exports = router;</code></pre>
               </div>

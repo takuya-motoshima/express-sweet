@@ -672,22 +672,22 @@
                   <div class="tab-content">
                     <div class="tab-pane fade show active" id="router-config-esm-tab" role="tabpanel">
                       <div class="highlight-code">
-                        <pre class="language-javascript"><code class="language-javascript">import {Router} from &#039;express&#039;;
-const router = Router();
+                        <pre class="language-javascript"><code class="language-javascript">import {Router} from 'express';
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 export default router;</code></pre>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="router-config-cjs-tag" role="tabpanel">
                       <div class="highlight-code">
-                        <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
-const router = express.Router();
+                        <pre class="language-javascript"><code class="language-javascript">const express = require('express');
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = express.Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 module.exports = router;</code></pre>
                       </div>
@@ -703,8 +703,8 @@ module.exports = router;</code></pre>
             <td><code>rewrite_base_url: (baseUrl: string) =&gt; string</code></td>
             <td>
               This is a hook that rewrites the base URL.<br>
-              If you want to rewrite the app.locals.baseUrl property and the view&#039;s baseUrl variable, use this hook to return a new base URL.<br>
-              The default value is the referrer&#039;s origin (eg https://example.com).<br>
+              If you want to rewrite the app.locals.baseUrl property and the view's baseUrl variable, use this hook to return a new base URL.<br>
+              The default value is the referrer's origin (eg https://example.com).<br>
               In this example, <code>https://example.com/admin</code> is used as the base URL.
               <!--begin::Code-->
               <div class="pt-3">
@@ -727,7 +727,7 @@ module.exports = router;</code></pre>
             <td>
               How to determine if it is an ajax request.<br>
               The default is that if there is an XMLHttpRequest in the request header (<code>req.xhr</code>) returns <code>true</code>.<br><br>
-              For example, if there is no XMLHttpRequest in req(<code>express.Request</code>) and the Ajax endpoint starts with <code>/api</code>, a custom Ajax decision can be made like &quot;<code>return /^\/api\//.test(req.path)</code>&quot;.<br>
+              For example, if there is no XMLHttpRequest in req(<code>express.Request</code>) and the Ajax endpoint starts with <code>/api</code>, a custom Ajax decision can be made like "<code>return /^\/api\//.test(req.path)</code>".<br>
               <!--begin::Block-->
               <div class="pt-3">
                 <!--begin::Highlight-->
@@ -760,10 +760,10 @@ module.exports = router;</code></pre>
                     <pre class="language-javascript"><code class="language-javascript">hook_handle_error: (err, req, res, next) =&gt; {
   if (err.status === 404)
     // If the URL cannot be found, a 404 error screen (views/error-404.hbs) is displayed.
-    res.render(&#039;error-404&#039;);
+    res.render('error-404');
   else
     // For other errors, unknown error screen (views/error-unknown.hbs) is displayed.
-    res.render(&#039;error-unknown&#039;);
+    res.render('error-unknown');
 },</code></pre>
                   </div>
                 </div>

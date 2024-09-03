@@ -38,7 +38,6 @@ export default {
    * This is a hook that rewrites the base URL.
    * If you want to rewrite the app.locals.baseUrl property and the view's baseUrl variable, use this hook to return a new base URL.
    * The default value is the referrer's origin (eg https://example.com).
-   *
    * @example
    * rewrite_base_url: baseUrl => {
    *   return `${baseUrl}/admin`;
@@ -53,7 +52,6 @@ export default {
   /**
    * This is a hook for error handling.
    * For example, you can use it when you want to send an external notification of the error received by this hook.
-   * 
    * @example
    * error_handler: async err => {
    *   // Notify system administrator of error.

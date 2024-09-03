@@ -7,10 +7,12 @@ import * as utils from '~/utils';
 export default class {
   /**
    * Mount on application.
+   * @param {express.Express} app Express application instance.
+   * @return {Promise<void>}
    */
-  static mount(app: express.Express) {
+  static async mount(app: express.Express): Promise<void> {
     // Load configuration.
-    const basicConfig = utils.loadBasicConfig();
+    const basicConfig = await utils.loadBasicConfig();
 
     // Exit if CORS is disabled.
     if (!basicConfig.cors_enabled)

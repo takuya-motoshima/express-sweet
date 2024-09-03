@@ -621,7 +621,7 @@
             <ul>
               <li class="py-2"><code>options.apiVersion: string</code>
                 <!--begin::Block-->
-                <div class="pt-3">API version in YYYYY-MM-DD format (or date). Specify &#039;latest&#039; to use the latest possible version. The default is &#039;latest&#039;.</div>
+                <div class="pt-3">API version in YYYYY-MM-DD format (or date). Specify 'latest' to use the latest possible version. The default is 'latest'.</div>
                 <!--end::Block-->
               </li>
               <li class="py-2"><code>options.region: string</code>
@@ -657,25 +657,25 @@
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="constructor-esm" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
 
-const client = new sweet.services.AWSSesClient({
-  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSSesClient({
+  apiVersion: 'API Version ("YYYYY-MM-DD" or "latest")',
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="constructor-cjs" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSSesClient({
-  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSSesClient({
+  apiVersion: 'API Version ("YYYYY-MM-DD" or "latest")',
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });</code></pre>
                     </div>
                   </div>
@@ -695,9 +695,9 @@ const client = new sweet.services.AWSSesClient({
             <!--end::Heading-->
             <!--begin::Parameters-->
             <ul>
-              <li class="py-2"><code>type: &#039;text&#039;|&#039;html&#039;</code>
+              <li class="py-2"><code>type: 'text'|'html'</code>
                 <!--begin::Block-->
-                <div class="pt-3">E-Mail type (&#039;html&#039;: HTML mail, &#039;text&#039;: text mail). Default is &#039;text&#039;.</div>
+                <div class="pt-3">E-Mail type ('html': HTML mail, 'text': text mail). Default is 'text'.</div>
                 <!--end::Block-->
               </li>
             </ul>
@@ -726,59 +726,59 @@ const client = new sweet.services.AWSSesClient({
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="send-method-esm" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
 
-const client = new sweet.services.AWSSesClient({
-  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSSesClient({
+  apiVersion: 'API Version ("YYYYY-MM-DD" or "latest")',
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Send email.
 await client
-  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;to@example.com&#039;)
-  .subject(&#039;Test email&#039;) 
-  .body(&#039;Hi, this is a test email&#039;)
+  .from('from@example.com', 'Sender Name')
+  .to('to@example.com')
+  .subject('Test email') 
+  .body('Hi, this is a test email')
   .send();
 
 // Use variables in the body of the e-mail.
 // The body can use the handlebars and handlebars-extd syntax.
 await client
-  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;to@example.com&#039;)
-  .subject(&#039;Test email&#039;) 
-  .body(&#039;Hello &#039;, {name: &#039;Mason&#039;})
+  .from('from@example.com', 'Sender Name')
+  .to('to@example.com')
+  .subject('Test email') 
+  .body('Hello ', {name: 'Mason'})
   .send();</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="send-method-cjs" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSSesClient({
-  apiVersion: &#039;API Version (&quot;YYYYY-MM-DD&quot; or &quot;latest&quot;)&#039;,
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSSesClient({
+  apiVersion: 'API Version ("YYYYY-MM-DD" or "latest")',
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Send email.
 await client
-  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;to@example.com&#039;)
-  .subject(&#039;Test email&#039;) 
-  .body(&#039;Hi, this is a test email&#039;)
+  .from('from@example.com', 'Sender Name')
+  .to('to@example.com')
+  .subject('Test email') 
+  .body('Hi, this is a test email')
   .send();
 
 // Use variables in the body of the e-mail.
 // The body can use the handlebars and handlebars-extd syntax.
 await client
-  .from(&#039;from@example.com&#039;, &#039;Sender Name&#039;)
-  .to(&#039;to@example.com&#039;)
-  .subject(&#039;Test email&#039;) 
-  .body(&#039;Hello &#039;, {name: &#039;Mason&#039;})
+  .from('from@example.com', 'Sender Name')
+  .to('to@example.com')
+  .subject('Test email') 
+  .body('Hello ', {name: 'Mason'})
   .send();</code></pre>
                     </div>
                   </div>
@@ -800,7 +800,7 @@ await client
             <ul>
               <li class="py-2"><code>from: string</code>
                 <!--begin::Block-->
-                <div class="pt-3">Sender&#039;s email address.</div>
+                <div class="pt-3">Sender's email address.</div>
                 <!--end::Block-->
               </li>
               <li class="py-2"><code>name?: string</code>

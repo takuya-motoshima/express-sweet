@@ -1,8 +1,7 @@
-import {createRequire} from 'node:module';
 import express from 'express';
+import {engine} from 'express-handlebars';
 import * as helpers from '~/handlebars_helpers';
 import * as utils from '~/utils';
-const require = createRequire(import.meta.url);
 
 /**
  * Enable Handlebars template engine.
@@ -10,39 +9,41 @@ const require = createRequire(import.meta.url);
 export default class {
   /**
    * Mount on application.
+   * @param {express.Express} app Express application instance.
+   * @return {Promise<void>}
    */
-  static mount(app: express.Express) {
+  static async mount(app: express.Express) {
     // Load configuration.
-    const viewConfig = utils.loadViewConfig();
-
-    // Added helper function.
-    const hbs = require('express-hbs');
-    for (let [_, helper] of Object.entries(helpers))
-      for (let [name, handler] of Object.entries(helper))
-        hbs.registerHelper(name, handler);
+    const viewConfig = await utils.loadViewConfig();
 
     // Apply template engine to your app.
-    app.engine('hbs', hbs.express4({
+    app.engine(viewConfig.extension || '.hbs', engine({
       partialsDir: viewConfig.partials_dir,
       layoutsDir: viewConfig.layouts_dir,
       defaultLayout: viewConfig.default_layout,
       extname: viewConfig.extension,
+      helpers: Object.entries(helpers).reduce((helpers, [_, handles]) => {
+        for (let [name, handle] of Object.entries(handles))
+          helpers[name] = handle;
+        return helpers;
+      }, {} as Record<string, Handlebars.HelperDelegate>),
     }));
-    app.set('view engine', 'hbs');
+    app.set('view engine', viewConfig.extension || '.hbs');
+    app.set('view cache', false);
     app.set('views',  viewConfig.views_dir);
 
-    // NOTE: Fixed a bug that login user data (req.user) could not be referenced in the function called just before view rendering (config/view.js#beforeRender).
-    //        This needed to be done after the login user was loaded in the login authentication middleware (middlewares/Authentication).
-    // // Mount middleware to be executed just before drawing the view.
-    // this.mountBeforeRender(app);
+    // NOTE: Fixed a bug that login user data (req.user) could not be referenced in the function called just before view rendering (config/view.js#beforeRender).This needed to be done after the login user was loaded in the login authentication middleware (middlewares/Authentication).
+    // await this.mountBeforeRender(app);
   }
 
   /**
    * Mount middleware to be executed just before drawing the view.
+   * @param {express.Express} app Express application instance.
+   * @return {Promise<void>}
    */
-  static mountBeforeRender(app: express.Express) {
+  static async mountBeforeRender(app: express.Express) {
     // Load configuration.
-    const viewConfig = utils.loadViewConfig();
+    const viewConfig = await utils.loadViewConfig();
 
     // Set variables that can be accessed from within the view.
     app.use(async (req: express.Request, res: express.Response, next: express.NextFunction) => {

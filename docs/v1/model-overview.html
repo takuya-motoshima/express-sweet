@@ -696,7 +696,7 @@
                 <div class="highlight">
                   <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                   <div class="highlight-code">
-                    <pre class="language-javascript"><code class="language-javascript">timezone: &#039;+09:00&#039;</code></pre>
+                    <pre class="language-javascript"><code class="language-javascript">timezone: '+09:00'</code></pre>
                   </div>
                 </div>
                 <!--end::Highlight-->
@@ -739,16 +739,16 @@
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-accessing-esm-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">import BookModel from &#039;../models/BookModel&#039;;
+            <pre class="language-javascript"><code class="language-javascript">import BookModel from '../models/BookModel';
 
-// INSERT INTO book (title) VALUES (&#039;Beautiful&#039;)
-await BookModel.create({title: &#039;Beautiful&#039;});
+// INSERT INTO book (title) VALUES ('Beautiful')
+await BookModel.create({title: 'Beautiful'});
 
 // SELECT * FROM book
 await BookModel.findAll();
 
-// UPDATE book SET title = &#039;Beautiful&#039; WHERE id= 1
-await BookModel.update({title: &#039;Beautiful&#039;}, {where: {id: 1}});
+// UPDATE book SET title = 'Beautiful' WHERE id= 1
+await BookModel.update({title: 'Beautiful'}, {where: {id: 1}});
 
 // DELETE FROM book WHERE id= 1
 await BookModel.destroy({where: {id: 1}});</code></pre>
@@ -756,16 +756,16 @@ await BookModel.destroy({where: {id: 1}});</code></pre>
                             </div>
                             <div class="tab-pane fade" id="model-accessing-cjs-tag" role="tabpanel">
                               <div class="highlight-code">
-                                <pre class="language-javascript"><code class="language-javascript">const BookModel = require(&#039;../models/BookModel&#039;);
+                                <pre class="language-javascript"><code class="language-javascript">const BookModel = require('../models/BookModel');
 
-// INSERT INTO book (title) VALUES (&#039;Beautiful&#039;)
-await BookModel.create({title: &#039;Beautiful&#039;});
+// INSERT INTO book (title) VALUES ('Beautiful')
+await BookModel.create({title: 'Beautiful'});
 
 // SELECT * FROM book
 await BookModel.findAll();
 
-// UPDATE book SET title = &#039;Beautiful&#039; WHERE id= 1
-await BookModel.update({title: &#039;Beautiful&#039;}, {where: {id: 1}});
+// UPDATE book SET title = 'Beautiful' WHERE id= 1
+await BookModel.update({title: 'Beautiful'}, {where: {id: 1}});
 
 // DELETE FROM book WHERE id= 1
 await BookModel.destroy({where: {id: 1}});</code></pre>
@@ -804,11 +804,11 @@ await BookModel.destroy({where: {id: 1}});</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="model-creating-esm-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+            <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
 
-export default class extends sweet.database.Model {
+export default class extends expressExtension.database.Model {
   static get table() {
-    return &#039;user&#039;;
+    return 'user';
   }
 
   static get attributes() {
@@ -831,11 +831,11 @@ export default class extends sweet.database.Model {
         </div>
         <div class="tab-pane fade" id="model-creating-cjs-tag" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">const Model = require(&#039;express-sweet&#039;).database.Model;
+            <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-module.exports = class extends Model {
+module.exports = class extends expressExtension.database.Model {
   static get table() {
-    return &#039;user&#039;;
+    return 'user';
   }
 
   static get attributes() {
@@ -867,7 +867,7 @@ module.exports = class extends Model {
 <div class="pb-10">
   <!--begin::Heading-->
   <h1 class="anchor fw-bold mb-5" id="connect-to-database" data-kt-scroll-offset="100">
-    <a href="#connect-to-database"></a>Connect to Database
+    <a href="#connect-to-database"></a>Database class
   </h1>
   <!--end::Heading-->
   <!--begin::Block-->
@@ -955,7 +955,7 @@ module.exports = class extends Model {
     <span class="menu-bullet">
       <span class="bullet bullet-dot"></span>
     </span>
-    <span class="menu-title">Connect to Database</span>
+    <span class="menu-title">Database class</span>
   </a>
   <!--end::Link-->
 </li>

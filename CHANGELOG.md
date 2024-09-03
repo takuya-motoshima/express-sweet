@@ -1,6 +1,33 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.3] - 2024/9/3
+### Changed
+- require was changed to dynamic import.
+- `require('express-sweet').database.Database` has been changed from a `sequelize.Sequelize` instance to a `sequelize.Sequelize` class.
+    If you use it in the future, you need to instantiate it.
+- DB connection check method has been changed.
+    - After:
+        ```js
+        const expressExtension = require('express-sweet');
+
+        // Create Database instance.
+        const config = await expressExtension.utils.loadDatabaseConfig();
+        const database = new expressExtension.database.Database(config.database, config.username, config.password, config);
+
+        // Check database connection.
+        await database.isConnect();
+        ```
+    - Before:
+        ```js
+        const expressExtension = require('express-sweet');
+
+        // Check database connection.
+        await expressExtension.database.Database.isConnect();
+        ```
+- Template engine changed from `express-hbs` to `express-handlebars`.
+    However, the `block` and `contentFor` helpers are still available.
+
 ## [2.0.2] - 2024/9/1
 ### Changed
 - Update express from 4.18.3 to 4.19.2.
@@ -275,10 +302,8 @@ All notable changes to this project will be documented in this file.
       await book.save({transaction});
       await transaction.commit();
 
-      // Check the update result.
-      // results in: New title of book: When Im Gone
+      // Load updated data.
       await book.reload();
-      console.log(`New title of book: ${book.title}`);
     } catch (err) {
       if (transaction)
         await transaction.rollback();

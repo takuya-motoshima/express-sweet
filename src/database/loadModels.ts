@@ -1,15 +1,14 @@
 import fs from 'node:fs';
-import {createRequire} from 'node:module';
 import {globSync} from 'glob';
 import Model from '~/database/Model';
-const require = createRequire(import.meta.url);
 
 /**
  * Model initialization and association.
  * All models must be pre-loaded before associating models.So it loads and caches all defined models in advance.
  * This must be done before any method that may load other models is called.
+ * @return {Promise<void>}
  */
-export default (): void => {
+export default async (): Promise<void> => {
   // Directory where model files are stored.
   const modelsDir = `${process.cwd()}/models`;
 
@@ -18,15 +17,10 @@ export default (): void => {
     return void console.log(`There is no model directory (${modelsDir})`);
 
   // Initialize all models.
-  // const models: typeof Model[] = new Array<typeof Model>();
   const models: typeof Model[] = <typeof Model[]>[];
-
-  // const models:{[key: string]: typeof Model} = {};
   for (let modelPath of globSync(`${modelsDir}/**/*.js`, {nodir: false})) {
-    const model = <typeof Model>(require(modelPath).prototype instanceof Model
-      ? require(modelPath)
-      : require(modelPath).default);
-    model.initialize();
+     const {default: model} = <{default: typeof Model}> await import(modelPath);
+    await model.initialize();
     models.push(model);
   }
 

@@ -146,19 +146,19 @@ CREATE TABLE `book` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `icon`) VALUES
-  (1, &#039;robin@example.com&#039;, &#039;password&#039;, &#039;Robin&#039;, &#039;/upload/1.png&#039;),
-  (2, &#039;taylor@example.com&#039;, &#039;password&#039;, &#039;Taylor&#039;, &#039;/upload/2.png&#039;);
+  (1, 'robin@example.com', 'password', 'Robin', '/upload/1.png'),
+  (2, 'taylor@example.com', 'password', 'Taylor', '/upload/2.png');
 INSERT INTO `profile` (`userId`, `address`, `tel`) VALUES
-  (1, &#039;777 Brockton Avenue, Abington MA 2351&#039;, &#039;202-555-0105&#039;),
-  (2, &#039;30 Memorial Drive, Avon MA 2322&#039;, &#039;&#039;);
+  (1, '777 Brockton Avenue, Abington MA 2351', '202-555-0105'),
+  (2, '30 Memorial Drive, Avon MA 2322', '');
 INSERT INTO `comment` (`userId`, `text`) VALUES
-  (1, &#039;From Robin #1&#039;),
-  (1, &#039;From Robin #2&#039;),
-  (2, &#039;From Taylor #1&#039;);
+  (1, 'From Robin #1'),
+  (1, 'From Robin #2'),
+  (2, 'From Taylor #1');
 INSERT INTO `book` (`userId`, `title`) VALUES
-  (1, &#039;Beautiful&#039;),
-  (1, &#039;Lose Yourself&#039;),
-  (2, &#039;When Im Gone&#039;);</code></pre>
+  (1, 'Beautiful'),
+  (1, 'Lose Yourself'),
+  (2, 'When Im Gone');</code></pre>
           </div>
         </div>
         <!--end::Highlight-->
@@ -183,25 +183,25 @@ INSERT INTO `book` (`userId`, `title`) VALUES
               <div class="highlight-code">
                 <pre class="language-javascript"><code class="language-javascript">export default {
   development: {
-    username: &#039;root&#039;,
-    password: &#039;password&#039;,
-    database: &#039;express_sweet_db&#039;,
-    host: &#039;localhost&#039;,
-    dialect: &#039;mariadb&#039;
+    username: 'root',
+    password: 'password',
+    database: 'express_sweet_db',
+    host: 'localhost',
+    dialect: 'mariadb'
   },
   test: {
-    username: &#039;root&#039;,
-    password: &#039;password&#039;,
-    database: &#039;express_sweet_db&#039;,
-    host: &#039;localhost&#039;,
-    dialect: &#039;mariadb&#039;
+    username: 'root',
+    password: 'password',
+    database: 'express_sweet_db',
+    host: 'localhost',
+    dialect: 'mariadb'
   },
   production: {
-    username: &#039;root&#039;,
-    password: &#039;password&#039;,
-    database: &#039;express_sweet_db&#039;,
-    host: &#039;localhost&#039;,
-    dialect: &#039;mariadb&#039;
+    username: 'root',
+    password: 'password',
+    database: 'express_sweet_db',
+    host: 'localhost',
+    dialect: 'mariadb'
   }
 }</code></pre>
               </div>
@@ -210,25 +210,25 @@ INSERT INTO `book` (`userId`, `title`) VALUES
               <div class="highlight-code">
                 <pre class="language-javascript"><code class="language-javascript">module.exports = {
   development: {
-    username: &#039;root&#039;,
-    password: &#039;password&#039;,
-    database: &#039;express_sweet_db&#039;,
-    host: &#039;localhost&#039;,
-    dialect: &#039;mariadb&#039;
+    username: 'root',
+    password: 'password',
+    database: 'express_sweet_db',
+    host: 'localhost',
+    dialect: 'mariadb'
   },
   test: {
-    username: &#039;root&#039;,
-    password: &#039;password&#039;,
-    database: &#039;express_sweet_db&#039;,
-    host: &#039;localhost&#039;,
-    dialect: &#039;mariadb&#039;
+    username: 'root',
+    password: 'password',
+    database: 'express_sweet_db',
+    host: 'localhost',
+    dialect: 'mariadb'
   },
   production: {
-    username: &#039;root&#039;,
-    password: &#039;password&#039;,
-    database: &#039;express_sweet_db&#039;,
-    host: &#039;localhost&#039;,
-    dialect: &#039;mariadb&#039;
+    username: 'root',
+    password: 'password',
+    database: 'express_sweet_db',
+    host: 'localhost',
+    dialect: 'mariadb'
   }
 }</code></pre>
               </div>
@@ -280,7 +280,7 @@ npm start</code></pre>
             </div>
             <div class="tab-pane fade" id="windows-powershell-tab" role="tabpanel">
               <div class="highlight-code">
-                <pre class="language-bash"><code class="language-bash">$env:DEBUG=&#039myapp:*&#039;
+                <pre class="language-bash"><code class="language-bash">$env:DEBUG='myapp:*'
 npm start</code></pre>
               </div>
             </div>

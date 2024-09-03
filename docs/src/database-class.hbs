@@ -118,16 +118,26 @@
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="is-connect-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
-  
-const isConnected = await sweet.database.Database.isConnect();</code></pre>
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
+
+// Create Database instance.
+const config = await expressExtension.utils.loadDatabaseConfig();
+const database = new expressExtension.database.Database(config.database, config.username, config.password, config);
+
+// Check database connection.
+await database.isConnect();</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="is-connect-method-cjs-tag" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const database = require(&#039;express-sweet&#039;).database.Database;
-  
-const isConnected = await database.isConnect();</code></pre>
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
+
+// Create Database instance.
+const config = await expressExtension.utils.loadDatabaseConfig();
+const database = new expressExtension.database.Database(config.database, config.username, config.password, config);
+
+// Check database connection.
+await database.isConnect();</code></pre>
                     </div>
                   </div>
                 </div>

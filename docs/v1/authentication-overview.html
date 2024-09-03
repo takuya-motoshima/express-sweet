@@ -666,7 +666,7 @@
             </td>
           </tr>
           <tr>
-            <td><code>session_store: &#039;memory&#039;|&#039;redis&#039;</code></td>
+            <td><code>session_store: 'memory'|'redis'</code></td>
             <td>The session store instance, defaults to a new MemoryStore(<code>memory</code>) instance.</td>
           </tr>
           <tr>
@@ -693,10 +693,10 @@
           <tr>
             <td><code>redis_host?: string|undefined</code></td>
             <td>
-              If the session is stored in <code>&quot;redis&quot;</code>, this field is required and should be set to the hostname of the Redis server.<br>
-              For example, to connect to redis on localhost on port <code>6379</code>, set <code>&quot;redis://localhost:6379&quot;</code>.<br>
-              To connect to a different host or port, use a connection string in the format <code>&quot;redis[s]://[[username][:password]@][host][:port][/db-number]&quot;</code>.<br>
-              For example, <code>&quot;redis://alice:foobared@awesome.redis.server:6380&quot;</code>.
+              If the session is stored in <code>"redis"</code>, this field is required and should be set to the hostname of the Redis server.<br>
+              For example, to connect to redis on localhost on port <code>6379</code>, set <code>"redis://localhost:6379"</code>.<br>
+              To connect to a different host or port, use a connection string in the format <code>"redis[s]://[[username][:password]@][host][:port][/db-number]"</code>.<br>
+              For example, <code>"redis://alice:foobared@awesome.redis.server:6380"</code>.
             </td>
           </tr>
           <tr>
@@ -733,12 +733,12 @@
                   <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                   <div class="highlight-code">
                     <pre class="language-javascript"><code class="language-javascript">// Set the URL to redirect to in case of login failure as a string.
-failure_redirect: &#039;/login&#039;,
+failure_redirect: '/login',
 
 // Dynamically set the url to redirect to on login failure.
 failure_redirect: (req, res) =&gt; {
   // If the role stored in the cookie is admin, redirect to the admin login screen.
-  return req.cookies.role === &#039;admin&#039; ? &#039;/adminlogin&#039; : &#039;login&#039;;
+  return req.cookies.role === 'admin' ? '/adminlogin' : 'login';
 },</code></pre>
                   </div>
                 </div>
@@ -779,7 +779,7 @@ failure_redirect: (req, res) =&gt; {
                   <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                   <div class="highlight-code">
                     <pre class="language-javascript"><code class="language-javascript">authenticate_user: async (username, password, req) =&gt; {
-  const UserModel = require(&#039;../models/UserModel&#039;);
+  const UserModel = require('../models/UserModel');
   return UserModel.findOne({
     where: {
       email: username,
@@ -800,7 +800,7 @@ failure_redirect: (req, res) =&gt; {
             <td>
               This hook is called when user authentication is successful.<br>
               Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.<br>
-              The returned data will be set in the req.user property and the view&#039;s session variable.<br>
+              The returned data will be set in the req.user property and the view's session variable.<br>
               The following example uses the user model to return the user information that owns the credentials based on the authenticated user's id.
               <!--begin::Code-->
               <div class="pt-3">
@@ -809,7 +809,7 @@ failure_redirect: (req, res) =&gt; {
                   <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                   <div class="highlight-code">
                     <pre class="language-javascript"><code class="language-javascript">subscribe_user: async (id) =&gt; {
-  const UserModel = require(&#039;../models/UserModel&#039;);
+  const UserModel = require('../models/UserModel');
   return UserModel.findOne({
     where: {
       id
@@ -836,7 +836,7 @@ failure_redirect: (req, res) =&gt; {
                 <div class="highlight">
                   <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
                   <div class="highlight-code">
-                    <pre class="language-javascript"><code class="language-javascript">allow_unauthenticated: [&#039;/api&#039;]</code></pre>
+                    <pre class="language-javascript"><code class="language-javascript">allow_unauthenticated: ['/api']</code></pre>
                   </div>
                 </div>
                 <!--end::Highlight-->

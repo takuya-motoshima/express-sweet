@@ -1,5 +1,6 @@
 import sequelize from 'sequelize';
-import database from '~/database/Database';
+import Database from '~/database/Database';
+import loadDatabaseConfig from '~/utils/loadDatabaseConfig';
 
 /**
  * Model base class.
@@ -18,6 +19,12 @@ export default class Model extends sequelize.Model {
    * @type {sequelize.ModelAttributes}
    */
   protected static attributes: sequelize.ModelAttributes;
+
+  /**
+   * Database instance.
+   * @type {Database}
+   */
+  protected static database: Database;
 
   /**
    * Column type.
@@ -135,14 +142,18 @@ export default class Model extends sequelize.Model {
   /**
    * Initialize the model that represents the table in the DB with attributes and options.
    * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
-   * @return {typeof Model} Returns this model class itself.
+   * @return {Promise<typeof Model>} Returns this model class itself.
    */
-  static initialize(): (typeof Model) {
+  static async initialize(): Promise<typeof Model> {
     if (process.env.EXPRESS_DEBUG)
       console.log(`Initialize ${this.table} model`);
+
+    // Create Database instance.
+    const config = await loadDatabaseConfig();
+    this.database = new Database(config.database!, config.username!, config.password||undefined, config);
     this.init(this.attributes, {
       modelName: this.table,
-      sequelize: database,
+      sequelize: this.database,
       freezeTableName: true,
       timestamps: false
     });
@@ -187,10 +198,8 @@ export default class Model extends sequelize.Model {
    *   await book.save({transaction});
    *   await transaction.commit();
    * 
-   *   // Check the update result.
-   *   // results in: New title of book: When Im Gone
+   *   // Load updated data.
    *   await book.reload();
-   *   console.log(`New title of book: ${book.title}`);
    * } catch (err) {
    *   if (transaction)
    *     await transaction.rollback();
@@ -200,7 +209,7 @@ export default class Model extends sequelize.Model {
    * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
    */
   static async begin(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
-    return database.transaction(options);
+    return this.database.transaction(options);
   }
 
   /**

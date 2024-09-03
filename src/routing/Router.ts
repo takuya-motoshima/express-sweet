@@ -1,8 +1,6 @@
-import {createRequire} from 'node:module';
 import express from 'express';
 import {globSync} from 'glob';
 import * as utils from '~/utils';
-const require = createRequire(import.meta.url);
 
 /**
  * Set up URL routing.
@@ -12,23 +10,22 @@ const require = createRequire(import.meta.url);
 export default class {
   /**
    * Mount on application.
+   * @param {express.Express} app Express application instance.
+   * @return {Promise<void>}
    */
-  static mount(app: express.Express) {
+  static async mount(app: express.Express): Promise<void> {
     // Load configuration.
-    const basicConfig = utils.loadBasicConfig();
+    const basicConfig = await utils.loadBasicConfig();
 
     // Set the URL to route based on the path of the file in the routes directory.
     for (let filePath of globSync(`${basicConfig.router_dir}/**/*.js`, {nodir: false})) {
       // Import router module.
-      let router = require(filePath);
-
-      // If the router module was exporting by default, there is a module in the default property.
-      if (router.default)
-        router = router.default;
+      const {default: router} = await import(filePath);
 
       // Get the router directory name and file name respectively.
       const matches = filePath.match(/\/routes(?:(\/..*))?\/(..*)\.js/);
-      if (!matches) continue;
+      if (!matches)
+        continue;
       const [_, dir, filename] = matches;
 
       // Generate a URL from the directory and filename and map the module to the URL.
@@ -36,9 +33,8 @@ export default class {
       if (process.env.EXPRESS_DEBUG)
         console.log(`URL mapping ${url}`);
       app.use(url, router);
-
-      // Set the default router to run when accessed with "/".
       if (url === basicConfig.default_router)
+        // Set the default router to run when accessed with "/".
         app.use('/', router);
     }
   }

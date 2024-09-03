@@ -1,14 +1,12 @@
 import fs from 'node:fs';
-import {createRequire} from 'node:module';
 import express from 'express';
 import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
-const require = createRequire(import.meta.url);
 
 /**
   * Get Authentication configuration (config/authentication).
-  * @return {AuthenticationConfig} Loaded configuration.
+  * @return {Promise<AuthenticationConfig>} Loaded configuration.
   */
-export default (): AuthenticationConfig => {
+export default async (): Promise<AuthenticationConfig> => {
   // Options with default values set.
   const defaultOptions: AuthenticationConfig = {
     enabled: false,
@@ -33,16 +31,17 @@ export default (): AuthenticationConfig => {
     return defaultOptions;
 
   // If an options file is found, it is merged with the default options.
-  const mergeOptions = Object.assign(defaultOptions, require(filePath).default || require(filePath));
+  let {default: options} = await import(`${filePath}.js`);
+  options = Object.assign(defaultOptions, options);
 
   // Check required options.
-  if (mergeOptions.session_store === 'redis' && !mergeOptions.redis_host)
+  if (options.session_store === 'redis' && !options.redis_host)
     throw new TypeError('If the session store is redis, redis_host in the authentication configuration is required');
 
   // If the session cookie name is overwritten with an empty value, replace it with the default value.
-  if (!mergeOptions.cookie_name)
-    mergeOptions.cookie_name = 'connect.sid';
+  if (!options.cookie_name)
+    options.cookie_name = 'connect.sid';
 
   // If an options file is found, it returns options that override the default options.
-  return mergeOptions;
+  return options;
 }

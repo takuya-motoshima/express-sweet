@@ -19,18 +19,18 @@ export default {
   // external: Object.keys(pkg['dependencies'] || []),
   input: './src/index.ts',
   plugins: [
-    alias({
-      entries: {
-        'handlebars-extd': 'handlebars-extd/dist/build.common.js'
-      }
-    }),
+    // alias({
+    //   entries: {
+    //     'handlebars-extd': 'handlebars-extd/dist/build.common.js'
+    //   }
+    // }),
     typescript({
       tsconfigDefaults: {compilerOptions: {}},
       tsconfig: 'tsconfig.json',
       tsconfigOverride: {compilerOptions: {}},
       useTsconfigDeclarationDir: true
     }),
-    terser(),
+    // terser(),
     json(),
     commonjs(),
     nodeResolve({

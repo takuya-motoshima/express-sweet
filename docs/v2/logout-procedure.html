@@ -475,27 +475,26 @@
       <div class="tab-content">
         <div class="tab-pane fade show active" id="logout-esm-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">import {Router} from &#039;express&#039;;
-import * as sweet from &#039;express-sweet&#039;;
-const router = Router();
-const Authentication = sweet.services.Authentication;
+            <pre class="language-javascript"><code class="language-javascript">import {Router} from 'express';
+import * as expressExtension from 'express-sweet';
 
-router.get(&#039;/logout&#039;, (req, res) =&gt; {
-  Authentication.logout(req);
-  res.redirect(&#039;/&#039;);
+const router = Router();
+router.get('/logout', (req, res) =&gt; {
+  expressExtension.services.Authentication.logout(req);
+  res.redirect('/');
 });
 export default router;</code></pre>
           </div>
         </div>
         <div class="tab-pane fade" id="logout-cjs-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
-const router = express.Router();
-const Authentication = require(&#039;express-sweet&#039;).services.Authentication;
+            <pre class="language-javascript"><code class="language-javascript">const express = require('express');
+const expressExtension = require('express-sweet');
 
-router.get(&#039;/logout&#039;, (req, res) =&gt; {
-  Authentication.logout(req);
-  res.redirect(&#039;/&#039;);
+const router = express.Router();
+router.get('/logout', (req, res) =&gt; {
+  expressExtension.services.Authentication.logout(req);
+  res.redirect('/');
 });
 module.exports = router;</code></pre>
           </div>

@@ -611,7 +611,7 @@
       <div class="tab-content">
         <div class="tab-pane fade show active" id="routing-esm-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">import express from &#039;express&#039;;
+            <pre class="language-javascript"><code class="language-javascript">import express from 'express';
 
 const app = express();
 app.METHOD(PATH, HANDLER)</code></pre>
@@ -619,7 +619,7 @@ app.METHOD(PATH, HANDLER)</code></pre>
         </div>
         <div class="tab-pane fade" id="routing-cjs-tag" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
+            <pre class="language-javascript"><code class="language-javascript">const express = require('express');
 
 const app = express();
 app.METHOD(PATH, HANDLER)</code></pre>
@@ -659,22 +659,22 @@ app.METHOD(PATH, HANDLER)</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="basic-routing-esm-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">import {Router} from &#039;express&#039;;
-const router = Router();
+            <pre class="language-javascript"><code class="language-javascript">import {Router} from 'express';
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 export default router;</code></pre>
           </div>
         </div>
         <div class="tab-pane fade" id="basic-routing-cjs-tag" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
-const router = express.Router();
+            <pre class="language-javascript"><code class="language-javascript">const express = require('express');
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = express.Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 module.exports = router;</code></pre>
           </div>
@@ -712,22 +712,22 @@ module.exports = router;</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="nested-routing-esm-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">import {Router} from &#039;express&#039;;
-const router = Router();
+            <pre class="language-javascript"><code class="language-javascript">import {Router} from 'express';
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 export default router;</code></pre>
                               </div>
                             </div>
                             <div class="tab-pane fade" id="nested-routing-cjs-tag" role="tabpanel">
                               <div class="highlight-code">
-                                <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
-const router = express.Router();
+                                <pre class="language-javascript"><code class="language-javascript">const express = require('express');
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = express.Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 module.exports = router;</code></pre>
           </div>
@@ -758,7 +758,7 @@ module.exports = router;</code></pre>
     <div class="highlight">
       <button class="highlight-copy btn" data-bs-toggle="tooltip" title="Copy code">copy</button>
       <div class="highlight-code">
-        <pre class="language-javascript"><code class="language-javascript">default_router: &#039;/blog&#039;</code></pre>
+        <pre class="language-javascript"><code class="language-javascript">default_router: '/blog'</code></pre>
       </div>
     </div>
     <!--end::Highlight-->
@@ -782,22 +782,22 @@ module.exports = router;</code></pre>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="default-routing-esm-tab" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">import {Router} from &#039;express&#039;;
-const router = Router();
+            <pre class="language-javascript"><code class="language-javascript">import {Router} from 'express';
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 export default router;</code></pre>
           </div>
         </div>
         <div class="tab-pane fade" id="default-routing-cjs-tag" role="tabpanel">
           <div class="highlight-code">
-            <pre class="language-javascript"><code class="language-javascript">const express = require(&#039;express&#039;);
-const router = express.Router();
+            <pre class="language-javascript"><code class="language-javascript">const express = require('express');
 
-router.get(&#039;/&#039;, (req, res) =&gt; {
-  res.send(&#039;Hello World&#039;);
+const router = express.Router();
+router.get('/', (req, res) =&gt; {
+  res.send('Hello World');
 });
 module.exports = router;</code></pre>
           </div>

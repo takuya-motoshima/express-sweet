@@ -657,23 +657,23 @@
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="constructor-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
             
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="constructor-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });</code></pre>
                     </div>
                   </div>
@@ -735,13 +735,13 @@ const client = new sweet.services.AWSRekognitionClient({
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="detect-faces-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
+import fs from 'fs';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Detects bounding boxes on faces.
@@ -753,7 +753,7 @@ const client = new sweet.services.AWSRekognitionClient({
 //              top: 0.11531734466552734
 //            }
 //          ]
-let res = await client.detectFaces(&#039;img/face2.jpg&#039;);
+let res = await client.detectFaces('img/face2.jpg');
 console.log(res);
 
 // Detect facial details.
@@ -766,7 +766,7 @@ console.log(res);
 //                top: 0.11531734466552734
 //              },
 //              ageRange: { high: 14, low: 6 },
-//              gender: &#039;female&#039;,
+//              gender: 'female',
 //              emotions: {
 //                happy: 99.78905487060547,
 //                surprised: 6.306276321411133,
@@ -781,25 +781,25 @@ console.log(res);
 //          ]
 const minConfidence = 90;
 const withDetails = true;
-res = await client.detectFaces(&#039;img/face2.jpg&#039;, minConfidence, withDetails);
+res = await client.detectFaces('img/face2.jpg', minConfidence, withDetails);
 console.log(res);
 
 // Detect faces from data URL.
-await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
+await client.detectFaces('data:image/png;base64,/9j/4...');
 
 // Detect faces from buffer.
-await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+await client.detectFaces(fs.readFileSync('img.jpg'));</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="detect-faces-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
-const fs = require(&#039;fs&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
+const fs = require('fs');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Detects bounding boxes on faces.
@@ -811,7 +811,7 @@ const client = new sweet.services.AWSRekognitionClient({
 //              top: 0.11531734466552734
 //            }
 //          ]
-let res = await client.detectFaces(&#039;img/face2.jpg&#039;);
+let res = await client.detectFaces('img/face2.jpg');
 console.log(res);
 
 // Detect facial details.
@@ -824,7 +824,7 @@ console.log(res);
 //                top: 0.11531734466552734
 //              },
 //              ageRange: { high: 14, low: 6 },
-//              gender: &#039;female&#039;,
+//              gender: 'female',
 //              emotions: {
 //                happy: 99.78905487060547,
 //                surprised: 6.306276321411133,
@@ -839,14 +839,14 @@ console.log(res);
 //          ]
 const minConfidence = 90;
 const withDetails = true;
-res = await client.detectFaces(&#039;img/face2.jpg&#039;, minConfidence, withDetails);
+res = await client.detectFaces('img/face2.jpg', minConfidence, withDetails);
 console.log(res);
 
 // Detect faces from data URL.
-await client.detectFaces(&#039;data:image/png;base64,/9j/4...&#039;);
+await client.detectFaces('data:image/png;base64,/9j/4...');
 
 // Detect faces from buffer.
-await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+await client.detectFaces(fs.readFileSync('img.jpg'));</code></pre>
                     </div>
                   </div>
                 </div>
@@ -901,44 +901,44 @@ await client.detectFaces(fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="compare-faces-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
+import fs from 'fs';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Compare faces from path.
-await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
+await client.compareFaces('img1.jpg', 'img2.jpg');
 
 // Compare faces from data URL.
-await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.compareFaces('data:image/png;base64,/9j/4...', 'data:image/png;base64,/9j/4...');
 
 // Compare faces from buffer.
-await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+await client.compareFaces(fs.readFileSync('img1.jpg'), fs.readFileSync('img1.jpg'));</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="compare-faces-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
-const fs = require(&#039;fs&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
+const fs = require('fs');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Compare faces from path.
-await client.compareFaces(&#039;img1.jpg&#039;, &#039;img2.jpg&#039;);
+await client.compareFaces('img1.jpg', 'img2.jpg');
 
 // Compare faces from data URL.
-await client.compareFaces(&#039;data:image/png;base64,/9j/4...&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.compareFaces('data:image/png;base64,/9j/4...', 'data:image/png;base64,/9j/4...');
 
 // Compare faces from buffer.
-await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync(&#039;img1.jpg&#039;));</code></pre>
+await client.compareFaces(fs.readFileSync('img1.jpg'), fs.readFileSync('img1.jpg'));</code></pre>
                     </div>
                   </div>
                 </div>
@@ -1001,30 +1001,30 @@ await client.compareFaces(fs.readFileSync(&#039;img1.jpg&#039;), fs.readFileSync
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="create-collection-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Creates a collection.
-await client.createCollection(&#039;MyCollection&#039;);</code></pre>
+await client.createCollection('MyCollection');</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="create-collection-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Creates a collection.
-await client.createCollection(&#039;MyCollection&#039;);</code></pre>
+await client.createCollection('MyCollection');</code></pre>
                     </div>
                   </div>
                 </div>
@@ -1063,36 +1063,36 @@ await client.createCollection(&#039;MyCollection&#039;);</code></pre>
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="list-collections-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
         
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Find the collection IDs.
 // results in: [
-//           &#039;MyCollection&#039;,
-//           &#039;AnotherCollection&#039;
+//           'MyCollection',
+//           'AnotherCollection'
 //         ]
 await client.listCollections();</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="list-collections-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Find the collection IDs.
 // results in: [
-//           &#039;MyCollection&#039;,
-//           &#039;AnotherCollection&#039;
+//           'MyCollection',
+//           'AnotherCollection'
 //         ]
 await client.listCollections();</code></pre>
                     </div>
@@ -1145,30 +1145,30 @@ await client.listCollections();</code></pre>
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="delete-collection-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Delete collection.
-await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+await client.deleteCollection('MyCollection');</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="delete-collection-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Delete collection.
-await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
+await client.deleteCollection('MyCollection');</code></pre>
                     </div>
                   </div>
                 </div>
@@ -1267,25 +1267,25 @@ await client.deleteCollection(&#039;MyCollection&#039;);</code></pre>
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="index-face-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
+import fs from 'fs';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Create a face and get the ID of the created face.
 // results in: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
-const faceId = await client.indexFace(collectionId, &#039;img.jpg&#039;);
+const faceId = await client.indexFace(collectionId, 'img.jpg');
 console.log(faceId);
 
 // Create a face and get the details of the created face.
 // results in:  {
-//            faceId: &#039;7f2dd321-f047-44ff-8856-864637e1d286&#039;,
+//            faceId: '7f2dd321-f047-44ff-8856-864637e1d286',
 //            ageRange: { high: 29, low: 21 },
-//            gender: &#039;female&#039;,
+//            gender: 'female',
 //            emotions: {
 //              angry: 77.1907958984375,
 //              surprised: 9.944050788879395,
@@ -1297,37 +1297,37 @@ console.log(faceId);
 //              calm: 1.5354809761047363
 //            }
 //          }
-const faceDetails = await client.indexFace(collectionId, &#039;img.jpg&#039;, {returnDetails: true});
+const faceDetails = await client.indexFace(collectionId, 'img.jpg', {returnDetails: true});
 console.log(faceDetails);
 
 // You can also index face images in DataURL format.
-await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.indexFace('MyCollection', 'data:image/png;base64,/9j/4...');
 
 // Buffer face images can also be indexed.
-await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+await client.indexFace('MyCollection', fs.readFileSync('img.jpg'));</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="index-face-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
-const fs = require(&#039;fs&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
+const fs = require('fs');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Create a face and get the ID of the created face.
 // results in: e65d66cb-e7bc-4bbf-966c-b1b49ddf29f8
-const faceId = await client.indexFace(collectionId, &#039;img.jpg&#039;);
+const faceId = await client.indexFace(collectionId, 'img.jpg');
 console.log(faceId);
 
 // Create a face and get the details of the created face.
 // results in:  {
-//            faceId: &#039;7f2dd321-f047-44ff-8856-864637e1d286&#039;,
+//            faceId: '7f2dd321-f047-44ff-8856-864637e1d286',
 //            ageRange: { high: 29, low: 21 },
-//            gender: &#039;female&#039;,
+//            gender: 'female',
 //            emotions: {
 //              angry: 77.1907958984375,
 //              surprised: 9.944050788879395,
@@ -1339,14 +1339,14 @@ console.log(faceId);
 //              calm: 1.5354809761047363
 //            }
 //          }
-const faceDetails = await client.indexFace(collectionId, &#039;img.jpg&#039;, {returnDetails: true});
+const faceDetails = await client.indexFace(collectionId, 'img.jpg', {returnDetails: true});
 console.log(faceDetails);
 
 // You can also index face images in DataURL format.
-await client.indexFace(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
+await client.indexFace('MyCollection', 'data:image/png;base64,/9j/4...');
 
 // Buffer face images can also be indexed.
-await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+await client.indexFace('MyCollection', fs.readFileSync('img.jpg'));</code></pre>
                     </div>
                   </div>
                 </div>
@@ -1437,102 +1437,102 @@ await client.indexFace(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="search-faces-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
-import fs from &#039;fs&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
+import fs from 'fs';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // If you want to search for one face, specify 1 for the maxFaces option.
 // In that case, the search result will return the face data for one person.
 // results in: {
-//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//           faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
 //           boundingBox: {
 //             width: 0.500495970249176,
 //             height: 0.6926820278167725,
 //             left: 0.2928670048713684,
 //             top: 0.09095799922943115
 //           },
-//           externalImageId: &#039;img.jpg&#039;,
+//           externalImageId: 'img.jpg',
 //           similarity: 99.98941802978516
 //         }
-const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
+const match = await client.searchFaces('MyCollection', 'img.jpg', {minConfidence: 99, maxFaces: 1});
 console.log(match);
 
 // If you want to search for multiple faces, specify 2 or more for the maxFaces option.
 // In that case, the search results will return a list of the face data of multiple people found.
 // results in: [
 //           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
 //             boundingBox: {
 //               width: 0.500495970249176,
 //               height: 0.6926820278167725,
 //               left: 0.2928670048713684,
 //               top: 0.09095799922943115
 //             },
-//             externalImageId: &#039;img.jpg&#039;,
+//             externalImageId: 'img.jpg',
 //             similarity: 99.98941802978516
 //           }
 //         ]
-const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
+const matches = await client.searchFaces('MyCollection', 'img.jpg', {minConfidence: 99, maxFaces: 5});
 console.log(matches);
 
 // The input image can specify a buffer or DataURL in addition to the image path.
-await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
-await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+await client.searchFaces('MyCollection', 'data:image/png;base64,/9j/4...');
+await client.searchFaces('MyCollection', fs.readFileSync('img.jpg'));</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="search-faces-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
-const fs = require(&#039;fs&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
+const fs = require('fs');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // If you want to search for one face, specify 1 for the maxFaces option.
 // In that case, the search result will return the face data for one person.
 // results in: {
-//           faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//           faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
 //           boundingBox: {
 //             width: 0.500495970249176,
 //             height: 0.6926820278167725,
 //             left: 0.2928670048713684,
 //             top: 0.09095799922943115
 //           },
-//           externalImageId: &#039;img.jpg&#039;,
+//           externalImageId: 'img.jpg',
 //           similarity: 99.98941802978516
 //         }
-const match = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 1});
+const match = await client.searchFaces('MyCollection', 'img.jpg', {minConfidence: 99, maxFaces: 1});
 console.log(match);
 
 // If you want to search for multiple faces, specify 2 or more for the maxFaces option.
 // In that case, the search results will return a list of the face data of multiple people found.
 // results in: [
 //           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
 //             boundingBox: {
 //               width: 0.500495970249176,
 //               height: 0.6926820278167725,
 //               left: 0.2928670048713684,
 //               top: 0.09095799922943115
 //             },
-//             externalImageId: &#039;img.jpg&#039;,
+//             externalImageId: 'img.jpg',
 //             similarity: 99.98941802978516
 //           }
 //         ]
-const matches = await client.searchFaces(&#039;MyCollection&#039;, &#039;img.jpg&#039;, {minConfidence: 99, maxFaces: 5});
+const matches = await client.searchFaces('MyCollection', 'img.jpg', {minConfidence: 99, maxFaces: 5});
 console.log(matches);
 
 // The input image can specify a buffer or DataURL in addition to the image path.
-await client.searchFaces(&#039;MyCollection&#039;, &#039;data:image/png;base64,/9j/4...&#039;);
-await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg&#039;));</code></pre>
+await client.searchFaces('MyCollection', 'data:image/png;base64,/9j/4...');
+await client.searchFaces('MyCollection', fs.readFileSync('img.jpg'));</code></pre>
                     </div>
                   </div>
                 </div>
@@ -1588,55 +1588,55 @@ await client.searchFaces(&#039;MyCollection&#039;, fs.readFileSync(&#039;img.jpg
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="list-faces-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Find all face metadata in the collection.
 // results in: [
 //           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
 //             boundingBox: {
 //               width: 0.500495970249176,
 //               height: 0.6926820278167725,
 //               left: 0.2928670048713684,
 //               top: 0.09095799922943115
 //             },
-//             externalImageId: &#039;img.jpg&#039;
+//             externalImageId: 'img.jpg'
 //           }
 //         ]
-const result = await client.listFaces(&#039;MyCollection&#039;);
+const result = await client.listFaces('MyCollection');
 console.log(result);</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="list-faces-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Find all face metadata in the collection.
 // results in: [
 //           {
-//             faceId: &#039;2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d&#039;,
+//             faceId: '2ce7f471-9c4b-4f27-b5a4-bbd02a5e134d',
 //             boundingBox: {
 //               width: 0.500495970249176,
 //               height: 0.6926820278167725,
 //               left: 0.2928670048713684,
 //               top: 0.09095799922943115
 //             },
-//             externalImageId: &#039;img.jpg&#039;
+//             externalImageId: 'img.jpg'
 //           }
 //         ]
-const result = await client.listFaces(&#039;MyCollection&#039;);
+const result = await client.listFaces('MyCollection');
 console.log(result);</code></pre>
                     </div>
                   </div>
@@ -1693,30 +1693,30 @@ console.log(result);</code></pre>
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="delete-faces-method-esm-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">import * as sweet from &#039;express-sweet&#039;;
+                      <pre class="language-javascript"><code class="language-javascript">import * as expressExtension from 'express-sweet';
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Delete a face from the collection.
-await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
+await client.deleteFaces('MyCollection', ['f7befa24-3b83-43cc-b21f-7fac4b91f51d']);</code></pre>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="delete-faces-method-cjs-tab" role="tabpanel">
                     <div class="highlight-code">
-                      <pre class="language-javascript"><code class="language-javascript">const sweet = require(&#039;express-sweet&#039;);
+                      <pre class="language-javascript"><code class="language-javascript">const expressExtension = require('express-sweet');
 
-const client = new sweet.services.AWSRekognitionClient({
-  region: &#039;the region to send service requests to&#039;,
-  accessKeyId: &#039;your AWS access key ID&#039;,
-  secretAccessKey: &#039;your AWS secret access key&#039;,
+const client = new expressExtension.services.AWSRekognitionClient({
+  region: 'the region to send service requests to',
+  accessKeyId: 'your AWS access key ID',
+  secretAccessKey: 'your AWS secret access key',
 });
 
 // Delete a face from the collection.
-await client.deleteFaces(&#039;MyCollection&#039;, [&#039;f7befa24-3b83-43cc-b21f-7fac4b91f51d&#039;]);</code></pre>
+await client.deleteFaces('MyCollection', ['f7befa24-3b83-43cc-b21f-7fac4b91f51d']);</code></pre>
                     </div>
                   </div>
                 </div>
