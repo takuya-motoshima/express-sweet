@@ -6,10 +6,10 @@ import moment from 'moment';
  * @example
  * {{!-- results in: 2021/10/24 --}}
  * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z"}}
- *
+ * 
  * {{!-- results in: 2021/10/24 --}}
  * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'jp'}}
- *
+ * 
  * {{!-- results in: 2021/10/24 --}}
  * {{formatDate 'YYYY/MM/DD' "2021-10-24T02:13:06.610Z" 'es'}}
  * @param {string} format A format string based on moment.

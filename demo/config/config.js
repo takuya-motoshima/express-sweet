@@ -1,7 +1,7 @@
 const path = require('path');
 
 /**
- * Express Sweet basic configuration interface.
+ * EXPRESS SWEET basic configuration interface.
  */
 module.exports = {
   /**

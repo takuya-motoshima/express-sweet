@@ -11,13 +11,8 @@ export declare const replace: (value: string, find: string, replace: string) => 
 /**
  * Split `string` by the given `character`.
  * @example
- * {{!-- results in: ['a', 'b', 'c'] --}}
  * {{split "a,b,c" ","}}
- *
- * {{!-- results in: <div>a</div><div>b</div><div>c</div> --}}
- * {{#each (split list ',')}}
- *   <div>{{this}}</div>
- * {{/each}}
+ * {{#each (split list ',')}}<div>{{this}}</div>{{/each}}
  * @param {string} value String.
  * @param {string} separator A character that delimits the substrings in this string. Default is a comma.
  * @return {string[]} An Array of strings, split at each point where the separator occurs in the given string. The default is a comma.

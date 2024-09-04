@@ -1,7 +1,7 @@
 import sequelize from 'sequelize';
 /**
   * Get database configuration (config/database).
-  * @return {sequelize.Options} Loaded configuration.
+  * @return {Promise<sequelize.Options>} Loaded configuration.
   */
-declare const _default: () => sequelize.Options;
+declare const _default: () => Promise<sequelize.Options>;
 export default _default;

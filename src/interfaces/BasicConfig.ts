@@ -1,7 +1,7 @@
 import express from 'express';
 
 /**
- * Express Sweet basic configuration interface.
+ * EXPRESS SWEET basic configuration interface.
  */
 export default interface BasicConfig {
   /**

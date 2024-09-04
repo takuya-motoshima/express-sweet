@@ -12,7 +12,7 @@ export default class {
    * @param {express.Express} app Express application instance.
    * @return {Promise<void>}
    */
-  static async mount(app: express.Express) {
+  static async mount(app: express.Express): Promise<void> {
     // Load configuration.
     const viewConfig = await utils.loadViewConfig();
 
@@ -29,7 +29,8 @@ export default class {
       }, {} as Record<string, Handlebars.HelperDelegate>),
     }));
     app.set('view engine', viewConfig.extension || '.hbs');
-    app.set('view cache', false);
+    // app.enable('view cache');
+    app.disable('view cache');
     app.set('views',  viewConfig.views_dir);
 
     // NOTE: Fixed a bug that login user data (req.user) could not be referenced in the function called just before view rendering (config/view.js#beforeRender).This needed to be done after the login user was loaded in the login authentication middleware (middlewares/Authentication).
@@ -41,7 +42,7 @@ export default class {
    * @param {express.Express} app Express application instance.
    * @return {Promise<void>}
    */
-  static async mountBeforeRender(app: express.Express) {
+  static async mountBeforeRender(app: express.Express): Promise<void> {
     // Load configuration.
     const viewConfig = await utils.loadViewConfig();
 

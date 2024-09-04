@@ -5,7 +5,7 @@ import * as utils from '~/utils';
  * @example
  * {{!-- results in: 123,456.789 --}}
  * {{number2locale 123456.789}}
- *
+ * 
  * {{!-- German uses comma as decimal separator and period for thousands. --}}
  * {{!-- results in: 123.456,789 --}}
  * {{number2locale 123456.789 'de-DE'}}

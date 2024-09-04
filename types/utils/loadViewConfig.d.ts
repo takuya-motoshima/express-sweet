@@ -1,7 +1,7 @@
 import ViewConfig from '~/interfaces/ViewConfig';
 /**
   * Get view configuration (config/view).
-  * @return {ViewConfig} Loaded configuration.
+  * @return {Promise<ViewConfig>} Loaded configuration.
   */
-declare const _default: () => ViewConfig;
+declare const _default: () => Promise<ViewConfig>;
 export default _default;

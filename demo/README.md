@@ -1,10 +1,7 @@
-# Demo Overview
-It describes the configuration of the demo and how to start the demo with Docker.
-
-## Directory structure
-Demo (./demo) directory structure.
-```
-demo
+# Demonstration Docker environment building procedure
+Directory structure:
+```sh
+.
 ├── bin
 │   └── www             Application startup script
 ├── client              Front-end module
@@ -22,7 +19,6 @@ demo
 └── package.json
 ```
 
-## How to start the demo with Docker
 1. Start the container.
     ```sh
     docker-compose up -d
@@ -45,8 +41,7 @@ demo
     ```sh
     rm -rf node_modules/ \
         demo/node_modules/ \
-        demo/client/node_modules/ \
-        docs/node_modules/ 
+        demo/client/node_modules/
     ```
 1. Connect to container.
     ```sh

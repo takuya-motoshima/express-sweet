@@ -8,6 +8,8 @@ export default class {
     #private;
     /**
      * Mount on application.
+     * @param {express.Express} app Express application instance.
+     * @return {Promise<void>}
      */
-    static mount(app: express.Express): undefined;
+    static mount(app: express.Express): Promise<void>;
 }

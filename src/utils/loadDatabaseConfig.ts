@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import sequelize from 'sequelize';
 import DatabaseConfig from '~/interfaces/DatabaseConfig';
-import Environment from '~/middlewares/Environment';
 
 /**
   * Get database configuration (config/database).
@@ -21,9 +20,9 @@ export default async (): Promise<sequelize.Options> => {
   const filePath = `${process.cwd()}/config/database`;
   if (!fs.existsSync(`${filePath}.js`))
     return defaultOptions;
-
-  // Get NODE_ENV environment variable.
-  await Environment.mount();
+  if (!process.env.NODE_ENV)
+    // If the NODE_ENV environment variable needed to load the DB configuration is not present, a warning is output.
+    console.warn('Since there is no NODE_ENV environment variable required to load the DB configuration, \'development\' is used as the environment name.');
 
   // If an options file is found, it returns options that override the default options.
   let {default: options}: {default: DatabaseConfig} = await import(`${filePath}.js`);

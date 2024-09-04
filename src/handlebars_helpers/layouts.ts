@@ -1,8 +1,8 @@
-/**
- * Cache the contents of the named block declared in layout.
- * @type {{[key: string]: any}}
- */
-const blockCache: {[key: string]: any} = {};
+// /**
+//  * Cache the contents of the named block declared in layout.
+//  * @type {{[key: string]: any}}
+//  */
+// const blockCache: {[key: string]: any} = {};
 
 /**
  * Defines content for a named block declared in layout.
@@ -15,7 +15,10 @@ const blockCache: {[key: string]: any} = {};
  * @param {any} context Context.
  */
 const content = (name: string, options: Handlebars.HelperOptions, context: any): void => {
-  const block = blockCache[name] || (blockCache[name] = []);
+  if (!context.blockCache)
+    context.blockCache = {};
+  const block = context.blockCache[name] || (context.blockCache[name] = []);
+  // const block = blockCache[name] || (blockCache[name] = []);
   block.push(options.fn(context));
 }
 
@@ -28,8 +31,9 @@ const content = (name: string, options: Handlebars.HelperOptions, context: any):
  * @param {Handlebars.HelperOptions} options Helper Options.
  * @return {string} String.
  */
-export const block = (name: string, options: Handlebars.HelperOptions) => {
-  let val = blockCache[name];
+export const block = function(this: any, name: string, options: Handlebars.HelperOptions) {
+  let val = this.blockCache[name];
+  // let val = blockCache[name];
   if (val === undefined && typeof options.fn === 'function')
     val = options.fn(this);
   if (Array.isArray(val))
@@ -47,6 +51,6 @@ export const block = (name: string, options: Handlebars.HelperOptions) => {
  * @param {string} name Block Name.
  * @param {Handlebars.HelperOptions} options Helper Options.
  */
-export const contentFor = (name: string, options: any): void => {
+export const contentFor = function(this: any, name: string, options: any): void {
   content(name, options, this);
 }

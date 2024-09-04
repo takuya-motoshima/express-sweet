@@ -14,7 +14,7 @@ export default async (): Promise<void> => {
 
   // Exit if the model directory does not exist.
   if (!fs.existsSync(modelsDir))
-    return void console.log(`There is no model directory (${modelsDir})`);
+    return;
 
   // Initialize all models.
   const models: typeof Model[] = <typeof Model[]>[];

@@ -133,7 +133,6 @@ export default class Model extends sequelize.Model {
    * BookModel.Transaction.ISOLATION_LEVELS.READ_COMMITTED // "READ COMMITTED"
    * BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ  // "REPEATABLE READ"
    * BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // "SERIALIZABLE"
-   * 
    * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
    * @type {sequelize.Transaction}
    */
