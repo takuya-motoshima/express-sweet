@@ -16,16 +16,18 @@ import View from '~/middlewares/View';
 export default class {
   /**
    * Mount on application.
+   * @param {express.Express} app Express application instance.
+   * @return {Promise<void>}
    */
-  static mount(app: express.Express) {
+  static async mount(app: express.Express): Promise<void> {
     // Load configuration.
-    const authenticationConfig: AuthenticationConfig = utils.loadAuthenticationConfig();
-    const basicConfig = utils.loadBasicConfig();
+    const authenticationConfig: AuthenticationConfig = await utils.loadAuthenticationConfig();
+    const basicConfig = await utils.loadBasicConfig();
 
     // Exit if authentication is disabled.
     if (!authenticationConfig.enabled)
       // Mount middleware to be executed just before drawing the view.
-      return void View.mountBeforeRender(app);
+      return void await View.mountBeforeRender(app);
 
     // Session connection options.
     const sessionOptions: session.SessionOptions = {
@@ -98,7 +100,7 @@ export default class {
     app.use(passport.session());
 
     // Mount middleware to be executed just before drawing the view.
-    View.mountBeforeRender(app);
+    await View.mountBeforeRender(app);
 
     // Check the authentication status of the request.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {

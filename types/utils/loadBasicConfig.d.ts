@@ -1,7 +1,7 @@
 import BasicConfig from '~/interfaces/BasicConfig';
 /**
   * Get basic configuration (config/config).
-  * @return {BasicConfig} Loaded configuration.
+  * @return {Promise<BasicConfig>} Loaded configuration.
   */
-declare const _default: () => BasicConfig;
+declare const _default: () => Promise<BasicConfig>;
 export default _default;

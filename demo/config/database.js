@@ -2,12 +2,12 @@
  * Database configuration.
  */
 // For Docker, set the DB container name to host.
-const host = process.env.IS_DOCKER ? 'express_sweet_db' : 'localhost';
+const host = process.env.IS_DOCKER ? 'sample_db' : 'localhost';
 module.exports = {
   development: {
     username: 'root',
     password: 'password',
-    database: 'express_sweet_db',
+    database: 'sample_db',
     host,
     port: undefined,
     dialect: 'mariadb',
@@ -17,7 +17,7 @@ module.exports = {
   test: {
     username: 'root',
     password: 'password',
-    database: 'express_sweet_db',
+    database: 'sample_db',
     host,
     port: undefined,
     dialect: 'mariadb',
@@ -27,7 +27,7 @@ module.exports = {
   production: {
     username: 'root',
     password: 'password',
-    database: 'express_sweet_db',
+    database: 'sample_db',
     host,
     port: undefined,
     dialect: 'mariadb',

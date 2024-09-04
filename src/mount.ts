@@ -12,36 +12,37 @@ import ErrorHandler from '~/middlewares/ErrorHandler';
 
 /**
  * Mount extensions on your application.
- * @param {express.Express} app Express application instance
+ * @param {express.Express} app Express application instance.
+ * @return {Promise<void>}
  */
-export default (app: express.Express): void => {
+export default async (app: express.Express): Promise<void> => {
   // Set global variables.
   Global.mount();
 
-  // Set environment variables.
-  Environment.mount();
+  // Load environment variables.
+  await Environment.mount();
 
   // Model initialization and association.
-  loadModels();
+  await loadModels();
 
   // Defines all the requisites in HTTP.
-  Http.mount(app);
+  await Http.mount(app);
 
   // Enable Handlebars template engine.
-  View.mount(app);
+  await View.mount(app);
 
   // Enables the CORS.
-  CORS.mount(app);
+  await CORS.mount(app);
 
   // Set local variables.
-  Local.mount(app);
+  await Local.mount(app);
 
   // Incorporate user authentication into your application.
-  Authentication.mount(app);
+  await Authentication.mount(app);
 
   // Set up URL routing.
-  Router.mount(app);
+  await Router.mount(app);
 
   // Error handling.
-  ErrorHandler.mount(app);
+  await ErrorHandler.mount(app);
 }

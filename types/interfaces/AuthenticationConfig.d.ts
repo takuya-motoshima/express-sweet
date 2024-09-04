@@ -56,7 +56,6 @@ export default interface AuthenticationConfig {
     success_redirect: string;
     /**
      * URL to redirect after log off, defaults to `/login`.
-     *
      * @example
      * // Set the URL to redirect to in case of login failure as a string.
      * failure_redirect: '/login',
@@ -74,9 +73,7 @@ export default interface AuthenticationConfig {
      * This hook is called when authenticating a user.
      * Please find the user information that owns the credentials based on the user name and password you received and return it.
      * If the user who owns the credentials cannot be found, return null.
-     *
      * Note that the user information must include an ID value that can identify the user.
-     *
      * @example
      * authenticate_user: async (username, password, req) => {
      *   const UserModel = require('../models/UserModel');
@@ -98,7 +95,6 @@ export default interface AuthenticationConfig {
      * This hook is called when user authentication is successful.
      * Please search and return the authenticated user information to be set in the session based on the user ID of the parameter.
      * The returned data will be set in the req.user property and the view's session variable.
-     *
      * @example
      * subscribe_user: async (id) => {
      *   const UserModel = require('../models/UserModel');

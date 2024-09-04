@@ -1,4 +1,4 @@
-USE express_sweet_db;
+USE sample_db;
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `icon`) VALUES
   (1, 'robin@example.com', 'password', 'Robin', '/upload/1.png'),

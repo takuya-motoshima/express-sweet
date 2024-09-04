@@ -1,7 +1,7 @@
 import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
 /**
   * Get Authentication configuration (config/authentication).
-  * @return {AuthenticationConfig} Loaded configuration.
+  * @return {Promise<AuthenticationConfig>} Loaded configuration.
   */
-declare const _default: () => AuthenticationConfig;
+declare const _default: () => Promise<AuthenticationConfig>;
 export default _default;

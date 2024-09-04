@@ -1,11 +1,11 @@
 import typescript from 'rollup-plugin-typescript2';
 import terser from '@rollup/plugin-terser';
-import json from 'rollup-plugin-json';
+import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import builtins from 'builtin-modules';
 import pkg from './package.json' assert {type: "json"};
-import alias from '@rollup/plugin-alias';
+// import alias from '@rollup/plugin-alias';
 
 export default {
   external: [
@@ -19,11 +19,11 @@ export default {
   // external: Object.keys(pkg['dependencies'] || []),
   input: './src/index.ts',
   plugins: [
-    alias({
-      entries: {
-        'handlebars-extd': 'handlebars-extd/dist/build.common.js'
-      }
-    }),
+    // alias({
+    //   entries: {
+    //     'handlebars-extd': 'handlebars-extd/dist/build.common.js'
+    //   }
+    // }),
     typescript({
       tsconfigDefaults: {compilerOptions: {}},
       tsconfig: 'tsconfig.json',

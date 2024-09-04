@@ -44,6 +44,6 @@ services:
       - ./demo/sql/schema.sql:/docker-entrypoint-initdb.d/1.sql
       - ./demo/sql/data.sql:/docker-entrypoint-initdb.d/2.sql
     environment:
-      MYSQL_DATABASE: express_sweet_db
+      MYSQL_DATABASE: sample_db
       MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'yes'
       TZ: Asia/Tokyo

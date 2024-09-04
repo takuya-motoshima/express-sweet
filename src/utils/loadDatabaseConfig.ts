@@ -1,14 +1,12 @@
 import fs from 'node:fs';
-import {createRequire} from 'node:module';
 import sequelize from 'sequelize';
 import DatabaseConfig from '~/interfaces/DatabaseConfig';
-const require = createRequire(import.meta.url);
 
 /**
   * Get database configuration (config/database).
-  * @return {sequelize.Options} Loaded configuration.
+  * @return {Promise<sequelize.Options>} Loaded configuration.
   */
-export default (): sequelize.Options => {
+export default async (): Promise<sequelize.Options> => {
   // Options with default values set.
   const defaultOptions: sequelize.Options = {
     database: 'unkown',
@@ -22,14 +20,14 @@ export default (): sequelize.Options => {
   const filePath = `${process.cwd()}/config/database`;
   if (!fs.existsSync(`${filePath}.js`))
     return defaultOptions;
-
-  // Get the execution environment.
-  const env = process.env.NODE_ENV||'development';
+  if (!process.env.NODE_ENV)
+    // If the NODE_ENV environment variable needed to load the DB configuration is not present, a warning is output.
+    console.warn('Since there is no NODE_ENV environment variable required to load the DB configuration, \'development\' is used as the environment name.');
 
   // If an options file is found, it returns options that override the default options.
-  const options = <DatabaseConfig>require(filePath).default||require(filePath);
-  const mergeOptions = Object.assign(defaultOptions, options[env]);
+  let {default: options}: {default: DatabaseConfig} = await import(`${filePath}.js`);
+  options = Object.assign(defaultOptions, options[process.env.NODE_ENV||'development']) as DatabaseConfig;
   if (process.env.EXPRESS_DEBUG)
-    console.log(`Connection DB is ${mergeOptions.host} ${mergeOptions.database}`);
-  return mergeOptions;
+    console.log(`Connection DB is ${options.host} ${options.database}`);
+  return options;
 }

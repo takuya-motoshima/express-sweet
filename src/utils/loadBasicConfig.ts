@@ -1,15 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import {createRequire} from 'node:module';
 import express from 'express';
 import BasicConfig from '~/interfaces/BasicConfig';
-const require = createRequire(import.meta.url);
 
 /**
   * Get basic configuration (config/config).
-  * @return {BasicConfig} Loaded configuration.
+  * @return {Promise<BasicConfig>} Loaded configuration.
   */
-export default (): BasicConfig => {
+export default async (): Promise<BasicConfig> => {
   // Options with default values set.
   const defaultOptions: BasicConfig = {
     env_path: undefined,
@@ -30,5 +28,6 @@ export default (): BasicConfig => {
     return defaultOptions;
 
   // If an options file is found, it returns options that override the default options.
-  return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+  const {default: options} = await import(`${filePath}.js`);
+  return Object.assign(defaultOptions, options);
 }

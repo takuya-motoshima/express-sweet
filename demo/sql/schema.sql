@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS `express_sweet_db` DEFAULT CHARACTER SET utf8mb4;
+CREATE DATABASE IF NOT EXISTS `sample_db` DEFAULT CHARACTER SET utf8mb4;
 
-USE `express_sweet_db`;
+USE `sample_db`;
 
 CREATE TABLE `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,

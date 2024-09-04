@@ -1,15 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import {createRequire} from 'node:module';
 import express from 'express';
 import ViewConfig from '~/interfaces/ViewConfig';
-const require = createRequire(import.meta.url);
 
 /**
   * Get view configuration (config/view).
-  * @return {ViewConfig} Loaded configuration.
+  * @return {Promise<ViewConfig>} Loaded configuration.
   */
-export default (): ViewConfig => {
+export default async (): Promise<ViewConfig> => {
   // Options with default values set.
   const defaultOptions: ViewConfig = {
     views_dir: path.join(process.cwd(), 'views'),
@@ -26,5 +24,6 @@ export default (): ViewConfig => {
     return defaultOptions;
 
   // If an options file is found, it returns options that override the default options.
-  return Object.assign(defaultOptions, require(filePath).default||require(filePath));
+  const {default: options} = await import(`${filePath}.js`);
+  return Object.assign(defaultOptions, options);
 }

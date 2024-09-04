@@ -1,4 +1,5 @@
 import sequelize from 'sequelize';
+import Database from '~/database/Database';
 /**
  * Model base class.
  */
@@ -15,6 +16,11 @@ export default class Model extends sequelize.Model {
      * @type {sequelize.ModelAttributes}
      */
     protected static attributes: sequelize.ModelAttributes;
+    /**
+     * Database instance.
+     * @type {Database}
+     */
+    protected static database: Database;
     /**
      * Column type.
      * @see https://sequelize.org/api/v6/variable/index.html#static-variable-DataTypes
@@ -121,7 +127,6 @@ export default class Model extends sequelize.Model {
      * BookModel.Transaction.ISOLATION_LEVELS.READ_COMMITTED // "READ COMMITTED"
      * BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ  // "REPEATABLE READ"
      * BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // "SERIALIZABLE"
-     *
      * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
      * @type {sequelize.Transaction}
      */
@@ -129,9 +134,9 @@ export default class Model extends sequelize.Model {
     /**
      * Initialize the model that represents the table in the DB with attributes and options.
      * This method is called automatically from within the "express-sweet.mount" method, so you don't have to run it yourself.
-     * @return {typeof Model} Returns this model class itself.
+     * @return {Promise<typeof Model>} Returns this model class itself.
      */
-    static initialize(): (typeof Model);
+    static initialize(): Promise<typeof Model>;
     /**
      * Associate the model.
      * Define associations with other models such as "hasOne", "hasMany", "belongsTo", "belongsToMany".
@@ -166,10 +171,8 @@ export default class Model extends sequelize.Model {
      *   await book.save({transaction});
      *   await transaction.commit();
      *
-     *   // Check the update result.
-     *   // results in: New title of book: When Im Gone
+     *   // Load updated data.
      *   await book.reload();
-     *   console.log(`New title of book: ${book.title}`);
      * } catch (err) {
      *   if (transaction)
      *     await transaction.rollback();

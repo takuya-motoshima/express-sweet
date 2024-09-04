@@ -11,10 +11,12 @@ import loadBasicConfig from '~/utils/loadBasicConfig';
 export default class {
   /**
    * Mount on application.
+   * @param {express.Express} app Express application instance.
+   * @return {Promise<void>}
    */
-  static mount(app: express.Express) {
+  static async mount(app: express.Express): Promise<void> {
     // Load configuration.
-    const basicConfig = loadBasicConfig();
+    const basicConfig = await loadBasicConfig();
 
     // Log HTTP request.
     app.use(morgan('dev'));

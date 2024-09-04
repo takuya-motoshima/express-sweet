@@ -5,3 +5,4 @@ export * as comparison from '~/handlebars_helpers/comparison';
 export * as date from '~/handlebars_helpers/date';
 export * as number from '~/handlebars_helpers/number';
 export * as math from '~/handlebars_helpers/math';
+export * as layouts from '~/handlebars_helpers/layouts';
