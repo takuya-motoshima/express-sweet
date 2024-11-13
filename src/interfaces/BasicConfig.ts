@@ -68,11 +68,11 @@ export default interface BasicConfig {
    * @example
    * hook_handle_error: (err, req, res, next) => {
    *   if (err.status === 404)
-   *     // If the URL cannot be found, a 404 error screen (views/error-404.hbs) is displayed.
-   *     res.render('error-404');
+   *     // If the URL cannot be found, a 404 error screen (views/errors/404.hbs) is displayed.
+   *     res.render('errors/404');
    *   else
-   *     // For other errors, unknown error screen (views/error-unknown.hbs) is displayed.
-   *     res.render('error-unknown');
+   *     // For other errors, unknown error screen (views/error/500.hbs) is displayed.
+   *     res.render('error/500');
    * },
    */
   hook_handle_error?: (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => void,
