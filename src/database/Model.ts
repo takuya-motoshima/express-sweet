@@ -199,7 +199,7 @@ export default class Model extends sequelize.Model {
    * 
    *   // Load updated data.
    *   await book.reload();
-   * } catch (err) {
+   * } catch (error) {
    *   if (transaction)
    *     await transaction.rollback();
    * }

@@ -21,16 +21,16 @@ export default class {
     });
 
     // Error handler.
-    app.use(async (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    app.use(async (error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
       if (basicConfig.hook_handle_error)
         // Call error hook function.
-        basicConfig.hook_handle_error(err, req, res, next);
+        basicConfig.hook_handle_error(error, req, res, next);
       else {
         // Output error to log.
-        console.error(err);
+        console.error(error);
 
         // Response error is returned.
-        res.status(err.status||500).end();
+        res.status(error.status||500).end();
       }
     });
   }

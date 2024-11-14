@@ -53,7 +53,7 @@ module.exports = {
    * This is a hook for error handling.
    * For example, you can use it when you want to send an external notification of the error received by this hook.
    * @example
-   * error_handler: async err => {
+   * error_handler: async error => {
    *   // Notify system administrator of error.
    *   return new Promise((resolve, reject) => {
    *     const sendmail = require('sendmail')();
@@ -61,16 +61,16 @@ module.exports = {
    *       from: 'no-reply@example.com',
    *       to: 'administrator@example.com',
    *       subject: 'Error occurred',
-   *       text: err.message
-   *     }, err => {
-   *       err ? reject(err) : resolve();
+   *       text: error.message
+   *     }, error => {
+   *       error ? reject(error) : resolve();
    *     });
    *   });
    * }
    * 
-   * @type {(err: any): void|Promise<void>}
+   * @type {(error: any): void|Promise<void>}
    */
-  error_handler: err => {
-    console.error(`An error has occurred. Error message: ${err.message}`);
+  error_handler: error => {
+    console.error(`An error has occurred. Error message: ${error.message}`);
   }
 }

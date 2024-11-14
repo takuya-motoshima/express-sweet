@@ -15,14 +15,14 @@ export default class {
    */
   static authenticate(req: express.Request, res: express.Response, next: express.NextFunction): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      passport.authenticate('local', (err: any, user: any) => {
-        if (err)
-          return void reject(err);
+      passport.authenticate('local', (error: any, user: any) => {
+        if (error)
+          return void reject(error);
         if (!user)
           return void resolve(false);
-        req.logIn(user, (err: any) => {
-          if (err)
-            return void reject(err);
+        req.logIn(user, (error: any) => {
+          if (error)
+            return void reject(error);
           resolve(true);
         });
       })(req, res, next);
@@ -34,7 +34,7 @@ export default class {
    * @param {express.Request} req The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
    */
   static logout(req: express.Request): void {
-    req.logout((err: any) => {});
+    req.logout((error: any) => {});
   }
 
   /**

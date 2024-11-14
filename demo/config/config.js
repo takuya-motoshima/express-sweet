@@ -65,16 +65,16 @@ module.exports = {
 
   /**
    * Hooks the default behavior on request errors.
-   * If unset, simply returns an error HTTP status. (<code>res.status(err.status||500).end();</code>)
-   * @type {(err: any, req: express.Request, res: express.Response, next: express.NextFunction) => void}
+   * If unset, simply returns an error HTTP status. (<code>res.status(error.status||500).end();</code>)
+   * @type {(error: any, req: express.Request, res: express.Response, next: express.NextFunction) => void}
    * @example
-   * hook_handle_error: (err, req, res, next) => {
-   *   if (err.status === 404)
-   *     // If the URL cannot be found, a 404 error screen (views/error-404.hbs) is displayed.
-   *     res.render('error-404');
+   * hook_handle_error: (error, req, res, next) => {
+   *   if (error.status === 404)
+   *     // If the URL cannot be found, a 404 error screen (views/error/404.hbs) is displayed.
+   *     res.render('error/404');
    *   else
-   *     // For other errors, unknown error screen (views/error-unknown.hbs) is displayed.
-   *     res.render('error-unknown');
+   *     // For other errors, unknown error screen (views/error/500.hbs) is displayed.
+   *     res.render('error/500');
    * },
    */
   hook_handle_error: undefined,
