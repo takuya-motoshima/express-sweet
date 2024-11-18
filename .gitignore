@@ -1,5 +1,4 @@
 node_modules/
-demo/node_modules/
+demo/app/
 demo/volumes/
-# demo/public/build/
 .vscode/

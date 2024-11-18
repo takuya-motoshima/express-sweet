@@ -5,9 +5,7 @@
     "client/",
     "node_modules/",
     "public/",
-    "sql/",
-    "views/",
-    "volumes/"
+    "views/"
   ],
   "delay": "3",
   "verbose": true

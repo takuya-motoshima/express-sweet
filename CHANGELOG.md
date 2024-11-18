@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [2.0.4] - The release date is yet to be determined.
 ### Changed
 - Refactored variable names.
+- Fix Docker demo.
 
 ## [2.0.3] - 2024/9/3
 ### Changed
@@ -70,7 +71,7 @@ All notable changes to this project will be documented in this file.
 ## [1.1.1] - 2024/3/23
 ### Changed
 - When cookie security is enabled (`config/authentication.js#cookie_secure`) and the application is running on the HTTP protocol, the following warning message is output upon user authentication.
-  ```sh
+  ```bash
   Warning: Cookie security must be disabled for user authentication to work over the HTTP protocol (config/authentication.js#cookie_secure)
   ```
 

@@ -1,0 +1,40 @@
+version: "3.1"
+services:
+  # Container for building packages and running demos.
+  app:
+    container_name: express_sweet_app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/usr/src/app
+
+      # Persist demo dependencies and front-end build modules.
+      - /usr/src/app/node_modules
+      - /usr/src/app/client/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      IS_DOCKER: 1
+    tty: true
+    depends_on:
+      - db
+  # DB container used in the demo.
+  db:
+    image: mariadb:10.8.8
+    container_name: express_sweet_db
+    restart: always
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    ports:
+      - 3306:3306
+    volumes:
+      - ./volumes/db_data:/var/lib/mysql
+      # Execute SQL for table creation and initial data input at DB startup.
+      # Since they are executed in ascending order of file name, replace the file name with a number in the order you want to execute them.
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./sql/data.sql:/docker-entrypoint-initdb.d/2.sql
+    environment:
+      MYSQL_DATABASE: sample_db
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'yes'
+      TZ: Asia/Tokyo

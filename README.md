@@ -45,11 +45,11 @@ Use the application generator tool, `express-sweet-generator`, to quickly create
 ![Image](screencaps/demonstration.webp)
 
 1. Install and launch the application generator as a global npm package.
-    ```sh
+    ```bash
     npm install -g express-sweet-generator
     ```
 1. Display the command options with the -h option.
-    ```sh
+    ```bash
     express-sweet -h
 
     Usage: express-sweet [options] [dir]
@@ -63,11 +63,11 @@ Use the application generator tool, `express-sweet-generator`, to quickly create
         -h, --help         output usage information
     ```
 1. For example, the following creates an Express app named `myapp`. The app will be created in a folder named `myapp` in the current working directory.
-    ```sh
+    ```bash
     express-sweet -o esm myapp
     ```
 1. Then install dependencies.
-    ```sh
+    ```bash
     cd myapp/
     npm install
     ```
@@ -165,16 +165,16 @@ Use the application generator tool, `express-sweet-generator`, to quickly create
     }
     ```
 1. The DB to be accessed can be defined for each environment. Specify the environment in the `.env` file
-    ```sh
+    ```bash
     NODE_ENV=development
     ```
 1. Run the application with the following command.
-    ```sh
+    ```bash
     npm start
     ```
 1. Then, load `http://localhost:3000/` in your browser to access the app.  
     The generated app has the following directory structure:
-    ```sh
+    ```bash
     .
     ├── .env
     ├── app.js
