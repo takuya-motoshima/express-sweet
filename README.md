@@ -192,7 +192,7 @@ Use the application generator tool, `express-sweet-generator`, to quickly create
     │   ├── config.js
     │   ├── database.js
     │   └── view.js
-    ├── exceptions
+    ├── errors
     │   └── UserNotFound.js
     ├── models
     │   ├── BookModel.js

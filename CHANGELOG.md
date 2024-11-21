@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Refactored variable names.
 - Fix Docker demo.
+- Changed the directory name for storing custom error classes in the demo from `exceptions` to `errors`.
 
 ## [2.0.3] - 2024/9/3
 ### Changed
