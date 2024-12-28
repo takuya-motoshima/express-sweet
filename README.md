@@ -2,42 +2,42 @@
 EXPRESS SWEET is an extension of EXPRESS.
 
 - [EXPRESS SWEET](#express-sweet)
-    - [EXPRESS SWEET Generator](#express-sweet-generator)
-    - [API](#api)
-        - [Environment variable](#environment-variable)
-        - [Base configuration](#base-configuration)
-        - [Routing](#routing)
-            - [Basic Routing](#basic-routing)
-            - [Nested Routing](#nested-routing)
-            - [Default Routing](#default-routing)
-            - [Routing Methods](#routing-methods)
-        - [View](#view)
-            - [Configuration](#configuration)
-            - [Syntax](#syntax)
-            - [Layout](#layout)
-            - [Comparison Helper](#comparison-helper)
-            - [HTML Helper](#html-helper)
-            - [Object Helper](#object-helper)
-            - [String Helper](#string-helper)
-            - [Date Helper](#date-helper)
-            - [Number Helper](#number-helper)
-            - [Math Helper](#math-helper)
-        - [Model](#model)
-            - [Configuration](#configuration-1)
-            - [Accessing Model](#accessing-model)
-            - [Creating Model](#creating-model)
-            - [Database class extends sequelize.Sequelize](#database-class-extends-sequelizesequelize)
-                - [Instance Methods](#instance-methods)
-            - [Model Class extends sequelize.Model](#model-class-extends-sequelizemodel)
-                - [Class Properties](#class-properties)
-                - [Class Methods](#class-methods)
-        - [Authentication](#authentication)
-            - [Configuration](#configuration-2)
-            - [Login Procedure](#login-procedure)
-            - [Logout Procedure](#logout-procedure)
-    - [Release Notes](#release-notes)
-    - [Author](#author)
-    - [License](#license)
+  - [EXPRESS SWEET Generator](#express-sweet-generator)
+  - [API](#api)
+    - [Environment variable](#environment-variable)
+    - [Base configuration](#base-configuration)
+    - [Routing](#routing)
+      - [Basic Routing](#basic-routing)
+      - [Nested Routing](#nested-routing)
+      - [Default Routing](#default-routing)
+      - [Routing Methods](#routing-methods)
+    - [View](#view)
+      - [Configuration](#configuration)
+      - [Syntax](#syntax)
+      - [Layout](#layout)
+      - [Comparison Helper](#comparison-helper)
+      - [HTML Helper](#html-helper)
+      - [Object Helper](#object-helper)
+      - [String Helper](#string-helper)
+      - [Date Helper](#date-helper)
+      - [Number Helper](#number-helper)
+      - [Math Helper](#math-helper)
+    - [Model](#model)
+      - [Configuration](#configuration-1)
+      - [Accessing Model](#accessing-model)
+      - [Creating Model](#creating-model)
+      - [Database class extends sequelize.Sequelize](#database-class-extends-sequelizesequelize)
+        - [Instance Methods](#instance-methods)
+      - [Model Class extends sequelize.Model](#model-class-extends-sequelizemodel)
+        - [Class Properties](#class-properties)
+        - [Class Methods](#class-methods)
+    - [Authentication](#authentication)
+      - [Configuration](#configuration-2)
+      - [Login Procedure](#login-procedure)
+      - [Logout Procedure](#logout-procedure)
+  - [Release Notes](#release-notes)
+  - [Author](#author)
+  - [License](#license)
 
 ## EXPRESS SWEET Generator
 Use the application generator tool, `express-sweet-generator`, to quickly create an application skeleton.
@@ -1776,6 +1776,61 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
         }
     });
     ```
+
+    **Using `hasMany` with `findAll`**
+
+    When using `hasMany` association with `findAll` in Sequelize, you need to be aware of the `raw` option's behavior. 
+
+    If you want to retrieve child rows as an array within the parent row, you should **disable the `raw` option**. 
+
+    Enabling the `raw` option will result in the parent row being duplicated for each child row. This behavior is also discussed in this [GitHub issue](https://github.com/sequelize/sequelize/issues/11988).
+
+    **Example:**
+
+    **With `raw: true`:**
+
+    ```json
+    [
+        {
+            "id": 1,
+            "name": "Robin",
+            {
+                "userId": 1,
+                "text": "From Robin #1"
+            }
+        },
+        {
+            "id": 1,
+            "name": "Robin",
+            {
+                "userId": 1,
+                "text": "From Robin #2"
+            }
+        }
+    ]
+    ```
+
+    **With `raw: false` (default):**
+
+    ```json
+    [
+        {
+            "id": 1,
+            "name": "Robin",
+            "comments": [
+                {
+                    "userId": 1,
+                    "text": "From Robin #1"
+                },
+                {
+                    "userId": 1,
+                    "text": "From Robin #2"
+                }
+            ]
+        }
+    ]
+    ```
+
 - `public static belongsToMany()`  
     Create an N:M association with a join table.  
     Defining through is required.  
