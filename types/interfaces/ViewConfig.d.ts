@@ -31,13 +31,12 @@ export default interface SesOptions {
     /**
      * Hook function just before the view is rendered.
      * For example, you can set your own local variables that can be used within the view.
+     * @type {(res: express.Response) => Promise<void>|void}
      * @example
      * // The message set here can be referenced in the view as {{message}}.
      * beforeRender: (req, res) => {
      *   res.locals.extra = 'Extra';
      * }
-     *
-     * @type {(res: express.Response) => Promise<void>|void}
      */
     beforeRender?: (req: express.Request, res: express.Response) => Promise<void> | void;
 }

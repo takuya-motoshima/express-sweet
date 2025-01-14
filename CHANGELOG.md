@@ -1,12 +1,27 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.0.4] - Unreleased
+## [2.0.4] - 2025/1/14
+<!-- ## [2.0.4] - Unreleased -->
 ### Changed
 - Refactored variable names.
 - Fix Docker demo.
 - Changed the directory name for storing custom error classes in the demo from `exceptions` to `errors`.
 - Added a section to the README.md API reference about considerations when using the `hasMany` association with the `findAll` method.
+
+### Added
+- **`findObjectInArray` Handlebars helper:**  This helper is added to the view, allowing you to find an object in an array based on a specified field name and value.
+    ```html
+    {{!-- 
+        items is an array of objects: [{id: 123, name: 'Item A'}, {id: 456, name: 'Item B'}]
+        This code will output: "Item A" 
+    --}}
+    {{#each items}}
+        {{#if (eq id 123)}}
+            {{lookup (findObjectInArray ../items 'id' id) 'name'}}
+        {{/if}}
+    {{/each}}
+    ```
 
 ## [2.0.3] - 2024/9/3
 ### Changed
@@ -453,4 +468,4 @@ All notable changes to this project will be documented in this file.
 [2.0.1]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.0...v2.0.1
 [2.0.2]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.1...v2.0.2
 [2.0.3]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.2...v2.0.3
-<!-- [2.0.4]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.3...v2.0.4 -->
+[2.0.4]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.3...v2.0.4

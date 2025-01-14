@@ -1,3 +1,4 @@
+export * as array from '~/handlebars_helpers/array';
 export * as html from '~/handlebars_helpers/html';
 export * as object from '~/handlebars_helpers/object';
 export * as string from '~/handlebars_helpers/string';

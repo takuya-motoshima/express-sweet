@@ -1,5 +1,6 @@
 # EXPRESS SWEET
-EXPRESS SWEET is an extension of EXPRESS.
+
+EXPRESS SWEET is a powerful Express.js extension that streamlines your workflow and boosts productivity with a suite of utilities and enhancements.
 
 - [EXPRESS SWEET](#express-sweet)
   - [EXPRESS SWEET Generator](#express-sweet-generator)
@@ -15,6 +16,7 @@ EXPRESS SWEET is an extension of EXPRESS.
       - [Configuration](#configuration)
       - [Syntax](#syntax)
       - [Layout](#layout)
+      - [Array Helper](#array-helper)
       - [Comparison Helper](#comparison-helper)
       - [HTML Helper](#html-helper)
       - [Object Helper](#object-helper)
@@ -502,6 +504,33 @@ There are three ways to use a layout, listed in precedence order.
 1. Lastly, use defaultLayout if specified in hbs configuration options.  
     Layouts can be nested: just include a declarative layout tag within any layout template to have its content included in the declared "parent" layout.  
     Be aware that too much nesting can impact performances, and stay away from infinite loops.
+
+#### Array Helper
+- `findObjectInArray()`  
+    Finds an object in an array based on the specified field name and value.
+
+    **Parameters:**  
+    - array: Array<{[key: string]: any}>  
+        The array of objects to search.
+    - fieldName: string  
+        The name of the field to search.
+    - fieldValue: any  
+        fieldValue The value to search for.
+
+    **Return:**  
+    `object|null` The first object in the array that matches the criteria, or null if no match is found.
+
+    ```js
+    {{!-- 
+      items is an array of objects: [{id: 123, name: 'Item A'}, {id: 456, name: 'Item B'}]
+      This code will output: "Item A" 
+    --}}
+    {{#each items}}
+      {{#if (eq id 123)}}
+        {{lookup (findObjectInArray ../items 'id' id) 'name'}}
+      {{/if}}
+    {{/each}}
+    ```
 
 #### Comparison Helper
 - `eq()`  

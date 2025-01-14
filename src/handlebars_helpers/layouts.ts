@@ -6,13 +6,13 @@
 
 /**
  * Defines content for a named block declared in layout.
+ * @param {string} name Block Name.
+ * @param {Handlebars.HelperOptions} options Helper Options.
+ * @param {any} context Context.
  * @example
  * {{#contentFor "pageStylesheets"}}
  * <link rel="stylesheet" href='{{{URL "css/style.css"}}}' />
  * {{/contentFor}}
- * @param {string} name Block Name.
- * @param {Handlebars.HelperOptions} options Helper Options.
- * @param {any} context Context.
  */
 const content = (name: string, options: Handlebars.HelperOptions, context: any): void => {
   if (!context.blockCache)
@@ -25,11 +25,11 @@ const content = (name: string, options: Handlebars.HelperOptions, context: any):
 /**
  * Declare block race holders in layout.
  * Imported from {@link https://github.com/TryGhost/express-hbs|express-hbs}
- * @example
- * {{{block "pageScripts"}}}
  * @param {string} name Block Name.
  * @param {Handlebars.HelperOptions} options Helper Options.
  * @return {string} String.
+ * @example
+ * {{{block "pageScripts"}}}
  */
 export const block = function(this: any, name: string, options: Handlebars.HelperOptions) {
   let val = this.blockCache[name];
@@ -44,12 +44,12 @@ export const block = function(this: any, name: string, options: Handlebars.Helpe
 /**
  * Define block content within a page.
  * Imported from {@link https://github.com/TryGhost/express-hbs|express-hbs}
+ * @param {string} name Block Name.
+ * @param {Handlebars.HelperOptions} options Helper Options.
  * @example
  * {{#contentFor "pageScripts"}}
  *   CONTENT HERE
  * {{/contentFor}}
- * @param {string} name Block Name.
- * @param {Handlebars.HelperOptions} options Helper Options.
  */
 export const contentFor = function(this: any, name: string, options: any): void {
   content(name, options, this);

@@ -42,6 +42,7 @@ export default class Model extends sequelize.Model {
 
   /**
    * Operator.
+   * @type {sequelize.Op}
    * @example
    * // Sequelize provides several operators.
    * Post.findAll({
@@ -89,7 +90,6 @@ export default class Model extends sequelize.Model {
    *     }
    *   }
    * });
-   * @type {sequelize.Op}
    */
   static readonly Op: {[key: string]: any} = sequelize.Op;
 
@@ -97,12 +97,12 @@ export default class Model extends sequelize.Model {
    * Creates a object representing a database function. This can be used in search queries, both in where and
    * order parts, and as default values in column definitions. If you want to refer to columns in your
    * function, you should use `sequelize.col`, so that the columns are properly interpreted as columns and not a strings.
+   * @type {sequelize.fn}
    * @example
    * // Convert a user's username to upper case
    * Post.update({
    *   username: this.fn('upper', this.col('username'))
    * })
-   * @type {sequelize.fn}
    */
   static readonly fn: (fn: string, ...args: unknown[]) => any = sequelize.fn;
 
@@ -128,13 +128,13 @@ export default class Model extends sequelize.Model {
   /**
    * Reference to sequelize.Transaction.  
    * This includes properties such as isolation level enums used with the transaction option.
+   * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
+   * @type {sequelize.Transaction}
    * @example
    * BookModel.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED // "READ UNCOMMITTED"
    * BookModel.Transaction.ISOLATION_LEVELS.READ_COMMITTED // "READ COMMITTED"
    * BookModel.Transaction.ISOLATION_LEVELS.REPEATABLE_READ  // "REPEATABLE READ"
    * BookModel.Transaction.ISOLATION_LEVELS.SERIALIZABLE // "SERIALIZABLE"
-   * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
-   * @type {sequelize.Transaction}
    */
   static readonly Transaction: (typeof sequelize.Transaction) = sequelize.Transaction;
 
@@ -173,6 +173,9 @@ export default class Model extends sequelize.Model {
 
   /**
    * Starts a transaction and returns a transaction object to identify the running transaction.
+   * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
+   * @param {sequelize.TransactionOptions} options? Options provided when the transaction is created.
+   * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
    * @example
    * // Simple transaction usage example.
    * let transaction;
@@ -203,9 +206,6 @@ export default class Model extends sequelize.Model {
    *   if (transaction)
    *     await transaction.rollback();
    * }
-   * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
-   * @param {sequelize.TransactionOptions} options? Options provided when the transaction is created.
-   * @return {Promise<sequelize.Transaction>} Returns a transaction object to identify the transaction being executed.
    */
   static async begin(options?: sequelize.TransactionOptions): Promise<sequelize.Transaction> {
     return this.database.transaction(options);
@@ -221,6 +221,11 @@ export default class Model extends sequelize.Model {
   /**
    * Raw Queries.
    * As there are often use cases in which it is just easier to execute raw / already prepared SQL queries, you can use the Model.query method.
+   * @see https://sequelize.org/master/manual/raw-queries.html
+   * @param {string} sql SQL string.
+   * @param {object} options Query options.
+   * @return {Promise<any>} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
+   *                        If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
    * @example
    * // By default the function will return two arguments - a results array, and an object containing metadata (such as amount of affected rows, etc).
    * // Note that since this is a raw query, the metadata are dialect specific.
@@ -229,11 +234,6 @@ export default class Model extends sequelize.Model {
    * // In cases where you don't need to access the metadata you can pass in a query type to tell sequelize how to format the results. For example, for a simple select query you could do:
    * // We didn't need to destructure the result here - the results were returned directly
    * const users = await BookModel.query("SELECT * FROM book", {type: BookModel.QueryTypes.SELECT});
-   * @see https://sequelize.org/master/manual/raw-queries.html
-   * @param {string} sql SQL string.
-   * @param {object} options Query options.
-   * @return {Promise<any>} By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
-   *                        If you are running a type of query where you don't need the metadata, for example a SELECT query, you can pass in a query type to make sequelize format the results:
    */
   static async query(
     sql: string,

@@ -4,11 +4,11 @@
 export default class {
     /**
      * Returns true for asynchronous functions, false otherwise.
+     * @param {Function} value.
+     * @return {boolean}
      * @example
      * Types.isAsyncFunction(async () => {});// true
      * Types.isAsyncFunction(() => {});// false
-     * @param {Function} value.
-     * @return {boolean}
      */
     static isAsyncFunction(value: Function): boolean;
     /**

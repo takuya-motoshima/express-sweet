@@ -38,12 +38,11 @@ module.exports = {
    * This is a hook that rewrites the base URL.
    * If you want to rewrite the app.locals.baseUrl property and the view's baseUrl variable, use this hook to return a new base URL.
    * The default value is the referrer's origin (eg https://example.com).
+   * @type {(baseUrl: string): string}
    * @example
    * rewrite_base_url: baseUrl => {
    *   return `${baseUrl}/admin`;
    * }
-   * 
-   * @type {(baseUrl: string): string}
    */
   rewrite_base_url: baseUrl => {
     return baseUrl;
@@ -52,6 +51,7 @@ module.exports = {
   /**
    * This is a hook for error handling.
    * For example, you can use it when you want to send an external notification of the error received by this hook.
+   * @type {(error: any): void|Promise<void>}
    * @example
    * error_handler: async error => {
    *   // Notify system administrator of error.
@@ -67,8 +67,6 @@ module.exports = {
    *     });
    *   });
    * }
-   * 
-   * @type {(error: any): void|Promise<void>}
    */
   error_handler: error => {
     console.error(`An error has occurred. Error message: ${error.message}`);
