@@ -1642,10 +1642,12 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
     // ]
     await UserModel.findAll({
         attributes: ['id', 'name'],
-        include: [{
-            association: 'profile',
-            attributes: ['userId', 'address', 'tel']
-        }]
+        include: [
+            {
+                association: 'profile',
+                attributes: ['userId', 'address', 'tel']
+            },
+        ]
     });
     ```
 - `public static belongsTo()`  
