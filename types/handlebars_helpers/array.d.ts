@@ -6,7 +6,7 @@
  * @return {object|null} The first object in the array that matches the criteria, or null if no match is found.
  * @example
  * {{!--
- *   items is an array of objects: [{ id: 123, name: 'Item A' }, { id: 456, name: 'Item B' }]
+ *   items is an array of objects: [{id: 123, name: 'Item A'}, {id: 456, name: 'Item B'}]
  *   This code will output: "Item A"
  * --}}
  * {{#each items}}

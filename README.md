@@ -842,6 +842,31 @@ There are three ways to use a layout, listed in precedence order.
     {{cacheBusting '/assets/style.css' '//example.com'}}
     ```
 
+- `stripTags()`  
+    Removes HTML tags from a string, optionally allowing specific tags.
+
+    **Parameters:**  
+    - str: string  
+        The string to remove HTML tags from.
+    - allowedTags: string|string[]  
+        An array of allowed HTML tags. Default is an empty array.
+    - replacement: string  
+        The string to replace HTML tags with. Default is blank.
+
+    **Return:**  
+    `string` The string with HTML tags removed.
+
+    ```js
+    {{!-- results in: lorem ipsum dolor sit amet --}}
+    {{{stripTags '<a href="https://example.com">lorem ipsum <strong>dolor</strong> <em>sit</em> amet</a>'}}}
+
+    {{!-- results in: lorem ipsum <strong>dolor</strong> sit amet --}}
+    {{{stripTags '<a href="https://example.com">lorem ipsum <strong>dolor</strong> <em>sit</em> amet</a>' '<strong>' ''}}}
+
+    {{!-- results in: 🍩lorem ipsum 🍩dolor🍩 🍩sit🍩 amet🍩 --}}
+    {{{stripTags '<a href="https://example.com">lorem ipsum <strong>dolor</strong> <em>sit</em> amet</a>' [] '🍩'}}}
+    ```
+
 #### Object Helper
 - `jsonStringify()`  
     Stringify an object using JSON.stringify.

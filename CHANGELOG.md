@@ -1,8 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.5] - 2025/2/4
+### Added
+- Added a Handlebars helper, available for use in views, to replace HTML tags in a string.
+
+    Example:
+
+    ```html
+    {{!-- results in: lorem ipsum dolor sit amet --}}
+    {{{stripTags '<a href="https://example.com">lorem ipsum <strong>dolor</strong> <em>sit</em> amet</a>'}}}
+
+    {{!-- results in: lorem ipsum <strong>dolor</strong> sit amet --}}
+    {{{stripTags '<a href="https://example.com">lorem ipsum <strong>dolor</strong> <em>sit</em> amet</a>' '<strong>' ''}}}
+
+    {{!-- results in: 🍩lorem ipsum 🍩dolor🍩 🍩sit🍩 amet🍩 --}}
+    {{{stripTags '<a href="https://example.com">lorem ipsum <strong>dolor</strong> <em>sit</em> amet</a>' [] '🍩'}}}
+    ```
+
 ## [2.0.4] - 2025/1/14
-<!-- ## [2.0.4] - Unreleased -->
 ### Changed
 - Refactored variable names.
 - Fix Docker demo.
@@ -11,6 +27,9 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - **`findObjectInArray` Handlebars helper:**  This helper is added to the view, allowing you to find an object in an array based on a specified field name and value.
+
+    Example:
+
     ```html
     {{!-- 
         items is an array of objects: [{id: 123, name: 'Item A'}, {id: 456, name: 'Item B'}]
@@ -469,3 +488,4 @@ All notable changes to this project will be documented in this file.
 [2.0.2]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.1...v2.0.2
 [2.0.3]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.2...v2.0.3
 [2.0.4]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.3...v2.0.4
+[2.0.5]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.4...v2.0.5
