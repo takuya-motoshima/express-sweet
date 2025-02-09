@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.6] - 2025/2/9
+### Fixed
+- Fixed a bug that caused redirection to fail when a path with query parameters was set for the logout redirect URL (`failure_redirect` in `config/authentication.js`).
+
 ## [2.0.5] - 2025/2/4
 ### Added
 - Added a Handlebars helper, available for use in views, to replace HTML tags in a string.
@@ -489,3 +493,4 @@ All notable changes to this project will be documented in this file.
 [2.0.3]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.2...v2.0.3
 [2.0.4]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.3...v2.0.4
 [2.0.5]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.4...v2.0.5
+[2.0.6]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.5...v2.0.6

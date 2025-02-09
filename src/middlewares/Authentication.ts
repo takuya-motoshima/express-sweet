@@ -116,10 +116,13 @@ export default class {
         ? (authenticationConfig.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
         : authenticationConfig.failure_redirect) as string;
 
+      // Base URL without query parameters for path comparison.
+      const failureRedirectBaseUrl = failureRedirectUrl.replace(/\?.*/, '');
+
       // Check if you are logged in.
       if (req.isAuthenticated()) {
         // For authenticated users.
-        if (req.path !== failureRedirectUrl || isAjax) {
+        if (req.path !== failureRedirectBaseUrl || isAjax) {
           // Make user information available as a template variable when a view is requested.
           res.locals.session = req.user;
           next();
@@ -127,7 +130,7 @@ export default class {
           res.redirect(authenticationConfig.success_redirect);
       } else if (!isAjax)
         // If authentication is not established and asynchronous communication is not used, the user is redirected to the login page.
-        if (req.path === failureRedirectUrl)
+        if (req.path === failureRedirectBaseUrl)
           next();
         else
           res.redirect(failureRedirectUrl);
