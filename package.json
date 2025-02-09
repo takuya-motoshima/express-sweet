@@ -1,6 +1,6 @@
 {
   "name": "express-sweet",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "EXPRESS SWEET is a powerful Express.js extension that streamlines your workflow and boosts productivity with a suite of utilities and enhancements.",
   "type": "module",
   "main": "dist/build.cjs",
