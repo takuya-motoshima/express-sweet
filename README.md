@@ -1218,7 +1218,12 @@ For more information on database configuration, see [Database configuration](#co
     ```js
     import * as expressExtension from 'express-sweet';
 
-    await expressExtension.database.Database.isConnect();
+    // Create Database instance.
+    const config = await expressExtension.utils.loadDatabaseConfig();
+    const database = new expressExtension.database.Database(config.database, config.username, config.password, config);
+
+    // Check database connection.
+    await database.isConnect();
     ```
 
 #### Model Class extends [sequelize.Model](https://sequelize.org/api/v6/class/src/model.js~model)

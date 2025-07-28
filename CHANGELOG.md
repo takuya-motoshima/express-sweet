@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.8] - 2025/7/29
+
+### Changed
+
+- Updated the usage example of the `isConnect` method in the `Database` class in the README reference.
+
 ## [2.0.7] - 2025/7/22
 
 ### Changed
