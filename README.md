@@ -1173,9 +1173,9 @@ To take advantage of EXPRESS SWEET’s model, you would simply create a new mode
 This class provides convenient access to the database connection, the Query Builder, and a number of additional convenience methods.  
 For more information, see [reference](#model-class).
 ```js
-import * as expressExtension from 'express-sweet';
+import * as expx from 'express-sweet';
 
-export default class extends expressExtension.database.Model {
+export default class extends expx.database.Model {
   static get table() {
     return 'user';
   }
@@ -1216,14 +1216,31 @@ For more information on database configuration, see [Database configuration](#co
     `Promise<boolean>` Returns `true` if it can connect to the database, `false` if it cannot.
 
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
 
     // Create Database instance.
-    const config = await expressExtension.utils.loadDatabaseConfig();
-    const database = new expressExtension.database.Database(config.database, config.username, config.password, config);
+    const config = await expx.utils.loadDatabaseConfig();
+    const database = new expx.database.Database(config.database, config.username, config.password, config);
 
     // Check database connection.
     await database.isConnect();
+    ```
+- `public getConfig()`  
+    Returns the current database configuration object containing all sequelize options.
+
+    **Return:**  
+    `object` Database configuration object containing all sequelize options.
+
+    ```js
+    import * as expx from 'express-sweet';
+
+    // Create Database instance.
+    const config = await expx.utils.loadDatabaseConfig();
+    const database = new expx.database.Database(config.database, config.username, config.password, config);
+
+    // Get database configuration.
+    const currentConfig = database.getConfig();
+    console.log(currentConfig);
     ```
 
 #### Model Class extends [sequelize.Model](https://sequelize.org/api/v6/class/src/model.js~model)
@@ -1234,9 +1251,9 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
 - `protected static table: string`  
     The name of the table that the model accesses. This member must be defined in a subclass.
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
 
-    export default class extends expressExtension.database.Model {
+    export default class extends expx.database.Model {
         static get table() {
             return 'user';
         }
@@ -1245,9 +1262,9 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
 - `protected static attributes: sequelize.ModelAttributes`  
     List of columns in the table accessed by this model. This member must be defined in a subclass.
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
 
-    export default class extends expressExtension.database.Model {
+    export default class extends expx.database.Model {
         static get attributes() {
             return {
                 id: {
@@ -1383,10 +1400,10 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
     See the [here](https://sequelize.org/api/v6/class/src/associations/base.js~association) for more information.  
     If you omit the alias (`as`) option, the associated name will be hasOne, singular for belongsTo, and plural for hasMany.
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
     import ProfileModel from './ProfileModel';
 
-    export default class extends expressExtension.database.Model {
+    export default class extends expx.database.Model {
         static association() {
             // User has one profile.
             this.hasOne(ProfileModel, {
@@ -1629,10 +1646,10 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
 
     This is a user model that defines an association in which the user has one profile.
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
     import ProfileModel from  './ProfileModel';
 
-    export default class extends expressExtension.database.Model {
+    export default class extends expx.database.Model {
         static association() {
             // User has one profile.
             this.hasOne(ProfileModel, {
@@ -1707,10 +1724,10 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
 
     This is a profile model that defines an association whose profile belongs to one user.
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
     import UserModel from './UserModel';
 
-    export default class extends expressExtension.database.Model {
+    export default class extends expx.database.Model {
         static association() {
             // Profile belongs to one user.
             this.belongsTo(UserModel, {
@@ -1784,10 +1801,10 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
 
     This is a user model that defines an association in which the user has many comments.
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
     import CommentModel from './CommentModel';
 
-    export default class extends expressExtension.database.Model {
+    export default class extends expx.database.Model {
         static association() {
             // User has many comments.
             this.hasMany(CommentModel, {
@@ -1919,10 +1936,10 @@ See [here](https://sequelize.org/api/v6/class/src/model.js~model) for more infor
 
     This is a user model that defines an association where users and books have a many-to-many relationship.
     ```js
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
     import BookModel from './BookModel';
 
-    export default class extends expressExtension.database.Model {
+    export default class extends expx.database.Model {
         static association() {
             // Users have many books, and books belong to many users.
             this.belongsToMany(BookModel, {
@@ -2151,11 +2168,11 @@ The post-authentication logic depends on whether the login request is received a
     If you redirect to /, the page will automatically switch to the URL specified in `success_redirect` of `config/authentication.js`.
     ```js
     import {Router} from 'express';
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
 
     const router = Router();
     router.post('/login', async (req, res, next) => {
-        const isAuthenticated = await expressExtension.services.Authentication.authenticate(req, res, next);
+        const isAuthenticated = await expx.services.Authentication.authenticate(req, res, next);
         res.json(isAuthenticated);
     });
     export default router;
@@ -2185,15 +2202,15 @@ The post-authentication logic depends on whether the login request is received a
     If it fails, redirect to the page with the URL specified by `failure_redirect` in `config/authentication.js`.
     ```js
     import {Router} from 'express';
-    import * as expressExtension from 'express-sweet';
+    import * as expx from 'express-sweet';
 
     const router = Router();
     router.post('/login', async (req, res, next) => {
-        const isAuthenticated = await expressExtension.services.Authentication.authenticate(req, res, next);
+        const isAuthenticated = await expx.services.Authentication.authenticate(req, res, next);
         if (isAuthenticated)
-            await expressExtension.services.Authentication.successRedirect(res);
+            await expx.services.Authentication.successRedirect(res);
         else
-            await expressExtension.services.Authentication.failureRedirect(req, res);
+            await expx.services.Authentication.failureRedirect(req, res);
     });
     export default router;
     ```
@@ -2212,11 +2229,11 @@ If you want to log out the user, call the `services/Authentication.logout()` met
 Invoking `logout()` will remove the `req.user` property and clear the login session (if any).
 ```js
 import {Router} from 'express';
-import * as expressExtension from 'express-sweet';
+import * as expx from 'express-sweet';
 
 const router = Router();
 router.get('/logout', (req, res) => {
-    expressExtension.services.Authentication.logout(req);
+    expx.services.Authentication.logout(req);
     res.redirect('/');
 });
 export default router;
