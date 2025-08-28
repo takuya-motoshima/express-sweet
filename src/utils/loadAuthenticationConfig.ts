@@ -3,9 +3,19 @@ import express from 'express';
 import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
 
 /**
-  * Get Authentication configuration (config/authentication).
-  * @return {Promise<AuthenticationConfig>} Loaded configuration.
-  */
+ * Load authentication configuration from config/authentication.js file.
+ * Returns default authentication configuration if config file doesn't exist.
+ * @returns {Promise<AuthenticationConfig>} The loaded authentication configuration with defaults
+ * @example
+ * ```js
+ * import loadAuthenticationConfig from '~/utils/loadAuthenticationConfig';
+ * 
+ * const config = await loadAuthenticationConfig();
+ * console.log(config.enabled);           // false (default)
+ * console.log(config.username);          // 'username' (default)
+ * console.log(config.success_redirect);  // '/' (default)
+ * ```
+ */
 export default async (): Promise<AuthenticationConfig> => {
   // Options with default values set.
   const defaultOptions: AuthenticationConfig = {
@@ -35,12 +45,14 @@ export default async (): Promise<AuthenticationConfig> => {
   options = Object.assign(defaultOptions, options);
 
   // Check required options.
-  if (options.session_store === 'redis' && !options.redis_host)
+  if (options.session_store === 'redis' && !options.redis_host) {
     throw new TypeError('If the session store is redis, redis_host in the authentication configuration is required');
+  }
 
   // If the session cookie name is overwritten with an empty value, replace it with the default value.
-  if (!options.cookie_name)
+  if (!options.cookie_name) {
     options.cookie_name = 'connect.sid';
+  }
 
   // If an options file is found, it returns options that override the default options.
   return options;

@@ -26,7 +26,11 @@
     "build": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.js",
     "prebuild": "rm -rf dist types",
     "prewatch": "rm -rf dist types",
-    "watch": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.js --watch"
+    "watch": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.js --watch",
+    "docs:build": "typedoc",
+    "docs:clean": "rm -rf docs",
+    "docs:watch": "typedoc --watch",
+    "docs:serve": "typedoc && npx serve docs -p 8080"
   },
   "repository": {
     "type": "git",
@@ -57,7 +61,7 @@
     "postgres",
     "mssql"
   ],
-  "author": "Takuya Motoshima <developer.takuyamotoshima@gmail.com> (https://twitter.com/TakuyaMotoshima)",
+  "author": "Takuya Motoshima <developer.takuyamotoshima@gmail.com> (https://x.com/takuya_motech)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/takuya-motoshima/express-sweet/issues",
@@ -81,7 +85,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "redis": "^4.6.8",
-    "sequelize": "^6.37.1",
+    "sequelize": "^6.37.7",
     "striptags": "^3.2.0"
   },
   "devDependencies": {
@@ -101,6 +105,7 @@
     "@types/passport-local": "^1.0.33",
     "rollup": "^4.45.1",
     "rollup-plugin-typescript2": "^0.36.0",
+    "typedoc": "^0.28.11",
     "typescript": "^5.5.4"
   }
 }

@@ -1,8 +1,25 @@
 import express from 'express';
 /**
- * View's configuration interface.
+ * Handlebars view engine configuration interface.
+ * Defines configuration for template directories, layouts, partials, and rendering hooks.
+ * @see {@link https://handlebarsjs.com/guide/ | Handlebars Guide}
+ * @example
+ * ```js
+ * // config/view.js
+ * export default {
+ *   views_dir: 'views',
+ *   partials_dir: 'views/partials',
+ *   layouts_dir: 'views/layout',
+ *   default_layout: 'views/layout/default',
+ *   extension: '.hbs',
+ *   beforeRender: (req, res) => {
+ *     res.locals.siteName = 'My Website';
+ *     res.locals.currentYear = new Date().getFullYear();
+ *   }
+ * };
+ * ```
  */
-export default interface SesOptions {
+export default interface ViewConfig {
     /**
      * Absolute path to the directory where the view files are located, defaults to `<application root directory>/views`.
      * @type {string}
@@ -33,10 +50,12 @@ export default interface SesOptions {
      * For example, you can set your own local variables that can be used within the view.
      * @type {(res: express.Response) => Promise<void>|void}
      * @example
+     * ```js
      * // The message set here can be referenced in the view as {{message}}.
      * beforeRender: (req, res) => {
      *   res.locals.extra = 'Extra';
      * }
+     * ```
      */
     beforeRender?: (req: express.Request, res: express.Response) => Promise<void> | void;
 }

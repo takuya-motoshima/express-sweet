@@ -1,11 +1,18 @@
 /**
- * Returns true for functions, false otherwise.
- * @param {any} value.
- * @return {boolean}
+ * Check if a value is a function (including async functions).
+ * Returns true for both regular and async functions, false otherwise.
+ * @param {any} value The value to check
+ * @returns {boolean} Returns true if value is a function, false otherwise
  * @example
- * utils.isFunction(() => {});// true
- * utils.isFunction(async () => {});// true
- * utils.isFunction('');// false
+ * ```js
+ * import isFunction from '~/utils/isFunction';
+ * 
+ * isFunction(() => {});           // true
+ * isFunction(async () => {});     // true
+ * isFunction(function() {});      // true
+ * isFunction('');                 // false
+ * isFunction({});                 // false
+ * ```
  */
 export default (value: any): boolean => {
   return value

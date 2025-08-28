@@ -1,6 +1,37 @@
 import express from 'express';
 /**
- * User authentication configuration interface.
+ * User authentication configuration interface using Passport.js.
+ * Defines configuration for user authentication, session management, and security settings.
+ * @see {@link https://www.passportjs.org/ | Passport.js}
+ * @example
+ * ```js
+ * // config/authentication.js
+ * export default {
+ *   enabled: true,
+ *   username: 'email',
+ *   password: 'password',
+ *   success_redirect: '/',
+ *   failure_redirect: '/login',
+ *   session_store: 'redis',
+ *   redis_host: 'redis://localhost:6379',
+ *   authenticate_user: async (username, password, req) => {
+ *     const UserModel = require('../models/UserModel');
+ *     return UserModel.findOne({
+ *       where: { email: username, password },
+ *       raw: true
+ *     });
+ *   },
+ *   subscribe_user: async (id) => {
+ *     const UserModel = require('../models/UserModel');
+ *     return UserModel.findOne({
+ *       where: { id },
+ *       raw: true
+ *     });
+ *   },
+ *   allow_unauthenticated: ['/api', /^\/public/],
+ *   expiration: 24 * 3600000
+ * };
+ * ```
  */
 export default interface AuthenticationConfig {
     /**
@@ -58,6 +89,7 @@ export default interface AuthenticationConfig {
      * URL to redirect after log off, defaults to `/login`.
      * @type {string|((req: express.Request, res: express.Response) => string)}
      * @example
+     * ```js
      * // Set the URL to redirect to in case of login failure as a string.
      * failure_redirect: '/login',
      *
@@ -66,6 +98,7 @@ export default interface AuthenticationConfig {
      *   // If the role stored in the cookie is admin, redirect to the admin login screen.
      *   return req.cookies.role === 'admin' ? '/adminlogin' : 'login';
      * },
+     * ```
     */
     failure_redirect: string | ((req: express.Request, res: express.Response) => string);
     /**
@@ -75,6 +108,7 @@ export default interface AuthenticationConfig {
      * Note that the user information must include an ID value that can identify the user.
      * @type {(username: string, password: string, req: express.Request) => Promise<{[key: string]: any}|null>}
      * @example
+     * ```js
      * authenticate_user: async (username, password, req) => {
      *   const UserModel = require('../models/UserModel');
      *   return UserModel.findOne({
@@ -85,6 +119,7 @@ export default interface AuthenticationConfig {
      *     raw: true
      *   });
      * }
+     * ```
      */
     authenticate_user: (username: string, password: string, req: express.Request) => Promise<{
         [key: string]: any;
@@ -95,6 +130,7 @@ export default interface AuthenticationConfig {
      * The returned data will be set in the req.user property and the view's session variable.
      * @type {(id: number|string) => Promise<{[key: string]: any}>}
      * @example
+     * ```js
      * subscribe_user: async (id) => {
      *   const UserModel = require('../models/UserModel');
      *   return UserModel.findOne({
@@ -102,6 +138,7 @@ export default interface AuthenticationConfig {
      *     raw: true
      *   });
      * }
+     * ```
      */
     subscribe_user: (id: number | string) => Promise<{
         [key: string]: any;

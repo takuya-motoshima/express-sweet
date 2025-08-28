@@ -1,0 +1,35 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "tsconfig": "./tsconfig.docs.json",
+  "theme": "default",
+  "name": "Express Sweet API Reference",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeInternal": true,
+  "readme": "README.md",
+  "highlightLanguages": [
+    "typescript", 
+    "javascript", 
+    "sql", 
+    "bash", 
+    "json", 
+    "html",
+    "yaml",
+    "css",
+    "handlebars"
+  ],
+  "categorizeByGroup": true,
+  "defaultCategory": "Other",
+  "categoryOrder": [
+    "Database",
+    "Authentication", 
+    "Services",
+    "Utils",
+    "Configuration",
+    "Other"
+  ],
+  "sort": ["source-order"],
+  "searchInComments": true
+}

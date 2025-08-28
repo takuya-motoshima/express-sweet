@@ -10,9 +10,11 @@
  * @param {Handlebars.HelperOptions} options Helper Options.
  * @param {any} context Context.
  * @example
+ * ```handlebars
  * {{#contentFor "pageStylesheets"}}
  * <link rel="stylesheet" href='{{{URL "css/style.css"}}}' />
  * {{/contentFor}}
+ * ```
  */
 const content = (name: string, options: Handlebars.HelperOptions, context: any): void => {
   if (!context.blockCache)
@@ -27,9 +29,11 @@ const content = (name: string, options: Handlebars.HelperOptions, context: any):
  * Imported from {@link https://github.com/TryGhost/express-hbs|express-hbs}
  * @param {string} name Block Name.
  * @param {Handlebars.HelperOptions} options Helper Options.
- * @return {string} String.
+ * @returns {string} String.
  * @example
+ * ```handlebars
  * {{{block "pageScripts"}}}
+ * ```
  */
 export const block = function(this: any, name: string, options: Handlebars.HelperOptions) {
   let val = this.blockCache[name];
@@ -47,9 +51,11 @@ export const block = function(this: any, name: string, options: Handlebars.Helpe
  * @param {string} name Block Name.
  * @param {Handlebars.HelperOptions} options Helper Options.
  * @example
+ * ```handlebars
  * {{#contentFor "pageScripts"}}
  *   CONTENT HERE
  * {{/contentFor}}
+ * ```
  */
 export const contentFor = function(this: any, name: string, options: any): void {
   content(name, options, this);

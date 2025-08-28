@@ -9,15 +9,52 @@ import * as utils from '~/utils';
 import View from '~/middlewares/View';
 
 /**
- * Incorporate user authentication into your application.
- * If an unauthenticated user makes a request to a URL that allows access only if authenticated, the user will be redirected to the page specified by "failure_redirect".
+ * Incorporate user authentication into your application using Passport.js middleware.
+ * Provides username/password authentication with session management and route protection.
+ * If an unauthenticated user makes a request to a URL that allows access only if authenticated, 
+ * the user will be redirected to the page specified by "failure_redirect".
  * If that access is asynchronous, a 401 error is returned.
+ * 
+ * @see {@link https://www.passportjs.org/ | Passport.js}
+ * @example
+ * ```js
+ * // Authentication configuration in config/authentication.js
+ * export default {
+ *   enabled: true,
+ *   username: 'email',
+ *   password: 'password',
+ *   success_redirect: '/',
+ *   failure_redirect: '/login',
+ *   authenticate_user: async (username, password, req) => {
+ *     const UserModel = require('../models/UserModel');
+ *     return UserModel.findOne({
+ *       where: { email: username, password },
+ *       raw: true
+ *     });
+ *   },
+ *   subscribe_user: async (id) => {
+ *     const UserModel = require('../models/UserModel');
+ *     return UserModel.findOne({
+ *       where: { id },
+ *       raw: true
+ *     });
+ *   }
+ * }
+ * ```
  */
-export default class {
+export default class Authentication {
   /**
-   * Mount on application.
-   * @param {express.Express} app Express application instance.
-   * @return {Promise<void>}
+   * Mount authentication middleware on Express application.
+   * Sets up Passport.js with local strategy, session management, and route protection.
+   * @param {express.Express} app Express application instance
+   * @returns {Promise<void>}
+   * @example
+   * ```js
+   * // This method is called automatically by express-sweet.mount()
+   * import Authentication from './middlewares/Authentication';
+   * 
+   * await Authentication.mount(app);
+   * ```
    */
   static async mount(app: express.Express): Promise<void> {
     // Load configuration.
@@ -142,18 +179,27 @@ export default class {
 
   /**
    * Check if the request URL does not require authentication.
-   * @param {express.Request} req The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
-   * @param {(string|RegExp)[]} allowUrls A list of URLs that do not require authentication.
-   * @return {boolean} Return true if the request URL does not require authentication.
+   * Compares the request path against a list of allowed URLs/patterns that bypass authentication.
+   * @param {express.Request} req The req object represents the HTTP request
+   * @param {(string|RegExp)[]} allowUrls A list of URLs that do not require authentication
+   * @returns {boolean} Return true if the request URL does not require authentication
+   * @example
+   * ```js
+   * // Configuration example in config/authentication.js
+   * allow_unauthenticated: ['/api', /^\/public/]
+   * ```
    */
   static #isNotRequireAuthentication(req: express.Request, allowUrls: (string|RegExp)[]): boolean {
     const requestUrl = req.path.replace(/\/$/, '');
-    if (!allowUrls.length)
+    if (!allowUrls.length) {
       return true;
-    for (let allowUrl of allowUrls)
-      if ((typeof allowUrl === 'string' && requestUrl.indexOf(allowUrl) !== -1) ||
-          (allowUrl instanceof RegExp && requestUrl.match(allowUrl)))
+    }
+    for (let allowUrl of allowUrls) {
+      if ((typeof allowUrl === 'string' && requestUrl.indexOf(allowUrl) !== -1)
+        || (allowUrl instanceof RegExp && requestUrl.match(allowUrl))) {
         return true;
+      }
+    }
     return false;
   }
 }

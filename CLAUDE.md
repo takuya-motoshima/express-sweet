@@ -30,7 +30,7 @@ The library uses a centralized mounting system (`src/mount.ts`) that initializes
 ### Key Directories
 
 - **`src/middlewares/`** - Express middleware components (Authentication, CORS, Error handling, etc.)
-- **`src/database/`** - Sequelize-based ORM with custom Database and Model classes
+- **`src/database/`** - Sequelize-based ORM with DatabaseManager singleton and custom Model classes
 - **`src/services/`** - Business logic services (Authentication service)
 - **`src/routing/`** - Dynamic router that auto-loads route files
 - **`src/handlebars_helpers/`** - Custom Handlebars template helpers (comparison, date, math, string, etc.)
@@ -45,10 +45,12 @@ The library expects configuration files in a consuming application:
 - `config/view.js` - Handlebars view engine settings
 
 ### Database Layer
-- Custom `Database` class extends Sequelize with additional utilities like `isConnect()`
-- Custom `Model` class extends Sequelize.Model with transaction helpers like `begin()`
-- Automatic model loading from `models/` directory
+- `DatabaseManager` singleton class manages a single Sequelize instance across all models
+- Provides connection testing with `isConnected()`, configuration access with `getConfig()`, and graceful shutdown with `close()`
+- Custom `Model` class extends Sequelize.Model with transaction helpers like `begin()` and shared database instance
+- Automatic model loading from `models/` directory with efficient resource usage
 - Built-in association support
+- All models share the same database connection pool for optimal performance
 
 ### Authentication System
 - Passport.js integration with username/password strategy
