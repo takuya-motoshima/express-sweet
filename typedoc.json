@@ -8,7 +8,7 @@
   "excludePrivate": true,
   "excludeProtected": false,
   "excludeInternal": true,
-  "readme": "README.md",
+  "readme": "docs-src/getting-started.md",
   "highlightLanguages": [
     "typescript", 
     "javascript", 
