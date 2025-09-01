@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.1] - 2025/9/2
+
+### Changed
+
+- Add pool configuration examples and JSDoc documentation to sample database configuration.
+  - [ESM Configuration](configuration_sample/esm/database.js) 
+  - [CJS Configuration](configuration_sample/cjs/database.js)
+
 ## [3.0.0] - 2025/8/26
 
 This release introduces significant improvements to database layer architecture and adds configurable logging support.
@@ -695,3 +703,4 @@ const db = await expx.database.DatabaseManager.getInstance();
 [2.0.8]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.7...v2.0.8
 [2.0.9]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.8...v2.0.9
 [3.0.0]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.9...v3.0.0
+[3.0.1]: https://github.com/takuya-motoshima/express-sweet/compare/v3.0.0...v3.0.1
