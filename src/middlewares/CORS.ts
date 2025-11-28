@@ -40,9 +40,26 @@ export default class CORS {
     // Add CORS header to response when request received.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       res.header('Access-Control-Allow-Origin', req.headers.origin);
-      res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+      res.header('Access-Control-Allow-Headers', [
+        'X-Requested-With',        // XMLHttpRequest identification
+        'X-HTTP-Method-Override',  // HTTP method override for legacy clients
+        'Content-Type',            // Request body content type
+        'Accept',                  // Acceptable response content types
+        'Authorization',           // Bearer tokens, API keys, and other auth credentials
+        'Cache-Control',           // Cache directives
+        'If-None-Match',           // ETag validation for conditional requests
+        'If-Modified-Since',       // Last-Modified validation for conditional requests
+        'Range',                   // Partial content requests for resumable downloads
+        'X-CSRF-Token',            // CSRF protection token
+      ].join(', '));
+      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
       res.header('Access-Control-Allow-Credentials', 'true');
+
+      // Handle preflight requests
+      if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+      }
+
       next();
     });
   }

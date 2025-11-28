@@ -1,4 +1,4 @@
 node_modules/
-demo/app/
-demo/volumes/
+demo/web-app/app/
+demo/web-app/volumes/
 .vscode/

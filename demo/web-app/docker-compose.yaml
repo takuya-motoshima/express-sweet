@@ -1,0 +1,43 @@
+version: "3.1"
+
+services:
+  # Express application container
+  app:
+    container_name: express_sweet_app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mount application source code
+      - ./app:/usr/src/app
+      # Persist node_modules (performance optimization)
+      - /usr/src/app/node_modules
+      - /usr/src/app/client/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      IS_DOCKER: "1"
+      NODE_ENV: development
+    tty: true
+    depends_on:
+      - db
+
+  # MariaDB database container
+  db:
+    image: mariadb:10.8.8
+    container_name: sample_db
+    restart: always
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      # Persist database files
+      - ./volumes/db_data:/var/lib/mysql
+      # Initialize database with schema and seed data (executed in order)
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./sql/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql
+    environment:
+      MYSQL_DATABASE: sample_db
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
+      TZ: Asia/Tokyo
