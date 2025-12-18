@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [4.0.0] - 2025-12-19
 
 ### Breaking Changes
 
@@ -716,4 +716,4 @@ const db = await expx.database.DatabaseManager.getInstance();
 [3.0.0]: https://github.com/takuya-motoshima/express-sweet/compare/v2.0.9...v3.0.0
 [3.0.1]: https://github.com/takuya-motoshima/express-sweet/compare/v3.0.0...v3.0.1
 [3.0.2]: https://github.com/takuya-motoshima/express-sweet/compare/v3.0.1...v3.0.2
-[Unreleased]: https://github.com/takuya-motoshima/express-sweet/compare/v3.0.2...HEAD
+[4.0.0]: https://github.com/takuya-motoshima/express-sweet/compare/v3.0.2...v4.0.0
