@@ -120,8 +120,8 @@ export default class Model extends Model_base {
     };
     /**
      * An enum of query types used by sequelize.query.
-     * @see https://sequelize.org/api/v6/variable/index.html#static-variable-QueryTypes
      * @type {sequelize.QueryTypes}
+     * @see {@link https://sequelize.org/api/v6/variable/index.html#static-variable-QueryTypes | Sequelize QueryTypes}
      */
     static readonly QueryTypes: {
         [key: string]: string;
@@ -251,8 +251,8 @@ export default class Model extends Model_base {
     /**
      * Reference to sequelize.Transaction.
      * This includes properties such as isolation level enums used with the transaction option.
-     * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
      * @type {sequelize.Transaction}
+     * @see {@link https://sequelize.org/api/v6/class/src/transaction.js~transaction | Sequelize Transaction}
      * @example
      * ```js
      * BookModel.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED // "READ UNCOMMITTED"

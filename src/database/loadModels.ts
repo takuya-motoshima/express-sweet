@@ -24,15 +24,15 @@ import Model from '~/database/Model';
  * ```
  */
 export default async (): Promise<void> => {
-  // Directory where model files are stored.
+  // Locate models directory in application root
   const modelsDir = `${process.cwd()}/models`;
 
-  // Exit if the model directory does not exist.
+  // Skip if no models directory exists
   if (!fs.existsSync(modelsDir)) {
     return;
   }
 
-  // Initialize all models.
+  // Load and initialize all model files
   const models: typeof Model[] = <typeof Model[]>[];
   for (let modelPath of globSync(`${modelsDir}/**/*.js`, {nodir: false})) {
     const {default: model} = <{default: typeof Model}> await import(modelPath);
@@ -40,9 +40,8 @@ export default async (): Promise<void> => {
     models.push(model);
   }
 
-  // Model association.
-  // The association is performed after all models have been initialized.
-  // If you make an association before initializing all models, you will get a "Sequelize Association called with something that's not a subclass of Sequelize.Model" error.
+  // Set up associations between models (must be done after all models are initialized)
+  // Prevents "Sequelize Association called with something that's not a subclass of Sequelize.Model" error
   for (let model of models) {
     model.association();
   }

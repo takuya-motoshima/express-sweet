@@ -1,0 +1,61 @@
+{{!< layout/default}}
+{{#contentFor 'title'}}{{title}}{{/contentFor}}
+
+<div class="upload-section">
+  <h2>Single File Upload <span class="text-muted" style="font-size: 0.9rem;">(multipart/form-data)</span></h2>
+  <p>Upload a single file</p>
+
+  <div class="alert alert-primary" style="font-size: 0.875rem;">
+    The server returns the uploaded file information it received. Verify that the response matches what you sent (filename, size, mimetype, etc.).
+  </div>
+
+  <form id="singleFileForm" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="avatar" class="form-label">Select File:</label>
+      <input type="file" class="form-control" id="avatar" name="avatar">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload Single File</button>
+  </form>
+  <div id="singleResult" class="mt-3" style="display: none;">
+    <div id="singleResultContent"></div>
+  </div>
+</div>
+
+{{#contentFor 'script'}}
+<script>
+  function displayFiles(result, contentEl) {
+    let html = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+
+    if (result.success && result.file && result.file.path) {
+      const isImage = result.file.mimetype && result.file.mimetype.startsWith('image/');
+      html += '<div style="margin-top: 1rem;">';
+      html += `<div><strong>${result.file.originalname}</strong> (${result.file.filename})</div>`;
+      if (isImage) {
+        html += `<img src="${result.file.path}" alt="${result.file.originalname}" style="max-width: 300px; margin-top: 0.5rem;">`;
+      }
+      html += '</div>';
+    }
+
+    contentEl.innerHTML = html;
+  }
+
+  document.getElementById('singleFileForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch('/api/multipart-single-file', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+
+      document.getElementById('singleResult').style.display = 'block';
+      displayFiles(result, document.getElementById('singleResultContent'));
+    } catch (error) {
+      document.getElementById('singleResult').style.display = 'block';
+      document.getElementById('singleResultContent').textContent = 'Error: ' + error.message;
+    }
+  });
+</script>
+{{/contentFor}}

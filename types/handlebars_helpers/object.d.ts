@@ -11,8 +11,8 @@
 export declare const jsonStringify: (value: any, indent?: number | string) => string | undefined;
 /**
  * Parses the given string using JSON.parse.
- * @param {any} value Object to stringify.
- * @returns {any} JavaScript value or object described by a string.
+ * @param {any} value JSON string to parse.
+ * @returns {any} JavaScript value or object described by the string.
  * @example
  * ```handlebars
  * {{jsonParse val}}

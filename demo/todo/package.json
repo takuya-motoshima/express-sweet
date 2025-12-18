@@ -1,0 +1,21 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "type": "module",
+  "imports": {
+    "#~/*": "./*"
+  },
+  "scripts": {
+    "start": "PORT=3000 nodemon --ignore views/ bin/www"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express": "^5.2.1",
+    "express-sweet": "^4.0.0",
+    "express-validator": "^6.14.2",
+    "http-errors": "~1.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

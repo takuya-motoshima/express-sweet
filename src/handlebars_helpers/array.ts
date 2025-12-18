@@ -18,7 +18,9 @@
  * ```
  */
 export const findObjectInArray = (array: Array<{[key: string]: any}>, fieldName: string, fieldValue: any): object|null => {
+  // Validate parameters before searching
   if (!array || !fieldName || fieldValue === undefined)
     return null;
-  return array.find(obj => obj[fieldName] === fieldValue) ?? null; 
+  // Find first object matching the field name and value
+  return array.find(obj => obj[fieldName] === fieldValue) ?? null;
 }

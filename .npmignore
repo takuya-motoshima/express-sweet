@@ -2,4 +2,10 @@ node_modules/
 src/
 rollup.config.js
 tsconfig.json
+tsconfig.docs.json
 CLAUDE.md
+docs-dev/
+docs-src/
+.vscode/
+demo/
+typedoc.json

@@ -27,8 +27,10 @@ export const replace = (value: string, find: string, replace: string): string =>
  * ```
  */
 export const split = (value: string, separator: string): string[] => {
+  // Return empty array if value is not a string
   if (!utils.isString(value))
     return [];
+  // Default separator to comma if not specified
   if (!utils.isString(separator))
     separator = ',';
   return value.split(separator);
@@ -58,9 +60,9 @@ export const formatBytes = (bytes: number, decimals: number = 0): string => {
   let result = 0;
   let unit = 'Bytes';
   if (bytes && bytes > 0) {
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    const k = 1024; // 1 KB = 1024 bytes
+    const dm = decimals < 0 ? 0 : decimals; // Ensure non-negative decimals
+    const i = Math.floor(Math.log(bytes) / Math.log(k)); // Calculate unit index
     unit = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][i];
     result = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
   }

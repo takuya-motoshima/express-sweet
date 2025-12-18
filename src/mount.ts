@@ -1,61 +1,93 @@
 import express from 'express'
-import Global from '~/middlewares/Global';
-import Environment from '~/middlewares/Environment';
-import View from '~/middlewares/View';
-import Http from '~/middlewares/Http';
-import CORS from '~/middlewares/CORS';
-import Local from '~/middlewares/Local';
-import Authentication from '~/middlewares/Authentication';
-import Router from '~/routing/Router';
+import globalVars from '~/middlewares/globalVars';
+import envLoader from '~/middlewares/envLoader';
+import viewEngine from '~/middlewares/viewEngine';
+import requestParser from '~/middlewares/requestParser';
+import corsPolicy from '~/middlewares/corsPolicy';
+import localVars from '~/middlewares/localVars';
+import passportAuth from '~/middlewares/passportAuth';
+import routeMapper from '~/middlewares/routeMapper';
 import loadModels from '~/database/loadModels';
-import ErrorHandler from '~/middlewares/ErrorHandler';
+import errorHandler from '~/middlewares/errorHandler';
 
 /**
  * Mount Express Sweet extensions on your Express application.
- * Initializes all middleware in a specific order: Global → Environment → Database → HTTP → View → CORS → Local → Authentication → Router → Error Handler.
+ * Initializes all middleware components in a specific order to ensure proper functionality.
+ *
+ * **Initialization Order:**
+ * 1. Global variables
+ * 2. Environment variables (.env)
+ * 3. Database models
+ * 4. HTTP middleware (body parsing, cookies, static files)
+ * 5. View engine (Handlebars)
+ * 6. CORS configuration
+ * 7. Local variables
+ * 8. Authentication (Passport.js)
+ * 9. URL routing
+ * 10. Error handler
+ *
  * @param {express.Express} app Express application instance
  * @returns {Promise<void>}
  * @example
  * ```js
+ * // Basic usage
  * import express from 'express';
  * import * as expx from 'express-sweet';
- * 
+ *
  * const app = express();
  * await expx.mount(app);
- * 
+ *
  * app.listen(3000, () => {
  *   console.log('Server running on port 3000');
  * });
  * ```
+ * @example
+ * ```js
+ * // With custom middleware
+ * import express from 'express';
+ * import * as expx from 'express-sweet';
+ *
+ * const app = express();
+ *
+ * // Mount Express Sweet
+ * await expx.mount(app);
+ *
+ * // Add custom routes after mounting
+ * app.get('/custom', (req, res) => {
+ *   res.send('Custom route');
+ * });
+ *
+ * app.listen(3000);
+ * ```
  */
 export default async (app: express.Express): Promise<void> => {
-  // Set global variables.
-  Global.mount();
+  // Set global variables
+  globalVars();
 
-  // Load environment variables.
-  await Environment.mount();
+  // Load environment variables from .env file
+  await envLoader();
 
-  // Model initialization and association.
+  // Initialize database models and associations
   await loadModels();
 
-  // Defines all the requisites in HTTP.
-  await Http.mount(app);
+  // Set up HTTP middleware (body parsing, cookies, static files, logging)
+  await requestParser(app);
 
-  // Enable Handlebars template engine.
-  await View.mount(app);
+  // Configure Handlebars template engine
+  await viewEngine(app);
 
-  // Enables the CORS.
-  await CORS.mount(app);
+  // Enable CORS if configured
+  await corsPolicy(app);
 
-  // Set local variables.
-  await Local.mount(app);
+  // Set local variables available in views
+  await localVars(app);
 
-  // Incorporate user authentication into your application.
-  await Authentication.mount(app);
+  // Set up user authentication with Passport.js
+  await passportAuth(app);
 
-  // Set up URL routing.
-  await Router.mount(app);
+  // Configure file-based routing
+  await routeMapper(app);
 
-  // Error handling.
-  await ErrorHandler.mount(app);
+  // Set up error handling middleware (must be last)
+  await errorHandler(app);
 }

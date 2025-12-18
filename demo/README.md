@@ -4,22 +4,7 @@ This directory contains demonstration projects showcasing different use cases of
 
 ## Available Demos
 
-### 1. [Web Application Demo](web-app/)
-
-Traditional web application with server-side rendering, user authentication, and CRUD operations.
-
-**Features:**
-- User login/logout with session management
-- Database models with Sequelize associations
-- Handlebars view templates
-- Docker environment setup with MariaDB
-
-**Use this demo if you're building:**
-- Server-rendered web applications
-- Traditional MVC architecture apps
-- Apps with view templates and forms
-
-### 2. [REST API Demo](rest-api/)
+### 1. [REST API Demo](rest-api/)
 
 Modern REST API with CORS support, demonstrating cross-origin requests and Bearer token authentication.
 
@@ -36,11 +21,39 @@ Modern REST API with CORS support, demonstrating cross-origin requests and Beare
 - Microservices with JSON APIs
 - APIs with cross-origin access requirements
 
-## Getting Started
+### 2. [TODO Demo](todo/)
 
-Choose a demo based on your use case:
+Full-stack TODO application with authentication, database integration, and async operations.
 
-- **For traditional web apps with views** → See [web-app/](web-app/)
-- **For REST APIs with CORS** → See [rest-api/](rest-api/)
+![TODO Login](screencaps/todo-login.jpg)
+![TODO List](screencaps/todo-list.jpg)
 
-Each demo includes its own README with detailed setup instructions.
+**Features:**
+- User authentication with Passport.js
+- Database integration with Sequelize ORM
+- RESTful API with fetch-based async operations
+- Bootstrap 5 UI with no page reloads
+- Session management
+
+**Use this demo if you're building:**
+- Full-stack web applications with user authentication
+- Apps requiring database integration
+- Single-page feel with server-side rendering
+- Applications with CRUD operations
+
+### 3. [File Upload Demo](multer-upload/)
+
+File upload handling with Multer middleware integration.
+
+![Multer Upload](screencaps/multer-upload.jpg)
+
+**Features:**
+- Dynamic upload middleware configuration
+- Single and multiple file uploads
+- Memory and disk storage options
+- Route-based upload handling
+
+**Use this demo if you're building:**
+- Applications with file upload functionality
+- Image/document management systems
+- APIs that accept multipart form data

@@ -1,0 +1,72 @@
+{{!< layout/default}}
+{{#contentFor 'title'}}{{title}}{{/contentFor}}
+
+<div class="upload-section">
+  <h2>Multiple Field Upload <span class="text-muted" style="font-size: 0.9rem;">(multipart/form-data)</span></h2>
+  <p>Upload files with different field names</p>
+
+  <div class="alert alert-primary" style="font-size: 0.875rem;">
+    The server returns uploaded files grouped by field name (logo, banner) it received. Verify that the response includes all files with correct field assignments.
+  </div>
+
+  <form id="multipleFieldsForm" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="logo" class="form-label">Logo:</label>
+      <input type="file" class="form-control" id="logo" name="logo">
+    </div>
+    <div class="mb-3">
+      <label for="banner" class="form-label">Banner:</label>
+      <input type="file" class="form-control" id="banner" name="banner">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload Multiple Fields</button>
+  </form>
+  <div id="fieldsResult" class="mt-3" style="display: none;">
+    <div id="fieldsResultContent"></div>
+  </div>
+</div>
+
+{{#contentFor 'script'}}
+<script>
+  function displayFiles(result, contentEl) {
+    let html = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+
+    if (result.success && result.files && typeof result.files === 'object' && !Array.isArray(result.files)) {
+      html += '<div style="margin-top: 1rem;">';
+      for (const fieldname in result.files) {
+        html += `<div style="margin-bottom: 1rem;"><strong>${fieldname}:</strong></div>`;
+        result.files[fieldname].forEach(file => {
+          const isImage = file.mimetype && file.mimetype.startsWith('image/');
+          html += `<div style="margin-bottom: 1rem;">`;
+          html += `<div><strong>${file.originalname}</strong> (${file.filename})</div>`;
+          if (isImage) {
+            html += `<img src="${file.path}" alt="${file.originalname}" style="max-width: 300px; margin-top: 0.5rem;">`;
+          }
+          html += '</div>';
+        });
+      }
+      html += '</div>';
+    }
+
+    contentEl.innerHTML = html;
+  }
+
+  document.getElementById('multipleFieldsForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch('/api/multipart-multiple-file-form', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+
+      document.getElementById('fieldsResult').style.display = 'block';
+      displayFiles(result, document.getElementById('fieldsResultContent'));
+    } catch (error) {
+      document.getElementById('fieldsResult').style.display = 'block';
+      document.getElementById('fieldsResultContent').textContent = 'Error: ' + error.message;
+    }
+  });
+</script>
+{{/contentFor}}

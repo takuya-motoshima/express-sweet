@@ -1,0 +1,134 @@
+{{!< default}}
+{{#contentFor 'title'}}My Todos{{/contentFor}}
+
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">My Todo List</h3>
+
+          <!-- Add new todo form -->
+          <form id="addTodoForm" class="mb-4">
+            <div class="input-group">
+              <input type="text" class="form-control" id="todoTitle" placeholder="Enter new todo..." required>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+
+          <!-- Todos list -->
+          <div id="todosList">
+            <div class="text-center text-muted py-4">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#contentFor "script"}}
+<script>
+let todos = [];
+
+// Load todos
+async function loadTodos() {
+  try {
+    const response = await fetch('/api/todos');
+    todos = await response.json();
+    renderTodos();
+  } catch (error) {
+    document.getElementById('todosList').innerHTML =
+      '<div class="alert alert-danger">Failed to load todos</div>';
+  }
+}
+
+// Render todos
+function renderTodos() {
+  const todosList = document.getElementById('todosList');
+
+  if (todos.length === 0) {
+    todosList.innerHTML = '<p class="text-muted text-center">No todos yet. Add one above!</p>';
+    return;
+  }
+
+  todosList.innerHTML = todos.map(todo => `
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
+      <div class="form-check flex-grow-1">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          ${todo.completed ? 'checked' : ''}
+          onchange="toggleTodo(${todo.id})"
+        >
+        <label class="form-check-label ${todo.completed ? 'text-decoration-line-through text-muted' : ''}">
+          ${todo.title}
+        </label>
+      </div>
+      <button class="btn btn-sm btn-danger" onclick="deleteTodo(${todo.id})">Delete</button>
+    </div>
+  `).join('');
+}
+
+// Add todo
+document.getElementById('addTodoForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const title = document.getElementById('todoTitle').value.trim();
+
+  if (!title) return;
+
+  try {
+    const response = await fetch('/api/todos', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({title})
+    });
+
+    if (response.ok) {
+      document.getElementById('todoTitle').value = '';
+      await loadTodos();
+    }
+  } catch (error) {
+    alert('Failed to add todo');
+  }
+});
+
+// Toggle todo
+async function toggleTodo(id) {
+  try {
+    const response = await fetch(`/api/todos/${id}/toggle`, {
+      method: 'PUT'
+    });
+
+    if (response.ok) {
+      await loadTodos();
+    }
+  } catch (error) {
+    alert('Failed to update todo');
+  }
+}
+
+// Delete todo
+async function deleteTodo(id) {
+  if (!confirm('Are you sure you want to delete this todo?')) return;
+
+  try {
+    const response = await fetch(`/api/todos/${id}`, {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      await loadTodos();
+    }
+  } catch (error) {
+    alert('Failed to delete todo');
+  }
+}
+
+// Load todos on page load
+loadTodos();
+</script>
+{{/contentFor}}

@@ -1,0 +1,19 @@
+{
+  "name": "multer-upload",
+  "version": "1.0.0",
+  "type": "module",
+  "imports": {
+    "#~/*": "./*"
+  },
+  "scripts": {
+    "start": "PORT=3000 nodemon bin/www"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express": "^5.2.1",
+    "express-sweet": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

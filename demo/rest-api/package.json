@@ -1,19 +1,17 @@
 {
-  "name": "express-sweet-rest-api-demo",
+  "name": "rest-api",
   "version": "1.0.0",
-  "description": "EXPRESS SWEET REST API demo with CORS support",
   "type": "module",
   "imports": {
     "#~/*": "./*"
   },
   "scripts": {
-    "start": "PORT=3002 node bin/www",
-    "dev": "PORT=3002 nodemon bin/www"
+    "start": "PORT=3000 nodemon bin/www"
   },
   "dependencies": {
     "debug": "~2.6.9",
-    "express": "^4.21.2",
-    "express-sweet": "^3.0.0"
+    "express": "^5.2.1",
+    "express-sweet": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

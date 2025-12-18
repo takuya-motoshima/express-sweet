@@ -1,0 +1,65 @@
+{{!< layout/default}}
+{{#contentFor 'title'}}{{title}}{{/contentFor}}
+
+<div class="upload-section">
+  <h2>Multiple Files Upload <span class="text-muted" style="font-size: 0.9rem;">(multipart/form-data)</span></h2>
+  <p>Upload multiple files with same field name</p>
+
+  <div class="alert alert-primary" style="font-size: 0.875rem;">
+    The server returns an array of uploaded files it received. Verify that the response includes all files you sent with correct information.
+  </div>
+
+  <form id="multipleFilesForm" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="photos" class="form-label">Select Files:</label>
+      <input type="file" class="form-control" id="photos" name="photos" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload Multiple Files</button>
+  </form>
+  <div id="multipleResult" class="mt-3" style="display: none;">
+    <div id="multipleResultContent"></div>
+  </div>
+</div>
+
+{{#contentFor 'script'}}
+<script>
+  function displayFiles(result, contentEl) {
+    let html = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+
+    if (result.success && result.files && Array.isArray(result.files)) {
+      html += '<div style="margin-top: 1rem;">';
+      result.files.forEach(file => {
+        const isImage = file.mimetype && file.mimetype.startsWith('image/');
+        html += `<div style="margin-bottom: 1rem;">`;
+        html += `<div><strong>${file.originalname}</strong> (${file.filename})</div>`;
+        if (isImage) {
+          html += `<img src="${file.path}" alt="${file.originalname}" style="max-width: 300px; margin-top: 0.5rem;">`;
+        }
+        html += '</div>';
+      });
+      html += '</div>';
+    }
+
+    contentEl.innerHTML = html;
+  }
+
+  document.getElementById('multipleFilesForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch('/api/multipart-multiple-files', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+
+      document.getElementById('multipleResult').style.display = 'block';
+      displayFiles(result, document.getElementById('multipleResultContent'));
+    } catch (error) {
+      document.getElementById('multipleResult').style.display = 'block';
+      document.getElementById('multipleResultContent').textContent = 'Error: ' + error.message;
+    }
+  });
+</script>
+{{/contentFor}}

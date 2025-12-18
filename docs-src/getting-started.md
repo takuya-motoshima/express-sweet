@@ -1,16 +1,77 @@
-# Express Sweet API Documentation
-
 Express Sweet is a powerful Express.js extension that streamlines your development workflow with comprehensive utilities and enhancements.
+
+## Express 5 Support
+
+**Version 4.0+ brings full Express 5 compatibility with production-ready solutions:**
+
+- **Express 5.2.1** - Latest Express version with modern features
+- **Node.js 18+** - Requires Node.js 18.x or higher
+- **Query Parser Behavior** - Maintains Express 4 nested query object support
+- **Multipart Form Support** - Built-in handling for file uploads and form submissions
+- **Modern Route Patterns** - Full RegExp with named capture groups support
+
+For more details on Express 5 changes, see the [Express.js Release Notes](https://expressjs.com/en/changelog/).
 
 ## Quick Start
 
-### Installation
+### Project Generator (Recommended)
+
+The fastest way to get started is using the express-sweet-generator CLI tool.
+
+**1. Install the generator globally:**
+```bash
+npm install -g express-sweet-generator
+```
+
+**2. Create your application:**
+```bash
+# CommonJS project (default)
+express-sweet myapp
+
+# ESM project
+express-sweet -o esm myapp
+
+# With custom port
+express-sweet -o esm -p 8080 myapp
+```
+
+**3. Install dependencies and start:**
+```bash
+cd myapp
+npm install
+npm start
+```
+
+**Generator Options:**
+```bash
+express-sweet -h
+
+Usage: express-sweet [options] [dir]
+
+Options:
+    --version                    output the version number
+  -o, --output <output>         add output <module> support (esm|cjs) (defaults to cjs)
+  -p, --port <port>            application listening port (default: 3000)
+  -f, --force                  force on non-empty directory
+  -h, --help                   output usage information
+```
+
+This generates a complete project structure with:
+- Pre-configured Express Sweet setup
+- Sample models, routes, and views
+- Database configuration templates
+- Authentication scaffolding
+- Development and production configurations
+
+### Manual Installation
+
+For existing projects or custom setups:
 
 ```bash
 npm install express-sweet
 ```
 
-### Basic Setup
+**Basic Setup:**
 
 ```js
 import express from 'express';
@@ -35,7 +96,8 @@ your-app/
 │   ├── database.js         # Database connection settings
 │   ├── authentication.js   # Authentication and session settings
 │   ├── view.js             # Template engine configuration
-│   └── logging.js          # HTTP request logging configuration
+│   ├── logging.js          # HTTP request logging configuration
+│   └── upload.js           # File upload configuration
 ├── models/                 # Database models (Sequelize ORM)
 ├── routes/                 # Express route definitions
 ├── views/                  # Handlebars template files
@@ -82,7 +144,7 @@ export default {
   failure_redirect: '/login',
   
   authenticate_user: async (username, password) => {
-    const UserModel = require('../models/UserModel');
+    const {default: UserModel} = await import('../models/UserModel.js');
     return await UserModel.findOne({
       where: { email: username, password }
     });
@@ -101,6 +163,103 @@ export default {
   max_body_size: '100mb',
   router_dir: path.join(process.cwd(), 'routes'),
   default_router: '/home'
+};
+```
+
+### Upload Configuration
+
+File upload settings using Multer in `config/upload.js`:
+
+```js
+export default {
+  enabled: true,
+
+  resolve_middleware: (req, multer) => {
+    // Single file upload
+    if (req.path === '/api/user/avatar' && req.method === 'POST') {
+      const upload = multer({ storage: multer.memoryStorage() });
+      return upload.single('avatar');
+    }
+
+    // Multiple files with same field name
+    if (req.path === '/api/gallery' && req.method === 'POST') {
+      const upload = multer({ storage: multer.memoryStorage() });
+      return upload.array('photos', 10);
+    }
+
+    // Multiple file fields
+    if (req.path === '/api/admin/firms' && req.method === 'POST') {
+      const upload = multer({ storage: multer.memoryStorage() });
+      return upload.fields([
+        { name: 'logo', maxCount: 1 },
+        { name: 'eyecatch', maxCount: 1 }
+      ]);
+    }
+
+    return null;
+  }
+};
+```
+
+**Storage Options:**
+
+- **Memory Storage** (`multer.memoryStorage()`): Stores files in memory as Buffer objects. Fast, suitable for small files.
+- **Disk Storage** (`multer.diskStorage()`): Stores files on disk. Better for large files or persistent storage.
+
+**Accessing Uploaded Files in Routes:**
+
+```js
+router.post('/avatar', (req, res) => {
+  // Single file: req.file
+  console.log(req.file.originalname);
+  console.log(req.file.mimetype);
+  console.log(req.file.buffer); // for memory storage
+
+  // Multiple files: req.files (array)
+  req.files.forEach(file => {
+    console.log(file.originalname);
+  });
+
+  // Multiple fields: req.files (object)
+  console.log(req.files['logo'][0]);
+  console.log(req.files['eyecatch'][0]);
+});
+```
+
+### View Configuration
+
+Template engine settings in `config/view.js`:
+
+```js
+export default {
+  views_dir: path.join(process.cwd(), 'views'),
+  partials_dir: path.join(process.cwd(), 'views/partials'),
+  layouts_dir: path.join(process.cwd(), 'views/layout'),
+  default_layout: path.join(process.cwd(), 'views/layout/default.hbs'),
+  extension: '.hbs',
+
+  beforeRender: (req, res) => {
+    // Set custom local variables for templates
+    res.locals.siteName = 'My App';
+  }
+};
+```
+
+### Logging Configuration
+
+HTTP request logging settings in `config/logging.js`:
+
+```js
+export default {
+  format: 'combined', // 'combined', 'common', 'dev', 'short', 'tiny'
+
+  skip: (req, res) => {
+    // Skip logging for static files to reduce noise
+    return req.path.startsWith('/build/') || req.path.startsWith('/upload/');
+
+    // Or skip logging for specific routes
+    // return req.path === '/health';
+  }
 };
 ```
 
@@ -262,6 +421,21 @@ router.get('/', async (req, res) => {
 });
 ```
 
+### Route Patterns with RegExp (Express 5)
+
+Use RegExp with named capture groups for parameter validation:
+
+```js
+// Match numeric user IDs: /users/123
+router.get(/^\/(?<userId>\d+)$/, async (req, res) => {
+  const user = await UserModel.findByPk(req.params.userId);
+  res.json(user);
+});
+
+// The old Express 4 syntax is no longer supported:
+// router.get('/:userId(\\d+)', ...) // ❌ Not supported in Express 5
+```
+
 ### Default Routing
 
 Set a default route in `config/config.js`:
@@ -337,6 +511,46 @@ Total: ${{add price tax}}
 
 ## Migration Guide
 
+### v4.0.0 Breaking Changes (Express 5)
+
+**Express 5.2.1 Migration:**
+
+```js
+// Requires Node.js 18.x or higher
+// npm install express-sweet@4
+```
+
+**Route Pattern Changes:**
+
+```js
+// Before (Express 4)
+router.get('/:userId(\\d+)', (req, res) => {
+  const userId = req.params.userId;
+});
+
+// After (Express 5)
+router.get(/^\/(?<userId>\d+)$/, (req, res) => {
+  const userId = req.params.userId; // Works with named capture group
+});
+```
+
+**Query Parser (Automatic):**
+
+Express Sweet automatically configures `query parser: 'extended'` to maintain Express 4 behavior for nested query objects:
+
+```js
+// This works out of the box in Express Sweet
+// ?user[email]=test@example.com
+console.log(req.query.user.email); // 'test@example.com'
+
+// Without Express Sweet, this would be:
+// [Object: null prototype] { user: [Object: null prototype] { email: 'test@example.com' } }
+```
+
+**Multipart Form Data:**
+
+Express Sweet includes `multer().none()` middleware by default for forms without files. For file uploads, use `config/upload.js`.
+
 ### v3.0.0 Breaking Changes
 
 **DatabaseManager replaces Database class:**
@@ -395,12 +609,12 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/users/:id
-router.put('/:id', async (req, res) => {
+// PUT /api/users/:id - Using RegExp for numeric ID validation (Express 5)
+router.put(/^\/(?<id>\d+)$/, async (req, res) => {
   const [updated] = await UserModel.update(req.body, {
     where: { id: req.params.id }
   });
-  
+
   if (updated) {
     const user = await UserModel.findByPk(req.params.id);
     res.json(user);

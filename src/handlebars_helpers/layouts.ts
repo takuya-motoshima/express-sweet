@@ -17,10 +17,12 @@
  * ```
  */
 const content = (name: string, options: Handlebars.HelperOptions, context: any): void => {
+  // Initialize block cache if it doesn't exist
   if (!context.blockCache)
     context.blockCache = {};
+  // Get or create array for this named block
   const block = context.blockCache[name] || (context.blockCache[name] = []);
-  // const block = blockCache[name] || (blockCache[name] = []);
+  // Add rendered content to block array
   block.push(options.fn(context));
 }
 
@@ -36,12 +38,14 @@ const content = (name: string, options: Handlebars.HelperOptions, context: any):
  * ```
  */
 export const block = function(this: any, name: string, options: Handlebars.HelperOptions) {
+  // Get cached block content for this name
   let val = this.blockCache[name];
-  // let val = blockCache[name];
+  // Use default content if no cached content exists
   if (val === undefined && typeof options.fn === 'function')
     val = options.fn(this);
+  // Join array content with newlines
   if (Array.isArray(val))
-    val = val.join('\n'); 
+    val = val.join('\n');
   return val;
 }
 

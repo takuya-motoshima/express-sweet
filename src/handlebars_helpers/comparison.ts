@@ -150,12 +150,9 @@ export const not = (expression: any): boolean => {
  * ```
  */
 export const ifx = (condition: boolean, value1: any, value2: any): any => {
-  // Check if user has omitted the last parameter
-  // if that's the case, it would be the Handlebars options object
-  // which it sends always as the last parameter.
+  // Check if second parameter was omitted (Handlebars passes options object as last param)
   if (utils.isObject(value2) && value2.name === 'ifx' && value2.hasOwnProperty('hash'))
-    // This means the user has skipped the last parameter,
-    // so we should return an empty string ('') in the else case instead.
+    // Use empty string as default for omitted else value
     value2 = '';
   return condition ? value1 : value2;
 }
@@ -174,10 +171,10 @@ export const ifx = (condition: boolean, value1: any, value2: any): any => {
  */
 export const empty = (value: any): boolean => {
   if (typeof value === 'string')
-    // Trim if it's a string.
-    value = value.replace(/^[\s　]+|[\s　]+$/g, ''); 
+    // Trim whitespace from strings before checking
+    value = value.replace(/^[\s　]+|[\s　]+$/g, '');
   else if (Array.isArray(value) && value.length === 0)
-    // Replace value with null if it is an array and has no elements.
+    // Treat empty arrays as null
     value = null;
   return !!!value;
 }
@@ -196,10 +193,10 @@ export const empty = (value: any): boolean => {
  */
 export const notEmpty = (value: any): boolean => {
   if (typeof value === 'string')
-    // Trim if it's a string.
-    value = value.replace(/^[\s　]+|[\s　]+$/g, ''); 
+    // Trim whitespace from strings before checking
+    value = value.replace(/^[\s　]+|[\s　]+$/g, '');
   else if (Array.isArray(value) && value.length === 0)
-    // Replace value with null if it is an array and has no elements.
+    // Treat empty arrays as null
     value = null;
   return !!value;
 }
@@ -230,9 +227,10 @@ export const count = (items: any[]): number|false => {
  * ```
  */
 export const and = (...params: any[]): boolean => {
-  // Ignore the object appended by handlebars.
+  // Remove Handlebars options object from parameters
   if (utils.isObject(params[params.length-1]))
     params.pop();
+  // Return false if any parameter is falsy
   for (let param of params)
     if (!param) return false;
   return true;
@@ -249,9 +247,10 @@ export const and = (...params: any[]): boolean => {
  * ```
  */
 export const or = (...params: any[]): boolean => {
-  // Ignore the object appended by handlebars.
+  // Remove Handlebars options object from parameters
   if (utils.isObject(params[params.length-1]))
     params.pop();
+  // Return true if any parameter is truthy
   for (let param of params)
     if (param) return true;
   return false;
@@ -268,8 +267,9 @@ export const or = (...params: any[]): boolean => {
  * ```
  */
 export const coalesce = (...params: any[]): any => {
-  // Ignore the object appended by handlebars.
+  // Remove Handlebars options object from parameters
   if (utils.isObject(params[params.length-1])) params.pop();
+  // Return first truthy value
   for (let param of params)
     if (param)
       return param;
@@ -312,10 +312,11 @@ export const includes = (items: any[], value: any, strict: boolean = true): bool
  * ```
  */
 export const regexMatch = (val: string, pattern: string, flags?: string): boolean => {
+  // Convert non-string values to string
   if (!utils.isString(val))
     val = val.toString();
 
-  // If the optional flags parameter is a Handlebars option object, replace flags with undefined.
+  // Handle optional flags parameter (Handlebars may pass options object)
   if (utils.isObject(flags))
     flags = undefined;
   const regex = new RegExp(pattern, flags);

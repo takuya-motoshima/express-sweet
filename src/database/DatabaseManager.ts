@@ -39,15 +39,17 @@ export default class DatabaseManager {
    * ```
    */
   static async getInstance(): Promise<sequelize.Sequelize> {
+    // Create new instance if not exists (singleton pattern)
     if (!this.instance) {
       this.config = await loadDatabaseConfig();
-      if (process.env.EXPRESS_DEBUG) {
-        console.log(`Connecting to database: ${this.config.database} (${this.config.dialect})`);
+      if (process.env.SWEET_DEBUG) {
+        console.log(`[Sweet] Connecting to database "${this.config.database}" using ${this.config.dialect}`);
       }
+      // Initialize Sequelize with database credentials
       this.instance = new sequelize.Sequelize(
-        this.config.database!, 
-        this.config.username!, 
-        this.config.password || undefined, 
+        this.config.database!,
+        this.config.username!,
+        this.config.password || undefined,
         this.config
       );
     }
@@ -70,6 +72,7 @@ export default class DatabaseManager {
   static async isConnected(): Promise<boolean> {
     const sequelize = await this.getInstance();
     try {
+      // Attempt to authenticate with database
       await sequelize.authenticate();
       return true;
     } catch {
@@ -92,6 +95,7 @@ export default class DatabaseManager {
    * ```
    */
   static async getConfig(): Promise<object> {
+    // Load config if not already cached
     if (!this.config) {
       this.config = await loadDatabaseConfig();
     }
@@ -131,7 +135,9 @@ export default class DatabaseManager {
    */
   static async close(): Promise<void> {
     if (this.instance) {
+      // Close database connection
       await this.instance.close();
+      // Reset singleton state
       this.instance = null;
       this.config = null;
     }

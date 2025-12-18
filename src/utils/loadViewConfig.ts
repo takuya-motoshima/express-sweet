@@ -33,7 +33,7 @@ import ViewConfig from '~/interfaces/ViewConfig';
  * ```
  */
 export default async (): Promise<ViewConfig> => {
-  // Options with default values set.
+  // Default Handlebars configuration
   const defaultOptions: ViewConfig = {
     views_dir: path.join(process.cwd(), 'views'),
     partials_dir: path.join(process.cwd(), 'views/partials'),
@@ -43,12 +43,12 @@ export default async (): Promise<ViewConfig> => {
     beforeRender: (req: express.Request, res: express.Response) => {}
   };
 
-  // If the options file is not found, the default options are returned.
+  // Return default options if config file doesn't exist
   const filePath = `${process.cwd()}/config/view`;
   if (!fs.existsSync(`${filePath}.js`))
     return defaultOptions;
 
-  // If an options file is found, it returns options that override the default options.
+  // Load and merge user configuration with defaults
   const {default: options} = await import(`${filePath}.js`);
   return Object.assign(defaultOptions, options);
 }

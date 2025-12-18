@@ -1,0 +1,62 @@
+{{!< layout/default}}
+{{#contentFor 'title'}}{{title}}{{/contentFor}}
+
+<div class="upload-section">
+  <h2>URL-encoded Form <span class="text-muted" style="font-size: 0.9rem;">(application/x-www-form-urlencoded)</span></h2>
+  <p>Submit form data without files</p>
+
+  <div class="alert alert-primary" style="font-size: 0.875rem;">
+    The server returns the form data it received. Verify that the response matches what you submitted (username, email, message, etc.).
+  </div>
+
+  <form id="urlencodedForm">
+    <div class="mb-3">
+      <label for="urlencodedUsername" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="urlencodedUsername" name="username" value="john_doe">
+    </div>
+    <div class="mb-3">
+      <label for="urlencodedEmail" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="urlencodedEmail" name="email" value="john@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="urlencodedMessage" class="form-label">Message:</label>
+      <textarea class="form-control" id="urlencodedMessage" name="message" rows="3">Hello, this is a test message.</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit URL-encoded Form</button>
+  </form>
+  <div id="urlencodedResult" class="mt-3" style="display: none;">
+    <div id="urlencodedResultContent"></div>
+  </div>
+</div>
+
+{{#contentFor 'script'}}
+<script>
+  document.getElementById('urlencodedForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    // Convert FormData to URLSearchParams for application/x-www-form-urlencoded
+    const params = new URLSearchParams();
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+
+    try {
+      const response = await fetch('/api/urlencoded-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params.toString()
+      });
+      const result = await response.json();
+
+      document.getElementById('urlencodedResult').style.display = 'block';
+      document.getElementById('urlencodedResultContent').innerHTML = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+    } catch (error) {
+      document.getElementById('urlencodedResult').style.display = 'block';
+      document.getElementById('urlencodedResultContent').textContent = 'Error: ' + error.message;
+    }
+  });
+</script>
+{{/contentFor}}
