@@ -94,7 +94,25 @@ git push origin v4.0.0
 npm publish
 ```
 
-### 7. リリース後の確認
+### 7. GitHub Release 作成
+
+1. **GitHubのReleasesページにアクセス**
+   - https://github.com/takuya-motoshima/express-sweet/releases
+
+2. **「Create a new release」または「Draft a new release」をクリック**
+
+3. **リリース情報を入力**
+   - **Choose a tag**: 既存の `v4.0.0` を選択
+   - **Release title**: `v4.0.0` または `Release v4.0.0`
+   - **Describe this release**: CHANGELOG.mdの該当バージョンの内容をコピー＆ペースト
+
+4. **オプション設定**
+   - **Set as the latest release**: チェックを入れる
+   - **Set as a pre-release**: チェックしない（正式リリースの場合）
+
+5. **「Publish release」をクリック**
+
+### 8. リリース後の確認
 
 1. **npm パッケージページ確認**
    - https://www.npmjs.com/package/express-sweet
