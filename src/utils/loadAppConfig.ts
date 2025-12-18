@@ -25,7 +25,7 @@ export default async (): Promise<AppConfig> => {
     max_body_size: '100kb',
     router_dir: path.join(process.cwd(), 'routes'),
     default_router: undefined,
-    rewrite_base_url: (baseUrl: string): string => baseUrl,
+    rewrite_base_url: (baseUrl: string | undefined): string | undefined => baseUrl,
     is_ajax: (req: express.Request): boolean => {
       return !!req.xhr;
     },

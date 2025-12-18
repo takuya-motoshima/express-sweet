@@ -24,7 +24,7 @@ npm version 4.0.0 --no-git-tag-version
 ### 2. ドキュメント生成
 
 ```bash
-npm run docs
+npm run docs:build
 ```
 
 新しいバージョン（4.0.0）が `docs/` 配下の TypeDoc ドキュメントに反映される
