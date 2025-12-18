@@ -47,6 +47,7 @@ export default interface DatabaseConfig {
    * Environment-specific database configuration.
    * Key represents environment name (development, test, production, etc.)
    * Value contains Sequelize connection options for that environment.
+   * @type {sequelize.Options}
    */
   [key: string]: sequelize.Options
 }

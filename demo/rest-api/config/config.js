@@ -8,7 +8,7 @@ export default {
    * Environment variable file (.env) path, defaults to none (undefined).
    * @type {string}
    */
-  // env_path: '.env',
+  env_path: '.env',
 
   /**
    * CORS permission, defaults to invalid (false).
@@ -83,7 +83,13 @@ export default {
    * ```
    */
   hook_handle_error: (error, req, res, next) => {
+    // Log error with request context for debugging
+    console.error(`Error occurred while processing ${req.method} ${req.originalUrl}:`, error);
+
+    // Determine HTTP status code (use error.status if available, otherwise 500)
     const status = error.status || 500;
+
+    // Return JSON error response
     res.status(status).json({
       error: {
         status,

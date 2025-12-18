@@ -56,8 +56,3 @@ export * as interfaces from './interfaces';
  * Custom Handlebars template helpers
  */
 export * as handlebars_helpers from './handlebars_helpers';
-
-/**
- * Express routing utilities
- */
-export * as routing from './routing';

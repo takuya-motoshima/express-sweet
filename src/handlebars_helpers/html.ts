@@ -14,24 +14,24 @@ import striptags from 'striptags';
  * ```
  */
 export const cacheBusting = (filePath: string, baseUrl?: string): string => {
-  // Absolute path of file.
+  // Resolve absolute path in public directory
   const absolutePath = `${path.join(process.cwd(), 'public')}/${filePath.replace(/^\//, '')}`;
 
-  // Exit if the file does not exist.
+  // Return original path if file doesn't exist
   if (!fs.existsSync(absolutePath))
     return filePath;
 
-  // Returns the original file name with the file update time added.
+  // Get file modification time as Unix timestamp
   const mtime = (new Date(fs.statSync(absolutePath).mtime)).getTime();
 
-  // Result URL.
+  // Build result URL
   let url = '';
 
-  // If there is a base URL, set it at the beginning of the result URL.
+  // Prepend base URL if provided
   if (baseUrl)
     url + baseUrl.replace(/\/$/, '');
 
-  // Set the path of the desired file to the result URL.
+  // Append file path with cache-busting timestamp query parameter
   url += `/${filePath.replace(/^\//, '')}?${mtime}`;
   return url;
 }

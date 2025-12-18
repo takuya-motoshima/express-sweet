@@ -1,0 +1,90 @@
+{{!< layout/default}}
+{{#contentFor 'title'}}{{title}}{{/contentFor}}
+
+<div class="upload-section">
+  <h2>JSON Upload with Data URL <span class="text-muted" style="font-size: 0.9rem;">(application/json)</span></h2>
+  <p>Upload image as data URL with JSON data</p>
+
+  <div class="alert alert-primary" style="font-size: 0.875rem;">
+    The server returns the JSON data (including base64 image) it received. Verify that the response matches what you sent (username, email, filename, avatar data URL, etc.).
+  </div>
+
+  <form id="jsonUploadForm">
+    <div class="mb-3">
+      <label for="jsonUsername" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="jsonUsername" name="username" value="jane_doe">
+    </div>
+    <div class="mb-3">
+      <label for="jsonEmail" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="jsonEmail" name="email" value="jane@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="jsonAvatar" class="form-label">Avatar:</label>
+      <input type="file" class="form-control" id="jsonAvatar" accept="image/*">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload as JSON</button>
+  </form>
+  <div id="jsonResult" class="mt-3" style="display: none;">
+    <div id="jsonResultContent"></div>
+  </div>
+</div>
+
+{{#contentFor 'script'}}
+<script>
+  document.getElementById('jsonUploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('jsonUsername').value;
+    const email = document.getElementById('jsonEmail').value;
+    const fileInput = document.getElementById('jsonAvatar');
+
+    if (!fileInput.files[0]) {
+      document.getElementById('jsonResult').style.display = 'block';
+      document.getElementById('jsonResultContent').textContent = 'Error: Please select a file';
+      return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = async (event) => {
+      const dataUrl = event.target.result;
+
+      const jsonData = {
+        username: username,
+        email: email,
+        avatar: dataUrl,
+        filename: file.name,
+        mimetype: file.type
+      };
+
+      try {
+        const response = await fetch('/api/json-file-with-form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(jsonData)
+        });
+        const result = await response.json();
+
+        document.getElementById('jsonResult').style.display = 'block';
+
+        let html = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+        if (result.success && result.data && result.data.avatar) {
+          html += '<div style="margin-top: 1rem;">';
+          html += `<div><strong>${result.data.filename}</strong></div>`;
+          html += `<img src="${result.data.avatar}" alt="${result.data.filename}" style="max-width: 300px; margin-top: 0.5rem;">`;
+          html += '</div>';
+        }
+        document.getElementById('jsonResultContent').innerHTML = html;
+      } catch (error) {
+        document.getElementById('jsonResult').style.display = 'block';
+        document.getElementById('jsonResultContent').textContent = 'Error: ' + error.message;
+      }
+    };
+
+    reader.readAsDataURL(file);
+  });
+</script>
+{{/contentFor}}

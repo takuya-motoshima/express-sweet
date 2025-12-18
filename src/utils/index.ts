@@ -23,7 +23,7 @@
  * // Using configuration loaders
  * import * as expx from 'express-sweet';
  * 
- * const basicConfig = await expx.utils.loadBasicConfig();
+ * const appConfig = await expx.utils.loadAppConfig();
  * const dbConfig = await expx.utils.loadDatabaseConfig();
  * const authConfig = await expx.utils.loadAuthenticationConfig();
  * const loggingConfig = await expx.utils.loadLoggingConfig();
@@ -61,9 +61,9 @@ export {default as isString} from './isString';
 export {default as loadAuthenticationConfig} from './loadAuthenticationConfig';
 
 /**
- * Load basic application configuration from config/config.js
+ * Load application configuration from config/config.js
  */
-export {default as loadBasicConfig} from './loadBasicConfig';
+export {default as loadAppConfig} from './loadAppConfig';
 
 /**
  * Load database configuration from config/database.js
@@ -79,3 +79,8 @@ export {default as loadViewConfig} from './loadViewConfig';
  * Load logging configuration from config/logging.js
  */
 export {default as loadLoggingConfig} from './loadLoggingConfig';
+
+/**
+ * Load upload configuration from config/upload.js
+ */
+export {default as loadUploadConfig} from './loadUploadConfig';

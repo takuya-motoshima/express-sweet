@@ -123,8 +123,8 @@ export default class Model extends (sequelize.Model as any) {
 
   /**
    * An enum of query types used by sequelize.query.
-   * @see https://sequelize.org/api/v6/variable/index.html#static-variable-QueryTypes
    * @type {sequelize.QueryTypes}
+   * @see {@link https://sequelize.org/api/v6/variable/index.html#static-variable-QueryTypes | Sequelize QueryTypes}
    */
   static readonly QueryTypes: {[key: string]: string} = sequelize.QueryTypes;
 
@@ -254,10 +254,10 @@ export default class Model extends (sequelize.Model as any) {
   static readonly where: (attr: sequelize.AttributeType, comparator: string, logic: sequelize.LogicType) => sequelize.Utils.Where = sequelize.where;
 
   /**
-   * Reference to sequelize.Transaction.  
+   * Reference to sequelize.Transaction.
    * This includes properties such as isolation level enums used with the transaction option.
-   * @see https://sequelize.org/api/v6/class/src/transaction.js~transaction
    * @type {sequelize.Transaction}
+   * @see {@link https://sequelize.org/api/v6/class/src/transaction.js~transaction | Sequelize Transaction}
    * @example
    * ```js
    * BookModel.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED // "READ UNCOMMITTED"
@@ -276,8 +276,8 @@ export default class Model extends (sequelize.Model as any) {
    * @returns {Promise<any>} Returns this model class itself.
    */
   static async init(): Promise<any> {
-    if (process.env.EXPRESS_DEBUG) {
-      console.log(`Initialize ${this.table} model`);
+    if (process.env.SWEET_DEBUG) {
+      console.log(`[Sweet] Initializing model: ${this.table}`);
     }
 
     // Get shared Database instance from DatabaseManager.

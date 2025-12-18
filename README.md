@@ -2,58 +2,40 @@
 
 EXPRESS SWEET is a powerful Express.js extension that streamlines your development workflow and boosts productivity with a comprehensive suite of utilities and enhancements.
 
-- [EXPRESS SWEET](#express-sweet)
-  - [Features](#features)
-  - [API Reference](#api-reference)
-  - [EXPRESS SWEET Generator](#express-sweet-generator)
-  - [Quick Start](#quick-start)
-    - [Database Setup](#database-setup)
-    - [Database Configuration](#database-configuration)
-    - [Environment Configuration](#environment-configuration)
-    - [Running the Application](#running-the-application)
-  - [Project Structure](#project-structure)
-    - [Key Directories Explained](#key-directories-explained)
-  - [Configuration](#configuration)
-    - [Environment Variables](#environment-variables)
-    - [Base Configuration (`config/config.js`)](#base-configuration-configconfigjs)
-    - [Database Configuration (`config/database.js`)](#database-configuration-configdatabasejs)
-    - [Authentication Configuration (`config/authentication.js`)](#authentication-configuration-configauthenticationjs)
-    - [View Configuration (`config/view.js`)](#view-configuration-configviewjs)
-    - [Logging Configuration (`config/logging.js`)](#logging-configuration-configloggingjs)
-  - [Routing](#routing)
-    - [Basic Routing](#basic-routing)
-    - [Nested Routing](#nested-routing)
-    - [Default Routing](#default-routing)
-    - [Routing Methods](#routing-methods)
-  - [Model](#model)
-    - [Accessing Models](#accessing-models)
-    - [Creating Custom Models](#creating-custom-models)
-    - [Model Relationships](#model-relationships)
-  - [View System](#view-system)
-    - [Layout Usage](#layout-usage)
-    - [Template Syntax](#template-syntax)
-    - [Handlebars Helpers](#handlebars-helpers)
-      - [Array Helpers](#array-helpers)
-      - [Comparison Helpers](#comparison-helpers)
-      - [HTML Helpers](#html-helpers)
-      - [Object Helpers](#object-helpers)
-      - [String Helpers](#string-helpers)
-      - [Date Helpers](#date-helpers)
-      - [Number Helpers](#number-helpers)
-      - [Math Helpers](#math-helpers)
-  - [Authentication](#authentication)
-    - [Login Example](#login-example)
-      - [Asynchronous Login (Ajax)](#asynchronous-login-ajax)
-      - [Synchronous Login (Form Submit)](#synchronous-login-form-submit)
-    - [Logout Example](#logout-example)
-  - [Examples](#examples)
-    - [RESTful API Development](#restful-api-development)
-    - [Advanced View Usage](#advanced-view-usage)
-    - [Environment-Specific Configuration](#environment-specific-configuration)
-    - [Error Handling](#error-handling)
-  - [Release Notes](#release-notes)
-  - [Author](#author)
-  - [License](#license)
+## Now Supports Express 5!
+
+**Version 4.0+ brings full Express 5 compatibility with production-ready solutions for common migration challenges:**
+
+- **Express 4 Query Parser Behavior** - Nested query objects work seamlessly (e.g., `?user[email]=test@example.com` → `req.query.user.email`)
+  - Solves the `[Object: null prototype]` issue ([#3472](https://github.com/expressjs/express/issues/3472), [#599](https://github.com/cdimascio/express-openapi-validator/issues/599))
+  - Automatic `query parser: 'extended'` configuration out of the box
+- **Multipart Form Data Support** - Handle file uploads and form submissions effortlessly
+  - Built-in `multer().none()` middleware for forms without files
+  - Dynamic file upload configuration via `config/upload.js`
+- **Modern Route Patterns** - Full support for RegExp with named capture groups
+  - Migrated from deprecated `/:id(\\d+)` to `/^\/(?<id>\\d+)$/` syntax
+- **Node.js 18+ Ready** - Leverages the latest Node.js LTS features
+
+For more details on Express 5 changes, see the [Express.js Release Notes](https://expressjs.com/en/changelog/).
+
+## Table of Contents
+
+- [Now Supports Express 5!](#now-supports-express-5)
+- [Features](#features)
+- [Demos](#demos)
+- [API Reference](#api-reference)
+- [EXPRESS SWEET Generator](#express-sweet-generator)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Configuration](#configuration)
+- [Routing](#routing)
+- [Model](#model)
+- [View System](#view-system)
+- [Authentication](#authentication)
+- [Examples](#examples)
+- [Release Notes](#release-notes)
+- [Author](#author)
+- [License](#license)
 
 ## Features
 
@@ -68,9 +50,19 @@ EXPRESS SWEET provides the following key features to accelerate your development
 - **CORS Support**: Built-in Cross-Origin Resource Sharing support
 - **Project Generator**: Command-line tool to quickly scaffold new applications
 
+## Demos
+
+The `demo/` directory contains working examples that demonstrate different use cases of EXPRESS SWEET:
+
+- **REST API Demo** - Modern REST API with CORS support and Bearer token authentication, ideal for SPAs and mobile app backends
+- **TODO Demo** - Full-stack application with authentication, database integration, and async operations
+- **File Upload Demo** - File upload handling with Multer middleware for single and multiple file uploads
+
+See the [demo README](https://github.com/takuya-motoshima/express-sweet/tree/main/demo) for complete details and screenshots.
+
 ## API Reference
 
-📖 **[Complete API Documentation](https://takuya-motoshima.github.io/express-sweet/)**
+**[Complete API Documentation](https://takuya-motoshima.github.io/express-sweet/)**
 
 The comprehensive API reference includes detailed documentation for:
 
@@ -86,9 +78,12 @@ The comprehensive API reference includes detailed documentation for:
   - **[Object](https://takuya-motoshima.github.io/express-sweet/modules/handlebars_helpers.object.html)**: `jsonStringify`, `jsonParse`
   - **[HTML](https://takuya-motoshima.github.io/express-sweet/modules/handlebars_helpers.html.html)**: `cacheBusting`, `stripTags`
   - **[Layouts](https://takuya-motoshima.github.io/express-sweet/modules/handlebars_helpers.layouts.html)**: `block`, `contentFor`
-- **[Configuration Interfaces](https://takuya-motoshima.github.io/express-sweet/modules/interfaces.html)**: TypeScript interfaces for `AuthenticationConfig`, `BasicConfig`, `DatabaseConfig`, `LoggingConfig`, `ViewConfig`
-- **[Middlewares](https://takuya-motoshima.github.io/express-sweet/modules/middlewares.html)**: `CORS`, `Environment`, `ErrorHandler`, `Global`, `Http`, `Local`, `View`
-- **[Routing](https://takuya-motoshima.github.io/express-sweet/modules/routing.html)**: `Router` class for advanced routing functionality
+- **[Configuration Interfaces](https://takuya-motoshima.github.io/express-sweet/modules/interfaces.html)**: TypeScript interfaces for:
+  - `AuthenticationConfig`, `AppConfig`, `DatabaseConfig`
+  - `LoggingConfig`, `ViewConfig`, `UploadConfig`
+- **[Middlewares](https://takuya-motoshima.github.io/express-sweet/modules/middlewares.html)**: Core middleware functions:
+  - `corsPolicy`, `envLoader`, `errorHandler`, `globalVars`
+  - `requestParser`, `localVars`, `viewEngine`, `passportAuth`, `routeMapper`
 - **[Utilities](https://takuya-motoshima.github.io/express-sweet/modules/utils.html)**: Type checking functions and configuration loaders
 - **[Mount Function](https://takuya-motoshima.github.io/express-sweet/variables/mount.html)**: Application initialization and setup
 
@@ -127,6 +122,9 @@ Use the application generator tool, `express-sweet-generator`, to quickly create
    cd myapp/
    npm install
    ```
+
+<details>
+<summary><strong>Quick Start</strong></summary>
 
 ## Quick Start
 
@@ -258,6 +256,11 @@ npm start
 
 Then open `http://localhost:3000/` in your browser to access the application.
 
+</details>
+
+<details>
+<summary><strong>Project Structure</strong></summary>
+
 ## Project Structure
 
 The generated application has the following directory structure:
@@ -280,6 +283,7 @@ The generated application has the following directory structure:
 │   ├── config.js                 # Core application configuration
 │   ├── database.js               # Database connection settings
 │   ├── logging.js                # HTTP request logging configuration
+│   ├── upload.js                 # File upload configuration
 │   └── view.js                   # Template engine configuration
 ├── errors                        # Custom error classes
 │   └── UserNotFound.js           # Custom error definitions
@@ -325,8 +329,13 @@ URL endpoint handlers organized by feature. The file structure automatically map
 **Views (`views/`)**  
 Handlebars templates for rendering HTML pages. The `layout/` directory contains base templates, while `partials/` holds reusable components.
 
-**Public (`public/`)**  
+**Public (`public/`)**
 Static files served directly by the web server. The `build/` directory contains compiled frontend assets, while `upload/` stores user-generated content.
+
+</details>
+
+<details>
+<summary><strong>Configuration</strong></summary>
 
 ## Configuration
 
@@ -428,6 +437,124 @@ HTTP request logging settings are defined in the `config/logging.js` file.
 - [ESM Configuration](configuration_sample/esm/logging.js)
 - [CJS Configuration](configuration_sample/cjs/logging.js)
 
+### Upload Configuration (`config/upload.js`)
+
+File upload settings using Multer are defined in the `config/upload.js` file.
+
+**Sample configurations:**
+- [ESM Configuration](configuration_sample/esm/upload.js)
+- [CJS Configuration](configuration_sample/cjs/upload.js)
+
+**Configuration Options:**
+
+- **`enabled: boolean`**
+  Enable file upload middleware. Defaults to `false`.
+  If `config/upload.js` doesn't exist, upload middleware won't be applied.
+
+- **`resolve_middleware: (req: express.Request, multer: typeof import('multer')) => Function|null`**
+  Hook function to dynamically resolve multer middleware based on request.
+  Return a multer middleware instance or `null` to skip upload handling for the request.
+
+**Storage Options:**
+
+- **Memory Storage** (`multer.memoryStorage()`): Stores files in memory as Buffer objects. Fast and suitable for small files or when you need to process files immediately.
+- **Disk Storage** (`multer.diskStorage()`): Stores files on disk. Better for large files or when you need persistent storage.
+
+**Configuration Examples:**
+
+```js
+// Single file upload
+resolve_middleware: (req, multer) => {
+  if (req.path === '/api/user/avatar' && req.method === 'POST') {
+    const upload = multer({ storage: multer.memoryStorage() });
+    return upload.single('avatar');
+  }
+  return null;
+}
+
+// Multiple files with same field name
+resolve_middleware: (req, multer) => {
+  if (req.path === '/api/gallery' && req.method === 'POST') {
+    const upload = multer({ storage: multer.memoryStorage() });
+    return upload.array('photos', 10);
+  }
+  return null;
+}
+
+// Multiple file fields
+resolve_middleware: (req, multer) => {
+  if (req.path === '/api/admin/firms' && req.method === 'POST') {
+    const upload = multer({ storage: multer.memoryStorage() });
+    return upload.fields([
+      { name: 'logo', maxCount: 1 },
+      { name: 'eyecatch', maxCount: 1 }
+    ]);
+  }
+  return null;
+}
+```
+
+**Accessing Uploaded Files in Routes:**
+
+```js
+import {Router} from 'express';
+
+const router = Router();
+
+// Single file upload
+router.post('/avatar', (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+
+  // Access file properties
+  console.log(req.file.originalname);  // Original filename
+  console.log(req.file.mimetype);      // MIME type
+  console.log(req.file.size);          // File size in bytes
+  console.log(req.file.buffer);        // File data (memory storage)
+
+  res.json({ success: true, filename: req.file.originalname });
+});
+
+// Multiple files (array)
+router.post('/gallery', (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ error: 'No files uploaded' });
+  }
+
+  // Access files array
+  req.files.forEach(file => {
+    console.log(file.originalname);
+  });
+
+  res.json({ success: true, count: req.files.length });
+});
+
+// Multiple fields
+router.post('/firms', (req, res) => {
+  if (!req.files) {
+    return res.status(400).json({ error: 'No files uploaded' });
+  }
+
+  // Access specific fields
+  const logo = req.files['logo'] ? req.files['logo'][0] : null;
+  const eyecatch = req.files['eyecatch'] ? req.files['eyecatch'][0] : null;
+
+  res.json({
+    success: true,
+    logo: logo ? logo.originalname : null,
+    eyecatch: eyecatch ? eyecatch.originalname : null
+  });
+});
+
+export default router;
+```
+
+</details>
+
+<details>
+<summary><strong>Routing</strong></summary>
+
 ## Routing
 
 Routing determines how an application responds to client requests for specific endpoints, defined by a URI path and HTTP request method (GET, POST, etc.).
@@ -494,6 +621,11 @@ Express supports routing methods corresponding to HTTP methods:
 - `checkout`, `copy`, `delete`, `get`, `head`, `lock`, `merge`, `mkactivity`, `mkcol`, `move`, `m-search`, `notify`, `options`, `patch`, `post`, `purge`, `put`, `report`, `search`, `subscribe`, `trace`, `unlock`, `unsubscribe`
 
 For comprehensive routing documentation, see the [Express Routing Guide](https://expressjs.com/en/guide/routing.html#express-router).
+
+</details>
+
+<details>
+<summary><strong>Model</strong></summary>
 
 ## Model
 
@@ -602,6 +734,11 @@ static associate(models) {
 ```
 
 For comprehensive model documentation and advanced features, see the [Model API Reference](https://takuya-motoshima.github.io/express-sweet/modules/database.html).
+
+</details>
+
+<details>
+<summary><strong>View System</strong></summary>
 
 ## View System
 
@@ -786,6 +923,11 @@ Mathematical operations for template calculations:
 
 For complete documentation of all helpers and their options, see the [Handlebars Helpers API Reference](https://takuya-motoshima.github.io/express-sweet/modules/handlebars_helpers.html).
 
+</details>
+
+<details>
+<summary><strong>Authentication</strong></summary>
+
 ## Authentication
 
 EXPRESS SWEET includes built-in Passport authentication middleware for username and password authentication. You can immediately implement user authentication using the authentication configuration file and authentication service module.
@@ -898,6 +1040,11 @@ export default router;
 ```
 
 For detailed authentication configuration options, see the [Configuration](#configuration) section and [Authentication API Reference](https://takuya-motoshima.github.io/express-sweet/classes/services.Authentication.html).
+
+</details>
+
+<details>
+<summary><strong>Examples</strong></summary>
 
 ## Examples
 
@@ -1142,6 +1289,8 @@ router.post('/users', async (req, res, next) => {
 
 export default router;
 ```
+
+</details>
 
 ## Release Notes
 

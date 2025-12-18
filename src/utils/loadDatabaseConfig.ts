@@ -38,30 +38,34 @@ import DatabaseConfig from '~/interfaces/DatabaseConfig';
  * ```
  */
 export default async (): Promise<sequelize.Options> => {
-  // Options with default values set.
+  // Default options when config file doesn't exist
   const defaultOptions: sequelize.Options = {
-    database: 'unkown',
-    username: 'unkown',
+    database: 'unknown',
+    username: 'unknown',
     password: undefined,
     host: 'localhost',
     dialect: 'mariadb'
   };
 
-  // If the options file is not found, the default options are returned.
+  // Return default options if config file doesn't exist
   const filePath = `${process.cwd()}/config/database`;
   if (!fs.existsSync(`${filePath}.js`)) {
     return defaultOptions;
   }
+
+  // Warn if NODE_ENV is not set, default to 'development'
   if (!process.env.NODE_ENV) {
-    // If the NODE_ENV environment variable needed to load the DB configuration is not present, a warning is output.
-    console.warn('Since there is no NODE_ENV environment variable required to load the DB configuration, \'development\' is used as the environment name.');
+    console.warn('[Sweet] NODE_ENV not set, defaulting to "development" environment');
   }
 
-  // If an options file is found, it returns options that override the default options.
+  // Load and merge environment-specific configuration
   let {default: options}: {default: DatabaseConfig} = await import(`${filePath}.js`);
   options = Object.assign(defaultOptions, options[process.env.NODE_ENV||'development']) as DatabaseConfig;
-  if (process.env.EXPRESS_DEBUG) {
-    console.log(`Connection DB is ${options.host} ${options.database}`);
+
+  // Log database connection info in debug mode
+  if (process.env.SWEET_DEBUG) {
+    console.log(`[Sweet] Loading database config: ${options.database}@${options.host}`);
   }
+
   return options;
 }

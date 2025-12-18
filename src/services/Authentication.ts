@@ -97,7 +97,7 @@ export default class Authentication {
    * ```
    */
   static async successRedirect(res: express.Response): Promise<void> {
-    // Load configuration.
+    // Load authentication configuration
     const authenticationConfig = await utils.loadAuthenticationConfig();
     res.redirect(authenticationConfig.success_redirect!);
   }
@@ -118,10 +118,10 @@ export default class Authentication {
    * ```
    */
   static async failureRedirect(req: express.Request, res: express.Response): Promise<void> {
-    // Load configuration.
+    // Load authentication configuration
     const authenticationConfig = await utils.loadAuthenticationConfig();
 
-    // URL to redirect to in case of login failure.
+    // Resolve failure redirect URL (can be static string or dynamic function)
     const failureRedirectUrl = (utils.isFunction(authenticationConfig.failure_redirect)
       ? (authenticationConfig.failure_redirect as (req: express.Request, res: express.Response) => string)(req, res)
       : authenticationConfig.failure_redirect) as string;

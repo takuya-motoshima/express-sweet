@@ -40,9 +40,11 @@ The library uses a centralized mounting system (`src/mount.ts`) that initializes
 ### Configuration System
 The library expects configuration files in a consuming application:
 - `config/config.js` - Basic application config
-- `config/database.js` - Database connection settings  
+- `config/database.js` - Database connection settings
 - `config/authentication.js` - User auth configuration
 - `config/view.js` - Handlebars view engine settings
+- `config/logging.js` - HTTP request logging settings
+- `config/upload.js` - File upload (Multer) configuration
 
 ### Database Layer
 - `DatabaseManager` singleton class manages a single Sequelize instance across all models

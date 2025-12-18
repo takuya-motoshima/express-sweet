@@ -16,19 +16,17 @@ import express from 'express';
  * };
  * ```
  */
-export default class ErrorHandler {
-    /**
-     * Mount error handling middleware on Express application.
-     * Sets up 404 error catching and custom error handling hooks.
-     * @param {express.Express} app Express application instance
-     * @returns {Promise<void>}
-     * @example
-     * ```js
-     * // This method is called automatically by express-sweet.mount()
-     * import ErrorHandler from './middlewares/ErrorHandler';
-     *
-     * await ErrorHandler.mount(app);
-     * ```
-     */
-    static mount(app: express.Express): Promise<void>;
-}
+/**
+ * Mount error handling middleware on Express application.
+ * Sets up 404 error catching and custom error handling hooks.
+ * @param {express.Express} app Express application instance
+ * @returns {Promise<void>}
+ * @example
+ * ```js
+ * // This method is called automatically by express-sweet.mount()
+ * import errorHandler from './middlewares/errorHandler';
+ *
+ * await errorHandler(app);
+ * ```
+ */
+export default function errorHandler(app: express.Express): Promise<void>;

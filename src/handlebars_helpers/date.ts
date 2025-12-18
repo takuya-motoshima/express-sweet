@@ -21,11 +21,12 @@ import moment from 'moment';
  */
 export const formatDate = (format: string, date: string, locale: string|string[]): string => {
   format = utils.isString(format) ? format : '';
+  // Apply locale if specified
   if (utils.isString(locale) || utils.isArray(locale)) {
     const localeMoment = moment(date || new Date());
     localeMoment.locale(locale);
     return localeMoment.format(format);
   }
-  // Use global moment and format with default locale.
+  // Use default locale if no locale specified
   return moment(date || new Date()).format(format);
 }

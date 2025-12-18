@@ -17,7 +17,7 @@ import AuthenticationConfig from '~/interfaces/AuthenticationConfig';
  * ```
  */
 export default async (): Promise<AuthenticationConfig> => {
-  // Options with default values set.
+  // Default configuration (authentication disabled)
   const defaultOptions: AuthenticationConfig = {
     enabled: false,
     session_store: 'memory',
@@ -32,28 +32,27 @@ export default async (): Promise<AuthenticationConfig> => {
     authenticate_user: (username: string, password: string, req: express.Request) => new Promise(resolve => resolve(null)),
     subscribe_user: (id: number|string) => new Promise(resolve => resolve({} as {[key: string]: any})),
     allow_unauthenticated: [],
-    expiration: 24 * 3600000, // 24hours
+    expiration: 24 * 3600000, // 24 hours
   };
 
-  // If the options file is not found, the default options are returned.
+  // Return default options if config file doesn't exist
   const filePath = `${process.cwd()}/config/authentication`;
   if (!fs.existsSync(`${filePath}.js`))
     return defaultOptions;
 
-  // If an options file is found, it is merged with the default options.
+  // Load and merge user configuration with defaults
   let {default: options} = await import(`${filePath}.js`);
   options = Object.assign(defaultOptions, options);
 
-  // Check required options.
+  // Validate required options
   if (options.session_store === 'redis' && !options.redis_host) {
-    throw new TypeError('If the session store is redis, redis_host in the authentication configuration is required');
+    throw new TypeError('redis_host is required when session_store is set to \'redis\'');
   }
 
-  // If the session cookie name is overwritten with an empty value, replace it with the default value.
+  // Ensure cookie_name is not empty
   if (!options.cookie_name) {
     options.cookie_name = 'connect.sid';
   }
 
-  // If an options file is found, it returns options that override the default options.
   return options;
 }

@@ -16,22 +16,19 @@ import LoggingConfig from '~/interfaces/LoggingConfig';
  * ```
  */
 export default async (): Promise<LoggingConfig> => {
-  // Options with default values set.
+  // Default logging configuration (Morgan 'combined' format)
   const defaultOptions: LoggingConfig = {
     format: 'combined',
     skip: undefined,
   };
 
-  // If the options file is not found, the default options are returned.
+  // Return default options if config file doesn't exist
   const filePath = `${process.cwd()}/config/logging`;
   if (!fs.existsSync(`${filePath}.js`)) {
     return defaultOptions;
   }
 
-  // If an options file is found, it is merged with the default options.
-  let {default: options} = await import(`${filePath}.js`);
-  options = Object.assign(defaultOptions, options);
-
-  // If an options file is found, it returns options that override the default options.
-  return options;
+  // Load and merge user configuration with defaults
+  const {default: options} = await import(`${filePath}.js`);
+  return Object.assign(defaultOptions, options);
 }

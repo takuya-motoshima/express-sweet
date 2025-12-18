@@ -18,8 +18,9 @@ import * as utils from '~/utils';
  * ```
  */
 export const number2locale = (val: number|string, locales?: string): string => {
-  // String type is converted to numeric.
+  // Convert string to number if needed
   if (utils.isString(val))
     val = Number(val);
+  // Format number according to locale
   return val.toLocaleString(locales);
 }
