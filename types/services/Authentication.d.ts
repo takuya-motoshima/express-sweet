@@ -1,23 +1,32 @@
 import express from 'express';
 /**
  * User authentication service using Passport.js.
- * Provides methods for user authentication, logout, and redirect handling.
+ *
+ * Provides static methods for user authentication, logout, and redirect handling.
+ * Works with Passport.js local strategy configured in authentication middleware.
  *
  * @see {@link https://www.passportjs.org/ | Passport.js}
  * @example
  * ```js
- * // Using in async request handler
+ * // Basic authentication with JSON response
+ * import {Router} from 'express';
  * import * as expx from 'express-sweet';
  *
- * router.post('/login', async (req, res, next) => {
+ * const router = Router();
+ * router.post('/api/login', async (req, res, next) => {
  *   const isAuthenticated = await expx.services.Authentication.authenticate(req, res, next);
- *   res.json(isAuthenticated);
+ *   res.json({success: isAuthenticated});
  * });
- * ```
  *
+ * export default router;
+ * ```
  * @example
  * ```js
- * // Using in sync request handler
+ * // Authentication with redirect handling
+ * import {Router} from 'express';
+ * import * as expx from 'express-sweet';
+ *
+ * const router = Router();
  * router.post('/login', async (req, res, next) => {
  *   const isAuthenticated = await expx.services.Authentication.authenticate(req, res, next);
  *   if (isAuthenticated)
@@ -25,30 +34,51 @@ import express from 'express';
  *   else
  *     await expx.services.Authentication.failureRedirect(req, res);
  * });
+ *
+ * export default router;
  * ```
  */
 export default class Authentication {
     /**
-     * Authenticate the user using username and password from request body.
-     * Uses Passport.js local strategy for authentication.
-     * @param {express.Request} req The HTTP request object containing user credentials
-     * @param {express.Response} res The HTTP response object
-     * @param {express.NextFunction} next The next middleware function
-     * @returns {Promise<boolean>} Returns true if authentication is successful, false otherwise
+     * Authenticate user using username and password from request body.
+     *
+     * Uses Passport.js local strategy configured via authentication middleware.
+     * Expects `req.body.username` and `req.body.password` to be present.
+     *
+     * @param {express.Request} req HTTP request object containing user credentials in body
+     * @param {express.Response} res HTTP response object
+     * @param {express.NextFunction} next Next middleware function
+     * @returns {Promise<boolean>} Returns true if authentication successful, false otherwise
      * @example
      * ```js
-     * // For asynchronous requests
+     * import {Router} from 'express';
+     * import * as expx from 'express-sweet';
+     *
      * const router = Router();
      * router.post('/login', async (req, res, next) => {
-     *   const isAuthenticated = await Authentication.authenticate(req, res, next);
-     *   res.json(isAuthenticated);
+     *   try {
+     *     const isAuthenticated = await expx.services.Authentication.authenticate(req, res, next);
+     *     if (isAuthenticated) {
+     *       res.json({success: true, user: req.user});
+     *     } else {
+     *       res.status(401).json({success: false, message: 'Invalid credentials'});
+     *     }
+     *   } catch (error) {
+     *     next(error);
+     *   }
      * });
+     *
+     * export default router;
      * ```
      */
     static authenticate(req: express.Request, res: express.Response, next: express.NextFunction): Promise<boolean>;
     /**
-     * Log out the user by removing req.user property and clearing the login session.
-     * @param {express.Request} req The HTTP request object
+     * Log out the current user.
+     *
+     * Removes req.user property and clears the login session.
+     * This method is synchronous and does not require await.
+     *
+     * @param {express.Request} req HTTP request object containing the user session
      * @example
      * ```js
      * import {Router} from 'express';
@@ -59,36 +89,64 @@ export default class Authentication {
      *   expx.services.Authentication.logout(req);
      *   res.redirect('/');
      * });
+     *
+     * export default router;
      * ```
      */
     static logout(req: express.Request): void;
     /**
-     * Redirects to the success page after successful authentication.
-     * Uses the URL specified in "success_redirect" of config/authentication.js.
-     * @param {express.Response} res The HTTP response object
+     * Redirect to success page after successful authentication.
+     *
+     * Uses the URL specified in `success_redirect` option of config/authentication.js.
+     * Should be called after successful authentication.
+     *
+     * @param {express.Response} res HTTP response object
      * @returns {Promise<void>}
      * @example
      * ```js
-     * // For synchronous login handling
-     * const isAuthenticated = await Authentication.authenticate(req, res, next);
-     * if (isAuthenticated)
-     *   await Authentication.successRedirect(res);
+     * import {Router} from 'express';
+     * import * as expx from 'express-sweet';
+     *
+     * const router = Router();
+     * router.post('/login', async (req, res, next) => {
+     *   const isAuthenticated = await expx.services.Authentication.authenticate(req, res, next);
+     *   if (isAuthenticated) {
+     *     await expx.services.Authentication.successRedirect(res);
+     *   } else {
+     *     await expx.services.Authentication.failureRedirect(req, res);
+     *   }
+     * });
+     *
+     * export default router;
      * ```
      */
     static successRedirect(res: express.Response): Promise<void>;
     /**
-     * Redirects to the failure page after authentication failure.
-     * Uses the URL specified in "failure_redirect" of config/authentication.js.
+     * Redirect to failure page after authentication failure.
+     *
+     * Uses the URL specified in `failure_redirect` option of config/authentication.js.
      * Supports both static URLs and dynamic URL functions.
-     * @param {express.Request} req The HTTP request object
-     * @param {express.Response} res The HTTP response object
+     * Should be called after failed authentication.
+     *
+     * @param {express.Request} req HTTP request object
+     * @param {express.Response} res HTTP response object
      * @returns {Promise<void>}
      * @example
      * ```js
-     * // For synchronous login handling
-     * const isAuthenticated = await Authentication.authenticate(req, res, next);
-     * if (!isAuthenticated)
-     *   await Authentication.failureRedirect(req, res);
+     * import {Router} from 'express';
+     * import * as expx from 'express-sweet';
+     *
+     * const router = Router();
+     * router.post('/login', async (req, res, next) => {
+     *   const isAuthenticated = await expx.services.Authentication.authenticate(req, res, next);
+     *   if (isAuthenticated) {
+     *     await expx.services.Authentication.successRedirect(res);
+     *   } else {
+     *     await expx.services.Authentication.failureRedirect(req, res);
+     *   }
+     * });
+     *
+     * export default router;
      * ```
      */
     static failureRedirect(req: express.Request, res: express.Response): Promise<void>;
